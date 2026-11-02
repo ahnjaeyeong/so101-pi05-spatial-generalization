@@ -1,0 +1,17 @@
+{
+ "ckpt": "/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+ "layers": [
+  0,
+  3,
+  7,
+  11,
+  14,
+  17
+ ],
+ "sig_mid": 13,
+ "n": 11,
+ "device": "cpu",
+ "compute_s": 71.44992995262146,
+ "wall_s": 297.31877088546753,
+ "d4_alive_at_start": true
+}

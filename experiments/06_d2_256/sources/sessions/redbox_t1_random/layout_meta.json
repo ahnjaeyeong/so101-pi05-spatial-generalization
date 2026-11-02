@@ -1,0 +1,274 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-22 16:27:15",
+ "session": "main_k8/redbox_t1_random",
+ "group": "t1_random",
+ "episodes": 64,
+ "repo_id": "oxr/so101_k8_redbox_t1_random",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox8_layouts.yaml",
+ "config_sha256": "8bec6966010bc429eeeb3c5c8216f86d0e2fe51c5cb2ec0d2f0a57af18f5e829",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "placement": "free (녹화 뒤 첫 화면에서 위치 역산)",
+  "angles": {
+   "L30": 16,
+   "0": 16,
+   "R30": 16,
+   "45": 16
+  }
+ },
+ "plan_sha256": "3e83ec2dde990802edc3456bd2855b29e69ff967be57c8ae087dae497c986eef",
+ "resolved": {
+  "group": "t1_random",
+  "task_key": "t1",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "random",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 2102,
+  "default_session": "main_k8/redbox_t1_random",
+  "repo_id": "oxr/so101_k8_redbox_t1_random",
+  "red_cubes": 1,
+  "red_counts": null,
+  "distractors": [],
+  "distractor_mix": null,
+  "objects": {
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    6.5,
+    11.75
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "height_cm": 6.0,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -8.5,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -8.5,
+     11.5
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -8.5,
+     -3.5
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -17.0,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K5",
+    [
+     -17.0,
+     11.5
+    ],
+    true
+   ],
+   [
+    "K6",
+    [
+     -17.0,
+     -3.5
+    ],
+    true
+   ],
+   [
+    "K7",
+    [
+     -25.5,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K8",
+    [
+     -25.5,
+     -3.5
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    10,
+    40
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "min_blob_area_in_box_px": 40,
+   "in_box_open_px": 3,
+   "cube_area_px": [
+    786.9,
+    1.303,
+    -0.015,
+    0.0
+   ],
+   "cluster_split_ratio": 1.1,
+   "cube_area_scale": {
+    "green": 0.9,
+    "orange": 0.85,
+    "blue": 1.0,
+    "yellow": 0.83
+   },
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "end_in_box_if_table_clear": true,
+   "wrist_roll_max_range_deg": 70,
+   "grip_dip_min": 5,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       1
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "orange": [
+     {
+      "h": [
+       3,
+       13
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       130,
+       255
+      ]
+     }
+    ],
+    "yellow": [
+     {
+      "h": [
+       22,
+       34
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       120,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  },
+  "touching_ok": false,
+  "angles": {
+   "choices": [
+    "0",
+    "L30",
+    "R30",
+    "45"
+   ]
+  }
+ }
+}

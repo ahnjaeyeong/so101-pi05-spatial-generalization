@@ -1,0 +1,111 @@
+{
+ "latency_first_chunk_s": {
+  "n": 5,
+  "p5": 0.32,
+  "p50": 0.32,
+  "p95": 0.726,
+  "max": 0.73
+ },
+ "latency_later_s": {
+  "n": 304,
+  "p5": 0.33,
+  "p50": 0.34,
+  "p95": 0.36,
+  "max": 0.39
+ },
+ "merge_interval_s": {
+  "n": 304,
+  "p5": 0.6492350697517395,
+  "p50": 0.6689499616622925,
+  "p95": 0.6936799883842468,
+  "max": 1.0274999141693115
+ },
+ "applied_delay_later": {
+  "0": 1,
+  "2": 1,
+  "5": 1,
+  "7": 1,
+  "8": 1,
+  "9": 21,
+  "10": 266,
+  "11": 12
+ },
+ "real_delay_log_later": {
+  "5": 1,
+  "8": 1,
+  "9": 15,
+  "10": 141,
+  "11": 139,
+  "12": 7
+ },
+ "exec_actions_per_chunk": {
+  "chunk0": {
+   "n": 5,
+   "p5": 30.0,
+   "p50": 30.0,
+   "p95": 30.0,
+   "max": 30.0
+  },
+  "later": {
+   "n": 300,
+   "p5": 19.0,
+   "p50": 20.0,
+   "p95": 21.0,
+   "max": 22.0
+  }
+ },
+ "exec_chunk_index_range_later": {
+  "min": 8,
+  "p50_min_per_chunk": 10.0,
+  "p50_max_per_chunk": 29.0,
+  "max": 30
+ },
+ "filt_pan_vclip_ticks": {
+  "1": 7,
+  "2": 6,
+  "3": 8
+ },
+ "filt_pan_vclip_ticks_first3s": {
+  "1": 7,
+  "2": 0,
+  "3": 8
+ },
+ "filt_pan_ema_reset_ticks": {
+  "1": 1,
+  "2": 0,
+  "3": 0
+ },
+ "vclip_mask_example": "00000",
+ "vmax_pan_deg_per_tick": 2.4615383,
+ "human_first1p5s_frac_frames_over_vmax": {
+  "p50": 0.09090909090909091,
+  "mean": 0.11692116477272727
+ },
+ "human_eps_with_any_over_vmax_first1p5s": 159,
+ "human_pan_peak_speed_deg_s_first1p5s": {
+  "p50": 79.12088245153427,
+  "p95": 126.59339904785156
+ },
+ "policy_raw_pan_first3s": {
+  "20k_t1_try3/ep0": {
+   "peak_deg_s": 86.47407531738281,
+   "frac_over_vmax": 0.02247191011235955
+  },
+  "20k_t1_try3/ep1": {
+   "peak_deg_s": 143.12416076660156,
+   "frac_over_vmax": 0.056179775280898875
+  },
+  "20k_t1_try3_filt/ep0": {
+   "peak_deg_s": 440.082,
+   "frac_over_vmax": 0.0449438202247191
+  },
+  "20k_t1_try3_filt/ep1": {
+   "peak_deg_s": 33.038999999999994,
+   "frac_over_vmax": 0.0
+  },
+  "20k_t1_try3_filt/ep2": {
+   "peak_deg_s": 164.61600000000004,
+   "frac_over_vmax": 0.12359550561797752
+  }
+ }
+}

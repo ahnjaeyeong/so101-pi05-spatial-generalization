@@ -1,0 +1,5 @@
+episode_index,scenario_id,type,position,cube_xy_cm,angle,offset_dir,pan_offset_deg,pan_target_deg,start_xy_cm,status,retake_of,frames,note,error_kind,pan_error_direction,nominal_pan_error_deg,local_alignment_type,nominal_local_error_cm,start_pose_type,wrist_visibility_target,approach_stage_expected,cube_position_source
+0,R1-MID-OUT,R1,K6,"-17.0,-3.5",R30,robot_right,25,69.6,"-25.7,-4.3",recorded,,481,,pan_misaligned,right,25,,,mid_approach,absent,,
+1,R1-MID-VIS,R1,K4,"-17.0,26.5",L30,robot_left,-15,-61.2,"-23.3,26.0",recorded,,313,,pan_misaligned,left,15,,,mid_approach,visible_or_edge,,
+2,R1-HOME-VIS,R1,K8,"-25.5,-3.5",45,robot_left,-15,54.5,"-21.9,-1.6",planned,,,,pan_misaligned,left,15,,,home_near,visible_or_edge,,
+3,R1-HOME-OUT,R1,K5,"-17.0,11.5",0,robot_right,25,22.4,"-18.1,5.5",planned,,,,pan_misaligned,right,25,,,home_near,absent,,

@@ -1,0 +1,100 @@
+{
+ "kind": "policy_ab_eval (NOT training data)",
+ "created": "2026-10-19 16:53",
+ "checkpoint": "/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+ "task": "pick up the red cube and put it in the brown box",
+ "task_group": "T1",
+ "conditions": {
+  "A": {
+   "label": "RTC + 필터 없음",
+   "arm_filter": false
+  },
+  "B": {
+   "label": "RTC + 팔 관절 필터",
+   "arm_filter": true
+  }
+ },
+ "inference": {
+  "type": "rtc",
+  "num_inference_steps": 5,
+  "execution_horizon": 20,
+  "prefix_attention_schedule": "EXP",
+  "max_guidance_weight": 10.0,
+  "queue_threshold": 30,
+  "fps": 30,
+  "interpolation_multiplier": 1
+ },
+ "robot": {
+  "type": "so101_follower",
+  "port": "/dev/so101_follower",
+  "id": "my_arm",
+  "max_relative_target": 8,
+  "cameras": "front /dev/cam_front · wrist /dev/cam_wrist · 640x480 30fps MJPG"
+ },
+ "guard": {
+  "mode": "protect (stop sending, no auto-return)",
+  "startup_ticks": 150,
+  "starve_ticks": 15,
+  "stale_ticks": 30,
+  "horizon_count": 10,
+  "stall_ticks": 20
+ },
+ "episode_time_s": 60,
+ "reps": 5,
+ "positions": {
+  "K1": {
+   "xy_cm": [
+    -20.2,
+    31.5
+   ],
+   "front_px": [
+    215,
+    363
+   ],
+   "mark": "① 화면 왼쪽 아래",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K2": {
+   "xy_cm": [
+    -16.2,
+    21.3
+   ],
+   "front_px": [
+    338,
+    325
+   ],
+   "mark": "② 가운데",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K3": {
+   "xy_cm": [
+    -7.8,
+    12.7
+   ],
+   "front_px": [
+    447,
+    243
+   ],
+   "mark": "③ 상자 앞 벽 아래",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K4": {
+   "xy_cm": [
+    -15.4,
+    2.6
+   ],
+   "front_px": [
+    558,
+    328
+   ],
+   "mark": "④ 로봇 오른쪽, 손목 카메라·케이블 옆",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  }
+ },
+ "arm_filter_dir": "/home/user/so101_runs/main/redbox_all/eval",
+ "notes": [
+  "A·B 는 같은 lerobot-rollout(episodic, RTC) 프로세스에서 필터만 켜고 끈다.",
+  "필터를 끈 전송 경로는 lerobot core.send_next_action 과 같음 (2026-10-19 test_abc_path / test_eval_ab_path).",
+  "평가 데이터는 학습 데이터셋에 병합하지 않는다 (repo_id oxr/rollout_eval_ab_*, lerobot rollout 규칙)."
+ ]
+}

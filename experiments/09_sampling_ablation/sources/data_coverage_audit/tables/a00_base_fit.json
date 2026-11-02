@@ -1,0 +1,20 @@
+{
+ "base_xy_cm": [
+  -30.547515347488197,
+  11.178628214723954
+ ],
+ "pan_offset_deg": -0.7508781503136751,
+ "cv_resid_sd_deg": 2.1505049345278877,
+ "cv_resid_mean_deg": -0.004814776110300456,
+ "cv_corr_bearing": -0.06659348439956299,
+ "config": {
+  "base_xy_cm": [
+   -31.0,
+   11.0
+  ],
+  "pan_offset_deg": -1.4
+ },
+ "config_resid_sd_deg": 2.3107464282072696,
+ "config_resid_mean_deg": 1.0065166079984667,
+ "config_corr_bearing": -0.43799007890717334
+}

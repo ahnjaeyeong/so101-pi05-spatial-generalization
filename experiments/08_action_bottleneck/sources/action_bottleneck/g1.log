@@ -1,0 +1,53 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+ep 0 (1/128) obs 120 · 53s · gpu 52s · d4 (7334, 16.64)
+ep 1 (2/128) obs 204 · 91s · gpu 88s · d4 (7336, 19.27)
+[d4] 20.6 s/step > 2.0x base 10.1 — waiting 60 s
+ep 2 (3/128) obs 288 · 188s · gpu 124s · d4 (7344, 12.07)
+ep 3 (4/128) obs 402 · 238s · gpu 173s · d4 (7346, 17.12)
+ep 4 (5/128) obs 522 · 290s · gpu 224s · d4 (7348, 19.56)
+[d4] 20.8 s/step > 2.0x base 10.1 — waiting 60 s
+ep 5 (6/128) obs 642 · 402s · gpu 275s · d4 (7356, 12.11)
+ep 6 (7/128) obs 762 · 454s · gpu 326s · d4 (7359, 18.69)
+[d4] 20.4 s/step > 2.0x base 10.1 — waiting 60 s
+ep 7 (8/128) obs 882 · 567s · gpu 377s · d4 (7367, 12.64)
+ep 8 (9/128) obs 1002 · 621s · gpu 430s · d4 (7369, 17.63)
+[d4] 20.3 s/step > 2.0x base 10.1 — waiting 60 s
+ep 9 (10/128) obs 1122 · 735s · gpu 482s · d4 (7377, 13.61)
+ep 10 (11/128) obs 1242 · 788s · gpu 535s · d4 (7380, 19.56)
+ep 11 (12/128) obs 1344 · 834s · gpu 579s · d4 (7382, 20.93)
+[d4] 20.9 s/step > 2.0x base 10.1 — waiting 60 s
+ep 12 (13/128) obs 1412 · 924s · gpu 608s · d4 (7388, 13.82)
+ep 13 (14/128) obs 1496 · 962s · gpu 646s · d4 (7390, 18.4)
+[d4] 20.3 s/step > 2.0x base 10.1 — waiting 60 s
+ep 14 (15/128) obs 1598 · 1067s · gpu 690s · d4 (7397, 13.05)
+ep 15 (16/128) obs 1700 · 1113s · gpu 735s · d4 (7399, 16.74)
+[d4] 20.3 s/step > 2.0x base 10.1 — waiting 60 s
+ep 16 (17/128) obs 1820 · 1226s · gpu 786s · d4 (7408, 12.61)
+ep 17 (18/128) obs 1940 · 1280s · gpu 839s · d4 (7410, 17.72)
+ep 18 (19/128) obs 2060 · 1333s · gpu 890s · d4 (7412, 19.99)
+[d4] 20.4 s/step > 2.0x base 10.1 — waiting 60 s
+ep 19 (20/128) obs 2180 · 1447s · gpu 943s · d4 (7420, 17.44)
+ep 20 (21/128) obs 2300 · 1501s · gpu 996s · d4 (7422, 20.15)
+[d4] 20.8 s/step > 2.0x base 10.1 — waiting 60 s
+ep 21 (22/128) obs 2380 · 1597s · gpu 1032s · d4 (7429, 16.23)
+ep 22 (23/128) obs 2500 · 1652s · gpu 1085s · d4 (7431, 19.62)
+[d4] 20.2 s/step > 2.0x base 10.1 — waiting 60 s
+ep 23 (24/128) obs 2584 · 1751s · gpu 1123s · d4 (7438, 15.73)
+ep 24 (25/128) obs 2686 · 1798s · gpu 1169s · d4 (7440, 19.59)
+[d4] 20.6 s/step > 2.0x base 10.1 — waiting 60 s
+ep 25 (26/128) obs 2776 · 1899s · gpu 1209s · d4 (7447, 13.93)
+ep 26 (27/128) obs 2896 · 1952s · gpu 1261s · d4 (7450, 19.61)
+ep 27 (28/128) obs 2936 · 1970s · gpu 1278s · d4 (7451, 20.36)
+[d4] 20.4 s/step > 2.0x base 10.1 — waiting 60 s
+ep 28 (29/128) obs 3020 · 2067s · gpu 1314s · d4 (7458, 15.95)
+ep 29 (30/128) obs 3122 · 2113s · gpu 1358s · d4 (7460, 19.06)
+[d4] 21.1 s/step > 2.0x base 10.1 — waiting 60 s
+ep 30 (31/128) obs 3224 · 2220s · gpu 1404s · d4 (7467, 12.54)
+ep 31 (32/128) obs 3344 · 2272s · gpu 1455s · d4 (7470, 17.55)

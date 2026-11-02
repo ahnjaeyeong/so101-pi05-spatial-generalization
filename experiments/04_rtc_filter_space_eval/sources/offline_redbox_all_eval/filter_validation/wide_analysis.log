@@ -1,0 +1,37 @@
+analyzed lat1.55 rtc_h20_exp_s5
+analyzed lat1.55 sync_s10
+analyzed spike rtc_h20_exp_s5
+           cfg filter        task  sources  boundary_max  boundary_gt8  anyframe_gt8  noise_arm  lag_frames  grasp_err  grip_abs_dt  grip_miss  track_mean_arm  clamp_pct  hold_pct
+rtc_h20_exp_s5   armf          T1      8.0          4.57           0.0           0.0       0.42         1.0       6.36        18.33        0.0            3.30      40.74      1.84
+rtc_h20_exp_s5   armf          T2      8.0          4.57           0.0           0.0       0.42         1.0       7.21        14.61        1.0            2.90      34.89      1.14
+rtc_h20_exp_s5   armf          T3      8.0          4.57           0.0           0.0       0.48         1.0       4.61        34.45        0.0            5.07      56.73      2.51
+rtc_h20_exp_s5   armf rollout(T1)      1.0          4.57           0.0           0.0       0.46         1.0        NaN          NaN        0.0            2.92      27.42      0.33
+rtc_h20_exp_s5   none          T1      8.0         42.22           9.0           9.0       0.59         NaN       5.96        18.33        0.0            3.51      42.21      1.84
+rtc_h20_exp_s5   none          T2      8.0         34.24           8.0           8.0       0.60         NaN       7.00        14.61        1.0            3.06      36.50      1.14
+rtc_h20_exp_s5   none          T3      8.0         45.59           6.0          17.0       0.65         NaN       4.62        34.45        0.0            5.46      57.62      2.51
+rtc_h20_exp_s5   none rollout(T1)      1.0          9.67           2.0          14.0       0.63         NaN        NaN          NaN        0.0            3.22      28.84      0.33
+      sync_s10   armf          T1      8.0          4.57           0.0           0.0       0.59         1.5      12.19        21.00        1.0            3.64      44.89     19.88
+      sync_s10   armf          T2      8.0          4.57           0.0           0.0       0.60         2.0       9.54        24.48        1.0            3.11      38.96     19.56
+      sync_s10   armf          T3      8.0          4.57           0.0           0.0       0.59         1.0       9.48        30.82        0.0            4.95      56.77     19.84
+      sync_s10   armf rollout(T1)      1.0          4.57           0.0           0.0       0.57         2.0        NaN          NaN        0.0            3.15      34.39     19.60
+      sync_s10   none          T1      8.0         80.30          45.0          45.0       0.87         NaN      12.19        21.00        1.0            4.39      46.29     19.88
+      sync_s10   none          T2      8.0         73.30          80.0          81.0       0.88         NaN       9.29        24.48        1.0            3.76      40.76     19.56
+      sync_s10   none          T3      8.0         65.92          33.0          33.0       0.90         NaN       9.39        30.82        0.0            5.55      58.19     19.84
+      sync_s10   none rollout(T1)      1.0         77.03          33.0          33.0       0.86         NaN        NaN          NaN        0.0            3.85      35.68     19.60
+    lat            cfg        task  fast_frames  speed_ratio_fast  vclip_in_fast_pct  vclip_all_pct  dev_fast_p95  dev_fast_max
+lat1.55 rtc_h20_exp_s5          T1         1174             0.959             12.658          1.167         7.127        36.852
+lat1.55 rtc_h20_exp_s5          T2         1513             0.968             11.171          0.780         5.954        28.738
+lat1.55 rtc_h20_exp_s5          T3         1348             0.942             19.286          2.767        15.506        46.601
+lat1.55 rtc_h20_exp_s5 rollout(T1)          606             0.889             34.983          2.187        21.887        52.265
+lat1.55       sync_s10          T1         1400             0.809             25.455          4.143        24.703        76.167
+lat1.55       sync_s10          T2         1998             0.763             27.551          4.358        26.488        69.163
+lat1.55       sync_s10          T3         1307             0.897             21.543          4.223        18.261        61.703
+lat1.55       sync_s10 rollout(T1)          929             0.767             27.449          3.412        36.244        72.902
+  spike rtc_h20_exp_s5          T1         1182             0.956             13.167          1.236         7.246        36.852
+  spike rtc_h20_exp_s5          T2         1533             0.969             11.088          0.804         5.945        28.738
+  spike rtc_h20_exp_s5          T3         1370             0.940             19.487          2.865        16.047        47.870
+  spike rtc_h20_exp_s5 rollout(T1)          607             0.874             29.160          3.026        17.716        32.728
+task  episodes  fast_frames  speed_ratio_fast  vclip_in_fast_pct  vclip_all_pct  dev_fast_p95  dev_fast_max  noise_raw  noise_filt
+  T1       128        16950             0.986              3.082          0.229         4.064        13.052      0.338       0.301
+  T2       128        27664             0.976              7.246          0.579         4.982        25.287      0.436       0.387
+  T3       128        21058             0.976             13.221          1.561         6.974        25.303      0.501       0.446

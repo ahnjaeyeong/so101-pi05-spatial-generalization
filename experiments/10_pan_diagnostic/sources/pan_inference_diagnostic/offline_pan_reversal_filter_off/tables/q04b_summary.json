@@ -1,0 +1,14 @@
+{
+ "n_eps": 256,
+ "eps_seen_before_close": 256,
+ "first_seen_s_quantiles": {
+  "10": 0.0,
+  "50": 1.4,
+  "90": 2.5
+ },
+ "eps_with_lost_after_seen_ge1s": 0,
+ "n_segments": 0,
+ "segments_past_target_gt5": 0,
+ "segments_move_dir": {},
+ "segments_dur_s_quantiles": {}
+}

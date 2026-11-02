@@ -1,0 +1,21 @@
+── 환경 확인 (장치를 열지 않음) ──
+  ✓ ~/so101_runs/main_k8/r1_r2_collection/config/r12_scenarios.yaml
+  ✓ ~/so101_boxpick/config/redbox8_layouts.yaml
+  ✓ ~/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json
+  ✓ ~/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py
+  ✓ ~/so101_runs/main_k8/r1_r2_collection/tools/r12_fake_record.py
+  ✓ ~/so101_runs/main_k8/r1_r2_collection/tools/r12_viewer.py
+  ✓ ~/so101_boxpick/scripts/record_ui.py
+  ✓ /dev/so101_follower 있음
+  ✓ /dev/so101_leader 있음
+  ✓ /dev/cam_front 있음
+  ✓ /dev/cam_wrist 있음
+  관절 한계 (follower 캘리브레이션 → °): pan -110.2/+110.2, lift -103.7/+103.7, elbow -96.7/+96.7, wflex -102.1/+102.1, wroll -180.0/+180.0
+  DISPLAY=:1
+  ✓ lerobot record_loop 인자 = 진입점이 가정한 것
+  lerobot 0.6.2
+  ✓ record() 안에 record_loop(
+  ✓ record() 안에 log_say("Reset the environment"
+  ✓ record() 안에 dataset.save_episode()
+  ✓ record() 안에 events["rerecord_episode"]
+확인 끝: 문제 없음

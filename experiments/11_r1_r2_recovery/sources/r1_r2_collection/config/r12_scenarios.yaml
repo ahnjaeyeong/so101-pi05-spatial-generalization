@@ -1,0 +1,636 @@
+# R1/R2 추가 시연 — 시나리오·수량·안전 범위 (2026-10-30)
+# 읽는 곳: tools/r12_common.py (plan · record · preview · qa). 계획을 만든 뒤 이 파일을 바꾸면
+# 이미 만든 r12_plan.csv 는 그대로이고, r12_plan_meta.json 에 계획 때 설정 사본이 남는다.
+version: 1
+
+# K 위치·front 보정(H)·색 검출 범위는 d2 와 같은 설정 파일에서 읽는다 (읽기만).
+base_config: $HOME/so101_boxpick/config/redbox8_layouts.yaml
+
+# d2 와 같은 과제 문장 (d2 tasks.parquet: task_index 0 하나). R1/R2 구분은 세션·repo_id·r12_episodes.csv 로 한다.
+task_text: pick up the red cube and put it in the brown box
+fps: 30
+
+groups:
+  r1_pilot:
+    type: R1
+    session: main_k8/r1_realign_pilot
+    repo_id: oxr/so101_k8_r1_realign_pilot
+    seed: 3101
+    episode_time_s: 45
+  r2_pilot:
+    type: R2
+    session: main_k8/r2_pregrasp_pilot
+    repo_id: oxr/so101_k8_r2_pregrasp_pilot
+    seed: 3201
+    episode_time_s: 45
+  # 시험 연습 (2026-10-30 사용자: 각 3회) — practice 세션, 본 파일럿과 분리. scenario_counts 가 시나리오 count 를 대신함
+  r1_trial:
+    type: R1
+    session: practice/r1_trial
+    repo_id: oxr/so101_r1_trial
+    seed: 3191
+    episode_time_s: 45
+    scenario_counts: {R1-OVER: 1, R1-UNDER: 1, R1-TL: 1}   # 11-02: 녹화 중 어긋남 방식으로 바꿈 (전: R1-L/R/OL)
+  # 11-02 R1 시험 (사용자: R1 만 시험) — 오후 정의 4 시나리오 1판씩, practice/r1_trial (옛 정의 3판) 과 분리
+  r1_try:
+    type: R1
+    session: practice/r1_try
+    repo_id: oxr/so101_r1_try
+    seed: 3192
+    episode_time_s: 45
+    scenario_counts: {R1-PAN-L: 1, R1-PAN-R: 1, R1-OVER: 1, R1-DRIFT: 1}   # 11-02 오후 정의 — 사용자가 13:20 에 4편 녹화함 (그대로 둠)
+  # 3차 지시서 R1 시험 — 셀 (시작 자세 × 손목 가시성) 마다 1판, 좌우 2/2. practice/r1_try 와 분리
+  r1_try2:
+    type: R1
+    session: practice/r1_try2
+    repo_id: oxr/so101_r1_try2
+    seed: 3195   # 4편이 로봇 왼쪽·가운데·오른쪽 K 를 모두 쓰는 seed
+    episode_time_s: 45
+    scenario_counts: {R1-HOME-VIS: 1, R1-HOME-OUT: 1, R1-MID-VIS: 1, R1-MID-OUT: 1}   # 3차 정의 — 사용자가 13:52 에 2편 녹화 (그대로 둠)
+  # 4차 지시서 R1 시험 — A · B1 · B2 · B3 1판씩 (K 2 · 자유 위치 2). practice/r1_try2 (3차 정의, 2편 녹화) 와 분리
+  r1_try3:
+    type: R1
+    session: practice/r1_try3
+    repo_id: oxr/so101_r1_try3
+    seed: 3197   # 4편이 서로 다른 자리 (K 2 · 자유 점 2, 왼쪽·가운데·오른쪽), 좌우 2/2
+    episode_time_s: 45
+    scenario_counts: {R1-A: 1, R1-B1: 1, R1-B2: 1, R1-B3: 1}
+  r2_trial:
+    type: R2
+    session: practice/r2_trial
+    repo_id: oxr/so101_r2_trial
+    seed: 3291
+    episode_time_s: 45
+    scenario_counts: {R2-AHEAD: 1, R2-LEFT: 1, R2-HIGH: 1}
+
+# 큐브 자리: d2 와 같은 고정 위치 K1–K8 (redbox8_layouts.yaml known_positions). 각도도 d2 와 같은 4가지.
+positions: [K1, K2, K3, K4, K5, K6, K7, K8]
+# 자유 위치 (4차 지시서: K1–K8 만 반복하지 않음). 탁자 표시가 없어 사람이 대략 놓고, 실제 위치는 front H 검출로 기록 (cube_position_source).
+# 점 = K 격자 사이 (d2 파지 거리 14–27 cm 안, front 화면 안). Pan 기준 = 기하 (-atan2 − 1.4°; K 에서 d2 중앙값과 −0.2…+3.1° 차이).
+free_points: {F1: [-12.75, 19.0], F2: [-12.75, 4.0], F3: [-21.25, 26.5], F4: [-21.25, -3.5]}
+# R1 계획의 큐브 자리: K 8 + 자유 점 8 (F1–F4 각 2)
+r1_positions: [K1, K2, K3, K4, K5, K6, K7, K8, F1, F2, F3, F4, F1, F2, F3, F4]
+angles: ["0", "L30", "R30", "45"]
+
+# K 마다 '큐브 가운데 pan' 기준값 (°): d2 구성 세션 redbox_t1_known + redbox_t3_known 의 판마다
+# '열린 뒤 명령 그리퍼 <10 인데 팔로워 그리퍼 >6 이 5프레임 이어진 첫 프레임 (= 큐브를 쥔 순간)' 의 pan, K 별 중앙값 (n 15–16, 2026-10-30).
+# 단순 기하 (-atan2 − 1.4°, robot.base_xy_cm) 와 차이 −0.2…+3.1°. FK 위치가 아니라 관절값 기록에서 잰 값.
+pan_reference_deg: {K1: -33.5, K2: -1.9, K3: 31.2, K4: -46.2, K5: -2.6, K6: 44.6, K7: -70.7, K8: 69.5}
+# 쉬는 자세 pan (d2 첫·마지막 프레임 중앙값). R1 '지나침/덜 감' 의 진행 방향 = 이 pan → K 기준 pan.
+rest_pan_deg: -4.0
+pan_tol_deg: 6            # 준비 때 지금 pan 이 목표 pan ± 이 안이면 ✓ (표시만, 녹화를 막지는 않음). 11-02 사용자: 값보다 대략 위치·방법 → 2.5 에서 넓힘
+# pan_offsets_deg: 시나리오 판마다 돌려 쓰는 '처음 어긋남' (pan − 기준, °). 로봇 왼쪽 = pan − , 오른쪽 = pan +.
+# lateral_offsets_cm: 대신 큐브 쪽 좌우 거리(cm)로 정하면 K 거리 r 로 pan = atan(cm / r) 환산 (2026-10-30 사용자: R2 오차를 조금 크게, 거리 기준).
+# 시연 속도 (2026-10-30): 고치는 동작은 1–2 초에 걸쳐 손목 화면을 보며 (크게 한 번 → 작게 다듬기), 일부러 멈춰 기다리지 않는다.
+setup_order_text: "R2 준비 (녹화 안 함): ① 큐브를 K 자리에 계획 각도로 (영상 창 각도 ✓) → ② 그리퍼를 열고 큐브 근처로, 손목 화면 주황 점선 영역에 큐브가 오게 → ③ →"
+pace_text: "고칠 때 1–2초에 걸쳐 손목 화면을 보며 (크게 → 작게) · 큐브가 손목 화면 초록 '닫기 영역'에 들어오면 닫기 · 일부러 멈추지 않기"
+
+# 좌우 = 로봇에서 상자를 볼 때 왼쪽/오른쪽 (K 번호 규칙과 같음: K1 = 상자 쪽 줄 로봇 왼쪽).
+# wrist_expect: visible = 손목 화면에 큐브가 보여야 함 · edge_or_absent = 가장자리이거나 안 보여도 됨
+# count: 파일럿 편수. 0 이면 설계만 하고 계획에 넣지 않는다.
+# label: 화면 맨 위 큰 글씨. 화면의 세 위치 (위에서 본 지도 + front 영상 위):
+#   계획 위치 (초록 ■) = 큐브 K · 시작 위치 오답 (주황 ✕) = 로봇 밑동에서 Pan 목표 방향, 거리 = 큐브 거리 + start_radial_cm
+#   경유 위치 (파랑 ○, via 가 있을 때) = 큐브 바로 위 정렬 지점. 높이는 지도에 안 보여서 start_height 글로.
+scenarios:
+  # ================================================================ R1 = Shoulder Pan 재탐색·재정렬 (16) — 2026-11-02 작업 지시서 (4차)
+  # 실패 모양: 초기 Pan 이 틀림 (A) + 접근 도중 목표를 지나치거나 멀어지는데도 같은 방향으로 계속 감 (B).
+  #   A 4 · B1 4 · B2 4 · B3 4. B 는 팔을 일부 편 접근 도중 상태. 오차 상태는 준비 단계(녹화 안 함)에서 안전하게 만들고,
+  #   녹화는 올바른 방향으로 되돌리는 행동부터. 틀린 쪽 Pan 이동을 일부러 녹화하지 않는다 (자연스럽게 생긴 오차를 고치는 연속 시연은 허용).
+  # 시나리오 조건 (접근 단계 · 손목 가시성 · Pan 오차 크기·방향) 은 경고·수동 확인·재분류(s/d/k/x 키)만 — 녹화를 막지 않는다.
+  # 명목 Pan 오차 = 후보 (15·20·25–30°). 정확한 일치를 요구하지 않는다. 실제 값은 시작 관절값·가시성으로 기록.
+  # 접근 단계 = 시작 lift 의 '쉬는 자세 → 이 큐브 거리의 d2 파지 lift' 진행률 (start_stages). HOME/MID 고정 관절값을 쓰지 않는다.
+  R1-A:
+    type: R1
+    label: "R1-A · 초기 방향 오류에서 복귀"
+    error_kind: initial_direction
+    stages: [early]
+    wrist_visibility: any
+    pan_offsets_deg: [-15, 20, -25, 30]
+    start_radial_cm: 0
+    start_height: "접근 초반 (팔 거의 접힘)"
+    via: ""
+    setup_from: rest   # 준비 출발 = 쉬는 자세 pan (rest_pan_deg) → 팔 접은 채 주황으로 돌림 (영상 창 파란 점선 + 경로 화살표)
+    x_label: "멈출 곳 = 녹화 시작"
+    count: 4
+    title: 접근 초반, Pan 이 큐브와 다른 방향을 향함 → 큐브 쪽으로 되돌려 접근
+    offset_dir: per_episode
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽/오른쪽 15·20·25–30° (후보, 대략)"
+    wrist_expect: any
+    start: "그리퍼 열림. 팔을 거의 접은 접근 초반 자세에서 Pan 을 주황 선 쪽 (큐브와 다른 방향) 으로 둠."
+    demo: "녹화 시작 → Pan 을 초록 선(큐브)으로 되돌리며 팔을 펴 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-B1:
+    type: R1
+    label: "R1-B1 · 접근 중간 Pan 방향 반전"
+    error_kind: drift_away
+    stages: [mid]
+    wrist_visibility: any
+    pan_offsets_deg: [-15, 15, -20, 20]
+    start_radial_cm: -3
+    start_height: "접근 중간 (팔 일부 폄, 그리퍼 탁자 위 5 cm 이상)"
+    via: ""
+    setup_from: cube   # 준비 출발 = 큐브 방향 (초록 선) → 멀어지는 쪽으로 (영상 창 파란 점선 + 경로 화살표)
+    x_label: "멀어져 멈출 곳 = 녹화 시작"
+    count: 4
+    title: 팔을 펴며 다가가는 도중 Pan 이 큐브에서 멀어지는 쪽으로 감 → 방향을 반대로 바꿔 복귀
+    offset_dir: per_episode
+    offset_mag: "접근 도중 Pan 이 큐브 방향에서 왼쪽/오른쪽으로 15·20° 벗어남 (후보, 대략)"
+    wrist_expect: any
+    start: "그리퍼 열림. 준비 단계에서 팔을 일부 펴며 Pan 을 주황 쪽 (큐브에서 멀어지는 쪽) 으로 움직여 멈춤 (탁자 위 5 cm 이상)."
+    demo: "녹화 시작 → 바로 Pan 방향을 반대로 (초록 선 쪽) 바꿔 큐브로 접근 → 파지 → 상자 → 쉬는 자세. 멀어지는 쪽으로 더 가지 않는다."
+  R1-B2:
+    type: R1
+    label: "R1-B2 · 큐브 방향 지나침에서 복귀"
+    error_kind: overshoot
+    stages: [mid, late]
+    wrist_visibility: any
+    pan_offsets_deg: [-15, 20, -20, 25]
+    start_radial_cm: -2
+    start_height: "접근 중간·후반 (팔 폄, 그리퍼 탁자 위 3 cm 이상)"
+    via: ""
+    setup_from: mirror   # 준비 출발 = 큐브 반대쪽 (같은 각도) → 큐브를 지나 멈춤 (영상 창 파란 점선 + 경로 화살표)
+    x_label: "지나쳐 멈출 곳 = 녹화 시작"
+    count: 4
+    title: 큐브 쪽으로 Pan 을 돌리며 오다 큐브 방향을 지나쳐 멈춘 상태 → 되돌아와 접근
+    offset_dir: per_episode
+    offset_mag: "큐브 방향을 왼쪽/오른쪽으로 15·20·25° 지나침 (반대쪽에서 와서 지나친 것, 후보, 대략)"
+    wrist_expect: any
+    start: "그리퍼 열림. 준비 단계에서 반대쪽에서 큐브 쪽으로 Pan 을 돌리며 오다 초록 선을 지나 주황 쪽에서 멈춤 (팔 일부 폄)."
+    demo: "녹화 시작 → 왔던 방향과 반대로 Pan 을 되돌려 초록 선(큐브) → 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-B3:
+    type: R1
+    label: "R1-B3 · 손목에서 큐브 놓침 → front 로 재탐색"
+    error_kind: lost_in_wrist
+    stages: [mid, late]
+    wrist_visibility: absent
+    pan_offsets_deg: [-20, 20, -25, 25]
+    start_radial_cm: -3
+    start_height: "접근 중간·후반 (팔 폄, 그리퍼 탁자 위 3 cm 이상)"
+    via: ""
+    setup_from: cube   # 준비 출발 = 큐브 방향 → 손목에서 사라질 때까지 벗어남 (영상 창 파란 점선 + 경로 화살표)
+    x_label: "놓쳐 멈출 곳 = 녹화 시작"
+    count: 4
+    title: 접근 도중 Pan 이 벗어나 손목 화면에서 큐브가 사라진 상태 (front 에는 보임) → 큐브를 다시 찾아 접근
+    offset_dir: per_episode
+    offset_mag: "손목 화면에 큐브가 안 보일 만큼 (보통 20–25°) 벗어남 (후보, 대략)"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 열림. 팔을 일부 편 접근 자세에서 Pan 을 주황 쪽으로 벗어나 손목 화면에 큐브가 없게 둠. front 에는 큐브가 보여야 함."
+    demo: "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  # ---- 3차 지시서 (시작 자세 HOME/MID × 손목 가시성) — 수량 0. practice/r1_try2 (2편 녹화) 를 읽으려고 남김.
+  # ---- (3차) R1 = 시작 자세 × 손목 가시성
+  # 2026-11-02 작업 지시서 (3차): 잘못된 시작 자세는 준비 단계(녹화 안 함)에서 만들고, 녹화는 그 자세에서 시작 → 고쳐 돌아오는 행동만 기록.
+  #   (11-02 오후 '녹화 중 오차 + Space' 방식은 틀린 방향 행동이 녹화되므로 수량 0 으로 남김.)
+  #   셀 = 시작 자세 (home_near 쉬는 자세 근처 / mid_approach 접근 중간) × 손목 가시성 목표 (visible_or_edge / absent) 각 4편, 셀 안 왼쪽 2 · 오른쪽 2.
+  #   Pan 오차 = K 기준 pan (d2 파지 pan 중앙값) 대비 시작 오차. 기준 자체가 판마다 ±9° 흔들리므로 (11-02 연습) 값은 '명목'이고,
+  #   실제 시작 상태는 손목·front 가시성과 시작 관절값으로 기록한다 (pan_error_estimate_confidence).
+  #   후보: ±15 (손목에 보임) · ±20 (가장자리/밖) · ±25–30 (크게 벗어남, 쉬는 자세 근처에서만). 계획 |Pan 목표| ≤ 92°.
+  #   그리퍼: d2 와 같이 열린 상태로 시작, 별도 오프셋 없음.
+  #   안전 (준비 단계에서 사람이 리더로 만듦): 팔을 접은 채 Pan 을 먼저 돌리고, 접근 중간은 그 다음에 팔을 편다 (편 팔로 크게 돌리지 않음).
+  R1-HOME-VIS:
+    type: R1
+    label: "R1 · 쉬는 자세 근처 · 큐브 보임"
+    error_kind: pan_misaligned
+    start_pose_type: home_near
+    wrist_visibility: visible_or_edge
+    pan_offsets_deg: [-15, 15, -20, 20]
+    start_radial_cm: 0
+    start_height: "쉬는 자세 근처 (팔 접힘, 손목만 들어 탁자를 봄)"
+    via: ""
+    x_label: "시작 Pan (녹화 전)"
+    count: 0   # 3차 지시서 정의 (4차에서 A/B 로 바꿈)
+    title: 쉬는 자세 근처에서 Pan 이 큐브 방향과 다름 — 손목 화면에 큐브가 보이거나 가장자리
+    offset_dir: per_episode
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽/오른쪽 15·20° (판마다, 주황 선)"
+    wrist_expect: any
+    start: "그리퍼 열림. 팔을 접은 쉬는 자세 근처에서 Pan 만 주황 선으로 돌림. 손목을 조금 들어 큐브가 손목 화면에 보이거나 가장자리."
+    demo: "녹화 시작 → Pan 을 초록 선(큐브)으로 되돌리며 팔을 펴 접근 → 파지 → 상자 → 쉬는 자세. 틀린 쪽으로 더 돌리지 않는다."
+  R1-HOME-OUT:
+    type: R1
+    label: "R1 · 쉬는 자세 근처 · 큐브 안 보임"
+    error_kind: pan_misaligned
+    start_pose_type: home_near
+    wrist_visibility: absent
+    pan_offsets_deg: [-25, 25, -30, 30]
+    start_radial_cm: 0
+    start_height: "쉬는 자세 근처 (팔 접힘)"
+    via: ""
+    x_label: "시작 Pan (녹화 전)"
+    count: 0   # 3차 지시서 정의 (4차에서 A/B 로 바꿈)
+    title: 쉬는 자세 근처에서 Pan 이 크게 벗어남 — 손목 화면에 큐브 없음, front 에는 보임
+    offset_dir: per_episode
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽/오른쪽 25·30° (판마다, 주황 선 · |Pan| ≤ 92°)"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 열림. 팔을 접은 채 Pan 만 주황 선으로 크게 돌림. 손목 화면에 큐브 없음 (front 에는 큐브가 보여야 함)."
+    demo: "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-MID-VIS:
+    type: R1
+    label: "R1 · 접근 중간 · 큐브 보임"
+    error_kind: pan_misaligned
+    start_pose_type: mid_approach
+    wrist_visibility: visible_or_edge
+    pan_offsets_deg: [-15, 15, -15, 15]
+    start_radial_cm: -4
+    start_height: "팔 일부 폄, 그리퍼가 탁자 위 8 cm 이상"
+    via: ""
+    x_label: "시작 Pan (녹화 전)"
+    count: 0   # 3차 지시서 정의 (4차에서 A/B 로 바꿈)
+    title: 접근 중간 자세에서 Pan 이 큐브 방향과 다름 — 손목 화면에 큐브가 보이거나 가장자리
+    offset_dir: per_episode
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽/오른쪽 15° (판마다, 주황 선)"
+    wrist_expect: any
+    start: "그리퍼 열림. 팔을 접은 채 Pan 을 주황 선으로 돌린 뒤 팔을 일부 폄 (그리퍼 탁자 위 8 cm 이상, 큐브보다 로봇 쪽). 큐브가 손목 화면에 보이거나 가장자리."
+    demo: "녹화 시작 → Pan 을 초록 선(큐브)으로 고치며 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-MID-OUT:
+    type: R1
+    label: "R1 · 접근 중간 · 큐브 안 보임"
+    error_kind: pan_misaligned
+    start_pose_type: mid_approach
+    wrist_visibility: absent
+    pan_offsets_deg: [-20, 20, -25, 25]
+    start_radial_cm: -4
+    start_height: "팔 일부 폄, 그리퍼가 탁자 위 8 cm 이상"
+    via: ""
+    x_label: "시작 Pan (녹화 전)"
+    count: 0   # 3차 지시서 정의 (4차에서 A/B 로 바꿈)
+    title: 접근 중간 자세에서 Pan 이 크게 벗어남 — 손목 화면에 큐브 없음, front 에는 보임
+    offset_dir: per_episode
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽/오른쪽 20·25° (판마다, 주황 선). 편 팔로 돌리기 위험하면 20° 로 줄이고 메모"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 열림. 팔을 접은 채 Pan 을 주황 선으로 돌린 뒤 팔을 일부 폄 (그리퍼 탁자 위 8 cm 이상). 손목 화면에 큐브 없음, front 에는 보임."
+    demo: "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  # ---- 11-02 오후 정의 (녹화 중 오차 + Space) — 수량 0. 틀린 방향 행동이 녹화되는 방식이라 3차 지시서로 바꿈 (practice/r1_try 계획을 읽으려고 남김).
+  # ================================================================ (11-02 오후) R1 = Pan 방향, 녹화 중 오차 — 아래 4 시나리오 수량 0
+  # 2026-11-02 정의 수정 (사용자 지시): 손가락·TCP 의 미세 파지 오차는 R1 이 아니라 R2. R1 은 Pan 방향만.
+  #   공통: 시작 = 쉬는 자세 (d2 와 같음, 고정). 어긋남은 녹화 중에 만든다 (Lift·Elbow 동시 움직임 허용).
+  #   주황 선 = 로봇 밑동 → 어긋난 Pan 방향 (탁자 위, 큐브를 밑동 둘레로 돌린 점), 초록 선 = 큐브 방향, 하늘색 = 지금 로봇.
+  #   어긋난 방향에 닿으면 Space = 재정렬 시작 표시 → 큐브 방향으로 고쳐 감 → 파지 → 상자 → 쉬는 자세.
+  #   크기: 사람 파지 pan 이 K 기준과 판마다 ±9° 다름 (11-02 연습 6판) → 어긋남은 12° 이상.
+  #   안전: 계획 |Pan 목표| ≤ 92° (safety.pan_abs_block_deg 95 − 3, 넘으면 크기를 줄이거나 K 를 바꿈) — 실물 평가의 −109° 이탈 재현 안 함.
+  #   Space 앞 구간의 행동은 틀린 방향 행동이므로 학습에 쓸지·Space 부터 잘라 쓸지는 나중에 정한다 (dataset 은 전체 저장).
+  R1-PAN-L:
+    type: R1
+    label: "R1 · PAN 목표 왼쪽 오차"
+    error_kind: wrong_target
+    error_in_rec: true
+    x_label: "틀린 목표 (왼쪽)"
+    pan_offsets_deg: [-12, -16, -20, -14]
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 오후 정의 (녹화 중 오차)
+    title: Pan 목표를 큐브보다 왼쪽으로 잘못 잡고 접근
+    offset_dir: robot_left
+    offset_mag: "Pan 을 큐브 방향보다 왼쪽(−) 12·14·16·20° (판마다, 주황 선)"
+    wrist_expect: any
+    start: "쉬는 자세 (고정). 큐브 각도만 맞추고 →."
+    demo: "주황 선(왼쪽 틀린 목표) 쪽으로 Pan 을 돌리며 접근 (팔 펴도 됨) → Space → 초록 선(큐브)으로 Pan 을 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-PAN-R:
+    type: R1
+    label: "R1 · PAN 목표 오른쪽 오차"
+    error_kind: wrong_target
+    error_in_rec: true
+    x_label: "틀린 목표 (오른쪽)"
+    pan_offsets_deg: [12, 16, 20, 14]
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 오후 정의 (녹화 중 오차)
+    title: Pan 목표를 큐브보다 오른쪽으로 잘못 잡고 접근
+    offset_dir: robot_right
+    offset_mag: "Pan 을 큐브 방향보다 오른쪽(+) 12·14·16·20° (판마다, 주황 선)"
+    wrist_expect: any
+    start: "쉬는 자세 (고정). 큐브 각도만 맞추고 →."
+    demo: "주황 선(오른쪽 틀린 목표) 쪽으로 Pan 을 돌리며 접근 (팔 펴도 됨) → Space → 초록 선(큐브)으로 Pan 을 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  R1-OVER:
+    type: R1
+    label: "R1 · 목표 방향 지나침"
+    error_kind: overshoot
+    error_in_rec: true
+    travel: over
+    travel_offsets_deg: [15, 20, 25, 18]
+    positions: [K1, K3, K4, K6, K7, K8]   # 진행 방향이 분명한 K (|K 기준 pan − 쉬는 자세 pan| ≥ 15°)
+    x_label: "지나칠 곳"
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 오후 정의 (녹화 중 오차)
+    title: 큐브 방향으로 Pan 을 돌리다 지나침 → 되돌아옴
+    offset_dir: travel
+    offset_mag: "큐브 방향을 지나 15·18·20·25° (판마다, 주황 선. 진행 방향 = 쉬는 자세 pan → 큐브)"
+    wrist_expect: any
+    start: "쉬는 자세 (고정). 큐브 각도만 맞추고 →."
+    demo: "큐브 쪽으로 Pan 을 돌리다 초록 선을 지나 주황 선까지 → Space → 되돌아와 초록 선 → 접근·파지 → 상자 → 쉬는 자세."
+  R1-DRIFT:
+    type: R1
+    label: "R1 · 접근 중 PAN 흐름"
+    error_kind: drift
+    error_in_rec: true
+    x_label: "흐른 방향"
+    pan_offsets_deg: [-12, 12, -16, 16]
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 오후 정의 (녹화 중 오차)
+    title: 처음엔 큐브 방향이었다가 팔을 펴며 다가가는 중 Pan 이 옆으로 흐름
+    offset_dir: per_episode
+    offset_mag: "접근 중 Pan 이 왼쪽/오른쪽으로 12·16° 흐름 (판마다 방향, 주황 선)"
+    wrist_expect: any
+    start: "쉬는 자세 (고정). 큐브 각도만 맞추고 →."
+    demo: "Pan 을 초록 선(큐브)에 맞춘 뒤 팔을 펴며 다가가는 중 Pan 이 주황 선까지 흐름 → Space → 초록 선으로 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  # ---- 11-02 오전 R1 '녹화 중' 시험 정의 — 수량 0 (practice/r1_trial 기록을 읽으려고 남김). TL/TR 은 정의 수정으로 R2-LEFT/RIGHT 로 감.
+  R1-UNDER:
+    type: R1
+    label: "R1 · 덜 갔다 더 가기 (구)"
+    error_in_rec: true
+    travel: under
+    x_label: "멈출 곳 (덜 감)"
+    travel_offsets_cm: [5, 7, 9]
+    positions: [K1, K3, K4, K6, K7, K8]
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0
+    title: 큐브 쪽으로 가다 덜 감 → 더 가서 정렬
+    offset_dir: travel
+    offset_mag: "큐브 앞 5·7·9 cm 에서 멈춤"
+    wrist_expect: any
+    start: "쉬는 자세. 큐브 각도만 맞추고 →."
+    demo: "큐브 앞에서 멈춤 → Space → 이어서 큐브까지 → 파지 → 상자 → 쉬는 자세."
+  # ---- 아래 R1-L/R/OL/OR = 10-30 방식 (녹화 전에 어긋난 자세를 만듦). 11-02 부터 수량 0 — 기존 연습 세션 기록을 읽으려고 남김.
+  R1-L:
+    type: R1
+    label: "R1 · PAN 왼쪽 빗나감"
+    start_radial_cm: 0
+    start_height: "큐브 위 3–5 cm"
+    via: "큐브 바로 위 (Pan 되돌려 정렬)"
+    count: 0   # 11-02 전 방식 (녹화 전 어긋남)
+    pan_offsets_deg: [-8, -11, -14]
+    title: 접근 방향이 큐브 왼쪽으로 빗나감
+    offset_dir: robot_left
+    offset_mag: "Pan 을 기준보다 왼쪽(−) 8·11·14° (판마다 정해짐) ≈ TCP 2–6 cm"
+    wrist_expect: visible
+    start: "그리퍼 열림. 큐브 높이보다 3–5 cm 위에서 Pan 을 큐브보다 왼쪽으로 돌려 둔 자세 (큐브는 손목 화면 한쪽에 치우쳐 보임)."
+    demo: "Pan 을 큐브 쪽으로 되돌려 중심을 맞춘 뒤 내려가 정상 파지 → 상자 투입 → 처음 자세(쉬는 자세)."
+  R1-R:
+    type: R1
+    label: "R1 · PAN 오른쪽 빗나감"
+    start_radial_cm: 0
+    start_height: "큐브 위 3–5 cm"
+    via: "큐브 바로 위 (Pan 되돌려 정렬)"
+    count: 0   # 11-02 전 방식 (녹화 전 어긋남)
+    pan_offsets_deg: [8, 11, 14]
+    title: 접근 방향이 큐브 오른쪽으로 빗나감
+    offset_dir: robot_right
+    offset_mag: "Pan 을 기준보다 오른쪽(+) 8·11·14° (판마다 정해짐) ≈ TCP 2–6 cm"
+    wrist_expect: visible
+    start: "그리퍼 열림. 큐브 높이보다 3–5 cm 위에서 Pan 을 큐브보다 오른쪽으로 돌려 둔 자세."
+    demo: "Pan 을 큐브 쪽으로 되돌려 중심을 맞춘 뒤 내려가 정상 파지 → 상자 투입 → 쉬는 자세."
+  R1-OL:
+    type: R1
+    label: "R1 · PAN 왼쪽 지나침"
+    start_radial_cm: 0
+    start_height: "큐브 위 3–5 cm"
+    via: "큐브 바로 위 (반대로 되돌려 정렬)"
+    count: 0   # 11-02 전 방식 (녹화 전 어긋남)
+    pan_offsets_deg: [-25, -30]
+    title: Pan 이 큐브를 지나 왼쪽까지 감 (지나침)
+    offset_dir: robot_left
+    offset_mag: "Pan 을 기준보다 왼쪽(−) 25·30° — 큐브가 손목 화면에서 사라질 만큼 (Pan 절댓값 ≤ 92°, 모자라면 K 를 바꿔 배치)"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 열림. 오른쪽에서 왼쪽으로 오다 큐브를 지나친 자세 — 큐브가 손목 화면 가장자리이거나 안 보임."
+    demo: "왔던 방향과 반대로 Pan 을 되돌려 큐브를 다시 화면 가운데에 두고, 중심 접근 후 파지 → 상자 → 쉬는 자세."
+  R1-OR:
+    type: R1
+    label: "R1 · PAN 오른쪽 지나침"
+    start_radial_cm: 0
+    start_height: "큐브 위 3–5 cm"
+    via: "큐브 바로 위 (반대로 되돌려 정렬)"
+    count: 0   # 11-02 전 방식 (녹화 전 어긋남)
+    pan_offsets_deg: [25, 30]
+    title: Pan 이 큐브를 지나 오른쪽까지 감 (지나침)
+    offset_dir: robot_right
+    offset_mag: "Pan 을 기준보다 오른쪽(+) 25·30° — 큐브가 손목 화면에서 사라질 만큼 (Pan 절댓값 ≤ 92°)"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 열림. 왼쪽에서 오른쪽으로 오다 큐브를 지나친 자세 — 큐브가 손목 화면 가장자리이거나 안 보임."
+    demo: "Pan 을 반대로 되돌려 큐브를 다시 가운데에 두고, 중심 접근 후 파지 → 상자 → 쉬는 자세."
+  R1-TL:
+    type: R1
+    label: "R1 · TCP 왼쪽 어긋남 (PAN 정상)"
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 정의 수정: 손가락 미세 어긋남은 R2 (R2-LEFT/RIGHT)
+    error_in_rec: true   # 11-02: 쉬는 자세에서 출발, 녹화 중 손가락 사이를 ✕ 에 맞춰 멈춘 뒤 Space → 고침
+    lateral_offsets_cm: [-2.5]
+    positions: [K2, K5]   # 거의 정면 K (지나침/덜 감에서 빠진 K) → K 마다 편수 고르게
+    x_label: "멈출 곳 (손가락 사이)"
+    title: Pan 은 맞지만 TCP 가 왼쪽으로 어긋남
+    offset_dir: robot_left
+    offset_mag: "손가락 사이 중심이 큐브 왼쪽 약 2.5 cm (주황 선)"
+    wrist_expect: any
+    start: "쉬는 자세 (그리퍼 닫힘 그대로). 큐브 각도만 맞추고 →."
+    demo: "큐브 쪽으로 가서 손가락 사이를 큐브 왼쪽 주황 선에 두고 멈춤 → Space → 손목·팔로 고쳐 큐브 가운데 → 파지 → 상자 → 쉬는 자세."
+  R1-TR:
+    type: R1
+    label: "R1 · TCP 오른쪽 어긋남 (PAN 정상)"
+    start_radial_cm: 0
+    start_height: "쉬는 자세에서 출발"
+    via: ""
+    count: 0   # 11-02 정의 수정: 손가락 미세 어긋남은 R2 (R2-LEFT/RIGHT)
+    error_in_rec: true   # 11-02: 쉬는 자세에서 출발, 녹화 중 손가락 사이를 ✕ 에 맞춰 멈춘 뒤 Space → 고침
+    lateral_offsets_cm: [2.5]
+    positions: [K2, K5]   # 거의 정면 K (지나침/덜 감에서 빠진 K) → K 마다 편수 고르게
+    x_label: "멈출 곳 (손가락 사이)"
+    title: Pan 은 맞지만 TCP 가 오른쪽으로 어긋남
+    offset_dir: robot_right
+    offset_mag: "손가락 사이 중심이 큐브 오른쪽 약 2.5 cm (주황 선)"
+    wrist_expect: any
+    start: "쉬는 자세 (그리퍼 닫힘 그대로). 큐브 각도만 맞추고 →."
+    demo: "큐브 쪽으로 가서 손가락 사이를 큐브 오른쪽 주황 선에 두고 멈춤 → Space → 고쳐 큐브 가운데 → 파지 → 상자 → 쉬는 자세."
+  # 접촉 뒤 리커버리 (빈 파지 → 열기 → 후퇴 → 재접근). 접촉 전 R1 과 섞지 않도록 별도 시나리오. 파일럿 수량 0 (설계만).
+  R1C-REGRASP:
+    type: R1C
+    label: "R1C · 빈 파지 후 재접근"
+    start_radial_cm: -1.5
+    start_height: "파지 높이"
+    via: "1–2 cm 후퇴 지점"
+    count: 0
+    pan_offsets_deg: [0]
+    title: 빈 파지 뒤 후퇴·재접근 (접촉 후, 별도 검토)
+    offset_dir: none
+    offset_mag: "-"
+    wrist_expect: visible
+    start: "녹화 시작 전에 그리퍼를 큐브 앞에서 닫아 둔 상태 (빈 파지 결과). 큐브를 밀지 않은 상태."
+    demo: "그리퍼를 열고 1–2 cm 후퇴 → 재정렬 → 파지 → 상자 → 쉬는 자세."
+
+  # ================================================================ R2 = 파지 직전 국소 정렬·접근 깊이·닫힘 타이밍 (32)
+  # 2026-11-02 정의 수정: 큐브에 대체로 접근한 뒤의 손가락 위치·깊이·닫힘. 큰 Pan 방향 오차는 만들지 않는다 (작은 Pan 수정은 허용).
+  #   시작 = 준비 단계(녹화 안 함)에서 리더로 큐브 근처 오차 자세를 만든 뒤 →. Pan 목표는 쓰지 않는다
+  #   (K 기준 pan 이 사람 파지 pan 과 판마다 ±9° 달라, 3–12° 정도의 좌우 오차를 Pan 값으로 정의할 수 없음 — 11-02 연습).
+  #   대신 손목 영상의 '시작 영역'(주황 점선) 에 큐브가 오게 맞춘다 (u = x/640, v = y/480, 대략 · 표시만).
+  #   근거: d2 닫기 시작 순간 큐브 v 중앙값 0.71·넓이 0.11, 그 1 s 전(더 멀 때) v 0.60·넓이 0.089 → 덜 들어갈수록 화면 위쪽·작게.
+  #   좌우: 그리퍼가 큐브 왼쪽이면 손목 화면에서 큐브가 오른쪽 (10-30·11-02 연습 2판: pan 기준보다 −7.5° → dx +0.54, +7.4° → dx −0.23). 확인 필요.
+  #   목표 동작: 큐브가 초록 '닫기 영역' 에 들어오게 고친 뒤 한 번 닫기 → 상자 → 쉬는 자세.
+  R2-DEPTH:
+    type: R2
+    label: "R2 · 접근 깊이 부족"
+    error_kind: depth
+    local_dir: depth_short
+    approach_depth_category: partial
+    local_offsets_cm: [0.5, 1.0, 1.5]
+    wrist_start_region: {u: [0.22, 0.50], v: [0.48, 0.62]}
+    start_radial_cm: 0
+    start_height: "파지 높이"
+    via: ""
+    count: 8
+    title: 큐브가 손가락 사이에 일부만 들어옴 (손가락 끝에 걸침)
+    offset_dir: forward
+    offset_mag: "0.5–1.5 cm 덜 들어감 (손목 화면 큐브가 닫기 영역 바로 위)"
+    wrist_expect: visible
+    start: "그리퍼 열림, 좌우 중심 맞음, 파지 높이. 큐브가 손가락 끝 사이에 걸칠 만큼만 들어온 자세 (손목 화면 주황 영역)."
+    demo: "조금 더 밀어 넣어 큐브가 초록 닫기 영역에 들어오면 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세."
+  R2-AHEAD:
+    type: R2
+    label: "R2 · 큐브가 손가락 앞"
+    error_kind: ahead
+    local_dir: cube_ahead
+    approach_depth_category: not_entered
+    local_offsets_cm: [1.5, 2.0, 3.0]
+    wrist_start_region: {u: [0.22, 0.50], v: [0.25, 0.47]}
+    start_radial_cm: -2.5
+    start_height: "파지 높이"
+    via: ""
+    count: 8
+    pan_offsets_deg: [0]
+    title: 큐브가 손가락 끝보다 앞에 있음 (아직 손가락 사이 밖)
+    offset_dir: forward
+    offset_mag: "손가락 끝과 큐브 앞면 사이 1.5–3 cm (손목 화면 큐브가 위쪽·작게)"
+    wrist_expect: visible
+    start: "그리퍼 열림, 좌우 중심 맞음, 파지 높이. 큐브가 손가락 끝보다 1.5–3 cm 앞 (손목 화면 주황 영역)."
+    demo: "큐브가 손가락 사이 가운데(초록 닫기 영역)에 올 때까지 전진한 뒤 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세."
+  R2-LEFT:
+    type: R2
+    label: "R2 · 손가락이 큐브 왼쪽"
+    error_kind: lateral
+    local_dir: fingers_left
+    approach_depth_category: lateral_offset
+    local_offsets_cm: [1.5, 2.5, 3.5]
+    wrist_start_region: {u: [0.45, 0.72], v: [0.55, 0.85]}
+    start_radial_cm: 0
+    start_height: "파지 높이"
+    via: ""
+    count: 4
+    pan_offsets_deg: [0]
+    title: 손가락 사이 중심이 큐브보다 로봇 왼쪽
+    offset_dir: robot_left
+    offset_mag: "손가락 사이 중심이 큐브 왼쪽 1.5·2.5·3.5 cm (판마다, 손목 화면 큐브가 오른쪽)"
+    wrist_expect: visible
+    start: "그리퍼 열림, 파지 높이·깊이 근처. 손가락 사이 중심이 큐브보다 왼쪽 (손목 화면 주황 영역 = 큐브가 오른쪽에 보임)."
+    demo: "손목·팔로 옆으로 고쳐 큐브가 초록 닫기 영역에 오면 한 번 닫기 → 상자 → 쉬는 자세 (작은 Pan 수정 허용)."
+  R2-RIGHT:
+    type: R2
+    label: "R2 · 손가락이 큐브 오른쪽"
+    error_kind: lateral
+    local_dir: fingers_right
+    approach_depth_category: lateral_offset
+    local_offsets_cm: [1.5, 2.5, 3.5]
+    wrist_start_region: {u: [0.03, 0.26], v: [0.55, 0.85]}
+    start_radial_cm: 0
+    start_height: "파지 높이"
+    via: ""
+    count: 4
+    pan_offsets_deg: [0]
+    title: 손가락 사이 중심이 큐브보다 로봇 오른쪽
+    offset_dir: robot_right
+    offset_mag: "손가락 사이 중심이 큐브 오른쪽 1.5·2.5·3.5 cm (판마다, 손목 화면 큐브가 왼쪽)"
+    wrist_expect: visible
+    start: "그리퍼 열림, 파지 높이·깊이 근처. 손가락 사이 중심이 큐브보다 오른쪽 (손목 화면 주황 영역 = 큐브가 왼쪽에 보임)."
+    demo: "손목·팔로 옆으로 고쳐 큐브가 초록 닫기 영역에 오면 한 번 닫기 → 상자 → 쉬는 자세 (작은 Pan 수정 허용)."
+  R2-READY:
+    type: R2
+    label: "R2 · 거의 정렬된 파지 준비 (정상)"
+    error_kind: none
+    local_dir: near_aligned
+    approach_depth_category: sufficient
+    local_offsets_cm: [0]
+    wrist_start_region: close_zone
+    start_radial_cm: 0
+    start_height: "파지 높이"
+    via: ""
+    count: 8
+    pan_offsets_deg: [0]
+    title: 파지 가능한 위치에 거의 도달 (정상 파지 준비)
+    offset_dir: none
+    offset_mag: "0.5 cm 이내 (손목 화면 큐브가 이미 초록 닫기 영역 안)"
+    wrist_expect: visible
+    start: "그리퍼 열림, 큐브가 손가락 사이 거의 가운데 (손목 화면 큐브가 초록 닫기 영역 안)."
+    demo: "필요하면 아주 작게 고친 뒤 한 번 닫기 → 상자 → 쉬는 자세. 일부러 기다리지 않는다."
+  # ---- 10-30 R2 정의 — 수량 0 (practice/r2_trial 계획을 읽으려고 남김)
+  R2-LOW:
+    type: R2
+    label: "R2 · 진입 부족 (구)"
+    start_radial_cm: -2.0
+    start_height: "파지 높이보다 약간 위"
+    via: ""
+    count: 0
+    pan_offsets_deg: [0]
+    title: 큐브가 손목 화면 아래쪽에 걸쳐 보임
+    offset_dir: forward_down
+    offset_mag: "-"
+    wrist_expect: visible
+    start: "-"
+    demo: "-"
+  R2-HIGH:
+    type: R2
+    label: "R2 · 높이 부족 (구)"
+    start_radial_cm: 0
+    start_height: "손가락 끝이 큐브 윗면보다 1–3 cm 위"
+    via: ""
+    count: 0
+    pan_offsets_deg: [0]
+    title: 가운데지만 접근 깊이(높이) 부족
+    offset_dir: up
+    offset_mag: "-"
+    wrist_expect: visible
+    start: "-"
+    demo: "-"
+
+# 수집 시작 전 체크리스트 (record 때 Enter 로 하나씩 확인 · preview 는 표시만). R1/R2 혼동 방지.
+checklist:
+  R1:
+    - "이 세션은 R1 = Pan 재탐색·재정렬 (A 초기 방향 · B1 접근 중 반전 · B2 지나침 · B3 손목 놓침). 손가락 미세 어긋남은 R2"
+    - "오차 상태는 준비 단계(녹화 안 함)에서 만들고, 녹화는 되돌리는 동작부터. 틀린 쪽으로 일부러 움직이는 장면은 녹화하지 않아요"
+    - "그리퍼는 d2 와 같이 열어 둔 채 시작. 편 팔에서는 그리퍼를 탁자에서 띄우고 상자·탁자에 닿지 않게"
+    - "시나리오·위치·방향이 계획과 달라도 녹화돼요 (s 시나리오 · d 방향 · k/x 큐브 자리로 바꿔 기록). 막는 것은 안전 조건뿐"
+  R2:
+    - "이 세션은 R2 = 파지 직전 국소 정렬·깊이·닫힘이에요. 큰 Pan 방향 오차(10° 넘게 틀린 방향)는 R1 세션에서 찍어요"
+    - "준비 단계(녹화 안 함)에서 그리퍼를 열고 큐브 근처 오차 자세를 만든 뒤 → — 손목 화면 주황 영역에 큐브"
+    - "닫기는 큐브가 초록 닫기 영역에 들어왔을 때 한 번. 빈 파지 후 다시 잡기는 이 시나리오가 아님"
+
+# R1 접근 단계 (4차): 진행률 = (시작 lift − 쉬는 자세 lift) / (이 큐브 거리의 d2 파지 lift − 쉬는 자세 lift).
+#   d2 파지 lift (redbox_t1/t3_known 128편, 파지 순간 K 별 중앙값) ≈ −7.5 (r 14 cm) … +44.7 (r 27 cm) → 직선 lift_g = a + b·r.
+#   early < 0.4 ≤ mid < 0.85 ≤ late. 대략값 — 표시·기록·경고만.
+start_stages: {rest_lift: -103.0, grasp_lift_a: -65.2, grasp_lift_b: 4.04, early_max: 0.4, mid_max: 0.85}   # 직선 맞춤 K 8점 최대 잔차 2.7°
+# R1 시작 자세 종류 (관절값으로 대략 분류 · 표시와 기록만). 쉬는 자세 = d2 끝 프레임 lift −103, elbow 92–96.
+start_pose_types:
+  home_near: {text: "쉬는 자세 근처 (팔 접힘)", lift_max: -80, elbow_min: 70}
+  mid_approach: {text: "접근 중간 (팔 일부 폄, 그리퍼 탁자 위 8 cm 이상)"}
+
+# 시작 자세 안전 검사 (녹화 시작 → 키를 막는 BLOCK / 표시만 하는 WARN).
+# 관절 한계 = follower 캘리브레이션(range_min/max)을 lerobot 과 같은 식으로 ° 로 바꾼 값 (~±110 pan 등).
+safety:
+  calibration: $HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json
+  limit_margin_block_deg: 5      # 캘리브레이션 한계에서 이 안쪽이 아니면 BLOCK (11-02: 12 → 5, 쉬는 자세는 여전히 막힘)
+  limit_margin_warn_deg: 12      # 이 안쪽이 아니면 WARN
+  pan_abs_block_deg: 95          # |Pan| 이 이보다 크면 BLOCK (실물 평가의 -109° 이탈 재현 금지, 캘리브레이션 한계 ±110.2°)
+  pan_limit_margin_block_deg: 10 # Pan 이 캘리브레이션 한계에서 이 안쪽이 아니면 BLOCK (Pan 기계적 한계 근처 시작 금지)
+  gripper_open_min: 15           # 표시만 (WARN, 11-02 BLOCK 에서 내림). R1/R2 시작은 열린 그리퍼 (d2 접근 구간 그리퍼 p50 28.2, p1 7.0)
+  leader_follower_diff_block_deg: 25   # 팔 관절 리더−팔로워 차이가 이보다 크면 BLOCK (무언가에 막혀 밀고 있음)
+  leader_follower_diff_warn_deg: 10
+  # d2 256편의 '처음 열기 → 처음 닫기' 구간 상태 p0.5–p99.5 (2026-10-30 계산, 05_preview_test_results.md). 밖이면 WARN.
+  d2_approach_envelope:
+    shoulder_pan:  [-105.8, 101.0]
+    shoulder_lift: [-30.4, 57.5]
+    elbow_flex:    [-62.8, 58.0]
+    wrist_flex:    [44.9, 96.0]
+    wrist_roll:    [-55.3, 50.6]
+  setup_max_s: 3600              # 준비(녹화 안 함) 단계 최대 길이 — 시간 초과로 녹화가 저절로 시작되지 않게 길게

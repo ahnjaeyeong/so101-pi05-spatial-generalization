@@ -1,0 +1,234 @@
+{
+ "kind": "policy_space_eval (NOT training data)",
+ "created": "2026-10-22 09:18",
+ "checkpoint": "/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/030000/pretrained_model",
+ "task": "pick up the red cube and put it in the brown box",
+ "task_group": "T1",
+ "conditions": {
+  "A": {
+   "label": "RTC + 필터 없음",
+   "arm_filter": false
+  },
+  "B": {
+   "label": "RTC + 팔 관절 필터",
+   "arm_filter": true
+  }
+ },
+ "inference": {
+  "type": "rtc",
+  "num_inference_steps": 5,
+  "execution_horizon": 20,
+  "prefix_attention_schedule": "EXP",
+  "max_guidance_weight": 10.0,
+  "queue_threshold": 30,
+  "fps": 30,
+  "interpolation_multiplier": 1
+ },
+ "robot": {
+  "type": "so101_follower",
+  "port": "/dev/so101_follower",
+  "id": "my_arm",
+  "max_relative_target": 8,
+  "cameras": "front /dev/cam_front · wrist /dev/cam_wrist · 640x480 30fps MJPG"
+ },
+ "guard": {
+  "mode": "protect (stop sending, no auto-return)",
+  "startup_ticks": 150,
+  "starve_ticks": 15,
+  "stale_ticks": 30,
+  "horizon_count": 10,
+  "stall_ticks": 20
+ },
+ "episode_time_s": 60,
+ "reps": 5,
+ "positions": {
+  "K1": {
+   "xy_cm": [
+    -20.2,
+    31.5
+   ],
+   "front_px": [
+    215,
+    363
+   ],
+   "mark": "① 화면 왼쪽 아래",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K2": {
+   "xy_cm": [
+    -16.2,
+    21.3
+   ],
+   "front_px": [
+    338,
+    325
+   ],
+   "mark": "② 가운데",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K3": {
+   "xy_cm": [
+    -7.8,
+    12.7
+   ],
+   "front_px": [
+    447,
+    243
+   ],
+   "mark": "③ 상자 앞 벽 아래",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "K4": {
+   "xy_cm": [
+    -15.4,
+    2.6
+   ],
+   "front_px": [
+    558,
+    328
+   ],
+   "mark": "④ 로봇 오른쪽, 손목 카메라·케이블 옆",
+   "source": "/home/user/so101_boxpick/config/redbox_layouts.yaml"
+  },
+  "Z1": {
+   "zone": true,
+   "name": "K3 주변",
+   "mark": "K3 주변: K3 표시에서 1.5–4.5 cm 떨어진 고리 (로봇 정면·먼 쪽)",
+   "front_px": [
+    448,
+    248
+   ]
+  },
+  "Z2": {
+   "zone": true,
+   "name": "로봇 정면선",
+   "mark": "로봇 정면선: 로봇 정면 −12°~+2°, base 에서 15–21.5 cm (K3 보다 로봇 쪽, 손목 보드 왼쪽). 팔 아래는 피하기",
+   "front_px": [
+    428,
+    323
+   ]
+  },
+  "Z3": {
+   "zone": true,
+   "name": "왼쪽 (K1·K2 쪽)",
+   "mark": "왼쪽 (K1·K2 쪽): 로봇 정면에서 왼쪽 18–65°, 16–29 cm. K1·K2 표시 2 cm 안은 피하기",
+   "front_px": [
+    272,
+    338
+   ]
+  },
+  "Z4": {
+   "zone": true,
+   "name": "오른쪽 (K4 쪽)",
+   "mark": "오른쪽 (K4 쪽): 로봇 정면에서 오른쪽 15–45°, 15–25 cm. K4 표시 2 cm 안·손목 카메라 케이블 위는 피하기",
+   "front_px": [
+    565,
+    336
+   ]
+  }
+ },
+ "design": "space",
+ "arm_filter_dir": "/home/user/so101_runs/main/redbox_all/eval",
+ "notes": [
+  "공간 일반화 평가 (2026-10-20 사용자 설계): 조건 B(팔 관절 필터)만, K1–K4 × reps + 자유 위치 구역 Z1–Z4 × zone_reps.",
+  "자유 위치는 손으로 구역 안 아무 곳에 놓는다. 실제 위치는 판 시작 화면에서 찾아 trial.json start_cube 에 남긴다.",
+  "로봇 base 는 추정: 2026-10-19 A/B 40판 첫 닫힘 shoulder_pan ↔ 큐브 위치 피팅 (rms 4.6°) — 자로 잰 값 아님",
+  "평가 데이터는 학습 데이터셋에 병합하지 않는다 (repo_id oxr/rollout_eval_ab_*, lerobot rollout 규칙)."
+ ],
+ "zone_reps": 10,
+ "geom": {
+  "H_cm_to_px": [
+   [
+    3.761925,
+    -9.990971,
+    589.362678
+   ],
+   [
+    -7.790239,
+    0.019007,
+    176.820281
+   ],
+   [
+    0.006368,
+    0.001593,
+    1.0
+   ]
+  ],
+  "base_cm": [
+   -33.5,
+   11.6
+  ],
+  "center_deg": 1.7,
+  "base_note": "추정: 2026-10-19 A/B 40판 첫 닫힘 shoulder_pan ↔ 큐브 위치 피팅 (rms 4.6°) — 자로 잰 값 아님",
+  "known_cm": {
+   "K1": [
+    -20.2,
+    31.5
+   ],
+   "K2": [
+    -16.2,
+    21.3
+   ],
+   "K3": [
+    -7.8,
+    12.7
+   ],
+   "K4": [
+    -15.4,
+    2.6
+   ]
+  },
+  "zones": {
+   "Z1": {
+    "name": "K3 주변",
+    "mark": "K3 표시에서 1.5–4.5 cm 떨어진 고리 (로봇 정면·먼 쪽)",
+    "rule": {
+     "ring_of": "K3",
+     "r_min": 1.5,
+     "r_max": 4.5
+    }
+   },
+   "Z2": {
+    "name": "로봇 정면선",
+    "mark": "로봇 정면 −12°~+2°, base 에서 15–21.5 cm (K3 보다 로봇 쪽, 손목 보드 왼쪽). 팔 아래는 피하기",
+    "rule": {
+     "a_min": -12,
+     "a_max": 2,
+     "r_min": 15,
+     "r_max": 21.5,
+     "not_zone": "Z1"
+    }
+   },
+   "Z3": {
+    "name": "왼쪽 (K1·K2 쪽)",
+    "mark": "로봇 정면에서 왼쪽 18–65°, 16–29 cm. K1·K2 표시 2 cm 안은 피하기",
+    "rule": {
+     "a_min": -65,
+     "a_max": -18,
+     "r_min": 16,
+     "r_max": 29,
+     "avoid_k": [
+      "K1",
+      "K2"
+     ],
+     "avoid_r": 2.0
+    }
+   },
+   "Z4": {
+    "name": "오른쪽 (K4 쪽)",
+    "mark": "로봇 정면에서 오른쪽 15–45°, 15–25 cm. K4 표시 2 cm 안·손목 카메라 케이블 위는 피하기",
+    "rule": {
+     "a_min": 15,
+     "a_max": 45,
+     "r_min": 15,
+     "r_max": 25,
+     "avoid_k": [
+      "K4"
+     ],
+     "avoid_r": 2.0
+    }
+   }
+  },
+  "box_front_x_max": -1.5
+ }
+}

@@ -1,0 +1,14 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+norm round-trip max err 7.62939453125e-06
+20k_t1_try3/ep0: 29 chunks (7 with n=32), gpu_s 84
+20k_t1_try3/ep1: 19 chunks (7 with n=32), gpu_s 150
+20k_t1_try3_filt/ep0: 19 chunks (7 with n=32), gpu_s 217
+20k_t1_try3_filt/ep1: 44 chunks (8 with n=32), gpu_s 334
+20k_t1_try3_filt/ep2: 19 chunks (7 with n=32), gpu_s 401

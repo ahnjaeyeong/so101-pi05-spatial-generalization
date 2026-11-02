@@ -1,0 +1,36 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+1/261 eps · obs 31 · 5s · gpu 5s · d4 (7472, 19.83)
+11/261 eps · obs 341 · 50s · gpu 47s · d4 (7472, 19.83)
+21/261 eps · obs 642 · 92s · gpu 88s · d4 (7472, 19.83)
+31/261 eps · obs 935 · 134s · gpu 127s · d4 (7472, 19.83)
+41/261 eps · obs 1238 · 176s · gpu 168s · d4 (7472, 19.83)
+51/261 eps · obs 1548 · 220s · gpu 209s · d4 (7472, 19.83)
+61/261 eps · obs 1858 · 265s · gpu 252s · d4 (7472, 19.83)
+71/261 eps · obs 2164 · 308s · gpu 293s · d4 (7472, 19.83)
+81/261 eps · obs 2465 · 350s · gpu 333s · d4 (7472, 19.83)
+91/261 eps · obs 2767 · 392s · gpu 373s · d4 (7472, 19.83)
+101/261 eps · obs 3066 · 434s · gpu 413s · d4 (7472, 19.83)
+111/261 eps · obs 3363 · 477s · gpu 454s · d4 (7472, 19.83)
+121/261 eps · obs 3673 · 522s · gpu 497s · d4 (7472, 19.83)
+131/261 eps · obs 3983 · 567s · gpu 540s · d4 (7472, 19.83)
+141/261 eps · obs 4293 · 612s · gpu 583s · d4 (7472, 19.83)
+151/261 eps · obs 4595 · 654s · gpu 623s · d4 (7472, 19.83)
+161/261 eps · obs 4903 · 697s · gpu 664s · d4 (7472, 19.83)
+171/261 eps · obs 5198 · 740s · gpu 705s · d4 (7472, 19.83)
+181/261 eps · obs 5508 · 784s · gpu 747s · d4 (7472, 19.83)
+191/261 eps · obs 5818 · 826s · gpu 787s · d4 (7472, 19.83)
+201/261 eps · obs 6128 · 869s · gpu 828s · d4 (7472, 19.83)
+211/261 eps · obs 6438 · 913s · gpu 869s · d4 (7472, 19.83)
+221/261 eps · obs 6745 · 956s · gpu 910s · d4 (7472, 19.83)
+231/261 eps · obs 7039 · 999s · gpu 952s · d4 (7472, 19.83)
+241/261 eps · obs 7349 · 1043s · gpu 993s · d4 (7472, 19.83)
+251/261 eps · obs 7655 · 1087s · gpu 1036s · d4 (7472, 19.83)
+261/261 eps · obs 8293 · 1178s · gpu 1120s · d4 (7472, 19.83)
+done gpu_busy_s 1120

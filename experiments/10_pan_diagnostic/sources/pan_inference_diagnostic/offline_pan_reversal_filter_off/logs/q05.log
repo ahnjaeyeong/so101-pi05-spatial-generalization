@@ -1,0 +1,121 @@
+   tag  chunk_id        t_s     zone                 wstate          s0
+0   A0         7   4.633333     over             wrist_edge  -45.890110
+1   A0        17  11.300000     over  wrist_lost_after_seen  -94.505495
+2   A0        28  18.633333     over             wrist_edge -108.923077
+3   A0        38  25.300000     over             wrist_edge -108.923077
+4   B1        34   4.633333     over  wrist_lost_after_seen  -58.021978
+5   B1        40   8.633333     over  wrist_lost_after_seen  -78.945055
+6   B1        46  12.633333     over  wrist_lost_after_seen  -94.593407
+7   B1        52  16.633333     over  wrist_lost_after_seen -109.010989
+8   B0         3   1.966667    under          wrist_in_view  -12.307692
+9   B0         6   3.966667  aligned          wrist_in_view  -23.472527
+10  B2        56   1.966667    under          wrist_in_view   -6.241758
+11  B2        58   3.300000  aligned          wrist_in_view  -29.978022
+12  B3        86   2.633333    under          wrist_in_view   -7.912088
+13  B3        90   5.300000  aligned          wrist_in_view  -23.648352
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+A0 7 -30 -5.9 -81.8
+A0 7 -20 -5.5 -71.4
+A0 7 -10 -5.7 -61.6
+A0 7 0 -5.6 -51.5
+A0 7 10 -6.8 -42.7
+A0 7 20 -7.9 -33.8
+A0 7 30 -7.2 -23.1
+A0 17 -30 2.4 -122.1
+A0 17 -20 -7.6 -122.1
+A0 17 -10 -4.4 -108.9
+A0 17 0 -5.7 -100.2
+A0 17 10 -7.7 -92.2
+A0 17 20 -7.5 -82.0
+A0 17 30 -9.1 -73.7
+A0 28 -30 15.6 -123.3
+A0 28 -20 5.6 -123.3
+A0 28 -10 -4.4 -123.3
+A0 28 0 -14.4 -123.3
+A0 28 10 -6.8 -105.7
+A0 28 20 -7.6 -96.5
+A0 28 30 -9.3 -88.2
+A0 38 -30 16.7 -122.3
+A0 38 -20 6.7 -122.3
+A0 38 -10 -3.3 -122.3
+A0 38 0 -13.3 -122.3
+A0 38 10 -5.4 -104.3
+A0 38 20 -6.0 -94.9
+A0 38 30 -7.1 -86.0
+B1 34 -30 -5.3 -93.3
+B1 34 -20 -7.4 -85.4
+B1 34 -10 -7.8 -75.9
+B1 34 0 -10.1 -68.1
+B1 34 10 -13.3 -61.3
+B1 34 20 -14.2 -52.2
+B1 34 30 -13.6 -41.7
+B1 40 -30 -7.0 -115.9
+B1 40 -20 -2.0 -101.0
+B1 40 -10 -3.5 -92.4
+B1 40 0 -5.2 -84.2
+B1 40 10 -4.8 -73.8
+B1 40 20 -6.0 -65.0
+B1 40 30 -8.2 -57.2
+B1 46 -30 7.3 -117.3
+B1 46 -20 -2.7 -117.3
+B1 46 -10 -1.2 -105.8
+B1 46 0 -3.4 -98.0
+B1 46 10 -5.3 -89.9
+B1 46 20 -6.2 -80.8
+B1 46 30 -6.7 -71.3
+B1 52 -30 19.6 -119.5
+B1 52 -20 9.6 -119.5
+B1 52 -10 -0.4 -119.5
+B1 52 0 -10.4 -119.5
+B1 52 10 -2.5 -101.5
+B1 52 20 -3.0 -92.0
+B1 52 30 -4.0 -83.0
+B0 3 -30 -5.6 -47.9
+B0 3 -20 -5.5 -37.8
+B0 3 -10 -5.6 -27.9
+B0 3 0 -6.5 -18.8
+B0 3 10 -5.3 -7.6
+B0 3 20 -5.8 1.9
+B0 3 30 -6.3 11.4
+B0 6 -30 -0.5 -54.0
+B0 6 -20 -1.4 -44.9
+B0 6 -10 -3.5 -37.0
+B0 6 0 -3.0 -26.4
+B0 6 10 -3.0 -16.5
+B0 6 20 -1.2 -4.6
+B0 6 30 -1.0 5.6
+B2 56 -30 -8.0 -44.2
+B2 56 -20 -10.7 -37.0
+B2 56 -10 -14.1 -30.4
+B2 56 0 -13.2 -19.5
+B2 56 10 -12.4 -8.7
+B2 56 20 -12.2 1.5
+B2 56 30 -10.9 12.9
+B2 58 -30 -0.4 -60.4
+B2 58 -20 1.4 -48.6
+B2 58 -10 1.4 -38.6
+B2 58 0 1.2 -28.7
+B2 58 10 -0.8 -20.8
+B2 58 20 -0.5 -10.5
+B2 58 30 -1.1 -1.1
+B3 86 -30 -3.6 -41.5
+B3 86 -20 -3.0 -30.9
+B3 86 -10 -3.7 -21.6
+B3 86 0 -4.3 -12.2
+B3 86 10 -4.9 -2.8
+B3 86 20 -6.5 5.5
+B3 86 30 -7.0 15.1
+B3 90 -30 -0.6 -54.2
+B3 90 -20 -0.3 -44.0
+B3 90 -10 -1.1 -34.8
+B3 90 0 -1.0 -24.6
+B3 90 10 -1.7 -15.4
+B3 90 20 -2.2 -5.8
+B3 90 30 -4.0 2.4

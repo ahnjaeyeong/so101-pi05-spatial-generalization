@@ -1,0 +1,60 @@
+# --- model weights / checkpoints (record path + sha256 in configs/checkpoints instead) ---
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+checkpoints/
+pretrained_model/
+training_state/
+
+# --- datasets, videos, large arrays ---
+*.parquet
+*.mp4
+*.mkv
+*.avi
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.arrow
+*.gz
+*.zip
+*.tar
+dataset/
+videos/
+review_videos/
+
+# --- raw observation frames / diag dumps ---
+diag/
+obs/
+frames/
+frames_train/
+f1_features/
+f1_quality_features/
+
+# --- caches, envs, temp ---
+__pycache__/
+*.pyc
+.cache/
+.huggingface/
+huggingface/
+wandb/
+outputs/
+.venv/
+venv/
+so101-env/
+*.tmp
+tmp*/
+.ipynb_checkpoints/
+.DS_Store
+
+# --- secrets ---
+.env
+*.env
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*token*
+!**/*tokeniz*

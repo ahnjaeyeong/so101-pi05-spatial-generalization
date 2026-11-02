@@ -1,0 +1,14 @@
+{
+ "sets": [
+  "ref T1K",
+  "ref T1R",
+  "ref T2K",
+  "ref T2R",
+  "ref T3K",
+  "ref T3R",
+  "d2 T1K",
+  "d2 T1R",
+  "d2 T3K",
+  "d2 T3R"
+ ]
+}

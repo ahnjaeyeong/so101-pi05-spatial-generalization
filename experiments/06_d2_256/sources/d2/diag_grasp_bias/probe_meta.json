@@ -1,0 +1,6 @@
+{
+ "ckpt": "/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+ "steps": 5,
+ "seeds": 3,
+ "idx": 49
+}

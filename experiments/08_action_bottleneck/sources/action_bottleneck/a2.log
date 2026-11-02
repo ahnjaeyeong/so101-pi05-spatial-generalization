@@ -1,0 +1,64 @@
+S2 0 {'img_rot_tan': 0.13859268766305077, 'img_rot_tan_r2': 0.9004406040179933, 'img_rot_rad': 0.14003469746662903, 'tab_tan': 0.2768702213592415, 'tab_tan_r2': 0.6086548556040824, 'tab_rad': 0.23945613419098852, 'img_u': 0.13976683277154692, 'img_v': 0.14027055134766053, 'roll_mae': 17.603259480781677, 'roll_r2': 0.29667907411236316}
+S2 1 {'img_rot_tan': 0.14287362842665746, 'img_rot_tan_r2': 0.897889771851873, 'img_rot_rad': 0.1576047169508093, 'tab_tan': 0.273008347067044, 'tab_tan_r2': 0.6285512708491995, 'tab_rad': 0.24575412199295452, 'img_u': 0.15798874650542663, 'img_v': 0.14452601595041212, 'roll_mae': 14.769669345658242, 'roll_r2': 0.47819202441196973}
+S2 2 {'img_rot_tan': 0.14010962617818928, 'img_rot_tan_r2': 0.8996807376538318, 'img_rot_rad': 0.14495319678271731, 'tab_tan': 0.2776370328003584, 'tab_tan_r2': 0.5906046351414713, 'tab_rad': 0.22640920374857573, 'img_u': 0.14487395986399318, 'img_v': 0.14136076793165794, 'roll_mae': 11.283442192450234, 'roll_r2': 0.6422056587416729}
+S2 3 {'img_rot_tan': 0.1338248366341112, 'img_rot_tan_r2': 0.9081114140745195, 'img_rot_rad': 0.13978783232807235, 'tab_tan': 0.2712118464261493, 'tab_tan_r2': 0.6272329909847243, 'tab_rad': 0.23110767532543142, 'img_u': 0.14050735216531562, 'img_v': 0.13305759565586542, 'roll_mae': 11.167477975363573, 'roll_r2': 0.6522866119230382}
+S2 4 {'img_rot_tan': 0.13874142894426592, 'img_rot_tan_r2': 0.9004516571060099, 'img_rot_rad': 0.14593018935997568, 'tab_tan': 0.23883393593934452, 'tab_tan_r2': 0.7098981396355121, 'tab_rad': 0.21982853161892313, 'img_u': 0.14808564245178726, 'img_v': 0.13998959125544033, 'roll_mae': 7.185357200550161, 'roll_r2': 0.8527739885003374}
+S2 5 {'img_rot_tan': 0.1557410952396721, 'img_rot_tan_r2': 0.8744509186873513, 'img_rot_rad': 0.14767363373325454, 'tab_tan': 0.22831851771172307, 'tab_tan_r2': 0.7482339444128854, 'tab_rad': 0.20385098641219548, 'img_u': 0.15034764531132314, 'img_v': 0.15602504375136197, 'roll_mae': 4.240497172844763, 'roll_r2': 0.9555561818387686}
+S2 6 {'img_rot_tan': 0.16432138149295936, 'img_rot_tan_r2': 0.8655179022082905, 'img_rot_rad': 0.185702891738441, 'tab_tan': 0.22356761584240425, 'tab_tan_r2': 0.7492317892206188, 'tab_rad': 0.23745484659952532, 'img_u': 0.18578286257651117, 'img_v': 0.16803190890391784, 'roll_mae': 3.845410114409436, 'roll_r2': 0.9622823920875978}
+S2 7 {'img_rot_tan': 0.17585415253276204, 'img_rot_tan_r2': 0.8300603709150656, 'img_rot_rad': 0.18614411019247468, 'tab_tan': 0.2223634743130348, 'tab_tan_r2': 0.7452642362298727, 'tab_rad': 0.22754616949642298, 'img_u': 0.18518825185699336, 'img_v': 0.18033975988513454, 'roll_mae': 3.4262891645256324, 'roll_r2': 0.9704959688956395}
+S2 8 {'img_rot_tan': 0.19252578174370222, 'img_rot_tan_r2': 0.8028617329578179, 'img_rot_rad': 0.19584825364549924, 'tab_tan': 0.24598048135771308, 'tab_tan_r2': 0.6862659724466872, 'tab_rad': 0.2771296952906031, 'img_u': 0.2038986846034103, 'img_v': 0.1835947373203212, 'roll_mae': 3.8541641715443404, 'roll_r2': 0.9581794723043955}
+S2 9 {'img_rot_tan': 0.18426403945360065, 'img_rot_tan_r2': 0.8302057292558795, 'img_rot_rad': 0.21318078696007017, 'tab_tan': 0.22838409579209393, 'tab_tan_r2': 0.7508274019061595, 'tab_rad': 0.2587768498654681, 'img_u': 0.21296723667620776, 'img_v': 0.1844793092096433, 'roll_mae': 3.7338776638091273, 'roll_r2': 0.9605375822565241}
+S2 10 {'img_rot_tan': 0.19903331184828363, 'img_rot_tan_r2': 0.7920377850688503, 'img_rot_rad': 0.23925514767109543, 'tab_tan': 0.23445053875170752, 'tab_tan_r2': 0.7237233806250891, 'tab_rad': 0.2623155015748723, 'img_u': 0.24249753673867422, 'img_v': 0.19383823551051207, 'roll_mae': 1.3019910620205732, 'roll_r2': 0.9957019347071597}
+S2 11 {'img_rot_tan': 0.19021395997836935, 'img_rot_tan_r2': 0.820672343099056, 'img_rot_rad': 0.23961427513918537, 'tab_tan': 0.23734209284224833, 'tab_tan_r2': 0.7064613870938963, 'tab_rad': 0.283569719991519, 'img_u': 0.2444107123158967, 'img_v': 0.1869328304065634, 'roll_mae': 1.6519635486032986, 'roll_r2': 0.9906421314703838}
+S2 12 {'img_rot_tan': 0.1351675469700485, 'img_rot_tan_r2': 0.9121657156802152, 'img_rot_rad': 0.16893811667515224, 'tab_tan': 0.18997412936018143, 'tab_tan_r2': 0.8226423983294221, 'tab_rad': 0.22385885969294378, 'img_u': 0.1712738020759422, 'img_v': 0.13348474381243314, 'roll_mae': 1.33830800648165, 'roll_r2': 0.9955747249897048}
+S2 13 {'img_rot_tan': 0.1495041946179347, 'img_rot_tan_r2': 0.8878244222324644, 'img_rot_rad': 0.18023216565391145, 'tab_tan': 0.19390524969614614, 'tab_tan_r2': 0.8135613281459696, 'tab_rad': 0.21220323879750919, 'img_u': 0.17817840731115078, 'img_v': 0.15523179721167543, 'roll_mae': 1.3131551243964763, 'roll_r2': 0.9957352089091517}
+S2 14 {'img_rot_tan': 0.15266223345294183, 'img_rot_tan_r2': 0.8872281020085091, 'img_rot_rad': 0.18514444663712423, 'tab_tan': 0.21172991162451055, 'tab_tan_r2': 0.772756094689163, 'tab_rad': 0.21490768732912466, 'img_u': 0.18066904746097542, 'img_v': 0.16009918353195063, 'roll_mae': 1.388545932292237, 'roll_r2': 0.9951720297089713}
+S2 15 {'img_rot_tan': 0.1580255249406624, 'img_rot_tan_r2': 0.8739516570274325, 'img_rot_rad': 0.1856400839624102, 'tab_tan': 0.21416575723952128, 'tab_tan_r2': 0.771963870957922, 'tab_rad': 0.22168363513985997, 'img_u': 0.1823820777349893, 'img_v': 0.163787577642012, 'roll_mae': 1.3944581514860175, 'roll_r2': 0.9952942445994863}
+S2 16 {'img_rot_tan': 0.15775334996971216, 'img_rot_tan_r2': 0.875076103389828, 'img_rot_rad': 0.19201482640811776, 'tab_tan': 0.20547320246309458, 'tab_tan_r2': 0.7901902011149352, 'tab_rad': 0.22597182733245613, 'img_u': 0.1882126810268705, 'img_v': 0.1645458663978261, 'roll_mae': 1.4096991702424377, 'roll_r2': 0.9952422804577994}
+S2 17 {'img_rot_tan': 0.1589452685656805, 'img_rot_tan_r2': 0.8730605690192412, 'img_rot_rad': 0.20552685221714506, 'tab_tan': 0.21025748949686257, 'tab_tan_r2': 0.780917188601892, 'tab_rad': 0.23125130272072505, 'img_u': 0.1997066965234696, 'img_v': 0.16791415069052135, 'roll_mae': 1.3699984021871683, 'roll_r2': 0.9955036918600483}
+S3 0 {'g_img_tab': np.float64(0.5911395073468458), 'g_state_tab': np.float64(0.02071073342253065), 'w_RC_tab': np.float64(0.0067900132060723095), 'img_axis_follow': 0.7202934917427672}
+S3 1 {'g_img_tab': np.float64(0.5563517012072212), 'g_state_tab': np.float64(0.12740450426720243), 'w_RC_tab': np.float64(0.04921900779762067), 'img_axis_follow': 0.7121243021256716}
+S3 2 {'g_img_tab': np.float64(0.5524679060500134), 'g_state_tab': np.float64(0.2285363340623481), 'w_RC_tab': np.float64(0.07542820919144766), 'img_axis_follow': 0.7083636155159214}
+S3 3 {'g_img_tab': np.float64(0.544445894986469), 'g_state_tab': np.float64(0.2244628608503562), 'w_RC_tab': np.float64(0.0648771713262325), 'img_axis_follow': 0.7281472342583316}
+S3 4 {'g_img_tab': np.float64(0.5570821220496999), 'g_state_tab': np.float64(0.43519640707361373), 'w_RC_tab': np.float64(0.11964683141509669), 'img_axis_follow': 0.7185497703748769}
+S3 5 {'g_img_tab': np.float64(0.5610012352494342), 'g_state_tab': np.float64(0.5163697032725241), 'w_RC_tab': np.float64(0.19621866804831012), 'img_axis_follow': 0.719688320307909}
+S3 6 {'g_img_tab': np.float64(0.5222367686963386), 'g_state_tab': np.float64(0.5447462588034379), 'w_RC_tab': np.float64(0.16852301628885524), 'img_axis_follow': 0.7314008651657767}
+S3 7 {'g_img_tab': np.float64(0.516234159823861), 'g_state_tab': np.float64(0.5738144909292984), 'w_RC_tab': np.float64(0.23690299552403116), 'img_axis_follow': 0.7024537743155457}
+S3 8 {'g_img_tab': np.float64(0.5289673140521549), 'g_state_tab': np.float64(0.5677372461874515), 'w_RC_tab': np.float64(0.26912444376782385), 'img_axis_follow': 0.7311611188524605}
+S3 9 {'g_img_tab': np.float64(0.5128659589671105), 'g_state_tab': np.float64(0.5444362892192023), 'w_RC_tab': np.float64(0.17521798475131634), 'img_axis_follow': 0.7138549516449073}
+S3 10 {'g_img_tab': np.float64(0.48913127668005624), 'g_state_tab': np.float64(0.6006732571911476), 'w_RC_tab': np.float64(0.178809907435043), 'img_axis_follow': 0.6694245841600193}
+S3 11 {'g_img_tab': np.float64(0.48156360839280316), 'g_state_tab': np.float64(0.604697441829843), 'w_RC_tab': np.float64(0.1974525016270855), 'img_axis_follow': 0.6260500101575657}
+S3 12 {'g_img_tab': np.float64(0.6107902297233537), 'g_state_tab': np.float64(0.6556642684049293), 'w_RC_tab': np.float64(0.1919669320384545), 'img_axis_follow': 0.7674063931581141}
+S3 13 {'g_img_tab': np.float64(0.6031567031189371), 'g_state_tab': np.float64(0.6828494432817197), 'w_RC_tab': np.float64(0.1698978352344136), 'img_axis_follow': 0.7587856614047328}
+S3 14 {'g_img_tab': np.float64(0.605714680694689), 'g_state_tab': np.float64(0.6456659049794371), 'w_RC_tab': np.float64(0.18066862686321317), 'img_axis_follow': 0.7560861349383572}
+S3 15 {'g_img_tab': np.float64(0.6051541108307482), 'g_state_tab': np.float64(0.6388588385921675), 'w_RC_tab': np.float64(0.1765434822845946), 'img_axis_follow': 0.7521690589455572}
+S3 16 {'g_img_tab': np.float64(0.5974282287230878), 'g_state_tab': np.float64(0.6250226590226542), 'w_RC_tab': np.float64(0.19148766627890057), 'img_axis_follow': 0.7409875719849353}
+S3 17 {'g_img_tab': np.float64(0.5807399670059858), 'g_state_tab': np.float64(0.6169815077188902), 'w_RC_tab': np.float64(0.19331689699135368), 'img_axis_follow': 0.7312261213509109}
+Traceback (most recent call last):
+  File "/home/user/so101-env/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'hum_a_dpan'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main_k8/d2/action_bottleneck/a2_g2_analyze.py", line 264, in <module>
+    main()
+  File "/home/user/so101_runs/main_k8/d2/action_bottleneck/a2_g2_analyze.py", line 235, in main
+    y = d[f"{who}_dpan"].values / (-57.2958 / d.range_cm.values)    # pan + = 로봇 오른쪽 = 접선 − (C 좌표 규약)
+        ~^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'hum_a_dpan'
+
+real	77m28.397s
+user	864m8.389s
+sys	0m58.556s

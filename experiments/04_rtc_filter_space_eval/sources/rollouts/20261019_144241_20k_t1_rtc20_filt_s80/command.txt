@@ -1,0 +1,1 @@
+TASK=t1 STEP=020000 N_EP=1 ./run_rollout.sh rtc20_filt_s80 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --policy.num_inference_steps=5 --arm_filter=true --rollout_guard=stop --exec_speed=0.8

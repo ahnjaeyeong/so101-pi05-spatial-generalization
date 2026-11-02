@@ -1,0 +1,174 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-02T13:15:48",
+ "group": "r1_try",
+ "type": "R1",
+ "session": "practice/r1_try",
+ "repo_id": "oxr/so101_r1_try",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 4,
+ "episode_time_s": 45,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/r12_scenarios.yaml",
+ "config_sha256": "08ab327351786fb8f57d129d13717e7884095106f3e2b11d50fccd2a0548cba0",
+ "plan_sha256": "ef889c58917dd8265130e90ab8a10b81c364ee969b1de04cf1c9cf009e4273d9",
+ "stats": {
+  "scenarios": {
+   "R1-OVER": 1,
+   "R1-PAN-R": 1,
+   "R1-DRIFT": 1,
+   "R1-PAN-L": 1
+  },
+  "positions": {
+   "K7": 1,
+   "K5": 1,
+   "K8": 1,
+   "K4": 1
+  },
+  "angles": {
+   "L30": 1,
+   "R30": 1,
+   "0": 1,
+   "45": 1
+  },
+  "offset_dir": {
+   "robot_left": 3,
+   "robot_right": 1
+  }
+ },
+ "scenarios": {
+  "R1-PAN-L": {
+   "type": "R1",
+   "label": "R1 · PAN 목표 왼쪽 오차",
+   "error_kind": "wrong_target",
+   "error_in_rec": true,
+   "x_label": "틀린 목표 (왼쪽)",
+   "pan_offsets_deg": [
+    -12,
+    -16,
+    -20,
+    -14
+   ],
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세에서 출발",
+   "via": "",
+   "count": 1,
+   "title": "Pan 목표를 큐브보다 왼쪽으로 잘못 잡고 접근",
+   "offset_dir": "robot_left",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽(−) 12·14·16·20° (판마다, 주황 선)",
+   "wrist_expect": "any",
+   "start": "쉬는 자세 (고정). 큐브 각도만 맞추고 →.",
+   "demo": "주황 선(왼쪽 틀린 목표) 쪽으로 Pan 을 돌리며 접근 (팔 펴도 됨) → Space → 초록 선(큐브)으로 Pan 을 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-PAN-R": {
+   "type": "R1",
+   "label": "R1 · PAN 목표 오른쪽 오차",
+   "error_kind": "wrong_target",
+   "error_in_rec": true,
+   "x_label": "틀린 목표 (오른쪽)",
+   "pan_offsets_deg": [
+    12,
+    16,
+    20,
+    14
+   ],
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세에서 출발",
+   "via": "",
+   "count": 1,
+   "title": "Pan 목표를 큐브보다 오른쪽으로 잘못 잡고 접근",
+   "offset_dir": "robot_right",
+   "offset_mag": "Pan 을 큐브 방향보다 오른쪽(+) 12·14·16·20° (판마다, 주황 선)",
+   "wrist_expect": "any",
+   "start": "쉬는 자세 (고정). 큐브 각도만 맞추고 →.",
+   "demo": "주황 선(오른쪽 틀린 목표) 쪽으로 Pan 을 돌리며 접근 (팔 펴도 됨) → Space → 초록 선(큐브)으로 Pan 을 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-OVER": {
+   "type": "R1",
+   "label": "R1 · 목표 방향 지나침",
+   "error_kind": "overshoot",
+   "error_in_rec": true,
+   "travel": "over",
+   "travel_offsets_deg": [
+    15,
+    20,
+    25,
+    18
+   ],
+   "positions": [
+    "K1",
+    "K3",
+    "K4",
+    "K6",
+    "K7",
+    "K8"
+   ],
+   "x_label": "지나칠 곳",
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세에서 출발",
+   "via": "",
+   "count": 1,
+   "title": "큐브 방향으로 Pan 을 돌리다 지나침 → 되돌아옴",
+   "offset_dir": "travel",
+   "offset_mag": "큐브 방향을 지나 15·18·20·25° (판마다, 주황 선. 진행 방향 = 쉬는 자세 pan → 큐브)",
+   "wrist_expect": "any",
+   "start": "쉬는 자세 (고정). 큐브 각도만 맞추고 →.",
+   "demo": "큐브 쪽으로 Pan 을 돌리다 초록 선을 지나 주황 선까지 → Space → 되돌아와 초록 선 → 접근·파지 → 상자 → 쉬는 자세."
+  },
+  "R1-DRIFT": {
+   "type": "R1",
+   "label": "R1 · 접근 중 PAN 흐름",
+   "error_kind": "drift",
+   "error_in_rec": true,
+   "x_label": "흐른 방향",
+   "pan_offsets_deg": [
+    -12,
+    12,
+    -16,
+    16
+   ],
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세에서 출발",
+   "via": "",
+   "count": 1,
+   "title": "처음엔 큐브 방향이었다가 팔을 펴며 다가가는 중 Pan 이 옆으로 흐름",
+   "offset_dir": "per_episode",
+   "offset_mag": "접근 중 Pan 이 왼쪽/오른쪽으로 12·16° 흐름 (판마다 방향, 주황 선)",
+   "wrist_expect": "any",
+   "start": "쉬는 자세 (고정). 큐브 각도만 맞추고 →.",
+   "demo": "Pan 을 초록 선(큐브)에 맞춘 뒤 팔을 펴며 다가가는 중 Pan 이 주황 선까지 흐름 → Space → 초록 선으로 고쳐 접근 → 파지 → 상자 → 쉬는 자세."
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}

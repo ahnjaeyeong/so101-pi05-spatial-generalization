@@ -1,0 +1,180 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-02T14:11:14",
+ "group": "r1_try3",
+ "type": "R1",
+ "session": "practice/r1_try3",
+ "repo_id": "oxr/so101_r1_try3",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 4,
+ "episode_time_s": 45,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/r12_scenarios.yaml",
+ "config_sha256": "c6f97e3d4e098ad4a15e4391e91b82e756a21d8f1bcc83eb66abba1eeeb6a382",
+ "plan_sha256": "3ca48a6199eb5faab3cb01678a3655cec14baecf8785c3481e935ba211a0838f",
+ "stats": {
+  "scenarios": {
+   "R1-B2": 1,
+   "R1-B1": 1,
+   "R1-B3": 1,
+   "R1-A": 1
+  },
+  "positions": {
+   "F2": 1,
+   "F1": 1,
+   "K1": 1,
+   "K2": 1
+  },
+  "angles": {
+   "0": 1,
+   "L30": 1,
+   "45": 1,
+   "R30": 1
+  },
+  "offset_dir": {
+   "robot_left": 2,
+   "robot_right": 2
+  }
+ },
+ "scenarios": {
+  "R1-A": {
+   "type": "R1",
+   "label": "R1-A · 초기 방향 오류에서 복귀",
+   "error_kind": "initial_direction",
+   "stages": [
+    "early"
+   ],
+   "wrist_visibility": "any",
+   "pan_offsets_deg": [
+    -15,
+    20,
+    -25,
+    30
+   ],
+   "start_radial_cm": 0,
+   "start_height": "접근 초반 (팔 거의 접힘)",
+   "via": "",
+   "x_label": "시작 Pan (녹화 전)",
+   "count": 1,
+   "title": "접근 초반, Pan 이 큐브와 다른 방향을 향함 → 큐브 쪽으로 되돌려 접근",
+   "offset_dir": "per_episode",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽/오른쪽 15·20·25–30° (후보, 대략)",
+   "wrist_expect": "any",
+   "start": "그리퍼 열림. 팔을 거의 접은 접근 초반 자세에서 Pan 을 주황 선 쪽 (큐브와 다른 방향) 으로 둠.",
+   "demo": "녹화 시작 → Pan 을 초록 선(큐브)으로 되돌리며 팔을 펴 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-B1": {
+   "type": "R1",
+   "label": "R1-B1 · 접근 중간 Pan 방향 반전",
+   "error_kind": "drift_away",
+   "stages": [
+    "mid"
+   ],
+   "wrist_visibility": "any",
+   "pan_offsets_deg": [
+    -15,
+    15,
+    -20,
+    20
+   ],
+   "start_radial_cm": -3,
+   "start_height": "접근 중간 (팔 일부 폄, 그리퍼 탁자 위 5 cm 이상)",
+   "via": "",
+   "x_label": "멀어진 Pan (녹화 전)",
+   "count": 1,
+   "title": "팔을 펴며 다가가는 도중 Pan 이 큐브에서 멀어지는 쪽으로 감 → 방향을 반대로 바꿔 복귀",
+   "offset_dir": "per_episode",
+   "offset_mag": "접근 도중 Pan 이 큐브 방향에서 왼쪽/오른쪽으로 15·20° 벗어남 (후보, 대략)",
+   "wrist_expect": "any",
+   "start": "그리퍼 열림. 준비 단계에서 팔을 일부 펴며 Pan 을 주황 쪽 (큐브에서 멀어지는 쪽) 으로 움직여 멈춤 (탁자 위 5 cm 이상).",
+   "demo": "녹화 시작 → 바로 Pan 방향을 반대로 (초록 선 쪽) 바꿔 큐브로 접근 → 파지 → 상자 → 쉬는 자세. 멀어지는 쪽으로 더 가지 않는다."
+  },
+  "R1-B2": {
+   "type": "R1",
+   "label": "R1-B2 · 큐브 방향 지나침에서 복귀",
+   "error_kind": "overshoot",
+   "stages": [
+    "mid",
+    "late"
+   ],
+   "wrist_visibility": "any",
+   "pan_offsets_deg": [
+    -15,
+    20,
+    -20,
+    25
+   ],
+   "start_radial_cm": -2,
+   "start_height": "접근 중간·후반 (팔 폄, 그리퍼 탁자 위 3 cm 이상)",
+   "via": "",
+   "x_label": "지나친 Pan (녹화 전)",
+   "count": 1,
+   "title": "큐브 쪽으로 Pan 을 돌리며 오다 큐브 방향을 지나쳐 멈춘 상태 → 되돌아와 접근",
+   "offset_dir": "per_episode",
+   "offset_mag": "큐브 방향을 왼쪽/오른쪽으로 15·20·25° 지나침 (반대쪽에서 와서 지나친 것, 후보, 대략)",
+   "wrist_expect": "any",
+   "start": "그리퍼 열림. 준비 단계에서 반대쪽에서 큐브 쪽으로 Pan 을 돌리며 오다 초록 선을 지나 주황 쪽에서 멈춤 (팔 일부 폄).",
+   "demo": "녹화 시작 → 왔던 방향과 반대로 Pan 을 되돌려 초록 선(큐브) → 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-B3": {
+   "type": "R1",
+   "label": "R1-B3 · 손목에서 큐브 놓침 → front 로 재탐색",
+   "error_kind": "lost_in_wrist",
+   "stages": [
+    "mid",
+    "late"
+   ],
+   "wrist_visibility": "absent",
+   "pan_offsets_deg": [
+    -20,
+    20,
+    -25,
+    25
+   ],
+   "start_radial_cm": -3,
+   "start_height": "접근 중간·후반 (팔 폄, 그리퍼 탁자 위 3 cm 이상)",
+   "via": "",
+   "x_label": "놓친 Pan (녹화 전)",
+   "count": 1,
+   "title": "접근 도중 Pan 이 벗어나 손목 화면에서 큐브가 사라진 상태 (front 에는 보임) → 큐브를 다시 찾아 접근",
+   "offset_dir": "per_episode",
+   "offset_mag": "손목 화면에 큐브가 안 보일 만큼 (보통 20–25°) 벗어남 (후보, 대략)",
+   "wrist_expect": "edge_or_absent",
+   "start": "그리퍼 열림. 팔을 일부 편 접근 자세에서 Pan 을 주황 쪽으로 벗어나 손목 화면에 큐브가 없게 둠. front 에는 큐브가 보여야 함.",
+   "demo": "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "pan_limit_margin_block_deg": 10,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}

@@ -1,0 +1,1 @@
+scripts/eval_ui.py --session main_k8/d2 --tag pan_diag --episodes 11 --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --arm_filter=true

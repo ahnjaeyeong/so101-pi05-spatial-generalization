@@ -1,0 +1,1 @@
+STEP=015000 ./run_rollout.sh rtc_fast --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=40

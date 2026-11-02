@@ -1,0 +1,25 @@
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+model loaded 204s, items 6536, crop window (119, 35)
+8/6536 · 206s · compute 2s
+408/6536 · 275s · compute 49s
+808/6536 · 352s · compute 100s
+1208/6536 · 420s · compute 146s
+1608/6536 · 496s · compute 194s
+2008/6536 · 596s · compute 249s
+2408/6536 · 696s · compute 305s
+2808/6536 · 801s · compute 369s
+3208/6536 · 897s · compute 424s
+3608/6536 · 999s · compute 481s
+4008/6536 · 1101s · compute 537s
+4408/6536 · 1197s · compute 591s
+4808/6536 · 1297s · compute 648s
+5208/6536 · 1390s · compute 700s
+5608/6536 · 1484s · compute 755s
+6008/6536 · 1583s · compute 809s
+6408/6536 · 1682s · compute 863s
+done 6536 compute 881s

@@ -1,0 +1,36 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+filt/ep0/c1 U {'seam_ref': np.float64(28.06), 'seam_med': -7.91, 'seam_p10': -20.25, 'seam_p90': 2.93, 'min_i0_i1_minus_ref_med': -9.05, 'max_i0_i1_minus_ref_med': 0.97}
+filt/ep0/c1 G_d0_est {'seam_ref': np.float64(28.06), 'seam_med': -4.69, 'seam_p10': -15.66, 'seam_p90': 4.04, 'min_i0_i1_minus_ref_med': -5.74, 'max_i0_i1_minus_ref_med': 2.07}
+filt/ep0/c1 G_d0_hold {'seam_ref': np.float64(28.06), 'seam_med': -5.16, 'seam_p10': -16.02, 'seam_p90': 3.67, 'min_i0_i1_minus_ref_med': -6.19, 'max_i0_i1_minus_ref_med': 1.92}
+filt/ep0/c1 G_d0_lin {'seam_ref': np.float64(28.06), 'seam_med': -4.9, 'seam_p10': -15.76, 'seam_p90': 3.92, 'min_i0_i1_minus_ref_med': -5.92, 'max_i0_i1_minus_ref_med': 2.08}
+filt/ep0/c1 G_d11_est {'seam_ref': np.float64(28.06), 'seam_med': 1.33, 'seam_p10': -0.47, 'seam_p90': 2.59, 'min_i0_i1_minus_ref_med': -0.44, 'max_i0_i1_minus_ref_med': 4.03}
+filt/ep0/c1 G_d11_hold {'seam_ref': np.float64(28.06), 'seam_med': -0.53, 'seam_p10': -2.3, 'seam_p90': 0.78, 'min_i0_i1_minus_ref_med': -2.09, 'max_i0_i1_minus_ref_med': 2.95}
+filt/ep0/c1 G_d11_lin {'seam_ref': np.float64(28.06), 'seam_med': 0.3, 'seam_p10': -1.49, 'seam_p90': 1.57, 'min_i0_i1_minus_ref_med': -1.0, 'max_i0_i1_minus_ref_med': 3.69}
+try3/ep0/c1 U {'seam_ref': np.float64(-5.53), 'seam_med': 1.55, 'seam_p10': -9.96, 'seam_p90': 2.69, 'min_i0_i1_minus_ref_med': -4.65, 'max_i0_i1_minus_ref_med': 1.55}
+try3/ep0/c1 G_d0_est {'seam_ref': np.float64(-5.53), 'seam_med': 1.65, 'seam_p10': -7.55, 'seam_p90': 2.58, 'min_i0_i1_minus_ref_med': -4.44, 'max_i0_i1_minus_ref_med': 1.65}
+try3/ep0/c1 G_d0_hold {'seam_ref': np.float64(-5.53), 'seam_med': 1.46, 'seam_p10': -7.96, 'seam_p90': 2.36, 'min_i0_i1_minus_ref_med': -4.45, 'max_i0_i1_minus_ref_med': 1.46}
+try3/ep0/c1 G_d0_lin {'seam_ref': np.float64(-5.53), 'seam_med': 1.29, 'seam_p10': -8.08, 'seam_p90': 2.33, 'min_i0_i1_minus_ref_med': -4.52, 'max_i0_i1_minus_ref_med': 1.29}
+try3/ep0/c1 G_d12_est {'seam_ref': np.float64(-5.53), 'seam_med': 1.81, 'seam_p10': 0.83, 'seam_p90': 1.91, 'min_i0_i1_minus_ref_med': -3.22, 'max_i0_i1_minus_ref_med': 1.83}
+try3/ep0/c1 G_d12_hold {'seam_ref': np.float64(-5.53), 'seam_med': 0.27, 'seam_p10': -0.82, 'seam_p90': 0.35, 'min_i0_i1_minus_ref_med': -3.49, 'max_i0_i1_minus_ref_med': 1.02}
+try3/ep0/c1 G_d12_lin {'seam_ref': np.float64(-5.53), 'seam_med': -0.32, 'seam_p10': -1.47, 'seam_p90': -0.22, 'min_i0_i1_minus_ref_med': -3.67, 'max_i0_i1_minus_ref_med': 0.65}
+filt/ep2/c1 U {'seam_ref': np.float64(-37.86), 'seam_med': 17.28, 'seam_p10': 10.59, 'seam_p90': 21.57, 'min_i0_i1_minus_ref_med': 10.17, 'max_i0_i1_minus_ref_med': 17.36}
+filt/ep2/c1 G_d12_est {'seam_ref': np.float64(-37.86), 'seam_med': 16.57, 'seam_p10': 15.51, 'seam_p90': 17.29, 'min_i0_i1_minus_ref_med': 8.08, 'max_i0_i1_minus_ref_med': 16.57}
+filt/ep2/c1 G_d12_hold {'seam_ref': np.float64(-37.86), 'seam_med': 1.7, 'seam_p10': 0.62, 'seam_p90': 2.48, 'min_i0_i1_minus_ref_med': 1.57, 'max_i0_i1_minus_ref_med': 8.33}
+filt/ep2/c1 G_d12_lin {'seam_ref': np.float64(-37.86), 'seam_med': -0.7, 'seam_p10': -1.77, 'seam_p90': 0.08, 'min_i0_i1_minus_ref_med': -0.7, 'max_i0_i1_minus_ref_med': 7.2}
+try3/ep0/c4 U {'seam_ref': np.float64(-29.57), 'seam_med': 4.37, 'seam_p10': -9.97, 'seam_p90': 12.79, 'min_i0_i1_minus_ref_med': -0.88, 'max_i0_i1_minus_ref_med': 5.71}
+try3/ep0/c4 G_d12_est {'seam_ref': np.float64(-29.57), 'seam_med': 1.91, 'seam_p10': 0.22, 'seam_p90': 3.02, 'min_i0_i1_minus_ref_med': -0.41, 'max_i0_i1_minus_ref_med': 2.78}
+try3/ep0/c4 G_d12_hold {'seam_ref': np.float64(-29.57), 'seam_med': 0.43, 'seam_p10': -1.26, 'seam_p90': 1.56, 'min_i0_i1_minus_ref_med': -0.44, 'max_i0_i1_minus_ref_med': 2.89}
+try3/ep0/c4 G_d12_lin {'seam_ref': np.float64(-29.57), 'seam_med': -0.38, 'seam_p10': -2.05, 'seam_p90': 0.79, 'min_i0_i1_minus_ref_med': -2.07, 'max_i0_i1_minus_ref_med': 2.0}
+try3/ep0/c0 U256 {}
+try3/ep1/c0 U256 {}
+filt/ep0/c0 U256 {}
+filt/ep1/c0 U256 {}
+filt/ep2/c0 U256 {}
+gpu_s 198

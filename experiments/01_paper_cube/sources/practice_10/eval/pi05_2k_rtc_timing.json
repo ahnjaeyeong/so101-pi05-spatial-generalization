@@ -1,0 +1,169 @@
+{
+ "summary": {
+  "guided_rtc_ms": {
+   "mean": 308.5,
+   "max": 329.1,
+   "n": 23
+  },
+  "first_calls_ms": [
+   716.8,
+   333.1
+  ],
+  "delay_ticks_used_max": 10,
+  "execution_horizon": 10,
+  "queue_threshold": 30,
+  "gpu_max_allocated_gb": 10.22
+ },
+ "calls": [
+  {
+   "call": 0,
+   "with_prefix": false,
+   "delay_ticks": 0,
+   "ms": 716.8
+  },
+  {
+   "call": 1,
+   "with_prefix": true,
+   "delay_ticks": 0,
+   "ms": 333.1
+  },
+  {
+   "call": 2,
+   "with_prefix": true,
+   "delay_ticks": 0,
+   "ms": 329.1
+  },
+  {
+   "call": 3,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 320.0
+  },
+  {
+   "call": 4,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 313.6
+  },
+  {
+   "call": 5,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 321.0
+  },
+  {
+   "call": 6,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 307.3
+  },
+  {
+   "call": 7,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 308.3
+  },
+  {
+   "call": 8,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 302.7
+  },
+  {
+   "call": 9,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 327.4
+  },
+  {
+   "call": 10,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 323.5
+  },
+  {
+   "call": 11,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 322.5
+  },
+  {
+   "call": 12,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 314.0
+  },
+  {
+   "call": 13,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 309.1
+  },
+  {
+   "call": 14,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 304.9
+  },
+  {
+   "call": 15,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 304.5
+  },
+  {
+   "call": 16,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 303.9
+  },
+  {
+   "call": 17,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 300.8
+  },
+  {
+   "call": 18,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 302.8
+  },
+  {
+   "call": 19,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 292.4
+  },
+  {
+   "call": 20,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 298.1
+  },
+  {
+   "call": 21,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 301.6
+  },
+  {
+   "call": 22,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 294.7
+  },
+  {
+   "call": 23,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 297.9
+  },
+  {
+   "call": 24,
+   "with_prefix": true,
+   "delay_ticks": 10,
+   "ms": 295.9
+  }
+ ]
+}

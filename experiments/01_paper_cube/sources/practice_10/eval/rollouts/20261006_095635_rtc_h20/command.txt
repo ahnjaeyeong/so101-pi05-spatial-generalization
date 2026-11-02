@@ -1,0 +1,1 @@
+./run_rollout.sh rtc_h20 --inference.type=rtc --inference.rtc.execution_horizon=20

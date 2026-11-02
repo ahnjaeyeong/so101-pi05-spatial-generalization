@@ -1,0 +1,86 @@
+                                                                      0                                     1                                     2                                     3
+label                                                                K1                                    K1                                    K1                                    K1
+group                                                                 K                                     K                                     K                                     K
+run                                20261029_170219_32_20000_20k_filt_on  20261029_170219_32_20000_20k_filt_on  20261029_170219_32_20000_20k_filt_on  20261029_170219_32_20000_20k_filt_on
+ds_ep                                                                 0                                     1                                     2                                     3
+cube_x                                                            -8.27                                 -8.29                                 -8.41                                 -8.55
+cube_y                                                            26.84                                 26.84                                 26.38                                 26.46
+cube_yaw_deg                                                      31.17                                 31.19                                  30.7                                -44.96
+coord_status                                               valid_near_K                          valid_near_K                          valid_near_K                          valid_near_K
+coord_status_reason                                                 NaN                                   NaN                                   NaN                                   NaN
+coord_sigma_cm                                                     0.65                                  0.65                                  0.65                                  0.65
+pe_sigma_coord_deg                                                 0.97                                  0.97                                  0.98                                  0.99
+pe_sigma_grasp_deg                                                 2.15                                  2.15                                  2.15                                  2.15
+pe_sigma_coord_note                                       K 판 128 편 검증값                         K 판 128 편 검증값                         K 판 128 편 검증값                         K 판 128 편 검증값
+coord_accuracy_validated                                           True                                  True                                  True                                  True
+photo_minus_K_cm                                                   0.41                                   0.4                                  0.15                                  0.07
+nearest_K                                                            K1                                    K1                                    K1                                    K1
+dist_K_cm                                                          0.41                                   0.4                                  0.15                                  0.07
+dist_nearest_train_cm                                              0.22                                  0.24                                  0.08                                  0.07
+n_train_within_3cm                                                   20                                    19                                    17                                    17
+box_shift_px                                                        2.0                                   3.0                                   2.0                                   2.0
+pe                                                               -35.85                                -35.89                                -35.23                                -35.53
+need                                                              -41.3                                -40.73                                -40.33                                -40.37
+verdict                                                               F                                     F                                     P                                     P
+memo                                                                NaN                                   NaN                                   NaN                                   NaN
+first_chunk_move29                                                -1.95                                -33.79                                 -2.84                                -19.67
+first_chunk_move49                                                -14.8                                -45.99                                -22.06                                -47.14
+first_chunk_dir29                                                  -1.0                                  -1.0                                  -1.0                                  -1.0
+first_chunk_dir29_ok                                               True                                  True                                  True                                  True
+first_chunk_idx29                                                   3.5                                -28.96                                  2.26                                -14.83
+first_chunk_idx49                                                 -9.35                                -41.16                                -16.96                                 -42.3
+first_chunk_gain29                                                 0.05                                  0.83                                  0.07                                  0.49
+first_chunk_gain49                                                 0.36                                  1.13                                  0.55                                  1.17
+first_chunk_idx49_minus_pe                                         26.5                                 -5.27                                 18.26                                 -6.77
+first_chunk_plan_30_49_frac                                        0.31                                   0.3                                  0.48                                  0.68
+pre_close_exec_move_frac_med                                      -0.02                                 -0.02                                  0.06                                  0.09
+pre_close_plan_30_49_frac_med                                      0.02                                  0.26                                  0.01                                  0.11
+pre_close_gain_idx29_med                                          -0.14                                  0.73                                  0.14                                   0.1
+pre_close_off_gain_idx29_med                                      -0.14                                  0.77                                  0.14                                  0.12
+rtc_minus_off_exec_last_abs_med                                    0.38                                  0.31                                   0.4                                  0.38
+first_dir_ok                                                       True                                  True                                  True                                  True
+seam_min                                                          -1.87                                  -1.0                                  -0.5                                 -0.69
+n_seam_le_m5                                                          0                                     0                                     0                                     0
+back_max                                                           7.17                                  10.8                                  6.68                                 15.82
+n_back_ge5                                                            3                                     2                                     2                                     1
+off_seam_min                                                      -11.3                                -16.32                                 -9.41                                 -15.1
+off_back_max                                                       11.3                                 16.32                                 10.12                                 16.48
+servo_lag_ticks                                                       3                                     4                                     4                                     4
+sent_minus_present_moving_p50                                      3.93                                  3.91                                  3.71                                  4.67
+sent_minus_present_moving_p95                                      7.73                                  7.25                                  4.83                                  6.38
+pan_clamp_ticks                                                     259                                     0                                     0                                     0
+onset_s                                                             NaN                                  0.33                                  0.27                                  0.43
+first_close_s                                                       NaN                                 10.53                                 11.83                                 12.43
+pan_err_at_close_sg                                                 NaN                                  4.07                                  9.56                                  9.33
+pan_abs_err_at_close                                                NaN                                  4.07                                  9.56                                  9.33
+pan_err_at_close_over_sigma_coord                                   NaN                                 -4.19                                 -9.72                                 -9.47
+pan_err_at_close_over_sigma_grasp                                   NaN                                 -1.89                                 -4.44                                 -4.34
+state_t90_s                                                         NaN                                  0.97                                   NaN                                   NaN
+n_close                                                               0                                     2                                     2                                     3
+n_chunks                                                             39                                    25                                    30                                    36
+{
+ "by_coord_status": {
+  "valid_near_K": {
+   "n": 4,
+   "n_pe_ok": 4,
+   "photo_minus_K_cm": 0.2750716061570531,
+   "first_chunk_gain29": 0.27879293635487556,
+   "pre_close_exec_move_frac_med": 0.0189033718779683,
+   "pan_abs_err_at_close": 9.33482434558904
+  }
+ },
+ "by_label_group": {
+  "K": {
+   "n": 4,
+   "n_pe_ok": 4,
+   "photo_minus_K_cm": 0.2750716061570531,
+   "first_chunk_gain29": 0.27879293635487556,
+   "pre_close_exec_move_frac_med": 0.0189033718779683,
+   "pan_abs_err_at_close": 9.33482434558904
+  }
+ },
+ "coord_status_counts": {
+  "valid_near_K": 4
+ }
+}
+pe 지표는 valid_near_K · valid_off_K 판만 (off-K 는 좌표 정확도 미검증). raw chunk · RTC · 서보 지표는 모든 판.

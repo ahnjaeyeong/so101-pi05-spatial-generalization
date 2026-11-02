@@ -1,0 +1,42 @@
+{
+ "0": {
+  "frames": 496,
+  "moving_frames": 43,
+  "stale_while_moving": {
+   "observation.images.front": 17,
+   "observation.images.wrist": 5
+  },
+  "mean_rgb": {
+   "front": [
+    105.6,
+    114.5,
+    50.5
+   ],
+   "wrist": [
+    156.6,
+    173.2,
+    105.1
+   ]
+  }
+ },
+ "1": {
+  "frames": 501,
+  "moving_frames": 63,
+  "stale_while_moving": {
+   "observation.images.front": 15,
+   "observation.images.wrist": 8
+  },
+  "mean_rgb": {
+   "front": [
+    101.3,
+    110.1,
+    47.6
+   ],
+   "wrist": [
+    155.3,
+    162.4,
+    93.4
+   ]
+  }
+ }
+}

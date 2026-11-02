@@ -1,0 +1,316 @@
+INFO 2026-11-02 14:19:53 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 20,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 2,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'test/r12_stub_main',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '/tmp/r12_entry_test_20261102_141949/ds_main',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': False,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'r12_stub_test',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/nonexistent/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'r12_stub_test',
+            'num_read_retries': 2,
+            'port': '/nonexistent/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-02 14:19:53 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-02 14:19:53 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "blocked", "ep": 0, "checks": [["WARN", "limit_shoulder_lift", "lift -102.9° — 한계(-104/+104°)까지 1° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -102.9° — d2 접근 구간 범위 [-30, +58] 밖"], ["BLOCK", "nan_elbow_flex", "elbow 값이 숫자가 아님"], ["WARN", "gripper_closed", "그리퍼 1 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -4.0, "shoulder_lift.pos": -102.9, "elbow_flex.pos": NaN, "wrist_flex.pos": 61.8, "wrist_roll.pos": 2.7, "gripper.pos": 1.1}, "action": {"shoulder_pan.pos": -4.0, "shoulder_lift.pos": -102.9, "elbow_flex.pos": NaN, "wrist_flex.pos": 61.8, "wrist_roll.pos": 2.7, "gripper.pos": 1.1}, "run_id": "stubtest"}
+[r12] {"ev": "armed", "ep": 0, "attempt_id": "f6dfa9f7ebb5", "checks": [], "state": {"shoulder_pan.pos": -2.2, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "action": {"shoulder_pan.pos": -2.2, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "discard_previous": false, "setup_pan": [-4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2, -2.2], "run_id": "stubtest"}
+[r12] {"ev": "rec_start", "ep": 0, "attempt_id": "f6dfa9f7ebb5", "state": {"shoulder_pan.pos": -2.2, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "shift_from_armed_deg": 0.0, "run_id": "stubtest"}
+[r12] {"ev": "rec_end", "ep": 0, "attempt_id": "f6dfa9f7ebb5", "frames": 45, "loop_hz_mean": 29.9, "late_ticks": 0, "stall_ticks": 0, "stall_by_cam": {"front": 0, "wrist": 0}, "rerecord": false, "stop": false, "run_id": "stubtest"}
+INFO 2026-11-02 14:19:56 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": true, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "discard_pending", "ep": 1, "run_id": "stubtest"}
+[r12] {"ev": "reset_end", "ep": 1, "discard_previous": true, "run_id": "stubtest"}
+INFO 2026-11-02 14:19:56 ls/utils.py:150 Re-record episode
+INFO 2026-11-02 14:19:56 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "blocked", "ep": 0, "checks": [["WARN", "limit_shoulder_lift", "lift -102.9° — 한계(-104/+104°)까지 1° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -102.9° — d2 접근 구간 범위 [-30, +58] 밖"], ["BLOCK", "nan_elbow_flex", "elbow 값이 숫자가 아님"], ["WARN", "gripper_closed", "그리퍼 1 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -4.0, "shoulder_lift.pos": -102.9, "elbow_flex.pos": NaN, "wrist_flex.pos": 61.8, "wrist_roll.pos": 2.7, "gripper.pos": 1.1}, "action": {"shoulder_pan.pos": -4.0, "shoulder_lift.pos": -102.9, "elbow_flex.pos": NaN, "wrist_flex.pos": 61.8, "wrist_roll.pos": 2.7, "gripper.pos": 1.1}, "run_id": "stubtest"}
+[r12] {"ev": "blocked", "ep": 0, "checks": [["BLOCK", "pan_abs", "|pan| 96.0° > 95° — Pan 을 안쪽으로"]], "state": {"shoulder_pan.pos": 96.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "action": {"shoulder_pan.pos": 96.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "run_id": "stubtest"}
+[r12] {"ev": "armed", "ep": 0, "attempt_id": "dfad5ca20b6e", "checks": [], "state": {"shoulder_pan.pos": 10.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "action": {"shoulder_pan.pos": 10.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "discard_previous": false, "setup_pan": [-4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, -4.0, 96.0, 96.0, 96.0, 96.0, 96.0, 96.0, 96.0, 96.0, 96.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0], "run_id": "stubtest"}
+INFO 2026-11-02 14:19:57 le_timer.py:559 Cadence (discarded episode): 29.88 Hz vs 30 Hz target · 45 ticks, 1.5 s measured · 0/44 ticks over the 33.3 ms budget (work mean 1.1 ms, worst 2.7 ms)
+[r12] {"ev": "rec_start", "ep": 0, "attempt_id": "dfad5ca20b6e", "state": {"shoulder_pan.pos": 10.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "shift_from_armed_deg": 0.0, "run_id": "stubtest"}
+[r12] {"ev": "rec_end", "ep": 0, "attempt_id": "dfad5ca20b6e", "frames": 30, "loop_hz_mean": 29.94, "late_ticks": 0, "stall_ticks": 0, "stall_by_cam": {"front": 0, "wrist": 0}, "rerecord": false, "stop": false, "run_id": "stubtest"}
+INFO 2026-11-02 14:19:58 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": true, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "setup_note", "ep": 1, "msg": "준비 시작 때 리더−팔로워 30° — 팔로워가 리더 쪽으로 빠르게 따라감 (녹화 안 됨). 저장 중에는 리더를 그대로 두세요", "run_id": "stubtest"}
+[r12] {"ev": "reset_end", "ep": 1, "discard_previous": false, "run_id": "stubtest"}
+Map:   0%|          | 0/30 [00:00<?, ? examples/s]Map: 100%|██████████| 30/30 [00:00<00:00, 2569.09 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-02 14:19:59 ls/utils.py:150 Recording episode 1
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": false, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "setup_note", "ep": 1, "msg": "준비 시작 때 리더−팔로워 30° — 팔로워가 리더 쪽으로 빠르게 따라감 (녹화 안 됨). 저장 중에는 리더를 그대로 두세요", "run_id": "stubtest"}
+[r12] {"ev": "blocked", "ep": 1, "checks": [["BLOCK", "diff_shoulder_pan", "pan 리더−팔로워 30° > 25° — 팔로워가 막혀 밀고 있거나 아직 움직이는 중 (팔을 멈추고 다시 →)"]], "state": {"shoulder_pan.pos": 10.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "action": {"shoulder_pan.pos": 40.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "run_id": "stubtest"}
+[r12] {"ev": "armed", "ep": 1, "attempt_id": "a19990e19ba3", "checks": [], "state": {"shoulder_pan.pos": -20.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "action": {"shoulder_pan.pos": -20.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "discard_previous": false, "setup_pan": [10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0, -20.0], "run_id": "stubtest"}
+INFO 2026-11-02 14:19:59 le_timer.py:559 Cadence (episode 0): 29.91 Hz vs 30 Hz target · 30 ticks, 1.0 s measured · 0/29 ticks over the 33.3 ms budget (work mean 1.2 ms, worst 4.1 ms)
+[r12] {"ev": "rec_start", "ep": 1, "attempt_id": "a19990e19ba3", "state": {"shoulder_pan.pos": -20.0, "shoulder_lift.pos": 17.5, "elbow_flex.pos": 7.1, "wrist_flex.pos": 73.4, "wrist_roll.pos": 4.4, "gripper.pos": 28.2}, "shift_from_armed_deg": 0.0, "run_id": "stubtest"}
+[r12] {"ev": "rec_end", "ep": 1, "attempt_id": "a19990e19ba3", "frames": 30, "loop_hz_mean": 29.96, "late_ticks": 0, "stall_ticks": 0, "stall_by_cam": {"front": 0, "wrist": 0}, "rerecord": false, "stop": false, "run_id": "stubtest"}
+Map:   0%|          | 0/30 [00:00<?, ? examples/s]Map: 100%|██████████| 30/30 [00:00<00:00, 2500.48 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: Svt[warn]: [asm level selected : up to neon_i8mm]
+Preset M12 is mapped to M10.
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[mp4 @ 0x3111de00] Starting second pass: moving the moov atom to the beginning of the file
+[mp4 @ 0x31107900] Starting second pass: moving the moov atom to the beginning of the file
+INFO 2026-11-02 14:20:01 le_timer.py:559 Cadence (episode 1): 29.92 Hz vs 30 Hz target · 30 ticks, 1.0 s measured · 0/29 ticks over the 33.3 ms budget (work mean 1.2 ms, worst 2.7 ms)
+INFO 2026-11-02 14:20:01 le_timer.py:606 Cadence summary — whole run, 3 episodes · target 30 Hz (33.3 ms budget per tick): 105 ticks, 102 judged
+  effective cadence: 29.90 Hz over 3.4 s measured
+  ticks over the 33.3 ms work budget: 0/102 (0.0%) — work mean 1.2 ms, worst 4.1 ms
+  loop-body steps (share of measured work):
+    observe      mean   0.19 ms · worst   1.59 ms ·  16.0% of work · 105 calls
+    process_obs  mean   0.04 ms · worst   0.09 ms ·   3.5% of work · 105 calls
+    teleop       mean   0.02 ms · worst   0.03 ms ·   1.7% of work · 105 calls
+    send         mean   0.00 ms · worst   0.00 ms ·   0.2% of work · 105 calls
+    record       mean   0.21 ms · worst   0.91 ms ·  17.4% of work · 105 calls
+    telemetry    mean   0.67 ms · worst   3.74 ms ·  55.5% of work · 105 calls
+  pacing headroom: 32.2 ms slept per tick on average (max 33.1 ms) — near zero means the loop is saturated
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Stop recording
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Exiting
+INFO 2026-11-02 14:20:01 gs/video.py:193 Using video codec: libsvtav1
+INFO 2026-11-02 14:20:01 gs/video.py:193 Using video codec: hevc
+INFO 2026-11-02 14:20:01 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 20,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 2,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'test/r12_stub_esc',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '/tmp/r12_entry_test_20261102_141949/ds_esc',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': False,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'r12_stub_test',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/nonexistent/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'r12_stub_test',
+            'num_read_retries': 2,
+            'port': '/nonexistent/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-02 14:20:01 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "setup_end", "ep": 0, "reason": "stop", "discard_pending": false, "run_id": "stubtest"}
+[r12] {"ev": "stop_before_rec", "ep": 0, "run_id": "stubtest"}
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Re-record episode
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Stop recording
+INFO 2026-11-02 14:20:01 ls/utils.py:150 Exiting
+  ✓ 쉬는 자세 + NaN → BLOCK 이유 = NaN 만 (쉬는 자세 한계·그리퍼 닫힘은 WARN) ['nan_elbow_flex']
+  ✓ |pan| 96° → BLOCK pan_abs 
+  ✓ 결과 단계 → = 저장 뒤 준비 단계 (reset_end → setup_start, 녹화 안 함) 
+  ✓ 저장 중 리더 30° 이동 → 준비 시작 때 알림 + 녹화 시작 BLOCK (diff_shoulder_pan) 
+  ✓ 팔 편 접근 자세 + Pan 오차 −20° 는 안전 조건 통과 (R1-B 시작) 
+  ✓ armed 에 준비 단계 pan 열 (복구 측정용) 25
+  ✓ 판 끝 pan·그리퍼 열 = 녹화 프레임 수 (복구 측정용) 30 / 30
+  ✓ 저장 2편 2
+  ✓ 판 길이 = rec_end 프레임 수 (버린 판 제외) [30, 30] vs [30, 30]
+  ✓ 쉬는 자세(lift −102.9)가 녹화되지 않음 lift min 17.5
+  ✓ ep0 = 버린 뒤 다시 찍은 판 (pan 10°) 
+  ✓ ep1 첫 프레임 = 준비 때 자세 (pan −20°) · 리더−팔로워 차이 0 
+  ✓ action = 리더 값 그대로 (가짜 리더 = 자세) 
+  ✓ timestamp = frame_index/30 
+  ✓ features (이름·dtype·shape·영상 코덱 설정) d2 와 같음 
+  ✓ fps · robot_type · codebase_version d2 와 같음 
+  ✓ 과제 문장 d2 와 같음 (1개) 
+  ✓ 시작 자세 이동 기록 (armed→첫 프레임) 0.0
+  ✓ 준비 중 Esc → 저장 0편, 오류 없음 
+PASS 19/19 · 임시 폴더 /tmp/r12_entry_test_20261102_141949

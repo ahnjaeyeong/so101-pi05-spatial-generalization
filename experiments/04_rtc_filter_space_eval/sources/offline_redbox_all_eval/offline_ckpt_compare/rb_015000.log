@@ -1,0 +1,10 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/015000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+loaded /home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/015000/pretrained_model in 168s, samples 48
+{"ckpt": "/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/015000/pretrained_model", "steps": 10, "all": {"lp_mae": 6.405, "res_std": 1.017, "motion_ratio": 5.535, "seed_spread": 4.474, "gt_motion": 157.441, "n": 96, "grasp_err": 5.577, "grasp_err_joint": [3.5, 4.22, 5.21, 10.99, 3.97, 9.31], "grip_hit": 0.938, "lp_mae_joint": [4.5, 7.35, 8.83, 7.29, 4.06, 2.77]}, "start": {"lp_mae": 7.084, "res_std": 0.924, "motion_ratio": 14.55, "seed_spread": 5.396, "gt_motion": 134.143, "n": 32, "lp_mae_joint": [5.47, 10.42, 11.89, 4.31, 3.33, 0.2]}, "pregrasp": {"lp_mae": 4.957, "res_std": 1.071, "motion_ratio": 1.083, "seed_spread": 3.547, "gt_motion": 132.912, "n": 32, "grasp_err": 5.577, "grasp_err_joint": [3.5, 4.22, 5.21, 10.99, 3.97, 9.31], "grip_hit": 0.938, "lp_mae_joint": [3.86, 4.66, 6.42, 6.35, 3.49, 4.43]}, "carry": {"lp_mae": 7.173, "res_std": 1.057, "motion_ratio": 0.974, "seed_spread": 4.478, "gt_motion": 205.269, "n": 32, "lp_mae_joint": [4.17, 6.97, 8.17, 11.2, 5.36, 3.69]}}

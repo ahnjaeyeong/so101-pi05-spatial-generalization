@@ -1,0 +1,130 @@
+{
+ "disabled = identity": {
+  "pass": true,
+  "detail": ""
+ },
+ "EMA \u03b10.5 small step": {
+  "pass": true,
+  "detail": "arm [0.5 0.5 0.5 0.5 0.5] grip 50.0"
+ },
+ "velocity limit per joint": {
+  "pass": true,
+  "detail": "[2.962 4.632 4.72  4.75  3.929] vs [2.962 4.632 4.72  4.75  3.929]"
+ },
+ "gripper never filtered": {
+  "pass": true,
+  "detail": ""
+ },
+ "ema reset passes x but velocity limit still applies": {
+  "pass": true,
+  "detail": "pan 5.423"
+ },
+ "init=state: first command rate-limited from actual state": {
+  "pass": true,
+  "detail": "[  2.46 -93.87  91.78  78.    90.    30.  ]"
+ },
+ "reset \u2192 no state \u2192 first action passes": {
+  "pass": true,
+  "detail": ""
+ },
+ "multiplier scales vmax": {
+  "pass": true,
+  "detail": ""
+ },
+ "guard starve: not before 15": {
+  "pass": true,
+  "detail": ""
+ },
+ "guard starve: stop at 15 (once)": {
+  "pass": true,
+  "detail": ""
+ },
+ "guard stop only once": {
+  "pass": true,
+  "detail": ""
+ },
+ "guard stall: |cmd-state|>8 & not moving 20 ticks \u2192 stop": {
+  "pass": true,
+  "detail": ""
+ },
+ "startup wait (cold start 22 ticks) does not stop": {
+  "pass": true,
+  "detail": ""
+ },
+ "after first command, 15 starved ticks \u2192 stop": {
+  "pass": true,
+  "detail": ""
+ },
+ "startup: not before 150 ticks": {
+  "pass": true,
+  "detail": ""
+ },
+ "startup: stop at 150 ticks (5 s) without any action": {
+  "pass": true,
+  "detail": ""
+ },
+ "guard stale & horizon events recorded (warn mode)": {
+  "pass": true,
+  "detail": ""
+ },
+ "P0 equivalence: arm joints identical to P0 ema50vc_arm": {
+  "pass": true,
+  "detail": "max |\u0394| 3.09e-06\u00b0 over 53387 ticks"
+ },
+ "gripper = raw (P0 variant velocity-clipped gripper)": {
+  "pass": true,
+  "detail": "P0 clipped gripper on 391/53387 ticks (0.73%) \u2014 intended difference"
+ },
+ "install patched core & episodic send_next_action": {
+  "pass": true,
+  "detail": ""
+ },
+ "wired path: sent == ArmFilter(direct)": {
+  "pass": true,
+  "detail": "(2396, 6) max|\u0394| 0.00e+00"
+ },
+ "wired path: dataset action == sent command": {
+  "pass": true,
+  "detail": ""
+ },
+ "wired path: gripper sent == raw": {
+  "pass": true,
+  "detail": ""
+ },
+ "open-loop replay guard events (expected artefact: recorded state does not follow replayed commands)": {
+  "pass": true,
+  "detail": "['stall', 'stall']"
+ },
+ "log has raw & out per command tick": {
+  "pass": true,
+  "detail": "2396 cmd rows, 8 starved rows"
+ },
+ "episode reset re-initialises from actual state": {
+  "pass": true,
+  "detail": "pan 2.462 grip 20.0"
+ },
+ "wired: episode-start wait of 22 ticks does not stop": {
+  "pass": true,
+  "detail": ""
+ },
+ "starvation: no command sent, stop requested at tick 15": {
+  "pass": true,
+  "detail": "sent during starvation 0, shutdown_event=True"
+ },
+ "RTC merge hook: 35-tick chunk \u2192 stale stop": {
+  "pass": true,
+  "detail": ""
+ },
+ "RTC delay-estimate hook passes value through": {
+  "pass": true,
+  "detail": ""
+ },
+ "stall guard false alarms on real 20k rollout (closed loop, 2404 ticks)": {
+  "pass": true,
+  "detail": "0 trips []"
+ },
+ "stall guard on human teleop (384 eps, no clamp)": {
+  "pass": true,
+  "detail": "0 trips in 188530 frames; first []"
+ }
+}

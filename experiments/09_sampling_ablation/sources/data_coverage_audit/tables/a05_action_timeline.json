@@ -1,0 +1,60 @@
+{
+ "q1": {
+  "net3_med": 1.1868133544921875,
+  "net3_ge3": 19,
+  "path3_med": 2.461538314819336,
+  "net1_med": 0.3076934814453125,
+  "path1_med": 0.35164642333984375,
+  "settle2_before_grasp_med": 4.133333333333334,
+  "reach2_frac_med": 0.11286972416085078
+ },
+ "q3": {
+  "n_windows": 278,
+  "n_eps": 167,
+  "share_of_reduction": {
+   "shoulder_pan": 1.0898877170964012,
+   "shoulder_lift": 0.004664319976492413,
+   "elbow_flex": -0.0018395372065098598,
+   "wrist_flex": -0.0006661015045116857,
+   "wrist_roll": -0.008684089757985845
+  },
+  "main_joint_counts": {
+   "shoulder_pan": 278
+  }
+ },
+ "q3_share_late": {
+  "shoulder_pan": 0.7572435281768799,
+  "shoulder_lift": 0.06464650160503727,
+  "elbow_flex": 0.07107889015394271,
+  "wrist_flex": 0.0569132902019178,
+  "wrist_roll": 0.050117789862222345
+ },
+ "rt_at_reach2": {
+  "abs_med": 0.6903579472109261,
+  "ge1": 81
+ },
+ "roll_pan": {
+  "roll_settle_before_grasp_med": 2.433333333333333,
+  "pan_settle_before_grasp_med": 4.133333333333334,
+  "roll_settles_after_pan": 177,
+  "roll_after_frac_med": 0.3043478701160509,
+  "speed_corr_med": -0.1028473326807169,
+  "corr_droll_dpan_last3": 0.23246524831352153,
+  "abs_droll_last3_med": 2.461538851261139,
+  "roll_total_abs_med": 22.021978497505188
+ },
+ "label_validation": {
+  "n": 7810,
+  "corr_rt_tanlabel": -0.6550945863950011,
+  "corr_rr_radlabel": -0.7928348529315407,
+  "corr_et_tanlabel": -0.36681015023783,
+  "corr_rt_rel_u": 0.14477966196217865,
+  "corr_rt_rel_v": -0.49507640329408986,
+  "corr_rt_tan_0-1s": -0.30945581696166014,
+  "slope_tan_on_rt_0-1s": -0.45044872066201275,
+  "corr_rt_tan_1-2s": -0.5858727244008033,
+  "slope_tan_on_rt_1-2s": -0.7700546819222704,
+  "corr_rt_tan_2-3s": -0.7331081283521695,
+  "slope_tan_on_rt_2-3s": -0.921362921711547
+ }
+}

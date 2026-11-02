@@ -1,0 +1,30 @@
+sig_w26 ridge {'img': {'rel_u_cm': (0.082, 0.97), 'rel_v_cm': (0.083, 0.95)}, 'tab': {'tan_cm': (0.267, 0.6), 'rad_cm': (0.197, 0.9)}, 'img_rot': {'tan_cm': (0.079, 0.97), 'rad_cm': (0.086, 0.97)}, 'tab_roll': {'tan_cm': (0.107, 0.94), 'rad_cm': (0.118, 0.95)}}
+sig_w26 mean {'img': {'rel_u_cm': (0.095, 0.97), 'rel_v_cm': (0.096, 0.93)}, 'tab': {'tan_cm': (0.253, 0.64), 'rad_cm': (0.207, 0.89)}, 'img_rot': {'tan_cm': (0.092, 0.95), 'rad_cm': (0.099, 0.97)}, 'tab_roll': {'tan_cm': (0.123, 0.91), 'rad_cm': (0.149, 0.94)}}
+sig_w26 patch {'img': {'rel_u_cm': (0.113, 0.96), 'rel_v_cm': (0.134, 0.89)}, 'tab': {'tan_cm': (0.283, 0.54), 'rad_cm': (0.22, 0.87)}, 'img_rot': {'tan_cm': (0.132, 0.91), 'rad_cm': (0.114, 0.96)}, 'tab_roll': {'tan_cm': (0.131, 0.91), 'rad_cm': (0.116, 0.96)}}
+sig_w13 ridge {'img': {'rel_u_cm': (0.094, 0.97), 'rel_v_cm': (0.096, 0.94)}, 'tab': {'tan_cm': (0.275, 0.59), 'rad_cm': (0.204, 0.89)}, 'img_rot': {'tan_cm': (0.091, 0.96), 'rad_cm': (0.098, 0.97)}, 'tab_roll': {'tan_cm': (0.12, 0.92), 'rad_cm': (0.142, 0.94)}}
+sig_w13 mean {'img': {'rel_u_cm': (0.157, 0.92), 'rel_v_cm': (0.134, 0.87)}, 'tab': {'tan_cm': (0.287, 0.55), 'rad_cm': (0.242, 0.85)}, 'img_rot': {'tan_cm': (0.139, 0.87), 'rad_cm': (0.153, 0.93)}, 'tab_roll': {'tan_cm': (0.202, 0.77), 'rad_cm': (0.234, 0.85)}}
+sig_w13 patch {'img': {'rel_u_cm': (0.105, 0.95), 'rel_v_cm': (0.134, 0.86)}, 'tab': {'tan_cm': (0.282, 0.54), 'rad_cm': (0.215, 0.87)}, 'img_rot': {'tan_cm': (0.129, 0.89), 'rad_cm': (0.108, 0.95)}, 'tab_roll': {'tan_cm': (0.128, 0.89), 'rad_cm': (0.111, 0.94)}}
+sig_f26 ridge {'img': {'rel_u_cm': (0.598, 0.15), 'rel_v_cm': (0.416, 0.1)}, 'tab': {'tan_cm': (0.476, -0.02), 'rad_cm': (0.611, 0.14)}, 'img_rot': {'tan_cm': (0.401, 0.27), 'rad_cm': (0.599, 0.17)}, 'tab_roll': {'tan_cm': (0.457, 0.07), 'rad_cm': (0.727, -0.18)}}
+sig_f26 mean {'img': {'rel_u_cm': (0.54, 0.29), 'rel_v_cm': (0.417, 0.06)}, 'tab': {'tan_cm': (0.489, -0.06), 'rad_cm': (0.555, 0.28)}, 'img_rot': {'tan_cm': (0.399, 0.28), 'rad_cm': (0.556, 0.29)}, 'tab_roll': {'tan_cm': (0.397, 0.3), 'rad_cm': (0.601, 0.16)}}
+sig_f26 patch {'img': {'rel_u_cm': (0.631, 0.05), 'rel_v_cm': (0.452, 0.02)}, 'tab': {'tan_cm': (0.491, -0.02), 'rad_cm': (0.643, 0.04)}, 'img_rot': {'tan_cm': (0.42, 0.23), 'rad_cm': (0.645, 0.06)}, 'tab_roll': {'tan_cm': (0.426, 0.19), 'rad_cm': (0.632, 0.07)}}
+kv_w_0_0 ridge {'img': {'rel_u_cm': (0.08, 0.98), 'rel_v_cm': (0.078, 0.96)}, 'tab': {'tan_cm': (0.249, 0.65), 'rad_cm': (0.183, 0.91)}, 'img_rot': {'tan_cm': (0.077, 0.97), 'rad_cm': (0.08, 0.98)}, 'tab_roll': {'tan_cm': (0.096, 0.95), 'rad_cm': (0.113, 0.96)}}
+kv_w_0_0 mean {'img': {'rel_u_cm': (0.134, 0.95), 'rel_v_cm': (0.113, 0.92)}, 'tab': {'tan_cm': (0.288, 0.52), 'rad_cm': (0.231, 0.87)}, 'img_rot': {'tan_cm': (0.113, 0.93), 'rad_cm': (0.133, 0.95)}, 'tab_roll': {'tan_cm': (0.15, 0.87), 'rad_cm': (0.166, 0.93)}}
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 365, in <module>
+    T = lambda ii, A=A: np.asarray(A[idx[ii]], np.float32)  # noqa: E731
+
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 357, in main
+    sets = [s for s in sets if s[0] in args.keys.split(",")]
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 218, in run_cv
+    
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 142, in patch_probe
+    m, a = ridge_cv(Xf[sub], yf[sub], groups)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 96, in ridge_cv
+    err[i] += np.abs(ridge_pred(m, X[te]) - Y[te]).sum()
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 66, in ridge_pred
+    def ridge_pred(m, X):
+    
+KeyboardInterrupt

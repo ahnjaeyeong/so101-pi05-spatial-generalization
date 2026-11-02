@@ -1,0 +1,4 @@
+episode_index,scenario_id,type,position,cube_xy_cm,angle,offset_dir,pan_offset_deg,pan_target_deg,start_xy_cm,status,retake_of,frames,note
+0,R1-UNDER,R1,K3,"-8.5,-3.5",L30,robot_left,-10.6,20.6,"-6.2,0.9",recorded,,582,
+1,R1-OVER,R1,K8,"-25.5,-3.5",0,robot_right,17.9,87.4,"-30.2,-4.5",recorded,,631,
+2,R1-TL,R1,K2,"-8.5,11.5",R30,robot_left,-6.3,-8.2,"-8.7,14.0",recorded,,565,

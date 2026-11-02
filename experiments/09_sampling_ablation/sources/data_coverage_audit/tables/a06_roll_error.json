@@ -1,0 +1,45 @@
+{
+ "F_eps_max_ge1": 37,
+ "F_eps_max_ge15": 3,
+ "leak_close": {
+  "n": 256,
+  "corr": -0.8167935714077137,
+  "slope_cm_per_deg": -0.010974580490330295,
+  "sd": 0.36050711187875173
+ },
+ "reproduce": {
+  "c5_equal": true,
+  "c5_stats": {
+   "cells": 72,
+   "ge1": 38,
+   "rare_1_4": 8,
+   "ge5": 30,
+   "empty": 34,
+   "interior_holes": 0
+  },
+  "s1_equal": true,
+  "s1_stats": {
+   "cells": 72,
+   "ge1": 47,
+   "rare_1_4": 13,
+   "ge5": 34,
+   "empty": 25,
+   "interior_holes": 0
+  },
+  "label_frames": 7810,
+  "label_eps": 256
+ },
+ "roll_tan_corr": {
+  "corr_all": -0.46883462972732376,
+  "corr_within_ep_mean": -0.10119663098841468,
+  "corr_between_ep": -0.7257495674899992,
+  "corr_roll_rt_F": -0.15680877727259046,
+  "corr_roll_tanrel": 0.028963857396919042,
+  "corr_between_ep_F_m2s": -0.251735804248546,
+  "corr_label_vs_F_rel": 0.7411405392914299
+ },
+ "n_eps_maxtan_ge1": 129,
+ "n_corrected_1cm": 108,
+ "n_eps_maxtan_ge15": 39,
+ "n_eps_maxtan_ge2": 2
+}

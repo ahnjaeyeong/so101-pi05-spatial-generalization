@@ -1,0 +1,33 @@
+states 223 {'dense_A0B1': 65, 'S3_near_aligned': 51, 'S1_approach_moving': 40, 'S2_approach_static': 39, 'S6_moving_away': 25, 'S7_post_close_over': 3}
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+0 A0_c00000 dense_A0B1 under repG 0.0 repU 0.0 8s
+10 A0_c00010 dense_A0B1 over repG 0.0 repU 0.0 151s
+20 A0_c00020 dense_A0B1 over repG 0.0 repU 0.0 298s
+30 A0_c00030 dense_A0B1 over repG 0.0 repU 0.0 445s
+40 B1_c00028 dense_A0B1 under repG 0.0 repU 0.0 580s
+50 B1_c00038 dense_A0B1 over repG 0.0 repU 0.0 721s
+60 B1_c00048 dense_A0B1 over repG 0.0 repU 0.0 870s
+70 A3_c00097 S1_approach_moving under repG 0.0 repU 0.0 1011s
+80 K1_c00036 S1_approach_moving under repG 0.0 repU 0.0 1159s
+90 U2_c00089 S1_approach_moving under repG 0.0 repU 0.0 1300s
+100 U6_c00240 S1_approach_moving under repG 0.0 repU 0.0 1442s
+110 A3_c00102 S2_approach_static under repG 0.0 repU 0.0 1562s
+120 K1_c00033 S2_approach_static under repG 0.0 repU 0.0 1675s
+130 U1_c00361 S2_approach_static under repG 0.0 repU 0.0 1789s
+140 U6_c00237 S2_approach_static under repG 0.0 repU 0.0 1901s
+150 A3_c00109 S3_near_aligned aligned repG 0.0 repU 0.0 2028s
+160 B3_c00097 S3_near_aligned aligned repG 0.0 repU 0.0 2165s
+170 K7_c00399 S3_near_aligned aligned repG 0.0 repU 0.0 2300s
+180 U4_c00325 S3_near_aligned aligned repG 0.0 repU 0.0 2437s
+190 U7_c00264 S3_near_aligned aligned repG 0.0 repU 0.0 2571s
+200 B2_c00071 S6_moving_away under repG 0.0 repU 0.0 2705s
+210 U3_c00025 S6_moving_away under repG 0.0 repU 0.0 2839s
+220 U3_c00036 S7_post_close_over over repG 0.0 repU 0.0 2971s
+done 223 2999s

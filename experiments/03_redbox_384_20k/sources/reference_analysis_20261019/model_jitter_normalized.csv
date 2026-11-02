@@ -1,0 +1,4 @@
+ckpt,width_pan,width_lift,width_elbow,width_wflex,width_wroll,width_grip,jit_deg_pan,jit_deg_lift,jit_deg_elbow,jit_deg_wflex,jit_deg_wroll,jit_deg_grip,jit_norm_pan,jit_norm_lift,jit_norm_elbow,jit_norm_wflex,jit_norm_wroll,jit_norm_grip,gt_norm_pan,gt_norm_lift,gt_norm_elbow,gt_norm_wflex,gt_norm_wroll,gt_norm_grip
+"redbox_20k (expert, bs32)",148.3,181.4,194.5,118.9,201.6,54.1,0.76,1.079,1.0,0.795,1.015,0.514,10.25,11.89,10.28,13.37,10.07,19.0,2.6,3.69,4.53,8.58,2.36,15.86
+"cubemark_15k (full, bs4)",129.9,171.2,172.7,78.8,149.3,58.4,0.254,0.439,0.41,0.201,0.273,0.116,3.91,5.13,4.75,5.1,3.66,3.97,2.03,2.79,2.69,5.07,1.47,0.24
+"cubemark_3k (expert, bs8)",129.9,171.2,172.7,78.8,149.3,58.4,0.234,0.32,0.312,0.202,0.24,0.104,3.6,3.74,3.61,5.12,3.22,3.56,2.03,2.79,2.69,5.07,1.47,0.24

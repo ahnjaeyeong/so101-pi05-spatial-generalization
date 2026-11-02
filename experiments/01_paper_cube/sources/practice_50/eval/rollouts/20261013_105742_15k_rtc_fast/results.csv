@@ -1,0 +1,9 @@
+﻿run,ep,verdict,seconds,frames,front_image,wrist_image,memo,ckpt,tag,started,task
+20261013_105742_15k_rtc_fast,000,P,21.8,655,start_images/ep000_front.png,start_images/ep000_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,001,F,29.0,870,start_images/ep001_front.png,start_images/ep001_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,002,P,18.4,552,start_images/ep002_front.png,start_images/ep002_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,003,P,22.5,675,start_images/ep003_front.png,start_images/ep003_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,004,F,14.0,420,start_images/ep004_front.png,start_images/ep004_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,005,F,30.4,911,start_images/ep005_front.png,start_images/ep005_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,006,F,31.8,953,start_images/ep006_front.png,start_images/ep006_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box
+20261013_105742_15k_rtc_fast,007,F,26.5,794,start_images/ep007_front.png,start_images/ep007_wrist.png,,train/pi05_15k/checkpoints/015000,rtc_fast,2026-10-13 10:57,pick up the red cube and put it in the brown box

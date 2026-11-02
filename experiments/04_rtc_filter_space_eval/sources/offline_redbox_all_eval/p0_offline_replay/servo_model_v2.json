@@ -1,0 +1,50 @@
+{
+ "pan": {
+  "d": 2,
+  "kp": 0.5,
+  "kn": 0.4,
+  "vmax": 2.5,
+  "fit_rmse": 0.37,
+  "val_rmse": 0.36
+ },
+ "lift": {
+  "d": 2,
+  "kp": 0.6,
+  "kn": 0.4,
+  "vmax": 3,
+  "fit_rmse": 2.44,
+  "val_rmse": 3.21
+ },
+ "elbow": {
+  "d": 1,
+  "kp": 0.5,
+  "kn": 0.25,
+  "vmax": 2.5,
+  "fit_rmse": 1.42,
+  "val_rmse": 1.92
+ },
+ "wflex": {
+  "d": 2,
+  "kp": 0.5,
+  "kn": 0.6,
+  "vmax": 2,
+  "fit_rmse": 0.9,
+  "val_rmse": 0.85
+ },
+ "wroll": {
+  "d": 2,
+  "kp": 0.5,
+  "kn": 0.55,
+  "vmax": 2.5,
+  "fit_rmse": 0.5,
+  "val_rmse": 0.51
+ },
+ "grip": {
+  "d": 1,
+  "kp": 0.35,
+  "kn": 0.35,
+  "vmax": 2.5,
+  "fit_rmse": 0.7,
+  "val_rmse": 0.57
+ }
+}

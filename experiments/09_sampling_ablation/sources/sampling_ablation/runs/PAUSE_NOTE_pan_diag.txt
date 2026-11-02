@@ -1,0 +1,6 @@
+2026-10-29 11:25:47 사용자 작업지시 (pan_inference_diagnostic, 10-29) 에 따른 sampling_ablation 일시정지.
+- A2_s2001 은 004000 까지 정상 완료하도록 둠 (train_weighted.py 는 --resume 금지 → 중간 중단 시 A2 처음부터 다시 해야 함).
+- run_A2r_s2001.sh, eval_hook.sh 실행 권한 제거 (chmod -x). 결과: A2 점검 후 eval_hook 건너뜀,
+  다음 반복에서 'runs/run_A2r_s2001.sh 없음' 으로 QUEUE_STOPPED (정상 정지 경로). 프로세스 kill 없음.
+- 재개: chmod +x runs/run_A2r_s2001.sh eval_hook.sh ; ./eval_hook.sh A2_s2001 ; 남은 A2r_s2001 · A0_s2002 를 새 큐로.
+  자세한 절차: ~/so101_runs/main_k8/d2/pan_inference_diagnostic/01_training_pause_status.md

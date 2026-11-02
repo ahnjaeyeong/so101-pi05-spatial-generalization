@@ -1,0 +1,1 @@
+/home/user/so101_boxpick/scripts/eval_ui.py --session main/cubemark_v1 --ckpt 8_3000

@@ -1,0 +1,106 @@
+{
+ "probe_frames": 7810,
+ "probe_eps": 256,
+ "label_sd_0_1s": {
+  "n": 2721,
+  "rel_u": 0.4263085478303941,
+  "rel_v": 0.28768065081042876,
+  "tan": 0.30749302883242025,
+  "rad": 0.40905568086878574,
+  "abs_rel_u_p90": 0.6897144575929882,
+  "abs_tan_p90": 0.5092203334103347
+ },
+ "label_sd_1_2s": {
+  "n": 2774,
+  "rel_u": 0.6467857612296289,
+  "rel_v": 0.5156706100939608,
+  "tan": 0.521616802592743,
+  "rad": 0.6858430752762441,
+  "abs_rel_u_p90": 1.17126070058991,
+  "abs_tan_p90": 1.1830403643809828
+ },
+ "label_sd_2_3s": {
+  "n": 2816,
+  "rel_u": 0.8749124803552978,
+  "rel_v": 0.5010670895955601,
+  "tan": 0.6426874432379998,
+  "rad": 0.9355995496086805,
+  "abs_rel_u_p90": 2.1237562927997655,
+  "abs_tan_p90": 1.4579071868757885
+ },
+ "corr_rel_u_vs_tan": -0.3072732522799072,
+ "corr_rel_v_vs_tan": 0.7988547953582436,
+ "roll_sd_probe_frames": 26.620246908062462,
+ "fold0": {
+  "test_eps": 58,
+  "train_eps": 175,
+  "dropped": 23,
+  "test_frames": 1784,
+  "train_frames": 5319,
+  "overlap_eps": 0
+ },
+ "fold1": {
+  "test_eps": 51,
+  "train_eps": 165,
+  "dropped": 40,
+  "test_frames": 1520,
+  "train_frames": 5058,
+  "overlap_eps": 0
+ },
+ "fold2": {
+  "test_eps": 49,
+  "train_eps": 182,
+  "dropped": 25,
+  "test_frames": 1496,
+  "train_frames": 5564,
+  "overlap_eps": 0
+ },
+ "fold3": {
+  "test_eps": 69,
+  "train_eps": 135,
+  "dropped": 52,
+  "test_frames": 2122,
+  "train_frames": 4106,
+  "overlap_eps": 0
+ },
+ "fold4": {
+  "test_eps": 28,
+  "train_eps": 194,
+  "dropped": 34,
+  "test_frames": 857,
+  "train_frames": 5928,
+  "overlap_eps": 0
+ },
+ "label_validity_0.5_1s": {
+  "n": 1215,
+  "corr_tan": 0.3551074124872762,
+  "r2_tan": 0.12610127440340851,
+  "r2_image_uv_linear": 0.09769231986086235,
+  "future_lat_sd_cm": 0.2641941560825179
+ },
+ "label_validity_1_2s": {
+  "n": 2529,
+  "corr_tan": 0.5676317985812017,
+  "r2_tan": 0.32220585876053,
+  "r2_image_uv_linear": 0.2596824259604532,
+  "future_lat_sd_cm": 0.41789068344821445
+ },
+ "label_validity_2_3s": {
+  "n": 2560,
+  "corr_tan": 0.7150045206703111,
+  "r2_tan": 0.5112314645789813,
+  "r2_image_uv_linear": 0.16234255345416615,
+  "future_lat_sd_cm": 0.5293327901013137
+ },
+ "known_eps_per_K": {
+  "K1": 16,
+  "K2": 16,
+  "K3": 16,
+  "K4": 16,
+  "K5": 15,
+  "K6": 16,
+  "K7": 16,
+  "K8": 16
+ },
+ "known_eps_unassigned": 1
+}

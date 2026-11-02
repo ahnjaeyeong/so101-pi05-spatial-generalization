@@ -1,0 +1,126 @@
+{
+ "session": "main_k8/d2",
+ "ckpt": "train/32_20000/pi05_expert_bs32_20k/checkpoints/020000",
+ "tag": "pan_diag",
+ "task": "pick up the red cube and put it in the brown box",
+ "infer": [
+  "--policy.num_inference_steps=5",
+  "--inference.type=rtc",
+  "--inference.rtc.execution_horizon=20",
+  "--inference.rtc.prefix_attention_schedule=EXP",
+  "--inference.queue_threshold=30",
+  "--arm_filter=true"
+ ],
+ "started": "2026-10-29 16:08",
+ "lerobot_args": [
+  "--strategy.type=episodic",
+  "--policy.path=/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+  "--policy.num_inference_steps=5",
+  "--inference.type=rtc",
+  "--inference.rtc.execution_horizon=20",
+  "--robot.type=so101_follower",
+  "--robot.port=/dev/so101_follower",
+  "--robot.id=my_arm",
+  "--robot.max_relative_target=8",
+  "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"} }",
+  "--dataset.repo_id=oxr/rollout_d2_32_20000_20k_pan_diag",
+  "--dataset.root=/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_160831_32_20000_20k_pan_diag/dataset",
+  "--dataset.no_stamp=true",
+  "--dataset.single_task=pick up the red cube and put it in the brown box",
+  "--dataset.num_episodes=11",
+  "--dataset.episode_time_s=3600",
+  "--dataset.reset_time_s=3600",
+  "--dataset.push_to_hub=false",
+  "--fps=30",
+  "--play_sounds=false",
+  "--display_data=false",
+  "--inference.rtc.prefix_attention_schedule=EXP",
+  "--inference.queue_threshold=30",
+  "--arm_filter=true"
+ ],
+ "ended": "2026-10-29 16:23",
+ "exit_code": 0,
+ "episodes": [
+  {
+   "ep": 0,
+   "frames": 1018,
+   "seconds": 33.9,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 1,
+   "frames": 1523,
+   "seconds": 50.8,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 2,
+   "frames": 538,
+   "seconds": 17.9,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 3,
+   "frames": 404,
+   "seconds": 13.5,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 4,
+   "frames": 398,
+   "seconds": 13.3,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 5,
+   "frames": 525,
+   "seconds": 17.5,
+   "verdict": "P",
+   "memo": ""
+  },
+  {
+   "ep": 6,
+   "frames": 668,
+   "seconds": 22.3,
+   "verdict": "P",
+   "memo": ""
+  },
+  {
+   "ep": 7,
+   "frames": 730,
+   "seconds": 24.3,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 8,
+   "frames": 455,
+   "seconds": 15.2,
+   "verdict": "F",
+   "memo": ""
+  },
+  {
+   "ep": 9,
+   "frames": 738,
+   "seconds": 24.6,
+   "verdict": "P",
+   "memo": ""
+  },
+  {
+   "ep": 10,
+   "frames": 549,
+   "seconds": 18.3,
+   "verdict": "P",
+   "memo": ""
+  }
+ ],
+ "saved": 11,
+ "P": 4,
+ "F": 7,
+ "clamp_warnings": 1227
+}

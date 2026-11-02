@@ -1,0 +1,65 @@
+episode_index,layout_id,status,retake_of,objects,frames,note,angles
+0,T3K1-Y2B4O7,recorded,,"red_cube@K1(-8.5,26.5); yellow_cube@K2(-8.5,11.5); blue_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5)",422,,K1:45;K2:0;K4:45;K7:L30
+1,T3K6-O2G4,recorded,,"red_cube@K6(-17.0,-3.5); orange_cube@K2(-8.5,11.5); green_cube@K4(-17.0,26.5)",430,,K6:R30;K2:R30;K4:0
+2,T3K3-O4,recorded,,"red_cube@K3(-8.5,-3.5); orange_cube@K4(-17.0,26.5)",449,,K3:L30;K4:R30
+3,T3K8-O1G3Y7,recorded,,"red_cube@K8(-25.5,-3.5); orange_cube@K1(-8.5,26.5); green_cube@K3(-8.5,-3.5); yellow_cube@K7(-25.5,26.5)",463,,K8:0;K1:L30;K3:45;K7:0
+4,T3K7-Y1O8,recorded,,"red_cube@K7(-25.5,26.5); yellow_cube@K1(-8.5,26.5); orange_cube@K8(-25.5,-3.5)",605,,K7:45;K1:45;K8:L30
+5,T3K4-B2,recorded,,"red_cube@K4(-17.0,26.5); blue_cube@K2(-8.5,11.5)",391,,K4:R30;K2:45
+6,T3K2-B3G4,recorded,,"red_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",406,,K2:L30;K3:R30;K4:L30
+7,T3K5-G1O6G8,recorded,,"red_cube@K5(-17.0,11.5); green_cube@K1(-8.5,26.5); orange_cube@K6(-17.0,-3.5); green_cube@K8(-25.5,-3.5)",376,,K5:0;K1:0;K6:R30;K8:0
+8,T3K6-Y1Y2,recorded,,"red_cube@K6(-17.0,-3.5); yellow_cube@K1(-8.5,26.5); yellow_cube@K2(-8.5,11.5)",426,,K6:45;K1:R30;K2:L30
+9,T3K4-B1O5Y8,recorded,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); orange_cube@K5(-17.0,11.5); yellow_cube@K8(-25.5,-3.5)",525,,K4:0;K1:45;K5:0;K8:45
+10,T3K7-B8,recorded,,"red_cube@K7(-25.5,26.5); blue_cube@K8(-25.5,-3.5)",538,,K7:L30;K8:R30
+11,T3K8-G1O2O7,recorded,,"red_cube@K8(-25.5,-3.5); green_cube@K1(-8.5,26.5); orange_cube@K2(-8.5,11.5); orange_cube@K7(-25.5,26.5)",520,,K8:R30;K1:L30;K2:45;K7:R30
+12,T3K3-O2O5,recorded,,"red_cube@K3(-8.5,-3.5); orange_cube@K2(-8.5,11.5); orange_cube@K5(-17.0,11.5)",407,,K3:0;K2:0;K5:L30
+13,T3K5-G3,recorded,,"red_cube@K5(-17.0,11.5); green_cube@K3(-8.5,-3.5)",347,,K5:L30;K3:0
+14,T3K1-Y6O7,recorded,,"red_cube@K1(-8.5,26.5); yellow_cube@K6(-17.0,-3.5); orange_cube@K7(-25.5,26.5)",492,,K1:R30;K6:45;K7:45
+15,T3K2-O3B5G8,recorded,,"red_cube@K2(-8.5,11.5); orange_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5); green_cube@K8(-25.5,-3.5)",476,,K2:45;K3:L30;K5:R30;K8:R30
+16,T3K8-G6Y7,recorded,,"red_cube@K8(-25.5,-3.5); green_cube@K6(-17.0,-3.5); yellow_cube@K7(-25.5,26.5)",419,,K8:L30;K6:L30;K7:0
+17,T3K4-G2B3B7,recorded,,"red_cube@K4(-17.0,26.5); green_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5); blue_cube@K7(-25.5,26.5)",453,,K4:45;K2:R30;K3:L30;K7:45
+18,T3K1-Y3B6G7,recorded,,"red_cube@K1(-8.5,26.5); yellow_cube@K3(-8.5,-3.5); blue_cube@K6(-17.0,-3.5); green_cube@K7(-25.5,26.5)",454,,K1:0;K3:0;K6:0;K7:L30
+19,T3K7-B6,recorded,,"red_cube@K7(-25.5,26.5); blue_cube@K6(-17.0,-3.5)",466,,K7:R30;K6:45
+20,T3K5-G7O8,recorded,,"red_cube@K5(-17.0,11.5); green_cube@K7(-25.5,26.5); orange_cube@K8(-25.5,-3.5)",564,,K5:45;K7:R30;K8:L30
+21,T3K3-Y6,recorded,,"red_cube@K3(-8.5,-3.5); yellow_cube@K6(-17.0,-3.5)",446,,K3:R30;K6:R30
+22,T3K2-O3Y7,recorded,,"red_cube@K2(-8.5,11.5); orange_cube@K3(-8.5,-3.5); yellow_cube@K7(-25.5,26.5)",360,,K2:0;K3:45;K7:0
+23,T3K6-O2Y7Y8,recorded,,"red_cube@K6(-17.0,-3.5); orange_cube@K2(-8.5,11.5); yellow_cube@K7(-25.5,26.5); yellow_cube@K8(-25.5,-3.5)",513,,K6:L30;K2:L30;K7:45;K8:0
+24,T3K2-B1G8,recorded,,"red_cube@K2(-8.5,11.5); blue_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",373,,K2:R30;K1:R30;K8:45
+25,T3K6-G1Y4O8,recorded,,"red_cube@K6(-17.0,-3.5); green_cube@K1(-8.5,26.5); yellow_cube@K4(-17.0,26.5); orange_cube@K8(-25.5,-3.5)",502,,K6:0;K1:0;K4:L30;K8:R30
+26,T3K8-Y7,recorded,,"red_cube@K8(-25.5,-3.5); yellow_cube@K7(-25.5,26.5)",543,,K8:45;K7:R30
+27,T3K5-B3Y4,recorded,,"red_cube@K5(-17.0,11.5); blue_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5)",497,,K5:R30;K3:R30;K4:0
+28,T3K7-G1Y3G5,recorded,,"red_cube@K7(-25.5,26.5); green_cube@K1(-8.5,26.5); yellow_cube@K3(-8.5,-3.5); green_cube@K5(-17.0,11.5)",499,,K7:0;K1:L30;K3:45;K5:45
+29,T3K1-G8,recorded,,"red_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",439,,K1:L30;K8:L30
+30,T3K3-B4O5G8,recorded,,"red_cube@K3(-8.5,-3.5); blue_cube@K4(-17.0,26.5); orange_cube@K5(-17.0,11.5); green_cube@K8(-25.5,-3.5)",427,,K3:45;K4:R30;K5:0;K8:45
+31,T3K4-Y3B5,recorded,,"red_cube@K4(-17.0,26.5); yellow_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",445,,K4:L30;K3:0;K5:L30
+32,T3K5-Y3G4,recorded,,"red_cube@K5(-17.0,11.5); yellow_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",461,,K5:R30;K3:R30;K4:45
+33,T3K1-G8,recorded,,"red_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",443,,K1:0;K8:0
+34,T3K4-B1G5B8,recorded,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); green_cube@K5(-17.0,11.5); blue_cube@K8(-25.5,-3.5)",426,,K4:L30;K1:0;K5:R30;K8:L30
+35,T3K8-Y4O7,recorded,,"red_cube@K8(-25.5,-3.5); yellow_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5)",462,,K8:45;K4:45;K7:L30
+36,T3K6-G3Y4O5,recorded,,"red_cube@K6(-17.0,-3.5); green_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5); orange_cube@K5(-17.0,11.5)",419,,K6:45;K3:L30;K4:0;K5:45
+37,T3K3-G4,recorded,,"red_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",447,,K3:0;K4:R30
+38,T3K2-Y1G7B8,recorded,,"red_cube@K2(-8.5,11.5); yellow_cube@K1(-8.5,26.5); green_cube@K7(-25.5,26.5); blue_cube@K8(-25.5,-3.5)",391,,K2:R30;K1:R30;K7:45;K8:0
+39,T3K7-Y5Y6,recorded,,"red_cube@K7(-25.5,26.5); yellow_cube@K5(-17.0,11.5); yellow_cube@K6(-17.0,-3.5)",514,,K7:L30;K5:L30;K6:L30
+40,T3K6-B8,recorded,,"red_cube@K6(-17.0,-3.5); blue_cube@K8(-25.5,-3.5)",523,,K6:0;K8:R30
+41,T3K1-O3O7G8,recorded,,"red_cube@K1(-8.5,26.5); orange_cube@K3(-8.5,-3.5); orange_cube@K7(-25.5,26.5); green_cube@K8(-25.5,-3.5)",409,,K1:L30;K3:45;K7:0;K8:45
+42,T3K8-G3G6,recorded,,"red_cube@K8(-25.5,-3.5); green_cube@K3(-8.5,-3.5); green_cube@K6(-17.0,-3.5)",655,,K8:R30;K3:L30;K6:0
+43,T3K3-O5B8,recorded,,"red_cube@K3(-8.5,-3.5); orange_cube@K5(-17.0,11.5); blue_cube@K8(-25.5,-3.5)",449,,K3:45;K5:R30;K8:45
+44,T3K5-G4O7G8,recorded,,"red_cube@K5(-17.0,11.5); green_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5); green_cube@K8(-25.5,-3.5)",397,,K5:L30;K4:L30;K7:R30;K8:0
+45,T3K2-B6,recorded,,"red_cube@K2(-8.5,11.5); blue_cube@K6(-17.0,-3.5)",378,,K2:0;K6:0
+46,T3K7-O1Y6,recorded,,"red_cube@K7(-25.5,26.5); orange_cube@K1(-8.5,26.5); yellow_cube@K6(-17.0,-3.5)",387,,K7:R30;K1:45;K6:L30
+47,T3K4-B1O2Y8,recorded,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); orange_cube@K2(-8.5,11.5); yellow_cube@K8(-25.5,-3.5)",422,,K4:45;K1:R30;K2:0;K8:L30
+48,T3K5-G2B7,recorded,,"red_cube@K5(-17.0,11.5); green_cube@K2(-8.5,11.5); blue_cube@K7(-25.5,26.5)",341,,K5:0;K2:45;K7:L30
+49,T3K1-Y8,recorded,,"red_cube@K1(-8.5,26.5); yellow_cube@K8(-25.5,-3.5)",370,,K1:45;K8:R30
+50,T3K3-Y4B6O8,recorded,,"red_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5); blue_cube@K6(-17.0,-3.5); orange_cube@K8(-25.5,-3.5)",368,,K3:R30;K4:R30;K6:45;K8:0
+51,T3K4-G1G5B7,recorded,,"red_cube@K4(-17.0,26.5); green_cube@K1(-8.5,26.5); green_cube@K5(-17.0,11.5); blue_cube@K7(-25.5,26.5)",387,,K4:R30;K1:L30;K5:0;K7:45
+52,T3K2-O6B8,recorded,,"red_cube@K2(-8.5,11.5); orange_cube@K6(-17.0,-3.5); blue_cube@K8(-25.5,-3.5)",393,,K2:L30;K6:R30;K8:L30
+53,T3K6-Y3,recorded,,"red_cube@K6(-17.0,-3.5); yellow_cube@K3(-8.5,-3.5)",399,,K6:L30;K3:R30
+54,T3K8-B2B3,recorded,,"red_cube@K8(-25.5,-3.5); blue_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5)",458,,K8:0;K2:L30;K3:0
+55,T3K7-O1B3B5,recorded,,"red_cube@K7(-25.5,26.5); orange_cube@K1(-8.5,26.5); blue_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",393,,K7:45;K1:45;K3:R30;K5:45
+56,T3K6-B1O3Y5,recorded,,"red_cube@K6(-17.0,-3.5); blue_cube@K1(-8.5,26.5); orange_cube@K3(-8.5,-3.5); yellow_cube@K5(-17.0,11.5)",388,,K6:R30;K1:0;K3:0;K5:L30
+57,T3K5-Y3Y6,recorded,,"red_cube@K5(-17.0,11.5); yellow_cube@K3(-8.5,-3.5); yellow_cube@K6(-17.0,-3.5)",444,,K5:45;K3:45;K6:R30
+58,T3K3-O8,recorded,,"red_cube@K3(-8.5,-3.5); orange_cube@K8(-25.5,-3.5)",466,,K3:L30;K8:R30
+59,T3K1-B2G3B5,recorded,,"red_cube@K1(-8.5,26.5); blue_cube@K2(-8.5,11.5); green_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",375,,K1:R30;K2:R30;K3:L30;K5:45
+60,T3K2-O1,recorded,,"red_cube@K2(-8.5,11.5); orange_cube@K1(-8.5,26.5)",402,계획 고침 T3K2-O1Y8 → T3K2-O1: 노랑(K8)을 안 놓음 (사용자 10-23),K2:45;K1:0
+61,T3K4-O1Y8,recorded,,"red_cube@K4(-17.0,26.5); orange_cube@K1(-8.5,26.5); yellow_cube@K8(-25.5,-3.5)",407,,K4:0;K1:L30;K8:0
+62,T3K7-O2,recorded,,"red_cube@K7(-25.5,26.5); orange_cube@K2(-8.5,11.5)",409,,K7:0;K2:45
+63,T3K8-G3B4B5,recorded,,"red_cube@K8(-25.5,-3.5); green_cube@K3(-8.5,-3.5); blue_cube@K4(-17.0,26.5); blue_cube@K5(-17.0,11.5)",394,,K8:L30;K3:L30;K4:0;K5:R30

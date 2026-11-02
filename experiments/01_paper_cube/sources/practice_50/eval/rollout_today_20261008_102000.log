@@ -1,0 +1,122 @@
+INFO 2026-10-08 10:20:05 _rollout.py:245 Building rollout context...
+INFO 2026-10-08 10:20:05 /context.py:330 Loading policy from '/home/user/so101_runs/practice/practice_50/train/pi05_15k/checkpoints/015000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-10-08 10:22:42 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/practice/practice_50/train/pi05_15k/checkpoints/015000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-10-08 10:22:43 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-10-08 10:22:43 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-10-08 10:22:49 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-10-08 10:22:49 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-10-08 10:22:50 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-10-08 10:22:52 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-10-08 10:22:52 follower.py:131 my_arm SOFollower connected.
+INFO 2026-10-08 10:22:52 /context.py:395 Robot connected: so_follower
+INFO 2026-10-08 10:22:52 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-10-08 10:22:54 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-10-08 10:22:54 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-10-08 10:22:54 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-10-08 10:22:54 /context.py:597 Rollout context assembled successfully
+INFO 2026-10-08 10:22:54 _rollout.py:249 Rollout strategy: base
+INFO 2026-10-08 10:22:54 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: 45.0s
+INFO 2026-10-08 10:22:54 gies/core.py:96 Starting inference engine...
+INFO 2026-10-08 10:22:54 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-10-08 10:22:54 ence/rtc.py:312 RTC inference thread started
+INFO 2026-10-08 10:22:54 ies/core.py:100 Inference engine started
+INFO 2026-10-08 10:22:54 gies/base.py:40 Base strategy ready
+INFO 2026-10-08 10:22:54 _rollout.py:260 Rollout setup complete — starting interactive session (robot idle until /start)
+────────────────────────────────────────────────────────────
+Interactive rollout session — the robot will NOT move until you type /start.
+Task: 'pick up the red cube and put it in the brown box'
+Available commands:
+  /start                  start (or restart) the policy control loop
+  /subtask <text>         set the instruction the policy follows
+  /vqa <text>             ask the policy a question about what it sees
+  /autosteer <goal>|off   let the policy pick its own subtasks toward a high-level goal
+  /reset                  stop movement, return to initial position, restore the task
+  /stop                   end the session and shut down
+  /help                   show this help
+Routine system logs and warnings are muted during the session (errors and the cadence summary of each run still show).
+────────────────────────────────────────────────────────────
+Input not recognized — commands start with '/'. Type /help for the list.
+Input not recognized — commands start with '/'. Type /help for the list.
+Rollout running — task 'pick up the red cube and put it in the brown box'. /subtask <text> to change it, /reset to return to initial position, /stop to shut down.
+Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 1347 ticks, 1346 judged
+  effective cadence: 29.92 Hz over 45.0 s measured
+  ticks over the 33.3 ms work budget: 0/1346 (0.0%) — work mean 2.6 ms, worst 8.2 ms
+  ticks with no action to send (inference engine starved): 24 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 8
+  loop-body steps (share of measured work):
+    observe      mean   1.12 ms · worst   3.82 ms ·  42.8% of work · 1347 calls
+    process_obs  mean   0.02 ms · worst   0.08 ms ·   0.6% of work · 1347 calls
+    infer        mean   0.10 ms · worst   0.47 ms ·   3.8% of work · 1347 calls
+    telemetry    mean   0.00 ms · worst   0.02 ms ·   0.1% of work · 1347 calls
+    query        mean   0.01 ms · worst   0.05 ms ·   0.3% of work · 1347 calls
+    send         mean   1.25 ms · worst   6.86 ms ·  47.0% of work · 1323 calls
+  pacing headroom: 30.8 ms slept per tick on average (max 32.9 ms) — near zero means the loop is saturated
+Rollout run ended on its own (duration reached). Robot is holding position — /start to run again, /reset to return to initial position, /stop to shut down.
+Resetting — returning the robot to its initial position...
+Robot reset — holding at initial position. /start to run.
+Rollout running — task 'pick up the red cube and put it in the brown box'. /subtask <text> to change it, /reset to return to initial position, /stop to shut down.
+Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 1347 ticks, 1346 judged
+  effective cadence: 29.92 Hz over 45.0 s measured
+  ticks over the 33.3 ms work budget: 0/1346 (0.0%) — work mean 2.7 ms, worst 6.0 ms
+  ticks with no action to send (inference engine starved): 9 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 6
+  loop-body steps (share of measured work):
+    observe      mean   1.15 ms · worst   4.43 ms ·  43.0% of work · 1347 calls
+    process_obs  mean   0.02 ms · worst   0.05 ms ·   0.6% of work · 1347 calls
+    infer        mean   0.10 ms · worst   0.32 ms ·   3.7% of work · 1347 calls
+    telemetry    mean   0.00 ms · worst   0.02 ms ·   0.1% of work · 1347 calls
+    query        mean   0.01 ms · worst   0.02 ms ·   0.3% of work · 1347 calls
+    send         mean   1.26 ms · worst   3.74 ms ·  46.8% of work · 1338 calls
+  pacing headroom: 30.7 ms slept per tick on average (max 33.5 ms) — near zero means the loop is saturated
+Rollout run ended on its own (duration reached). Robot is holding position — /start to run again, /reset to return to initial position, /stop to shut down.
+Resetting — returning the robot to its initial position...
+Robot reset — holding at initial position. /start to run.
+Rollout running — task 'pick up the red cube and put it in the brown box'. /subtask <text> to change it, /reset to return to initial position, /stop to shut down.
+Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 1347 ticks, 1346 judged
+  effective cadence: 29.92 Hz over 45.0 s measured
+  ticks over the 33.3 ms work budget: 0/1346 (0.0%) — work mean 2.7 ms, worst 6.3 ms
+  ticks with no action to send (inference engine starved): 9 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 3
+  loop-body steps (share of measured work):
+    observe      mean   1.14 ms · worst   4.69 ms ·  42.8% of work · 1347 calls
+    process_obs  mean   0.02 ms · worst   0.08 ms ·   0.6% of work · 1347 calls
+    infer        mean   0.11 ms · worst   0.82 ms ·   4.0% of work · 1347 calls
+    telemetry    mean   0.00 ms · worst   0.02 ms ·   0.1% of work · 1347 calls
+    query        mean   0.01 ms · worst   0.02 ms ·   0.3% of work · 1347 calls
+    send         mean   1.24 ms · worst   3.12 ms ·  46.5% of work · 1338 calls
+  pacing headroom: 30.7 ms slept per tick on average (max 32.4 ms) — near zero means the loop is saturated
+Rollout run ended on its own (duration reached). Robot is holding position — /start to run again, /reset to return to initial position, /stop to shut down.
+Resetting — returning the robot to its initial position...
+Robot reset — holding at initial position. /start to run.
+Rollout running — task 'pick up the red cube and put it in the brown box'. /subtask <text> to change it, /reset to return to initial position, /stop to shut down.
+Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 970 ticks, 969 judged
+  effective cadence: 29.92 Hz over 32.4 s measured
+  ticks over the 33.3 ms work budget: 0/969 (0.0%) — work mean 2.7 ms, worst 7.8 ms
+  ticks with no action to send (inference engine starved): 10 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 3
+  loop-body steps (share of measured work):
+    observe      mean   1.14 ms · worst   3.72 ms ·  42.7% of work · 970 calls
+    process_obs  mean   0.02 ms · worst   0.04 ms ·   0.6% of work · 970 calls
+    infer        mean   0.10 ms · worst   0.35 ms ·   3.8% of work · 970 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.1% of work · 970 calls
+    query        mean   0.01 ms · worst   0.04 ms ·   0.3% of work · 970 calls
+    send         mean   1.26 ms · worst   3.76 ms ·  46.9% of work · 960 calls
+  pacing headroom: 30.7 ms slept per tick on average (max 32.3 ms) — near zero means the loop is saturated
+INFO 2026-10-08 10:27:51 ls/utils.py:150 Interactive session ended
+INFO 2026-10-08 10:27:51 ies/core.py:209 Stopping inference engine...
+INFO 2026-10-08 10:27:51 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-10-08 10:27:51 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=9
+INFO 2026-10-08 10:27:51 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-10-08 10:27:51 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-10-08 10:27:54 ies/core.py:220 Disconnecting robot...
+INFO 2026-10-08 10:27:55 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-10-08 10:27:55 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-10-08 10:27:55 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-10-08 10:27:55 gies/base.py:96 Base strategy teardown complete
+INFO 2026-10-08 10:27:55 _rollout.py:272 Rollout finished

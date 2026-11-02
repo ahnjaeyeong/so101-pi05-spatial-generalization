@@ -1,0 +1,19 @@
+label verdict  nn_dist_max_cm  pan_on_diff  lift_on_diff  elbow_on_diff  wflex_on_diff  roll_on_diff  z_c_diff  e_r_diff  e_t_diff  w_v_diff  w_u_diff
+   K1       F            0.74          NaN           NaN            NaN            NaN           NaN       NaN       NaN       NaN       NaN       NaN
+   K1       F            0.74        -4.18          7.03         -10.81           3.96         -9.10      2.43      0.23      1.66     -0.15      0.00
+   K1       P            0.38         8.97          0.35           0.44          -1.93         -1.63     -0.12     -0.41     -4.29      0.02     -0.03
+   K1       P            0.44         7.74        -17.85          16.09         -11.21         14.24      2.93      0.88     -3.82     -0.23      0.13
+label pan_on_out lift_on_out elbow_on_out wflex_on_out roll_on_out z_c_out e_r_out e_t_out w_v_out w_u_out
+   K1        NaN         NaN          NaN          NaN         NaN     NaN     NaN     NaN     NaN     NaN
+   K1       True        True         True         True       False    True   False    True    True   False
+   K1       True       False        False        False       False   False    True    True    True   False
+   K1       True        True         True         True       False    True    True    True    True    True
+이웃 사람 p10–p90 폭 중앙: {'pan_on': 1.73, 'lift_on': 9.95, 'elbow_on': 16.29, 'wflex_on': 11.67, 'roll_on': 54.29, 'z_c': 0.45, 'e_r': 0.78, 'e_t': 0.73, 'w_v': 0.05, 'w_u': 0.14}
+label verdict  event   t_s  bottom  z_up  held
+   K1       F      0 10.53    3.18  0.18 False
+   K1       F      1 14.47    1.11  0.00 False
+   K1       P      0 11.83   11.89 11.18  True
+   K1       P      1 15.37    0.83  0.00 False
+   K1       P      0 12.43    1.73  0.12 False
+   K1       P      1 16.00   13.89  8.27  True
+   K1       P      2 19.70    0.97  1.04 False

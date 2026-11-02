@@ -1,0 +1,5 @@
+2026-10-27 17:22:40 watch start pid=3000922 step=8222 last=005000
+2026-10-27 22:26:42 010000 saved: 11583635029 bytes; step now 10003 → SIGINT
+2026-10-27 22:28:42 still alive after SIGINT 120 s → SIGTERM
+2026-10-27 22:28:49 d4 exited. children: 0; launcher time file: start 2026-10-26 14:20:39 end 2026-10-27 22:28:48 rc=143 
+2026-10-27 22:28:49 gpu apps: 

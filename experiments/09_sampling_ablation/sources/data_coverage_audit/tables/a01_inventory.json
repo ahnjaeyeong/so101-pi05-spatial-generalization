@@ -1,0 +1,366 @@
+{
+ "files": {
+  "data/chunk-000/file-000.parquet": 5478743,
+  "meta/episodes/chunk-000/file-000.parquet": 450462,
+  "meta/info.json": 3676,
+  "meta/stats.json": 13069,
+  "meta/tasks.parquet": 2230,
+  "videos/observation.images.front/chunk-000/file-000.mp4": 204898496,
+  "videos/observation.images.front/chunk-000/file-001.mp4": 206363698,
+  "videos/observation.images.front/chunk-000/file-002.mp4": 198790853,
+  "videos/observation.images.front/chunk-000/file-003.mp4": 32805767,
+  "videos/observation.images.wrist/chunk-000/file-000.mp4": 186794820,
+  "videos/observation.images.wrist/chunk-000/file-001.mp4": 161999317
+ },
+ "info": {
+  "codebase_version": "v3.0",
+  "fps": 30,
+  "total_episodes": 256,
+  "total_frames": 123342,
+  "robot_type": "so_follower",
+  "features": {
+   "action": {
+    "dtype": "float32",
+    "shape": [
+     6
+    ],
+    "names": [
+     "shoulder_pan.pos",
+     "shoulder_lift.pos",
+     "elbow_flex.pos",
+     "wrist_flex.pos",
+     "wrist_roll.pos",
+     "gripper.pos"
+    ]
+   },
+   "observation.state": {
+    "dtype": "float32",
+    "shape": [
+     6
+    ],
+    "names": [
+     "shoulder_pan.pos",
+     "shoulder_lift.pos",
+     "elbow_flex.pos",
+     "wrist_flex.pos",
+     "wrist_roll.pos",
+     "gripper.pos"
+    ]
+   },
+   "observation.images.front": {
+    "dtype": "video",
+    "shape": [
+     480,
+     640,
+     3
+    ],
+    "names": [
+     "height",
+     "width",
+     "channels"
+    ]
+   },
+   "observation.images.wrist": {
+    "dtype": "video",
+    "shape": [
+     480,
+     640,
+     3
+    ],
+    "names": [
+     "height",
+     "width",
+     "channels"
+    ]
+   },
+   "timestamp": {
+    "dtype": "float32",
+    "shape": [
+     1
+    ],
+    "names": null
+   },
+   "frame_index": {
+    "dtype": "int64",
+    "shape": [
+     1
+    ],
+    "names": null
+   },
+   "episode_index": {
+    "dtype": "int64",
+    "shape": [
+     1
+    ],
+    "names": null
+   },
+   "index": {
+    "dtype": "int64",
+    "shape": [
+     1
+    ],
+    "names": null
+   },
+   "task_index": {
+    "dtype": "int64",
+    "shape": [
+     1
+    ],
+    "names": null
+   }
+  },
+  "video": {
+   "is_depth_map": false,
+   "video.height": 480,
+   "video.width": 640,
+   "video.codec": "av1",
+   "video.pix_fmt": "yuv420p",
+   "video.fps": 30,
+   "video.channels": 3,
+   "has_audio": false,
+   "video.g": 2,
+   "video.crf": 30,
+   "video.preset": 12,
+   "video.fast_decode": 0,
+   "video.video_backend": "pyav",
+   "video.extra_options": {}
+  }
+ },
+ "timestamp": {
+  "dt_min": 0.03333282470703125,
+  "dt_max": 0.03333473205566406,
+  "frame_index_noncontiguous": 0,
+  "max_abs_ts_minus_frameidx_over_fps": 8.900960288826809e-07,
+  "nan_state": 0,
+  "nan_action": 0
+ },
+ "video_span_minus_length_frames_max": 1.1823431123048067e-11,
+ "value_resolution": {
+  "shoulder_pan": {
+   "state_min_step": 0.08789999999999054,
+   "n_unique_state": 2337,
+   "state_min": -108.48351287841797,
+   "state_max": 103.29669952392578,
+   "action_min": -108.83516693115234,
+   "action_max": 103.73626708984375
+  },
+  "shoulder_lift": {
+   "state_min_step": 0.08789999999999054,
+   "n_unique_state": 1860,
+   "state_min": -103.25274658203125,
+   "state_max": 63.25274658203125,
+   "action_min": -105.27472686767578,
+   "action_max": 62.81318664550781
+  },
+  "elbow_flex": {
+   "state_min_step": 0.08789999999999054,
+   "n_unique_state": 1958,
+   "state_min": -82.06593322753906,
+   "state_max": 96.30769348144531,
+   "action_min": -84.21977996826172,
+   "action_max": 97.84615325927734
+  },
+  "wrist_flex": {
+   "state_min_step": 0.08789999999999054,
+   "n_unique_state": 1009,
+   "state_min": 1.582417607307434,
+   "state_max": 99.95604705810547,
+   "action_min": 0.5714285969734192,
+   "action_max": 100.61538696289062
+  },
+  "wrist_roll": {
+   "state_min_step": 0.08790999999999727,
+   "n_unique_state": 1208,
+   "state_min": -57.010990142822266,
+   "state_max": 55.16483688354492,
+   "action_min": -57.36263656616211,
+   "action_max": 55.69230651855469
+  },
+  "gripper": {
+   "state_min_step": 0.06909999999999883,
+   "n_unique_state": 647,
+   "state_min": 0.8293020129203796,
+   "state_max": 49.619903564453125,
+   "action_min": 0.0,
+   "action_max": 50.040618896484375
+  }
+ },
+ "cadence": {
+  "n_matched": 256,
+  "ticks_eq_length": 256,
+  "hz_min": 29.88,
+  "hz_max": 29.94,
+  "hz_median": 29.92,
+  "over_budget_total": 0,
+  "intervals_total": 123086,
+  "eps_with_over_budget": 0,
+  "work_worst_ms_max": 29.4,
+  "work_mean_ms_median": 2.7,
+  "robot_cfg": {
+   "cfg_max_relative_target": [
+    "None"
+   ],
+   "cfg_position_p_coefficient": [
+    "16"
+   ],
+   "cfg_position_i_coefficient": [
+    "0"
+   ],
+   "cfg_position_d_coefficient": [
+    "32"
+   ],
+   "cfg_use_degrees": [
+    "True"
+   ]
+  }
+ },
+ "calibration": {
+  "my_arm.json": {
+   "path": "/home/user/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+   "mtime": "2026-09-29T08:13:26.312535524",
+   "content": {
+    "shoulder_pan": {
+     "id": 1,
+     "drive_mode": 0,
+     "homing_offset": -1509,
+     "range_min": 830,
+     "range_max": 3338
+    },
+    "shoulder_lift": {
+     "id": 2,
+     "drive_mode": 0,
+     "homing_offset": -1575,
+     "range_min": 856,
+     "range_max": 3215
+    },
+    "elbow_flex": {
+     "id": 3,
+     "drive_mode": 0,
+     "homing_offset": -846,
+     "range_min": 872,
+     "range_max": 3071
+    },
+    "wrist_flex": {
+     "id": 4,
+     "drive_mode": 0,
+     "homing_offset": 1982,
+     "range_min": 808,
+     "range_max": 3130
+    },
+    "wrist_roll": {
+     "id": 5,
+     "drive_mode": 0,
+     "homing_offset": -1758,
+     "range_min": 0,
+     "range_max": 4095
+    },
+    "gripper": {
+     "id": 6,
+     "drive_mode": 0,
+     "homing_offset": 1413,
+     "range_min": 2045,
+     "range_max": 3492
+    }
+   }
+  },
+  "my_leader.json": {
+   "path": "/home/user/.cache/huggingface/lerobot/calibration/teleoperators/so_leader/my_leader.json",
+   "mtime": "2026-09-29T08:13:26.316535473",
+   "content": {
+    "shoulder_pan": {
+     "id": 1,
+     "drive_mode": 0,
+     "homing_offset": -1418,
+     "range_min": 760,
+     "range_max": 3366
+    },
+    "shoulder_lift": {
+     "id": 2,
+     "drive_mode": 0,
+     "homing_offset": 1956,
+     "range_min": 888,
+     "range_max": 3267
+    },
+    "elbow_flex": {
+     "id": 3,
+     "drive_mode": 0,
+     "homing_offset": -1721,
+     "range_min": 817,
+     "range_max": 3031
+    },
+    "wrist_flex": {
+     "id": 4,
+     "drive_mode": 0,
+     "homing_offset": -1458,
+     "range_min": 904,
+     "range_max": 3153
+    },
+    "wrist_roll": {
+     "id": 5,
+     "drive_mode": 0,
+     "homing_offset": -1440,
+     "range_min": 0,
+     "range_max": 4095
+    },
+    "gripper": {
+     "id": 6,
+     "drive_mode": 0,
+     "homing_offset": 1617,
+     "range_min": 2027,
+     "range_max": 3258
+    }
+   }
+  }
+ },
+ "video_sample": {
+  "eps": [
+   17,
+   32,
+   39,
+   51,
+   65,
+   74,
+   105,
+   115,
+   162,
+   167,
+   173,
+   187,
+   192,
+   217,
+   233,
+   241
+  ],
+  "decoded_eq_data": 32,
+  "n": 32,
+  "dup_moving_total": 534,
+  "exact_moving_total": 112,
+  "exact_moving_by_cam": {
+   "front": 61,
+   "wrist": 51
+  },
+  "frames_moving_total": 6976,
+  "dup_moving_by_cam": {
+   "front": [
+    389,
+    3488
+   ],
+   "wrist": [
+    145,
+    3488
+   ]
+  }
+ },
+ "cube_table": {
+  "n": 256,
+  "cube_xy_found": 256,
+  "yaw_measured": 228,
+  "yaw_measured_by_group": {
+   "T1K": 61,
+   "T1R": 54,
+   "T3K": 57,
+   "T3R": 56
+  },
+  "wrist_need_qa": 238
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "plan_err": {
+  "n": 128,
+  "p50": 0.5049509756796392,
+  "p90": 0.9899494936611657,
+  "max": 2.3409399821439245,
+  "mismatch_nearestK": 0
+ },
+ "gap": {
+  "hull_area_cm2": 1250.455,
+  "grid_pts": 4993,
+  "nearest_max": 14.867750334196497,
+  "nearest_p95": 9.888370735285747,
+  "frac_gt2": 0.3558982575605848,
+  "frac_gt2_5": 0.2906068495894252,
+  "frac_n3_le2": 0.4029641498097336,
+  "frac_n3_le5": 0.7550570799118766,
+  "n3_median": 3.0,
+  "frac_nR3_eq0": 0.27518525936310834,
+  "hard_zone_pts": 1544,
+  "ok_pts": 3449,
+  "ok_nearest_max": 3.4409301068170484,
+  "ok_nearest_p95": 2.1954498400100153,
+  "ok_frac_gt2": 0.09046100318933024,
+  "ok_frac_gt2_5": 0.019715859669469413,
+  "ok_n3_median": 4.0,
+  "ok_frac_n3_le2": 0.15888663380690055,
+  "ok_frac_n3_le5": 0.6590316033632937,
+  "ok_frac_nR3_eq0": 0.013917077413743114,
+  "ok_frac_all3_need": 0.5253696723688025,
+  "ok_frac_need_cls_le1": 0.13743113946071325,
+  "ok_min_need_cls_med": 1.0,
+  "ok_frac_any_need_cls_le1": 0.7349956509133082
+ },
+ "ang": {
+  "n_measured": 228,
+  "meas_minus_plan_abs_p50": 4.0,
+  "meas_minus_plan_abs_p90": 11.0
+ },
+ "pan_res_K": {
+  "pan_res_sd_nearK": 2.225419572367288,
+  "pan_res_sd_farK": 2.4053682361886404,
+  "n_near": 129,
+  "n_far": 127
+ }
+}

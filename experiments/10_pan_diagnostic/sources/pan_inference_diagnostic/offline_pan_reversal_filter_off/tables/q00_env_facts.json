@@ -1,0 +1,192 @@
+{
+ "python": "3.12.3",
+ "machine": "aarch64",
+ "node": "localhost.localdomain",
+ "lerobot": "0.6.2",
+ "torch": "2.11.0",
+ "numpy": "2.2.6",
+ "pandas": "2.3.3",
+ "opencv-python-headless": "4.13.0.92",
+ "ckpt": "/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+ "ckpt_model_sha256_first16MB": "8847830fe0ad6fcd",
+ "ckpt_config": {
+  "type": "pi05",
+  "n_obs_steps": 1,
+  "chunk_size": 50,
+  "n_action_steps": 50,
+  "num_inference_steps": 10,
+  "train_expert_only": true
+ },
+ "runs": {
+  "20261029_155513_32_20000_20k_pan_diag": {
+   "opts": {
+    "policy.num_inference_steps": "5",
+    "inference.type": "rtc",
+    "inference.rtc.execution_horizon": "20",
+    "inference.rtc.prefix_attention_schedule": "EXP",
+    "inference.queue_threshold": "30",
+    "robot.max_relative_target": "8",
+    "arm_filter": "true",
+    "rollout_guard": null,
+    "fps": "30"
+   },
+   "rollout_logged_opts": {
+    "arm_filter": true,
+    "alpha": 0.5,
+    "init": "state",
+    "guard": "off",
+    "starve_ticks": 15,
+    "stale_ticks": 30,
+    "stall_ticks": 20,
+    "horizon_count": 10,
+    "startup_ticks": 150,
+    "exec_speed": 1.0,
+    "active": true
+   },
+   "n_saved_eps": 1,
+   "n_chunks": 87,
+   "applied_delay_counts": {
+    "10": 68,
+    "11": 13,
+    "9": 4,
+    "7": 1
+   },
+   "inference_delay_counts": {
+    "12": 85,
+    "0": 2
+   },
+   "pan_out_minus_rtc_absmax": 3.9536999999999978,
+   "pan_sent_ne_goal_in_ticks": 3,
+   "n_ticks": 1727
+  },
+  "20261029_160831_32_20000_20k_pan_diag": {
+   "opts": {
+    "policy.num_inference_steps": "5",
+    "inference.type": "rtc",
+    "inference.rtc.execution_horizon": "20",
+    "inference.rtc.prefix_attention_schedule": "EXP",
+    "inference.queue_threshold": "30",
+    "robot.max_relative_target": "8",
+    "arm_filter": "true",
+    "rollout_guard": null,
+    "fps": "30"
+   },
+   "rollout_logged_opts": {
+    "arm_filter": true,
+    "alpha": 0.5,
+    "init": "state",
+    "guard": "off",
+    "starve_ticks": 15,
+    "stale_ticks": 30,
+    "stall_ticks": 20,
+    "horizon_count": 10,
+    "startup_ticks": 150,
+    "exec_speed": 1.0,
+    "active": true
+   },
+   "n_saved_eps": 11,
+   "n_chunks": 382,
+   "applied_delay_counts": {
+    "11": 261,
+    "10": 99,
+    "9": 6,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "8": 1,
+    "12": 1
+   },
+   "inference_delay_counts": {
+    "13": 382
+   },
+   "pan_out_minus_rtc_absmax": 11.6464,
+   "pan_sent_ne_goal_in_ticks": 45,
+   "n_ticks": 7546
+  },
+  "20261029_170219_32_20000_20k_filt_on": {
+   "opts": {
+    "policy.num_inference_steps": "5",
+    "inference.type": "rtc",
+    "inference.rtc.execution_horizon": "20",
+    "inference.rtc.prefix_attention_schedule": "EXP",
+    "inference.queue_threshold": "30",
+    "robot.max_relative_target": "8",
+    "arm_filter": "true",
+    "rollout_guard": "warn",
+    "fps": "30"
+   },
+   "rollout_logged_opts": {
+    "arm_filter": true,
+    "alpha": 0.5,
+    "init": "state",
+    "guard": "warn",
+    "starve_ticks": 15,
+    "stale_ticks": 30,
+    "stall_ticks": 20,
+    "horizon_count": 10,
+    "startup_ticks": 150,
+    "exec_speed": 1.0,
+    "active": true
+   },
+   "n_saved_eps": 4,
+   "n_chunks": 130,
+   "applied_delay_counts": {
+    "10": 96,
+    "11": 24,
+    "9": 4,
+    "7": 1,
+    "8": 1
+   },
+   "inference_delay_counts": {
+    "12": 128,
+    "0": 2
+   },
+   "pan_out_minus_rtc_absmax": 4.008299999999998,
+   "pan_sent_ne_goal_in_ticks": 259,
+   "n_ticks": 2561
+  },
+  "20261029_170818_32_20000_20k_filt_off": {
+   "opts": {
+    "policy.num_inference_steps": "5",
+    "inference.type": "rtc",
+    "inference.rtc.execution_horizon": "20",
+    "inference.rtc.prefix_attention_schedule": "EXP",
+    "inference.queue_threshold": "30",
+    "robot.max_relative_target": "8",
+    "arm_filter": "false",
+    "rollout_guard": "warn",
+    "fps": "30"
+   },
+   "rollout_logged_opts": {
+    "arm_filter": false,
+    "alpha": 0.5,
+    "init": "state",
+    "guard": "warn",
+    "starve_ticks": 15,
+    "stale_ticks": 30,
+    "stall_ticks": 20,
+    "horizon_count": 10,
+    "startup_ticks": 150,
+    "exec_speed": 1.0,
+    "active": true
+   },
+   "n_saved_eps": 4,
+   "n_chunks": 116,
+   "applied_delay_counts": {
+    "10": 83,
+    "11": 20,
+    "9": 6,
+    "5": 2,
+    "2": 1
+   },
+   "inference_delay_counts": {
+    "12": 114,
+    "0": 2
+   },
+   "pan_out_minus_rtc_absmax": 0.0,
+   "pan_sent_ne_goal_in_ticks": 34,
+   "n_ticks": 2271
+  }
+ },
+ "rtc_guidance_note": "max_guidance_weight: lerobot RTCConfig 기본 (q02 는 10.0 명시, 기존 p16b 와 같음)"
+}

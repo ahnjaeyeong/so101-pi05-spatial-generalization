@@ -1,0 +1,11 @@
+{
+ "A1 − A0 (접근 · 정렬 표집)": {
+  "O1_offline": false,
+  "O2": false,
+  "cell": "없음",
+  "worsening": true,
+  "memorization_flag": false,
+  "delta_available": false,
+  "note": "O1 은 합성 격자 (새 위치 ≥ 2 cm) 대리값 — O1-H (held-out) · 로봇 평가는 보류"
+ }
+}

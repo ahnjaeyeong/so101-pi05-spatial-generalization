@@ -1,0 +1,47 @@
+﻿구분,항목,값,설명
+실행,학습 이름,pi05_expert_bs32_20k,
+실행,학습 폴더,$HOME/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k,
+실행,시간,"2026-10-15 17:52:04 → 2026-10-18 02:31:22 (56시간 39분, 종료 코드 0)",launch 스크립트의 .time 파일
+실행,속도,10.19 s/step,마지막 진행 표시 기준
+데이터,dataset repo_id,oxr/so101_redbox_all,
+데이터,dataset 위치,$HOME/so101_runs/main/redbox_all/dataset,
+데이터,과제 문장,pick up the red cube and put it in the brown box | put all the red cubes in the brown box,rollout 때 이 문장을 그대로 써야 한다
+데이터,사용 에피소드,384 / 384 (전체),
+데이터,전체 프레임 (=샘플),188530,30 fps 기준 프레임 하나가 학습 샘플 하나
+데이터,fps,30,
+데이터,이미지 증강,끔,dataset.image_transforms.enable
+학습량,steps,20000,최적화 횟수
+학습량,batch size,32,GPU 한 번에 넣는 샘플 수
+학습량,gradient accumulation,1,
+학습량,GPU 수 (data parallel),1,
+학습량,실효 batch,32,batch × accumulation × GPU
+학습량,본 샘플 수,"640,000",steps × 실효 batch
+학습량,epoch,3.39,본 샘플 수 ÷ 전체 프레임 — 데이터를 몇 바퀴 봤는지
+학습량,체크포인트,"005000, 010000, 015000, 020000",save_freq=5000
+모델,policy,pi05,
+모델,시작 가중치,lerobot/pi05_base,
+모델,dtype,bfloat16,
+모델,학습 파라미터,"693,422,112","전체 4,143,404,816"
+모델,train_expert_only,True,true 면 action expert 만 학습
+모델,freeze_vision_encoder,True,
+모델,use_peft (LoRA 등),False,
+모델,gradient_checkpointing,True,메모리 절약
+모델,chunk_size / n_action_steps,50 / 50,한 번 추론에 나오는 동작 수 / 그중 실행하는 수
+모델,num_inference_steps (학습 설정값),10,flow 단계 — rollout 때 따로 바꿀 수 있다
+모델,image_resolution,"[224, 224]",
+최적화,optimizer,adamw,
+최적화,learning rate (최고),2.5e-05,
+최적화,learning rate (마지막),2.5e-06,
+최적화,scheduler,cosine_decay_with_warmup,
+최적화,warmup steps,666,설정값 1000 → steps 에 맞춰 자동 축소
+최적화,decay steps,20000,설정값 30000
+최적화,betas,"[0.9, 0.95]",
+최적화,eps,1e-08,
+최적화,weight decay,0.01,
+최적화,grad clip norm,1.0,
+기타,seed,1000,
+기타,num_workers,4,데이터 로더
+기타,log_freq,50,
+결과,loss,"처음 0.154 (step 50) → 마지막 0.024 (step 20000), 최저 0.022 (step 18100)",50 스텝마다 기록 400개
+결과,GPU 메모리 (최대),21.8 GB,nvidia-smi 프로세스
+결과,시스템 메모리 (최대),49.4 GB,통합 메모리 전체 사용량

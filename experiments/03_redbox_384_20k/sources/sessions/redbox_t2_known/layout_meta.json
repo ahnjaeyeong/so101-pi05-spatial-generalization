@@ -1,0 +1,220 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-14 16:24:58",
+ "session": "main/redbox_t2_known",
+ "group": "t2_known",
+ "episodes": 64,
+ "repo_id": "oxr/so101_redbox_t2_known",
+ "task_text": "put all the red cubes in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "b54b7aec6561d4b4c899c9ee0e87354165d53d1948a532864fe238ce9183e1cc",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "layouts": 11,
+  "episodes_per_layout": [
+   4,
+   6,
+   16
+  ],
+  "red_per_position": {
+   "K1": 46,
+   "K2": 46,
+   "K3": 46,
+   "K4": 46
+  },
+  "red_count_episodes": {
+   "2": 24,
+   "3": 24,
+   "4": 16
+  }
+ },
+ "plan_sha256": "a3f665f0882efdbd08efdc13f120c291d2a49b7603c807188468e0487dd65fa8",
+ "resolved": {
+  "group": "t2_known",
+  "task_key": "t2",
+  "task_text": "put all the red cubes in the brown box",
+  "mode": "known",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 1201,
+  "default_session": "main/redbox_t2_known",
+  "repo_id": "oxr/so101_redbox_t2_known",
+  "red_cubes": 4,
+  "red_counts": {
+   "2": 24,
+   "3": 24,
+   "4": 16
+  },
+  "distractors": [],
+  "objects": {
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    7.25,
+    13.8
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    15,
+    75
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "min_blob_area_in_box_px": 40,
+   "in_box_open_px": 3,
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "grip_dip_min": 5,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       6
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       18
+      ],
+      "s": [
+       190,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "swaps": [
+  {
+   "a": 22,
+   "b": 47,
+   "reason": "K2 대신 K3 에 놓음 (첫 화면 확인, 사용자 결정 라벨 바꾸기)",
+   "at": "2026-10-14 17:45"
+  }
+ ]
+}

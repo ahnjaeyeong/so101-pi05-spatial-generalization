@@ -1,0 +1,1 @@
+TASK=t1 STEP=020000 N_EP=1 ./run_rollout.sh test1 

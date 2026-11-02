@@ -1,0 +1,274 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-15 14:39:27",
+ "session": "main/redbox_t3_known",
+ "group": "t3_known",
+ "episodes": 64,
+ "repo_id": "oxr/so101_redbox_t3_known",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "03554b862efa3cb05bd9ecb0e3e1d558f7b28753cc741bc74668afa42007ab29",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "distractor_count_episodes": {
+   "1": 16,
+   "2": 24,
+   "3": 24
+  },
+  "distractor_colors": {
+   "노란 큐브": 34,
+   "주황 큐브": 34,
+   "파란 큐브": 34,
+   "초록 큐브": 34
+  },
+  "red_per_position": {
+   "K1": 16,
+   "K2": 16,
+   "K3": 16,
+   "K4": 16
+  }
+ },
+ "plan_sha256": "c7b1ca5b9e47129827508de3ae8713abd27cd8a723dfe9a237bc6e3a35a33857",
+ "resolved": {
+  "group": "t3_known",
+  "task_key": "t3",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "known",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 1301,
+  "default_session": "main/redbox_t3_known",
+  "repo_id": "oxr/so101_redbox_t3_known",
+  "red_cubes": 1,
+  "red_counts": null,
+  "distractors": [],
+  "distractor_mix": {
+   "pool": [
+    "yellow_cube",
+    "orange_cube",
+    "blue_cube",
+    "green_cube"
+   ],
+   "counts": {
+    "1": 16,
+    "2": 24,
+    "3": 24
+   },
+   "max_per_color": 5
+  },
+  "objects": {
+   "blue_cube": {
+    "size_cm": 2.5,
+    "color": "blue",
+    "label": "파란 큐브"
+   },
+   "green_cube": {
+    "size_cm": 2.5,
+    "color": "green",
+    "label": "초록 큐브"
+   },
+   "orange_cube": {
+    "size_cm": 2.5,
+    "color": "orange",
+    "label": "주황 큐브"
+   },
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   },
+   "yellow_cube": {
+    "size_cm": 2.5,
+    "color": "yellow",
+    "label": "노란 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    7.25,
+    13.8
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    10,
+    45
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "min_blob_area_in_box_px": 40,
+   "in_box_open_px": 3,
+   "cube_area_px": [
+    904.6,
+    1.982,
+    -0.2207,
+    -0.0031
+   ],
+   "cluster_split_ratio": 1.1,
+   "cube_area_scale": {
+    "green": 0.9,
+    "orange": 0.75,
+    "blue": 1.0,
+    "yellow": 0.83
+   },
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "grip_dip_min": 5,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       1
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "orange": [
+     {
+      "h": [
+       3,
+       13
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       130,
+       255
+      ]
+     }
+    ],
+    "yellow": [
+     {
+      "h": [
+       22,
+       34
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       120,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  },
+  "touching_ok": true
+ }
+}

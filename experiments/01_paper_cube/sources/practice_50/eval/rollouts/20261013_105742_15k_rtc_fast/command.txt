@@ -1,0 +1,1 @@
+/home/user/so101_boxpick/scripts/eval_ui.py --session practice/practice_50

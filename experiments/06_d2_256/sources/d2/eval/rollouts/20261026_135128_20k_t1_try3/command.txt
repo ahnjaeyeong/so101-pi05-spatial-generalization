@@ -1,0 +1,1 @@
+TASK=t1 STEP=020000 N_EP=3 ./run_rollout.sh try3 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --policy.num_inference_steps=5 --inference.queue_threshold=30

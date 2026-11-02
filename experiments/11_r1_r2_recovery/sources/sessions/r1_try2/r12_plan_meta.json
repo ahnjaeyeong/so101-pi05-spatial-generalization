@@ -1,0 +1,170 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-02T13:43:14",
+ "group": "r1_try2",
+ "type": "R1",
+ "session": "practice/r1_try2",
+ "repo_id": "oxr/so101_r1_try2",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 4,
+ "episode_time_s": 45,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/r12_scenarios.yaml",
+ "config_sha256": "d403aaa5885f136b8a39b1ca728cb6e192f2e21671e5589a08f7b56dc8bbcc40",
+ "plan_sha256": "0cb84f1807ce6c484c69585a5358954be402f9499f33b4b41758cf1f4c30d4df",
+ "stats": {
+  "scenarios": {
+   "R1-MID-OUT": 1,
+   "R1-MID-VIS": 1,
+   "R1-HOME-VIS": 1,
+   "R1-HOME-OUT": 1
+  },
+  "positions": {
+   "K6": 1,
+   "K4": 1,
+   "K8": 1,
+   "K5": 1
+  },
+  "angles": {
+   "R30": 1,
+   "L30": 1,
+   "45": 1,
+   "0": 1
+  },
+  "offset_dir": {
+   "robot_right": 2,
+   "robot_left": 2
+  }
+ },
+ "scenarios": {
+  "R1-HOME-VIS": {
+   "type": "R1",
+   "label": "R1 · 쉬는 자세 근처 · 큐브 보임",
+   "error_kind": "pan_misaligned",
+   "start_pose_type": "home_near",
+   "wrist_visibility": "visible_or_edge",
+   "pan_offsets_deg": [
+    -15,
+    15,
+    -20,
+    20
+   ],
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세 근처 (팔 접힘, 손목만 들어 탁자를 봄)",
+   "via": "",
+   "x_label": "시작 Pan (녹화 전)",
+   "count": 1,
+   "title": "쉬는 자세 근처에서 Pan 이 큐브 방향과 다름 — 손목 화면에 큐브가 보이거나 가장자리",
+   "offset_dir": "per_episode",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽/오른쪽 15·20° (판마다, 주황 선)",
+   "wrist_expect": "any",
+   "start": "그리퍼 열림. 팔을 접은 쉬는 자세 근처에서 Pan 만 주황 선으로 돌림. 손목을 조금 들어 큐브가 손목 화면에 보이거나 가장자리.",
+   "demo": "녹화 시작 → Pan 을 초록 선(큐브)으로 되돌리며 팔을 펴 접근 → 파지 → 상자 → 쉬는 자세. 틀린 쪽으로 더 돌리지 않는다."
+  },
+  "R1-HOME-OUT": {
+   "type": "R1",
+   "label": "R1 · 쉬는 자세 근처 · 큐브 안 보임",
+   "error_kind": "pan_misaligned",
+   "start_pose_type": "home_near",
+   "wrist_visibility": "absent",
+   "pan_offsets_deg": [
+    -25,
+    25,
+    -30,
+    30
+   ],
+   "start_radial_cm": 0,
+   "start_height": "쉬는 자세 근처 (팔 접힘)",
+   "via": "",
+   "x_label": "시작 Pan (녹화 전)",
+   "count": 1,
+   "title": "쉬는 자세 근처에서 Pan 이 크게 벗어남 — 손목 화면에 큐브 없음, front 에는 보임",
+   "offset_dir": "per_episode",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽/오른쪽 25·30° (판마다, 주황 선 · |Pan| ≤ 92°)",
+   "wrist_expect": "edge_or_absent",
+   "start": "그리퍼 열림. 팔을 접은 채 Pan 만 주황 선으로 크게 돌림. 손목 화면에 큐브 없음 (front 에는 큐브가 보여야 함).",
+   "demo": "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-MID-VIS": {
+   "type": "R1",
+   "label": "R1 · 접근 중간 · 큐브 보임",
+   "error_kind": "pan_misaligned",
+   "start_pose_type": "mid_approach",
+   "wrist_visibility": "visible_or_edge",
+   "pan_offsets_deg": [
+    -15,
+    15,
+    -15,
+    15
+   ],
+   "start_radial_cm": -4,
+   "start_height": "팔 일부 폄, 그리퍼가 탁자 위 8 cm 이상",
+   "via": "",
+   "x_label": "시작 Pan (녹화 전)",
+   "count": 1,
+   "title": "접근 중간 자세에서 Pan 이 큐브 방향과 다름 — 손목 화면에 큐브가 보이거나 가장자리",
+   "offset_dir": "per_episode",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽/오른쪽 15° (판마다, 주황 선)",
+   "wrist_expect": "any",
+   "start": "그리퍼 열림. 팔을 접은 채 Pan 을 주황 선으로 돌린 뒤 팔을 일부 폄 (그리퍼 탁자 위 8 cm 이상, 큐브보다 로봇 쪽). 큐브가 손목 화면에 보이거나 가장자리.",
+   "demo": "녹화 시작 → Pan 을 초록 선(큐브)으로 고치며 접근 → 파지 → 상자 → 쉬는 자세."
+  },
+  "R1-MID-OUT": {
+   "type": "R1",
+   "label": "R1 · 접근 중간 · 큐브 안 보임",
+   "error_kind": "pan_misaligned",
+   "start_pose_type": "mid_approach",
+   "wrist_visibility": "absent",
+   "pan_offsets_deg": [
+    -20,
+    20,
+    -25,
+    25
+   ],
+   "start_radial_cm": -4,
+   "start_height": "팔 일부 폄, 그리퍼가 탁자 위 8 cm 이상",
+   "via": "",
+   "x_label": "시작 Pan (녹화 전)",
+   "count": 1,
+   "title": "접근 중간 자세에서 Pan 이 크게 벗어남 — 손목 화면에 큐브 없음, front 에는 보임",
+   "offset_dir": "per_episode",
+   "offset_mag": "Pan 을 큐브 방향보다 왼쪽/오른쪽 20·25° (판마다, 주황 선). 편 팔로 돌리기 위험하면 20° 로 줄이고 메모",
+   "wrist_expect": "edge_or_absent",
+   "start": "그리퍼 열림. 팔을 접은 채 Pan 을 주황 선으로 돌린 뒤 팔을 일부 폄 (그리퍼 탁자 위 8 cm 이상). 손목 화면에 큐브 없음, front 에는 보임.",
+   "demo": "녹화 시작 → 큐브 쪽으로 Pan 을 되돌려 손목 화면에 큐브를 다시 찾고 → 접근 → 파지 → 상자 → 쉬는 자세."
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "pan_limit_margin_block_deg": 10,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}

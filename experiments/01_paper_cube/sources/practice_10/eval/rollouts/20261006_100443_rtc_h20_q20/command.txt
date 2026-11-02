@@ -1,0 +1,1 @@
+./run_rollout.sh rtc_h20_q20 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=20

@@ -1,0 +1,5 @@
+episode_index,scenario_id,type,position,cube_xy_cm,angle,offset_dir,pan_offset_deg,pan_target_deg,start_xy_cm,status,retake_of,frames,note,error_kind,r1_pan_error_dir,r1_pan_error_deg,r2_local_error_dir,r2_local_error_cm
+0,R1-OVER,R1,K7,"-25.5,26.5",L30,robot_left,-15,-85.7,"-29.7,27.4",planned,,,,overshoot,robot_left,15,,
+1,R1-PAN-R,R1,K5,"-17.0,11.5",R30,robot_right,12,9.4,"-17.2,8.6",planned,,,,wrong_target,robot_right,12,,
+2,R1-DRIFT,R1,K8,"-25.5,-3.5",0,robot_left,-12,57.5,"-22.6,-2.0",planned,,,,drift,robot_left,12,,
+3,R1-PAN-L,R1,K4,"-17.0,26.5",45,robot_left,-12,-58.2,"-20.5,29.1",planned,,,,wrong_target,robot_left,12,,

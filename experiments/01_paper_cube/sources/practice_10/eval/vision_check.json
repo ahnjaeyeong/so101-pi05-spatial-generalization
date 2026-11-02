@@ -1,0 +1,80 @@
+{
+ "onset_frames": {
+  "0": 202,
+  "1": 243,
+  "2": 220,
+  "3": 106,
+  "4": 83,
+  "5": 78,
+  "6": 114,
+  "7": 87,
+  "8": 80,
+  "9": 77
+ },
+ "state_spread_at_onset_deg": {
+  "shoulder_pan": 3.5899999141693115,
+  "shoulder_lift": 12.09000015258789,
+  "elbow_flex": 8.260000228881836,
+  "wrist_flex": 2.8399999141693115,
+  "wrist_roll": 4.639999866485596,
+  "gripper": 0.5799999833106995
+ },
+ "actual_future_spread_deg": {
+  "shoulder_pan": 18.93000030517578,
+  "shoulder_lift": 9.609999656677246,
+  "elbow_flex": 9.430000305175781,
+  "wrist_flex": 4.599999904632568,
+  "wrist_roll": 34.939998626708984,
+  "gripper": 8.380000114440918
+ },
+ "own_pred_vs_actual_mae": {
+  "shoulder_pan": 8.34000015258789,
+  "shoulder_lift": 10.140000343322754,
+  "elbow_flex": 2.940000057220459,
+  "wrist_flex": 1.4299999475479126,
+  "wrist_roll": 17.399999618530273,
+  "gripper": 4.550000190734863
+ },
+ "own_pred_vs_actual_corr": {
+  "shoulder_pan": 0.95,
+  "shoulder_lift": 0.65,
+  "elbow_flex": 0.95,
+  "wrist_flex": 0.85,
+  "wrist_roll": 0.76,
+  "gripper": 0.86
+ },
+ "gray_pred_vs_actual_mae": {
+  "shoulder_pan": 32.18000030517578,
+  "shoulder_lift": 27.450000762939453,
+  "elbow_flex": 5.019999980926514,
+  "wrist_flex": 3.1700000762939453,
+  "wrist_roll": 30.049999237060547,
+  "gripper": 5.599999904632568
+ },
+ "gray_vs_own_mae": {
+  "shoulder_pan": 30.299999237060547,
+  "shoulder_lift": 18.34000015258789,
+  "elbow_flex": 5.179999828338623,
+  "wrist_flex": 1.8700000047683716,
+  "wrist_roll": 15.470000267028809,
+  "gripper": 3.1500000953674316
+ },
+ "swap_vs_own_mae": {
+  "shoulder_pan": 21.139999389648438,
+  "shoulder_lift": 7.360000133514404,
+  "elbow_flex": 4.110000133514404,
+  "wrist_flex": 1.2300000190734863,
+  "wrist_roll": 12.729999542236328,
+  "gripper": 3.1700000762939453
+ },
+ "swap_closer_to_image_episode_pct": {
+  "shoulder_pan": 63.3,
+  "shoulder_lift": 60.0,
+  "elbow_flex": 33.3,
+  "wrist_flex": 43.3,
+  "wrist_roll": 51.1,
+  "gripper": 51.1
+ },
+ "pairs": 90,
+ "horizon_frames": 50
+}

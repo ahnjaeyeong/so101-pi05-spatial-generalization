@@ -1,0 +1,188 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-14 10:47:53",
+ "session": "main/redbox_t1_random",
+ "group": "t1_random",
+ "episodes": 64,
+ "repo_id": "oxr/so101_redbox_t1_random",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "43f7dea2eb32134f366032f8cd752d09160a6d8e22242d5b2050ba335fc657df",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "placement": "free (녹화 뒤 첫 화면에서 위치 역산)"
+ },
+ "plan_sha256": "5a05bf9cba7ac5ad1699377c88cccc72819444472a1eb7802a68e9d7f6ea38d1",
+ "resolved": {
+  "group": "t1_random",
+  "task_key": "t1",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "random",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 1102,
+  "default_session": "main/redbox_t1_random",
+  "repo_id": "oxr/so101_redbox_t1_random",
+  "red_cubes": 1,
+  "distractors": [],
+  "objects": {
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    7.25,
+    13.8
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    10,
+    40
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       6
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       18
+      ],
+      "s": [
+       190,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

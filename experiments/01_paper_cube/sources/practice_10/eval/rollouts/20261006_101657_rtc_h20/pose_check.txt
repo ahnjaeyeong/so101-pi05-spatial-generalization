@@ -1,0 +1,9 @@
+joint                지금       학습 시작 평균            학습 범위  판정
+shoulder_pan       77.5           75.3    71.8 ~   77.8  OK
+shoulder_lift      -4.8           42.8    35.2 ~   45.1  벗어남 40°
+elbow_flex         48.3            5.6     1.0 ~   10.8  벗어남 38°
+wrist_flex         64.1           98.0    91.3 ~   99.6  벗어남 27°
+wrist_roll         24.1            1.5    -5.8 ~   11.7  벗어남 12°
+gripper             4.0            0.8     0.6 ~    0.9  OK
+
+⚠ 학습 데이터 시작 자세와 다름: shoulder_lift, elbow_flex, wrist_flex, wrist_roll. 팔을 녹화 때 시작 자세(접힌 자세)로 옮긴 뒤 실행하는 걸 권장.

@@ -1,0 +1,133 @@
+{
+ "run": "/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_155513_32_20000_20k_pan_diag",
+ "warnings": [],
+ "attempts": [
+  [
+   0,
+   "saved"
+  ]
+ ],
+ "n_chunks": 87,
+ "n_episodes_diag": 1,
+ "infer_ms": {
+  "count": 87.0,
+  "mean": 352.7625160192771,
+  "std": 36.55834011036812,
+  "min": 313.39727400336415,
+  "25%": 344.45255348691717,
+  "50%": 349.7327259974554,
+  "75%": 354.9391260021366,
+  "max": 669.205758953467
+ },
+ "front_age_ms": {
+  "count": 87.0,
+  "mean": 16.554813088057028,
+  "std": 9.47368691938847,
+  "min": -0.585814006626606,
+  "25%": 9.145218529738486,
+  "50%": 15.726833953522146,
+  "75%": 25.436825933866203,
+  "max": 33.83650304749608
+ },
+ "applied_delay": {
+  "10": 68,
+  "11": 13,
+  "9": 4,
+  "0": 1,
+  "7": 1
+ },
+ "inference_delay": {
+  "12": 85,
+  "0": 2
+ },
+ "raw_minus_chunk_absmax": 4.997558593800022e-05,
+ "replay_max_abs_deg": 0.0
+}
+                                                                                                                                                                          0
+episode                                                                                                                                                                   1
+ds_ep                                                                                                                                                                     0
+attempt                                                                                                                                                               saved
+coord_method                       front 시작 사진 → HSV 빨강 마스크 (pregrasp_angles.red_mask_rgb) → 가장 큰 덩어리 중심 (u, v) px → config H_cm_to_px 역변환 (큐브 중심 높이 면) → C frame (x, y) cm
+coord_frame                                                                                                                       C frame (config/redbox8_layouts.yaml), cm
+pe_method                                                                                               pe = −bearing(base −30.55, 11.18) − 0.75° (ac.py, 사람 첫 파지 256 편 맞춤)
+det_n_blobs                                                                                                                                                               1
+det_u                                                                                                                                                            520.370917
+det_v                                                                                                                                                            143.687039
+det_area                                                                                                                                                                949
+det_area_ratio                                                                                                                                                     0.982078
+det_second_ratio                                                                                                                                                        0.0
+det_x                                                                                                                                                            -21.641527
+det_y                                                                                                                                                             30.575051
+cube_x                                                                                                                                                           -21.641527
+cube_y                                                                                                                                                            30.575051
+radius_cm                                                                                                                                                         21.343332
+pe_candidate                                                                                                                                                     -66.088361
+deg_per_cm_tangential                                                                                                                                              2.684481
+coord_sigma_cm                                                                                                                                                      0.65172
+pe_sigma_coord_deg                                                                                                                                                 1.237105
+pe_sigma_grasp_deg                                                                                                                                                 2.150505
+nearest_K                                                                                                                                                                K7
+dist_K_cm                                                                                                                                                          5.611939
+dist_nearest_train_cm                                                                                                                                              1.486159
+n_train_within_3cm                                                                                                                                                        2
+coord_status                                                                                                                                                    valid_off_K
+coord_status_reason                                                                                                                                                        
+coord_accuracy_validated                                                                                                                                              False
+pe_sigma_coord_note                                                                                                     K 판 검증값을 그대로 쓴 참고치 — 이 자리 (off-K) 의 좌표 정확도는 검증되지 않음
+pe                                                                                                                                                               -66.088361
+cube_yaw_deg                                                                                                                                                      -4.641321
+cube_yaw_conf                                                                                                                                                      0.625559
+cube_yaw_note                                                                                                                                                              
+box_shift_px                                                                                                                                                            3.0
+verdict                                                                                                                                                                   F
+memo                                                                                                                                                                    NaN
+s0                                                                                                                                                                    7.033
+onset_tick                                                                                                                                                               10
+first_close_tick                                                                                                                                                        483
+n_close                                                                                                                                                                   2
+n_ticks                                                                                                                                                                1727
+need                                                                                                                                                             -73.121361
+first_chunk_move29                                                                                                                                                -1.653588
+first_chunk_move49                                                                                                                                               -19.283257
+first_chunk_dir29                                                                                                                                                      -1.0
+first_chunk_dir29_ok                                                                                                                                                   True
+first_chunk_id                                                                                                                                                            0
+first_chunk_idx29                                                                                                                                                  5.379379
+first_chunk_idx49                                                                                                                                                 -12.25029
+first_chunk_gain29                                                                                                                                                 0.022614
+first_chunk_gain49                                                                                                                                                 0.263716
+first_chunk_idx49_minus_pe                                                                                                                                        53.838074
+first_chunk_plan_30_49_frac                                                                                                                                        0.241102
+first_chunk_exec_last                                                                                                                                              6.556801
+first_dir_ok                                                                                                                                                           True
+pan_at_close                                                                                                                                                       -61.0989
+pan_err_at_close_sg                                                                                                                                                4.989461
+pan_abs_err_at_close                                                                                                                                               4.989461
+first_close_s                                                                                                                                                          16.1
+onset_s                                                                                                                                                            0.333333
+pan_err_at_close_over_sigma_coord                                                                                                                                 -4.033176
+pan_err_at_close_over_sigma_grasp                                                                                                                                 -2.320134
+state_t90_s                                                                                                                                                        7.633333
+seam_min                                                                                                                                                          -1.299343
+n_seam_le_m5                                                                                                                                                              0
+back_max                                                                                                                                                          16.171524
+n_back_ge5                                                                                                                                                                1
+off_seam_min                                                                                                                                                     -20.781414
+n_off_seam_le_m5                                                                                                                                                          3
+off_back_max                                                                                                                                                      20.781414
+n_off_back_ge5                                                                                                                                                            3
+rtc_minus_off_exec_last_abs_med                                                                                                                                    0.362644
+pre_close_exec_move_frac_med                                                                                                                                       0.056598
+pre_close_plan_30_49_frac_med                                                                                                                                      0.194625
+pre_close_gain_idx29_med                                                                                                                                           0.139069
+pre_close_gain_exec_last_med                                                                                                                                       0.139069
+pre_close_off_gain_idx29_med                                                                                                                                       0.195793
+servo_lag_ticks                                                                                                                                                           3
+servo_lag_err                                                                                                                                                      0.589231
+sent_minus_present_moving_p50                                                                                                                                        4.8896
+sent_minus_present_moving_p95                                                                                                                                      7.951325
+pan_clamp_ticks                                                                                                                                                           3
+filter_change_pan_p95                                                                                                                                               0.71991
+n_chunks                                                                                                                                                                 87
+infer_ms_p50                                                                                                                                                     349.732726
+front_age_ms_p50                                                                                                                                                  15.726834

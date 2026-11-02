@@ -1,0 +1,110 @@
+{
+ "time": "2026-10-29 15:53:01",
+ "checks": [
+  {
+   "name": "d2 020000 pretrained_model sha256 (10-27 기록과 비교)",
+   "status": "OK",
+   "detail": "9 파일, 다름 0 []"
+  },
+  {
+   "name": "d2 020000 config",
+   "status": "INFO",
+   "detail": {
+    "type": "pi05",
+    "chunk_size": 50,
+    "n_action_steps": 50,
+    "num_inference_steps": 10,
+    "max_action_dim": 32,
+    "normalization_mapping": {
+     "VISUAL": "IDENTITY",
+     "STATE": "QUANTILES",
+     "ACTION": "QUANTILES"
+    },
+    "rtc_config": null
+   }
+  },
+  {
+   "name": "평가 코드 sha256",
+   "status": "OK",
+   "detail": {
+    "rollout_logged.py": "8fcd4b6b05bf",
+    "diag_log.py": "b1425bab119e",
+    "arm_filter.py": "a5307329f733",
+    "eval_ui.py": "6dd0d43166be",
+    "mismatch": []
+   }
+  },
+  {
+   "name": "lerobot 설치 파일 = pip RECORD",
+   "status": "OK",
+   "detail": "lerobot-0.6.2.dist-info · 확인 43 파일 · 다름 []"
+  },
+  {
+   "name": "eval_ui --check (ROLLOUT_DIAG=1)",
+   "status": "OK",
+   "detail": "[eval_ui] CHECK_OK policy=/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model strategy=episodic dataset=['oxr/rollout_d2_32_20000_20k_pan_diag', 'pick up the red cube and put it in the brown box', 12, 3600] inference=RTCInferenceConfig(rtc=RTCConfig(enabled=True, mode='guided', prefix_attention_schedule=<RTCAttentionSchedule.EXP: 'EXP'>, max_guidance_weight=10.0, execution_horizon=20, debug=False, debug_maxlen=100), queue_threshold=30) max_relative_target=8.0 fps=30.0 arm_filter={'arm_filter': True, 'alpha': 0.5, 'init': 'state', 'guard': 'o"
+  },
+  {
+   "name": "num_inference_steps (eval_ui 기본 인자)",
+   "status": "INFO",
+   "detail": "eval_ui INFER_DEFAULTS --policy.num_inference_steps=5 (코드 고정, 명령에서 덮어쓰지 않음)"
+  },
+  {
+   "name": "sampling_ablation 정지",
+   "status": "OK",
+   "detail": {
+    "QUEUE_STOPPED": "2026-10-29 13:58:41 runs/run_A2r_s2001.sh 없음",
+    "train_procs": "없음",
+    "run_A2r_exec": false,
+    "A2_ckpts": [
+     "002000",
+     "004000",
+     "last"
+    ],
+    "A2_last": "004000",
+    "A2r_dir": false,
+    "A0_s2002_dir": false
+   }
+  },
+  {
+   "name": "GPU compute 프로세스",
+   "status": "OK",
+   "detail": "없음"
+  },
+  {
+   "name": "다른 lerobot 프로세스",
+   "status": "OK",
+   "detail": "없음"
+  },
+  {
+   "name": "twin 컨테이너",
+   "status": "OK",
+   "detail": "없음"
+  },
+  {
+   "name": "장치 경로 (존재만, 열지 않음)",
+   "status": "OK",
+   "detail": {
+    "/dev/so101_follower": true,
+    "/dev/cam_front": true,
+    "/dev/cam_wrist": true
+   }
+  },
+  {
+   "name": "디스크 여유",
+   "status": "OK",
+   "detail": "354.3 GB"
+  },
+  {
+   "name": "ROLLOUT_DIAG_DIR 환경변수",
+   "status": "OK",
+   "detail": "없음 → diag 는 실행 폴더/diag/ 에 쓰임 (eval_ui 가 ROLLOUT_FILTER_LOG 를 실행 폴더로 둠)"
+  }
+ ],
+ "code_sha256": {
+  "rollout_logged.py": "8fcd4b6b05bfc37612780a9ce24b930188175a9bed1942bf5e54645b15d8feb8",
+  "diag_log.py": "b1425bab119ecc304e9beb1a759422d699fd372faaea35d20d961d31ec83cae7",
+  "arm_filter.py": "a5307329f733c1c439eac66eaf4e1eb0d113e669295abc870ed1f6b0f11a6d74",
+  "eval_ui.py": "6dd0d43166bec0e9097f3729edd8bb3ce9e598d4309725cb8b06552afeeccb80"
+ }
+}

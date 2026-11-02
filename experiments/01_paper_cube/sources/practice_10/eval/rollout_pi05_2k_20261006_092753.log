@@ -1,0 +1,81 @@
+INFO 2026-10-06 09:27:58 _rollout.py:245 Building rollout context...
+INFO 2026-10-06 09:27:58 /context.py:330 Loading policy from '/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-10-06 09:30:35 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-10-06 09:30:36 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-10-06 09:30:36 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-10-06 09:30:42 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-10-06 09:30:42 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-10-06 09:30:44 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-10-06 09:30:45 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-10-06 09:30:45 follower.py:131 my_arm SOFollower connected.
+INFO 2026-10-06 09:30:45 /context.py:395 Robot connected: so_follower
+INFO 2026-10-06 09:30:45 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-10-06 09:30:47 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-10-06 09:30:47 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-10-06 09:30:47 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-10-06 09:30:47 /context.py:597 Rollout context assembled successfully
+INFO 2026-10-06 09:30:47 _rollout.py:249 Rollout strategy: base
+INFO 2026-10-06 09:30:47 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: 20.0s
+INFO 2026-10-06 09:30:47 gies/core.py:96 Starting inference engine...
+INFO 2026-10-06 09:30:47 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-10-06 09:30:47 ence/rtc.py:312 RTC inference thread started
+INFO 2026-10-06 09:30:47 ies/core.py:100 Inference engine started
+INFO 2026-10-06 09:30:47 gies/base.py:40 Base strategy ready
+INFO 2026-10-06 09:30:47 _rollout.py:260 Rollout setup complete — starting interactive session (robot idle until /start)
+────────────────────────────────────────────────────────────
+Interactive rollout session — the robot will NOT move until you type /start.
+Task: 'pick up the red cube and put it in the brown box'
+Available commands:
+  /start                  start (or restart) the policy control loop
+  /subtask <text>         set the instruction the policy follows
+  /vqa <text>             ask the policy a question about what it sees
+  /autosteer <goal>|off   let the policy pick its own subtasks toward a high-level goal
+  /reset                  stop movement, return to initial position, restore the task
+  /stop                   end the session and shut down
+  /help                   show this help
+Routine system logs and warnings are muted during the session (errors and the cadence summary of each run still show).
+────────────────────────────────────────────────────────────
+Rollout running — task 'pick up the red cube and put it in the brown box'. /subtask <text> to change it, /reset to return to initial position, /stop to shut down.
+Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 599 ticks, 598 judged
+  effective cadence: 29.92 Hz over 20.0 s measured
+  ticks over the 33.3 ms work budget: 0/598 (0.0%) — work mean 2.6 ms, worst 5.0 ms
+  ticks with no action to send (inference engine starved): 26 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 2
+  loop-body steps (share of measured work):
+    observe      mean   1.13 ms · worst   2.92 ms ·  43.5% of work · 599 calls
+    process_obs  mean   0.02 ms · worst   0.07 ms ·   0.6% of work · 599 calls
+    infer        mean   0.10 ms · worst   0.46 ms ·   3.7% of work · 599 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.1% of work · 599 calls
+    query        mean   0.01 ms · worst   0.02 ms ·   0.3% of work · 599 calls
+    send         mean   1.27 ms · worst   3.10 ms ·  46.7% of work · 573 calls
+  pacing headroom: 30.8 ms slept per tick on average (max 32.5 ms) — near zero means the loop is saturated
+Rollout run ended on its own (duration reached). Robot is holding position — /start to run again, /reset to return to initial position, /stop to shut down.
+INFO 2026-10-06 09:33:03 ls/utils.py:150 Interactive session ended
+INFO 2026-10-06 09:33:03 ies/core.py:209 Stopping inference engine...
+INFO 2026-10-06 09:33:03 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-10-06 09:33:03 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-10-06 09:33:03 ies/core.py:214 Returning robot to initial position before shutdown...
+WARNING 2026-10-06 09:33:04 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -16.67399267399268,
+                        'safe goal_pos': -16.703296703296704}}
+WARNING 2026-10-06 09:33:04 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -15.835897435897438,
+                        'safe goal_pos': -16.0}}
+WARNING 2026-10-06 09:33:04 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -14.997802197802201,
+                        'safe goal_pos': -15.384615384615383}}
+WARNING 2026-10-06 09:33:04 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -14.159706959706963,
+                        'safe goal_pos': -14.417582417582416}}
+INFO 2026-10-06 09:33:06 ies/core.py:220 Disconnecting robot...
+INFO 2026-10-06 09:33:06 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-10-06 09:33:07 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-10-06 09:33:07 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-10-06 09:33:07 gies/base.py:96 Base strategy teardown complete
+INFO 2026-10-06 09:33:07 _rollout.py:272 Rollout finished

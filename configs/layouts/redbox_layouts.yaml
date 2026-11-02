@@ -1,0 +1,139 @@
+# Red Cube → Brown Box 수집 배치 설정 (scripts/layout_plan.py · check_dataset.py 가 읽는다)
+#
+# 좌표계 (2026-10-13 변경): 탁자 평면, 단위 cm. 원점 = 2026-10-13 보정 때 상자 앞(로봇 쪽) 벽 바깥면의 오른쪽 아래
+#   모서리가 있던 탁자 위 점 (카메라·K 위치와 함께 고정된 기준. 상자를 옮겨도 원점은 그대로).
+#   x = 앞(상자 쪽, front 화면 위쪽), y = 왼쪽(front 화면 왼쪽). 로봇 base 위치는 재지 않았다(계획 계산에는 필요 없음).
+#   C = 지금 상자 앞 벽 바깥면의 오른쪽 끝 (box 값으로 계산, 템플릿 맞춤 기준).
+#   K1–K4 는 사용자 실측 상대거리(1–2 11, 2–3 12, 3–4 12.5, 1–3 22.5, 2–4 19, ③–상자 8 cm) + front 화면 위치로
+#   맞춘 값이다 (거리 잔차 ≤ 0.25 cm, 위치 오차 ±0.4–1.6 cm, 계산한 1–4 = 29.3 cm). 상자 앞 벽 바깥 길이 23.5 cm 가정.
+#   2026-10-13: 상자를 로봇 정면(front 화면 오른쪽 위, 긴 변이 화면 가로 = 로봇 좌우)으로 옮겼다(사용자 확인).
+#   예전 값(practice_50 배치 기준 상자 중심·작업 영역 후보)은 틀리므로 비웠다 → 자로 재서 넣기 전에는 계획을 만들지 않는다.
+#   Known K1–K4 는 사용자가 탁자에 표시함 (front 화면 왼쪽부터 ①②③④ = K1–K4, front_px 는 640x480 화면 위치 참고값).
+#   cm 좌표는 아직 정하지 않았다(null).
+#   순서: ① teleop_view.py 로 도달·충돌·화면 안 여부를 확인하고 자로 잰다
+#         ② `layout_plan.py set-known K1 --from-c <앞>,<오른쪽>` (또는 --xy x,y) 로 좌표를 넣는다 (검사 후 이 파일을 고침)
+#         ③ 시험 녹화(practice/, --allow-unconfirmed) 결과를 보고 `set-known K1 --confirm` · workspace.confirmed: true
+#   좌표가 비어 있으면 계획을 만들지 않고, main/ 세션 계획은 모두 확인된 뒤에만 만든다.
+#
+# 계획을 만든 뒤 이 파일을 고쳐도 이미 만든 계획은 바뀌지 않는다. 계획마다 쓴 값이
+# <세션>/layout_meta.json 에 복사되고, `layout_plan.py verify` 는 그 복사본으로 다시 만들어 비교한다.
+
+version: 1
+
+workspace:
+  confirmed: false
+  # 물체 중심이 들어갈 수 있는 영역 (꼭짓점 순서대로, cm). Known 위치와 Random 위치가 같은 영역을 쓴다.
+  # 도달 범위 확인 뒤 넣는다. 예: [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]
+  polygon_cm: null
+
+box:
+  center_cm: [7.25, 13.8]       # 상자 안쪽 중심. 2026-10-14 사용자가 상자를 지금 자리에 고정 → front 화면에서 앞 벽 바닥 양 끝을
+                                # 역산: 오른쪽 (1.05, 2.07) · 왼쪽 (0.45, 25.53), 길이 23.47 cm, 기울기 1.5° (축 정렬로 근사).
+                                # 2026-10-13 보정 때는 [6.5, 11.75] (C = 원점) 였다
+  inner_size_cm: [12.0, 22.5]   # [x 방향, y 방향] — 지금 배치는 긴 변(22.5)이 로봇 좌우(y). 안쪽 크기는 사용자 실측
+  wall_cm: 0.5                  # 벽 두께 (어림)
+  keepout_cm: 0.0               # 물체 중심과 상자 바깥 사각형 사이 추가 금지 거리 (2026-10-13 사용자 요청으로 없앰, 6.0 → 0).
+                                # 0 이어도 물체가 상자 벽과 겹치는 배치(중심–벽 < 큐브 절반 1.25 cm)는 막는다
+
+objects:                        # size_cm: 한 변. color: check_dataset 의 색 검출 이름 (detection.colors)
+  red_cube:   {size_cm: 2.5, color: red,   label: 빨간 큐브}   # 2026-10-13 사용자 확인: 2.5 cm 정육면체 (5.3 은 practice_50 종이 큐브)
+  blue_cube:  {size_cm: 2.5, color: blue,  label: 파란 큐브}   # 빨간 큐브와 같은 크기로 가정
+  green_cube: {size_cm: 2.5, color: green, label: 초록 큐브}
+  yellow_cube: {size_cm: 2.5, color: yellow, label: 노란 큐브}  # 2026-10-15 사용자: 노랑·주황·파랑·초록 큐브 5개씩 있음
+  orange_cube: {size_cm: 2.5, color: orange, label: 주황 큐브}
+
+# Known 위치 K1–K4. 좌표는 도달 범위 확인 뒤 `layout_plan.py set-known` 으로 넣는다 (손으로 고쳐도 된다).
+# T2 는 네 위치 중 세 곳을 함께 쓰므로 네 위치는 서로 spacing.min_object_distance_cm 이상 떨어져야 한다.
+known_positions:
+  K1: {xy_cm: [-20.2, 31.5], confirmed: true, front_px: [215, 363]}   # ① 화면 왼쪽 아래
+  K2: {xy_cm: [-16.2, 21.3], confirmed: true, front_px: [338, 325]}   # ② 가운데
+  K3: {xy_cm: [-7.8, 12.7], confirmed: true, front_px: [447, 243]}   # ③ 상자 앞 벽 아래
+  K4: {xy_cm: [-15.4, 2.6], confirmed: true, front_px: [558, 328]}   # ④ 로봇 오른쪽, 손목 카메라·케이블 옆
+
+spacing:
+  min_object_distance_cm: 3.5   # 같은 판 안 물체 중심 사이 최소 거리 (Known 조합·Random 모두). 2026-10-14 사용자: "서로 붙어있지만
+                                # 않으면 됨" → 2.5 cm 큐브가 어느 방향으로 돌아가도 닿지 않는 거리(대각선 3.54). 이전 10 → 8 → 3.5
+
+random:
+  # free    = 미리 정하지 않고 녹화할 때 손으로 놓는다 (K1–K4 를 피해서). 위치는 녹화 뒤 첫 화면에서 역산해 검사한다
+  #           (check_dataset.py → qa/positions.csv, 아래 camera 보정 사용). 2026-10-13 사용자 결정.
+  # planned = 아래 작업 영역 안에서 seed 로 좌표를 미리 뽑는다 (workspace.polygon_cm 필요)
+  placement: free
+  known_exclusion_radius_cm: 0.0  # Random 물체가 Known 위치에서 떨어져야 하는 거리. 0 = 제한 없음 (2026-10-14 사용자 결정, 이전 3.0)
+  exclusion_applies_to: all       # all = 모든 물체 · target = 빨간 큐브만
+  quantize_cm: 0.5                # (planned) 자로 놓기 쉽게 좌표를 이 단위로 반올림
+  max_tries: 2000                 # (planned) 한 판 배치를 처음부터 다시 고르는 최대 횟수 (못 찾으면 오류)
+
+# front 카메라 보정: 탁자 평면 좌표(cm, 위 좌표계) → 녹화 화면(640x480) 픽셀. 카메라를 옮기면 다시 맞춰야 한다.
+# 2026-10-13: 표시 ①–④ 실측 거리 + 상자 앞 벽 바닥 모서리 2개를 1280x720 화면에서 함께 맞추고(거리 잔차 ≤ 0.25 cm),
+#   640x480 = 1280x720 의 가로 160–1119 를 1/1.5 로 줄인 화면(특징점 250개, 오차 1 px)이라 그 관계로 옮겼다.
+#   표시 ①–④ 역산 오차 ≤ 0.2 cm, K 근처 1 px ≈ 0.09 cm. 큐브 중심은 바닥보다 높아 역산 위치가 조금(≲1 cm) 치우칠 수 있다.
+camera:
+  front_640x480:
+    H_cm_to_px: [[3.761925, -9.990971, 589.362678], [-7.790239, 0.019007, 176.820281], [0.006368, 0.001593, 1.0]]
+
+tasks:
+  t1:
+    task: pick up the red cube and put it in the brown box   # practice_50 과 같은 문장
+    red_cubes: 1
+    distractors: {count: 0, pool: []}
+    qa: {len_s: [10, 40]}       # 2.5 cm 큐브 시험 녹화 14–18 초 (2026-10-13)
+    known_layouts: auto         # 위치마다 하나 → K1–K4 × 16편
+  t2:
+    task: put all the red cubes in the brown box
+    red_counts: {2: 24, 3: 24, 4: 16}   # 빨강 개수: 편수 (2026-10-14 사용자 결정 — 3개 고정 대신 2~4개 섞기)
+                                # Known: 2개 C(4,2)=6가지×4 · 3개 4가지×6 · 4개 1가지×16 → K 마다 46번
+                                # Random: 판마다 개수를 정함 (배치 ID 끝 nK), 8판 묶음(2개 3·3개 3·4개 2)씩 섞음
+    distractors: {count: 0, pool: []}
+    qa: {len_s: [15, 75]}       # 시험 녹화 3개 24–35 초 → 4개까지 고려해 본 수집 episode_time_s 75
+    known_layouts: auto         # 개수마다 네 위치 중 그 개수를 고르는 모든 조합 (편수는 똑같이)
+  t3:
+    task: pick up the red cube and put it in the brown box   # T1 과 같은 지시, 장면만 다르다
+    red_cubes: 1
+    # 2026-10-15 사용자 결정: 방해 물체 색·개수를 판마다 섞는다 (이전: 파랑·초록 2개 고정, 사전 정의 16배치).
+    # 색은 pool 에서 중복 허용으로 뽑되 세션 전체에서 색마다 거의 같은 수, 한 판에 한 색 max_per_color 개까지 (실물 5개씩).
+    # Known: 빨강 K1–K4 16편씩, 방해는 빨강이 안 쓰는 K 에 1–3개. Random: 자유 배치 2–6개 (배치 ID 끝 -YOBG = 방해 색).
+    distractors:
+      pool: [yellow_cube, orange_cube, blue_cube, green_cube]
+      counts: {known: {1: 16, 2: 24, 3: 24}, random: {2: 12, 3: 13, 4: 13, 5: 13, 6: 13}}
+      max_per_color: 5
+    qa: {len_s: [8, 45]}        # 2026-10-15 사용자: 빨강 1개만 집어 9.6–9.9 초 판이 정상 → 최소 10 → 8 초
+    touching_ok: true           # 2026-10-15 사용자: 자유 배치에서 붙여 놓아도 됨 (잡기 연습) — 간격 규칙 문구·검사를 뺀다
+    known_layouts: auto
+
+# 그룹 = 원본 수집 단위 (세션 하나 = LeRobot 데이터셋 하나). seed 를 바꾸면 다른 계획이 된다.
+groups:
+  t1_known:  {task: t1, mode: known,  episodes: 64, seed: 1101, session: main/redbox_t1_known,  repo_id: oxr/so101_redbox_t1_known}
+  t1_random: {task: t1, mode: random, episodes: 64, seed: 1102, session: main/redbox_t1_random, repo_id: oxr/so101_redbox_t1_random}
+  t2_known:  {task: t2, mode: known,  episodes: 64, seed: 1201, session: main/redbox_t2_known,  repo_id: oxr/so101_redbox_t2_known}
+  t2_random: {task: t2, mode: random, episodes: 64, seed: 1202, session: main/redbox_t2_random, repo_id: oxr/so101_redbox_t2_random}
+  t3_known:  {task: t3, mode: known,  episodes: 64, seed: 1301, session: main/redbox_t3_known,  repo_id: oxr/so101_redbox_t3_known}
+  t3_random: {task: t3, mode: random, episodes: 64, seed: 1302, session: main/redbox_t3_random, repo_id: oxr/so101_redbox_t3_random}
+
+# check_dataset.py 색 검출 (OpenCV HSV: H 0–180, S·V 0–255). 각 색은 범위 목록의 합집합.
+# red 근거 (2026-10-13 기존 세션 측정): 큐브 H 172–178 S 120–230 (practice_10 노란 화면에서는 H 11–15 S 215+),
+#   갈색 상자 H 8–16 S 120–160 V 70–90 → 주황 쪽(H≤18)은 S≥190 일 때만 빨강으로 본다.
+# 노랑·주황·파랑·초록: 2026-10-15 front 사진(5색 큐브 한 줄)으로 측정 — 아래 색마다 주석.
+detection:
+  min_blob_area_px: 100          # 2.5 cm 큐브: 탁자 위 ≈1100 px², 상자 안 벽에 가려지면 164–296 px² (2026-10-13 시험 녹화). 예전 300 은 5.3 cm 큐브 기준
+  min_blob_area_in_box_px: 40   # 끝 화면 상자 안 빨강을 셀 때만 — 앞 벽 바로 뒤에 들어가면 88 px² 까지 작아짐 (2026-10-14 본 수집 ep008)
+  in_box_open_px: 3             # 상자 안 개수의 잡음 지우기 크기 — 5 면 앞 벽 위 3–4 px 띠만 보이는 큐브가 지워짐 (2026-10-14 T1-K ep019·025)
+  cube_area_px: [904.6, 1.982, -0.2207, -0.0031]   # 탁자 위 큐브 한 개 넓이 a = c0 + c1·y + c2·x + c3·y² (front 640x480 px). T1 128판으로 맞춤 (2026-10-15) — 낱개 0.88–1.14배
+  cluster_split_ratio: 1.1      # 붙은 덩어리 큐브 수 = round(넓이 / (한 개 넓이 × 이 값)). 붙은 2·3·4개 = 2.1·3.0–3.3·4.5배
+  cube_area_scale: {green: 0.90, orange: 0.85, blue: 1.0, yellow: 0.83}   # 색마다 검출 넓이 / 빨강 (같은 2.5 cm 큐브, 2026-10-15 5색 사진 5장: 주황 0.70–0.78)
+  in_box_margin_px: 10          # 상자 사각형을 이만큼 넓혀서 안/밖 판정
+  position_tol_px: 25           # 계획 위치(화면 투영)와 검출 위치 차이 허용
+  distractor_move_tol_px: 20    # 방해 물체가 처음보다 이만큼 넘게 옮겨지면 ⚠
+  grip_dip_min: 5               # 그리퍼 잡았다 놓기 판정 (열린 구간 안에서 이만큼 닫혔다 열림). 2.5 cm 큐브는 조금만 열어 7 정도 (기본 8)
+  colors:
+    red:                         # 2026-10-15 5색 사진: 빨강 큐브 H 171–179 (+0–2 조금) · 주황 큐브 H 2–12 → 빨강은 H ≤1 까지만
+      - {h: [160, 180], s: [90, 255], v: [60, 255]}   #   (이전 {0–6, S≥150} · {0–18, S≥190} 은 주황을 빨강으로 셈. T1·T2 QA 다시 돌려 확인)
+      - {h: [0, 1],     s: [90, 255], v: [60, 255]}
+    orange:                      # 주황 큐브 H 2–12 S 84–181 V 98–180. 갈색 상자 H 2–18 S ≤165 V ≤141 와 겹쳐서 V≥130.
+      - {h: [3, 13],    s: [120, 255], v: [130, 255]}   # S 150 → 120 (10-15 T3-R ep046: 흐린 주황 S 중앙 147 이 반만 잡힘). T1·T2 첫 화면 오검출 ≤14 px, 덩어리 0
+    yellow:                      # 노랑 큐브 H 23–29 S 84–179 V 102–168. 상자 벽·바닥 H 19–22 S ≤127 V ≤124 → H≥22·S≥120·V≥120
+      - {h: [22, 34],   s: [120, 255], v: [120, 255]}
+    blue:                        # 파랑 큐브 H 98–109 S 85–234 V 71–144 (2026-10-15 실측, 범위 그대로)
+      - {h: [95, 130], s: [80, 255], v: [40, 255]}
+    green:                       # 초록 큐브 H 63–75 S 83–158 V 83–115 (2026-10-15 실측, 범위 그대로)
+      - {h: [40, 85],  s: [70, 255], v: [40, 255]}

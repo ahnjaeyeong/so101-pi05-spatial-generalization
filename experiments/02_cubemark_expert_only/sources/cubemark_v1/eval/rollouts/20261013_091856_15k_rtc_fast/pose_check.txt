@@ -1,0 +1,8 @@
+joint                지금       학습 시작 평균            학습 범위  판정
+shoulder_pan       -4.5           -3.2    -7.6 ~    0.6  OK
+shoulder_lift    -101.7         -103.0  -103.1 ~ -102.9  OK
+elbow_flex         96.1           95.9    92.8 ~   96.2  OK
+wrist_flex         60.7           61.9    58.0 ~   75.0  OK
+wrist_roll          4.1            1.8    -5.1 ~    6.7  OK
+gripper             1.0            1.5     1.4 ~    3.5  OK
+시작 자세 OK

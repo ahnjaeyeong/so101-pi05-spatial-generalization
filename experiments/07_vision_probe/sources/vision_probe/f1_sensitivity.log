@@ -1,0 +1,18 @@
+sig_w26 {'g_u': 0.7180858700351984, 'g_v': 0.5988803909605452, 'g_tan_wrist_edit': 0.36047512721400093, 'g_tan_wrist_edit_iqr': [0.12285553670300384, 0.5508968531873499], 'g_tan_front_edit': 0.0, 'n_edit_frames': 249, 'eval_rollout_mae_tan': 5.50399980037773, 'eval_rollout_mae_rad': 2.3235311049314467, 'eval_rollout_n': 483}
+sig_w13 {'g_u': 0.6991178080880133, 'g_v': 0.5072065412599749, 'g_tan_wrist_edit': 0.3135163553013574, 'g_tan_wrist_edit_iqr': [0.10843377538187096, 0.47052025705405914], 'g_tan_front_edit': 0.0, 'n_edit_frames': 249, 'eval_rollout_mae_tan': 5.616251033910629, 'eval_rollout_mae_rad': 2.347920256384522, 'eval_rollout_n': 483}
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_sensitivity.py", line 88, in <module>
+    main()
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_sensitivity.py", line 54, in main
+    m, _ = FP.ridge_cv(Xtr_all[tr], T[tg].values[tr], T.ep.values[tr])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 95, in ridge_cv
+    for i, m in enumerate(ridge_fit_multi(X[~te], Y[~te], ALPHAS)):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/d2/vision_probe/f1_probe.py", line 82, in ridge_fit_multi
+    ev, U = np.linalg.eigh(Z @ Z.T)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 1627, in eigh
+    w, vt = gufunc(a, signature=signature)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

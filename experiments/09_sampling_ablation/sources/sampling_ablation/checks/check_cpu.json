@@ -1,0 +1,537 @@
+{
+ "time": "2026-10-27 22:29:21",
+ "T1_A0_order_identical": {
+  "ok": true,
+  "seed2001_epoch0": {
+   "n": 123342,
+   "identical": true,
+   "first5": [
+    39026,
+    71366,
+    119867,
+    41552,
+    12115
+   ]
+  },
+  "seed2001_epoch1": {
+   "n": 123342,
+   "identical": true,
+   "first5": [
+    87468,
+    12941,
+    122322,
+    103844,
+    8087
+   ]
+  },
+  "seed2002_epoch0": {
+   "n": 123342,
+   "identical": true,
+   "first5": [
+    2989,
+    95153,
+    48156,
+    68913,
+    2267
+   ]
+  },
+  "seed2002_epoch1": {
+   "n": 123342,
+   "identical": true,
+   "first5": [
+    75245,
+    6234,
+    83303,
+    89919,
+    12649
+   ]
+  }
+ },
+ "T2_sampling_probabilities": {
+  "ok": true,
+  "A0": {
+   "list_len": 123342,
+   "epoch_counts_equal_weights": true,
+   "draws": 128000,
+   "max_share_dev_pp": 0.03,
+   "shares_design_vs_draws": {
+    "phase": {
+     "닫힘 뒤": [
+      36.13,
+      36.1
+     ],
+     "접근": [
+      33.42,
+      33.44
+     ],
+     "정렬": [
+      21.79,
+      21.81
+     ],
+     "정지": [
+      8.66,
+      8.65
+     ]
+    },
+    "mode": {
+     "K": [
+      50.45,
+      50.43
+     ],
+     "R": [
+      49.55,
+      49.57
+     ]
+    },
+    "tier": {
+     "보통": [
+      16.67,
+      16.69
+     ],
+     "얇음": [
+      1.71,
+      1.71
+     ],
+     "칸없음": [
+      81.3,
+      81.28
+     ],
+     "희소": [
+      0.32,
+      0.32
+     ]
+    }
+   }
+  },
+  "A1": {
+   "list_len": 259534,
+   "epoch_counts_equal_weights": true,
+   "draws": 128000,
+   "max_share_dev_pp": 0.15,
+   "shares_design_vs_draws": {
+    "phase": {
+     "닫힘 뒤": [
+      17.17,
+      17.04
+     ],
+     "접근": [
+      47.64,
+      47.63
+     ],
+     "정렬": [
+      31.07,
+      31.22
+     ],
+     "정지": [
+      4.12,
+      4.11
+     ]
+    },
+    "mode": {
+     "K": [
+      50.3,
+      50.15
+     ],
+     "R": [
+      49.7,
+      49.85
+     ]
+    },
+    "tier": {
+     "보통": [
+      23.76,
+      23.85
+     ],
+     "얇음": [
+      2.44,
+      2.5
+     ],
+     "칸없음": [
+      73.33,
+      73.2
+     ],
+     "희소": [
+      0.46,
+      0.45
+     ]
+    }
+   }
+  },
+  "A2": {
+   "list_len": 203776,
+   "epoch_counts_equal_weights": true,
+   "draws": 128000,
+   "max_share_dev_pp": 0.14,
+   "shares_design_vs_draws": {
+    "phase": {
+     "닫힘 뒤": [
+      32.61,
+      32.69
+     ],
+     "접근": [
+      30.28,
+      30.28
+     ],
+     "정렬": [
+      29.27,
+      29.15
+     ],
+     "정지": [
+      7.84,
+      7.88
+     ]
+    },
+    "mode": {
+     "K": [
+      34.09,
+      34.02
+     ],
+     "R": [
+      65.91,
+      65.97
+     ]
+    },
+    "tier": {
+     "보통": [
+      16.78,
+      16.69
+     ],
+     "얇음": [
+      6.97,
+      6.91
+     ],
+     "칸없음": [
+      73.54,
+      73.68
+     ],
+     "희소": [
+      2.7,
+      2.72
+     ]
+    }
+   }
+  },
+  "A2r": {
+   "list_len": 184460,
+   "epoch_counts_equal_weights": true,
+   "draws": 128000,
+   "max_share_dev_pp": 0.12,
+   "shares_design_vs_draws": {
+    "phase": {
+     "닫힘 뒤": [
+      36.03,
+      36.03
+     ],
+     "접근": [
+      33.45,
+      33.57
+     ],
+     "정렬": [
+      21.86,
+      21.75
+     ],
+     "정지": [
+      8.66,
+      8.65
+     ]
+    },
+    "mode": {
+     "K": [
+      33.73,
+      33.69
+     ],
+     "R": [
+      66.27,
+      66.31
+     ]
+    },
+    "tier": {
+     "보통": [
+      16.83,
+      16.74
+     ],
+     "얇음": [
+      1.55,
+      1.55
+     ],
+     "칸없음": [
+      81.25,
+      81.35
+     ],
+     "희소": [
+      0.37,
+      0.35
+     ]
+    }
+   }
+  }
+ },
+ "T7_training_config": {
+  "ok": true,
+  "train_expert_only": true,
+  "freeze_vision_encoder": true,
+  "dtype": "bfloat16",
+  "gradient_checkpointing": true,
+  "chunk_size": 50,
+  "n_action_steps": 50,
+  "pretrained_path": "/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+  "steps": 4000,
+  "batch_size": 32,
+  "seed": 2001,
+  "save_freq": 2000,
+  "resume": false,
+  "image_transforms": false,
+  "optimizer": {
+   "lr": 1e-05,
+   "betas": [
+    0.9,
+    0.95
+   ],
+   "wd": 0.01,
+   "clip": 1.0
+  },
+  "scheduler": {
+   "type": "cosine_decay_with_warmup",
+   "warmup": 200,
+   "decay": 4000,
+   "peak": 1e-05,
+   "decay_lr": 2.5e-06
+  },
+  "lr_at": {
+   "0": 4.975124378109453e-08,
+   "100": 5.024875621890548e-06,
+   "199": 9.950248756218906e-06,
+   "200": 9.953831277231767e-06,
+   "1000": 8.901650429449553e-06,
+   "2000": 6.25e-06,
+   "3000": 3.5983495705504473e-06,
+   "3999": 2.500001156594206e-06
+  },
+  "lr_max": 9.953831277231767e-06,
+  "lr_argmax": 200
+ },
+ "T5_output_paths_and_guards": {
+  "ok": true,
+  "A0_s2001": "OK",
+  "A1_s2001": "OK",
+  "A2_s2001": "OK",
+  "A2r_s2001": "OK",
+  "A0_s2002": "OK",
+  "거부:output_dir=d2 학습 폴더": [
+   "output_dir 문제 (runs/ 밖 · 이미 있음 · 보호 폴더): /home/user/so101_runs/main_k8/d2/train/32_20000/X"
+  ],
+  "거부:output_dir=d4 폴더": [
+   "output_dir 문제 (runs/ 밖 · 이미 있음 · 보호 폴더): /home/user/so101_runs/main_k8/d4/train/X"
+  ],
+  "거부:output_dir=이미 있는 runs": [
+   "output_dir 문제 (runs/ 밖 · 이미 있음 · 보호 폴더): /home/user/so101_runs/main_k8/d2/sampling_ablation/weights"
+  ],
+  "거부:dataset.root=heldout": [
+   "H (heldout) 경로가 인자에 있음 — 학습 금지",
+   "dataset.root 가 d2 가 아님: /home/user/so101_runs/main_k8/heldout_h/dataset"
+  ],
+  "거부:resume": [
+   "--resume 금지 (새 fine-tune 만)"
+  ],
+  "거부:policy.path=d4 005000": [
+   "policy.path 가 d2 020000 이 아님: /home/user/so101_runs/main_k8/d4/train/32_20000/pi05_expert_bs32_20k/checkpoints/005000/pretrained_model"
+  ],
+  "d4_or_other_training_running_now": [],
+  "output_dirs": [
+   "/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/A0_s2001",
+   "/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/A1_s2001",
+   "/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/A2_s2001",
+   "/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/A2r_s2001",
+   "/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/A0_s2002"
+  ],
+  "any_exists": []
+ },
+ "T6_H_isolation": {
+  "ok": true,
+  "files_mentioning_heldout": {
+   "s1_design_numbers.py": false,
+   "make_weights.py": false,
+   "train_weighted.py": false,
+   "plan_runs.py": false
+  },
+  "train_weighted_heldout_lines": [
+   "- --dataset.root 가 d2 데이터셋이 아님, 또는 인자에 'heldout' 이 있음 (H 는 학습 금지)",
+   "if any(\"heldout\" in a.lower() for a in argv) or \"heldout\" in str(weights_path).lower():",
+   "errs.append(\"H (heldout) 경로가 인자에 있음 — 학습 금지\")"
+  ],
+  "weights_source": "s1_frames.parquet",
+  "weights_dataset": "/home/user/so101_runs/main_k8/d2/dataset",
+  "heldout_dataset_exists": false,
+  "note": "H 는 가중 계산 · LR · step · checkpoint 선택에 쓰지 않음 (판정은 4000 고정). 가드가 heldout 경로를 거부 (T5)."
+ },
+ "T3_action_chunk_alignment": {
+  "ok": true,
+  "n": 26,
+  "delta_action": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 1",
+  "fails": [],
+  "sample": [
+   {
+    "index": "93190",
+    "ep": 187,
+    "frame": 195,
+    "n_pad": 0,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   },
+   {
+    "index": "68700",
+    "ep": 132,
+    "frame": 204,
+    "n_pad": 0,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   },
+   {
+    "index": "115659",
+    "ep": 236,
+    "frame": 159,
+    "n_pad": 0,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   },
+   {
+    "index": 52103,
+    "ep": 100,
+    "frame": 631,
+    "n_pad": 25,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   },
+   {
+    "index": 123341,
+    "ep": 255,
+    "frame": 489,
+    "n_pad": 49,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   },
+   {
+    "index": 123317,
+    "ep": 255,
+    "frame": 465,
+    "n_pad": 25,
+    "action_ok": true,
+    "pad_ok": true,
+    "state_ok": true,
+    "index_ok": true,
+    "max_abs_diff": 0.0,
+    "images": {
+     "observation.images.front": [
+      3,
+      480,
+      640
+     ],
+     "observation.images.wrist": [
+      3,
+      480,
+      640
+     ]
+    }
+   }
+  ]
+ },
+ "T4_normalization_stats_identical": {
+  "ok": true,
+  "compared": 180,
+  "diffs": {},
+  "keys": [
+   "action.count",
+   "action.max",
+   "action.mean",
+   "action.min",
+   "action.q01",
+   "action.q10",
+   "action.q50",
+   "action.q90",
+   "action.q99",
+   "action.std",
+   "episode_index.count",
+   "episode_index.max"
+  ]
+ },
+ "T8_d2_files_unchanged": {
+  "ok": true,
+  "changed": []
+ },
+ "fail": []
+}

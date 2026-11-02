@@ -1,0 +1,21 @@
+2026-10-27 17:30:19 queue start (pid 1407380), runs: A0_s2001 A1_s2001 A2_s2001 A2r_s2001 A0_s2002
+2026-10-27 22:29:19 d4 pid 3000922 gone
+2026-10-27 22:29:20 GPU free: [N/A], 0 % / free -m used 8448 MiB
+2026-10-27 22:29:45 check_cpu.py ALL PASS
+2026-10-27 22:29:45 == A0_s2001 start
+2026-10-28 09:46:38 == A0_s2001 end rc=0
+[]
+2026-10-28 09:46:50 A0_s2001 checks OK (last loss:0.019, weighted list 123342)
+2026-10-28 09:46:50 eval_hook A0_s2001 start
+2026-10-28 13:20:00 eval_hook A0_s2001 OK
+2026-10-28 13:20:00 == A1_s2001 start
+2026-10-29 00:34:54 == A1_s2001 end rc=0
+[]
+2026-10-29 00:35:05 A1_s2001 checks OK (last loss:0.019, weighted list 259534)
+2026-10-29 00:35:05 eval_hook A1_s2001 start
+2026-10-29 02:28:37 eval_hook A1_s2001 OK
+2026-10-29 02:28:37 == A2_s2001 start
+2026-10-29 13:58:31 == A2_s2001 end rc=0
+[]
+2026-10-29 13:58:41 A2_s2001 checks OK (last loss:0.019, weighted list 203776)
+2026-10-29 13:58:41 STOP: runs/run_A2r_s2001.sh 없음

@@ -1,0 +1,140 @@
+/home/user/so101_runs/main_k8/d2/pan_inference_diagnostic/offline_pan_reversal_filter_off/scripts/q04_human_recovery_coverage.py:150: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  summ["h3_wrist_vis_at_tp"] = {c: {"n": int((t3.cls == c).sum()), "wrist_vis": int(t3[t3.cls == c].wrist_vis.fillna(False).astype(bool).sum())}
+/home/user/so101_runs/main_k8/d2/pan_inference_diagnostic/offline_pan_reversal_filter_off/scripts/q04_human_recovery_coverage.py:150: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  summ["h3_wrist_vis_at_tp"] = {c: {"n": int((t3.cls == c).sum()), "wrist_vis": int(t3[t3.cls == c].wrist_vis.fillna(False).astype(bool).sum())}
+/home/user/so101_runs/main_k8/d2/pan_inference_diagnostic/offline_pan_reversal_filter_off/scripts/q04_human_recovery_coverage.py:150: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  summ["h3_wrist_vis_at_tp"] = {c: {"n": int((t3.cls == c).sum()), "wrist_vis": int(t3[t3.cls == c].wrist_vis.fillna(False).astype(bool).sum())}
+{
+ "n_eps": 256,
+ "n_small_need": 8,
+ "h1": {
+  "eps_with_any_tp": 197,
+  "n_tp": 405,
+  "overshoot_return": {
+   "n_tp": 211,
+   "n_eps": 165
+  },
+  "early_backoff": {
+   "n_tp": 42,
+   "n_eps": 41
+  },
+  "wrong_way_fix": {
+   "n_tp": 144,
+   "n_eps": 122
+  }
+ },
+ "h2": {
+  "eps_with_any_tp": 162,
+  "n_tp": 282,
+  "overshoot_return": {
+   "n_tp": 163,
+   "n_eps": 133
+  },
+  "early_backoff": {
+   "n_tp": 30,
+   "n_eps": 30
+  },
+  "wrong_way_fix": {
+   "n_tp": 88,
+   "n_eps": 80
+  }
+ },
+ "h3": {
+  "eps_with_any_tp": 113,
+  "n_tp": 170,
+  "overshoot_return": {
+   "n_tp": 101,
+   "n_eps": 95
+  },
+  "early_backoff": {
+   "n_tp": 18,
+   "n_eps": 18
+  },
+  "wrong_way_fix": {
+   "n_tp": 50,
+   "n_eps": 47
+  }
+ },
+ "h5": {
+  "eps_with_any_tp": 37,
+  "n_tp": 49,
+  "overshoot_return": {
+   "n_tp": 31,
+   "n_eps": 31
+  },
+  "early_backoff": {
+   "n_tp": 5,
+   "n_eps": 5
+  },
+  "wrong_way_fix": {
+   "n_tp": 13,
+   "n_eps": 13
+  }
+ },
+ "h10": {
+  "eps_with_any_tp": 2,
+  "n_tp": 2,
+  "overshoot_return": {
+   "n_tp": 2,
+   "n_eps": 2
+  },
+  "early_backoff": {
+   "n_tp": 0,
+   "n_eps": 0
+  },
+  "wrong_way_fix": {
+   "n_tp": 0,
+   "n_eps": 0
+  }
+ },
+ "ovs_quantiles": {
+  "50": 1.75823974609375,
+  "75": 3.450551033020025,
+  "90": 4.861539840698244,
+  "95": 6.443954324722286,
+  "99": 7.881318550109864,
+  "100": 11.604393005371094
+ },
+ "eps_ovs_ge": {
+  "3": 73,
+  "5": 23,
+  "8": 3,
+  "15": 0,
+  "30": 0
+ },
+ "frames_past": {
+  "3": 4262,
+  "5": 975,
+  "8": 38,
+  "15": 0,
+  "30": 0
+ },
+ "pause_then_continue": {
+  "n_events": 263,
+  "n_eps": 220
+ },
+ "first_dir_ok": 243,
+ "h3_wrist_vis_at_tp": {
+  "overshoot_return": {
+   "n": 101,
+   "wrist_vis": 101
+  },
+  "early_backoff": {
+   "n": 18,
+   "wrist_vis": 18
+  },
+  "wrong_way_fix": {
+   "n": 50,
+   "wrist_vis": 48
+  }
+ }
+}
+  nearest_K   n  need_med  ovs_med  ovs_max  ovs_ge3  ovs_ge5  n_tp3_any  first_dir_ok
+0        K1  31     -29.8      2.2      4.7        9        0         12            31
+1        K2  37       2.4      1.4      6.5        8        2         15            34
+2        K3  34      35.8      1.1      7.6        3        1         13            32
+3        K4  30     -42.7      3.5      8.1       16        5         16            30
+4        K5  27       1.1      1.3      6.7        8        3         12            23
+5        K6  33      50.8      0.0      4.0        1        0          9            29
+6        K7  31     -70.5      4.4     11.6       20       10         19            31
+7        K8  33      76.3      1.0      7.3        8        2         17            33

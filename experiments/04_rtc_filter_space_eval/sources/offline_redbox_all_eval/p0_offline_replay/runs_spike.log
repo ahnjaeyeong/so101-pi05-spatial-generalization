@@ -1,0 +1,30 @@
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+sources [('rollout_20k_t1', 2404), ('train_g0_ep18', 432), ('train_g1_ep70', 429), ('train_g2_ep172', 700), ('train_g3_ep202', 697), ('train_g4_ep264', 289), ('train_g5_ep350', 356)]
+rtc_h20_exp_s5: 58s rollout_20k_t1:inf119/hold31/lat313ms train_g0_ep18:inf22/hold8/lat314ms train_g1_ep70:inf22/hold8/lat313ms train_g2_ep172:inf35/hold8/lat314ms train_g3_ep202:inf35/hold8/lat313ms train_g4_ep264:inf15/hold8/lat315ms train_g5_ep350:inf18/hold8/lat315ms
+rtc_h30_exp_s5: 55s rollout_20k_t1:inf120/hold8/lat316ms train_g0_ep18:inf22/hold8/lat310ms train_g1_ep70:inf22/hold8/lat308ms train_g2_ep172:inf35/hold8/lat308ms train_g3_ep202:inf35/hold8/lat306ms train_g4_ep264:inf15/hold8/lat304ms train_g5_ep350:inf18/hold8/lat304ms
+rtc_h20_lin_s5: 53s rollout_20k_t1:inf120/hold8/lat308ms train_g0_ep18:inf22/hold8/lat305ms train_g1_ep70:inf22/hold8/lat301ms train_g2_ep172:inf35/hold8/lat308ms train_g3_ep202:inf35/hold8/lat308ms train_g4_ep264:inf15/hold8/lat307ms train_g5_ep350:inf18/hold8/lat308ms
+rtc_h30_lin_s5: 53s rollout_20k_t1:inf120/hold8/lat309ms train_g0_ep18:inf22/hold8/lat306ms train_g1_ep70:inf22/hold8/lat306ms train_g2_ep172:inf35/hold8/lat311ms train_g3_ep202:inf35/hold8/lat306ms train_g4_ep264:inf15/hold8/lat304ms train_g5_ep350:inf18/hold8/lat306ms
+analyzed rtc_h10_exp_s5
+analyzed rtc_h10_lin_s5
+analyzed rtc_h20_exp_s10
+analyzed rtc_h20_exp_s5
+analyzed rtc_h20_lin_s10
+analyzed rtc_h20_lin_s5
+analyzed rtc_h30_exp_s5
+analyzed rtc_h30_lin_s5
+analyzed sync_s10
+analyzed sync_s5
+{"servo_model_clamp_pct_on_real_actions": 26.58069883527454, "measured_clamp_pct_on_real": 28.82695507487521, "VC_TEL": [2.4600000381469727, 4.130000114440918, 4.21999979019165, 4.570000171661377, 3.430000066757202, 4.46999979019165]}
+analyzed rtc_h20_exp_s5
+analyzed rtc_h20_lin_s5
+analyzed rtc_h30_exp_s5
+analyzed rtc_h30_lin_s5
+{"servo_model_clamp_pct_on_real_actions": 26.58069883527454, "measured_clamp_pct_on_real": 28.82695507487521, "VC_TEL": [2.4600000381469727, 4.130000114440918, 4.21999979019165, 4.570000171661377, 3.430000066757202, 4.46999979019165]}
+ALLDONE

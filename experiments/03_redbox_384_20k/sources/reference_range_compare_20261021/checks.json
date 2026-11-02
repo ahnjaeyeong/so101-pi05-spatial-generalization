@@ -1,0 +1,49 @@
+{
+ "detector_check": {
+  "matched": 380,
+  "within_0_5s": 338,
+  "median_abs_dt_s": 0.2666666666666666
+ },
+ "fk_fit": {
+  "n": 360,
+  "rot_deg": 4.458806750373317,
+  "base_table_cm": [
+   -33.64,
+   12.07
+  ],
+  "resid_cm_median": 2.074056068506728,
+  "resid_cm_p90": 3.184528744038809
+ },
+ "convention_alt": [
+  {
+   "src": "ref",
+   "r_median_mid": 28.32346761953164,
+   "r_median_home": 32.563302543479544,
+   "az_p5_p95_mid": [
+    -36.7,
+    42.3
+   ],
+   "az_p5_p95_home": [
+    -38.2,
+    44.3
+   ]
+  },
+  {
+   "src": "our",
+   "r_median_mid": 21.52966309320441,
+   "r_median_home": 26.167332247963106,
+   "az_p5_p95_mid": [
+    -48.3,
+    30.6
+   ],
+   "az_p5_p95_home": [
+    -46.7,
+    34.4
+   ]
+  }
+ ],
+ "n_first_close": {
+  "ref": 382,
+  "our": 384
+ }
+}

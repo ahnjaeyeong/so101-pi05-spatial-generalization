@@ -1,0 +1,7 @@
+joint,ref_range_ticks,ref_span_deg,ref_mid_minus_home_deg,our_range_ticks,our_span_deg,our_mid_minus_home_deg,convention_shift_deg
+shoulder_pan,970–3112,188.31,-0.53,830–3338,220.48,3.25,-3.78
+shoulder_lift,788–3172,209.58,-5.89,856–3215,207.38,-1.01,-4.88
+elbow_flex,963–3176,194.55,1.98,872–3071,193.32,-6.64,8.62
+wrist_flex,775–2984,194.20,-14.73,808–3130,204.13,-6.86,-7.87
+wrist_roll,0–4095,360.00,0.04,0–4095,360.00,0.04,0.00
+gripper,1757–3239,130.29,39.65,2045–3492,127.21,63.43,-23.78

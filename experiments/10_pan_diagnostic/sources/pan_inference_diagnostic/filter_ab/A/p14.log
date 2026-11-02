@@ -1,0 +1,94 @@
+{
+ "human_ref_5_95": {
+  "w_u": [
+   0.2637492149954581,
+   0.5673314646873735
+  ],
+  "w_v": [
+   0.6444860850376011,
+   0.7634169814386808
+  ],
+  "w_area": [
+   0.001474609375,
+   0.12077880859375001
+  ],
+  "z_c": [
+   -1.8839438234313381,
+   -0.37087310871190965
+  ],
+  "e_t": [
+   -0.8311723974653777,
+   1.008740289013881
+  ],
+  "e_r": [
+   -1.705427172611432,
+   0.9914027946820185
+  ],
+  "bottom": [
+   11.454733610153198,
+   13.64892840385437
+  ],
+  "w_rel_abs_p90": 6.822423458369858
+ },
+ "human_n": 256,
+ "human_corr_wu_et": -0.055427786632960205,
+ "human_class_counts": {
+  "lr_class": {
+   "중앙": 245,
+   "판단 불가": 7,
+   "화면 왼쪽 편향": 4
+  },
+  "depth_class": {
+   "깊은": 243,
+   "판단 불가": 7,
+   "얕은": 6
+  },
+  "first_grasp": {
+   "성공 (들어 올림 · 놓치지 않음)": 253,
+   "쥐었다가 2 s 안에 풀림 / 못 들어 올림": 3
+  }
+ },
+ "human_lifted_frac": 0.98828125,
+ "human_dropped_frac": 0.0,
+ "pilot_class_counts": {
+  "lr_class": {
+   "중앙": 3,
+   "판단 불가": 1
+  },
+  "depth_class": {
+   "헛잡기": 2,
+   "판단 불가": 1,
+   "깊은": 1
+  },
+  "first_grasp": {
+   "실패 (못 쥠 · 못 들어 올림)": 3,
+   "성공 (들어 올림 · 놓치지 않음)": 1
+  }
+ },
+ "pilot_by_group": {
+  "K": {
+   "lr_class": {
+    "중앙": 3,
+    "판단 불가": 1
+   },
+   "depth_class": {
+    "헛잡기": 2,
+    "판단 불가": 1,
+    "깊은": 1
+   },
+   "first_grasp": {
+    "실패 (못 쥠 · 못 들어 올림)": 3,
+    "성공 (들어 올림 · 놓치지 않음)": 1
+   }
+  }
+ }
+}
+label verdict  n_close  on_to_c  bottom  z_up lifted dropped  hold_s cube_in_wrist_vs_human front_cube_on_table_1p5s w_vis  w_u  w_v  w_area  w_rel_deg   e_t  e_r   z_c  roll_on  wflex_on  cube_yaw_deg  front_shift_at_on_cm lr_class depth_class         first_grasp
+   K1       F        0      NaN     NaN   NaN    NaN     NaN     NaN        판단 불가 (큐브 안 보임)                      NaN   NaN  NaN  NaN     NaN        NaN   NaN  NaN   NaN      NaN       NaN         31.17                   NaN    판단 불가       판단 불가  실패 (못 쥠 · 못 들어 올림)
+   K1       F        2     36.0    3.18  0.18  False    None     NaN             앞쪽 (덜 다가감)                    False  True 0.36 0.57    0.13       1.93  1.17 0.65  0.67    -7.60     82.55         31.19                  0.02       중앙         헛잡기  실패 (못 쥠 · 못 들어 올림)
+   K1       P        2      8.0   11.89 11.18   True   False     1.3                앞뒤 범위 안                    False  True 0.33 0.74    0.11       6.39 -4.78 0.01 -1.86    -0.13     76.66         30.70                   NaN       중앙          깊은 성공 (들어 올림 · 놓치지 않음)
+   K1       P        3     11.0    1.73  0.12  False    None     NaN             앞쪽 (덜 다가감)                     True  True 0.49 0.49    0.07       6.06 -4.31 1.37  1.27    16.22     67.78        -44.96                  0.00       중앙         헛잡기  실패 (못 쥠 · 못 들어 올림)
+label  rtc_minus_off_shoulder_pan  filter_shoulder_pan  clamp_shoulder_pan  sent_minus_present_shoulder_pan  rtc_minus_off_shoulder_lift  filter_shoulder_lift  clamp_shoulder_lift  sent_minus_present_shoulder_lift  rtc_minus_off_elbow_flex  filter_elbow_flex  clamp_elbow_flex  sent_minus_present_elbow_flex  rtc_minus_off_wrist_flex  filter_wrist_flex  clamp_wrist_flex  sent_minus_present_wrist_flex  rtc_minus_off_wrist_roll  filter_wrist_roll  clamp_wrist_roll  sent_minus_present_wrist_roll  rtc_minus_off_gripper  filter_gripper  clamp_gripper  sent_minus_present_gripper
+   K1                        0.39                 0.13                 0.0                             0.57                         0.46                  0.24                  0.0                              0.20                      0.30               0.23               0.0                           2.14                      0.33               0.09               0.0                           0.78                      0.59               0.09               0.0                           0.37                   0.66             0.0           0.00                        0.43
+   K1                        0.54                 0.10                 0.0                             0.46                         0.60                  0.13                  0.0                              0.20                      0.33               0.12               0.0                           2.64                      0.13               0.08               0.0                           0.66                      0.30               0.05               0.0                           0.36                   2.04             0.0           0.00                        0.56
+   K1                        0.56                 0.23                 0.0                             0.58                         0.63                  0.17                  0.0                              0.63                      0.81               0.24               0.0                           0.72                      0.36               0.16               0.0                           0.35                      1.87               0.23               0.0                           0.70                   0.25             0.0           0.06                        7.47

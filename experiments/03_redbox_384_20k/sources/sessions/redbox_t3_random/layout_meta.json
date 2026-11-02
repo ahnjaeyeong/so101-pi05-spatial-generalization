@@ -1,0 +1,285 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-15 14:39:28",
+ "session": "main/redbox_t3_random",
+ "group": "t3_random",
+ "episodes": 64,
+ "repo_id": "oxr/so101_redbox_t3_random",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "03554b862efa3cb05bd9ecb0e3e1d558f7b28753cc741bc74668afa42007ab29",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "placement": "free (녹화 뒤 첫 화면에서 위치 역산)",
+  "distractor_count_episodes": {
+   "2": 12,
+   "3": 13,
+   "4": 13,
+   "5": 13,
+   "6": 13
+  },
+  "distractor_colors": {
+   "노란 큐브": 65,
+   "주황 큐브": 65,
+   "파란 큐브": 64,
+   "초록 큐브": 64
+  }
+ },
+ "plan_sha256": "868ff61bb0338f6c1b58f3c5f0187096614b7d40560ee8b47f8b7fcfb8778768",
+ "resolved": {
+  "group": "t3_random",
+  "task_key": "t3",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "random",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 1302,
+  "default_session": "main/redbox_t3_random",
+  "repo_id": "oxr/so101_redbox_t3_random",
+  "red_cubes": 1,
+  "red_counts": null,
+  "distractors": [],
+  "distractor_mix": {
+   "pool": [
+    "yellow_cube",
+    "orange_cube",
+    "blue_cube",
+    "green_cube"
+   ],
+   "counts": {
+    "2": 12,
+    "3": 13,
+    "4": 13,
+    "5": 13,
+    "6": 13
+   },
+   "max_per_color": 5
+  },
+  "objects": {
+   "blue_cube": {
+    "size_cm": 2.5,
+    "color": "blue",
+    "label": "파란 큐브"
+   },
+   "green_cube": {
+    "size_cm": 2.5,
+    "color": "green",
+    "label": "초록 큐브"
+   },
+   "orange_cube": {
+    "size_cm": 2.5,
+    "color": "orange",
+    "label": "주황 큐브"
+   },
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   },
+   "yellow_cube": {
+    "size_cm": 2.5,
+    "color": "yellow",
+    "label": "노란 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    7.25,
+    13.8
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    10,
+    45
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "min_blob_area_in_box_px": 40,
+   "in_box_open_px": 3,
+   "cube_area_px": [
+    904.6,
+    1.982,
+    -0.2207,
+    -0.0031
+   ],
+   "cluster_split_ratio": 1.1,
+   "cube_area_scale": {
+    "green": 0.9,
+    "orange": 0.75,
+    "blue": 1.0,
+    "yellow": 0.83
+   },
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "grip_dip_min": 5,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       1
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "orange": [
+     {
+      "h": [
+       3,
+       13
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       130,
+       255
+      ]
+     }
+    ],
+    "yellow": [
+     {
+      "h": [
+       22,
+       34
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       120,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  },
+  "touching_ok": true
+ },
+ "tags": {
+  "push": {
+   "episodes": [
+    30,
+    33,
+    36,
+    40
+   ],
+   "reason": "덩어리 가운데 빨강을 긁어서 공간을 확보한 뒤 집음 (학습이 잘 안 되면 빼 볼 후보)",
+   "at": "2026-10-15 17:00"
+  }
+ }
+}

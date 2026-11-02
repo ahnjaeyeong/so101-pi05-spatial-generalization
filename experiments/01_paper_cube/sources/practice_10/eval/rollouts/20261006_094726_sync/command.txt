@@ -1,0 +1,1 @@
+./run_rollout.sh sync --inference.type=sync
