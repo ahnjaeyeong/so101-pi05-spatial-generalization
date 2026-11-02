@@ -1,0 +1,82 @@
+INFO 2026-10-19 13:21:56 ut_logged.py:40 debug log: /home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt --dataset.root=/home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=30 --dataset.reset_time_s=3600 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --policy.num_inference_steps=5
+INFO 2026-10-19 13:21:56 ut_logged.py:42 arm_filter/guard options: {'arm_filter': True, 'alpha': 0.5, 'init': 'state', 'guard': 'stop', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'active': True}
+INFO 2026-10-19 13:21:56 _rollout.py:245 Building rollout context...
+INFO 2026-10-19 13:21:56 /context.py:330 Loading policy from '/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-10-19 13:24:33 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-10-19 13:24:33 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-10-19 13:24:33 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-10-19 13:24:39 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-10-19 13:24:39 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-10-19 13:24:40 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-10-19 13:24:42 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-10-19 13:24:42 follower.py:131 my_arm SOFollower connected.
+INFO 2026-10-19 13:24:42 /context.py:395 Robot connected: so_follower
+INFO 2026-10-19 13:24:42 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-10-19 13:24:42 /context.py:500 Setting up dataset (repo_id=oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt)...
+INFO 2026-10-19 13:24:42 /context.py:547 Dataset ready: oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt (0 existing episodes)
+INFO 2026-10-19 13:24:44 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-10-19 13:24:44 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-10-19 13:24:44 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-10-19 13:24:44 /context.py:597 Rollout context assembled successfully
+INFO 2026-10-19 13:24:44 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-10-19 13:24:44 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-10-19 13:24:44 gies/core.py:96 Starting inference engine...
+INFO 2026-10-19 13:24:44 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-10-19 13:24:44 ence/rtc.py:312 RTC inference thread started
+INFO 2026-10-19 13:24:44 ies/core.py:100 Inference engine started
+INFO 2026-10-19 13:24:44 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-10-19 13:24:44 episodic.py:105 Episodic strategy ready
+INFO 2026-10-19 13:24:44 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-10-19 13:24:44 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-10-19 13:24:44 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-10-19 13:24:44 ls/utils.py:150 Recording episode 0
+INFO 2026-10-19 13:24:44 t_logged.py:113 arm_filter=True guard=stop horizon=20 log=/home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+ERROR 2026-10-19 13:24:45 m_filter.py:126 GUARD STOP starve: 15 consecutive ticks without an action — rollout 종료 요청 (lerobot 표준 종료: 처음 자세로 복귀 후 토크 해제)
+INFO 2026-10-19 13:24:45 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-10-19 13:24:45 le_timer.py:606 Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 15 ticks, 14 judged
+  effective cadence: 29.93 Hz over 0.5 s measured
+  ticks over the 33.3 ms work budget: 0/14 (0.0%) — work mean 2.1 ms, worst 5.0 ms
+  ticks with no action to send (inference engine starved): 15 — each commanded nothing and recorded no frame
+  loop-body steps (share of measured work):
+    observe      mean   1.95 ms · worst   4.89 ms ·  92.7% of work · 15 calls
+    process_obs  mean   0.02 ms · worst   0.04 ms ·   1.0% of work · 15 calls
+    infer        mean   0.02 ms · worst   0.05 ms ·   1.1% of work · 15 calls
+  pacing headroom: 31.3 ms slept per tick on average (max 32.1 ms) — near zero means the loop is saturated
+INFO 2026-10-19 13:24:45 ls/utils.py:150 Stop recording
+INFO 2026-10-19 13:24:45 episodic.py:357 Finalizing dataset...
+INFO 2026-10-19 13:24:45 ies/core.py:209 Stopping inference engine...
+INFO 2026-10-19 13:24:45 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-10-19 13:24:45 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=22
+INFO 2026-10-19 13:24:45 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-10-19 13:24:45 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-10-19 13:24:48 ies/core.py:220 Disconnecting robot...
+INFO 2026-10-19 13:24:48 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-10-19 13:24:48 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-10-19 13:24:48 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-10-19 13:24:48 ls/utils.py:150 Exiting
+INFO 2026-10-19 13:24:48 episodic.py:378 Episodic strategy teardown complete
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main/redbox_all/eval/rollout_logged.py", line 199, in <module>
+    lr.main()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_rollout.py", line 278, in main
+    rollout()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/configs/parser.py", line 438, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_rollout.py", line 264, in rollout
+    strategy.run(ctx)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/rollout/strategies/episodic.py", line 227, in run
+    dataset.save_episode()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/datasets/lerobot_dataset.py", line 529, in save_episode
+    self._require_writer("save_episode").save_episode(episode_data, parallel_encoding)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/datasets/dataset_writer.py", line 279, in save_episode
+    validate_episode_buffer(episode_buffer, self._meta.total_episodes, self._meta.features)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/datasets/feature_utils.py", line 442, in validate_episode_buffer
+    raise ValueError("You must add one or several frames with `add_frame` before calling `add_episode`.")
+ValueError: You must add one or several frames with `add_frame` before calling `add_episode`.

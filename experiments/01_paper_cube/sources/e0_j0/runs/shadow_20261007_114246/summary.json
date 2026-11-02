@@ -1,0 +1,109 @@
+{
+ "publishers_besides_rosout_parameter_events": [],
+ "mode": "shadow",
+ "elapsed_s": 8.0,
+ "dir": "/ws/e0j0_runs/shadow_20261007_114246",
+ "config": "/ws/src/twin_e0j0/config/e0j0_sim.yaml",
+ "walls": "/ws/src/twin_e0j0/config/physical_limits_thor_e0j0.yaml",
+ "joint_states_hz": 30.0,
+ "camera_hz": {
+  "front": 0.0,
+  "wrist": 0.0
+ },
+ "counts": {
+  "ticks": 240,
+  "stale": 0,
+  "actions": 240,
+  "empty": 0,
+  "wall_out": 0,
+  "wall_out_unbounded": 0,
+  "gripper_bounded": 0,
+  "floor_out": 0,
+  "clipped": 0
+ },
+ "first_state": {
+  "rad": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "lerobot": [
+   -7.9125471507566685,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "tcp_z": 0.22646971024033283
+ },
+ "handoff_events": [],
+ "camera_stats": {},
+ "chunk_direction": {
+  "n": 240,
+  "start_tcp": [
+   0.391,
+   -0.0,
+   0.226
+  ],
+  "cube_xy": [
+   0.188,
+   -0.044
+  ],
+  "at_action": {
+   "15": {
+    "xyz": [
+     0.391,
+     -0.013,
+     0.221
+    ],
+    "gripper": 0.8
+   },
+   "30": {
+    "xyz": [
+     0.391,
+     -0.013,
+     0.221
+    ],
+    "gripper": 0.8
+   },
+   "60": {
+    "xyz": [
+     0.391,
+     -0.013,
+     0.221
+    ],
+    "gripper": 0.8
+   },
+   "90": {
+    "xyz": [
+     0.391,
+     -0.013,
+     0.221
+    ],
+    "gripper": 0.8
+   }
+  },
+  "xy_move_m_to_k": 0.0126,
+  "k": 60,
+  "angle_to_cube_deg": 75.1,
+  "cube_dist_start_m": 0.2081,
+  "cube_dist_at_k_m": 0.2052,
+  "min_tcp_z": 0.2209,
+  "pass_suggested": false
+ },
+ "infer_ms": {
+  "n": 0
+ },
+ "rtt_ms": {
+  "p50": 0.63,
+  "p95": 1.14,
+  "max": 1.25
+ },
+ "wall_out_ratio": 0.0,
+ "floor_out_ratio": 0.0,
+ "clipped_ratio": 0.0
+}

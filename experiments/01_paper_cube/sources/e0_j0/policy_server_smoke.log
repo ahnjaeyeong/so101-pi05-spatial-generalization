@@ -1,0 +1,65 @@
+2026-10-07 17:40:23,528 INFO root: Enabled gradient checkpointing for PI05Pytorch model
+2026-10-07 17:40:24,239 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+2026-10-07 17:40:24,239 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+2026-10-07 17:40:31,748 INFO lerobot.rollout.inference.rtc: RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+2026-10-07 17:40:31,749 INFO lerobot.rollout.inference.rtc: RTC inference thread started
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/practice_50/train/pi05_15k/checkpoints/015000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+[policy] loaded in 165.9 s: pi05_15k@015000 steps=5 rtc(h=20,q=40)  cuda mem 9.36 GB
+[policy] listening 127.0.0.1:5599 model=pi05_15k@015000 steps=5 rtc(h=20,q=40) protocol v1
+[policy] client ('127.0.0.1', 48364)
+2026-10-07 17:40:44,650 INFO lerobot.rollout.inference.rtc: Resetting RTC inference state (policy + processors + queue)
+2026-10-07 17:40:44,650 INFO lerobot.rollout.inference.rtc: Resuming RTC inference thread
+/home/user/so101-env/lib/python3.12/site-packages/lerobot/policies/utils.py:136: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  tensor = torch.from_numpy(observation[name]).to(device)
+2026-10-07 17:40:45,339 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=0, real_delay=21
+2026-10-07 17:40:45,339 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.68s, queue=50
+2026-10-07 17:40:45,965 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+2026-10-07 17:40:45,965 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.31s, queue=41
+2026-10-07 17:40:46,256 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:46,256 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:46,612 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:46,613 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:46,938 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:46,939 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:47,259 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:47,259 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:47,607 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:47,608 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:47,925 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:48,262 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:48,262 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.28s, queue=42
+2026-10-07 17:40:48,597 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:48,597 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:48,933 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:48,934 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:49,277 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:49,277 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.28s, queue=42
+2026-10-07 17:40:49,616 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:49,617 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:49,927 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:49,928 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:50,276 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:50,276 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:50,606 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:50,606 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.28s, queue=42
+2026-10-07 17:40:50,928 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:50,928 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:51,271 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:51,272 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.28s, queue=42
+2026-10-07 17:40:51,588 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.27s, queue=42
+2026-10-07 17:40:51,947 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+2026-10-07 17:40:51,948 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.29s, queue=42
+2026-10-07 17:40:52,247 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=7, real_delay=8
+2026-10-07 17:40:52,247 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.26s, queue=43
+2026-10-07 17:40:52,625 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.30s, queue=41
+2026-10-07 17:40:52,651 INFO lerobot.rollout.inference.rtc: Pausing RTC inference thread
+[policy] RTC 추론 지연 (이번 세션): {"n": 22, "first_ms": 680.0, "mean_ms_excl_first": 280.5, "p95_ms_excl_first": 300.0, "max_ms_excl_first": 310.0}
+[policy] session end: 240 steps in 8.0 s (30.0 Hz)
+[policy] stop
+2026-10-07 20:31:19,915 INFO lerobot.rollout.inference.rtc: Stopping RTC inference thread...
+2026-10-07 20:31:19,923 INFO lerobot.rollout.inference.rtc: RTC inference thread stopped

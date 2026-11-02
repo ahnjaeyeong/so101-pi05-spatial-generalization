@@ -1,0 +1,6 @@
+episode_index,layout_id,excluded,color,x_cm,y_cm,nearest_known,dist_known_cm
+0,T1K1,,red,-19.6,31.6,K1,0.6
+0,T1K1,,red,-13.7,11.8,K3,6.0
+1,T1K4,,red,-15.2,2.3,K4,0.3
+2,T1K2,,red,-16.0,21.8,K2,0.5
+3,T1K3,,red,-7.9,12.9,K3,0.2

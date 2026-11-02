@@ -1,0 +1,20 @@
+fps: 30
+robot_type: so101_follower
+joint_names: [shoulder_pan, shoulder_lift, elbow_flex, wrist_flex, wrist_roll, gripper]
+
+features:
+  observation.state:
+    topic: /follower/joint_states
+    unit: deg
+  action:
+    topic: /leader/joint_command
+    unit: deg
+  observation.images.front:
+    topic: /cam_front/image_raw
+    size: [480, 640]
+  observation.images.wrist:
+    topic: /cam_wrist/image_raw
+    size: [480, 640]
+  observation.environment_state:
+    topic: /unity/target_box_pose
+    frame: robot_base

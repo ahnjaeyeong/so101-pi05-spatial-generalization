@@ -1,0 +1,15 @@
+{
+ "trial": 28,
+ "condition": "B",
+ "position": "K1",
+ "first_grasp": "success",
+ "final": "success",
+ "attempts": 5,
+ "failure_type": "",
+ "note": "첫 파지 실패, 미끄러짐",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:33:59",
+ "stop_reason": "operator",
+ "protect": null
+}

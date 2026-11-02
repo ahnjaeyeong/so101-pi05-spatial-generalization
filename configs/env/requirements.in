@@ -1,0 +1,6 @@
+# 호스트 so101-env (Python 3.12, 독립 venv) 최상위 요구사항.
+# torch/torchvision은 PyPI aarch64 wheel(+cu130, SBSA). lerobot uv.lock/[tool.uv.sources]의 cu128 고정을 피하려고 --no-sources로 compile.
+torch==2.11.0
+torchvision==0.26.0
+lerobot[dataset,training,smolvla,pi,pyzmq-dep] @ git+https://github.com/huggingface/lerobot.git@e595b7902714ba51f91e47523f66f89c5181b649
+rosbags==0.11.5

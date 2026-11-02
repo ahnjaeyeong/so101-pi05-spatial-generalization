@@ -1,0 +1,117 @@
+{
+ "trial": 26,
+ "condition": "B",
+ "position": "Z2",
+ "dir": "026_B_Z2",
+ "rep": "3",
+ "run": "20261020_091819",
+ "dataset": "/home/user/so101_runs/main/redbox_all/eval/eval_space/20261020_space/runs/20261020_091819/dataset",
+ "dataset_episode": 25,
+ "started_wall": 1792457812.5838687,
+ "started": "2026-10-20 09:56:52",
+ "start_images": {
+  "front": "start_front.png",
+  "wrist": "start_wrist.png"
+ },
+ "start_state": {
+  "shoulder_pan.pos": -2.2857142857142856,
+  "shoulder_lift.pos": -96.65934065934066,
+  "elbow_flex.pos": 96.3076923076923,
+  "wrist_flex.pos": 78.06593406593407,
+  "wrist_roll.pos": 89.18681318681318,
+  "gripper.pos": 1.8659295093296473
+ },
+ "start_cube": {
+  "front_blob_px": [
+   390.8,
+   297.8
+  ],
+  "front_blob_area": 1059,
+  "x_cm": -13.29,
+  "y_cm": 17.11,
+  "robot_a_deg": -13.5,
+  "robot_r_cm": 20.9,
+  "nearest_k": "K2",
+  "dist_k_cm": 5.1,
+  "front_px": [
+   390.8,
+   297.8
+  ],
+  "front_center_dist_px": 91.4,
+  "zones": [],
+  "wrist_blob_px": null,
+  "wrist_blob_area": 0
+ },
+ "checkpoint": "/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+ "task": "pick up the red cube and put it in the brown box",
+ "inference": {
+  "type": "rtc",
+  "num_inference_steps": 5,
+  "execution_horizon": 20,
+  "prefix_attention_schedule": "EXP",
+  "max_guidance_weight": 10.0,
+  "queue_threshold": 30,
+  "fps": 30,
+  "interpolation_multiplier": 1
+ },
+ "robot": {
+  "type": "so101_follower",
+  "port": "/dev/so101_follower",
+  "id": "my_arm",
+  "max_relative_target": 8,
+  "cameras": "front /dev/cam_front · wrist /dev/cam_wrist · 640x480 30fps MJPG"
+ },
+ "arm_filter": true,
+ "arm_filter_params": {
+  "alpha": 0.5,
+  "ema_reset": 10.0,
+  "vmax_deg_per_frame": {
+   "shoulder_pan": 2.4615,
+   "shoulder_lift": 4.1319,
+   "elbow_flex": 4.2198,
+   "wrist_flex": 4.5714,
+   "wrist_roll": 3.4286
+  }
+ },
+ "guard": {
+  "mode": "protect (stop sending, no auto-return)",
+  "startup_ticks": 150,
+  "starve_ticks": 15,
+  "stale_ticks": 30,
+  "horizon_count": 10,
+  "stall_ticks": 20
+ },
+ "lerobot_args": [
+  "--strategy.type=episodic",
+  "--policy.path=/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model",
+  "--policy.num_inference_steps=5",
+  "--inference.type=rtc",
+  "--inference.rtc.execution_horizon=20",
+  "--inference.rtc.prefix_attention_schedule=EXP",
+  "--inference.rtc.max_guidance_weight=10.0",
+  "--robot.type=so101_follower",
+  "--robot.port=/dev/so101_follower",
+  "--robot.id=my_arm",
+  "--robot.max_relative_target=8",
+  "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"} }",
+  "--dataset.repo_id=oxr/rollout_eval_ab_20261020_091819",
+  "--dataset.root=/home/user/so101_runs/main/redbox_all/eval/eval_space/20261020_space/runs/20261020_091819/dataset",
+  "--dataset.no_stamp=true",
+  "--dataset.single_task=pick up the red cube and put it in the brown box",
+  "--dataset.num_episodes=80",
+  "--dataset.episode_time_s=60",
+  "--dataset.reset_time_s=36000",
+  "--dataset.push_to_hub=false",
+  "--fps=30",
+  "--play_sounds=false",
+  "--display_data=false"
+ ],
+ "ended_wall": 1792457824.0399597,
+ "ended": "2026-10-20 09:57:04",
+ "duration_s": 11.46,
+ "frames": 330,
+ "ticks": 341,
+ "stop_reason": "operator",
+ "protect": null,
+ "guard_events": []
+}

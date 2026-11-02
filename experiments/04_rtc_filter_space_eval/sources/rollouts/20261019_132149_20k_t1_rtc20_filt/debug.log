@@ -1,0 +1,110 @@
+13:21:56.307 INFO lerobot.rollout_logged: debug log: /home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt --dataset.root=/home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=30 --dataset.reset_time_s=3600 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --policy.num_inference_steps=5
+13:21:56.307 INFO lerobot.rollout_logged: arm_filter/guard options: {'arm_filter': True, 'alpha': 0.5, 'init': 'state', 'guard': 'stop', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'active': True}
+13:21:56.307 INFO lerobot.scripts.lerobot_rollout: Building rollout context...
+13:21:56.307 INFO lerobot.rollout.context: Loading policy from '/home/user/so101_runs/main/redbox_all/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+13:24:33.732 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+13:24:33.732 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+13:24:39.453 INFO lerobot.rollout.context: Policy loaded: type=pi05, device=cuda
+13:24:39.453 INFO lerobot.rollout.context: Connecting robot (so100_follower)...
+13:24:39.465 DEBUG lerobot.motors.motors_bus: FeetechMotorsBus connected.
+13:24:40.957 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_front) connected.
+13:24:42.442 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_wrist) connected.
+13:24:42.471 INFO lerobot.robots.so_follower.so_follower: my_arm SOFollower connected.
+13:24:42.472 INFO lerobot.rollout.context: Robot connected: so_follower
+13:24:42.474 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.7ms
+13:24:42.474 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:42.474 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:42.474 INFO lerobot.rollout.context: Captured initial robot position (6 keys)
+13:24:42.475 INFO lerobot.rollout.context: Setting up dataset (repo_id=oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt)...
+13:24:42.620 INFO lerobot.rollout.context: Dataset ready: oxr/rollout_redbox_all_bs32_20k_20k_t1_rtc20_filt (0 existing episodes)
+13:24:44.657 INFO lerobot.rollout.context: Creating inference engine (type=rtc)...
+13:24:44.657 INFO lerobot.rollout.inference.factory: Creating inference engine: rtc
+13:24:44.658 INFO lerobot.rollout.inference.rtc: RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+13:24:44.658 INFO lerobot.rollout.context: Rollout context assembled successfully
+13:24:44.658 INFO lerobot.scripts.lerobot_rollout: Rollout strategy: episodic
+13:24:44.658 INFO lerobot.scripts.lerobot_rollout: Robot: so100_follower | FPS: 30 | Duration: infinite
+13:24:44.658 INFO lerobot.rollout.strategies.core: Starting inference engine...
+13:24:44.658 INFO lerobot.rollout.inference.rtc: Resetting RTC inference state (policy + processors + queue)
+13:24:44.658 INFO lerobot.rollout.inference.rtc: RTC inference thread started
+13:24:44.658 INFO lerobot.rollout.strategies.core: Inference engine started
+13:24:44.659 INFO lerobot.utils.keyboard_input: Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+13:24:44.659 INFO lerobot.rollout.strategies.episodic: Episodic strategy ready
+13:24:44.659 INFO lerobot.scripts.lerobot_rollout: Rollout setup complete, starting rollout...
+13:24:44.659 INFO lerobot.rollout.inference.rtc: Resetting RTC inference state (policy + processors + queue)
+13:24:44.659 INFO lerobot.rollout.inference.rtc: Resuming RTC inference thread
+13:24:44.661 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:44.661 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.661 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.661 INFO lerobot.rollout_logged: arm_filter=True guard=stop horizon=20 log=/home/user/so101_runs/main/redbox_all/eval/rollouts/20261019_132149_20k_t1_rtc20_filt/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+13:24:44.694 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:44.694 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.694 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.727 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.0ms
+13:24:44.728 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.728 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.761 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.0ms
+13:24:44.761 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.761 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.794 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:44.794 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.794 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.828 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.0ms
+13:24:44.828 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.828 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.861 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:44.861 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.861 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.894 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.0ms
+13:24:44.895 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.895 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.931 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 3.7ms
+13:24:44.932 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.932 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.961 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.0ms
+13:24:44.961 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.961 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:44.995 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:44.995 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:44.995 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:45.031 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 3.6ms
+13:24:45.031 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:45.031 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:45.062 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:45.062 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:45.062 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:45.097 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 2.9ms
+13:24:45.097 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:45.097 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:45.130 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 2.6ms
+13:24:45.130 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:45.130 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:45.130 ERROR lerobot.rollout_logged.arm_filter: GUARD STOP starve: 15 consecutive ticks without an action — rollout 종료 요청 (lerobot 표준 종료: 처음 자세로 복귀 후 토크 해제)
+13:24:45.161 INFO lerobot.rollout.strategies.episodic: Episodic control loop ended — saving any in-progress episode
+13:24:45.161 INFO lerobot.utils.cycle_timer: Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 15 ticks, 14 judged
+  effective cadence: 29.93 Hz over 0.5 s measured
+  ticks over the 33.3 ms work budget: 0/14 (0.0%) — work mean 2.1 ms, worst 5.0 ms
+  ticks with no action to send (inference engine starved): 15 — each commanded nothing and recorded no frame
+  loop-body steps (share of measured work):
+    observe      mean   1.95 ms · worst   4.89 ms ·  92.7% of work · 15 calls
+    process_obs  mean   0.02 ms · worst   0.04 ms ·   1.0% of work · 15 calls
+    infer        mean   0.02 ms · worst   0.05 ms ·   1.1% of work · 15 calls
+  pacing headroom: 31.3 ms slept per tick on average (max 32.1 ms) — near zero means the loop is saturated
+13:24:45.211 INFO lerobot.rollout.strategies.episodic: Finalizing dataset...
+13:24:45.212 INFO lerobot.rollout.strategies.core: Stopping inference engine...
+13:24:45.212 INFO lerobot.rollout.inference.rtc: Stopping RTC inference thread...
+13:24:45.389 INFO lerobot.policies.rtc.action_queue: Indexes diff is not equal to real delay. indexes_diff=0, real_delay=22
+13:24:45.389 DEBUG lerobot.policies.rtc.action_queue: original_actions shape: torch.Size([50, 6])
+13:24:45.389 DEBUG lerobot.policies.rtc.action_queue: processed_actions shape: torch.Size([50, 6])
+13:24:45.389 DEBUG lerobot.policies.rtc.action_queue: real_delay: 0, clamped_delay: 0
+13:24:45.389 DEBUG lerobot.rollout.inference.rtc: RTC inference latency=0.72s, queue=50
+13:24:45.390 INFO lerobot.rollout.inference.rtc: RTC inference thread stopped
+13:24:45.390 INFO lerobot.rollout.strategies.core: Returning robot to initial position before shutdown...
+13:24:45.391 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.1ms
+13:24:45.391 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+13:24:45.391 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+13:24:48.589 INFO lerobot.rollout.strategies.core: Disconnecting robot...
+13:24:48.598 DEBUG lerobot.motors.motors_bus: FeetechMotorsBus disconnected.
+13:24:48.698 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_front) disconnected.
+13:24:48.793 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_wrist) disconnected.
+13:24:48.794 INFO lerobot.robots.so_follower.so_follower: my_arm SOFollower disconnected.
+13:24:48.794 INFO lerobot.rollout.strategies.episodic: Episodic strategy teardown complete

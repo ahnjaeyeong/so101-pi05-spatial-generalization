@@ -1,0 +1,15 @@
+{
+ "trial": 31,
+ "condition": "A",
+ "position": "K3",
+ "first_grasp": "success",
+ "final": "success",
+ "attempts": 1,
+ "failure_type": "",
+ "note": "k3에 약간 벗어나게 뒀는데 잘 잡음",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:38:37",
+ "stop_reason": "operator",
+ "protect": null
+}

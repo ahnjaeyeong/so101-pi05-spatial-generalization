@@ -1,0 +1,292 @@
+{
+ "pre_lift_m": 0.02,
+ "transit_margin_rad": 0.1,
+ "n": 50,
+ "wrist_flex_at_handoff_deg": {
+  "median": 93.97801971435547,
+  "max": 99.25274658203125
+ },
+ "tilt_at_handoff_deg_median": 17.999535152198906,
+ "vertical_max_lift_m": {
+  "vmax_urdf": {
+   "median": 0.0,
+   "min": 0.0,
+   "max": 0.030000000000000002
+  },
+  "vmax_wall": {
+   "median": 0.005,
+   "min": 0.0,
+   "max": 0.045
+  }
+ },
+ "by_carry": {
+  "0.06": {
+   "A_vertical_urdf": {
+    "solved": 0
+   },
+   "B_vertical_wall": {
+    "solved": 4
+   },
+   "C_topdown_wall": {
+    "solved": 50,
+    "pre_lift_used": 11,
+    "margin_min": 0.1890256058723716,
+    "margin_med": 0.3324920438390576,
+    "table_clear_min_m": 0.03026243522369279
+   },
+   "place": {
+    "box": {
+     "xy": [
+      0.21,
+      0.11
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.27776489052946585,
+     "transfer_clear_min_m": 0.04029136049705896
+    },
+    "table_A": {
+     "xy": [
+      0.2,
+      -0.1
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.3138930111646028,
+     "transfer_clear_min_m": 0.04029136049705884
+    },
+    "table_B": {
+     "xy": [
+      0.27,
+      -0.06
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.10040132931240175,
+     "transfer_clear_min_m": 0.04029136049705896
+    },
+    "table_C": {
+     "xy": [
+      0.15,
+      -0.13
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.3418966669780008,
+     "transfer_clear_min_m": 0.04029136049705889
+    },
+    "table_D": {
+     "xy": [
+      0.27,
+      0.0
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.14825948671253641,
+     "transfer_clear_min_m": 0.04029136049705896
+    }
+   }
+  },
+  "0.07": {
+   "A_vertical_urdf": {
+    "solved": 0
+   },
+   "B_vertical_wall": {
+    "solved": 2
+   },
+   "C_topdown_wall": {
+    "solved": 50,
+    "pre_lift_used": 11,
+    "margin_min": 0.10874427130955455,
+    "margin_med": 0.25856120660261217,
+    "table_clear_min_m": 0.03026243522369279
+   },
+   "place": {
+    "box": {
+     "xy": [
+      0.21,
+      0.11
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.2033969743582158,
+     "transfer_clear_min_m": 0.05029136049705911
+    },
+    "table_A": {
+     "xy": [
+      0.2,
+      -0.1
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.24037105042546147,
+     "transfer_clear_min_m": 0.05029136049705908
+    },
+    "table_B": {
+     "xy": [
+      0.27,
+      -0.06
+     ],
+     "solved": 18,
+     "of": 50,
+     "margin_min": 0.1000074378226361,
+     "transfer_clear_min_m": 0.056512138838113
+    },
+    "table_C": {
+     "xy": [
+      0.15,
+      -0.13
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.26818638003307615,
+     "transfer_clear_min_m": 0.05029136049705864
+    },
+    "table_D": {
+     "xy": [
+      0.27,
+      0.0
+     ],
+     "solved": 50,
+     "of": 50,
+     "margin_min": 0.1048645500857801,
+     "transfer_clear_min_m": 0.05029136049705912
+    }
+   }
+  },
+  "0.08": {
+   "A_vertical_urdf": {
+    "solved": 0
+   },
+   "B_vertical_wall": {
+    "solved": 0
+   },
+   "C_topdown_wall": {
+    "solved": 46,
+    "pre_lift_used": 11,
+    "margin_min": 0.10203719758388985,
+    "margin_med": 0.18734248064321568,
+    "table_clear_min_m": 0.03026243522369279
+   },
+   "place": {
+    "box": {
+     "xy": [
+      0.21,
+      0.11
+     ],
+     "solved": 46,
+     "of": 46,
+     "margin_min": 0.12618414358130137,
+     "transfer_clear_min_m": 0.06029136049705906
+    },
+    "table_A": {
+     "xy": [
+      0.2,
+      -0.1
+     ],
+     "solved": 46,
+     "of": 46,
+     "margin_min": 0.16518560634976653,
+     "transfer_clear_min_m": 0.06029136049705888
+    },
+    "table_B": {
+     "xy": [
+      0.27,
+      -0.06
+     ],
+     "solved": 0,
+     "of": 46,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    },
+    "table_C": {
+     "xy": [
+      0.15,
+      -0.13
+     ],
+     "solved": 46,
+     "of": 46,
+     "margin_min": 0.1939290587305147,
+     "transfer_clear_min_m": 0.06029136049705881
+    },
+    "table_D": {
+     "xy": [
+      0.27,
+      0.0
+     ],
+     "solved": 0,
+     "of": 46,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    }
+   }
+  },
+  "0.1": {
+   "A_vertical_urdf": {
+    "solved": 0
+   },
+   "B_vertical_wall": {
+    "solved": 0
+   },
+   "C_topdown_wall": {
+    "solved": 0,
+    "pre_lift_used": 11,
+    "margin_min": null,
+    "margin_med": null,
+    "table_clear_min_m": null
+   },
+   "place": {
+    "box": {
+     "xy": [
+      0.21,
+      0.11
+     ],
+     "solved": 0,
+     "of": 0,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    },
+    "table_A": {
+     "xy": [
+      0.2,
+      -0.1
+     ],
+     "solved": 0,
+     "of": 0,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    },
+    "table_B": {
+     "xy": [
+      0.27,
+      -0.06
+     ],
+     "solved": 0,
+     "of": 0,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    },
+    "table_C": {
+     "xy": [
+      0.15,
+      -0.13
+     ],
+     "solved": 0,
+     "of": 0,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    },
+    "table_D": {
+     "xy": [
+      0.27,
+      0.0
+     ],
+     "solved": 0,
+     "of": 0,
+     "margin_min": null,
+     "transfer_clear_min_m": null
+    }
+   }
+  }
+ }
+}

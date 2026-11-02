@@ -1,0 +1,15 @@
+{
+ "trial": 37,
+ "condition": "B",
+ "position": "K1",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 6,
+ "failure_type": "큐브 밀림",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:30:07",
+ "stop_reason": "operator",
+ "protect": null
+}

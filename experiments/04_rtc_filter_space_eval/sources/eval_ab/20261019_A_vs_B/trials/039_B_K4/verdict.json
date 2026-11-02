@@ -1,0 +1,15 @@
+{
+ "trial": 39,
+ "condition": "B",
+ "position": "K4",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 2,
+ "failure_type": "기타",
+ "note": "k4 근처에서 약간 벗어나게 했는데 안됨,목표한 지점말고 k4에서 팔을 벌리는거 같음",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:49:49",
+ "stop_reason": "operator",
+ "protect": null
+}

@@ -9,6 +9,8 @@
 - 체크포인트 (`*.safetensors`), 데이터셋 (`*.parquet`, 영상), `.npz/.npy`, 대용량 로그를 커밋. 경로·SHA-256 만 기록한다.
 - `git push --force`, 이력 재작성, 원격 브랜치 삭제.
 - 존재하지 않는 결과를 채워 넣기. 확인 안 된 값은 `미확인`.
+- 원본에 없는 이미지 생성. 영상에서 프레임을 뽑을 때는 원본 영상 경로·프레임 시각·해시를 기록하고 '추출' 이라고 표시한다.
+- 다른 세션이 작업 중인 폴더 (예: 11-02 의 `main_k8/r2_grasp_diagnostic`) 복사 — 작업이 끝난 뒤 매핑한다.
 
 ## 기록 규칙
 1. 모든 진술에 표기: [사실] (파일 측정값) · [관찰] (연구자 실물 관찰, 메모 원문) · [가설] (분석 해석) · [계획] (설계만).
@@ -28,15 +30,20 @@
 2. 실험 전에 목적·가설·판정 기준을 적고 상태 `PLANNED` 로 커밋.
 3. 데이터셋·모델 설정: `tools/collect_run_metadata.py` 의 `TRAIN_RUNS` / `DATASETS` 에 추가 후 실행 (읽기 전용). 체크포인트 해시는
    `find <run>/checkpoints -name model.safetensors | grep -v /last/ | xargs sha256sum >> configs/checkpoints/model_sha256.txt` (사용자 승인 후, 학습이 끝난 뒤).
-4. 결과 파일 연결: `tools/sync_sources.py` 의 `MAPPINGS` 에 원본 폴더 추가 → `python3 tools/sync_sources.py --dry-run` 로 크기 확인 → 실행.
+4. 결과 파일 연결 (모두 원본 읽기 전용):
+   - `tools/sync_sources.py` 의 `MAPPINGS` 에 원본 폴더 추가 → `python3 tools/sync_sources.py --dry-run` 로 크기 확인 → 실행.
+   - `~/so101-env/bin/python tools/derive_condensed.py` — 큰 로그 축약, gz 해제, rollout 명령·실제값 CSV, 영상 프레임 추출 (추출은 원본 영상 경로·시각을 반드시 기록; 원본에 없는 이미지는 만들지 않는다).
+   - `python3 tools/prune_stale.py` — 매니페스트에 없는 저장소 사본 정리 (저장소 안만).
+   - `python3 tools/compare_sources.py` → `python3 tools/focus_report.py main` — 로컬 ↔ 저장소 파일 단위 비교, `ARCHIVE_MANIFEST.csv` 해시 갱신, `inventory/` 표 갱신. '매핑 없음' 이 0 이 아니면 이유를 적거나 매핑을 추가한다.
 5. 정량·정성 결과, 실패 사례 (메모 원문), 분석·후속 가설을 README 에 적고 상태 갱신.
 6. `EXPERIMENT_INDEX.md`, `CHANGELOG.md`, 필요하면 `evaluations/*/README.md` 와 `README.md` 9절 (현재 상태) 갱신.
 7. `python3 tools/check_repo.py` — 필수 항목, 상대 링크, 파일 크기, 비밀정보 패턴 검사. 실패하면 커밋하지 않는다.
 8. `git status` 로 추적 파일 확인 후 의미 있는 메시지로 커밋.
-9. Push (ahnjaeyeong 계정, gh 활성 계정은 바꾸지 않음):
+9. 작업 브랜치에서 커밋하고 PR 로 main 에 합친다 (저장소는 **Public** — 추가 전 민감정보 검사 필수). Push (ahnjaeyeong 계정, gh 활성 계정은 바꾸지 않음):
    ```bash
    GH_TOKEN=$(gh auth token --user ahnjaeyeong) git -c credential.helper= \
-     -c 'credential.helper=!f(){ echo username=ahnjaeyeong; echo "password=$GH_TOKEN"; }; f' push origin main
+     -c 'credential.helper=!f(){ echo username=ahnjaeyeong; echo "password=$GH_TOKEN"; }; f' push origin <branch>
+   GH_TOKEN=$(gh auth token --user ahnjaeyeong) gh pr create --repo ahnjaeyeong/so101-pi05-spatial-generalization --base main --head <branch>
    ```
 
 ## 원본 위치

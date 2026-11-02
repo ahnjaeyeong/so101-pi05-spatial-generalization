@@ -49,5 +49,9 @@
 ## 다음 실험으로 이어진 이유
 위치 일반화 부족 → 추가 학습 시도 (EXP-05), 카메라 재배치 (EXP-06).
 
+## 틱 단위 기록
+- 평가 trial 마다 `trials/*/ticks.csv` (틱별 명령·필터 출력·실제 관절), `inferences.csv` (RTC 추론 시각·지연), `start_front/wrist.png`.
+- rollout 별 명령 (action) vs 실제 (state) 프레임 표: `**/dataset_state_action.csv`; 2 MB 넘는 로그는 `*.condensed.log` (원본 해시는 `ARCHIVE_MANIFEST.csv`).
+
 ## 원본 자료
 [`sources/`](sources/) (offline_redbox_all_eval, rollouts, eval_ab, eval_space_20k, pregrasp_*), 원본 `/home/user/so101_runs/redbox_all/eval/`, `/home/user/so101_runs/main/redbox_all/eval/`.

@@ -1,0 +1,199 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-14 10:32:18",
+ "session": "practice/redbox_t2k_pilot",
+ "group": "t2_known",
+ "episodes": 4,
+ "repo_id": "oxr/so101_redbox_t2k_pilot",
+ "task_text": "put all the red cubes in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "2b625e9ab65268964424e4e4f647a21c41ea160b555f4682ab4bfbbcb5f311b9",
+ "unconfirmed": true,
+ "warnings": [
+  "확인 안 된 Known 위치: K1, K2, K3, K4 — 시험 녹화로 확인한 뒤 위치는 `set-known <ID> --confirm`, 작업 영역은 설정 파일에서 workspace.confirmed: true (연습은 --allow-unconfirmed)"
+ ],
+ "stats": {
+  "layouts": 4,
+  "episodes_per_layout": [
+   1
+  ],
+  "red_per_position": {
+   "K1": 3,
+   "K2": 3,
+   "K3": 3,
+   "K4": 3
+  }
+ },
+ "plan_sha256": "339a13ca15cc21235a0a2e04d0fd39955c09b4e0a88d7d3b880f5feb985dbe41",
+ "resolved": {
+  "group": "t2_known",
+  "task_key": "t2",
+  "task_text": "put all the red cubes in the brown box",
+  "mode": "known",
+  "episodes": 4,
+  "episodes_override": true,
+  "seed": 1201,
+  "default_session": "main/redbox_t2_known",
+  "repo_id": "oxr/so101_redbox_t2k_pilot",
+  "red_cubes": 3,
+  "distractors": [],
+  "objects": {
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    7.25,
+    13.8
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    false
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    false
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    false
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    false
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 8.0
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 3.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    30,
+    100
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       6
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       18
+      ],
+      "s": [
+       190,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

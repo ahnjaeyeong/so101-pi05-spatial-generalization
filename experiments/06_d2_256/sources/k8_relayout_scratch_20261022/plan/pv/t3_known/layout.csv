@@ -1,0 +1,65 @@
+episode_index,layout_id,status,retake_of,objects,frames,note,angles
+0,T3K1-Y2B4O7,planned,,"red_cube@K1(-8.5,26.5); yellow_cube@K2(-8.5,11.5); blue_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5)",,,K1:45;K2:L30;K4:0;K7:R15
+1,T3K6-O2G4,planned,,"red_cube@K6(-17.0,-3.5); orange_cube@K2(-8.5,11.5); green_cube@K4(-17.0,26.5)",,,K6:R15;K2:L15;K4:45
+2,T3K3-O4,planned,,"red_cube@K3(-8.5,-3.5); orange_cube@K4(-17.0,26.5)",,,K3:R30;K4:R30
+3,T3K8-O1G3Y7,planned,,"red_cube@K8(-25.5,-3.5); orange_cube@K1(-8.5,26.5); green_cube@K3(-8.5,-3.5); yellow_cube@K7(-25.5,26.5)",,,K8:0;K1:L15;K3:R15;K7:45
+4,T3K7-Y1O8,planned,,"red_cube@K7(-25.5,26.5); yellow_cube@K1(-8.5,26.5); orange_cube@K8(-25.5,-3.5)",,,K7:L30;K1:R30;K8:0
+5,T3K4-B2,planned,,"red_cube@K4(-17.0,26.5); blue_cube@K2(-8.5,11.5)",,,K4:L15;K2:R30
+6,T3K2-B3G4,planned,,"red_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",,,K2:R15;K3:L30;K4:L15
+7,T3K5-G1O6G8,planned,,"red_cube@K5(-17.0,11.5); green_cube@K1(-8.5,26.5); orange_cube@K6(-17.0,-3.5); green_cube@K8(-25.5,-3.5)",,,K5:45;K1:R15;K6:0;K8:L30
+8,T3K6-Y1Y2,planned,,"red_cube@K6(-17.0,-3.5); yellow_cube@K1(-8.5,26.5); yellow_cube@K2(-8.5,11.5)",,,K6:R30;K1:45;K2:0
+9,T3K4-B1O5Y8,planned,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); orange_cube@K5(-17.0,11.5); yellow_cube@K8(-25.5,-3.5)",,,K4:0;K1:L30;K5:R30;K8:45
+10,T3K7-B8,planned,,"red_cube@K7(-25.5,26.5); blue_cube@K8(-25.5,-3.5)",,,K7:L15;K8:L15
+11,T3K8-G1O2O7,planned,,"red_cube@K8(-25.5,-3.5); green_cube@K1(-8.5,26.5); orange_cube@K2(-8.5,11.5); orange_cube@K7(-25.5,26.5)",,,K8:L30;K1:0;K2:R15;K7:L15
+12,T3K3-O2O5,planned,,"red_cube@K3(-8.5,-3.5); orange_cube@K2(-8.5,11.5); orange_cube@K5(-17.0,11.5)",,,K3:L15;K2:45;K5:L30
+13,T3K5-G3,planned,,"red_cube@K5(-17.0,11.5); green_cube@K3(-8.5,-3.5)",,,K5:0;K3:R30
+14,T3K1-Y6O7,planned,,"red_cube@K1(-8.5,26.5); yellow_cube@K6(-17.0,-3.5); orange_cube@K7(-25.5,26.5)",,,K1:L30;K6:R15;K7:L30
+15,T3K2-O3B5G8,planned,,"red_cube@K2(-8.5,11.5); orange_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5); green_cube@K8(-25.5,-3.5)",,,K2:R30;K3:0;K5:L15;K8:R15
+16,T3K8-G6Y7,planned,,"red_cube@K8(-25.5,-3.5); green_cube@K6(-17.0,-3.5); yellow_cube@K7(-25.5,26.5)",,,K8:45;K6:45;K7:R30
+17,T3K4-G2B3B7,planned,,"red_cube@K4(-17.0,26.5); green_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5); blue_cube@K7(-25.5,26.5)",,,K4:R15;K2:R15;K3:45;K7:0
+18,T3K1-Y3B6G7,planned,,"red_cube@K1(-8.5,26.5); yellow_cube@K3(-8.5,-3.5); blue_cube@K6(-17.0,-3.5); green_cube@K7(-25.5,26.5)",,,K1:0;K3:L15;K6:L30;K7:R30
+19,T3K7-B6,planned,,"red_cube@K7(-25.5,26.5); blue_cube@K6(-17.0,-3.5)",,,K7:R30;K6:R30
+20,T3K5-G7O8,planned,,"red_cube@K5(-17.0,11.5); green_cube@K7(-25.5,26.5); orange_cube@K8(-25.5,-3.5)",,,K5:L15;K7:L30;K8:R30
+21,T3K3-Y6,planned,,"red_cube@K3(-8.5,-3.5); yellow_cube@K6(-17.0,-3.5)",,,K3:L30;K6:L15
+22,T3K2-O3Y7,planned,,"red_cube@K2(-8.5,11.5); orange_cube@K3(-8.5,-3.5); yellow_cube@K7(-25.5,26.5)",,,K2:45;K3:R15;K7:0
+23,T3K6-O2Y7Y8,planned,,"red_cube@K6(-17.0,-3.5); orange_cube@K2(-8.5,11.5); yellow_cube@K7(-25.5,26.5); yellow_cube@K8(-25.5,-3.5)",,,K6:0;K2:45;K7:L15;K8:0
+24,T3K2-B1G8,planned,,"red_cube@K2(-8.5,11.5); blue_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",,,K2:L15;K1:45;K8:L30
+25,T3K6-G1Y4O8,planned,,"red_cube@K6(-17.0,-3.5); green_cube@K1(-8.5,26.5); yellow_cube@K4(-17.0,26.5); orange_cube@K8(-25.5,-3.5)",,,K6:45;K1:R15;K4:R15;K8:R30
+26,T3K8-Y7,planned,,"red_cube@K8(-25.5,-3.5); yellow_cube@K7(-25.5,26.5)",,,K8:R15;K7:45
+27,T3K5-B3Y4,planned,,"red_cube@K5(-17.0,11.5); blue_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5)",,,K5:R30;K3:L15;K4:L30
+28,T3K7-G1Y3G5,planned,,"red_cube@K7(-25.5,26.5); green_cube@K1(-8.5,26.5); yellow_cube@K3(-8.5,-3.5); green_cube@K5(-17.0,11.5)",,,K7:R15;K1:0;K3:0;K5:45
+29,T3K1-G8,planned,,"red_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",,,K1:L15;K8:R15
+30,T3K3-B4O5G8,planned,,"red_cube@K3(-8.5,-3.5); blue_cube@K4(-17.0,26.5); orange_cube@K5(-17.0,11.5); green_cube@K8(-25.5,-3.5)",,,K3:R15;K4:R30;K5:R15;K8:L15
+31,T3K4-Y3B5,planned,,"red_cube@K4(-17.0,26.5); yellow_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",,,K4:L30;K3:L30;K5:0
+32,T3K5-Y3G4,planned,,"red_cube@K5(-17.0,11.5); yellow_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",,,K5:L30;K3:R30;K4:L30
+33,T3K1-G8,planned,,"red_cube@K1(-8.5,26.5); green_cube@K8(-25.5,-3.5)",,,K1:R30;K8:45
+34,T3K4-B1G5B8,planned,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); green_cube@K5(-17.0,11.5); blue_cube@K8(-25.5,-3.5)",,,K4:45;K1:L15;K5:45;K8:0
+35,T3K8-Y4O7,planned,,"red_cube@K8(-25.5,-3.5); yellow_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5)",,,K8:L15;K4:L15;K7:R15
+36,T3K6-G3Y4O5,planned,,"red_cube@K6(-17.0,-3.5); green_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5); orange_cube@K5(-17.0,11.5)",,,K6:L30;K3:45;K4:R15;K5:R30
+37,T3K3-G4,planned,,"red_cube@K3(-8.5,-3.5); green_cube@K4(-17.0,26.5)",,,K3:0;K4:0
+38,T3K2-Y1G7B8,planned,,"red_cube@K2(-8.5,11.5); yellow_cube@K1(-8.5,26.5); green_cube@K7(-25.5,26.5); blue_cube@K8(-25.5,-3.5)",,,K2:0;K1:L30;K7:R30;K8:L30
+39,T3K7-Y5Y6,planned,,"red_cube@K7(-25.5,26.5); yellow_cube@K5(-17.0,11.5); yellow_cube@K6(-17.0,-3.5)",,,K7:45;K5:L15;K6:45
+40,T3K6-B8,planned,,"red_cube@K6(-17.0,-3.5); blue_cube@K8(-25.5,-3.5)",,,K6:L15;K8:R30
+41,T3K1-O3O7G8,planned,,"red_cube@K1(-8.5,26.5); orange_cube@K3(-8.5,-3.5); orange_cube@K7(-25.5,26.5); green_cube@K8(-25.5,-3.5)",,,K1:R15;K3:0;K7:R15;K8:L15
+42,T3K8-G3G6,planned,,"red_cube@K8(-25.5,-3.5); green_cube@K3(-8.5,-3.5); green_cube@K6(-17.0,-3.5)",,,K8:R30;K3:L30;K6:R15
+43,T3K3-O5B8,planned,,"red_cube@K3(-8.5,-3.5); orange_cube@K5(-17.0,11.5); blue_cube@K8(-25.5,-3.5)",,,K3:45;K5:L30;K8:45
+44,T3K5-G4O7G8,planned,,"red_cube@K5(-17.0,11.5); green_cube@K4(-17.0,26.5); orange_cube@K7(-25.5,26.5); green_cube@K8(-25.5,-3.5)",,,K5:R15;K4:45;K7:0;K8:R15
+45,T3K2-B6,planned,,"red_cube@K2(-8.5,11.5); blue_cube@K6(-17.0,-3.5)",,,K2:L30;K6:R30
+46,T3K7-O1Y6,planned,,"red_cube@K7(-25.5,26.5); orange_cube@K1(-8.5,26.5); yellow_cube@K6(-17.0,-3.5)",,,K7:0;K1:R30;K6:L15
+47,T3K4-B1O2Y8,planned,,"red_cube@K4(-17.0,26.5); blue_cube@K1(-8.5,26.5); orange_cube@K2(-8.5,11.5); yellow_cube@K8(-25.5,-3.5)",,,K4:R30;K1:0;K2:L15;K8:L30
+48,T3K5-G2B7,planned,,"red_cube@K5(-17.0,11.5); green_cube@K2(-8.5,11.5); blue_cube@K7(-25.5,26.5)",,,K5:0;K2:L30;K7:L15
+49,T3K1-Y8,planned,,"red_cube@K1(-8.5,26.5); yellow_cube@K8(-25.5,-3.5)",,,K1:45;K8:0
+50,T3K3-Y4B6O8,planned,,"red_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5); blue_cube@K6(-17.0,-3.5); orange_cube@K8(-25.5,-3.5)",,,K3:R15;K4:45;K6:0;K8:R30
+51,T3K4-G1G5B7,planned,,"red_cube@K4(-17.0,26.5); green_cube@K1(-8.5,26.5); green_cube@K5(-17.0,11.5); blue_cube@K7(-25.5,26.5)",,,K4:L30;K1:R15;K5:R15;K7:45
+52,T3K2-O6B8,planned,,"red_cube@K2(-8.5,11.5); orange_cube@K6(-17.0,-3.5); blue_cube@K8(-25.5,-3.5)",,,K2:R30;K6:L30;K8:L15
+53,T3K6-Y3,planned,,"red_cube@K6(-17.0,-3.5); yellow_cube@K3(-8.5,-3.5)",,,K6:L15;K3:R30
+54,T3K8-B2B3,planned,,"red_cube@K8(-25.5,-3.5); blue_cube@K2(-8.5,11.5); blue_cube@K3(-8.5,-3.5)",,,K8:45;K2:0;K3:R15
+55,T3K7-O1B3B5,planned,,"red_cube@K7(-25.5,26.5); orange_cube@K1(-8.5,26.5); blue_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",,,K7:L30;K1:45;K3:L15;K5:0
+56,T3K6-B1O3Y5,planned,,"red_cube@K6(-17.0,-3.5); blue_cube@K1(-8.5,26.5); orange_cube@K3(-8.5,-3.5); yellow_cube@K5(-17.0,11.5)",,,K6:R15;K1:L30;K3:45;K5:R30
+57,T3K5-Y3Y6,planned,,"red_cube@K5(-17.0,11.5); yellow_cube@K3(-8.5,-3.5); yellow_cube@K6(-17.0,-3.5)",,,K5:L15;K3:L30;K6:R15
+58,T3K3-O8,planned,,"red_cube@K3(-8.5,-3.5); orange_cube@K8(-25.5,-3.5)",,,K3:R30;K8:45
+59,T3K1-B2G3B5,planned,,"red_cube@K1(-8.5,26.5); blue_cube@K2(-8.5,11.5); green_cube@K3(-8.5,-3.5); blue_cube@K5(-17.0,11.5)",,,K1:0;K2:R30;K3:L15;K5:0
+60,T3K2-O1Y8,planned,,"red_cube@K2(-8.5,11.5); orange_cube@K1(-8.5,26.5); yellow_cube@K8(-25.5,-3.5)",,,K2:L30;K1:L15;K8:R15
+61,T3K4-O1Y8,planned,,"red_cube@K4(-17.0,26.5); orange_cube@K1(-8.5,26.5); yellow_cube@K8(-25.5,-3.5)",,,K4:L15;K1:R30;K8:L30
+62,T3K7-O2,planned,,"red_cube@K7(-25.5,26.5); orange_cube@K2(-8.5,11.5)",,,K7:R30;K2:L30
+63,T3K8-G3B4B5,planned,,"red_cube@K8(-25.5,-3.5); green_cube@K3(-8.5,-3.5); blue_cube@K4(-17.0,26.5); blue_cube@K5(-17.0,11.5)",,,K8:0;K3:0;K4:L15;K5:R15

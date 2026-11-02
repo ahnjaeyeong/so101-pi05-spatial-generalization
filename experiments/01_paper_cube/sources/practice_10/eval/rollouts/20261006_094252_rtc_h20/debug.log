@@ -1,0 +1,17 @@
+09:42:57.332 INFO lerobot.rollout_logged: debug log: /home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_094252_rtc_h20/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/eval_practice10_pi05_2k_rtc_h20 --dataset.root=/home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_094252_rtc_h20/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=2 --dataset.episode_time_s=20 --dataset.reset_time_s=20 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.type=rtc --inference.rtc.execution_horizon=20
+09:42:57.332 INFO lerobot.scripts.lerobot_rollout: Building rollout context...
+09:42:57.332 INFO lerobot.rollout.context: Loading policy from '/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model'...
+09:45:34.797 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+09:45:34.797 WARNING root: Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+09:45:40.117 INFO lerobot.rollout.context: Policy loaded: type=pi05, device=cuda
+09:45:40.117 INFO lerobot.rollout.context: Connecting robot (so100_follower)...
+09:45:40.128 DEBUG lerobot.motors.motors_bus: FeetechMotorsBus connected.
+09:45:41.616 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_front) connected.
+09:45:43.098 INFO lerobot.cameras.opencv.camera_opencv: OpenCVCamera(/dev/cam_wrist) connected.
+09:45:43.128 INFO lerobot.robots.so_follower.so_follower: my_arm SOFollower connected.
+09:45:43.128 INFO lerobot.rollout.context: Robot connected: so_follower
+09:45:43.130 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read state: 1.8ms
+09:45:43.130 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read front: 0.0ms
+09:45:43.131 DEBUG lerobot.robots.so_follower.so_follower: my_arm SOFollower read wrist: 0.0ms
+09:45:43.131 INFO lerobot.rollout.context: Captured initial robot position (6 keys)
+09:45:43.131 INFO lerobot.rollout.context: Setting up dataset (repo_id=oxr/eval_practice10_pi05_2k_rtc_h20)...

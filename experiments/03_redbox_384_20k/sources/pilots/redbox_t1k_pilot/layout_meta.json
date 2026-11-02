@@ -1,0 +1,199 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-13 17:46:44",
+ "session": "practice/redbox_t1k_pilot",
+ "group": "t1_known",
+ "episodes": 8,
+ "repo_id": "oxr/so101_redbox_t1k_pilot",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox_layouts.yaml",
+ "config_sha256": "c0dc54b5661c81755dfd866c1e878160d2544fccc173006eb0ac9d6613b231aa",
+ "unconfirmed": true,
+ "warnings": [
+  "확인 안 된 Known 위치: K1, K2, K3, K4 — 시험 녹화로 확인한 뒤 위치는 `set-known <ID> --confirm`, 작업 영역은 설정 파일에서 workspace.confirmed: true (연습은 --allow-unconfirmed)"
+ ],
+ "stats": {
+  "layouts": 4,
+  "episodes_per_layout": [
+   2
+  ],
+  "red_per_position": {
+   "K1": 2,
+   "K2": 2,
+   "K3": 2,
+   "K4": 2
+  }
+ },
+ "plan_sha256": "3a41094762c183c31a1bd6f8a90afd4f919d755e13826802ac9d7c804970d665",
+ "resolved": {
+  "group": "t1_known",
+  "task_key": "t1",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "known",
+  "episodes": 8,
+  "episodes_override": true,
+  "seed": 1101,
+  "default_session": "main/redbox_t1_known",
+  "repo_id": "oxr/so101_redbox_t1k_pilot",
+  "red_cubes": 1,
+  "distractors": [],
+  "objects": {
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    6.5,
+    11.75
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -20.2,
+     31.5
+    ],
+    false
+   ],
+   [
+    "K2",
+    [
+     -16.2,
+     21.3
+    ],
+    false
+   ],
+   [
+    "K3",
+    [
+     -7.8,
+     12.7
+    ],
+    false
+   ],
+   [
+    "K4",
+    [
+     -15.4,
+     2.6
+    ],
+    false
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 8.0
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 3.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    15,
+    40
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 300,
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       6
+      ],
+      "s": [
+       150,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       18
+      ],
+      "s": [
+       190,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

@@ -55,5 +55,8 @@ RTC h20 EXP s5 q30, max_relative_target 8°, 필터 끔 (try3) / 켬 (try3_filt)
 ## 다음 실험으로 이어진 이유
 G_tt 0.10 → Vision Probe (EXP-07).
 
+## 카메라·보정 기록
+[`configs/camera/README.md`](../../configs/camera/README.md) — 이동 전후 화면, 새 H 행렬, 보정 작업 파일 ([`sources/k8_relayout_scratch_20261022/`](sources/k8_relayout_scratch_20261022/)), 설정 그림 ([`sources/main_k8_setting/`](sources/main_k8_setting/)). 10-26 평가는 시작 사진이 없어 원본 영상에서 첫 프레임을 추출했다 (`sources/d2/eval/rollouts/20261026_*/start_frames_extracted/EXTRACTION.md`).
+
 ## 원본 자료
 [`sources/`](sources/), 원본 `/home/user/so101_runs/main_k8/`.
