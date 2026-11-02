@@ -1,0 +1,15 @@
+{
+ "trial": 19,
+ "condition": "B",
+ "position": "K2",
+ "first_grasp": "failure",
+ "final": "success",
+ "attempts": 3,
+ "failure_type": "손목 방향 정렬 실패;얕은 파지;큐브 밀림",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-20 09:50:00",
+ "stop_reason": "operator",
+ "protect": null
+}

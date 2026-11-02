@@ -1,0 +1,13 @@
+episode_index,layout_id,excluded,color,x_cm,y_cm,nearest_known,dist_known_cm
+0,T2K1K3K4,,red,-19.3,29.6,K1,2.2
+0,T2K1K3K4,,red,-7.7,12.9,K3,0.2
+0,T2K1K3K4,,red,-15.3,2.1,K4,0.5
+1,T2K2K3K4,,red,-15.8,22.2,K2,1.0
+1,T2K2K3K4,,red,-7.4,12.6,K3,0.4
+1,T2K2K3K4,,red,-15.1,2.6,K4,0.3
+2,T2K1K2K3,,red,-20.4,31.6,K1,0.2
+2,T2K1K2K3,,red,-15.8,21.2,K2,0.4
+2,T2K1K2K3,,red,-8.1,12.6,K3,0.3
+3,T2K1K2K4,,red,-20.0,31.3,K1,0.3
+3,T2K1K2K4,,red,-15.9,21.6,K2,0.4
+3,T2K1K2K4,,red,-15.4,2.3,K4,0.3

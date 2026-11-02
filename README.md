@@ -95,13 +95,18 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | [templates/](templates/) | 새 실험·평가 문서 템플릿 |
 | [tools/](tools/) | 동기화·메타 수집·저장소 검사 스크립트 |
 | [CLAUDE.md](CLAUDE.md) | 이 저장소를 갱신할 때의 규칙 |
+| [inventory/](inventory/README.md) | 로컬 원본 ↔ GitHub 파일 단위 비교 (10,873개 분류), 항목별 누락표, 원본 없는 항목 |
+| [configs/camera/](configs/camera/README.md) | 카메라 설정·이동 전후 화면·보정 (H 행렬, 좌표계) 기록 |
+| [ARCHIVE_MANIFEST.csv](ARCHIVE_MANIFEST.csv) | Git 에 넣지 않은 원본 (대용량 로그·관측 PNG·npz·데이터셋 등) 의 경로·크기·SHA-256 |
+| [DERIVED_MANIFEST.csv](DERIVED_MANIFEST.csv) | 축약·변환·추출 파일 (로그 축약, 명령 vs 실제값 CSV, 서보 타임라인 10 Hz, 영상 프레임) 과 원본 해시 |
 | [SOURCES_MANIFEST.csv](SOURCES_MANIFEST.csv) | 복사한 모든 파일의 원본 경로·크기·SHA-256 (해시는 **원본 파일** 기준; CSV 줄바꿈은 Git 에서 LF 로 정규화되어 사본 해시가 다를 수 있음) |
 
 ## 표기 규칙
 [사실] 파일 측정값 · [관찰] 연구자 실물 관찰 · [가설] 분석 해석 · [계획] 설계만 (docs/ 에서는 A/B/C/D). 오프라인 probe 결과는 실물 성공률이 아니다. 진짜 held-out 사람 시연은 아직 없다.
 
 ## Git 에서 제외한 자료
-모델 체크포인트 (28개, 각 9.35 GB `model.safetensors` + optimizer — 경로·SHA-256 은 `configs/checkpoints/`), LeRobot 데이터셋 parquet·AV1 영상 (메타는 `configs/datasets/`), 실물 rollout dataset·영상·review 영상, diag 원 chunk (`.npz`) 와 관측 PNG, F1 특징 (86 GB), 학습 로그 원본 (진행 막대로 수 MB; loss 는 `analysis/loss/` 로 추출), `.npz/.npy/.parquet/.gz/.mp4/.safetensors`, 가상환경·캐시.
+전체 목록과 해시는 [ARCHIVE_MANIFEST.csv](ARCHIVE_MANIFEST.csv), 요약은 [inventory/README.md](inventory/README.md).
+모델 체크포인트 (28개, 각 9.35 GB `model.safetensors` + optimizer — 경로·SHA-256 은 `configs/checkpoints/`), LeRobot 데이터셋 parquet·AV1 영상 (메타는 `configs/datasets/`), 실물 rollout dataset·영상·review 영상, diag 원 chunk (`.npz`) 와 관측 PNG (에피소드 첫 chunk 52장만 등록), 2 MB 넘는 rollout 로그 (축약본 `*.condensed.log` 등록), QA 판별 시트 `ep_N.jpg` 773장, F1 특징 (86 GB), 학습 로그 원본 (진행 막대; loss 는 `analysis/loss/` 로 추출), `.npz/.npy/.parquet/.gz/.mp4/.safetensors`, 가상환경·캐시.
 
 ## 새 실험 추가
 [CLAUDE.md](CLAUDE.md) 의 "새 실험 기록 절차" 참고. 요약: 템플릿 복사 → ID 부여 → 목적·가설 → 설정 기록 (`tools/sync_sources.py`, `tools/collect_run_metadata.py` 매핑 추가) → 결과 연결 → `EXPERIMENT_INDEX.md`·`CHANGELOG.md` 갱신 → `python3 tools/check_repo.py` → commit → push.

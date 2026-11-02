@@ -1,0 +1,51 @@
+{
+ "publishers_besides_rosout_parameter_events": [],
+ "mode": "probe",
+ "elapsed_s": 5.0,
+ "dir": "/ws/e0j0_runs/shadow_20261007_114205",
+ "config": "/ws/src/twin_e0j0/config/e0j0.yaml",
+ "walls": "/ws/src/twin_e0j0/config/physical_limits_thor_e0j0.yaml",
+ "joint_states_hz": 30.0,
+ "camera_hz": {
+  "front": 0.0,
+  "wrist": 0.0
+ },
+ "counts": {
+  "ticks": 150,
+  "stale": 0,
+  "actions": 0,
+  "empty": 0,
+  "wall_out": 0,
+  "wall_out_unbounded": 0,
+  "gripper_bounded": 0,
+  "floor_out": 0,
+  "clipped": 0
+ },
+ "first_state": {
+  "rad": [
+   0.3682533108818469,
+   0.1250499606966748,
+   0.2500999213933496,
+   1.5596723029216357,
+   0.1526683560051256,
+   0.4780018624686707
+  ],
+  "lerobot": [
+   13.18681335449219,
+   7.164834976196289,
+   14.329669952392578,
+   89.36264038085939,
+   8.747252464294434,
+   27.387489318847656
+  ],
+  "tcp_z": 0.03420380907246841
+ },
+ "handoff_events": [],
+ "camera_stats": {},
+ "chunk_direction": {
+  "n": 0
+ },
+ "infer_ms": {
+  "n": 0
+ }
+}

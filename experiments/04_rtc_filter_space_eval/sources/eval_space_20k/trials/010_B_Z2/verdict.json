@@ -1,0 +1,15 @@
+{
+ "trial": 10,
+ "condition": "B",
+ "position": "Z2",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 5,
+ "failure_type": "손목 방향 정렬 실패",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-20 09:39:51",
+ "stop_reason": "time_limit",
+ "protect": null
+}

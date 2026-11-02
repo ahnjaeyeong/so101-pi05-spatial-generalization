@@ -1,0 +1,15 @@
+{
+ "trial": 41,
+ "condition": "B",
+ "position": "Z2",
+ "first_grasp": "failure",
+ "final": "success",
+ "attempts": 5,
+ "failure_type": "큐브 밀림;손목 방향 정렬 실패",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:34:09",
+ "stop_reason": "operator",
+ "protect": null
+}

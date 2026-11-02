@@ -1,0 +1,279 @@
+version: 1
+workspace:
+  confirmed: false
+  polygon_cm: null
+box:
+  center_cm:
+  - 6.5
+  - 11.75
+  inner_size_cm:
+  - 12.0
+  - 22.5
+  wall_cm: 0.5
+  height_cm: 6.0
+  keepout_cm: 0.0
+objects:
+  red_cube:
+    size_cm: 2.5
+    color: red
+    label: 빨간 큐브
+  blue_cube:
+    size_cm: 2.5
+    color: blue
+    label: 파란 큐브
+  green_cube:
+    size_cm: 2.5
+    color: green
+    label: 초록 큐브
+  yellow_cube:
+    size_cm: 2.5
+    color: yellow
+    label: 노란 큐브
+  orange_cube:
+    size_cm: 2.5
+    color: orange
+    label: 주황 큐브
+known_positions:
+  K1:
+    xy_cm:
+    - -8.5
+    - 26.5
+    confirmed: true
+    front_px:
+    - 496
+    - 280
+  K2:
+    xy_cm:
+    - -8.5
+    - 11.5
+    confirmed: true
+    front_px:
+    - 319
+    - 280
+  K3:
+    xy_cm:
+    - -8.5
+    - -3.5
+    confirmed: true
+    front_px:
+    - 147
+    - 279
+  K4:
+    xy_cm:
+    - -17.0
+    - 26.5
+    confirmed: true
+    front_px:
+    - 483
+    - 189
+  K5:
+    xy_cm:
+    - -17.0
+    - 11.5
+    confirmed: true
+    front_px:
+    - 319
+    - 189
+  K6:
+    xy_cm:
+    - -17.0
+    - -3.5
+    confirmed: true
+    front_px:
+    - 159
+    - 190
+  K7:
+    xy_cm:
+    - -25.5
+    - 26.5
+    confirmed: true
+    front_px:
+    - 472
+    - 110
+  K8:
+    xy_cm:
+    - -25.5
+    - -3.5
+    confirmed: true
+    front_px:
+    - 170
+    - 113
+spacing:
+  min_object_distance_cm: 3.5
+random:
+  placement: free
+  known_exclusion_radius_cm: 0.0
+  exclusion_applies_to: all
+  quantize_cm: 0.5
+  max_tries: 2000
+camera:
+  front_640x480:
+    H_cm_to_px:
+    - - -3.13422
+      - 12.106333
+      - 175.13384
+    - - 9.506667
+      - -0.268513
+      - 383.244486
+    - - -0.009781
+      - -0.001094
+      - 1.0
+tasks:
+  t1:
+    task: pick up the red cube and put it in the brown box
+    red_cubes: 1
+    distractors:
+      count: 0
+      pool: []
+    qa:
+      len_s:
+      - 10
+      - 40
+    known_layouts: auto
+  t2:
+    task: put all the red cubes in the brown box
+    red_counts:
+      2: 28
+    distractors:
+      count: 0
+      pool: []
+    qa:
+      len_s:
+      - 15
+      - 75
+    known_layouts: auto
+  t3:
+    task: pick up the red cube and put it in the brown box
+    red_cubes: 1
+    distractors:
+      pool:
+      - yellow_cube
+      - orange_cube
+      - blue_cube
+      - green_cube
+      counts:
+        known:
+          1: 16
+          2: 24
+          3: 24
+        random:
+          2: 12
+          3: 13
+          4: 13
+          5: 13
+          6: 13
+      max_per_color: 5
+    qa:
+      len_s:
+      - 8
+      - 45
+    touching_ok: true
+    known_layouts: auto
+groups:
+  t1_known:
+    task: t1
+    mode: known
+    episodes: 16
+    seed: 1
+    session: practice/preview_t1k
+    repo_id: x/p1
+  t2_known:
+    task: t2
+    mode: known
+    episodes: 28
+    seed: 2
+    session: practice/preview_t2k
+    repo_id: x/p2
+  t3_known:
+    task: t3
+    mode: known
+    episodes: 64
+    seed: 3
+    session: practice/preview_t3k
+    repo_id: x/p3
+  t3_random:
+    task: t3
+    mode: random
+    episodes: 64
+    seed: 4
+    session: practice/preview_t3r
+    repo_id: x/p4
+detection:
+  min_blob_area_px: 100
+  min_blob_area_in_box_px: 40
+  in_box_open_px: 3
+  cube_area_px:
+  - 786.9
+  - 1.303
+  - -0.015
+  - 0.0
+  cluster_split_ratio: 1.1
+  cube_area_scale:
+    green: 0.9
+    orange: 0.85
+    blue: 1.0
+    yellow: 0.83
+  in_box_margin_px: 10
+  position_tol_px: 25
+  distractor_move_tol_px: 20
+  grip_dip_min: 5
+  colors:
+    red:
+    - h:
+      - 160
+      - 180
+      s:
+      - 90
+      - 255
+      v:
+      - 60
+      - 255
+    - h:
+      - 0
+      - 1
+      s:
+      - 90
+      - 255
+      v:
+      - 60
+      - 255
+    orange:
+    - h:
+      - 3
+      - 13
+      s:
+      - 120
+      - 255
+      v:
+      - 130
+      - 255
+    yellow:
+    - h:
+      - 22
+      - 34
+      s:
+      - 120
+      - 255
+      v:
+      - 120
+      - 255
+    blue:
+    - h:
+      - 95
+      - 130
+      s:
+      - 80
+      - 255
+      v:
+      - 40
+      - 255
+    green:
+    - h:
+      - 40
+      - 85
+      s:
+      - 70
+      - 255
+      v:
+      - 40
+      - 255

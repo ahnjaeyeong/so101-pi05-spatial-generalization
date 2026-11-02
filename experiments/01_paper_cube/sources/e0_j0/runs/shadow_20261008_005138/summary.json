@@ -1,0 +1,92 @@
+{
+ "publishers_besides_rosout_parameter_events": [],
+ "mode": "probe",
+ "elapsed_s": 20.03,
+ "dir": "/ws/e0j0_runs/shadow_20261008_005138",
+ "config": "/ws/src/twin_e0j0/config/e0j0.yaml",
+ "walls": "/ws/src/twin_e0j0/config/physical_limits_thor_e0j0.yaml",
+ "joint_states_hz": 30.01,
+ "camera_hz": {
+  "front": 24.32,
+  "wrist": 24.57
+ },
+ "counts": {
+  "ticks": 595,
+  "stale": 0,
+  "actions": 0,
+  "empty": 0,
+  "wall_out": 0,
+  "wall_out_unbounded": 0,
+  "gripper_bounded": 0,
+  "floor_out": 0,
+  "clipped": 0
+ },
+ "first_state": {
+  "rad": [
+   1.365584309094913,
+   -0.528585430603997,
+   1.2267171314017287,
+   0.8945291902529179,
+   0.36594375964892095,
+   0.012061708721453556
+  ],
+  "lerobot": [
+   70.32967032967031,
+   -30.28571428571429,
+   70.28571428571428,
+   51.252747252747255,
+   20.967032967032967,
+   0.691085003455425
+  ],
+  "tcp_z": -0.013828451263369554
+ },
+ "handoff_events": [],
+ "camera_stats": {
+  "front": {
+   "full": {
+    "rgb": [
+     140.3,
+     136.9,
+     134.5
+    ],
+    "Y": 137.6,
+    "cast_pct": 1.7
+   },
+   "table_roi": {
+    "rgb": [
+     141.2,
+     133.8,
+     126.6
+    ],
+    "Y": 135.2,
+    "cast_pct": 4.5
+   }
+  },
+  "wrist": {
+   "full": {
+    "rgb": [
+     127.8,
+     129.3,
+     129.0
+    ],
+    "Y": 128.8,
+    "cast_pct": 0.5
+   },
+   "table_roi": {
+    "rgb": [
+     88.7,
+     91.9,
+     92.5
+    ],
+    "Y": 91.0,
+    "cast_pct": 1.8
+   }
+  }
+ },
+ "chunk_direction": {
+  "n": 0
+ },
+ "infer_ms": {
+  "n": 0
+ }
+}

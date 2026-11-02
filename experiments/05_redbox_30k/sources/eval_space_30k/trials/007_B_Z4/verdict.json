@@ -1,0 +1,15 @@
+{
+ "trial": 7,
+ "condition": "B",
+ "position": "Z4",
+ "first_grasp": "unknown",
+ "final": "unknown",
+ "attempts": 2,
+ "failure_type": "",
+ "note": "",
+ "void": true,
+ "void_reason": "간에 개입이 있었음",
+ "judged": "2026-10-22 09:39:47",
+ "stop_reason": "operator",
+ "protect": null
+}

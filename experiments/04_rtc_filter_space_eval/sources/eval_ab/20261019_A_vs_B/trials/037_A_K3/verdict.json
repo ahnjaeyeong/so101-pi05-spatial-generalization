@@ -1,0 +1,15 @@
+{
+ "trial": 37,
+ "condition": "A",
+ "position": "K3",
+ "first_grasp": "success",
+ "final": "success",
+ "attempts": 2,
+ "failure_type": "",
+ "note": "첫 파지 실패함. 얕은 파지",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:46:49",
+ "stop_reason": "operator",
+ "protect": null
+}

@@ -1,0 +1,15 @@
+{
+ "trial": 34,
+ "condition": "B",
+ "position": "K1",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 4,
+ "failure_type": "손목 방향 정렬 실패;큐브 밀림",
+ "note": "k1이랑 약벗어나서 측정함. 마찬가지로 안 집히자 계속 왼쪽으로 가려고함",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:43:22",
+ "stop_reason": "operator",
+ "protect": null
+}

@@ -1,0 +1,161 @@
+{
+ "publishers_besides_rosout_parameter_events": [],
+ "mode": "shadow",
+ "elapsed_s": 60.0,
+ "dir": "/ws/e0j0_runs/shadow_20261008_005222",
+ "config": "/ws/src/twin_e0j0/config/e0j0.yaml",
+ "walls": "/ws/src/twin_e0j0/config/physical_limits_thor_e0j0.yaml",
+ "joint_states_hz": 30.0,
+ "camera_hz": {
+  "front": 18.63,
+  "wrist": 18.8
+ },
+ "counts": {
+  "ticks": 1791,
+  "stale": 123,
+  "actions": 1645,
+  "empty": 23,
+  "wall_out": 0,
+  "wall_out_unbounded": 1645,
+  "gripper_bounded": 1645,
+  "floor_out": 0,
+  "clipped": 2
+ },
+ "first_state": {
+  "rad": [
+   1.365584309094913,
+   -0.528585430603997,
+   1.2267171314017287,
+   0.8945291902529179,
+   0.36594375964892095,
+   0.012061708721453556
+  ],
+  "lerobot": [
+   70.32967032967031,
+   -30.28571428571429,
+   70.28571428571428,
+   51.252747252747255,
+   20.967032967032967,
+   0.691085003455425
+  ],
+  "tcp_z": -0.013828451263369554
+ },
+ "handoff_events": [],
+ "camera_stats": {
+  "wrist": {
+   "full": {
+    "rgb": [
+     127.7,
+     129.0,
+     128.8
+    ],
+    "Y": 128.6,
+    "cast_pct": 0.5
+   },
+   "table_roi": {
+    "rgb": [
+     88.5,
+     91.5,
+     92.0
+    ],
+    "Y": 90.6,
+    "cast_pct": 1.7
+   }
+  },
+  "front": {
+   "full": {
+    "rgb": [
+     140.3,
+     136.8,
+     134.4
+    ],
+    "Y": 137.6,
+    "cast_pct": 1.8
+   },
+   "table_roi": {
+    "rgb": [
+     141.4,
+     133.8,
+     126.6
+    ],
+    "Y": 135.2,
+    "cast_pct": 4.5
+   }
+  }
+ },
+ "chunk_direction": {
+  "n": 1645,
+  "start_tcp": [
+   0.055,
+   -0.092,
+   -0.014
+  ],
+  "cube_xy": [
+   0.188,
+   -0.044
+  ],
+  "at_action": {
+   "30": {
+    "xyz": [
+     0.058,
+     -0.095,
+     -0.012
+    ],
+    "gripper": 0.0
+   },
+   "90": {
+    "xyz": [
+     0.057,
+     -0.092,
+     -0.013
+    ],
+    "gripper": 0.0
+   },
+   "150": {
+    "xyz": [
+     0.057,
+     -0.093,
+     -0.013
+    ],
+    "gripper": 0.0
+   },
+   "300": {
+    "xyz": [
+     0.056,
+     -0.093,
+     -0.013
+    ],
+    "gripper": 0.0
+   }
+  },
+  "farthest_k": 4,
+  "farthest_xyz": [
+   0.058,
+   -0.102,
+   -0.009
+  ],
+  "xy_move_m": 0.0101,
+  "angle_to_cube_deg": 95.5,
+  "cube_dist_start_m": 0.1414,
+  "cube_dist_at_k_m": 0.1427,
+  "min_tcp_z_in_window": -0.0153,
+  "gripper_max_in_window": 0.0,
+  "pass_suggested": false
+ },
+ "infer_ms": {
+  "n": 164,
+  "first_ms": 720.0,
+  "mean_ms_excl_first": 286.1,
+  "p95_ms_excl_first": 320.0,
+  "max_ms_excl_first": 360.0,
+  "lerobot_rollout_baseline": "2026-10-07 practice_50 rtc_fast 3회: 첫 700–740, 평균 316–317, p95 330–340, 최대 370–380 ms"
+ },
+ "rtt_ms": {
+  "p50": 1.65,
+  "p95": 2.59,
+  "max": 4.49
+ },
+ "wall_out_ratio": 0.0,
+ "floor_out_ratio": 0.0,
+ "clipped_ratio": 0.0012
+}

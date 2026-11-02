@@ -1,0 +1,9 @@
+episode_index,layout_id,status,retake_of,objects,frames,note
+0,T1K1,recorded,,"red_cube@K1(-20.2,31.5)",532,
+1,T1K4,recorded,,"red_cube@K4(-15.4,2.6)",539,
+2,T1K2,recorded,,"red_cube@K2(-16.2,21.3)",438,
+3,T1K3,recorded,,"red_cube@K3(-7.8,12.7)",419,
+4,T1K4,planned,,"red_cube@K4(-15.4,2.6)",,
+5,T1K3,planned,,"red_cube@K3(-7.8,12.7)",,
+6,T1K1,planned,,"red_cube@K1(-20.2,31.5)",,
+7,T1K2,planned,,"red_cube@K2(-16.2,21.3)",,

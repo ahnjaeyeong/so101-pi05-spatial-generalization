@@ -1,0 +1,15 @@
+{
+ "trial": 29,
+ "condition": "B",
+ "position": "K1",
+ "first_grasp": "success",
+ "final": "success",
+ "attempts": 1,
+ "failure_type": "",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:20:36",
+ "stop_reason": "operator",
+ "protect": null
+}

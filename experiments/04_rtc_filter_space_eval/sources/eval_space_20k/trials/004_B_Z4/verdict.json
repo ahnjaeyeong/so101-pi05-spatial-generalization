@@ -1,0 +1,15 @@
+{
+ "trial": 4,
+ "condition": "B",
+ "position": "Z4",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 5,
+ "failure_type": "기타",
+ "note": "아예 근처로 가지도 않음",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-20 09:32:55",
+ "stop_reason": "operator",
+ "protect": null
+}

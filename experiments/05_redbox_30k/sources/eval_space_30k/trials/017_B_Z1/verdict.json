@@ -1,0 +1,15 @@
+{
+ "trial": 17,
+ "condition": "B",
+ "position": "Z1",
+ "first_grasp": "success",
+ "final": "success",
+ "attempts": 5,
+ "failure_type": "",
+ "note": "첫파지 실패함",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:04:40",
+ "stop_reason": "operator",
+ "protect": null
+}

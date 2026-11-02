@@ -1,0 +1,15 @@
+{
+ "trial": 28,
+ "condition": "B",
+ "position": "Z3",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 5,
+ "failure_type": "기타",
+ "note": "를 박스랑 겹쳐서 인식이 안된듯",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:18:22",
+ "stop_reason": "time_limit",
+ "protect": null
+}

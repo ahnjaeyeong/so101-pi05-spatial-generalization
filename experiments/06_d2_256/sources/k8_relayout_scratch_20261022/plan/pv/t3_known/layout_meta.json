@@ -1,0 +1,329 @@
+{
+ "generator": "layout_plan.py v1",
+ "created": "2026-10-22 14:16:40",
+ "session": "main_k8/redbox_t3_known",
+ "group": "t3_known",
+ "episodes": 64,
+ "repo_id": "oxr/so101_k8_redbox_t3_known",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "config_path": "$HOME/so101_boxpick/config/redbox8_layouts.yaml",
+ "config_sha256": "6d3cdc1d6fb8d9d697b1b38d6ec35e2e6715a3cbbb5648f3a553d160b5352e5e",
+ "unconfirmed": false,
+ "warnings": [],
+ "stats": {
+  "distractor_count_episodes": {
+   "1": 16,
+   "2": 24,
+   "3": 24
+  },
+  "distractor_colors": {
+   "노란 큐브": 34,
+   "주황 큐브": 34,
+   "파란 큐브": 34,
+   "초록 큐브": 34
+  },
+  "red_per_position": {
+   "K1": 8,
+   "K2": 8,
+   "K3": 8,
+   "K4": 8,
+   "K5": 8,
+   "K6": 8,
+   "K7": 8,
+   "K8": 8
+  },
+  "angles": {
+   "45": 32,
+   "L30": 34,
+   "0": 34,
+   "R15": 33,
+   "L15": 34,
+   "R30": 33
+  }
+ },
+ "plan_sha256": "e5650819cb40a55efd15e684ae3b73b2da4316837a7f4ffe517ea8b39ffb3a08",
+ "resolved": {
+  "group": "t3_known",
+  "task_key": "t3",
+  "task_text": "pick up the red cube and put it in the brown box",
+  "mode": "known",
+  "episodes": 64,
+  "episodes_override": false,
+  "seed": 2301,
+  "default_session": "main_k8/redbox_t3_known",
+  "repo_id": "oxr/so101_k8_redbox_t3_known",
+  "red_cubes": 1,
+  "red_counts": null,
+  "distractors": [],
+  "distractor_mix": {
+   "pool": [
+    "yellow_cube",
+    "orange_cube",
+    "blue_cube",
+    "green_cube"
+   ],
+   "counts": {
+    "1": 16,
+    "2": 24,
+    "3": 24
+   },
+   "max_per_color": 5
+  },
+  "objects": {
+   "blue_cube": {
+    "size_cm": 2.5,
+    "color": "blue",
+    "label": "파란 큐브"
+   },
+   "green_cube": {
+    "size_cm": 2.5,
+    "color": "green",
+    "label": "초록 큐브"
+   },
+   "orange_cube": {
+    "size_cm": 2.5,
+    "color": "orange",
+    "label": "주황 큐브"
+   },
+   "red_cube": {
+    "size_cm": 2.5,
+    "color": "red",
+    "label": "빨간 큐브"
+   },
+   "yellow_cube": {
+    "size_cm": 2.5,
+    "color": "yellow",
+    "label": "노란 큐브"
+   }
+  },
+  "workspace": {
+   "confirmed": false,
+   "polygon_cm": null
+  },
+  "box": {
+   "center_cm": [
+    6.5,
+    11.75
+   ],
+   "inner_size_cm": [
+    12.0,
+    22.5
+   ],
+   "wall_cm": 0.5,
+   "height_cm": 6.0,
+   "keepout_cm": 0.0
+  },
+  "known_positions": [
+   [
+    "K1",
+    [
+     -8.5,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K2",
+    [
+     -8.5,
+     11.5
+    ],
+    true
+   ],
+   [
+    "K3",
+    [
+     -8.5,
+     -3.5
+    ],
+    true
+   ],
+   [
+    "K4",
+    [
+     -17.0,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K5",
+    [
+     -17.0,
+     11.5
+    ],
+    true
+   ],
+   [
+    "K6",
+    [
+     -17.0,
+     -3.5
+    ],
+    true
+   ],
+   [
+    "K7",
+    [
+     -25.5,
+     26.5
+    ],
+    true
+   ],
+   [
+    "K8",
+    [
+     -25.5,
+     -3.5
+    ],
+    true
+   ]
+  ],
+  "known_layouts": "auto",
+  "spacing": {
+   "min_object_distance_cm": 3.5
+  },
+  "random": {
+   "placement": "free",
+   "known_exclusion_radius_cm": 0.0,
+   "exclusion_applies_to": "all",
+   "quantize_cm": 0.5,
+   "max_tries": 2000
+  },
+  "qa": {
+   "len_s": [
+    8,
+    45
+   ]
+  },
+  "detection": {
+   "min_blob_area_px": 100,
+   "min_blob_area_in_box_px": 40,
+   "in_box_open_px": 3,
+   "cube_area_px": [
+    786.9,
+    1.303,
+    -0.015,
+    0.0
+   ],
+   "cluster_split_ratio": 1.1,
+   "cube_area_scale": {
+    "green": 0.9,
+    "orange": 0.85,
+    "blue": 1.0,
+    "yellow": 0.83
+   },
+   "in_box_margin_px": 10,
+   "position_tol_px": 25,
+   "distractor_move_tol_px": 20,
+   "grip_dip_min": 5,
+   "colors": {
+    "red": [
+     {
+      "h": [
+       160,
+       180
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     },
+     {
+      "h": [
+       0,
+       1
+      ],
+      "s": [
+       90,
+       255
+      ],
+      "v": [
+       60,
+       255
+      ]
+     }
+    ],
+    "orange": [
+     {
+      "h": [
+       3,
+       13
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       130,
+       255
+      ]
+     }
+    ],
+    "yellow": [
+     {
+      "h": [
+       22,
+       34
+      ],
+      "s": [
+       120,
+       255
+      ],
+      "v": [
+       120,
+       255
+      ]
+     }
+    ],
+    "blue": [
+     {
+      "h": [
+       95,
+       130
+      ],
+      "s": [
+       80,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ],
+    "green": [
+     {
+      "h": [
+       40,
+       85
+      ],
+      "s": [
+       70,
+       255
+      ],
+      "v": [
+       40,
+       255
+      ]
+     }
+    ]
+   }
+  },
+  "touching_ok": true,
+  "angles": {
+   "choices": [
+    "0",
+    "L15",
+    "R15",
+    "L30",
+    "R30",
+    "45"
+   ]
+  }
+ }
+}

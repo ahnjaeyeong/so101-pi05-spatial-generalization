@@ -1,0 +1,15 @@
+{
+ "trial": 12,
+ "condition": "B",
+ "position": "Z3",
+ "first_grasp": "failure",
+ "final": "success",
+ "attempts": 2,
+ "failure_type": "얕은 파지",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 09:59:31",
+ "stop_reason": "operator",
+ "protect": null
+}
