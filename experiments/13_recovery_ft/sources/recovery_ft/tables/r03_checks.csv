@@ -1,0 +1,13 @@
+check,status,detail
+V1,PASS,"vv3.0 LeRobotDataset 열림, 학습 편 272 (기대 272), 프레임 129470 (기대 129470); 사본 전체 277 편 131795 프레임"
+V2,PASS,"fps 사본 30, 원본 [30, 30, 30], 영상 30"
+V3,PASS,features (영상 포함) 사본=d2=R1=R2: True; 영상 파일 18 개 sha256 = 원본 (불일치 0)
+V6,PASS,tasks.parquet = ['pick up the red cube and put it in the brown box']
+V7a,PASS,편 경계 이상 []; index 0..131794 연속 · task_index 0: True; 원본과 값 다른 열 [] (모든 프레임 action · state · timestamp · frame_index 비교)
+V8,PASS,max |timestamp − frame_index/30| 8.90e-07 s; max |영상 구간 − 길이/30| 0.0000 s (원본 QA: 녹화 중 센 프레임 = 저장 줄 수)
+V9,PASS,학습 목록 ∩ 제외 = []; 열린 dataset 안 episode_index 에 제외 편 [] (sampler 는 r05 에서 다시 확인)
+V7b,PASS,"112 표본 프레임 (R1/R2 승인 16 편 전부 + d2 12 편 × 처음 · 가운데 · 끝 · 끝−10): 영상 · action chunk · state 사본 = 원본, 불일치 []; action_is_pad = 편 끝 넘는 칸 수 (이상 [])"
+V4,PASS,"state/action 이름 순서 ['shoulder_pan', 'shoulder_lift', 'elbow_flex', 'wrist_flex', 'wrist_roll', 'gripper'] (단위 = lerobot so_follower 관절 °, 그리퍼 0–100, 세 dataset 같은 calibration id my_arm/my_leader 녹화 명령); R1 d2 q01–q99 밖 최대 비율 0.0136; R2 d2 q01–q99 밖 최대 비율 0.0165; d2 d2 q01–q99 밖 최대 비율 0.0025"
+V5,PASS,"그리퍼 (state · action 같은 0–100 눈금, 큰 값 = 열림):        s_min_med  a_min_med  s_max_med  a_max_med  lag_med  corr_med | group                                                                | R1          1.11       0.28  30.370001  30.830000      3.5      1.00 | R2          1.11       0.00  32.790001  33.099998      4.0      0.99 | d2          1.11       0.00  32.759998  33.470001      4.0      0.99; R1/R2 action→state 최적 지연이 d2 1–99% 안 · 상관 > 0.9: True"
+V10,PASS,"첫 프레임 |action − state| d2 p99 (°): shoulder_pan 1.4, shoulder_lift 1.6, elbow_flex 2.1, wrist_flex 3.0, wrist_roll 0.8, gripper 0.6; R1/R2 에서 max(d2 p99, 5°) 넘는 것: 없음; R1/R2 최대 shoulder_pan 0.8, shoulder_lift 1.8, elbow_flex 2.6, wrist_flex 1.7, wrist_roll 0.8, gripper 0.5"
+N,PASS,사본 stats.json = d2 stats.json (sha256): True; d2 020000 normalizer 와 state/action 통계 최대 차 0.0 (QUANTILES q01/q99 사용); 영상 VISUAL=IDENTITY

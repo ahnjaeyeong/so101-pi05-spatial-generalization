@@ -1,0 +1,9 @@
+,n_params,n_tensors,requires_grad,grad_present,grad_nonzero,frozen_with_grad
+model.paligemma_with_expert.paligemma.lm_head,526647296,1,0,0,0,0
+model.paligemma_with_expert.paligemma.model,2923335408,603,0,0,0,0
+model.paligemma_with_expert.gemma_expert.lm_head,263323648,1,1,0,0,0
+model.paligemma_with_expert.gemma_expert.model,427932672,200,200,200,200,0
+model.action_in_proj,33792,2,2,2,2,0
+model.action_out_proj,32800,2,2,2,2,0
+model.time_mlp_in,1049600,2,2,2,2,0
+model.time_mlp_out,1049600,2,2,2,2,0

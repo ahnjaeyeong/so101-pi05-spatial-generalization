@@ -1,0 +1,50 @@
+[train_weighted] frames 129470 → weighted list 153982 (sum w 153982, max 5)
+{
+ "n_samples": 32000,
+ "by_group": {
+  "d2": 25560,
+  "R2": 4545,
+  "R1": 1895
+ },
+ "share": {
+  "d2": 0.79875,
+  "R2": 0.14203125,
+  "R1": 0.05921875
+ },
+ "by_scenario": {
+  "R1-FOLD-OVER": 1895,
+  "RC-F1": 1446,
+  "RC-F2": 1459,
+  "RC-F3-L": 774,
+  "RC-F3-R": 866
+ },
+ "excluded_samples": 0,
+ "d2_episodes_seen": 256,
+ "corr_frames_touched_frac": 0.6923955613577023,
+ "sampler_num_positions": 153982,
+ "relative_index_maps_to_same_frame_first256": true,
+ "all_272_in_expanded": true
+}
+    merged_episode group  source_episode      scenario  approved  length  samples  exposure_per_frame  frames_touched_frac                                 tags
+0              256    R1               0  R1-FOLD-OVER     False     494        0            0.000000             0.000000  wrist_start=absent;EXCLUDED_by_user
+1              257    R1               1  R1-FOLD-OVER     False     470        0            0.000000             0.000000  wrist_start=absent;EXCLUDED_by_user
+2              258    R1               2  R1-FOLD-OVER     False     524        0            0.000000             0.000000    wrist_start=edge;EXCLUDED_by_user
+3              259    R1               3  R1-FOLD-OVER     False     577        0            0.000000             0.000000  wrist_start=absent;EXCLUDED_by_user
+4              260    R1               4  R1-FOLD-OVER      True     428      459            1.072430             0.707944                     wrist_start=edge
+5              261    R1               5  R1-FOLD-OVER      True     386      403            1.044041             0.704663                     wrist_start=edge
+6              262    R1               6  R1-FOLD-OVER      True     470      526            1.119149             0.704255                   wrist_start=absent
+7              263    R1               7  R1-FOLD-OVER      True     476      507            1.065126             0.705882                  wrist_start=visible
+8              264    R2               0         RC-F2      True     362      365            1.008287             0.698895                                  NaN
+9              265    R2               1         RC-F1      True     361      359            0.994460             0.686981                                  NaN
+10             266    R2               2       RC-F3-L      True     343      358            1.043732             0.688047                                  NaN
+11             267    R2               3       RC-F3-R      True     373      406            1.088472             0.731903                                  NaN
+12             268    R2               4         RC-F2      True     451      449            0.995565             0.643016      arm_before_gripper_open(7.8deg)
+13             269    R2               5         RC-F1      True     338      356            1.053254             0.701183                                  NaN
+14             270    R2               6         RC-F1      True     362      391            1.080110             0.707182                                  NaN
+15             271    R2               7         RC-F2      True     367      328            0.893733             0.618529                                  NaN
+16             272    R2               8       RC-F3-R      True     398      460            1.155779             0.703518     arm_before_gripper_open(17.0deg)
+17             273    R2               9       RC-F3-L      True     374      416            1.112299             0.697861                                  NaN
+18             274    R2              10         RC-F1      True     332      340            1.024096             0.683735                                  NaN
+19             275    R2              11         RC-F2     False     260        0            0.000000             0.000000                     EXCLUDED_by_user
+20             276    R2              12         RC-F2      True     307      317            1.032573             0.693811      arm_before_gripper_open(6.1deg)
+SAMPLER_OK

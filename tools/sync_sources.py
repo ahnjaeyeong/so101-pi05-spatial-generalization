@@ -217,6 +217,9 @@ MAPPINGS = [
     (f"{RUNS}/research_survey_20261102/README.md", "docs/so101_runs_original/research_survey_20261102_README.md"),
     (f"{BOXPICK}/config/env", "configs/env"),
     (f"{DESKTOP}/redbox_K_템플릿_A3.svg", "experiments/03_redbox_384_20k/sources/desktop_snapshots/redbox_K_템플릿_A3.svg"),
+    # ---- 13 recovery FT (11-04): scripts, manifest, tables, eval tables, small logs; dataset/checkpoints/raw excluded ----
+    (f"{RUNS}/main_k8/d2/recovery_ft", "experiments/13_recovery_ft/sources/recovery_ft",
+     ("dataset", "raw", "weights", "checkpoints", "training_state")),
     # ---- survey docs (11-02) ----
     (f"{RUNS}/research_survey_20261102/부록_조사노트", "docs/appendix_survey_notes"),
 ]

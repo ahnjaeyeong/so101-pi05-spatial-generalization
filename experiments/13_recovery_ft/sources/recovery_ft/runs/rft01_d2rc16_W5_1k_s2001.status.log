@@ -1,0 +1,5 @@
+2026-11-04 15:05:00 start rft01_d2rc16_W5_1k_s2001 (wrapper pid 671049)
+2026-11-04 18:00:43 train exit rc=0
+d2 hash diff []
+merged dataset hash diff []
+2026-11-04 18:00:54 checks OK (last loss:0.022)

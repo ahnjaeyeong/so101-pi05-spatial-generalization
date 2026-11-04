@@ -3,7 +3,7 @@
 상태 코드: `COMPLETED` · `PARTIAL` (계획 일부만 실행) · `NOT_EVALUATED` (학습은 했으나 평가 없음) · `IN_PROGRESS` · `PAUSED` · `STOPPED` (중단) · `PLANNED` (설계만).
 "보고서 ID" 는 [`docs/`](docs/) 의 S1-01 등과 같다.
 
-## 실험 폴더 (12)
+## 실험 폴더 (13)
 | ID | 이름 | 기간 | 보고서 ID | 데이터 | 모델 / 체크포인트 | 상태 | 핵심 결과 (상세는 폴더) |
 |---|---|---|---|---|---|---|---|
 | [EXP-01](experiments/01_paper_cube/README.md) | 종이 큐브 초기 (practice_10/50, E0_J_0) | 10-02 ~ 10-13 | S1-01~06, S1-09 | practice_10 (10), practice_50 (50) | full FT 2k / 15k | COMPLETED | 실물 1/7; 3/3 (분석 판정), 3/8 (사람) |
@@ -18,8 +18,9 @@
 | [EXP-10](experiments/10_pan_diagnostic/README.md) | Shoulder Pan 초기 접근·반전 | 10-29 ~ 11-02 | S6-04~11 | 실물 20판 | d2 020000 | COMPLETED (필터 A/B PARTIAL) | 실물 P 9/20; 왼쪽 첫 chunk 정지; 손목 놓침 후 방향 지속 = 모델 raw |
 | [EXP-11](experiments/11_r1_r2_recovery/README.md) | R1/R2 수동 복구 시연 | 10-30 ~ | S7-01, S7-02 | 본 0, 연습 R1 12 | — | IN_PROGRESS | 도구 완료, 본 수집 0 |
 | [EXP-12](experiments/12_hil/README.md) | HIL (정책 실행 중 교정) 검토 | 11-02 ~ | S7-03 | — | — | PLANNED | 2차 방안으로 제안만 |
+| [EXP-13](experiments/13_recovery_ft/README.md) | d2 + R1 4 · R2 12 교정 시연 FT (rft01) | 11-04 | — | d2 256 + R1 4 + R2(RC) 12 = 272 | d2 020000 → expert-only 1k (250/500/750/1000) | 학습 COMPLETED · 오프라인 COMPLETED · 실물 NOT_EVALUATED | [재추론] T4 G exec 목표 쪽 4.1→33.5 % (2판); AHEAD 잘못된 닫힘 변화 없음; T2 reverse +5.8 %p |
 
-## 학습 실행 (11)
+## 학습 실행 (12)
 | run_id | 실험 | 상태 | 설정 |
 |---|---|---|---|
 | practice_10_pi05_2k | EXP-01 | 완료 | [configs/training/practice_10_pi05_2k](configs/training/practice_10_pi05_2k/) |
@@ -33,7 +34,8 @@
 | sampling_A0_s2001 | EXP-09 | 완료 | [configs/training/sampling_A0_s2001](configs/training/sampling_A0_s2001/) |
 | sampling_A1_s2001 | EXP-09 | 완료 | [configs/training/sampling_A1_s2001](configs/training/sampling_A1_s2001/) |
 | sampling_A2_s2001 | EXP-09 | 완료 (평가 안 함) | [configs/training/sampling_A2_s2001](configs/training/sampling_A2_s2001/) |
-전체 표: [configs/training/RUNS.csv](configs/training/RUNS.csv) · 체크포인트 28개 경로·SHA-256: [configs/checkpoints/CHECKPOINTS.csv](configs/checkpoints/CHECKPOINTS.csv)
+| rft01_d2rc16_W5_1k_s2001 | EXP-13 | 완료 (오프라인 평가) | [configs/training/rft01_d2rc16_W5_1k_s2001](configs/training/rft01_d2rc16_W5_1k_s2001/) |
+전체 표: [configs/training/RUNS.csv](configs/training/RUNS.csv) · 체크포인트 32개 경로·SHA-256: [configs/checkpoints/CHECKPOINTS.csv](configs/checkpoints/CHECKPOINTS.csv)
 
 ## 계획만 있는 실험
 Held-out H 녹화 (32편) · A2 평가 / A2r / A0′ / A3 · 재학습 정책 로봇 평가 (정책당 16회) · 필터 A/B 남은 12판 · R1/R2 본 수집·재학습 · HIL 전환 장치 · d1/d3 (T2 녹화 필요) · VLM 학습 비교 — [docs/06](docs/06_HIL_및_향후실험.md) 6절.

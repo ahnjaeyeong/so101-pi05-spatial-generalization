@@ -1,0 +1,1066 @@
+                       type src           tag  n_eps  n_states  exec_toward  exec_away  exec_hold  cum30_toward  first_toward
+0               T1_approach   G     d2_020000     20        70         60.2       16.2       23.7          85.6          60.0
+1               T1_approach   G  rft01_000250     20        70         55.6       21.0       23.3          83.7          59.8
+2               T1_approach   G  rft01_000500     20        70         64.2       16.6       19.2          86.5          59.8
+3               T1_approach   G  rft01_000750     20        70         55.9       20.2       23.9          83.3          59.3
+4               T1_approach   G  rft01_001000     20        70         57.5       19.8       22.7          83.0          59.5
+5               T1_approach   U     d2_020000     20        70         71.2        0.6       28.1          84.6          76.7
+6               T1_approach   U  rft01_000250     20        70         66.8        1.8       31.3          82.4          79.5
+7               T1_approach   U  rft01_000500     20        70         73.5        0.7       25.8          85.4          75.3
+8               T1_approach   U  rft01_000750     20        70         68.3        0.9       30.8          81.5          72.6
+9               T1_approach   U  rft01_001000     20        70         69.7        0.8       29.5          81.1          71.3
+10           T1_first_chunk   G     d2_020000     20        20         75.5        1.6       23.0          87.3          68.6
+11           T1_first_chunk   G  rft01_000250     20        20         74.1        2.7       23.3          81.1          68.8
+12           T1_first_chunk   G  rft01_000500     20        20         78.6        1.1       20.3          90.5          69.5
+13           T1_first_chunk   G  rft01_000750     20        20         74.1        1.2       24.7          83.9          67.7
+14           T1_first_chunk   G  rft01_001000     20        20         74.5        1.2       24.2          83.9          68.1
+15           T1_first_chunk   U     d2_020000     20        20         75.5        1.6       23.0          87.3          68.6
+16           T1_first_chunk   U  rft01_000250     20        20         74.1        2.7       23.3          81.1          68.8
+17           T1_first_chunk   U  rft01_000500     20        20         78.6        1.1       20.3          90.5          69.5
+18           T1_first_chunk   U  rft01_000750     20        20         74.1        1.2       24.7          83.9          67.7
+19           T1_first_chunk   U  rft01_001000     20        20         74.5        1.2       24.2          83.9          68.1
+30       T3_over_wrist_seen   G     d2_020000      1        14         16.3       47.1       36.6           0.2           0.0
+31       T3_over_wrist_seen   G  rft01_000250      1        14         38.6       22.8       38.6           1.1           0.0
+32       T3_over_wrist_seen   G  rft01_000500      1        14         45.8       19.6       34.6           1.1           0.4
+33       T3_over_wrist_seen   G  rft01_000750      1        14         45.8       17.6       36.6           1.1           0.0
+34       T3_over_wrist_seen   G  rft01_001000      1        14         47.5       16.7       35.7           1.3           0.2
+35       T3_over_wrist_seen   U     d2_020000      1        14          5.6       60.5       33.9           0.2           0.7
+36       T3_over_wrist_seen   U  rft01_000250      1        14         15.2       37.7       47.1           2.2           1.8
+37       T3_over_wrist_seen   U  rft01_000500      1        14         13.4       40.8       45.8           1.6           5.6
+38       T3_over_wrist_seen   U  rft01_000750      1        14         13.6       37.7       48.7           1.8           4.7
+39       T3_over_wrist_seen   U  rft01_001000      1        14         14.1       39.5       46.4           2.2           6.9
+40  T4_wrist_lost_front_vis   G     d2_020000      2        39          4.1       68.8       27.1           0.4           5.2
+41  T4_wrist_lost_front_vis   G  rft01_000250      2        39         22.8       32.1       45.1          10.3           5.3
+42  T4_wrist_lost_front_vis   G  rft01_000500      2        39         27.3       28.6       44.1          13.2           6.4
+43  T4_wrist_lost_front_vis   G  rft01_000750      2        39         30.2       22.9       46.9          15.5           5.7
+44  T4_wrist_lost_front_vis   G  rft01_001000      2        39         33.5       21.3       45.2          19.0           6.9
+45  T4_wrist_lost_front_vis   U     d2_020000      2        39          5.7       49.8       44.4           0.6          13.3
+46  T4_wrist_lost_front_vis   U  rft01_000250      2        39         16.1       23.9       60.0          12.8          21.0
+47  T4_wrist_lost_front_vis   U  rft01_000500      2        39         12.4       30.2       57.4          15.5          42.7
+48  T4_wrist_lost_front_vis   U  rft01_000750      2        39         14.2       23.5       62.3          18.2          40.1
+49  T4_wrist_lost_front_vis   U  rft01_001000      2        39         14.4       26.2       59.5          20.9          49.5
+                              label            metric           tag  base_mean  tag_mean   diff  ci_lo  ci_hi  n_states  n_units
+0      R1 T4_wrist_lost_front_vis U       exec_toward  rft01_000250      0.057     0.161  0.104  0.094  0.113        37        2
+1      R1 T4_wrist_lost_front_vis U       exec_toward  rft01_000500      0.057     0.124  0.067  0.066  0.068        37        2
+2      R1 T4_wrist_lost_front_vis U       exec_toward  rft01_000750      0.057     0.142  0.084  0.082  0.087        37        2
+3      R1 T4_wrist_lost_front_vis U       exec_toward  rft01_001000      0.057     0.144  0.086  0.080  0.092        37        2
+4      R1 T4_wrist_lost_front_vis U         exec_away  rft01_000250      0.498     0.239 -0.259 -0.278 -0.242        37        2
+5      R1 T4_wrist_lost_front_vis U         exec_away  rft01_000500      0.498     0.302 -0.197 -0.208 -0.186        37        2
+6      R1 T4_wrist_lost_front_vis U         exec_away  rft01_000750      0.498     0.235 -0.264 -0.266 -0.262        37        2
+7      R1 T4_wrist_lost_front_vis U         exec_away  rft01_001000      0.498     0.262 -0.236 -0.240 -0.234        37        2
+8      R1 T4_wrist_lost_front_vis U      cum30_toward  rft01_000250      0.006     0.128  0.122  0.122  0.122        37        2
+9      R1 T4_wrist_lost_front_vis U      cum30_toward  rft01_000500      0.006     0.155  0.149  0.148  0.150        37        2
+10     R1 T4_wrist_lost_front_vis U      cum30_toward  rft01_000750      0.006     0.182  0.176  0.172  0.179        37        2
+11     R1 T4_wrist_lost_front_vis U      cum30_toward  rft01_001000      0.006     0.209  0.203  0.198  0.207        37        2
+12     R1 T4_wrist_lost_front_vis U      first_toward  rft01_000250      0.133     0.210  0.078  0.077  0.078        37        2
+13     R1 T4_wrist_lost_front_vis U      first_toward  rft01_000500      0.133     0.427  0.295  0.294  0.295        37        2
+14     R1 T4_wrist_lost_front_vis U      first_toward  rft01_000750      0.133     0.401  0.269  0.268  0.269        37        2
+15     R1 T4_wrist_lost_front_vis U      first_toward  rft01_001000      0.133     0.495  0.362  0.357  0.368        37        2
+16          R1 T3_over_wrist_seen U       exec_toward  rft01_000250      0.056     0.152  0.096  0.096  0.096        14        1
+17          R1 T3_over_wrist_seen U       exec_toward  rft01_000500      0.056     0.134  0.078  0.078  0.078        14        1
+18          R1 T3_over_wrist_seen U       exec_toward  rft01_000750      0.056     0.136  0.080  0.080  0.080        14        1
+19          R1 T3_over_wrist_seen U       exec_toward  rft01_001000      0.056     0.141  0.085  0.085  0.085        14        1
+20          R1 T3_over_wrist_seen U         exec_away  rft01_000250      0.605     0.377 -0.228 -0.228 -0.228        14        1
+21          R1 T3_over_wrist_seen U         exec_away  rft01_000500      0.605     0.408 -0.196 -0.196 -0.196        14        1
+22          R1 T3_over_wrist_seen U         exec_away  rft01_000750      0.605     0.377 -0.228 -0.228 -0.228        14        1
+23          R1 T3_over_wrist_seen U         exec_away  rft01_001000      0.605     0.395 -0.210 -0.210 -0.210        14        1
+24          R1 T3_over_wrist_seen U      cum30_toward  rft01_000250      0.002     0.022  0.020  0.020  0.020        14        1
+25          R1 T3_over_wrist_seen U      cum30_toward  rft01_000500      0.002     0.016  0.013  0.013  0.013        14        1
+26          R1 T3_over_wrist_seen U      cum30_toward  rft01_000750      0.002     0.018  0.016  0.016  0.016        14        1
+27          R1 T3_over_wrist_seen U      cum30_toward  rft01_001000      0.002     0.022  0.020  0.020  0.020        14        1
+28          R1 T3_over_wrist_seen U      first_toward  rft01_000250      0.007     0.018  0.011  0.011  0.011        14        1
+29          R1 T3_over_wrist_seen U      first_toward  rft01_000500      0.007     0.056  0.049  0.049  0.049        14        1
+30          R1 T3_over_wrist_seen U      first_toward  rft01_000750      0.007     0.047  0.040  0.040  0.040        14        1
+31          R1 T3_over_wrist_seen U      first_toward  rft01_001000      0.007     0.069  0.062  0.062  0.062        14        1
+32              R1 T1_first_chunk U       exec_toward  rft01_000250      0.755     0.741 -0.014 -0.028  0.000        20       20
+33              R1 T1_first_chunk U       exec_toward  rft01_000500      0.755     0.786  0.031  0.012  0.053        20       20
+34              R1 T1_first_chunk U       exec_toward  rft01_000750      0.755     0.741 -0.014 -0.034  0.006        20       20
+35              R1 T1_first_chunk U       exec_toward  rft01_001000      0.755     0.745 -0.009 -0.027  0.008        20       20
+36              R1 T1_first_chunk U         exec_away  rft01_000250      0.016     0.027  0.011  0.003  0.020        20       20
+37              R1 T1_first_chunk U         exec_away  rft01_000500      0.016     0.011 -0.005 -0.012  0.000        20       20
+38              R1 T1_first_chunk U         exec_away  rft01_000750      0.016     0.012 -0.003 -0.008  0.000        20       20
+39              R1 T1_first_chunk U         exec_away  rft01_001000      0.016     0.012 -0.003 -0.008  0.000        20       20
+40              R1 T1_first_chunk U      cum30_toward  rft01_000250      0.873     0.811 -0.062 -0.086 -0.038        20       20
+41              R1 T1_first_chunk U      cum30_toward  rft01_000500      0.873     0.905  0.031  0.002  0.061        20       20
+42              R1 T1_first_chunk U      cum30_toward  rft01_000750      0.873     0.839 -0.034 -0.070 -0.003        20       20
+43              R1 T1_first_chunk U      cum30_toward  rft01_001000      0.873     0.839 -0.034 -0.066 -0.005        20       20
+44              R1 T1_first_chunk U      first_toward  rft01_000250      0.686     0.688  0.002 -0.011  0.016        20       20
+45              R1 T1_first_chunk U      first_toward  rft01_000500      0.686     0.695  0.009  0.000  0.020        20       20
+46              R1 T1_first_chunk U      first_toward  rft01_000750      0.686     0.677 -0.009 -0.020  0.002        20       20
+47              R1 T1_first_chunk U      first_toward  rft01_001000      0.686     0.681 -0.005 -0.020  0.009        20       20
+48                 R1 T1_approach U       exec_toward  rft01_000250      0.712     0.668 -0.044 -0.063 -0.023        70       20
+49                 R1 T1_approach U       exec_toward  rft01_000500      0.712     0.735  0.023  0.004  0.039        70       20
+50                 R1 T1_approach U       exec_toward  rft01_000750      0.712     0.683 -0.030 -0.052 -0.012        70       20
+51                 R1 T1_approach U       exec_toward  rft01_001000      0.712     0.697 -0.016 -0.037  0.001        70       20
+52                 R1 T1_approach U         exec_away  rft01_000250      0.006     0.018  0.012  0.004  0.020        70       20
+53                 R1 T1_approach U         exec_away  rft01_000500      0.006     0.007  0.000 -0.003  0.004        70       20
+54                 R1 T1_approach U         exec_away  rft01_000750      0.006     0.009  0.003 -0.003  0.009        70       20
+55                 R1 T1_approach U         exec_away  rft01_001000      0.006     0.008  0.002 -0.001  0.005        70       20
+56                 R1 T1_approach U      cum30_toward  rft01_000250      0.846     0.824 -0.022 -0.040 -0.002        70       20
+57                 R1 T1_approach U      cum30_toward  rft01_000500      0.846     0.854  0.008 -0.010  0.022        70       20
+58                 R1 T1_approach U      cum30_toward  rft01_000750      0.846     0.815 -0.030 -0.049 -0.016        70       20
+59                 R1 T1_approach U      cum30_toward  rft01_001000      0.846     0.811 -0.034 -0.053 -0.020        70       20
+60                 R1 T1_approach U      first_toward  rft01_000250      0.767     0.795  0.028  0.010  0.046        70       20
+61                 R1 T1_approach U      first_toward  rft01_000500      0.767     0.753 -0.015 -0.045  0.012        70       20
+62                 R1 T1_approach U      first_toward  rft01_000750      0.767     0.726 -0.041 -0.061 -0.024        70       20
+63                 R1 T1_approach U      first_toward  rft01_001000      0.767     0.713 -0.054 -0.083 -0.029        70       20
+64              R1 T5_moving_away U       exec_toward  rft01_000250      0.024     0.027  0.003 -0.004  0.012        23       12
+65              R1 T5_moving_away U       exec_toward  rft01_000500      0.024     0.023 -0.001 -0.008  0.005        23       12
+66              R1 T5_moving_away U       exec_toward  rft01_000750      0.024     0.033  0.008  0.000  0.020        23       12
+67              R1 T5_moving_away U       exec_toward  rft01_001000      0.024     0.035  0.011  0.001  0.026        23       12
+68              R1 T5_moving_away U         exec_away  rft01_000250      0.364     0.360 -0.004 -0.034  0.020        23       12
+69              R1 T5_moving_away U         exec_away  rft01_000500      0.364     0.360 -0.004 -0.034  0.023        23       12
+70              R1 T5_moving_away U         exec_away  rft01_000750      0.364     0.356 -0.008 -0.031  0.013        23       12
+71              R1 T5_moving_away U         exec_away  rft01_001000      0.364     0.370  0.005 -0.009  0.020        23       12
+72              R1 T5_moving_away U      cum30_toward  rft01_000250      0.065     0.091  0.026 -0.002  0.083        23       12
+73              R1 T5_moving_away U      cum30_toward  rft01_000500      0.065     0.077  0.012  0.001  0.031        23       12
+74              R1 T5_moving_away U      cum30_toward  rft01_000750      0.065     0.079  0.014  0.000  0.038        23       12
+75              R1 T5_moving_away U      cum30_toward  rft01_001000      0.065     0.084  0.019  0.000  0.052        23       12
+76              R1 T5_moving_away U      first_toward  rft01_000250      0.251     0.253  0.001 -0.013  0.012        23       12
+77              R1 T5_moving_away U      first_toward  rft01_000500      0.251     0.268  0.016  0.000  0.033        23       12
+78              R1 T5_moving_away U      first_toward  rft01_000750      0.251     0.274  0.023  0.004  0.042        23       12
+79              R1 T5_moving_away U      first_toward  rft01_001000      0.251     0.280  0.029  0.001  0.058        23       12
+80             R1 T2_near_aligned U          continue  rft01_000250      0.310     0.327  0.017 -0.036  0.067        15       13
+81             R1 T2_near_aligned U          continue  rft01_000500      0.310     0.277 -0.033 -0.086  0.013        15       13
+82             R1 T2_near_aligned U          continue  rft01_000750      0.310     0.290 -0.021 -0.058  0.019        15       13
+83             R1 T2_near_aligned U          continue  rft01_001000      0.310     0.256 -0.054 -0.112  0.002        15       13
+84             R1 T2_near_aligned U           reverse  rft01_000250      0.160     0.140 -0.021 -0.067  0.022        15       13
+85             R1 T2_near_aligned U           reverse  rft01_000500      0.160     0.215  0.054  0.024  0.089        15       13
+86             R1 T2_near_aligned U           reverse  rft01_000750      0.160     0.204  0.044  0.002  0.087        15       13
+87             R1 T2_near_aligned U           reverse  rft01_001000      0.160     0.242  0.081  0.043  0.132        15       13
+88     R1 T4_wrist_lost_front_vis G       exec_toward  rft01_000250      0.041     0.228  0.187  0.170  0.202        37        2
+89     R1 T4_wrist_lost_front_vis G       exec_toward  rft01_000500      0.041     0.273  0.231  0.200  0.262        37        2
+90     R1 T4_wrist_lost_front_vis G       exec_toward  rft01_000750      0.041     0.302  0.261  0.226  0.294        37        2
+91     R1 T4_wrist_lost_front_vis G       exec_toward  rft01_001000      0.041     0.335  0.294  0.250  0.336        37        2
+92     R1 T4_wrist_lost_front_vis G         exec_away  rft01_000250      0.688     0.321 -0.367 -0.391 -0.340        37        2
+93     R1 T4_wrist_lost_front_vis G         exec_away  rft01_000500      0.688     0.286 -0.401 -0.424 -0.377        37        2
+94     R1 T4_wrist_lost_front_vis G         exec_away  rft01_000750      0.688     0.229 -0.459 -0.482 -0.434        37        2
+95     R1 T4_wrist_lost_front_vis G         exec_away  rft01_001000      0.688     0.213 -0.475 -0.495 -0.453        37        2
+96     R1 T4_wrist_lost_front_vis G      cum30_toward  rft01_000250      0.004     0.103  0.099  0.099  0.099        37        2
+97     R1 T4_wrist_lost_front_vis G      cum30_toward  rft01_000500      0.004     0.132  0.128  0.116  0.138        37        2
+98     R1 T4_wrist_lost_front_vis G      cum30_toward  rft01_000750      0.004     0.155  0.150  0.134  0.166        37        2
+99     R1 T4_wrist_lost_front_vis G      cum30_toward  rft01_001000      0.004     0.190  0.186  0.163  0.207        37        2
+100    R1 T4_wrist_lost_front_vis G      first_toward  rft01_000250      0.052     0.053  0.001  0.000  0.002        37        2
+101    R1 T4_wrist_lost_front_vis G      first_toward  rft01_000500      0.052     0.064  0.012  0.002  0.023        37        2
+102    R1 T4_wrist_lost_front_vis G      first_toward  rft01_000750      0.052     0.057  0.005  0.002  0.009        37        2
+103    R1 T4_wrist_lost_front_vis G      first_toward  rft01_001000      0.052     0.069  0.017  0.003  0.031        37        2
+104         R1 T3_over_wrist_seen G       exec_toward  rft01_000250      0.163     0.386  0.223  0.223  0.223        14        1
+105         R1 T3_over_wrist_seen G       exec_toward  rft01_000500      0.163     0.458  0.295  0.295  0.295        14        1
+106         R1 T3_over_wrist_seen G       exec_toward  rft01_000750      0.163     0.458  0.295  0.295  0.295        14        1
+107         R1 T3_over_wrist_seen G       exec_toward  rft01_001000      0.163     0.475  0.312  0.312  0.312        14        1
+108         R1 T3_over_wrist_seen G         exec_away  rft01_000250      0.471     0.228 -0.243 -0.243 -0.243        14        1
+109         R1 T3_over_wrist_seen G         exec_away  rft01_000500      0.471     0.196 -0.275 -0.275 -0.275        14        1
+110         R1 T3_over_wrist_seen G         exec_away  rft01_000750      0.471     0.176 -0.295 -0.295 -0.295        14        1
+111         R1 T3_over_wrist_seen G         exec_away  rft01_001000      0.471     0.167 -0.304 -0.304 -0.304        14        1
+112         R1 T3_over_wrist_seen G      cum30_toward  rft01_000250      0.002     0.011  0.009  0.009  0.009        14        1
+113         R1 T3_over_wrist_seen G      cum30_toward  rft01_000500      0.002     0.011  0.009  0.009  0.009        14        1
+114         R1 T3_over_wrist_seen G      cum30_toward  rft01_000750      0.002     0.011  0.009  0.009  0.009        14        1
+115         R1 T3_over_wrist_seen G      cum30_toward  rft01_001000      0.002     0.013  0.011  0.011  0.011        14        1
+116         R1 T3_over_wrist_seen G      first_toward  rft01_000250      0.000     0.000  0.000  0.000  0.000        14        1
+117         R1 T3_over_wrist_seen G      first_toward  rft01_000500      0.000     0.004  0.004  0.004  0.004        14        1
+118         R1 T3_over_wrist_seen G      first_toward  rft01_000750      0.000     0.000  0.000  0.000  0.000        14        1
+119         R1 T3_over_wrist_seen G      first_toward  rft01_001000      0.000     0.002  0.002  0.002  0.002        14        1
+120             R1 T1_first_chunk G       exec_toward  rft01_000250      0.755     0.741 -0.014 -0.028  0.000        20       20
+121             R1 T1_first_chunk G       exec_toward  rft01_000500      0.755     0.786  0.031  0.012  0.053        20       20
+122             R1 T1_first_chunk G       exec_toward  rft01_000750      0.755     0.741 -0.014 -0.034  0.006        20       20
+123             R1 T1_first_chunk G       exec_toward  rft01_001000      0.755     0.745 -0.009 -0.027  0.008        20       20
+124             R1 T1_first_chunk G         exec_away  rft01_000250      0.016     0.027  0.011  0.003  0.020        20       20
+125             R1 T1_first_chunk G         exec_away  rft01_000500      0.016     0.011 -0.005 -0.012  0.000        20       20
+126             R1 T1_first_chunk G         exec_away  rft01_000750      0.016     0.012 -0.003 -0.008  0.000        20       20
+127             R1 T1_first_chunk G         exec_away  rft01_001000      0.016     0.012 -0.003 -0.008  0.000        20       20
+128             R1 T1_first_chunk G      cum30_toward  rft01_000250      0.873     0.811 -0.062 -0.086 -0.038        20       20
+129             R1 T1_first_chunk G      cum30_toward  rft01_000500      0.873     0.905  0.031  0.002  0.061        20       20
+130             R1 T1_first_chunk G      cum30_toward  rft01_000750      0.873     0.839 -0.034 -0.070 -0.003        20       20
+131             R1 T1_first_chunk G      cum30_toward  rft01_001000      0.873     0.839 -0.034 -0.066 -0.005        20       20
+132             R1 T1_first_chunk G      first_toward  rft01_000250      0.686     0.688  0.002 -0.011  0.016        20       20
+133             R1 T1_first_chunk G      first_toward  rft01_000500      0.686     0.695  0.009  0.000  0.020        20       20
+134             R1 T1_first_chunk G      first_toward  rft01_000750      0.686     0.677 -0.009 -0.020  0.002        20       20
+135             R1 T1_first_chunk G      first_toward  rft01_001000      0.686     0.681 -0.005 -0.020  0.009        20       20
+136                R1 T1_approach G       exec_toward  rft01_000250      0.602     0.556 -0.046 -0.065 -0.025        70       20
+137                R1 T1_approach G       exec_toward  rft01_000500      0.602     0.642  0.040  0.015  0.061        70       20
+138                R1 T1_approach G       exec_toward  rft01_000750      0.602     0.559 -0.043 -0.064 -0.027        70       20
+139                R1 T1_approach G       exec_toward  rft01_001000      0.602     0.575 -0.027 -0.052 -0.008        70       20
+140                R1 T1_approach G         exec_away  rft01_000250      0.162     0.210  0.049  0.036  0.063        70       20
+141                R1 T1_approach G         exec_away  rft01_000500      0.162     0.166  0.004 -0.011  0.023        70       20
+142                R1 T1_approach G         exec_away  rft01_000750      0.162     0.202  0.041  0.024  0.064        70       20
+143                R1 T1_approach G         exec_away  rft01_001000      0.162     0.198  0.037  0.020  0.060        70       20
+144                R1 T1_approach G      cum30_toward  rft01_000250      0.856     0.837 -0.019 -0.030 -0.006        70       20
+145                R1 T1_approach G      cum30_toward  rft01_000500      0.856     0.865  0.009 -0.004  0.020        70       20
+146                R1 T1_approach G      cum30_toward  rft01_000750      0.856     0.833 -0.023 -0.033 -0.014        70       20
+147                R1 T1_approach G      cum30_toward  rft01_001000      0.856     0.830 -0.026 -0.039 -0.014        70       20
+148                R1 T1_approach G      first_toward  rft01_000250      0.600     0.598 -0.002 -0.006  0.001        70       20
+149                R1 T1_approach G      first_toward  rft01_000500      0.600     0.598 -0.002 -0.009  0.003        70       20
+150                R1 T1_approach G      first_toward  rft01_000750      0.600     0.593 -0.007 -0.019 -0.000        70       20
+151                R1 T1_approach G      first_toward  rft01_001000      0.600     0.595 -0.005 -0.013 -0.000        70       20
+152             R1 T5_moving_away G       exec_toward  rft01_000250      0.110     0.133  0.023  0.004  0.045        23       12
+153             R1 T5_moving_away G       exec_toward  rft01_000500      0.110     0.130  0.020  0.005  0.039        23       12
+154             R1 T5_moving_away G       exec_toward  rft01_000750      0.110     0.125  0.015  0.000  0.036        23       12
+155             R1 T5_moving_away G       exec_toward  rft01_001000      0.110     0.144  0.034  0.012  0.064        23       12
+156             R1 T5_moving_away G         exec_away  rft01_000250      0.302     0.299 -0.003 -0.061  0.048        23       12
+157             R1 T5_moving_away G         exec_away  rft01_000500      0.302     0.304  0.003 -0.030  0.036        23       12
+158             R1 T5_moving_away G         exec_away  rft01_000750      0.302     0.302  0.000 -0.033  0.030        23       12
+159             R1 T5_moving_away G         exec_away  rft01_001000      0.302     0.303  0.001 -0.041  0.044        23       12
+160             R1 T5_moving_away G      cum30_toward  rft01_000250      0.053     0.082  0.029  0.003  0.083        23       12
+161             R1 T5_moving_away G      cum30_toward  rft01_000500      0.053     0.064  0.011 -0.001  0.033        23       12
+162             R1 T5_moving_away G      cum30_toward  rft01_000750      0.053     0.062  0.010 -0.002  0.031        23       12
+163             R1 T5_moving_away G      cum30_toward  rft01_001000      0.053     0.068  0.015  0.002  0.036        23       12
+164             R1 T5_moving_away G      first_toward  rft01_000250      0.162     0.149 -0.012 -0.025  0.000        23       12
+165             R1 T5_moving_away G      first_toward  rft01_000500      0.162     0.173  0.011  0.000  0.028        23       12
+166             R1 T5_moving_away G      first_toward  rft01_000750      0.162     0.171  0.010  0.000  0.024        23       12
+167             R1 T5_moving_away G      first_toward  rft01_001000      0.162     0.173  0.011  0.000  0.028        23       12
+168            R1 T2_near_aligned G          continue  rft01_000250      0.350     0.385  0.035 -0.021  0.092        15       13
+169            R1 T2_near_aligned G          continue  rft01_000500      0.350     0.323 -0.027 -0.083  0.022        15       13
+170            R1 T2_near_aligned G          continue  rft01_000750      0.350     0.346 -0.004 -0.057  0.057        15       13
+171            R1 T2_near_aligned G          continue  rft01_001000      0.350     0.310 -0.040 -0.088  0.004        15       13
+172            R1 T2_near_aligned G           reverse  rft01_000250      0.144     0.115 -0.029 -0.067  0.002        15       13
+173            R1 T2_near_aligned G           reverse  rft01_000500      0.144     0.179  0.035  0.009  0.069        15       13
+174            R1 T2_near_aligned G           reverse  rft01_000750      0.144     0.167  0.023  0.000  0.054        15       13
+175            R1 T2_near_aligned G           reverse  rft01_001000      0.144     0.202  0.058  0.027  0.103        15       13
+176             R2 R2_AHEAD R2_T0 G         p_close30  rft01_000250      0.536     0.580  0.045 -0.045  0.143         7        7
+177             R2 R2_AHEAD R2_T0 G         p_close30  rft01_000500      0.536     0.527 -0.009 -0.054  0.036         7        7
+178             R2 R2_AHEAD R2_T0 G         p_close30  rft01_000750      0.536     0.509 -0.027 -0.071  0.018         7        7
+179             R2 R2_AHEAD R2_T0 G         p_close30  rft01_001000      0.536     0.536  0.000 -0.045  0.036         7        7
+180             R2 R2_AHEAD R2_T0 G         p_close50  rft01_000250      0.607     0.634  0.027 -0.125  0.161         7        7
+181             R2 R2_AHEAD R2_T0 G         p_close50  rft01_000500      0.607     0.562 -0.045 -0.125  0.027         7        7
+182             R2 R2_AHEAD R2_T0 G         p_close50  rft01_000750      0.607     0.536 -0.071 -0.161  0.000         7        7
+183             R2 R2_AHEAD R2_T0 G         p_close50  rft01_001000      0.607     0.580 -0.027 -0.098  0.036         7        7
+184             R2 R2_AHEAD R2_T0 G           dlift29  rft01_000250      3.225     3.317  0.092 -0.605  0.673         7        7
+185             R2 R2_AHEAD R2_T0 G           dlift29  rft01_000500      3.225     2.394 -0.832 -1.498 -0.197         7        7
+186             R2 R2_AHEAD R2_T0 G           dlift29  rft01_000750      3.225     2.673 -0.553 -1.002 -0.154         7        7
+187             R2 R2_AHEAD R2_T0 G           dlift29  rft01_001000      3.225     2.927 -0.299 -0.867  0.157         7        7
+188             R2 R2_AHEAD R2_T0 G          delbow29  rft01_000250     -3.224    -3.178  0.046 -0.496  0.671         7        7
+189             R2 R2_AHEAD R2_T0 G          delbow29  rft01_000500     -3.224    -2.127  1.097  0.571  1.635         7        7
+190             R2 R2_AHEAD R2_T0 G          delbow29  rft01_000750     -3.224    -2.381  0.843  0.331  1.435         7        7
+191             R2 R2_AHEAD R2_T0 G          delbow29  rft01_001000     -3.224    -2.404  0.820  0.211  1.567         7        7
+192             R2 R2_AHEAD R2_T0 G          dwflex29  rft01_000250      1.083     2.365  1.282  1.090  1.480         7        7
+193             R2 R2_AHEAD R2_T0 G          dwflex29  rft01_000500      1.083     1.002 -0.082 -0.303  0.158         7        7
+194             R2 R2_AHEAD R2_T0 G          dwflex29  rft01_000750      1.083     1.510  0.427  0.182  0.659         7        7
+195             R2 R2_AHEAD R2_T0 G          dwflex29  rft01_001000      1.083     1.387  0.304  0.149  0.478         7        7
+196             R2 R2_AHEAD R2_T0 G          p_open30  rft01_000250      1.000     1.000  0.000  0.000  0.000         6        6
+197             R2 R2_AHEAD R2_T0 G          p_open30  rft01_000500      1.000     0.990 -0.010 -0.031  0.000         6        6
+198             R2 R2_AHEAD R2_T0 G          p_open30  rft01_000750      1.000     0.990 -0.010 -0.031  0.000         6        6
+199             R2 R2_AHEAD R2_T0 G          p_open30  rft01_001000      1.000     1.000  0.000  0.000  0.000         6        6
+200          R2 R2_AHEAD R2_reach G         p_close30  rft01_000250      0.009     0.009  0.000  0.000  0.000         7        7
+201          R2 R2_AHEAD R2_reach G         p_close30  rft01_000500      0.009     0.009  0.000  0.000  0.000         7        7
+202          R2 R2_AHEAD R2_reach G         p_close30  rft01_000750      0.009     0.009  0.000  0.000  0.000         7        7
+203          R2 R2_AHEAD R2_reach G         p_close30  rft01_001000      0.009     0.009  0.000  0.000  0.000         7        7
+204          R2 R2_AHEAD R2_reach G         p_close50  rft01_000250      0.045     0.045  0.000  0.000  0.000         7        7
+205          R2 R2_AHEAD R2_reach G         p_close50  rft01_000500      0.045     0.045  0.000  0.000  0.000         7        7
+206          R2 R2_AHEAD R2_reach G         p_close50  rft01_000750      0.045     0.045  0.000  0.000  0.000         7        7
+207          R2 R2_AHEAD R2_reach G         p_close50  rft01_001000      0.045     0.045  0.000  0.000  0.000         7        7
+208          R2 R2_AHEAD R2_reach G           dlift29  rft01_000250      8.167     8.786  0.619 -0.003  1.092         7        7
+209          R2 R2_AHEAD R2_reach G           dlift29  rft01_000500      8.167     7.680 -0.487 -1.062  0.032         7        7
+210          R2 R2_AHEAD R2_reach G           dlift29  rft01_000750      8.167     7.734 -0.433 -0.969  0.079         7        7
+211          R2 R2_AHEAD R2_reach G           dlift29  rft01_001000      8.167     8.038 -0.129 -0.756  0.406         7        7
+212          R2 R2_AHEAD R2_reach G          delbow29  rft01_000250    -10.952   -11.440 -0.488 -1.384  0.440         7        7
+213          R2 R2_AHEAD R2_reach G          delbow29  rft01_000500    -10.952    -9.835  1.118  0.788  1.469         7        7
+214          R2 R2_AHEAD R2_reach G          delbow29  rft01_000750    -10.952   -10.196  0.756  0.426  1.175         7        7
+215          R2 R2_AHEAD R2_reach G          delbow29  rft01_001000    -10.952   -10.486  0.466  0.067  1.006         7        7
+216          R2 R2_AHEAD R2_reach G          dwflex29  rft01_000250      4.171     4.770  0.599 -0.399  1.285         7        7
+217          R2 R2_AHEAD R2_reach G          dwflex29  rft01_000500      4.171     3.702 -0.469 -0.924 -0.111         7        7
+218          R2 R2_AHEAD R2_reach G          dwflex29  rft01_000750      4.171     4.151 -0.020 -0.319  0.256         7        7
+219          R2 R2_AHEAD R2_reach G          dwflex29  rft01_001000      4.171     4.194  0.022 -0.209  0.281         7        7
+220          R2 R2_AHEAD R2_reach G          p_open30  rft01_000250      0.104     0.073 -0.031 -0.073  0.000         6        6
+221          R2 R2_AHEAD R2_reach G          p_open30  rft01_000500      0.104     0.083 -0.021 -0.094  0.031         6        6
+222          R2 R2_AHEAD R2_reach G          p_open30  rft01_000750      0.104     0.083 -0.021 -0.094  0.031         6        6
+223          R2 R2_AHEAD R2_reach G          p_open30  rft01_001000      0.104     0.073 -0.031 -0.104  0.021         6        6
+224          R2 R2_AHEAD R2_preT0 G         p_close30  rft01_000250      0.009     0.009  0.000  0.000  0.000         7        7
+225          R2 R2_AHEAD R2_preT0 G         p_close30  rft01_000500      0.009     0.009  0.000  0.000  0.000         7        7
+226          R2 R2_AHEAD R2_preT0 G         p_close30  rft01_000750      0.009     0.009  0.000  0.000  0.000         7        7
+227          R2 R2_AHEAD R2_preT0 G         p_close30  rft01_001000      0.009     0.009  0.000  0.000  0.000         7        7
+228          R2 R2_AHEAD R2_preT0 G         p_close50  rft01_000250      0.045     0.045  0.000  0.000  0.000         7        7
+229          R2 R2_AHEAD R2_preT0 G         p_close50  rft01_000500      0.045     0.045  0.000  0.000  0.000         7        7
+230          R2 R2_AHEAD R2_preT0 G         p_close50  rft01_000750      0.045     0.045  0.000  0.000  0.000         7        7
+231          R2 R2_AHEAD R2_preT0 G         p_close50  rft01_001000      0.045     0.045  0.000  0.000  0.000         7        7
+232          R2 R2_AHEAD R2_preT0 G           dlift29  rft01_000250      1.243     2.070  0.827  0.129  1.376         7        7
+233          R2 R2_AHEAD R2_preT0 G           dlift29  rft01_000500      1.243     0.866 -0.377 -0.998  0.130         7        7
+234          R2 R2_AHEAD R2_preT0 G           dlift29  rft01_000750      1.243     1.066 -0.177 -0.665  0.216         7        7
+235          R2 R2_AHEAD R2_preT0 G           dlift29  rft01_001000      1.243     1.326  0.083 -0.529  0.502         7        7
+236          R2 R2_AHEAD R2_preT0 G          delbow29  rft01_000250     -4.217    -4.999 -0.782 -1.761  0.183         7        7
+237          R2 R2_AHEAD R2_preT0 G          delbow29  rft01_000500     -4.217    -3.282  0.935  0.467  1.359         7        7
+238          R2 R2_AHEAD R2_preT0 G          delbow29  rft01_000750     -4.217    -3.686  0.531  0.052  0.935         7        7
+239          R2 R2_AHEAD R2_preT0 G          delbow29  rft01_001000     -4.217    -3.788  0.429 -0.225  1.060         7        7
+240          R2 R2_AHEAD R2_preT0 G          dwflex29  rft01_000250      1.990     2.874  0.885  0.622  1.119         7        7
+241          R2 R2_AHEAD R2_preT0 G          dwflex29  rft01_000500      1.990     1.740 -0.249 -0.609  0.032         7        7
+242          R2 R2_AHEAD R2_preT0 G          dwflex29  rft01_000750      1.990     2.080  0.091 -0.309  0.423         7        7
+243          R2 R2_AHEAD R2_preT0 G          dwflex29  rft01_001000      1.990     2.021  0.032 -0.389  0.390         7        7
+244          R2 R2_AHEAD R2_preT0 G          p_open30  rft01_000250      0.427     0.229 -0.198 -0.292 -0.104         6        6
+245          R2 R2_AHEAD R2_preT0 G          p_open30  rft01_000500      0.427     0.344 -0.083 -0.208  0.031         6        6
+246          R2 R2_AHEAD R2_preT0 G          p_open30  rft01_000750      0.427     0.281 -0.146 -0.281 -0.031         6        6
+247          R2 R2_AHEAD R2_preT0 G          p_open30  rft01_001000      0.427     0.271 -0.156 -0.292 -0.042         6        6
+248             R2 R2_AHEAD R2_T2 G         p_close30  rft01_000250      1.000     0.938 -0.062 -0.062 -0.062         1        1
+249             R2 R2_AHEAD R2_T2 G         p_close30  rft01_000500      1.000     1.000  0.000  0.000  0.000         1        1
+250             R2 R2_AHEAD R2_T2 G         p_close30  rft01_000750      1.000     1.000  0.000  0.000  0.000         1        1
+251             R2 R2_AHEAD R2_T2 G         p_close30  rft01_001000      1.000     1.000  0.000  0.000  0.000         1        1
+252             R2 R2_AHEAD R2_T2 G         p_close50  rft01_000250      1.000     1.000  0.000  0.000  0.000         1        1
+253             R2 R2_AHEAD R2_T2 G         p_close50  rft01_000500      1.000     1.000  0.000  0.000  0.000         1        1
+254             R2 R2_AHEAD R2_T2 G         p_close50  rft01_000750      1.000     1.000  0.000  0.000  0.000         1        1
+255             R2 R2_AHEAD R2_T2 G         p_close50  rft01_001000      1.000     1.000  0.000  0.000  0.000         1        1
+256             R2 R2_AHEAD R2_T2 G           dlift29  rft01_000250      3.120     2.181 -0.940 -0.940 -0.940         1        1
+257             R2 R2_AHEAD R2_T2 G           dlift29  rft01_000500      3.120     1.660 -1.460 -1.460 -1.460         1        1
+258             R2 R2_AHEAD R2_T2 G           dlift29  rft01_000750      3.120     2.066 -1.055 -1.055 -1.055         1        1
+259             R2 R2_AHEAD R2_T2 G           dlift29  rft01_001000      3.120     2.004 -1.116 -1.116 -1.116         1        1
+260             R2 R2_AHEAD R2_T2 G          delbow29  rft01_000250     -4.845    -4.129  0.716  0.716  0.716         1        1
+261             R2 R2_AHEAD R2_T2 G          delbow29  rft01_000500     -4.845    -3.141  1.704  1.704  1.704         1        1
+262             R2 R2_AHEAD R2_T2 G          delbow29  rft01_000750     -4.845    -3.462  1.383  1.383  1.383         1        1
+263             R2 R2_AHEAD R2_T2 G          delbow29  rft01_001000     -4.845    -3.396  1.449  1.449  1.449         1        1
+264             R2 R2_AHEAD R2_T2 G          dwflex29  rft01_000250     -1.491    -0.648  0.843  0.843  0.843         1        1
+265             R2 R2_AHEAD R2_T2 G          dwflex29  rft01_000500     -1.491    -1.413  0.078  0.078  0.078         1        1
+266             R2 R2_AHEAD R2_T2 G          dwflex29  rft01_000750     -1.491    -1.097  0.394  0.394  0.394         1        1
+267             R2 R2_AHEAD R2_T2 G          dwflex29  rft01_001000     -1.491    -1.213  0.278  0.278  0.278         1        1
+268             R2 R2_BELOW R2_T0 G         p_close30  rft01_000250      0.271     0.312  0.042  0.010  0.083         6        6
+269             R2 R2_BELOW R2_T0 G         p_close30  rft01_000500      0.271     0.292  0.021 -0.052  0.104         6        6
+270             R2 R2_BELOW R2_T0 G         p_close30  rft01_000750      0.271     0.333  0.062 -0.010  0.146         6        6
+271             R2 R2_BELOW R2_T0 G         p_close30  rft01_001000      0.271     0.333  0.062  0.010  0.125         6        6
+272             R2 R2_BELOW R2_T0 G         p_close50  rft01_000250      0.729     0.646 -0.083 -0.188  0.021         6        6
+273             R2 R2_BELOW R2_T0 G         p_close50  rft01_000500      0.729     0.594 -0.135 -0.240 -0.052         6        6
+274             R2 R2_BELOW R2_T0 G         p_close50  rft01_000750      0.729     0.604 -0.125 -0.271 -0.010         6        6
+275             R2 R2_BELOW R2_T0 G         p_close50  rft01_001000      0.729     0.625 -0.104 -0.229  0.000         6        6
+276             R2 R2_BELOW R2_T0 G           dlift29  rft01_000250      5.841     4.866 -0.975 -1.160 -0.786         6        6
+277             R2 R2_BELOW R2_T0 G           dlift29  rft01_000500      5.841     4.384 -1.457 -1.722 -1.186         6        6
+278             R2 R2_BELOW R2_T0 G           dlift29  rft01_000750      5.841     4.521 -1.320 -1.607 -1.076         6        6
+279             R2 R2_BELOW R2_T0 G           dlift29  rft01_001000      5.841     4.477 -1.363 -1.558 -1.159         6        6
+280             R2 R2_BELOW R2_T0 G          delbow29  rft01_000250     -4.188    -3.364  0.824  0.527  1.143         6        6
+281             R2 R2_BELOW R2_T0 G          delbow29  rft01_000500     -4.188    -3.003  1.185  1.021  1.359         6        6
+282             R2 R2_BELOW R2_T0 G          delbow29  rft01_000750     -4.188    -2.858  1.330  0.995  1.596         6        6
+283             R2 R2_BELOW R2_T0 G          delbow29  rft01_001000     -4.188    -2.335  1.853  1.551  2.117         6        6
+284             R2 R2_BELOW R2_T0 G          dwflex29  rft01_000250     -2.565    -1.804  0.761  0.570  0.945         6        6
+285             R2 R2_BELOW R2_T0 G          dwflex29  rft01_000500     -2.565    -2.743 -0.178 -0.449  0.039         6        6
+286             R2 R2_BELOW R2_T0 G          dwflex29  rft01_000750     -2.565    -2.495  0.070 -0.156  0.250         6        6
+287             R2 R2_BELOW R2_T0 G          dwflex29  rft01_001000     -2.565    -2.540  0.025 -0.186  0.183         6        6
+288          R2 R2_BELOW R2_reach G         p_close30  rft01_000250      0.052     0.125  0.073  0.000  0.219         6        6
+289          R2 R2_BELOW R2_reach G         p_close30  rft01_000500      0.052     0.031 -0.021 -0.062  0.000         6        6
+290          R2 R2_BELOW R2_reach G         p_close30  rft01_000750      0.052     0.031 -0.021 -0.062  0.000         6        6
+291          R2 R2_BELOW R2_reach G         p_close30  rft01_001000      0.052     0.042 -0.010 -0.062  0.031         6        6
+292          R2 R2_BELOW R2_reach G         p_close50  rft01_000250      0.094     0.188  0.094  0.010  0.240         6        6
+293          R2 R2_BELOW R2_reach G         p_close50  rft01_000500      0.094     0.052 -0.042 -0.083  0.000         6        6
+294          R2 R2_BELOW R2_reach G         p_close50  rft01_000750      0.094     0.083 -0.010 -0.062  0.031         6        6
+295          R2 R2_BELOW R2_reach G         p_close50  rft01_001000      0.094     0.094  0.000 -0.052  0.042         6        6
+296          R2 R2_BELOW R2_reach G           dlift29  rft01_000250      5.513     5.372 -0.141 -0.596  0.378         6        6
+297          R2 R2_BELOW R2_reach G           dlift29  rft01_000500      5.513     4.451 -1.062 -1.328 -0.825         6        6
+298          R2 R2_BELOW R2_reach G           dlift29  rft01_000750      5.513     5.049 -0.464 -0.757 -0.150         6        6
+299          R2 R2_BELOW R2_reach G           dlift29  rft01_001000      5.513     4.978 -0.535 -0.851 -0.190         6        6
+300          R2 R2_BELOW R2_reach G          delbow29  rft01_000250     -2.019    -1.506  0.513  0.142  0.802         6        6
+301          R2 R2_BELOW R2_reach G          delbow29  rft01_000500     -2.019    -0.933  1.086  0.904  1.247         6        6
+302          R2 R2_BELOW R2_reach G          delbow29  rft01_000750     -2.019    -1.070  0.948  0.655  1.281         6        6
+303          R2 R2_BELOW R2_reach G          delbow29  rft01_001000     -2.019    -0.704  1.314  1.009  1.658         6        6
+304          R2 R2_BELOW R2_reach G          dwflex29  rft01_000250     -1.179    -0.394  0.785  0.578  0.995         6        6
+305          R2 R2_BELOW R2_reach G          dwflex29  rft01_000500     -1.179    -1.499 -0.320 -0.523 -0.089         6        6
+306          R2 R2_BELOW R2_reach G          dwflex29  rft01_000750     -1.179    -1.020  0.159 -0.087  0.401         6        6
+307          R2 R2_BELOW R2_reach G          dwflex29  rft01_001000     -1.179    -1.155  0.024 -0.178  0.250         6        6
+308          R2 R2_BELOW R2_reach G          p_open30  rft01_000250      1.000     1.000  0.000  0.000  0.000         3        3
+309          R2 R2_BELOW R2_reach G          p_open30  rft01_000500      1.000     1.000  0.000  0.000  0.000         3        3
+310          R2 R2_BELOW R2_reach G          p_open30  rft01_000750      1.000     1.000  0.000  0.000  0.000         3        3
+311          R2 R2_BELOW R2_reach G          p_open30  rft01_001000      1.000     1.000  0.000  0.000  0.000         3        3
+312          R2 R2_BELOW R2_preT0 G         p_close30  rft01_000250      0.042     0.083  0.042  0.000  0.104         6        6
+313          R2 R2_BELOW R2_preT0 G         p_close30  rft01_000500      0.042     0.042  0.000  0.000  0.000         6        6
+314          R2 R2_BELOW R2_preT0 G         p_close30  rft01_000750      0.042     0.052  0.010  0.000  0.031         6        6
+315          R2 R2_BELOW R2_preT0 G         p_close30  rft01_001000      0.042     0.073  0.031  0.000  0.073         6        6
+316          R2 R2_BELOW R2_preT0 G         p_close50  rft01_000250      0.240     0.260  0.021  0.000  0.042         6        6
+317          R2 R2_BELOW R2_preT0 G         p_close50  rft01_000500      0.240     0.198 -0.042 -0.083  0.000         6        6
+318          R2 R2_BELOW R2_preT0 G         p_close50  rft01_000750      0.240     0.229 -0.010 -0.031  0.000         6        6
+319          R2 R2_BELOW R2_preT0 G         p_close50  rft01_001000      0.240     0.250  0.010  0.000  0.031         6        6
+320          R2 R2_BELOW R2_preT0 G           dlift29  rft01_000250      5.829     5.312 -0.517 -0.881 -0.144         6        6
+321          R2 R2_BELOW R2_preT0 G           dlift29  rft01_000500      5.829     4.568 -1.261 -1.571 -0.955         6        6
+322          R2 R2_BELOW R2_preT0 G           dlift29  rft01_000750      5.829     5.057 -0.773 -1.149 -0.396         6        6
+323          R2 R2_BELOW R2_preT0 G           dlift29  rft01_001000      5.829     4.964 -0.865 -1.227 -0.518         6        6
+324          R2 R2_BELOW R2_preT0 G          delbow29  rft01_000250     -2.400    -1.716  0.683  0.537  0.828         6        6
+325          R2 R2_BELOW R2_preT0 G          delbow29  rft01_000500     -2.400    -1.243  1.157  0.925  1.389         6        6
+326          R2 R2_BELOW R2_preT0 G          delbow29  rft01_000750     -2.400    -1.383  1.017  0.670  1.366         6        6
+327          R2 R2_BELOW R2_preT0 G          delbow29  rft01_001000     -2.400    -0.970  1.430  1.051  1.837         6        6
+328          R2 R2_BELOW R2_preT0 G          dwflex29  rft01_000250     -1.363    -0.571  0.791  0.561  1.015         6        6
+329          R2 R2_BELOW R2_preT0 G          dwflex29  rft01_000500     -1.363    -1.635 -0.272 -0.491 -0.034         6        6
+330          R2 R2_BELOW R2_preT0 G          dwflex29  rft01_000750     -1.363    -1.211  0.152 -0.104  0.408         6        6
+331          R2 R2_BELOW R2_preT0 G          dwflex29  rft01_001000     -1.363    -1.298  0.065 -0.146  0.291         6        6
+332          R2 R2_BELOW R2_preT0 G          p_open30  rft01_000250      1.000     1.000  0.000  0.000  0.000         2        2
+333          R2 R2_BELOW R2_preT0 G          p_open30  rft01_000500      1.000     1.000  0.000  0.000  0.000         2        2
+334          R2 R2_BELOW R2_preT0 G          p_open30  rft01_000750      1.000     1.000  0.000  0.000  0.000         2        2
+335          R2 R2_BELOW R2_preT0 G          p_open30  rft01_001000      1.000     1.000  0.000  0.000  0.000         2        2
+336             R2 R2_BELOW R2_T2 G         p_close30  rft01_000250      0.641     0.594 -0.047 -0.094  0.000         4        4
+337             R2 R2_BELOW R2_T2 G         p_close30  rft01_000500      0.641     0.359 -0.281 -0.516 -0.078         4        4
+338             R2 R2_BELOW R2_T2 G         p_close30  rft01_000750      0.641     0.422 -0.219 -0.422 -0.047         4        4
+339             R2 R2_BELOW R2_T2 G         p_close30  rft01_001000      0.641     0.406 -0.234 -0.422 -0.062         4        4
+340             R2 R2_BELOW R2_T2 G         p_close50  rft01_000250      0.875     0.734 -0.141 -0.281  0.000         4        4
+341             R2 R2_BELOW R2_T2 G         p_close50  rft01_000500      0.875     0.562 -0.312 -0.531 -0.094         4        4
+342             R2 R2_BELOW R2_T2 G         p_close50  rft01_000750      0.875     0.625 -0.250 -0.406 -0.094         4        4
+343             R2 R2_BELOW R2_T2 G         p_close50  rft01_001000      0.875     0.609 -0.266 -0.406 -0.094         4        4
+344             R2 R2_BELOW R2_T2 G           dlift29  rft01_000250      1.271     0.496 -0.774 -0.952 -0.625         4        4
+345             R2 R2_BELOW R2_T2 G           dlift29  rft01_000500      1.271     0.033 -1.238 -1.787 -0.693         4        4
+346             R2 R2_BELOW R2_T2 G           dlift29  rft01_000750      1.271     0.091 -1.180 -1.501 -0.888         4        4
+347             R2 R2_BELOW R2_T2 G           dlift29  rft01_001000      1.271    -0.018 -1.288 -1.849 -0.681         4        4
+348             R2 R2_BELOW R2_T2 G          delbow29  rft01_000250     -4.023    -3.635  0.388  0.011  0.939         4        4
+349             R2 R2_BELOW R2_T2 G          delbow29  rft01_000500     -4.023    -3.270  0.753  0.162  1.133         4        4
+350             R2 R2_BELOW R2_T2 G          delbow29  rft01_000750     -4.023    -2.989  1.033  0.669  1.369         4        4
+351             R2 R2_BELOW R2_T2 G          delbow29  rft01_001000     -4.023    -2.634  1.389  1.100  1.625         4        4
+352             R2 R2_BELOW R2_T2 G          dwflex29  rft01_000250     -0.279     0.884  1.163  0.962  1.406         4        4
+353             R2 R2_BELOW R2_T2 G          dwflex29  rft01_000500     -0.279    -0.037  0.242  0.036  0.481         4        4
+354             R2 R2_BELOW R2_T2 G          dwflex29  rft01_000750     -0.279     0.210  0.489  0.242  0.855         4        4
+355             R2 R2_BELOW R2_T2 G          dwflex29  rft01_001000     -0.279     0.265  0.544  0.322  0.925         4        4
+356         R2 normal_grasp R2_T0 G         p_close30  rft01_000250      0.193     0.219  0.026 -0.016  0.089        12       12
+357         R2 normal_grasp R2_T0 G         p_close30  rft01_000500      0.193     0.224  0.031 -0.016  0.089        12       12
+358         R2 normal_grasp R2_T0 G         p_close30  rft01_000750      0.193     0.229  0.036 -0.021  0.104        12       12
+359         R2 normal_grasp R2_T0 G         p_close30  rft01_001000      0.193     0.250  0.057 -0.005  0.141        12       12
+360         R2 normal_grasp R2_T0 G         p_close50  rft01_000250      0.615     0.521 -0.094 -0.161 -0.026        12       12
+361         R2 normal_grasp R2_T0 G         p_close50  rft01_000500      0.615     0.557 -0.057 -0.099 -0.026        12       12
+362         R2 normal_grasp R2_T0 G         p_close50  rft01_000750      0.615     0.547 -0.068 -0.120 -0.016        12       12
+363         R2 normal_grasp R2_T0 G         p_close50  rft01_001000      0.615     0.568 -0.047 -0.094 -0.005        12       12
+364         R2 normal_grasp R2_T0 G           dlift29  rft01_000250      8.303     7.432 -0.871 -1.123 -0.569        12       12
+365         R2 normal_grasp R2_T0 G           dlift29  rft01_000500      8.303     6.966 -1.338 -1.648 -0.919        12       12
+366         R2 normal_grasp R2_T0 G           dlift29  rft01_000750      8.303     7.327 -0.976 -1.228 -0.667        12       12
+367         R2 normal_grasp R2_T0 G           dlift29  rft01_001000      8.303     7.297 -1.006 -1.314 -0.643        12       12
+368         R2 normal_grasp R2_T0 G          delbow29  rft01_000250     -3.429    -2.662  0.766  0.494  1.075        12       12
+369         R2 normal_grasp R2_T0 G          delbow29  rft01_000500     -3.429    -2.277  1.152  0.902  1.388        12       12
+370         R2 normal_grasp R2_T0 G          delbow29  rft01_000750     -3.429    -2.084  1.345  1.118  1.573        12       12
+371         R2 normal_grasp R2_T0 G          delbow29  rft01_001000     -3.429    -1.938  1.491  1.207  1.775        12       12
+372         R2 normal_grasp R2_T0 G          dwflex29  rft01_000250     -2.890    -1.969  0.921  0.707  1.171        12       12
+373         R2 normal_grasp R2_T0 G          dwflex29  rft01_000500     -2.890    -2.776  0.114 -0.080  0.314        12       12
+374         R2 normal_grasp R2_T0 G          dwflex29  rft01_000750     -2.890    -2.514  0.376  0.233  0.538        12       12
+375         R2 normal_grasp R2_T0 G          dwflex29  rft01_001000     -2.890    -2.545  0.345  0.214  0.496        12       12
+376      R2 normal_grasp R2_reach G         p_close30  rft01_000250      0.042     0.109  0.068  0.005  0.151        12       12
+377      R2 normal_grasp R2_reach G         p_close30  rft01_000500      0.042     0.042  0.000  0.000  0.000        12       12
+378      R2 normal_grasp R2_reach G         p_close30  rft01_000750      0.042     0.062  0.021  0.000  0.057        12       12
+379      R2 normal_grasp R2_reach G         p_close30  rft01_001000      0.042     0.042  0.000  0.000  0.000        12       12
+380      R2 normal_grasp R2_reach G         p_close50  rft01_000250      0.089     0.151  0.062  0.000  0.146        12       12
+381      R2 normal_grasp R2_reach G         p_close50  rft01_000500      0.089     0.083 -0.005 -0.016  0.000        12       12
+382      R2 normal_grasp R2_reach G         p_close50  rft01_000750      0.089     0.104  0.016 -0.010  0.052        12       12
+383      R2 normal_grasp R2_reach G         p_close50  rft01_001000      0.089     0.089  0.000  0.000  0.000        12       12
+384      R2 normal_grasp R2_reach G           dlift29  rft01_000250      6.563     6.258 -0.305 -0.683  0.047        12       12
+385      R2 normal_grasp R2_reach G           dlift29  rft01_000500      6.563     5.547 -1.016 -1.374 -0.632        12       12
+386      R2 normal_grasp R2_reach G           dlift29  rft01_000750      6.563     5.913 -0.650 -1.003 -0.340        12       12
+387      R2 normal_grasp R2_reach G           dlift29  rft01_001000      6.563     6.075 -0.488 -0.912 -0.114        12       12
+388      R2 normal_grasp R2_reach G          delbow29  rft01_000250     -1.134    -0.634  0.500  0.183  0.808        12       12
+389      R2 normal_grasp R2_reach G          delbow29  rft01_000500     -1.134    -0.173  0.961  0.687  1.259        12       12
+390      R2 normal_grasp R2_reach G          delbow29  rft01_000750     -1.134    -0.274  0.860  0.580  1.160        12       12
+391      R2 normal_grasp R2_reach G          delbow29  rft01_001000     -1.134    -0.089  1.045  0.682  1.439        12       12
+392      R2 normal_grasp R2_reach G          dwflex29  rft01_000250     -2.211    -1.442  0.769  0.584  0.998        12       12
+393      R2 normal_grasp R2_reach G          dwflex29  rft01_000500     -2.211    -2.283 -0.072 -0.228  0.121        12       12
+394      R2 normal_grasp R2_reach G          dwflex29  rft01_000750     -2.211    -1.831  0.380  0.259  0.539        12       12
+395      R2 normal_grasp R2_reach G          dwflex29  rft01_001000     -2.211    -1.942  0.269  0.115  0.451        12       12
+396      R2 normal_grasp R2_reach G          p_open30  rft01_000250      1.000     1.000  0.000  0.000  0.000         6        6
+397      R2 normal_grasp R2_reach G          p_open30  rft01_000500      1.000     1.000  0.000  0.000  0.000         6        6
+398      R2 normal_grasp R2_reach G          p_open30  rft01_000750      1.000     1.000  0.000  0.000  0.000         6        6
+399      R2 normal_grasp R2_reach G          p_open30  rft01_001000      1.000     1.000  0.000  0.000  0.000         6        6
+400      R2 normal_grasp R2_preT0 G         p_close30  rft01_000250      0.036     0.099  0.062  0.000  0.146        12       12
+401      R2 normal_grasp R2_preT0 G         p_close30  rft01_000500      0.036     0.036  0.000  0.000  0.000        12       12
+402      R2 normal_grasp R2_preT0 G         p_close30  rft01_000750      0.036     0.057  0.021  0.000  0.057        12       12
+403      R2 normal_grasp R2_preT0 G         p_close30  rft01_001000      0.036     0.042  0.005  0.000  0.016        12       12
+404      R2 normal_grasp R2_preT0 G         p_close50  rft01_000250      0.109     0.151  0.042 -0.036  0.130        12       12
+405      R2 normal_grasp R2_preT0 G         p_close50  rft01_000500      0.109     0.094 -0.016 -0.031  0.000        12       12
+406      R2 normal_grasp R2_preT0 G         p_close50  rft01_000750      0.109     0.115  0.005 -0.026  0.047        12       12
+407      R2 normal_grasp R2_preT0 G         p_close50  rft01_001000      0.109     0.099 -0.010 -0.026  0.000        12       12
+408      R2 normal_grasp R2_preT0 G           dlift29  rft01_000250      7.422     6.927 -0.495 -0.858 -0.147        12       12
+409      R2 normal_grasp R2_preT0 G           dlift29  rft01_000500      7.422     6.290 -1.132 -1.518 -0.701        12       12
+410      R2 normal_grasp R2_preT0 G           dlift29  rft01_000750      7.422     6.687 -0.735 -1.091 -0.396        12       12
+411      R2 normal_grasp R2_preT0 G           dlift29  rft01_001000      7.422     6.791 -0.631 -1.065 -0.221        12       12
+412      R2 normal_grasp R2_preT0 G          delbow29  rft01_000250     -1.889    -1.277  0.612  0.302  0.925        12       12
+413      R2 normal_grasp R2_preT0 G          delbow29  rft01_000500     -1.889    -0.864  1.026  0.753  1.306        12       12
+414      R2 normal_grasp R2_preT0 G          delbow29  rft01_000750     -1.889    -0.907  0.982  0.711  1.277        12       12
+415      R2 normal_grasp R2_preT0 G          delbow29  rft01_001000     -1.889    -0.709  1.181  0.787  1.579        12       12
+416      R2 normal_grasp R2_preT0 G          dwflex29  rft01_000250     -2.577    -1.807  0.770  0.607  0.989        12       12
+417      R2 normal_grasp R2_preT0 G          dwflex29  rft01_000500     -2.577    -2.625 -0.048 -0.224  0.157        12       12
+418      R2 normal_grasp R2_preT0 G          dwflex29  rft01_000750     -2.577    -2.191  0.386  0.248  0.561        12       12
+419      R2 normal_grasp R2_preT0 G          dwflex29  rft01_001000     -2.577    -2.290  0.287  0.112  0.489        12       12
+420      R2 normal_grasp R2_preT0 G          p_open30  rft01_000250      1.000     1.000  0.000  0.000  0.000         4        4
+421      R2 normal_grasp R2_preT0 G          p_open30  rft01_000500      1.000     1.000  0.000  0.000  0.000         4        4
+422      R2 normal_grasp R2_preT0 G          p_open30  rft01_000750      1.000     1.000  0.000  0.000  0.000         4        4
+423      R2 normal_grasp R2_preT0 G          p_open30  rft01_001000      1.000     1.000  0.000  0.000  0.000         4        4
+424         R2 normal_grasp R2_T2 G         p_close30  rft01_000250      0.931     0.862 -0.069 -0.188  0.006        10       10
+425         R2 normal_grasp R2_T2 G         p_close30  rft01_000500      0.931     0.819 -0.112 -0.219 -0.038        10       10
+426         R2 normal_grasp R2_T2 G         p_close30  rft01_000750      0.931     0.894 -0.038 -0.100  0.000        10       10
+427         R2 normal_grasp R2_T2 G         p_close30  rft01_001000      0.931     0.900 -0.031 -0.081  0.000        10       10
+428         R2 normal_grasp R2_T2 G         p_close50  rft01_000250      1.000     0.969 -0.031 -0.081  0.000        10       10
+429         R2 normal_grasp R2_T2 G         p_close50  rft01_000500      1.000     0.981 -0.019 -0.050  0.000        10       10
+430         R2 normal_grasp R2_T2 G         p_close50  rft01_000750      1.000     0.994 -0.006 -0.019  0.000        10       10
+431         R2 normal_grasp R2_T2 G         p_close50  rft01_001000      1.000     0.994 -0.006 -0.019  0.000        10       10
+432         R2 normal_grasp R2_T2 G           dlift29  rft01_000250      2.655     2.187 -0.467 -0.732 -0.182        10       10
+433         R2 normal_grasp R2_T2 G           dlift29  rft01_000500      2.655     1.870 -0.785 -1.153 -0.370        10       10
+434         R2 normal_grasp R2_T2 G           dlift29  rft01_000750      2.655     2.126 -0.529 -0.782 -0.283        10       10
+435         R2 normal_grasp R2_T2 G           dlift29  rft01_001000      2.655     2.287 -0.368 -0.723 -0.016        10       10
+436         R2 normal_grasp R2_T2 G          delbow29  rft01_000250     -3.482    -3.205  0.277 -0.057  0.632        10       10
+437         R2 normal_grasp R2_T2 G          delbow29  rft01_000500     -3.482    -2.565  0.917  0.602  1.244        10       10
+438         R2 normal_grasp R2_T2 G          delbow29  rft01_000750     -3.482    -2.339  1.143  0.830  1.468        10       10
+439         R2 normal_grasp R2_T2 G          delbow29  rft01_001000     -3.482    -2.324  1.158  0.826  1.521        10       10
+440         R2 normal_grasp R2_T2 G          dwflex29  rft01_000250     -0.956    -0.007  0.949  0.787  1.106        10       10
+441         R2 normal_grasp R2_T2 G          dwflex29  rft01_000500     -0.956    -0.854  0.102 -0.077  0.273        10       10
+442         R2 normal_grasp R2_T2 G          dwflex29  rft01_000750     -0.956    -0.787  0.169  0.014  0.339        10       10
+443         R2 normal_grasp R2_T2 G          dwflex29  rft01_001000     -0.956    -0.759  0.197  0.033  0.384        10       10
+444           R2 R2_LATERAL R2_T0 G         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+445           R2 R2_LATERAL R2_T0 G         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+446           R2 R2_LATERAL R2_T0 G         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+447           R2 R2_LATERAL R2_T0 G         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+448           R2 R2_LATERAL R2_T0 G         p_close50  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+449           R2 R2_LATERAL R2_T0 G         p_close50  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+450           R2 R2_LATERAL R2_T0 G         p_close50  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+451           R2 R2_LATERAL R2_T0 G         p_close50  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+452           R2 R2_LATERAL R2_T0 G           dlift29  rft01_000250     -1.407    -2.808 -1.402 -1.402 -1.402         1        1
+453           R2 R2_LATERAL R2_T0 G           dlift29  rft01_000500     -1.407    -3.462 -2.055 -2.055 -2.055         1        1
+454           R2 R2_LATERAL R2_T0 G           dlift29  rft01_000750     -1.407    -2.463 -1.056 -1.056 -1.056         1        1
+455           R2 R2_LATERAL R2_T0 G           dlift29  rft01_001000     -1.407    -2.370 -0.963 -0.963 -0.963         1        1
+456           R2 R2_LATERAL R2_T0 G          delbow29  rft01_000250     -2.193    -1.851  0.343  0.343  0.343         1        1
+457           R2 R2_LATERAL R2_T0 G          delbow29  rft01_000500     -2.193    -1.563  0.630  0.630  0.630         1        1
+458           R2 R2_LATERAL R2_T0 G          delbow29  rft01_000750     -2.193    -2.103  0.091  0.091  0.091         1        1
+459           R2 R2_LATERAL R2_T0 G          delbow29  rft01_001000     -2.193    -1.939  0.255  0.255  0.255         1        1
+460           R2 R2_LATERAL R2_T0 G          dwflex29  rft01_000250      1.017     1.572  0.556  0.556  0.556         1        1
+461           R2 R2_LATERAL R2_T0 G          dwflex29  rft01_000500      1.017     1.118  0.101  0.101  0.101         1        1
+462           R2 R2_LATERAL R2_T0 G          dwflex29  rft01_000750      1.017     1.514  0.498  0.498  0.498         1        1
+463           R2 R2_LATERAL R2_T0 G          dwflex29  rft01_001000      1.017     1.496  0.480  0.480  0.480         1        1
+464        R2 R2_LATERAL R2_reach G         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+465        R2 R2_LATERAL R2_reach G         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+466        R2 R2_LATERAL R2_reach G         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+467        R2 R2_LATERAL R2_reach G         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+468        R2 R2_LATERAL R2_reach G         p_close50  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+469        R2 R2_LATERAL R2_reach G         p_close50  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+470        R2 R2_LATERAL R2_reach G         p_close50  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+471        R2 R2_LATERAL R2_reach G         p_close50  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+472        R2 R2_LATERAL R2_reach G           dlift29  rft01_000250      1.358     0.072 -1.286 -1.286 -1.286         1        1
+473        R2 R2_LATERAL R2_reach G           dlift29  rft01_000500      1.358    -0.615 -1.973 -1.973 -1.973         1        1
+474        R2 R2_LATERAL R2_reach G           dlift29  rft01_000750      1.358     0.368 -0.990 -0.990 -0.990         1        1
+475        R2 R2_LATERAL R2_reach G           dlift29  rft01_001000      1.358     0.336 -1.021 -1.021 -1.021         1        1
+476        R2 R2_LATERAL R2_reach G          delbow29  rft01_000250     -4.035    -3.871  0.164  0.164  0.164         1        1
+477        R2 R2_LATERAL R2_reach G          delbow29  rft01_000500     -4.035    -3.428  0.607  0.607  0.607         1        1
+478        R2 R2_LATERAL R2_reach G          delbow29  rft01_000750     -4.035    -4.099 -0.063 -0.063 -0.063         1        1
+479        R2 R2_LATERAL R2_reach G          delbow29  rft01_001000     -4.035    -3.781  0.255  0.255  0.255         1        1
+480        R2 R2_LATERAL R2_reach G          dwflex29  rft01_000250      2.400     3.101  0.702  0.702  0.702         1        1
+481        R2 R2_LATERAL R2_reach G          dwflex29  rft01_000500      2.400     2.516  0.116  0.116  0.116         1        1
+482        R2 R2_LATERAL R2_reach G          dwflex29  rft01_000750      2.400     3.093  0.694  0.694  0.694         1        1
+483        R2 R2_LATERAL R2_reach G          dwflex29  rft01_001000      2.400     2.993  0.593  0.593  0.593         1        1
+484        R2 R2_LATERAL R2_preT0 G         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+485        R2 R2_LATERAL R2_preT0 G         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+486        R2 R2_LATERAL R2_preT0 G         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+487        R2 R2_LATERAL R2_preT0 G         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+488        R2 R2_LATERAL R2_preT0 G         p_close50  rft01_000250      0.062     0.188  0.125  0.125  0.125         1        1
+489        R2 R2_LATERAL R2_preT0 G         p_close50  rft01_000500      0.062     0.125  0.062  0.062  0.062         1        1
+490        R2 R2_LATERAL R2_preT0 G         p_close50  rft01_000750      0.062     0.125  0.062  0.062  0.062         1        1
+491        R2 R2_LATERAL R2_preT0 G         p_close50  rft01_001000      0.062     0.125  0.062  0.062  0.062         1        1
+492        R2 R2_LATERAL R2_preT0 G           dlift29  rft01_000250     -0.729    -1.670 -0.941 -0.941 -0.941         1        1
+493        R2 R2_LATERAL R2_preT0 G           dlift29  rft01_000500     -0.729    -2.417 -1.688 -1.688 -1.688         1        1
+494        R2 R2_LATERAL R2_preT0 G           dlift29  rft01_000750     -0.729    -1.503 -0.774 -0.774 -0.774         1        1
+495        R2 R2_LATERAL R2_preT0 G           dlift29  rft01_001000     -0.729    -1.655 -0.926 -0.926 -0.926         1        1
+496        R2 R2_LATERAL R2_preT0 G          delbow29  rft01_000250     -2.265    -2.458 -0.194 -0.194 -0.194         1        1
+497        R2 R2_LATERAL R2_preT0 G          delbow29  rft01_000500     -2.265    -1.856  0.409  0.409  0.409         1        1
+498        R2 R2_LATERAL R2_preT0 G          delbow29  rft01_000750     -2.265    -2.404 -0.139 -0.139 -0.139         1        1
+499        R2 R2_LATERAL R2_preT0 G          delbow29  rft01_001000     -2.265    -2.116  0.148  0.148  0.148         1        1
+500        R2 R2_LATERAL R2_preT0 G          dwflex29  rft01_000250      1.038     1.717  0.679  0.679  0.679         1        1
+501        R2 R2_LATERAL R2_preT0 G          dwflex29  rft01_000500      1.038     1.310  0.271  0.271  0.271         1        1
+502        R2 R2_LATERAL R2_preT0 G          dwflex29  rft01_000750      1.038     1.664  0.626  0.626  0.626         1        1
+503        R2 R2_LATERAL R2_preT0 G          dwflex29  rft01_001000      1.038     1.610  0.572  0.572  0.572         1        1
+504     R1_init(real first chunk) G         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000        20       20
+505     R1_init(real first chunk) G         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        20       20
+506     R1_init(real first chunk) G         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        20       20
+507     R1_init(real first chunk) G         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000        20       20
+508     R1_init(real first chunk) G            dpan29  rft01_000250     -0.887    -1.767 -0.880 -1.986  0.124        20       20
+509     R1_init(real first chunk) G            dpan29  rft01_000500     -0.887    -5.368 -4.482 -5.789 -3.222        20       20
+510     R1_init(real first chunk) G            dpan29  rft01_000750     -0.887    -2.751 -1.864 -3.360 -0.559        20       20
+511     R1_init(real first chunk) G            dpan29  rft01_001000     -0.887    -4.007 -3.120 -4.308 -2.064        20       20
+512             R2 R2_AHEAD R2_T0 U         p_close30  rft01_000250      0.009     0.009  0.000  0.000  0.000         7        7
+513             R2 R2_AHEAD R2_T0 U         p_close30  rft01_000500      0.009     0.009  0.000  0.000  0.000         7        7
+514             R2 R2_AHEAD R2_T0 U         p_close30  rft01_000750      0.009     0.009  0.000  0.000  0.000         7        7
+515             R2 R2_AHEAD R2_T0 U         p_close30  rft01_001000      0.009     0.009  0.000  0.000  0.000         7        7
+516             R2 R2_AHEAD R2_T0 U         p_close50  rft01_000250      0.089     0.045 -0.045 -0.134  0.000         7        7
+517             R2 R2_AHEAD R2_T0 U         p_close50  rft01_000500      0.089     0.045 -0.045 -0.134  0.000         7        7
+518             R2 R2_AHEAD R2_T0 U         p_close50  rft01_000750      0.089     0.045 -0.045 -0.134  0.000         7        7
+519             R2 R2_AHEAD R2_T0 U         p_close50  rft01_001000      0.089     0.045 -0.045 -0.134  0.000         7        7
+520             R2 R2_AHEAD R2_T0 U           dlift29  rft01_000250      0.913     1.827  0.915 -0.129  1.696         7        7
+521             R2 R2_AHEAD R2_T0 U           dlift29  rft01_000500      0.913     0.383 -0.529 -1.331  0.153         7        7
+522             R2 R2_AHEAD R2_T0 U           dlift29  rft01_000750      0.913     0.649 -0.264 -0.992  0.320         7        7
+523             R2 R2_AHEAD R2_T0 U           dlift29  rft01_001000      0.913     1.066  0.154 -0.719  0.821         7        7
+524             R2 R2_AHEAD R2_T0 U          delbow29  rft01_000250     -3.262    -4.216 -0.954 -1.798  0.075         7        7
+525             R2 R2_AHEAD R2_T0 U          delbow29  rft01_000500     -3.262    -2.119  1.143  0.673  1.716         7        7
+526             R2 R2_AHEAD R2_T0 U          delbow29  rft01_000750     -3.262    -2.553  0.709  0.226  1.335         7        7
+527             R2 R2_AHEAD R2_T0 U          delbow29  rft01_001000     -3.262    -2.924  0.338 -0.372  1.275         7        7
+528             R2 R2_AHEAD R2_T0 U          dwflex29  rft01_000250      1.560     2.855  1.295  1.111  1.510         7        7
+529             R2 R2_AHEAD R2_T0 U          dwflex29  rft01_000500      1.560     1.356 -0.204 -0.454  0.054         7        7
+530             R2 R2_AHEAD R2_T0 U          dwflex29  rft01_000750      1.560     1.770  0.210 -0.018  0.429         7        7
+531             R2 R2_AHEAD R2_T0 U          dwflex29  rft01_001000      1.560     1.756  0.196  0.004  0.383         7        7
+532             R2 R2_AHEAD R2_T0 U          p_open30  rft01_000250      0.281     0.125 -0.156 -0.281 -0.042         6        6
+533             R2 R2_AHEAD R2_T0 U          p_open30  rft01_000500      0.281     0.208 -0.073 -0.167  0.010         6        6
+534             R2 R2_AHEAD R2_T0 U          p_open30  rft01_000750      0.281     0.188 -0.094 -0.188  0.000         6        6
+535             R2 R2_AHEAD R2_T0 U          p_open30  rft01_001000      0.281     0.188 -0.094 -0.188  0.000         6        6
+536          R2 R2_AHEAD R2_reach U         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000         7        7
+537          R2 R2_AHEAD R2_reach U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000         7        7
+538          R2 R2_AHEAD R2_reach U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000         7        7
+539          R2 R2_AHEAD R2_reach U         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000         7        7
+540          R2 R2_AHEAD R2_reach U         p_close50  rft01_000250      0.009     0.000 -0.009 -0.027  0.000         7        7
+541          R2 R2_AHEAD R2_reach U         p_close50  rft01_000500      0.009     0.000 -0.009 -0.027  0.000         7        7
+542          R2 R2_AHEAD R2_reach U         p_close50  rft01_000750      0.009     0.009  0.000  0.000  0.000         7        7
+543          R2 R2_AHEAD R2_reach U         p_close50  rft01_001000      0.009     0.009  0.000  0.000  0.000         7        7
+544          R2 R2_AHEAD R2_reach U           dlift29  rft01_000250      7.589     8.254  0.666 -0.060  1.327         7        7
+545          R2 R2_AHEAD R2_reach U           dlift29  rft01_000500      7.589     6.934 -0.655 -1.194 -0.172         7        7
+546          R2 R2_AHEAD R2_reach U           dlift29  rft01_000750      7.589     7.125 -0.464 -0.944 -0.014         7        7
+547          R2 R2_AHEAD R2_reach U           dlift29  rft01_001000      7.589     7.466 -0.122 -0.736  0.385         7        7
+548          R2 R2_AHEAD R2_reach U          delbow29  rft01_000250    -10.697   -11.202 -0.505 -1.608  0.743         7        7
+549          R2 R2_AHEAD R2_reach U          delbow29  rft01_000500    -10.697    -9.194  1.503  0.979  2.137         7        7
+550          R2 R2_AHEAD R2_reach U          delbow29  rft01_000750    -10.697    -9.854  0.843  0.478  1.283         7        7
+551          R2 R2_AHEAD R2_reach U          delbow29  rft01_001000    -10.697   -10.138  0.559  0.093  1.106         7        7
+552          R2 R2_AHEAD R2_reach U          dwflex29  rft01_000250      3.752     4.520  0.768 -0.460  1.578         7        7
+553          R2 R2_AHEAD R2_reach U          dwflex29  rft01_000500      3.752     3.110 -0.643 -1.363 -0.162         7        7
+554          R2 R2_AHEAD R2_reach U          dwflex29  rft01_000750      3.752     3.679 -0.073 -0.325  0.170         7        7
+555          R2 R2_AHEAD R2_reach U          dwflex29  rft01_001000      3.752     3.742 -0.010 -0.331  0.298         7        7
+556          R2 R2_AHEAD R2_reach U          p_open30  rft01_000250      0.115     0.094 -0.021 -0.042  0.000         6        6
+557          R2 R2_AHEAD R2_reach U          p_open30  rft01_000500      0.115     0.094 -0.021 -0.094  0.031         6        6
+558          R2 R2_AHEAD R2_reach U          p_open30  rft01_000750      0.115     0.083 -0.031 -0.125  0.031         6        6
+559          R2 R2_AHEAD R2_reach U          p_open30  rft01_001000      0.115     0.073 -0.042 -0.135  0.021         6        6
+560          R2 R2_AHEAD R2_preT0 U         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000         7        7
+561          R2 R2_AHEAD R2_preT0 U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000         7        7
+562          R2 R2_AHEAD R2_preT0 U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000         7        7
+563          R2 R2_AHEAD R2_preT0 U         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000         7        7
+564          R2 R2_AHEAD R2_preT0 U         p_close50  rft01_000250      0.009     0.000 -0.009 -0.027  0.000         7        7
+565          R2 R2_AHEAD R2_preT0 U         p_close50  rft01_000500      0.009     0.000 -0.009 -0.027  0.000         7        7
+566          R2 R2_AHEAD R2_preT0 U         p_close50  rft01_000750      0.009     0.009  0.000  0.000  0.000         7        7
+567          R2 R2_AHEAD R2_preT0 U         p_close50  rft01_001000      0.009     0.009  0.000  0.000  0.000         7        7
+568          R2 R2_AHEAD R2_preT0 U           dlift29  rft01_000250      0.948     1.616  0.668  0.004  1.216         7        7
+569          R2 R2_AHEAD R2_preT0 U           dlift29  rft01_000500      0.948     0.357 -0.590 -1.228 -0.052         7        7
+570          R2 R2_AHEAD R2_preT0 U           dlift29  rft01_000750      0.948     0.523 -0.425 -0.843 -0.064         7        7
+571          R2 R2_AHEAD R2_preT0 U           dlift29  rft01_001000      0.948     0.893 -0.055 -0.663  0.421         7        7
+572          R2 R2_AHEAD R2_preT0 U          delbow29  rft01_000250     -3.580    -4.259 -0.679 -1.308  0.098         7        7
+573          R2 R2_AHEAD R2_preT0 U          delbow29  rft01_000500     -3.580    -2.348  1.232  0.963  1.558         7        7
+574          R2 R2_AHEAD R2_preT0 U          delbow29  rft01_000750     -3.580    -2.797  0.783  0.586  1.024         7        7
+575          R2 R2_AHEAD R2_preT0 U          delbow29  rft01_001000     -3.580    -2.985  0.595  0.148  1.140         7        7
+576          R2 R2_AHEAD R2_preT0 U          dwflex29  rft01_000250      1.288     2.350  1.062  0.838  1.278         7        7
+577          R2 R2_AHEAD R2_preT0 U          dwflex29  rft01_000500      1.288     0.991 -0.297 -0.541 -0.095         7        7
+578          R2 R2_AHEAD R2_preT0 U          dwflex29  rft01_000750      1.288     1.323  0.035 -0.281  0.312         7        7
+579          R2 R2_AHEAD R2_preT0 U          dwflex29  rft01_001000      1.288     1.281 -0.006 -0.336  0.254         7        7
+580          R2 R2_AHEAD R2_preT0 U          p_open30  rft01_000250      0.438     0.240 -0.198 -0.323 -0.083         6        6
+581          R2 R2_AHEAD R2_preT0 U          p_open30  rft01_000500      0.438     0.365 -0.073 -0.198  0.042         6        6
+582          R2 R2_AHEAD R2_preT0 U          p_open30  rft01_000750      0.438     0.312 -0.125 -0.271  0.000         6        6
+583          R2 R2_AHEAD R2_preT0 U          p_open30  rft01_001000      0.438     0.302 -0.135 -0.271 -0.010         6        6
+584             R2 R2_AHEAD R2_T2 U         p_close30  rft01_000250      1.000     0.875 -0.125 -0.125 -0.125         1        1
+585             R2 R2_AHEAD R2_T2 U         p_close30  rft01_000500      1.000     1.000  0.000  0.000  0.000         1        1
+586             R2 R2_AHEAD R2_T2 U         p_close30  rft01_000750      1.000     1.000  0.000  0.000  0.000         1        1
+587             R2 R2_AHEAD R2_T2 U         p_close30  rft01_001000      1.000     1.000  0.000  0.000  0.000         1        1
+588             R2 R2_AHEAD R2_T2 U         p_close50  rft01_000250      1.000     1.000  0.000  0.000  0.000         1        1
+589             R2 R2_AHEAD R2_T2 U         p_close50  rft01_000500      1.000     1.000  0.000  0.000  0.000         1        1
+590             R2 R2_AHEAD R2_T2 U         p_close50  rft01_000750      1.000     1.000  0.000  0.000  0.000         1        1
+591             R2 R2_AHEAD R2_T2 U         p_close50  rft01_001000      1.000     1.000  0.000  0.000  0.000         1        1
+592             R2 R2_AHEAD R2_T2 U           dlift29  rft01_000250      2.855     1.747 -1.108 -1.108 -1.108         1        1
+593             R2 R2_AHEAD R2_T2 U           dlift29  rft01_000500      2.855     1.256 -1.599 -1.599 -1.599         1        1
+594             R2 R2_AHEAD R2_T2 U           dlift29  rft01_000750      2.855     1.811 -1.043 -1.043 -1.043         1        1
+595             R2 R2_AHEAD R2_T2 U           dlift29  rft01_001000      2.855     1.852 -1.003 -1.003 -1.003         1        1
+596             R2 R2_AHEAD R2_T2 U          delbow29  rft01_000250     -4.832    -3.762  1.070  1.070  1.070         1        1
+597             R2 R2_AHEAD R2_T2 U          delbow29  rft01_000500     -4.832    -2.667  2.164  2.164  2.164         1        1
+598             R2 R2_AHEAD R2_T2 U          delbow29  rft01_000750     -4.832    -3.036  1.796  1.796  1.796         1        1
+599             R2 R2_AHEAD R2_T2 U          delbow29  rft01_001000     -4.832    -2.972  1.859  1.859  1.859         1        1
+600             R2 R2_AHEAD R2_T2 U          dwflex29  rft01_000250     -1.612    -0.797  0.816  0.816  0.816         1        1
+601             R2 R2_AHEAD R2_T2 U          dwflex29  rft01_000500     -1.612    -1.738 -0.126 -0.126 -0.126         1        1
+602             R2 R2_AHEAD R2_T2 U          dwflex29  rft01_000750     -1.612    -1.317  0.295  0.295  0.295         1        1
+603             R2 R2_AHEAD R2_T2 U          dwflex29  rft01_001000     -1.612    -1.506  0.106  0.106  0.106         1        1
+604             R2 R2_BELOW R2_T0 U         p_close30  rft01_000250      0.281     0.333  0.052  0.010  0.094         6        6
+605             R2 R2_BELOW R2_T0 U         p_close30  rft01_000500      0.281     0.281  0.000 -0.063  0.073         6        6
+606             R2 R2_BELOW R2_T0 U         p_close30  rft01_000750      0.281     0.323  0.042 -0.031  0.115         6        6
+607             R2 R2_BELOW R2_T0 U         p_close30  rft01_001000      0.281     0.302  0.021 -0.021  0.073         6        6
+608             R2 R2_BELOW R2_T0 U         p_close50  rft01_000250      0.729     0.625 -0.104 -0.198 -0.021         6        6
+609             R2 R2_BELOW R2_T0 U         p_close50  rft01_000500      0.729     0.583 -0.146 -0.250 -0.062         6        6
+610             R2 R2_BELOW R2_T0 U         p_close50  rft01_000750      0.729     0.583 -0.146 -0.271 -0.052         6        6
+611             R2 R2_BELOW R2_T0 U         p_close50  rft01_001000      0.729     0.594 -0.135 -0.250 -0.042         6        6
+612             R2 R2_BELOW R2_T0 U           dlift29  rft01_000250      5.790     4.782 -1.008 -1.119 -0.888         6        6
+613             R2 R2_BELOW R2_T0 U           dlift29  rft01_000500      5.790     4.293 -1.497 -1.779 -1.247         6        6
+614             R2 R2_BELOW R2_T0 U           dlift29  rft01_000750      5.790     4.530 -1.261 -1.518 -1.017         6        6
+615             R2 R2_BELOW R2_T0 U           dlift29  rft01_001000      5.790     4.487 -1.303 -1.502 -1.110         6        6
+616             R2 R2_BELOW R2_T0 U          delbow29  rft01_000250     -4.479    -3.633  0.846  0.550  1.149         6        6
+617             R2 R2_BELOW R2_T0 U          delbow29  rft01_000500     -4.479    -3.083  1.396  1.226  1.597         6        6
+618             R2 R2_BELOW R2_T0 U          delbow29  rft01_000750     -4.479    -2.821  1.657  1.402  1.862         6        6
+619             R2 R2_BELOW R2_T0 U          delbow29  rft01_001000     -4.479    -2.416  2.062  1.794  2.308         6        6
+620             R2 R2_BELOW R2_T0 U          dwflex29  rft01_000250     -2.561    -1.684  0.878  0.724  1.048         6        6
+621             R2 R2_BELOW R2_T0 U          dwflex29  rft01_000500     -2.561    -2.728 -0.166 -0.485  0.088         6        6
+622             R2 R2_BELOW R2_T0 U          dwflex29  rft01_000750     -2.561    -2.506  0.056 -0.170  0.247         6        6
+623             R2 R2_BELOW R2_T0 U          dwflex29  rft01_001000     -2.561    -2.586 -0.024 -0.217  0.126         6        6
+624          R2 R2_BELOW R2_reach U         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000         6        6
+625          R2 R2_BELOW R2_reach U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000         6        6
+626          R2 R2_BELOW R2_reach U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000         6        6
+627          R2 R2_BELOW R2_reach U         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000         6        6
+628          R2 R2_BELOW R2_reach U         p_close50  rft01_000250      0.042     0.062  0.021  0.000  0.042         6        6
+629          R2 R2_BELOW R2_reach U         p_close50  rft01_000500      0.042     0.031 -0.010 -0.062  0.031         6        6
+630          R2 R2_BELOW R2_reach U         p_close50  rft01_000750      0.042     0.052  0.010  0.000  0.031         6        6
+631          R2 R2_BELOW R2_reach U         p_close50  rft01_001000      0.042     0.052  0.010  0.000  0.031         6        6
+632          R2 R2_BELOW R2_reach U           dlift29  rft01_000250      3.992     3.717 -0.275 -0.855  0.296         6        6
+633          R2 R2_BELOW R2_reach U           dlift29  rft01_000500      3.992     2.854 -1.139 -1.583 -0.776         6        6
+634          R2 R2_BELOW R2_reach U           dlift29  rft01_000750      3.992     3.518 -0.474 -0.976 -0.005         6        6
+635          R2 R2_BELOW R2_reach U           dlift29  rft01_001000      3.992     3.538 -0.455 -1.139  0.160         6        6
+636          R2 R2_BELOW R2_reach U          delbow29  rft01_000250     -1.955    -1.888  0.067 -0.767  0.905         6        6
+637          R2 R2_BELOW R2_reach U          delbow29  rft01_000500     -1.955    -0.639  1.316  1.046  1.586         6        6
+638          R2 R2_BELOW R2_reach U          delbow29  rft01_000750     -1.955    -0.956  0.999  0.621  1.441         6        6
+639          R2 R2_BELOW R2_reach U          delbow29  rft01_001000     -1.955    -0.743  1.212  0.658  1.776         6        6
+640          R2 R2_BELOW R2_reach U          dwflex29  rft01_000250     -0.650     0.429  1.079  0.692  1.460         6        6
+641          R2 R2_BELOW R2_reach U          dwflex29  rft01_000500     -0.650    -1.089 -0.440 -0.689 -0.148         6        6
+642          R2 R2_BELOW R2_reach U          dwflex29  rft01_000750     -0.650    -0.540  0.110 -0.182  0.395         6        6
+643          R2 R2_BELOW R2_reach U          dwflex29  rft01_001000     -0.650    -0.716 -0.066 -0.289  0.208         6        6
+644          R2 R2_BELOW R2_reach U          p_open30  rft01_000250      0.833     0.500 -0.333 -0.438 -0.250         3        3
+645          R2 R2_BELOW R2_reach U          p_open30  rft01_000500      0.833     0.812 -0.021 -0.062  0.000         3        3
+646          R2 R2_BELOW R2_reach U          p_open30  rft01_000750      0.833     0.729 -0.104 -0.312  0.000         3        3
+647          R2 R2_BELOW R2_reach U          p_open30  rft01_001000      0.833     0.771 -0.062 -0.188  0.000         3        3
+648          R2 R2_BELOW R2_preT0 U         p_close30  rft01_000250      0.021     0.062  0.042  0.000  0.104         6        6
+649          R2 R2_BELOW R2_preT0 U         p_close30  rft01_000500      0.021     0.031  0.010  0.000  0.031         6        6
+650          R2 R2_BELOW R2_preT0 U         p_close30  rft01_000750      0.021     0.042  0.021  0.000  0.042         6        6
+651          R2 R2_BELOW R2_preT0 U         p_close30  rft01_001000      0.021     0.042  0.021  0.000  0.042         6        6
+652          R2 R2_BELOW R2_preT0 U         p_close50  rft01_000250      0.219     0.240  0.021  0.000  0.042         6        6
+653          R2 R2_BELOW R2_preT0 U         p_close50  rft01_000500      0.219     0.177 -0.042 -0.083  0.000         6        6
+654          R2 R2_BELOW R2_preT0 U         p_close50  rft01_000750      0.219     0.208 -0.010 -0.031  0.000         6        6
+655          R2 R2_BELOW R2_preT0 U         p_close50  rft01_001000      0.219     0.208 -0.010 -0.031  0.000         6        6
+656          R2 R2_BELOW R2_preT0 U           dlift29  rft01_000250      4.770     4.207 -0.564 -0.996 -0.105         6        6
+657          R2 R2_BELOW R2_preT0 U           dlift29  rft01_000500      4.770     3.467 -1.303 -1.665 -0.942         6        6
+658          R2 R2_BELOW R2_preT0 U           dlift29  rft01_000750      4.770     4.043 -0.727 -1.123 -0.324         6        6
+659          R2 R2_BELOW R2_preT0 U           dlift29  rft01_001000      4.770     4.030 -0.740 -1.230 -0.209         6        6
+660          R2 R2_BELOW R2_preT0 U          delbow29  rft01_000250     -2.437    -2.016  0.421 -0.231  1.059         6        6
+661          R2 R2_BELOW R2_preT0 U          delbow29  rft01_000500     -2.437    -1.061  1.376  1.106  1.629         6        6
+662          R2 R2_BELOW R2_preT0 U          delbow29  rft01_000750     -2.437    -1.311  1.126  0.672  1.567         6        6
+663          R2 R2_BELOW R2_preT0 U          delbow29  rft01_001000     -2.437    -0.954  1.482  0.938  2.059         6        6
+664          R2 R2_BELOW R2_preT0 U          dwflex29  rft01_000250     -1.039     0.006  1.045  0.649  1.451         6        6
+665          R2 R2_BELOW R2_preT0 U          dwflex29  rft01_000500     -1.039    -1.386 -0.346 -0.575 -0.087         6        6
+666          R2 R2_BELOW R2_preT0 U          dwflex29  rft01_000750     -1.039    -0.908  0.131 -0.160  0.416         6        6
+667          R2 R2_BELOW R2_preT0 U          dwflex29  rft01_001000     -1.039    -1.033  0.006 -0.193  0.242         6        6
+668          R2 R2_BELOW R2_preT0 U          p_open30  rft01_000250      0.938     0.656 -0.281 -0.312 -0.250         2        2
+669          R2 R2_BELOW R2_preT0 U          p_open30  rft01_000500      0.938     0.906 -0.031 -0.062  0.000         2        2
+670          R2 R2_BELOW R2_preT0 U          p_open30  rft01_000750      0.938     0.781 -0.156 -0.312  0.000         2        2
+671          R2 R2_BELOW R2_preT0 U          p_open30  rft01_001000      0.938     0.844 -0.094 -0.188  0.000         2        2
+672             R2 R2_BELOW R2_T2 U         p_close30  rft01_000250      0.641     0.594 -0.047 -0.094  0.000         4        4
+673             R2 R2_BELOW R2_T2 U         p_close30  rft01_000500      0.641     0.391 -0.250 -0.516 -0.047         4        4
+674             R2 R2_BELOW R2_T2 U         p_close30  rft01_000750      0.641     0.422 -0.219 -0.422 -0.047         4        4
+675             R2 R2_BELOW R2_T2 U         p_close30  rft01_001000      0.641     0.422 -0.219 -0.422 -0.047         4        4
+676             R2 R2_BELOW R2_T2 U         p_close50  rft01_000250      0.875     0.750 -0.125 -0.281  0.000         4        4
+677             R2 R2_BELOW R2_T2 U         p_close50  rft01_000500      0.875     0.578 -0.297 -0.500 -0.094         4        4
+678             R2 R2_BELOW R2_T2 U         p_close50  rft01_000750      0.875     0.625 -0.250 -0.406 -0.094         4        4
+679             R2 R2_BELOW R2_T2 U         p_close50  rft01_001000      0.875     0.609 -0.266 -0.406 -0.094         4        4
+680             R2 R2_BELOW R2_T2 U           dlift29  rft01_000250      0.998     0.139 -0.859 -1.003 -0.720         4        4
+681             R2 R2_BELOW R2_T2 U           dlift29  rft01_000500      0.998    -0.192 -1.190 -1.712 -0.601         4        4
+682             R2 R2_BELOW R2_T2 U           dlift29  rft01_000750      0.998    -0.425 -1.423 -1.676 -1.171         4        4
+683             R2 R2_BELOW R2_T2 U           dlift29  rft01_001000      0.998    -0.369 -1.367 -1.817 -0.917         4        4
+684             R2 R2_BELOW R2_T2 U          delbow29  rft01_000250     -4.361    -3.959  0.402  0.087  0.769         4        4
+685             R2 R2_BELOW R2_T2 U          delbow29  rft01_000500     -4.361    -3.581  0.780  0.138  1.336         4        4
+686             R2 R2_BELOW R2_T2 U          delbow29  rft01_000750     -4.361    -3.389  0.972  0.601  1.179         4        4
+687             R2 R2_BELOW R2_T2 U          delbow29  rft01_001000     -4.361    -2.987  1.374  1.137  1.610         4        4
+688             R2 R2_BELOW R2_T2 U          dwflex29  rft01_000250     -0.137     1.113  1.250  1.068  1.468         4        4
+689             R2 R2_BELOW R2_T2 U          dwflex29  rft01_000500     -0.137    -0.003  0.133 -0.084  0.351         4        4
+690             R2 R2_BELOW R2_T2 U          dwflex29  rft01_000750     -0.137     0.291  0.428  0.106  0.798         4        4
+691             R2 R2_BELOW R2_T2 U          dwflex29  rft01_001000     -0.137     0.403  0.539  0.330  0.884         4        4
+692         R2 normal_grasp R2_T0 U         p_close30  rft01_000250      0.172     0.198  0.026 -0.016  0.073        12       12
+693         R2 normal_grasp R2_T0 U         p_close30  rft01_000500      0.172     0.219  0.047  0.000  0.104        12       12
+694         R2 normal_grasp R2_T0 U         p_close30  rft01_000750      0.172     0.224  0.052 -0.010  0.115        12       12
+695         R2 normal_grasp R2_T0 U         p_close30  rft01_001000      0.172     0.240  0.068  0.010  0.146        12       12
+696         R2 normal_grasp R2_T0 U         p_close50  rft01_000250      0.604     0.516 -0.089 -0.161 -0.016        12       12
+697         R2 normal_grasp R2_T0 U         p_close50  rft01_000500      0.604     0.552 -0.052 -0.094 -0.021        12       12
+698         R2 normal_grasp R2_T0 U         p_close50  rft01_000750      0.604     0.536 -0.068 -0.115 -0.021        12       12
+699         R2 normal_grasp R2_T0 U         p_close50  rft01_001000      0.604     0.552 -0.052 -0.104 -0.010        12       12
+700         R2 normal_grasp R2_T0 U           dlift29  rft01_000250      8.263     7.464 -0.799 -1.035 -0.532        12       12
+701         R2 normal_grasp R2_T0 U           dlift29  rft01_000500      8.263     6.981 -1.282 -1.609 -0.899        12       12
+702         R2 normal_grasp R2_T0 U           dlift29  rft01_000750      8.263     7.367 -0.895 -1.205 -0.537        12       12
+703         R2 normal_grasp R2_T0 U           dlift29  rft01_001000      8.263     7.353 -0.910 -1.279 -0.455        12       12
+704         R2 normal_grasp R2_T0 U          delbow29  rft01_000250     -3.782    -3.185  0.597  0.299  0.913        12       12
+705         R2 normal_grasp R2_T0 U          delbow29  rft01_000500     -3.782    -2.584  1.198  0.903  1.483        12       12
+706         R2 normal_grasp R2_T0 U          delbow29  rft01_000750     -3.782    -2.484  1.298  1.065  1.538        12       12
+707         R2 normal_grasp R2_T0 U          delbow29  rft01_001000     -3.782    -2.296  1.486  1.172  1.785        12       12
+708         R2 normal_grasp R2_T0 U          dwflex29  rft01_000250     -2.783    -1.723  1.060  0.816  1.351        12       12
+709         R2 normal_grasp R2_T0 U          dwflex29  rft01_000500     -2.783    -2.649  0.134 -0.079  0.357        12       12
+710         R2 normal_grasp R2_T0 U          dwflex29  rft01_000750     -2.783    -2.341  0.442  0.285  0.637        12       12
+711         R2 normal_grasp R2_T0 U          dwflex29  rft01_001000     -2.783    -2.400  0.383  0.240  0.558        12       12
+712      R2 normal_grasp R2_reach U         p_close30  rft01_000250      0.000     0.005  0.005  0.000  0.016        12       12
+713      R2 normal_grasp R2_reach U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12       12
+714      R2 normal_grasp R2_reach U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12       12
+715      R2 normal_grasp R2_reach U         p_close30  rft01_001000      0.000     0.005  0.005  0.000  0.016        12       12
+716      R2 normal_grasp R2_reach U         p_close50  rft01_000250      0.047     0.042 -0.005 -0.016  0.000        12       12
+717      R2 normal_grasp R2_reach U         p_close50  rft01_000500      0.047     0.052  0.005  0.000  0.016        12       12
+718      R2 normal_grasp R2_reach U         p_close50  rft01_000750      0.047     0.047  0.000  0.000  0.000        12       12
+719      R2 normal_grasp R2_reach U         p_close50  rft01_001000      0.047     0.047  0.000  0.000  0.000        12       12
+720      R2 normal_grasp R2_reach U           dlift29  rft01_000250      6.017     5.372 -0.645 -0.930 -0.347        12       12
+721      R2 normal_grasp R2_reach U           dlift29  rft01_000500      6.017     4.874 -1.143 -1.490 -0.775        12       12
+722      R2 normal_grasp R2_reach U           dlift29  rft01_000750      6.017     5.257 -0.760 -1.100 -0.425        12       12
+723      R2 normal_grasp R2_reach U           dlift29  rft01_001000      6.017     5.573 -0.444 -0.900 -0.007        12       12
+724      R2 normal_grasp R2_reach U          delbow29  rft01_000250     -1.456    -1.195  0.261 -0.351  0.787        12       12
+725      R2 normal_grasp R2_reach U          delbow29  rft01_000500     -1.456    -0.307  1.149  0.783  1.524        12       12
+726      R2 normal_grasp R2_reach U          delbow29  rft01_000750     -1.456    -0.475  0.981  0.643  1.326        12       12
+727      R2 normal_grasp R2_reach U          delbow29  rft01_001000     -1.456    -0.343  1.113  0.665  1.555        12       12
+728      R2 normal_grasp R2_reach U          dwflex29  rft01_000250     -2.051    -0.915  1.137  0.888  1.426        12       12
+729      R2 normal_grasp R2_reach U          dwflex29  rft01_000500     -2.051    -2.184 -0.133 -0.326  0.112        12       12
+730      R2 normal_grasp R2_reach U          dwflex29  rft01_000750     -2.051    -1.685  0.366  0.241  0.550        12       12
+731      R2 normal_grasp R2_reach U          dwflex29  rft01_001000     -2.051    -1.819  0.232  0.050  0.462        12       12
+732      R2 normal_grasp R2_reach U          p_open30  rft01_000250      0.865     0.615 -0.250 -0.396 -0.094         6        6
+733      R2 normal_grasp R2_reach U          p_open30  rft01_000500      0.865     0.844 -0.021 -0.104  0.052         6        6
+734      R2 normal_grasp R2_reach U          p_open30  rft01_000750      0.865     0.802 -0.062 -0.125 -0.010         6        6
+735      R2 normal_grasp R2_reach U          p_open30  rft01_001000      0.865     0.823 -0.042 -0.104  0.000         6        6
+736      R2 normal_grasp R2_preT0 U         p_close30  rft01_000250      0.000     0.005  0.005  0.000  0.016        12       12
+737      R2 normal_grasp R2_preT0 U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12       12
+738      R2 normal_grasp R2_preT0 U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12       12
+739      R2 normal_grasp R2_preT0 U         p_close30  rft01_001000      0.000     0.005  0.005  0.000  0.016        12       12
+740      R2 normal_grasp R2_preT0 U         p_close50  rft01_000250      0.057     0.047 -0.010 -0.036  0.010        12       12
+741      R2 normal_grasp R2_preT0 U         p_close50  rft01_000500      0.057     0.057  0.000 -0.016  0.016        12       12
+742      R2 normal_grasp R2_preT0 U         p_close50  rft01_000750      0.057     0.052 -0.005 -0.016  0.000        12       12
+743      R2 normal_grasp R2_preT0 U         p_close50  rft01_001000      0.057     0.052 -0.005 -0.016  0.000        12       12
+744      R2 normal_grasp R2_preT0 U           dlift29  rft01_000250      7.079     6.386 -0.693 -0.987 -0.387        12       12
+745      R2 normal_grasp R2_preT0 U           dlift29  rft01_000500      7.079     5.838 -1.241 -1.630 -0.826        12       12
+746      R2 normal_grasp R2_preT0 U           dlift29  rft01_000750      7.079     6.238 -0.841 -1.148 -0.532        12       12
+747      R2 normal_grasp R2_preT0 U           dlift29  rft01_001000      7.079     6.489 -0.590 -0.995 -0.179        12       12
+748      R2 normal_grasp R2_preT0 U          delbow29  rft01_000250     -2.267    -1.759  0.508  0.097  0.902        12       12
+749      R2 normal_grasp R2_preT0 U          delbow29  rft01_000500     -2.267    -1.086  1.181  0.800  1.564        12       12
+750      R2 normal_grasp R2_preT0 U          delbow29  rft01_000750     -2.267    -1.233  1.034  0.679  1.391        12       12
+751      R2 normal_grasp R2_preT0 U          delbow29  rft01_001000     -2.267    -1.072  1.195  0.698  1.669        12       12
+752      R2 normal_grasp R2_preT0 U          dwflex29  rft01_000250     -2.511    -1.473  1.037  0.829  1.289        12       12
+753      R2 normal_grasp R2_preT0 U          dwflex29  rft01_000500     -2.511    -2.549 -0.038 -0.249  0.199        12       12
+754      R2 normal_grasp R2_preT0 U          dwflex29  rft01_000750     -2.511    -2.101  0.409  0.259  0.591        12       12
+755      R2 normal_grasp R2_preT0 U          dwflex29  rft01_001000     -2.511    -2.204  0.307  0.113  0.524        12       12
+756      R2 normal_grasp R2_preT0 U          p_open30  rft01_000250      0.812     0.562 -0.250 -0.391 -0.078         4        4
+757      R2 normal_grasp R2_preT0 U          p_open30  rft01_000500      0.812     0.781 -0.031 -0.141  0.078         4        4
+758      R2 normal_grasp R2_preT0 U          p_open30  rft01_000750      0.812     0.719 -0.094 -0.156 -0.031         4        4
+759      R2 normal_grasp R2_preT0 U          p_open30  rft01_001000      0.812     0.750 -0.062 -0.141  0.000         4        4
+760         R2 normal_grasp R2_T2 U         p_close30  rft01_000250      0.938     0.869 -0.069 -0.188  0.006        10       10
+761         R2 normal_grasp R2_T2 U         p_close30  rft01_000500      0.938     0.844 -0.094 -0.200 -0.019        10       10
+762         R2 normal_grasp R2_T2 U         p_close30  rft01_000750      0.938     0.894 -0.044 -0.119  0.000        10       10
+763         R2 normal_grasp R2_T2 U         p_close30  rft01_001000      0.938     0.912 -0.025 -0.094  0.019        10       10
+764         R2 normal_grasp R2_T2 U         p_close50  rft01_000250      1.000     0.975 -0.025 -0.075  0.000        10       10
+765         R2 normal_grasp R2_T2 U         p_close50  rft01_000500      1.000     0.975 -0.025 -0.063  0.000        10       10
+766         R2 normal_grasp R2_T2 U         p_close50  rft01_000750      1.000     0.988 -0.012 -0.031  0.000        10       10
+767         R2 normal_grasp R2_T2 U         p_close50  rft01_001000      1.000     0.994 -0.006 -0.019  0.000        10       10
+768         R2 normal_grasp R2_T2 U           dlift29  rft01_000250      1.241    -0.273 -1.514 -2.467 -0.647        10       10
+769         R2 normal_grasp R2_T2 U           dlift29  rft01_000500      1.241     0.462 -0.779 -1.488  0.060        10       10
+770         R2 normal_grasp R2_T2 U           dlift29  rft01_000750      1.241     0.511 -0.730 -1.152 -0.294        10       10
+771         R2 normal_grasp R2_T2 U           dlift29  rft01_001000      1.241     0.853 -0.388 -0.912  0.108        10       10
+772         R2 normal_grasp R2_T2 U          delbow29  rft01_000250     -3.991    -4.138 -0.147 -0.604  0.246        10       10
+773         R2 normal_grasp R2_T2 U          delbow29  rft01_000500     -3.991    -2.793  1.198  0.615  1.943        10       10
+774         R2 normal_grasp R2_T2 U          delbow29  rft01_000750     -3.991    -3.008  0.983  0.588  1.405        10       10
+775         R2 normal_grasp R2_T2 U          delbow29  rft01_001000     -3.991    -3.011  0.979  0.527  1.443        10       10
+776         R2 normal_grasp R2_T2 U          dwflex29  rft01_000250     -0.649     0.315  0.964  0.797  1.130        10       10
+777         R2 normal_grasp R2_T2 U          dwflex29  rft01_000500     -0.649    -0.718 -0.069 -0.323  0.185        10       10
+778         R2 normal_grasp R2_T2 U          dwflex29  rft01_000750     -0.649    -0.515  0.134 -0.075  0.358        10       10
+779         R2 normal_grasp R2_T2 U          dwflex29  rft01_001000     -0.649    -0.510  0.138 -0.086  0.390        10       10
+780           R2 R2_LATERAL R2_T0 U         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+781           R2 R2_LATERAL R2_T0 U         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+782           R2 R2_LATERAL R2_T0 U         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+783           R2 R2_LATERAL R2_T0 U         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+784           R2 R2_LATERAL R2_T0 U         p_close50  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+785           R2 R2_LATERAL R2_T0 U         p_close50  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+786           R2 R2_LATERAL R2_T0 U         p_close50  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+787           R2 R2_LATERAL R2_T0 U         p_close50  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+788           R2 R2_LATERAL R2_T0 U           dlift29  rft01_000250     -0.920    -2.395 -1.475 -1.475 -1.475         1        1
+789           R2 R2_LATERAL R2_T0 U           dlift29  rft01_000500     -0.920    -3.104 -2.184 -2.184 -2.184         1        1
+790           R2 R2_LATERAL R2_T0 U           dlift29  rft01_000750     -0.920    -1.869 -0.949 -0.949 -0.949         1        1
+791           R2 R2_LATERAL R2_T0 U           dlift29  rft01_001000     -0.920    -1.912 -0.992 -0.992 -0.992         1        1
+792           R2 R2_LATERAL R2_T0 U          delbow29  rft01_000250     -2.566    -2.244  0.322  0.322  0.322         1        1
+793           R2 R2_LATERAL R2_T0 U          delbow29  rft01_000500     -2.566    -1.982  0.585  0.585  0.585         1        1
+794           R2 R2_LATERAL R2_T0 U          delbow29  rft01_000750     -2.566    -2.447  0.119  0.119  0.119         1        1
+795           R2 R2_LATERAL R2_T0 U          delbow29  rft01_001000     -2.566    -2.343  0.223  0.223  0.223         1        1
+796           R2 R2_LATERAL R2_T0 U          dwflex29  rft01_000250      1.399     2.034  0.634  0.634  0.634         1        1
+797           R2 R2_LATERAL R2_T0 U          dwflex29  rft01_000500      1.399     1.548  0.149  0.149  0.149         1        1
+798           R2 R2_LATERAL R2_T0 U          dwflex29  rft01_000750      1.399     2.124  0.725  0.725  0.725         1        1
+799           R2 R2_LATERAL R2_T0 U          dwflex29  rft01_001000      1.399     2.089  0.690  0.690  0.690         1        1
+800        R2 R2_LATERAL R2_reach U         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+801        R2 R2_LATERAL R2_reach U         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+802        R2 R2_LATERAL R2_reach U         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+803        R2 R2_LATERAL R2_reach U         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+804        R2 R2_LATERAL R2_reach U         p_close50  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+805        R2 R2_LATERAL R2_reach U         p_close50  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+806        R2 R2_LATERAL R2_reach U         p_close50  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+807        R2 R2_LATERAL R2_reach U         p_close50  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+808        R2 R2_LATERAL R2_reach U           dlift29  rft01_000250      1.767     0.309 -1.459 -1.459 -1.459         1        1
+809        R2 R2_LATERAL R2_reach U           dlift29  rft01_000500      1.767    -0.317 -2.084 -2.084 -2.084         1        1
+810        R2 R2_LATERAL R2_reach U           dlift29  rft01_000750      1.767     0.629 -1.139 -1.139 -1.139         1        1
+811        R2 R2_LATERAL R2_reach U           dlift29  rft01_001000      1.767     0.652 -1.116 -1.116 -1.116         1        1
+812        R2 R2_LATERAL R2_reach U          delbow29  rft01_000250     -3.870    -3.739  0.131  0.131  0.131         1        1
+813        R2 R2_LATERAL R2_reach U          delbow29  rft01_000500     -3.870    -3.277  0.592  0.592  0.592         1        1
+814        R2 R2_LATERAL R2_reach U          delbow29  rft01_000750     -3.870    -3.462  0.407  0.407  0.407         1        1
+815        R2 R2_LATERAL R2_reach U          delbow29  rft01_001000     -3.870    -3.398  0.472  0.472  0.472         1        1
+816        R2 R2_LATERAL R2_reach U          dwflex29  rft01_000250      2.266     3.097  0.830  0.830  0.830         1        1
+817        R2 R2_LATERAL R2_reach U          dwflex29  rft01_000500      2.266     2.576  0.310  0.310  0.310         1        1
+818        R2 R2_LATERAL R2_reach U          dwflex29  rft01_000750      2.266     3.035  0.769  0.769  0.769         1        1
+819        R2 R2_LATERAL R2_reach U          dwflex29  rft01_001000      2.266     3.112  0.845  0.845  0.845         1        1
+820        R2 R2_LATERAL R2_preT0 U         p_close30  rft01_000250      0.062     0.062  0.000  0.000  0.000         1        1
+821        R2 R2_LATERAL R2_preT0 U         p_close30  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+822        R2 R2_LATERAL R2_preT0 U         p_close30  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+823        R2 R2_LATERAL R2_preT0 U         p_close30  rft01_001000      0.062     0.062  0.000  0.000  0.000         1        1
+824        R2 R2_LATERAL R2_preT0 U         p_close50  rft01_000250      0.062     0.188  0.125  0.125  0.125         1        1
+825        R2 R2_LATERAL R2_preT0 U         p_close50  rft01_000500      0.062     0.062  0.000  0.000  0.000         1        1
+826        R2 R2_LATERAL R2_preT0 U         p_close50  rft01_000750      0.062     0.062  0.000  0.000  0.000         1        1
+827        R2 R2_LATERAL R2_preT0 U         p_close50  rft01_001000      0.062     0.125  0.062  0.062  0.062         1        1
+828        R2 R2_LATERAL R2_preT0 U           dlift29  rft01_000250     -0.113    -1.481 -1.368 -1.368 -1.368         1        1
+829        R2 R2_LATERAL R2_preT0 U           dlift29  rft01_000500     -0.113    -2.075 -1.962 -1.962 -1.962         1        1
+830        R2 R2_LATERAL R2_preT0 U           dlift29  rft01_000750     -0.113    -1.201 -1.088 -1.088 -1.088         1        1
+831        R2 R2_LATERAL R2_preT0 U           dlift29  rft01_001000     -0.113    -1.210 -1.097 -1.097 -1.097         1        1
+832        R2 R2_LATERAL R2_preT0 U          delbow29  rft01_000250     -2.510    -2.475  0.035  0.035  0.035         1        1
+833        R2 R2_LATERAL R2_preT0 U          delbow29  rft01_000500     -2.510    -2.053  0.458  0.458  0.458         1        1
+834        R2 R2_LATERAL R2_preT0 U          delbow29  rft01_000750     -2.510    -2.225  0.285  0.285  0.285         1        1
+835        R2 R2_LATERAL R2_preT0 U          delbow29  rft01_001000     -2.510    -1.997  0.513  0.513  0.513         1        1
+836        R2 R2_LATERAL R2_preT0 U          dwflex29  rft01_000250      1.306     2.052  0.746  0.746  0.746         1        1
+837        R2 R2_LATERAL R2_preT0 U          dwflex29  rft01_000500      1.306     1.524  0.218  0.218  0.218         1        1
+838        R2 R2_LATERAL R2_preT0 U          dwflex29  rft01_000750      1.306     2.070  0.764  0.764  0.764         1        1
+839        R2 R2_LATERAL R2_preT0 U          dwflex29  rft01_001000      1.306     1.991  0.685  0.685  0.685         1        1
+840     R1_init(real first chunk) U         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000        20       20
+841     R1_init(real first chunk) U         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        20       20
+842     R1_init(real first chunk) U         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        20       20
+843     R1_init(real first chunk) U         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000        20       20
+844     R1_init(real first chunk) U            dpan29  rft01_000250     -0.887    -1.767 -0.880 -1.986  0.124        20       20
+845     R1_init(real first chunk) U            dpan29  rft01_000500     -0.887    -5.368 -4.482 -5.789 -3.222        20       20
+846     R1_init(real first chunk) U            dpan29  rft01_000750     -0.887    -2.751 -1.864 -3.360 -0.559        20       20
+847     R1_init(real first chunk) U            dpan29  rft01_001000     -0.887    -4.007 -3.120 -4.308 -2.064        20       20
+848                    human H_init         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000        32       32
+849                    human H_init         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        32       32
+850                    human H_init         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        32       32
+851                    human H_init         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000        32       32
+852                    human H_init         p_close50  rft01_000250      0.000     0.000  0.000  0.000  0.000        32       32
+853                    human H_init         p_close50  rft01_000500      0.000     0.000  0.000  0.000  0.000        32       32
+854                    human H_init         p_close50  rft01_000750      0.000     0.000  0.000  0.000  0.000        32       32
+855                    human H_init         p_close50  rft01_001000      0.000     0.000  0.000  0.000  0.000        32       32
+856                    human H_init     pan_dir_agree  rft01_000250      0.781     0.766 -0.016 -0.047  0.000         8        8
+857                    human H_init     pan_dir_agree  rft01_000500      0.781     0.781  0.000 -0.039  0.031         8        8
+858                    human H_init     pan_dir_agree  rft01_000750      0.781     0.766 -0.016 -0.047  0.000         8        8
+859                    human H_init     pan_dir_agree  rft01_001000      0.781     0.766 -0.016 -0.031  0.000         8        8
+860                    human H_init          pan_gain  rft01_000250      1.165     0.859 -0.306 -0.515 -0.122         8        8
+861                    human H_init          pan_gain  rft01_000500      1.165     1.187  0.022 -0.225  0.249         8        8
+862                    human H_init          pan_gain  rft01_000750      1.165     0.932 -0.234 -0.412 -0.098         8        8
+863                    human H_init          pan_gain  rft01_001000      1.165     1.034 -0.131 -0.293  0.022         8        8
+864                    human H_init       L1_arm_0_29  rft01_000250      2.666     2.666 -0.001 -0.196  0.194        32       32
+865                    human H_init       L1_arm_0_29  rft01_000500      2.666     2.965  0.299  0.130  0.475        32       32
+866                    human H_init       L1_arm_0_29  rft01_000750      2.666     2.632 -0.034 -0.196  0.120        32       32
+867                    human H_init       L1_arm_0_29  rft01_001000      2.666     2.721  0.054 -0.120  0.246        32       32
+868                    human H_init            dpan29  rft01_000250     -8.930    -8.375  0.555 -0.977  1.980        32       32
+869                    human H_init            dpan29  rft01_000500     -8.930   -10.893 -1.963 -3.121 -0.865        32       32
+870                    human H_init            dpan29  rft01_000750     -8.930   -10.160 -1.231 -2.511  0.047        32       32
+871                    human H_init            dpan29  rft01_001000     -8.930   -10.231 -1.301 -2.190 -0.385        32       32
+872                    human H_init           dlift29  rft01_000250      2.521     4.526  2.005  0.319  4.101        32       32
+873                    human H_init           dlift29  rft01_000500      2.521     4.051  1.530  0.445  2.875        32       32
+874                    human H_init           dlift29  rft01_000750      2.521     4.703  2.182  0.734  3.991        32       32
+875                    human H_init           dlift29  rft01_001000      2.521     4.615  2.093  0.371  4.224        32       32
+876                    human H_init          p_open30  rft01_000250      0.000     0.000  0.000  0.000  0.000        32       32
+877                    human H_init          p_open30  rft01_000500      0.000     0.000  0.000  0.000  0.000        32       32
+878                    human H_init          p_open30  rft01_000750      0.000     0.000  0.000  0.000  0.000        32       32
+879                    human H_init          p_open30  rft01_001000      0.000     0.000  0.000  0.000  0.000        32       32
+880                   human H_reach         p_close30  rft01_000250      0.020     0.016 -0.004 -0.014  0.004        32       32
+881                   human H_reach         p_close30  rft01_000500      0.020     0.012 -0.008 -0.016 -0.002        32       32
+882                   human H_reach         p_close30  rft01_000750      0.020     0.016 -0.004 -0.012  0.004        32       32
+883                   human H_reach         p_close30  rft01_001000      0.020     0.020  0.000 -0.008  0.008        32       32
+884                   human H_reach         p_close50  rft01_000250      0.043     0.031 -0.012 -0.035  0.006        32       32
+885                   human H_reach         p_close50  rft01_000500      0.043     0.031 -0.012 -0.033  0.008        32       32
+886                   human H_reach         p_close50  rft01_000750      0.043     0.033 -0.010 -0.025  0.004        32       32
+887                   human H_reach         p_close50  rft01_001000      0.043     0.045  0.002 -0.008  0.012        32       32
+888                   human H_reach     pan_dir_agree  rft01_000250      0.450     0.488  0.038 -0.125  0.212         5        5
+889                   human H_reach     pan_dir_agree  rft01_000500      0.450     0.412 -0.038 -0.212  0.075         5        5
+890                   human H_reach     pan_dir_agree  rft01_000750      0.450     0.388 -0.062 -0.300  0.112         5        5
+891                   human H_reach     pan_dir_agree  rft01_001000      0.450     0.388 -0.062 -0.188  0.000         5        5
+892                   human H_reach          pan_gain  rft01_000250      0.661     0.522 -0.138 -0.438  0.115         5        5
+893                   human H_reach          pan_gain  rft01_000500      0.661     0.548 -0.112 -0.478  0.122         5        5
+894                   human H_reach          pan_gain  rft01_000750      0.661     0.430 -0.231 -0.641  0.080         5        5
+895                   human H_reach          pan_gain  rft01_001000      0.661     0.467 -0.194 -0.557  0.027         5        5
+896                   human H_reach       L1_arm_0_29  rft01_000250      1.827     1.959  0.132  0.061  0.204        32       32
+897                   human H_reach       L1_arm_0_29  rft01_000500      1.827     2.056  0.229  0.138  0.318        32       32
+898                   human H_reach       L1_arm_0_29  rft01_000750      1.827     1.985  0.158  0.086  0.226        32       32
+899                   human H_reach       L1_arm_0_29  rft01_001000      1.827     2.014  0.187  0.102  0.265        32       32
+900                   human H_reach            dpan29  rft01_000250      0.144    -0.332 -0.475 -0.656 -0.291        32       32
+901                   human H_reach            dpan29  rft01_000500      0.144    -0.173 -0.317 -0.585 -0.051        32       32
+902                   human H_reach            dpan29  rft01_000750      0.144    -0.372 -0.515 -0.756 -0.260        32       32
+903                   human H_reach            dpan29  rft01_001000      0.144    -0.307 -0.451 -0.686 -0.217        32       32
+904                   human H_reach           dlift29  rft01_000250      3.887     3.228 -0.659 -0.864 -0.463        32       32
+905                   human H_reach           dlift29  rft01_000500      3.887     2.676 -1.211 -1.454 -0.965        32       32
+906                   human H_reach           dlift29  rft01_000750      3.887     3.192 -0.695 -0.924 -0.466        32       32
+907                   human H_reach           dlift29  rft01_001000      3.887     3.393 -0.494 -0.768 -0.208        32       32
+908                   human H_reach          p_open30  rft01_000250      0.951     0.851 -0.101 -0.160 -0.049        18       18
+909                   human H_reach          p_open30  rft01_000500      0.951     0.910 -0.042 -0.073 -0.017        18       18
+910                   human H_reach          p_open30  rft01_000750      0.951     0.903 -0.049 -0.080 -0.021        18       18
+911                   human H_reach          p_open30  rft01_001000      0.951     0.931 -0.021 -0.035 -0.007        18       18
+912                human H_preclose         p_close30  rft01_000250      0.969     0.967 -0.002 -0.025  0.020        32       32
+913                human H_preclose         p_close30  rft01_000500      0.969     0.951 -0.018 -0.059  0.014        32       32
+914                human H_preclose         p_close30  rft01_000750      0.969     0.951 -0.018 -0.053  0.008        32       32
+915                human H_preclose         p_close30  rft01_001000      0.969     0.953 -0.016 -0.049  0.004        32       32
+916                human H_preclose         p_close50  rft01_000250      0.988     0.979 -0.010 -0.023  0.000        32       32
+917                human H_preclose         p_close50  rft01_000500      0.988     0.965 -0.023 -0.064  0.000        32       32
+918                human H_preclose         p_close50  rft01_000750      0.988     0.977 -0.012 -0.035  0.000        32       32
+919                human H_preclose         p_close50  rft01_001000      0.988     0.975 -0.014 -0.041  0.000        32       32
+920                human H_preclose     pan_dir_agree  rft01_000250      0.302     0.219 -0.083 -0.156 -0.021         6        6
+921                human H_preclose     pan_dir_agree  rft01_000500      0.302     0.250 -0.052 -0.146  0.021         6        6
+922                human H_preclose     pan_dir_agree  rft01_000750      0.302     0.219 -0.083 -0.156 -0.021         6        6
+923                human H_preclose     pan_dir_agree  rft01_001000      0.302     0.260 -0.042 -0.135  0.042         6        6
+924                human H_preclose          pan_gain  rft01_000250      0.349    -0.032 -0.381 -0.560 -0.194         6        6
+925                human H_preclose          pan_gain  rft01_000500      0.349     0.099 -0.250 -0.490 -0.002         6        6
+926                human H_preclose          pan_gain  rft01_000750      0.349    -0.075 -0.424 -0.652 -0.202         6        6
+927                human H_preclose          pan_gain  rft01_001000      0.349     0.044 -0.305 -0.506 -0.102         6        6
+928                human H_preclose       L1_arm_0_29  rft01_000250      1.448     1.691  0.243  0.162  0.328        32       32
+929                human H_preclose       L1_arm_0_29  rft01_000500      1.448     1.668  0.220  0.147  0.292        32       32
+930                human H_preclose       L1_arm_0_29  rft01_000750      1.448     1.680  0.232  0.154  0.311        32       32
+931                human H_preclose       L1_arm_0_29  rft01_001000      1.448     1.683  0.235  0.152  0.316        32       32
+932                human H_preclose            dpan29  rft01_000250      0.734     0.373 -0.361 -0.731  0.060        32       32
+933                human H_preclose            dpan29  rft01_000500      0.734     0.710 -0.024 -0.335  0.287        32       32
+934                human H_preclose            dpan29  rft01_000750      0.734     0.270 -0.463 -0.784 -0.131        32       32
+935                human H_preclose            dpan29  rft01_001000      0.734     0.466 -0.268 -0.541  0.003        32       32
+936                human H_preclose           dlift29  rft01_000250     -0.365    -1.735 -1.369 -1.985 -0.805        32       32
+937                human H_preclose           dlift29  rft01_000500     -0.365    -1.311 -0.945 -1.317 -0.622        32       32
+938                human H_preclose           dlift29  rft01_000750     -0.365    -1.082 -0.717 -0.991 -0.471        32       32
+939                human H_preclose           dlift29  rft01_001000     -0.365    -0.731 -0.365 -0.598 -0.124        32       32
+940     demo R1 approved(in-sample)     pan_dir_agree  rft01_000250      0.273     0.335  0.062 -0.012  0.148        11        4
+941     demo R1 approved(in-sample)     pan_dir_agree  rft01_000500      0.273     0.403  0.131  0.038  0.210        11        4
+942     demo R1 approved(in-sample)     pan_dir_agree  rft01_000750      0.273     0.489  0.216  0.062  0.347        11        4
+943     demo R1 approved(in-sample)     pan_dir_agree  rft01_001000      0.273     0.477  0.205  0.050  0.333        11        4
+944     demo R1 approved(in-sample)  pan_dir_opposite  rft01_000250      0.341     0.307 -0.034 -0.104  0.050        11        4
+945     demo R1 approved(in-sample)  pan_dir_opposite  rft01_000500      0.341     0.267 -0.074 -0.120 -0.025        11        4
+946     demo R1 approved(in-sample)  pan_dir_opposite  rft01_000750      0.341     0.210 -0.131 -0.222 -0.025        11        4
+947     demo R1 approved(in-sample)  pan_dir_opposite  rft01_001000      0.341     0.210 -0.131 -0.222 -0.025        11        4
+948     demo R1 approved(in-sample)        pan_gain49  rft01_000250     -0.049     0.113  0.162  0.018  0.368        11        4
+949     demo R1 approved(in-sample)        pan_gain49  rft01_000500     -0.049     0.136  0.185  0.083  0.324        11        4
+950     demo R1 approved(in-sample)        pan_gain49  rft01_000750     -0.049     0.230  0.279  0.122  0.492        11        4
+951     demo R1 approved(in-sample)        pan_gain49  rft01_001000     -0.049     0.266  0.315  0.139  0.567        11        4
+952     demo R1 approved(in-sample)          p_open30  rft01_000250      0.000     0.000  0.000  0.000  0.000        12        4
+953     demo R1 approved(in-sample)          p_open30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12        4
+954     demo R1 approved(in-sample)          p_open30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12        4
+955     demo R1 approved(in-sample)          p_open30  rft01_001000      0.000     0.000  0.000  0.000  0.000        12        4
+956     demo R1 approved(in-sample)         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000        12        4
+957     demo R1 approved(in-sample)         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12        4
+958     demo R1 approved(in-sample)         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12        4
+959     demo R1 approved(in-sample)         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000        12        4
+960     demo R1 approved(in-sample)       L1_arm_0_49  rft01_000250      9.297     7.461 -1.836 -3.171 -1.025        12        4
+961     demo R1 approved(in-sample)       L1_arm_0_49  rft01_000500      9.297     8.077 -1.219 -1.636 -0.652        12        4
+962     demo R1 approved(in-sample)       L1_arm_0_49  rft01_000750      9.297     6.768 -2.529 -3.501 -1.646        12        4
+963     demo R1 approved(in-sample)       L1_arm_0_49  rft01_001000      9.297     7.108 -2.188 -2.847 -1.530        12        4
+964     demo R2 approved(in-sample)     pan_dir_agree  rft01_000250      0.448     0.354 -0.094 -0.229  0.031         6        6
+965     demo R2 approved(in-sample)     pan_dir_agree  rft01_000500      0.448     0.510  0.062 -0.115  0.240         6        6
+966     demo R2 approved(in-sample)     pan_dir_agree  rft01_000750      0.448     0.500  0.052 -0.094  0.208         6        6
+967     demo R2 approved(in-sample)     pan_dir_agree  rft01_001000      0.448     0.531  0.083 -0.073  0.240         6        6
+968     demo R2 approved(in-sample)  pan_dir_opposite  rft01_000250      0.010     0.062  0.052  0.010  0.094         6        6
+969     demo R2 approved(in-sample)  pan_dir_opposite  rft01_000500      0.010     0.010  0.000  0.000  0.000         6        6
+970     demo R2 approved(in-sample)  pan_dir_opposite  rft01_000750      0.010     0.021  0.010 -0.031  0.062         6        6
+971     demo R2 approved(in-sample)  pan_dir_opposite  rft01_001000      0.010     0.010  0.000 -0.031  0.031         6        6
+972     demo R2 approved(in-sample)        pan_gain49  rft01_000250      0.437     0.302 -0.135 -0.354  0.050         6        6
+973     demo R2 approved(in-sample)        pan_gain49  rft01_000500      0.437     0.542  0.105 -0.140  0.355         6        6
+974     demo R2 approved(in-sample)        pan_gain49  rft01_000750      0.437     0.479  0.042 -0.187  0.267         6        6
+975     demo R2 approved(in-sample)        pan_gain49  rft01_001000      0.437     0.556  0.119 -0.105  0.345         6        6
+976     demo R2 approved(in-sample)          p_open30  rft01_000250      0.414     0.367 -0.047 -0.137  0.020        16        8
+977     demo R2 approved(in-sample)          p_open30  rft01_000500      0.414     0.484  0.070 -0.102  0.246        16        8
+978     demo R2 approved(in-sample)          p_open30  rft01_000750      0.414     0.445  0.031 -0.133  0.211        16        8
+979     demo R2 approved(in-sample)          p_open30  rft01_001000      0.414     0.422  0.008 -0.117  0.117        16        8
+980     demo R2 approved(in-sample)         p_close30  rft01_000250      0.211     0.104 -0.107 -0.193 -0.026        24       12
+981     demo R2 approved(in-sample)         p_close30  rft01_000500      0.211     0.057 -0.154 -0.279 -0.034        24       12
+982     demo R2 approved(in-sample)         p_close30  rft01_000750      0.211     0.073 -0.138 -0.253 -0.034        24       12
+983     demo R2 approved(in-sample)         p_close30  rft01_001000      0.211     0.078 -0.133 -0.242 -0.034        24       12
+984     demo R2 approved(in-sample)       L1_arm_0_49  rft01_000250      3.304     3.021 -0.283 -0.506 -0.037        24       12
+985     demo R2 approved(in-sample)       L1_arm_0_49  rft01_000500      3.304     2.629 -0.675 -1.104 -0.243        24       12
+986     demo R2 approved(in-sample)       L1_arm_0_49  rft01_000750      3.304     2.594 -0.710 -1.118 -0.308        24       12
+987     demo R2 approved(in-sample)       L1_arm_0_49  rft01_001000      3.304     2.615 -0.689 -1.072 -0.302        24       12
+988   demo R1 excluded(not trained)     pan_dir_agree  rft01_000250      0.542     0.547  0.005 -0.078  0.073        12        4
+989   demo R1 excluded(not trained)     pan_dir_agree  rft01_000500      0.542     0.661  0.120  0.021  0.302        12        4
+990   demo R1 excluded(not trained)     pan_dir_agree  rft01_000750      0.542     0.682  0.141  0.036  0.312        12        4
+991   demo R1 excluded(not trained)     pan_dir_agree  rft01_001000      0.542     0.682  0.141  0.036  0.312        12        4
+992   demo R1 excluded(not trained)  pan_dir_opposite  rft01_000250      0.255     0.208 -0.047 -0.198  0.047        12        4
+993   demo R1 excluded(not trained)  pan_dir_opposite  rft01_000500      0.255     0.193 -0.062 -0.172  0.010        12        4
+994   demo R1 excluded(not trained)  pan_dir_opposite  rft01_000750      0.255     0.156 -0.099 -0.266  0.000        12        4
+995   demo R1 excluded(not trained)  pan_dir_opposite  rft01_001000      0.255     0.167 -0.089 -0.234  0.000        12        4
+996   demo R1 excluded(not trained)        pan_gain49  rft01_000250     -0.000     0.082  0.082  0.013  0.152        12        4
+997   demo R1 excluded(not trained)        pan_gain49  rft01_000500     -0.000     0.090  0.090  0.037  0.147        12        4
+998   demo R1 excluded(not trained)        pan_gain49  rft01_000750     -0.000     0.152  0.153  0.082  0.223        12        4
+999   demo R1 excluded(not trained)        pan_gain49  rft01_001000     -0.000     0.147  0.148  0.079  0.219        12        4
+1000  demo R1 excluded(not trained)          p_open30  rft01_000250      0.000     0.000  0.000  0.000  0.000        12        4
+1001  demo R1 excluded(not trained)          p_open30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12        4
+1002  demo R1 excluded(not trained)          p_open30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12        4
+1003  demo R1 excluded(not trained)          p_open30  rft01_001000      0.000     0.000  0.000  0.000  0.000        12        4
+1004  demo R1 excluded(not trained)         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000        12        4
+1005  demo R1 excluded(not trained)         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000        12        4
+1006  demo R1 excluded(not trained)         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000        12        4
+1007  demo R1 excluded(not trained)         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000        12        4
+1008  demo R1 excluded(not trained)       L1_arm_0_49  rft01_000250      9.536     7.269 -2.267 -4.779 -0.585        12        4
+1009  demo R1 excluded(not trained)       L1_arm_0_49  rft01_000500      9.536     8.506 -1.030 -1.305 -0.671        12        4
+1010  demo R1 excluded(not trained)       L1_arm_0_49  rft01_000750      9.536     6.012 -3.524 -6.260 -1.387        12        4
+1011  demo R1 excluded(not trained)       L1_arm_0_49  rft01_001000      9.536     6.655 -2.881 -4.601 -1.301        12        4
+1012  demo R2 excluded(not trained)          p_open30  rft01_000250      1.000     0.938 -0.062 -0.062 -0.062         2        1
+1013  demo R2 excluded(not trained)          p_open30  rft01_000500      1.000     0.938 -0.062 -0.062 -0.062         2        1
+1014  demo R2 excluded(not trained)          p_open30  rft01_000750      1.000     0.938 -0.062 -0.062 -0.062         2        1
+1015  demo R2 excluded(not trained)          p_open30  rft01_001000      1.000     0.938 -0.062 -0.062 -0.062         2        1
+1016  demo R2 excluded(not trained)         p_close30  rft01_000250      0.000     0.000  0.000  0.000  0.000         2        1
+1017  demo R2 excluded(not trained)         p_close30  rft01_000500      0.000     0.000  0.000  0.000  0.000         2        1
+1018  demo R2 excluded(not trained)         p_close30  rft01_000750      0.000     0.000  0.000  0.000  0.000         2        1
+1019  demo R2 excluded(not trained)         p_close30  rft01_001000      0.000     0.000  0.000  0.000  0.000         2        1
+1020  demo R2 excluded(not trained)       L1_arm_0_49  rft01_000250      3.472     3.605  0.133  0.133  0.133         2        1
+1021  demo R2 excluded(not trained)       L1_arm_0_49  rft01_000500      3.472     3.739  0.267  0.267  0.267         2        1
+1022  demo R2 excluded(not trained)       L1_arm_0_49  rft01_000750      3.472     3.404 -0.067 -0.067 -0.067         2        1
+1023  demo R2 excluded(not trained)       L1_arm_0_49  rft01_001000      3.472     3.518  0.046  0.046  0.046         2        1
