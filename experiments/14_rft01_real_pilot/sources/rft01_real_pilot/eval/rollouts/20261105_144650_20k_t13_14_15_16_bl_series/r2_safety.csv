@@ -1,0 +1,10 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1793857621.1860,1223136.35616,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_144643_bl.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1793857821.6209,1223336.79111,0,0,episode_start,over_target,pe=37.54 start_pan=-7.648351648351649 ok x=-7.6 y=-6.9,,-7.648351648351649,,,
+1793857821.6627,1223336.83288,0,0,plan_check,U2_L30,"놓인 곳 (-7.6, -6.9) cm · Unknown (가장 가까운 K3 3.5 cm) · 각도 +21° (= L30) · 계획 U2_L30 과 0.9 cm",,-7.648351648351649,,,
+1793857921.3413,1223436.51152,1,0,episode_start,over_target,pe=29.06 start_pan=-7.384615384615385 ok x=-14.9 y=2.2,,-7.384615384615385,,,
+1793857921.3840,1223436.55419,1,0,plan_check,U7_45,"놓인 곳 (-14.9, 2.2) cm · Unknown (가장 가까운 K6 6.1 cm) · 각도 -44° (= 45) · 계획 U7_45 과 0.6 cm",,-7.384615384615385,,,
+1793857957.6316,1223472.80175,2,0,episode_start,over_target,pe=-54.95 start_pan=-7.384615384615385 ok x=-19.6 y=26.4,,-7.384615384615385,,,
+1793857957.6557,1223472.82589,2,0,plan_check,U8_0,"놓인 곳 (-19.6, 26.4) cm · Known (K4 2.6 cm) · 각도 +1° (= 0) · 계획 U8_0 과 0.9 cm ⚠ 계획은 unknown 인데 사진 판정은 Known (K4 2.6 cm) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)",,-7.384615384615385,,,계획은 unknown 인데 사진 판정은 Known (K4 2.6 cm)
+1793858007.2202,1223522.39037,3,0,episode_start,over_target,pe=-10.79 start_pan=-7.208791208791209 ok x=-6.3 y=15.5,,-7.208791208791209,,,
+1793858007.2422,1223522.41240,3,0,plan_check,U1_R30,"놓인 곳 (-6.3, 15.5) cm · Unknown (가장 가까운 K2 4.5 cm) · 각도 -37° (= R30) · 계획 U1_R30 과 0.2 cm",,-7.208791208791209,,,

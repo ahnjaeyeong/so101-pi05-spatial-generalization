@@ -1,0 +1,81 @@
+{
+ "1": {
+  "labels": [
+   "Empty grasp"
+  ],
+  "evidence": {
+   "T4": "empty (바닥 0.4838)",
+   "wrist_T2": "edge_below u=0.185 v=0.815 area=0.090",
+   "below_note": "큐브가 손가락 사이 아래쪽 가장자리 — 원인 (밀림 · 깊이 · 높이) 은 영상만으로 판단 불가",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "2": {
+  "labels": [
+   "Undetermined",
+   "Insufficient depth",
+   "Early close"
+  ],
+  "evidence": {
+   "T4": "undetermined (바닥 9.8825)",
+   "wrist_T2": "ahead u=0.280 v=0.473 area=0.087",
+   "arm_moving_at_T2": true,
+   "plan_more_approach_after_T2": true,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "추가 접근"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "3": {
+  "labels": [
+   "Successful grasp",
+   "Early close"
+  ],
+  "evidence": {
+   "T4": "grasp (바닥 12.0249)",
+   "wrist_T2": "in_zone u=0.368 v=0.762 area=0.110",
+   "arm_moving_at_T2": true,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "추가 접근"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "4": {
+  "labels": [
+   "Undetermined"
+  ],
+  "evidence": {
+   "T4": "undetermined (바닥 5.1831)",
+   "wrist_T2": "in_zone u=0.374 v=0.614 area=0.138",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "5": {
+  "labels": [
+   "Undetermined"
+  ],
+  "evidence": {
+   "T4": "undetermined (바닥 15.7567)",
+   "wrist_T2": "edge_below u=0.350 v=0.832 area=0.072",
+   "below_note": "큐브가 손가락 사이 아래쪽 가장자리 — 원인 (밀림 · 깊이 · 높이) 은 영상만으로 판단 불가",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ }
+}

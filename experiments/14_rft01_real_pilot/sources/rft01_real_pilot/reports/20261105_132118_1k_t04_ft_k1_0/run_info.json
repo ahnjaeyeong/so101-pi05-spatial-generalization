@@ -1,0 +1,57 @@
+{
+ "run_dir": "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132118_1k_t04_ft_k1_0",
+ "episodes": [
+  1
+ ],
+ "amap": {
+  "1": [
+   0,
+   "saved"
+  ]
+ },
+ "warn": [],
+ "zone": {
+  "u": [
+   0.255,
+   0.432
+  ],
+  "v": [
+   0.633,
+   0.78
+  ],
+  "area_min": 0.08,
+  "src": "default (r12_wrist_zone.json 못 읽음)"
+ },
+ "has_replay": false,
+ "has_safety": true,
+ "manifest_argv": [
+  "lerobot-rollout",
+  "--strategy.type=episodic",
+  "--policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model",
+  "--policy.num_inference_steps=5",
+  "--inference.type=rtc",
+  "--inference.rtc.execution_horizon=20",
+  "--robot.type=so101_follower",
+  "--robot.port=/dev/so101_follower",
+  "--robot.id=my_arm",
+  "--robot.max_relative_target=8",
+  "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\"} }",
+  "--dataset.repo_id=oxr/rollout_rft01_real_pilot_1k_t04_ft_k1_0",
+  "--dataset.root=/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132118_1k_t04_ft_k1_0/dataset",
+  "--dataset.no_stamp=true",
+  "--dataset.single_task=pick up the red cube and put it in the brown box",
+  "--dataset.num_episodes=1",
+  "--dataset.episode_time_s=60",
+  "--dataset.reset_time_s=3600",
+  "--dataset.push_to_hub=false",
+  "--fps=30",
+  "--play_sounds=false",
+  "--display_data=false",
+  "--inference.rtc.prefix_attention_schedule=EXP",
+  "--inference.queue_threshold=30",
+  "--arm_filter=false",
+  "--rollout_guard=warn",
+  "--return_to_initial_position=false",
+  "--strategy.reset_to_initial_position=false"
+ ]
+}

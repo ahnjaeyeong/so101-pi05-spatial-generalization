@@ -1,0 +1,102 @@
+== test_r2_offline.py
+PASS T1_load_runs episodes={'B': 4, 'A': 4, 'P11': 11, 'P1': 1} discarded(P11)=6
+PASS T2_filter_off_out_eq_rtc max|out−rtc| B=0.0
+PASS T2_filter_on_out_ne_rtc A·pilot per-ep max|out−rtc| min=3.27
+PASS T2_sent_vs_goalin_only_clamp sent≠goalin without |goalin−present|>8: 0 ticks
+PASS T2_first_chunk_raw_eq_logged first chunks 20 max diff 0.0000; later chunks median diff 6.04
+PASS T3_T2_vs_p16_tc (tag, p16 tc, T2, diff)=[('A1', 272, 275, 3), ('A1', 380, 383, 3), ('A2', 332, 343, 11), ('A3', 357, 356, -1), ('A3', 467, 466, -1), ('B0', 295, 293, -2), ('B2', 315, 314, -1), ('B3', 436, 435, -1)];
+PASS T3_T4_vs_p14_bottom 20/20 match, mismatches=[]
+PASS T3_bottom_value empty: both ≤ 5 (n 10, |diff| max 1.52); grasp: both ≥ 8 (n 8, mine min 11.5, p14 min 11.6)
+PASS T3v_wrist_video_motion_at_T3 18/18 (run, ep, peak rel tick, peak/base)=[('B', 1, 11, 8.7), ('B', 3, 7, 7.2), ('B', 4, 8, 6.4), ('A', 2, 20, 4.3), ('A', 3, 8, 5.0), ('A', 4, 20, 19.4), ('P11', 2, 20, 18.5), ('P11', 4
+PASS T4_event_order 45/45 events; T3−T2 range -2…79
+PASS T5_obs_png_vs_dataset_frame_sync 41/41 within ±1, offsets=[-1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+PASS T6_missing_data_no_crash episodes 4, events 6, first T4 ['grasp', None, 'grasp', 'grasp']
+PASS T7_sources_unchanged files hashed 2518
+PASS T7_refuse_output_inside_source 출력 경로 /home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170818_32_20000_20
+PASS T7_sources_unchanged_after_refusal 
+PASS T8_label_save_reload status 200,200 reload=['Successful grasp', 'Early close']
+PASS T8_invalid_label_rejected status 400
+PASS T8_history_append history lines 2
+PASS T8_auto_separate_and_untouched auto_labels.json 은 분석이, labels/ 는 뷰어만 씀; 분석 재실행 뒤 labels/ep1.json 해시 같음
+ALL_PASS
+== test_safety_rules_offline.py
+PASS R1_A0_stop_before_-105 stop 7.0s (over_target, pan -65.9) vs −105 at 15.2s
+PASS R1_B1_stop_before_-105 stop 6.0s (over_target, pan -65.5) vs −105 at 14.5s
+PASS R2_no_stop_before_first_close_in_other_18 0/18 []
+INFO stops after first close (retry / transport): 2/18 [{'tag': 'P10', 'stop_s': 37.43333333333333, 'rules': 'over_target', 'detail': 'present -96.2 past pe -66.1 by 30.1'}, {'tag': 'P117', 'stop_s': 22.166666666666668, 
+ALL_PASS
+== test_fake_eval_ui_e2e.py
+INFO 2026-11-05 10:59:25 ut_logged.py:48 debug log: /home/user/so101_runs/main_k8/r2_grasp_diagnostic/tests/_out/fake_e2e_20261105_105917/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/ma
+INFO 2026-11-05 10:59:25 ut_logged.py:50 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'sta
+INFO 2026-11-05 10:59:25 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --policy.num_inf
+INFO 2026-11-05 10:59:25 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'sta
+INFO 2026-11-05 10:59:25 _rollout.py:245 Building rollout context...
+INFO 2026-11-05 10:59:25 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+INFO 2026-11-05 11:02:02 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+INFO 2026-11-05 11:02:08 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-11-05 11:02:08 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-11-05 11:02:08 /context.py:395 Robot connected: so_follower
+INFO 2026-11-05 11:02:08 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-05 11:02:08 /context.py:500 Setting up dataset (repo_id=oxr/rollout_r2_fake_e2e)...
+INFO 2026-11-05 11:02:08 /context.py:547 Dataset ready: oxr/rollout_r2_fake_e2e (0 existing episodes)
+INFO 2026-11-05 11:02:10 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-05 11:02:10 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-05 11:02:10 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-05 11:02:10 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-05 11:02:10 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-11-05 11:02:10 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-05 11:02:10 gies/core.py:96 Starting inference engine...
+INFO 2026-11-05 11:02:10 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 11:02:10 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-05 11:02:10 ies/core.py:100 Inference engine started
+INFO 2026-11-05 11:02:10 episodic.py:105 Episodic strategy ready
+INFO 2026-11-05 11:02:10 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-05 11:02:10 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 11:02:10 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-05 11:02:10 ls/utils.py:150 Recording episode 0
+INFO 2026-11-05 11:02:10 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=/home/user/so101_runs/main_k8/r2_grasp_diagnostic/tests/_out/fake_e2e_20261105_105917/filter_log.csv vmax/tick=[2.46, 4.1
+INFO 2026-11-05 11:02:11 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=22
+INFO 2026-11-05 11:02:12 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 11:02:13 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 11:02:13 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 11:02:14 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-05 11:02:15 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-05 11:02:15 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-05 11:02:15 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 11:02:15 ls/utils.py:150 Reset the environment
+INFO 2026-11-05 11:02:21 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 11:02:21 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-05 11:02:21 ls/utils.py:150 Recording episode 1
+INFO 2026-11-05 11:02:21 le_timer.py:559 Cadence (episode 1): 29.84 Hz vs 30 Hz target · 141 ticks, 4.7 s measured · 0/140 ticks over the 33.3 ms budget (work mean 1.3 ms, worst 5.6 ms) · starved ticks: 23
+INFO 2026-11-05 11:02:21 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-05 11:02:22 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 11:02:23 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-05 11:02:23 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 11:02:23 ence/rtc.py:588 Discarding action chunk computed before an engine reset
+INFO 2026-11-05 11:02:24 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-11-05 11:02:24 le_timer.py:559 Cadence (episode 2): 29.75 Hz vs 30 Hz target · 58 ticks, 1.9 s measured · 0/57 ticks over the 33.3 ms budget (work mean 1.2 ms, worst 3.2 ms) · starved ticks: 10
+INFO 2026-11-05 11:02:24 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 199 ticks, 197 judged
+INFO 2026-11-05 11:02:24 ls/utils.py:150 Stop recording
+INFO 2026-11-05 11:02:24 episodic.py:357 Finalizing dataset...
+INFO 2026-11-05 11:02:24 ies/core.py:209 Stopping inference engine...
+INFO 2026-11-05 11:02:24 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-05 11:02:24 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-11-05 11:02:24 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-11-05 11:02:27 ies/core.py:220 Disconnecting robot...
+INFO 2026-11-05 11:02:27 ls/utils.py:150 Exiting
+INFO 2026-11-05 11:02:27 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-11-05 11:02:27 _rollout.py:272 Rollout finished
+PASS T11_eval_ui_path exception=None READY=True START(2 photos)=2 SAVED=2 marks=['[eval_ui] READY 0', '[eval_ui] START 0 ep000_front.png ep000_wrist.png', '[eval_ui] HOMING 20 1.0', '[eval_ui] HOMED 1.5', '[eval_ui] SAVI
+PASS T12_plan_messages before-start=['R2_PLAN 이번 판에 놓을 자리: 1번 K1 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-8.5, 26.5) cm', 'R2_PLAN 이번 판에 �
+PASS T13_live_tap_and_phases live=/dev/shm/r2_live_fake_e2e_20261105_105917 frames seq=87 tap frames=88 phase history=['LOADING', 'READY', 'REC', 'RESET', 'STARTING', 'REC', 'RESET'] (polled ['LOADING', 'REC', 'RESET', '
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS T9a_stop_each_episode stops=[(0, 118, ['pan_present_limit']), (1, 48, ['pan_present_limit'])]
+PASS T9b_queue_cleared qsize before→after=[(32, 0), (22, 0)]
+PASS T9c_no_policy_cmd_after_stop writes_in_policy_after_stop=[1, 1] non_hold=[]
+PASS T9d_no_merge_after_stop chunks=8 merged_after_stop=[]
+PASS T9e_trigger_cmd_not_sent trigger cmd pans=[-17.31, -21.52]
+PASS T9f_next_episode_restarts ep1 policy writes before stop=48 stop tick=48
+ALL_PASS /home/user/so101_runs/main_k8/r2_grasp_diagnostic/tests/_out/fake_e2e_20261105_105917
+logs: ../logs/tests_20261105_105850
+TESTS_ALL_PASS

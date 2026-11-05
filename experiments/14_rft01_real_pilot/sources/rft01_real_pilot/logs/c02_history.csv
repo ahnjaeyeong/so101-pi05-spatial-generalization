@@ -1,0 +1,12 @@
+run,ds_ep,K,angle,dist_K_cm,cube_yaw,arm_filter,first_close_T4,user_PF,pan_min,pan_max,run_dir
+20261029_160831_32_20000_20k_pan_diag,0,K1,L30,0.17,24.00867768609713,true,empty,F,-43.0,5.6,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_160831_32_20000_20k_pan_diag
+20261029_160831_32_20000_20k_pan_diag,3,K3,0,0.58,-2.9398048557388776,true,empty,F,4.3,37.9,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_160831_32_20000_20k_pan_diag
+20261029_170219_32_20000_20k_filt_on,0,K1,L30,0.41,31.16911338015393,true,no_close,F,-108.9,5.5,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170219_32_20000_20k_filt_on
+20261029_170219_32_20000_20k_filt_on,1,K1,L30,0.4,31.18663330636764,true,empty,F,-39.4,4.8,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170219_32_20000_20k_filt_on
+20261029_170219_32_20000_20k_filt_on,2,K1,L30,0.15,30.701870347010495,true,grasp,P,-26.2,5.1,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170219_32_20000_20k_filt_on
+20261029_170818_32_20000_20k_filt_off,0,K1,L30,0.05,22.57717074196259,false,grasp,P,-26.7,4.8,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170818_32_20000_20k_filt_off
+20261029_170818_32_20000_20k_filt_off,1,K1,0,0.07,2.055822591548157,false,no_close,F,-109.0,4.3,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170818_32_20000_20k_filt_off
+20261029_170818_32_20000_20k_filt_off,2,K1,0,0.08,3.064437345990285,false,grasp,P,-33.2,4.3,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170818_32_20000_20k_filt_off
+20261029_170818_32_20000_20k_filt_off,3,K1,0,0.61,-14.629220984713356,false,grasp,P,-29.0,4.3,/home/user/so101_runs/main_k8/d2/eval/rollouts/20261029_170818_32_20000_20k_filt_off
+20261103_103428_20k_r2_diag,0,K1,0,0.33,0.2598094684620236,false,undetermined,F,-48.1,2.4,/home/user/so101_runs/main_k8/r2_grasp_diagnostic/eval/rollouts/20261103_103428_20k_r2_diag
+20261103_103428_20k_r2_diag,2,K3,R30,0.27,-15.987294077388896,false,empty,F,1.6,37.8,/home/user/so101_runs/main_k8/r2_grasp_diagnostic/eval/rollouts/20261103_103428_20k_r2_diag

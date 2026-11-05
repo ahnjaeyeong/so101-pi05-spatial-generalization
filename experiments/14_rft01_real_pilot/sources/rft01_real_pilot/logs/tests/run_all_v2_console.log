@@ -1,0 +1,87 @@
+== normal_timeout
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS N1_ended_by ended_by=episode_end_or_user_next (want episode_end_or_user_next) trigger={'t': None, 'kind': None, 'loop_start': 1206779.460762071}
+PASS N2_ran_full_episode_time loop start → last policy write 5.99 s (episode 6.0 s) policy writes=157 r2 stops=0
+PASS N3_data_saved SAVED=1 exception=None
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=episode_end_or_user_next max_diff=19.61 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end episode_end_or_user_next',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 19.61, 'diff': {'shoulder_pan': -19.61, 'shoulder_lift': -2.36, 'elbow_flex': -5.47, 'wrist_flex': 7.67, 'wrist_roll': 2.3}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/normal_timeout_20261105_101131
+== user_next
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS N1_ended_by ended_by=episode_end_or_user_next (want episode_end_or_user_next) trigger={'t': 1206968.49437, 'kind': 'exit_early', 'loop_start': 1206963.493668833}
+PASS N3_data_saved SAVED=1 exception=None
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=episode_end_or_user_next max_diff=45.27 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end episode_end_or_user_next',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 45.27, 'diff': {'shoulder_pan': -45.27, 'shoulder_lift': -1.41, 'elbow_flex': -3.42, 'wrist_flex': 1.81, 'wrist_roll': 1.58}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/user_next_20261105_101436
+== r2stop
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS S1_r2_stop stops=[(0, 99, ['pan_present_limit'])]
+PASS S2_queue_cleared [(31, 0)]
+PASS S3_no_policy_cmd_after_stop non_hold=[]
+PASS S4_no_false_fault fault=None rtc_errors=0
+PASS S5_eval_ui_path exception=None SAVED=1 marks=['[eval_ui] READY 0', '[eval_ui] START 0 ep000_front.png ep000_wrist.png', '[eval_ui] SAVING 0 99', '[eval_ui] SAVED 0 99']
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=r2_safety_stop max_diff=19.77 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end r2_safety_stop',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 19.77, 'diff': {'shoulder_pan': -19.77, 'shoulder_lift': 5.36, 'elbow_flex': -10.07, 'wrist_flex': 3.46, 'wrist_roll': 0.19}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/r2stop_20261105_101738
+== fault
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS F1_latched_and_handled fault={'kind': 'inference_error', 'episode': 0, 'tick': 120, 'since_fault_s': 0.028130944119766355, 'qsize_before': 30, 'qsize_after': 0} calls=7 fail_after=6
+PASS F2_no_policy_cmd_after_fault policy-loop writes after fault=1 non_hold=[] policy writes before fault=120
+PASS F3_queue_cleared qsize 30→0
+PASS F4_episode_ends_quickly last policy-loop write − handled = -0.0 s · dataset frames=120 (episode_time 20.0 s = 600)
+PASS F5_retries_stopped injected failing calls=1 (공식: 10 번 뒤 Fatal) fault_latch rtc_error lines=1 captured logs=0 fatal=0
+PASS F6_eval_ui_path_and_logs exception=None SAVED=1 fault_latch.csv rows=4 r2 FAULT rows=1 marks=['[eval_ui] READY 0', '[eval_ui] START 0 ep000_front.png ep000_wrist.png', '[eval_ui] SAVING 0 120', '[eval_ui] SAVED 0 120']
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=fault_latch max_diff=17.7 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end fault_latch',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 17.7, 'diff': {'shoulder_pan': -17.7, 'shoulder_lift': -2.34, 'elbow_flex': -2.55, 'wrist_flex': 0.61, 'wrist_roll': -0.65}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/fault_20261105_102040
+== ctrl_c
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+FAIL N1_ended_by ended_by=episode_end_or_user_next (want exception:KeyboardInterrupt) trigger={'t': 1207514.864647218, 'kind': 'SIGINT', 'loop_start': 1207509.863949873}
+PASS N3_data_saved SAVED=1 exception=None
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=episode_end_or_user_next max_diff=26.99 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end episode_end_or_user_next',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 26.99, 'diff': {'shoulder_pan': -26.99, 'shoulder_lift': -2.23, 'elbow_flex': -3.71, 'wrist_flex': 6.28, 'wrist_roll': 0.32}}
+SOME_FAIL /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/ctrl_c_20261105_102342
+== rerecord
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS N1_ended_by ended_by=user_rerecord (want user_rerecord) trigger={'t': 1207696.970348835, 'kind': 'rerecord', 'loop_start': 1207691.969899272}
+PASS N3_rerecord_discarded_and_stopped SAVED=0 marks=['[eval_ui] READY 0', '[eval_ui] START 0 ep000_front.png ep000_wrist.png', '[eval_ui] DISCARD 0'] rerecord_to_stop=1
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=user_rerecord max_diff=32.71 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end user_rerecord',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 32.71, 'diff': {'shoulder_pan': -32.71, 'shoulder_lift': -2.2, 'elbow_flex': -3.16, 'wrist_flex': 2.37, 'wrist_roll': 0.59}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/rerecord_20261105_102645
+== fault_off
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+INFO O1_official_after_first_error {'policy_cmds_after_first_error': 30, 'span_s': 0.997, 'cmds_differing_from_first_post_error_cmd': 26, 'rtc_error_logs_captured': 0, 'fatal_captured': 0, 'injected_failing_calls': 10, 'fault_latch_rtc_error_lines': 0, 'exception': None, 'saved': 1, 'duration_s': 179.0}
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=engine_failed_shutdown max_diff=35.46 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end engine_failed_shutdown',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 35.46, 'diff': {'shoulder_pan': -35.46, 'shoulder_lift': 0.31, 'elbow_flex': -5.55, 'wrist_flex': 5.46, 'wrist_roll': 0.86}}
+ALL_PASS /home/user/so101_runs/main_k8/rft01_real_pilot/tests/_out/fault_off_20261105_102943
+./run_all.sh: line 11: 00: command not found
+./run_all.sh: line 12: syntax error near unexpected token `done'
+./run_all.sh: line 12: `done'

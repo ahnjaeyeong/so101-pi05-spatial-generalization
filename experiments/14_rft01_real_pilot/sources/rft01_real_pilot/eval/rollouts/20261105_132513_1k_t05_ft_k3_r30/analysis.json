@@ -1,0 +1,177 @@
+{
+ "source": "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30/dataset",
+ "joints": [
+  "shoulder_pan",
+  "shoulder_lift",
+  "elbow_flex",
+  "wrist_flex",
+  "wrist_roll",
+  "gripper"
+ ],
+ "episodes": {
+  "0": {
+   "frames": 642,
+   "action_hf_rms": [
+    0.47,
+    0.48,
+    0.48,
+    0.33,
+    0.23,
+    0.68
+   ],
+   "state_hf_rms": [
+    0.29,
+    0.25,
+    0.26,
+    0.21,
+    0.12,
+    0.38
+   ],
+   "action_reversals_per_s": [
+    9.21,
+    6.17,
+    6.64,
+    3.27,
+    4.63,
+    1.45
+   ],
+   "state_reversals_per_s": [
+    0.47,
+    0.14,
+    0.23,
+    0.61,
+    0.47,
+    0.33
+   ],
+   "action_d2_rms": [
+    0.9,
+    0.85,
+    0.83,
+    0.47,
+    0.51,
+    0.39
+   ],
+   "track_mean": [
+    1.02,
+    3.5,
+    3.0,
+    0.93,
+    0.51,
+    1.51
+   ],
+   "track_p95": [
+    4.24,
+    20.12,
+    9.94,
+    2.78,
+    1.46,
+    5.44
+   ],
+   "track_over8_pct": [
+    0.0,
+    14.64,
+    6.54,
+    0.0,
+    0.0,
+    3.27
+   ],
+   "action_step_max": [
+    4.64,
+    6.24,
+    4.46,
+    2.08,
+    1.32,
+    5.32
+   ],
+   "period": {
+    "lag_frames": 7,
+    "autocorr": 0.158
+   }
+  }
+ },
+ "mean_over_episodes": {
+  "action_hf_rms": [
+   0.47,
+   0.48,
+   0.48,
+   0.33,
+   0.23,
+   0.68
+  ],
+  "state_hf_rms": [
+   0.29,
+   0.25,
+   0.26,
+   0.21,
+   0.12,
+   0.38
+  ],
+  "action_reversals_per_s": [
+   9.21,
+   6.17,
+   6.64,
+   3.27,
+   4.63,
+   1.45
+  ],
+  "state_reversals_per_s": [
+   0.47,
+   0.14,
+   0.23,
+   0.61,
+   0.47,
+   0.33
+  ],
+  "action_d2_rms": [
+   0.9,
+   0.85,
+   0.83,
+   0.47,
+   0.51,
+   0.39
+  ],
+  "track_mean": [
+   1.02,
+   3.5,
+   3.0,
+   0.93,
+   0.51,
+   1.51
+  ],
+  "track_p95": [
+   4.24,
+   20.12,
+   9.94,
+   2.78,
+   1.46,
+   5.44
+  ],
+  "track_over8_pct": [
+   0.0,
+   14.64,
+   6.54,
+   0.0,
+   0.0,
+   3.27
+  ],
+  "action_step_max": [
+   4.64,
+   6.24,
+   4.46,
+   2.08,
+   1.32,
+   5.32
+  ]
+ },
+ "debug_log": {
+  "clamp_warnings": 106,
+  "starved_ticks_per_run": [
+   26
+  ],
+  "rtc_inferences": 33,
+  "latency_ms_mean": 361.0,
+  "latency_ms_max": 410.0,
+  "delay_ticks_max": 13,
+  "queue_after_merge_min": 38
+ }
+}

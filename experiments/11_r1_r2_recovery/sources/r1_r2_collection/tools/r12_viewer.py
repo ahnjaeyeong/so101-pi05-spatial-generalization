@@ -2,6 +2,8 @@
 """R1/R2 수집 화면 (Tk 창) — 녹화 프로세스가 /dev/shm 에 쓰는 프레임·상태를 읽어 보여 주기만 한다.
 
 장치(로봇·카메라)를 열지 않는다. 녹화 키(→ ← Esc 1 2 3 0 m …)는 live/keys.in 으로 수집 UI 에 넘긴다 (터미널과 같은 검사). 창 전용 키: F2 격자 · F3 검출 표시.
+화면 모드 (2026-11-03): 시나리오에 visual_guide 가 있으면 기본 = 수집자 모드 (네모 그림 가이드, r12_viewer_collector.py),
+  F4 = 디버그 모드 (이전 화면: 관절 · d2 참고 · 궤적) ↔ 수집자 모드. 녹화 상태 줄 · 안전 경고 띠는 두 모드 모두 항상 보임.
   ~/so101-env/bin/python r12_viewer.py --live /dev/shm/r12_live_<tag> [--scale 0.9]
 공유 파일: frames.u8 (front·wrist), status.json (녹화 프로세스), ui.json (터미널 화면) → 여기서 vision.json 을 쓴다.
 스냅샷: live 폴더에 snap_request.json {"path": ...} 을 두면 이 창을 xwd -id 로 찍어 PNG 로 저장 (실제 화면 내용, 다른 창 없음).
@@ -17,7 +19,9 @@ import sys
 import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import r12_common as rc  # noqa: E402
+import r12_common as rc
+from r12_viewer_collector import CollectorUI  # noqa: E402
+from r12_viewer_guide import GuideUI  # noqa: E402
 
 TITLE = "SO-101 R1·R2 수집 화면"
 MAP_W, MAP_H = 440, 280
@@ -85,6 +89,7 @@ class Viewer:
         self.cfg = rc.load_config(os.environ.get("R12_CONFIG"))
         self.H = rc.front_H(self.cfg)
         self.W, self.Hh = int(640 * scale), int(480 * scale)
+        self.W0, self._grow_n = self.W, 0  # 요청 크기 (줄인 뒤 다시 키울 때 상한)
         self.frames = None
         self.seq = -1
         self.imgs = (None, None)
@@ -96,6 +101,10 @@ class Viewer:
         self.pf_big = pil_font(30)
         self.zone = rc.wrist_zone()
         self.replay_t0 = None
+        self.mode = "collector"  # visual_guide 있는 시나리오의 기본 화면 (F4 = debug)
+        self.layout = None
+        self.step_info = ("", FG, [])
+        self.refresh_times = []  # (모드, 한 번 그리기 s) — 성능 측정 (perf.json 으로 남김)
 
         root = self.root = tk.Tk()
         root.title(TITLE)
@@ -110,11 +119,14 @@ class Viewer:
         self.big.pack(fill="x")  # 시나리오 큰 글씨 (예: R2 · PAN 정렬 불량 (왼쪽))
         self.step = tk.Label(root, font=(fam, 17, "bold"), bg=BG, fg=FG, anchor="w", padx=12, pady=2)
         self.step.pack(fill="x")  # 지금 할 일
+        self.guide = GuideUI(self)  # 시각 시연 가이드 (시나리오에 guide_stages 가 있을 때만 보임)
+        self.st = {}
         self.top = tk.Label(root, font=(fam, 12, "bold"), bg=BG, fg=FG, anchor="w", justify="left", padx=10, pady=3)
         self.top.pack(fill="x")
-        self.banner = tk.Label(root, font=self.f_b, bg="#7f1d1d", fg="white", anchor="w", padx=10)
+        self.banner = tk.Label(root, font=self.f_b, bg="#7f1d1d", fg="white", anchor="w", justify="left", padx=10,
+                               wraplength=int(self.W * 2.4))  # 긴 안내가 창 폭을 늘려 화면이 줄어드는 것 방지
         self.banner.pack(fill="x")
-        mid = tk.Frame(root, bg=BG)
+        mid = self.mid = tk.Frame(root, bg=BG)
         mid.pack()
         self.cam = []
         for name in ("Front 카메라", "Wrist 카메라"):
@@ -122,12 +134,16 @@ class Viewer:
             fr.pack(side="left")
             tl = tk.Label(fr, font=self.f_b, bg=BG, fg=FG, anchor="w", text=name)
             tl.pack(fill="x")
-            il = tk.Label(fr, bg="black", width=self.W, height=self.Hh)
+            from PIL import Image as _I, ImageTk as _IT
+            if not hasattr(self, "_blank"):  # 그림 없는 Label 의 width/height 는 글자 수 단위 → 빈 그림으로 픽셀 크기 고정
+                self._blank = _IT.PhotoImage(_I.new("RGB", (self.W, self.Hh), (0, 0, 0)))
+            il = tk.Label(fr, bg="black", image=self._blank, compound="center", width=self.W, height=self.Hh)
             il.pack()
             cap = tk.Label(fr, font=self.f_s, bg=BG, fg=DIM, anchor="w", justify="left")
             cap.pack(fill="x")
             self.cam.append((tl, il, cap))
-        bot = tk.Frame(root, bg=BG)
+        self.guide.build_ref(mid)
+        bot = self.bot = tk.Frame(root, bg=BG)
         bot.pack(fill="both", expand=True, padx=4, pady=4)
         self.panels = []
         for i, title in enumerate(("시나리오 · 시작 조건", "녹화 상태 · 관절", "조작 키 · 저장 결과")):
@@ -138,6 +154,8 @@ class Viewer:
             if i == 0:
                 self.map = tk.Canvas(fr, width=MAP_W, height=MAP_H, bg="#0b1220", highlightthickness=0)
                 self.map.pack()
+            if i == 1:
+                self.guide.build_plot(fr)
             t = tk.Text(fr, font=self.f_s, bg=PANEL, fg=FG, height=10 if i == 0 else 23, width=44, bd=0, highlightthickness=0, wrap="word")
             t.pack(fill="both", expand=True)
             for tag, col in (("ok", OK), ("warn", WARN), ("bad", BAD), ("dim", DIM), ("h", "#fde68a"), ("big", FG)):
@@ -146,6 +164,8 @@ class Viewer:
             t.tag_configure("pan_ok", font=(fam, 14, "bold"), foreground=OK)
             t.tag_configure("pan_warn", font=(fam, 14, "bold"), foreground=WARN)
             self.panels.append(t)
+        self.coll = CollectorUI(self)  # 수집자 모드 (visual_guide 있을 때만 보임)
+        self.relayout(False)
         root.bind("<Key>", self.on_key)
         root.protocol("WM_DELETE_WINDOW", root.destroy)
         root.after(100, self.refresh)
@@ -154,6 +174,17 @@ class Viewer:
     KEYMAP = {"Right": b"\x1b[C", "Left": b"\x1b[D", "Escape": b"\x1b", "Return": b"\r", "KP_Enter": b"\r", "BackSpace": b"\x7f"}
 
     def on_key(self, e):
+        if e.keysym == "F4":  # 수집자 ↔ 디버그 (창 전용)
+            self.mode = "debug" if self.mode == "collector" else "collector"
+            return
+        c = getattr(self, "coll", None)
+        if c is not None and c.on_key(e.keysym):  # F9 관찰 그림 · F10 정렬 확인함 (수집자 모드, 녹화로 넘기지 않음)
+            return
+        g = getattr(self, "guide", None)
+        if g is not None and g.on_key(e.keysym):  # F5/F6 단계 · F7 자동 · F8 참고 후보 (가이드 켜졌을 때, 녹화로 넘기지 않음)
+            return
+        if e.keysym in ("F4", "F9", "F10", "F11", "F12"):  # 창 전용 키 — 녹화로 넘기지 않음
+            return
         if e.keysym == "F2":
             self.show_grid = not self.show_grid
             return
@@ -253,6 +284,18 @@ class Viewer:
                 if v.get("detected"):
                     cx, cy = v["px"]
                     d.rectangle([cx - 12, cy - 12, cx + 12, cy + 12], outline=(34, 197, 94), width=2)
+            elif self.guide.active:  # 가이드: 참고 큐브 · 다음 단계 · 잘림 · 그리퍼 (닫기 영역은 참고만, 방향 화살표 없음)
+                w, h = im.size
+                if self.show_grid:
+                    for k in (1, 2, 3):
+                        d.line([(w * k / 4, 0), (w * k / 4, h)], fill=(70, 70, 70))
+                        d.line([(0, h * k / 4), (w, h * k / 4)], fill=(70, 70, 70))
+                reg = row.get("wrist_start_region")
+                if reg and ui.get("state") in ("SETUP", "WAIT", "START") and self.guide.cur == 0:
+                    from r12_viewer_guide import dashed_rect
+                    dashed_rect(d, reg["u"][0] * w, reg["v"][0] * h, reg["u"][1] * w, reg["v"][1] * h, (249, 115, 22), 3)
+                    d.text((reg["u"][0] * w + 3, reg["v"][0] * h - 24), "시작 영역 (대략)", fill=(249, 115, 22), font=self.pf)
+                self.guide.wrist_overlay(d, w, h, self.vis.get("wrist", {}) if self.show_det else {}, self.st, self.zone, True)
             else:
                 w, h = im.size
                 if self.show_grid:
@@ -523,18 +566,64 @@ class Viewer:
             t.insert("end", s, tag)
         t.configure(state="disabled")
 
+    # ---- 화면 배치 (모드 · 가이드에 따라 루트 프레임 순서)
+    def relayout(self, coll_on):
+        want = ("collector",) if coll_on else ("debug", self.guide.active)
+        if want == self.layout:
+            return
+        self.layout = want
+        allw = [self.big, self.step, self.guide.strip, self.top, self.banner, self.mid, self.bot, *self.coll.widgets()]
+        for w in allw:
+            w.pack_forget()
+        if coll_on:
+            seq = [(self.coll.header, {"fill": "x"}), (self.top, {"fill": "x"}), (self.banner, {"fill": "x"}),
+                   (self.coll.main, {}), (self.coll.bottom, {"fill": "x", "padx": 4, "pady": 4})]
+        else:
+            seq = [(self.big, {"fill": "x"}), (self.step, {"fill": "x"})] + \
+                  ([(self.guide.strip, {"fill": "x", "pady": (0, 2)})] if self.guide.active else []) + \
+                  [(self.top, {"fill": "x"}), (self.banner, {"fill": "x"}), (self.mid, {}),
+                   (self.bot, {"fill": "both", "expand": True, "padx": 4, "pady": 4})]
+        for w, kw in seq:
+            w.pack(**kw)
+        self.coll.shown = coll_on
+        if hasattr(self, "_fit"):
+            self.root.after(200, self._fit)
+
     def refresh(self):
         try:
+            t0 = time.perf_counter()
             st, ui = self.load()
+            self.st = st
             self.update_vision(ui)
-            self.draw_cams(ui)
-            self.draw_text(st, ui)
+            self.guide.update(st, ui)
+            coll_on = self.mode == "collector" and self.coll.available(ui) and self.guide.active
+            self.relayout(coll_on)
+            if coll_on:
+                self.coll.update(st, ui)
+                self.coll.draw_cams(ui)
+                self.draw_text(st, ui, panels=False)
+                self.coll.draw(st, ui)
+            else:
+                self.draw_cams(ui)
+                self.draw_text(st, ui)
+                self.guide.draw(st, ui)
+            self.refresh_times.append((self.layout[0], time.perf_counter() - t0))
+            del self.refresh_times[:-300]
+            if len(self.refresh_times) % 60 == 0:  # 성능 기록 (화면만 · 녹화 프로세스와 별개)
+                import statistics as _s
+                out = {"t": time.time(), "scale": round(self.W / 640, 3), "size": [self.root.winfo_width(), self.root.winfo_height()]}
+                for m in ("collector", "debug"):
+                    xs = sorted(x for k, x in self.refresh_times if k == m)
+                    if xs:
+                        out[m] = {"n": len(xs), "median_ms": round(_s.median(xs) * 1000, 1), "p95_ms": round(xs[int(0.95 * (len(xs) - 1))] * 1000, 1)}
+                rc.write_json(os.path.join(self.live, "viewer_perf.json"), out)
             self.snap_check()
+            self.cmd_check()
         except Exception as e:
             self.banner.configure(text=f"화면 오류: {e!r}", bg="#7f1d1d")
         self.root.after(66, self.refresh)
 
-    def draw_text(self, st, ui):
+    def draw_text(self, st, ui, panels=True):
         state = ui.get("state", "START")
         name, col = STATE_KO.get(state, (state, "#4b5563"))
         tgt, done = ui.get("target", 0), ui.get("done", 0)
@@ -559,13 +648,16 @@ class Viewer:
             elif row.get("r1_setup") and ui.get("safety_ask"):
                 stp, scol = "안전 확인: 탁자·상자 닿지 않음 · 케이블 · 관절 끝 밀지 않음 · 그리퍼 열림 → 맞으면 → 한 번 더", WARN
             elif row.get("r1_setup"):
-                stp, scol = {"R1-A": "① 준비 (녹화 안 함): 팔 거의 접은 채 Pan 을 주황 쪽으로 → → 두 번 (조건 ⚠ 여도 녹화됨)",
+                stp, scol = {"R1-FOLD-OVER": "① 준비 (녹화 안 함): 팔 접은 채 큐브 방향을 지나쳐 주황 쪽(대략)에서 멈춤 → → 두 번 · Pan 한계 근처 금지",
+                             "R1-A": "① 준비 (녹화 안 함): 팔 거의 접은 채 Pan 을 주황 쪽으로 → → 두 번 (조건 ⚠ 여도 녹화됨)",
                              "R1-B1": "① 준비 (녹화 안 함): 팔을 펴며 Pan 을 주황 쪽(멀어짐)으로 움직여 멈춤 → → 두 번",
                              "R1-B2": "① 준비 (녹화 안 함): 반대쪽에서 와서 초록 선을 지나 주황 쪽에서 멈춤 → → 두 번",
                              "R1-B3": "① 준비 (녹화 안 함): 편 팔로 주황 쪽 — 손목 화면에 큐브 없게 (front 는 보임) → → 두 번",
                              }.get(row.get("scenario_id"), "① 준비 (녹화 안 함): 주황 선 쪽 오차 자세 → → 두 번"), OK
             elif row.get("error_in_rec"):
                 stp, scol = "① 준비: 큐브 각도만 맞추고, 팔은 쉬는 자세 그대로 →", OK
+            elif row.get("gripper_start") == "closed":
+                stp, scol = "① 준비 (녹화 안 함): 그리퍼 닫은 채 큐브 앞 파지 높이 근처 (큐브에 닿지 않게) · 팔 정지 → (빈 파지 동작 금지)", OK
             elif row.get("wrist_start_region"):
                 stp, scol = "① 준비 (녹화 안 함): 그리퍼 열고 큐브 근처 — 손목 화면 주황 영역에 큐브 → (대략)", OK
             else:
@@ -578,6 +670,12 @@ class Viewer:
             mk = ui.get("marks") or []
             stp, scol = (("② 재정렬 표시 ✓ — 큐브 가운데로 → 파지 → 상자 → 쉬는 자세", OK) if mk else
                          (f"② 녹화 중: 큐브 쪽으로 → 주황 선 ({row.get('x_label')}) 에서 Space", "#fca5a5"))
+        elif state == "REC" and row.get("scenario_id") == "R1-FOLD-OVER":
+            stp, scol = "② 녹화 중: 화면을 보고 Pan 을 큐브 쪽으로 되돌림 → 재정렬 → 팔 펴며 접근 · 파지 → 상자 → 쉬는 자세", "#fca5a5"
+        elif state == "REC" and row.get("gripper_start") == "closed":
+            stp, scol = "② 녹화 중: 먼저 그리퍼를 충분히 열기 (약 30) → 연 채 접근 · 정렬 → 한 번 닫기 → 상자 → 쉬는 자세", "#fca5a5"
+        elif state == "REC" and row.get("gripper_start") == "open":
+            stp, scol = "② 녹화 중: 그리퍼를 연 채 접근 깊이 · 높이 · 정렬 보정 → 손가락 사이에서 한 번 닫기 → 상자 → 쉬는 자세", "#fca5a5"
         elif state == "REC" and row.get("r1_setup"):
             stp, scol = ("② 녹화 중: " + ("Pan 방향을 바로 반대로 (초록 선 쪽)" if row.get("scenario_id") == "R1-B1" else
                                           "왔던 쪽으로 되돌아 초록 선" if row.get("scenario_id") == "R1-B2" else
@@ -592,7 +690,7 @@ class Viewer:
         else:
             stp, scol = name, FG
         self.step.configure(text=stp, fg=scol)
-        self.draw_map(row, st)
+        self.step_info = (stp, scol, blk)
         msgs = []
         if ui.get("preview"):
             msgs.append("PREVIEW · 로봇·카메라 연결 없음 · dataset 쓰지 않음 · 영상·관절값 = 기존 녹화 재생 (큐브 위치는 계획과 무관)")
@@ -601,7 +699,18 @@ class Viewer:
             msgs.append("녹화 프로세스 상태가 갱신되지 않아요 (연결 중이거나 멈춤)" if state not in ("DONE",) else "녹화 종료")
         if st.get("tap_error"):
             msgs.append(f"화면 탭 오류: {st['tap_error']} (녹화는 계속)")
+        gd = (st or {}).get("guard") or {}
+        if gd.get("hold"):
+            msgs.append(f"⛔ 명령 보호: 팔로워 고정 중 ({gd.get('hold_reason', '')}) — 리더를 팔로워 자세 쪽으로 천천히 맞추면 풀림")
+        if gd.get("rec_invalid") and state in ("REC", "RESET", "SETUP"):
+            msgs.append(f"⛔ 무효 시연 ({gd['rec_invalid']}) — 이 판은 자동으로 버려요")
+        rv = [f for f in (ui.get("review") or []) if f[0] == "warn"]
+        if rv and state in ("RESET", "SAVING"):  # 녹화 뒤 검토 표시 (자동 · 보조) — 결과 확인 화면
+            msgs.append("⚠ 방금 판 검토: " + " · ".join(f[2] for f in rv) + " — 영상 확인 · 의도와 다르면 ← 로 버리기")
         self.banner.configure(text="   ".join(msgs) if msgs else "", bg="#7f1d1d" if msgs else BG)
+        if not panels:  # 수집자 모드: 상태 줄 · 안전 띠까지만 (아래 칸은 수집자 화면이 그림)
+            return
+        self.draw_map(row, st)
 
         # 왼쪽: 지도 아래 — Pan 안내 + 시작 자세 검사
         p = []
@@ -630,12 +739,21 @@ class Viewer:
             p.append(("시나리오 조건 — 달라도 녹화됨 (◇ = 다름, s/d/k/x)\n", "h"))
             for ok_, _, t in rc.scenario_checks(self.cfg, row, st.get("state"), self.vis, self.pan_calib):
                 p.append((f"  {'✓' if ok_ else '◇' if ok_ is False else '·'} {t}\n", ("ok" if ok_ else "warn" if ok_ is False else "dim") if judging else "dim"))
-        wrn = [c for c in checks if c[0] != "BLOCK"]
+        if row.get("pilot_variant") and st.get("state"):  # 파일럿 12편: 시작 조건 · 실패 상태와 비슷함 (근사, 막지 않음)
+            ps = rc.pilot_start_checks(self.cfg, row, st.get("state"), self.vis, self.pan_calib)
+            sim = ps["similarity"]
+            p.append((f"시작 조건 [{row['pilot_variant']}]" + (f" · 실패 상태와 비슷함 {sim['matched']}/{sim['total']} (근사)" if sim["total"] else "")
+                      + " — 달라도 녹화됨\n", "h"))
+            # R1 은 위 '시나리오 조건' 이 단계 · 손목 · front · Pan 을 이미 보여 줌 → 여기서는 복구 방향만
+            for ok_, k_, t in [i for i in ps["items"] if not r1s or i[1] == "pan"]:
+                p.append((f"  {'✓' if ok_ else '◇' if ok_ is False else '·'} {t}\n", ("ok" if ok_ else "warn" if ok_ is False else "dim") if judging else "dim"))
+        closed_ok = row.get("gripper_start") == "closed"
+        wrn = [c for c in checks if c[0] != "BLOCK" and not (closed_ok and c[1] == "gripper_closed")]
         if wrn:
             p.append(("참고 (막지 않음): " + " · ".join(m.split(" — ")[0] for _, _, m in wrn) + "\n", "dim"))
         w = self.vis.get("wrist", {})
         exp = row.get("wrist_expect", "visible")
-        if self.vis and not r1s:
+        if self.vis and not r1s and not row.get("pilot_variant"):  # 파일럿 R2 는 위 '시작 조건' 에 손목 u/v · front 가 있음
             if w.get("detected"):
                 p.append((f"  ✓ 손목 화면 큐브 검출 (dx {w['dx']:+.2f}, dy {w['dy']:+.2f})\n", "ok"))
             else:
@@ -645,11 +763,26 @@ class Viewer:
             if fr.get("detected") and "dist_planned_cm" in fr:
                 ok = fr["dist_planned_cm"] <= 4.0  # 대략 (11-02, 2.0 에서)
                 p.append((f"  {'✓' if ok else '⚠'} front 큐브 ↔ 계획 {row.get('position')} {fr['dist_planned_cm']:.1f} cm\n", "ok" if ok else "warn"))
-        p.append(("  · 물리적 접근 깊이는 측정 안 함 (unknown) · FK 위치 안 씀\n", "dim"))
+        if not row.get("pilot_variant"):
+            p.append(("  · 물리적 접근 깊이는 측정 안 함 (unknown) · FK 위치 안 씀\n", "dim"))
         self.put(self.panels[0], p)
 
         # 가운데: 녹화 상태 + 관절
         p = [(f"{name}\n", "big")]
+        if row.get("pilot_variant"):  # 파일럿: 준비 중 · 녹화 중 · 저장 완료 · 무효 시연
+            inv = ui.get("invalid_recent") or []
+            rs = ("녹화 중" if state == "REC" else "저장 중" if state in ("SAVING", "FINAL") else "준비 중" if state in ("SETUP", "WAIT", "START", "RESET")
+                  else name)
+            p.append((f"녹화 상태: {rs}", "warn" if state == "REC" else None))
+            if ui.get("last_saved_ep") is not None:
+                p.append((f" · 저장 완료 ep{ui['last_saved_ep']}", "ok"))
+            if inv:
+                p.append((f" · 무효 시연 ep{inv[-1].get('ep')} ({inv[-1].get('reason')})", "bad"))
+            p.append(("\n", None))
+            if gd.get("enabled"):
+                p.append((f"명령 보호 켜짐 · 리더−팔로워 {gd.get('gap') if gd.get('gap') is not None else '-'}°"
+                          + (" · 팔로워 고정 중" if gd.get("hold") else "") + (" · Pan 명령 제한 중" if gd.get("pan_cap") else "") + "\n",
+                          "bad" if gd.get("hold") or gd.get("pan_cap") else "dim"))
         if state == "REC":
             p.append((f"경과 {el or 0:.1f}s / {ui.get('episode_time', 0):.0f}s\n", None))
         fps = st.get("fps") or 30
@@ -663,8 +796,11 @@ class Viewer:
                   "warn" if sum(stall.values() if stall else [0]) else "dim"))
         p.append((f"이번 실행 저장 {ui.get('run_saved', 0)}편 · {ui.get('save_note', '')}\n", None))
         s, a = st.get("state") or {}, st.get("action") or {}
-        p.append(("\n관절      팔로워   리더    차이\n", "h"))
-        for j in rc.JOINTS:
+        if self.guide.active:
+            p += self.guide.joint_rows(st)
+        else:
+            p.append(("\n관절      팔로워   리더    차이\n", "h"))
+        for j in ([] if self.guide.active else rc.JOINTS):
             k = f"{j}.pos"
             if k in s:
                 dv = a.get(k, s[k]) - s[k]
@@ -678,6 +814,11 @@ class Viewer:
         p = [("터미널이나 이 창 (클릭해서 선택) 에서 누르세요\n", "warn")]
         for k, d in ui.get("keys", []):
             p += [(f" {k:7s}", "h"), (f" {d}\n", None)]
+        rv = ui.get("review") or []
+        if rv and state in ("RESET", "SAVING"):
+            p.append(("\n방금 판 자동 검토 (보조 · 영상으로 확인):\n", "h"))
+            for lv, _, t in rv:
+                p.append((f" {'⚠' if lv == 'warn' else '·'} {t}\n", "bad" if lv == "warn" else "dim"))
         lab = ui.get("label")
         if lab is not None:
             p.append(("\n방금 판 결과: ", "h"))
@@ -709,37 +850,137 @@ class Viewer:
             p.append(("\n" + m, "warn"))
         self.put(self.panels[2], p)
 
+    def cmd_check(self):
+        """시험 · 화면 찍기용: live 폴더의 viewer_cmd.json {"keys": ["F6", "F9", ...]} = 창 키를 누른 것처럼 (창 전용 키만, 한 번 읽고 지움)."""
+        p_ = os.path.join(self.live, "viewer_cmd.json")
+        req = rc.read_json(p_)
+        if not req:
+            return
+        os.unlink(p_)
+        import types
+
+        for k in req.get("keys", []):
+            if k in ("F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11"):
+                self.on_key(types.SimpleNamespace(keysym=k, char=""))
+
     def snap_check(self):
         req_p = os.path.join(self.live, "snap_request.json")
         req = rc.read_json(req_p)
         if not req:
             return
         os.unlink(req_p)
+        # 찍기 전에 이 창을 맨 위로 (다른 창이 겹치면 xwd 에 그 창 내용이 담김 — 11-03 확인) → 찍은 뒤 원래대로
+        try:
+            self.root.attributes("-topmost", True)
+            self.root.lift()
+        except Exception:
+            pass
         self.root.update_idletasks()
+        self.root.update()
+        time.sleep(0.4)
         self.root.update()
         try:
             size = xwd_png(req["path"], [self.root.winfo_id()] + list(req.get("extra_windows", [])))
             rc.write_json(os.path.join(self.live, "snap_done.json"), {"path": req["path"], "size": size, "t": time.time()})
         except Exception as e:
             rc.write_json(os.path.join(self.live, "snap_done.json"), {"error": repr(e)})
+        try:
+            self.root.attributes("-topmost", False)
+        except Exception:
+            pass
+
+    def screen_size(self):
+        """화면 크기 (R12_SCREEN=WxH 로 바꿔 작은 화면 시험)."""
+        e = os.environ.get("R12_SCREEN", "")
+        if "x" in e:
+            w, h = e.lower().split("x")
+            return int(w), int(h)
+        return self.root.winfo_screenwidth(), self.root.winfo_screenheight()
+
+    def shrink_collector(self, f):
+        """수집자 화면 전체 (영상 · 그림 · 글씨 폭) 를 f 배로 다시 만듦. 수동 선택 상태는 그대로."""
+        old = self.coll
+        self.W, self.Hh = int(self.W * f), int(self.Hh * f)
+        for w in old.widgets():
+            w.destroy()
+        self.coll = CollectorUI(self)
+        self.coll.manual_obs, self.coll.user_ok, self.coll.ep_key = old.manual_obs, old.user_ok, old.ep_key
+        self.coll.sid, self.coll.vg = old.sid, old.vg
+        self.banner.configure(wraplength=int(self.W * 2.4))
+        self.layout = None
+        self.relayout(True)
+
+    def fit_window(self):
+        """창 관리자가 큰 창을 최대화해도 필요한 크기로 되돌림. 수집자 화면이 화면보다 크면 영상 · 그림을 함께 줄임 (잘리지 않게)."""
+        pos = getattr(self, "_pos", "")
+        self.root.update_idletasks()
+        w, h = self.root.winfo_reqwidth(), self.root.winfo_reqheight()
+        sw, sh = self.screen_size()
+        if self.coll.shown and (w > sw * 0.98 or h > sh * 0.93):
+            self._grow_n = 0
+            f = max(min(sw * 0.98 / w, sh * 0.93 / h) * 0.97, 640 * 0.35 / self.W)  # 글씨 최소 크기 때문에 조금 더 줄임 · 영상 폭 224 px 아래로는 안 줄임
+            if f < 0.995:
+                self.fit_log("shrink", w, h, sw, sh, f)
+                self.shrink_collector(f)
+                self.root.after(150, self.fit_window)
+                return
+        elif self.coll.shown and self.W < self.W0 * 0.97:
+            # 시작 때 잠깐 큰 내용 때문에 줄었으면, 지금 크기로 맞는지 보고 요청 크기까지 다시 키움 (두 번 연속 맞을 때만)
+            g = min(min(sw * 0.98 / w, sh * 0.93 / h) * 0.97, self.W0 / self.W)
+            self._grow_n = self._grow_n + 1 if g > 1.05 else 0
+            if self._grow_n >= 2:
+                self._grow_n = 0
+                self.fit_log("grow", w, h, sw, sh, g)
+                self.shrink_collector(g)
+                self.root.after(150, self.fit_window)
+                return
+        if self.root.state() == "zoomed":
+            self.root.state("normal")
+        try:
+            self.root.wm_attributes("-zoomed", False)
+        except Exception:
+            pass
+        self.root.geometry(f"{w}x{h}" + (pos[pos.index("+"):] if "+" in pos else ""))
+
+    def fit_log(self, what, w, h, sw, sh, f):
+        """창 크기 조정 기록 (viewer_fit.log): 원인 확인용 — 요청 폭/높이가 큰 위젯 3 개."""
+        try:
+            kids = []
+            def walk(x, depth=0):
+                for c in x.winfo_children():
+                    if not c.winfo_ismapped():
+                        continue
+                    t = ""
+                    try:
+                        t = str(c.cget("text"))[:60]
+                    except Exception:
+                        pass
+                    kids.append((c.winfo_reqwidth(), c.winfo_reqheight(), str(c), t))
+                    if depth < 6:
+                        walk(c, depth + 1)
+            walk(self.root)
+            top = sorted(kids, reverse=True)[:3] + sorted(kids, key=lambda k: -k[1])[:3]
+            with open(os.path.join(self.live, "viewer_fit.log"), "a") as fh:
+                fh.write(json.dumps({"t": time.time(), "what": what, "req": [w, h], "screen": [sw, sh], "f": round(f, 3),
+                                     "scale": round(self.W / 640, 3), "widest_tallest": top}, ensure_ascii=False) + "\n")
+        except Exception:
+            pass
+
+    def grow_tick(self):
+        """줄어든 수집자 화면이면 1.5 s 마다 다시 맞춰 봄 (두 번 연속 맞으면 요청 크기까지 키움)."""
+        try:
+            if self.coll.shown and self.W < self.W0 * 0.97:
+                self.fit_window()
+        finally:
+            self.root.after(1500, self.grow_tick)
 
     def run(self):
         geo = rc.read_json(os.path.join(self.live, "viewer_geometry.json"))
-        pos = geo["geometry"] if geo else ""
-
-        def fit():  # 창 관리자가 큰 창을 최대화해도 필요한 크기로 되돌림
-            self.root.update_idletasks()
-            w, h = self.root.winfo_reqwidth(), self.root.winfo_reqheight()
-            if self.root.state() == "zoomed":
-                self.root.state("normal")
-            try:
-                self.root.wm_attributes("-zoomed", False)
-            except Exception:
-                pass
-            self.root.geometry(f"{w}x{h}" + (pos[pos.index("+"):] if "+" in pos else ""))
-
-        self.root.after(300, fit)
-        self.root.after(1500, fit)
+        self._pos = geo["geometry"] if geo else ""
+        self._fit = self.fit_window
+        self.root.after(300, self.fit_window)
+        self.root.after(1500, self.fit_window)
+        self.root.after(2000, self.grow_tick)
         rc.write_json(os.path.join(self.live, "viewer_ready.json"), {"pid": os.getpid(), "t": time.time()})
         self.root.mainloop()
 

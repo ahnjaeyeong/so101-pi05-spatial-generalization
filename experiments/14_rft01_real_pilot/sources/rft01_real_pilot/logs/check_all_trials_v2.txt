@@ -1,0 +1,8 @@
+1 001000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+2 020000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+3 020000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+4 001000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+5 001000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+6 020000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+7 020000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 
+8 001000/pretrained_model 1 'arm_filter': False execution_horizon=20 max_relative_target=8.0 queue_threshold=30 

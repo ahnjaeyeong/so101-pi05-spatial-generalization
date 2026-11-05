@@ -1,0 +1,13 @@
+[collector]
+  ✓ collector: 준비 → 녹화 → 결과 → 저장 2판 · 종료 코드 0 code 0
+  ✓ collector: 학습 판정 없음 — 판정 사건 0 · 터미널이 판정을 묻지 않음 · CSV 판정 열 없음 []
+  ✓ collector: 결과 입력은 그대로 (r12_pilot_episodes first_grasp_success) ['True', 'False']
+  ✓ collector: 영상 창 오류 없음 (viewer.log) 
+  ✓ collector: 영상 창이 collector 모드로 그림 (viewer_perf.json) {"t": 1793769132.967732, "scale": 0.8, "size": [1610, 947], "collector": {"n": 240, "median_ms": 30.7, "p95_ms": 43.2}}
+
+기록 주기 (rec_end, Fake Robot · 목표 30 Hz):
+  collector  Hz [30.01, 30.0] · 늦은 틱 [0, 0] · 프레임 [361, 361] · 카메라 반복 [0, 4] · 영상 창 {"scale": 0.8, "size": [1610, 947], "collector": {"n": 240, "median_ms": 30.7, "p95_ms": 43.2}}
+  ✓ 기록 주기: 영상 창 (수집자 · 디버그) 이 있어도 30 Hz 의 95 % 이상 {'collector': 30.0}
+  ✓ 실제 세션 폴더 main_k8/r12_pilot12_rc 를 만들지 않음 (preview 는 --root 아래에만) 
+  ✓ ~/so101_runs/main_k8 · 실물 R2-P 세션 안 바뀜 (preview 는 --root 아래에만) 
+PASS 8/8 · /tmp/r12_collector_preview_20261104_141146

@@ -1,0 +1,120 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-03T15:58:35",
+ "group": "pilot12_r2o",
+ "type": "R2",
+ "session": "main_k8/r12_pilot12_r2o",
+ "repo_id": "oxr/so101_k8_r12_pilot12_r2o",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 4,
+ "episode_time_s": 45,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/r12_pilot12.yaml",
+ "config_sha256": "15dbcbbf795c05011f39801e8c49632040624256cf93ea2887375c494cb3902d",
+ "plan_sha256": "6b08d27c998c014f7114bdae136fb3041601a79394dda7d7a6692629300b5d6b",
+ "stats": {
+  "scenarios": {
+   "R2-O-REOPEN": 4
+  },
+  "positions": {
+   "K5": 1,
+   "K8": 1,
+   "K6": 1,
+   "K7": 1
+  },
+  "angles": {
+   "45": 1,
+   "L30": 1,
+   "0": 1,
+   "R30": 1
+  },
+  "offset_dir": {
+   "forward": 4
+  }
+ },
+ "scenarios": {
+  "R2-O-REOPEN": {
+   "type": "R2",
+   "label": "R2-O · 닫힌 그리퍼 → 다시 열고 접근",
+   "error_kind": "closed_ahead",
+   "local_dir": "cube_ahead",
+   "approach_depth_category": "not_entered",
+   "local_offsets_cm": [
+    1.5,
+    2.0,
+    3.0
+   ],
+   "wrist_start_region": {
+    "u": [
+     0.22,
+     0.5
+    ],
+    "v": [
+     0.25,
+     0.62
+    ]
+   },
+   "start_radial_cm": -2.5,
+   "start_height": "파지 높이",
+   "via": "",
+   "count": 4,
+   "pan_offsets_deg": [
+    0
+   ],
+   "title": "그리퍼가 닫힌 채 큐브 앞에서 팔이 멈춤 (큐브는 잡히지 않음)",
+   "offset_dir": "forward",
+   "offset_mag": "그리퍼 닫힘 (< 15) · 손목 화면 큐브가 닫기 영역보다 위 (주황 영역). 큐브를 쥐거나 밀지 않은 상태",
+   "wrist_expect": "visible",
+   "start": "준비 (녹화 안 함): 그리퍼를 닫은 채 (쉬는 자세 그대로) 큐브 앞 파지 높이 근처로 가서 팔 정지. 손가락이 큐브에 닿지 않게. 큐브 앞에서 그리퍼를 닫는 동작(빈 파지)은 하지 않음.",
+   "demo": "녹화 시작 → 먼저 그리퍼를 충분히 연다 (d2 사람 약 30) → 연 채 앞으로 · 아래로 추가 접근 → 큐브 정렬 → 큐브가 손가락 사이에 오면 d2 방식으로 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세.",
+   "pilot_variant": "R2-O",
+   "gripper_start": "closed",
+   "reopen_min": 25,
+   "failure_type": "closed_gripper_stalled_ahead (실물 AHEAD 6/7 판 유형: 팔 멈춤 + 그리퍼 닫힘 + 큐브 앞)",
+   "correction_action": "먼저 그리퍼를 충분히 엶 → 연 채 추가 접근 · 정렬 → 한 번 닫기 → 상자 → 쉬는 자세",
+   "_like": "R2-AHEAD"
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "pan_limit_margin_block_deg": 10,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600,
+  "teleop_guard": {
+   "enabled": true,
+   "pan_cmd_abs_max_deg": 95,
+   "hold_gap_deg": 25,
+   "release_gap_deg": 10,
+   "warn_gap_deg": 15,
+   "warn_s": 1.0,
+   "invalidate_in_rec": true
+  }
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}

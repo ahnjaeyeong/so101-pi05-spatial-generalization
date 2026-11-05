@@ -1,0 +1,301 @@
+# 회복 시연 (2026-11-04, 설계 11_recovery_collection_design.md · 사용자 결정)
+#   실물 추론 실패 3 종류 (16:08 실행 사용자 판정) 의 회복 장면만 녹화한다. 실패 자세는 준비 단계 (녹화 안 함) 에서 만든다.
+#   F1 사선 하강 · 모서리 걸림 → 그리퍼 열림 · 비스듬히 큐브 앞쪽에서 시작
+#   F2 이른 닫힘             → 그리퍼 닫힘 · 큐브 바로 위에서 시작
+#   F3 정렬 오차             → 그리퍼 닫힘 · 큐브 옆으로 조금 빗긴 곳에서 시작 (왼쪽 · 오른쪽)
+#   대표 실패 영상: review/failure_types/ (git 제외, 창 키 F11)
+# 이 파일은 r12_scenarios.yaml 위에 덧씌운다 (r12_pilot12.yaml 과 같은 방식, 기존 설정 · 파일럿 12편 세션은 그대로).
+# 사용: tools/r12_collect.py <명령> --config config/r12_recovery.yaml --group pilot12_rc
+extends: r12_scenarios.yaml
+pilot: recovery
+
+program_groups: [pilot12_rc]
+
+groups:
+  pilot12_rc:
+    type: R2
+    session: main_k8/r12_pilot12_rc
+    repo_id: oxr/so101_k8_r12_pilot12_rc
+    seed: 3304
+    episode_time_s: 45
+    pilot_variant: RC
+    scenario_counts: {RC-F1: 4, RC-F2: 4, RC-F3-L: 2, RC-F3-R: 2}
+    collection_status: pilot_ready_pending_user_check
+
+# 공통 조각 (아래 시나리오에서 같이 씀)
+_shared:
+  stages: &rc_stages
+    - {key: start, label: "① 시작 (실패 자세)", gripper: "시작 상태 그대로 정지", ref: none}
+    - {key: approach, label: "② 회복", gripper: "열린 채 맞추기", ref: k_reach}
+    - {key: preclose, label: "③ 닫힘 직전 확인", gripper: "닫기 전 영상 확인", ref: k_close}
+    - {key: close, label: "④ 한 번 닫기", gripper: "한 번만 닫기", ref: k_grasp}
+    - {key: done, label: "⑤ 상자 → 쉬는 자세", gripper: "상자에서 열기 → 닫기", ref: k_done}
+  preclose: &rc_preclose
+    title: "③ 잡을 수 있는 자세인지 확인"
+    text: "큐브가 두 손가락 사이에 있는지, 충분히 들어갔는지 확인하세요. 화면 위치만으로는 확정 안 됨."
+    scene: {grip: open, cube: [0.344, 0.707], target: true, inset: {grip: open, cube: [0.344, 0.96], cut: bottom, mark: x, tag: "", label: "화면 끝"}}
+    now: "큐브가 손가락 사이 · 충분히 들어갔는지 직접 확인"
+    next: "한 번 닫기"
+    later: "들어 올려 상자 → 쉬는 자세"
+    dont: "화면 끝에 걸린 채 닫기"
+  close: &rc_close
+    title: "④ 한 번만 닫아 파지"
+    text: "확인한 뒤 한 번 닫으세요. 첫 닫힘에 못 잡으면 정상 후보가 아닙니다."
+    scene: {grip: grasp, cube: [0.344, 0.707], mark: check}
+    now: "한 번만 닫아 파지"
+    next: "들어 올려 상자에 놓기"
+    later: "쉬는 자세 → 판 끝 (→)"
+    dont: "빈 파지 뒤 다시 닫기 반복"
+  done: &rc_done
+    title: "⑤ 상자 → 쉬는 자세"
+    now: "상자에 놓고 쉬는 자세"
+    next: "→ 로 판 끝"
+    later: "결과 입력"
+    dont: "판 끝 전에 리더를 놓기"
+  failures: &rc_failures
+    - {key: ahead, name: "앞쪽에 있음", text: "큐브가 손가락 끝보다 앞 — 닫기 전에 더 들어가기", scene: {grip: open, cube: [0.344, 0.32], mark: x, tag: ""}}
+    - {key: side, name: "옆으로 벗어남", text: "손가락 사이 중심 밖 — 정렬 후 닫기", scene: {grip: open, cube: [0.84, 0.70], mark: x, tag: ""}}
+    - {key: edge, name: "화면 끝에 걸림", text: "일부가 화면 밖 — 깊이 · 접촉은 직접 확인 (자동 판정 안 함)", scene: {grip: open, cube: [0.344, 0.96], cut: bottom, mark: x, tag: ""}}
+  target: &rc_target {key: in_zone, name: "목표 (참고)", text: "손가락 사이 · 충분히 들어감 → 직접 확인 뒤 한 번 닫기", scene: {grip: open, cube: [0.344, 0.707], target: true, mark: check, tag: ""}}
+  rec_target: &rc_rec_target {grip: open, cube: [0.344, 0.707], zone: true, caption: "닫기 전: 큐브가 두 손가락 사이 · 초록 점선 (참고) — 깊이 · 접촉은 직접 확인"}
+
+scenarios:
+  # ---------------------------------------------------------------- F1 사선 하강 · 모서리 걸림 (그리퍼 열림)
+  RC-F1:
+    like: R2-AHEAD
+    label: "RC-F1 · 사선 하강 → 들어 올려 수직으로 다시"
+    pilot_variant: RC-F1
+    gripper_start: open
+    wrist_start_region: {u: [0.20, 0.50], v: [0.50, 0.85]}
+    failure_type: "diagonal_descent_edge (실물 16:08 ep0 · ep3 · ep4 — 사선으로 내려가 큐브 모서리에 걸려 밀림)"
+    correction_action: "살짝 들어 올림 → 큐브 바로 위에서 수직으로 다시 맞춤 → 곧게 내려가 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    title: 그리퍼가 비스듬히 큐브 앞쪽에서 내려와 모서리에 닿기 직전
+    start: "그리퍼 열림. 그리퍼를 비스듬히 기울여 큐브 앞쪽 · 큐브 높이에서, 손가락 끝이 큐브 앞 위 모서리 바로 앞 (닿지 않게) 에서 정지."
+    demo: "녹화 시작 → 살짝 들어 올려 모서리에서 떨어짐 → 큐브 바로 위로 옮기며 그리퍼를 수직으로 → 곧게 내려가 큐브가 손가락 사이에 오면 한 번 닫기 → 상자 → 쉬는 자세."
+    guide_stages: *rc_stages
+    visual_guide:
+      kind: F1
+      category: "사선 하강 회복"
+      case: "비스듬히 큐브 앞에서 시작 (그리퍼 열림)"
+      title: "모서리에 걸리기 직전입니다"
+      subtitle: "살짝 들어 올려 큐브 위에서 수직으로 다시 내려가, 한 번 닫으세요."
+      ref_video: "review/failure_types/index.html#F1"
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼 열기 (약 30)", "그리퍼를 비스듬히 (수직이 아니게) 기울여 큐브 앞쪽에서 큐브 높이로",
+                    "손가락 끝이 큐브 앞 위 모서리 바로 앞에서 멈춤 — 닿지 않게", "손목 화면이 오른쪽 그림과 비슷하면 → (녹화 시작) · F11 = 실제 실패 영상"]
+      side: {tip: [-0.8, 2.6], angle_deg: 30, label: "비스듬히 · 손가락 끝이 큐브 앞 위 모서리 바로 앞"}
+      setup_target: {grip: open, cube: [0.344, 0.66], region: start, caption: "큐브가 손가락 끝 바로 앞 · 그리퍼가 비스듬해서 모서리에 닿기 직전"}
+      # ③ 칸에 개념도 대신 실제 실패 장면 손목 프레임 (없으면 위 개념도). 시작후보 PNG = front | wrist 나란히 1280×480
+      setup_target_image: {path: "review/failure_types/F1_diag_edge/시작후보_160831_ep4_-2.5s.png", crop: wrist,
+                           caption: "실제 실패 장면 — 16:08 ep4 · 닫기 2.5 s 전 (그리퍼 열림 · 비스듬히 접근 중, 이 뒤 큐브 모서리에 걸림)"}
+      rec_target: *rc_rec_target
+      setup: {now: "준비 (녹화 안 함): 그리퍼를 연 채 비스듬히, 손가락 끝을 큐브 앞 위 모서리 바로 앞에 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 들어 올림 → 큐브 위에서 수직 → 곧게 내려가 한 번 닫기", dont: "준비 중에 모서리를 누르거나 큐브 밀기"}
+      stages:
+        start:
+          title: "① 비스듬히 큐브 앞 (실패 자세)"
+          text: "그리퍼가 열린 채 비스듬히 내려와, 손가락 끝이 큐브 앞 모서리 바로 앞에 있습니다."
+          scene: {grip: open, cube: [0.344, 0.66], mark: x}
+          now: "그리퍼 연 채 멈춤 유지"
+          next: "살짝 들어 올려 큐브 바로 위로"
+          later: "수직으로 내려가 한 번 닫기"
+          dont: "그대로 밀고 들어가기"
+        approach:
+          title: "② 들어 올려 큐브 위에서 수직으로"
+          text: "모서리를 누르지 않게 살짝 들어 올린 뒤, 큐브 바로 위에서 그리퍼를 수직으로 세우고 곧게 내려갑니다. 어느 관절로 할지는 직접 정합니다."
+          scene: {grip: open, cube: [0.344, 0.45], target: true, arrow: true}
+          now: "들어 올려 큐브 위로 → 그리퍼 수직 → 곧게 내려가기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "비스듬한 채 밀고 들어가기 · 모서리 누르기"
+        preclose: *rc_preclose
+        close: *rc_close
+        done: *rc_done
+      failures: *rc_failures
+      target: *rc_target
+
+  # ---------------------------------------------------------------- F2 이른 닫힘 (그리퍼 닫힘, 큐브 위)
+  RC-F2:
+    like: R2-READY
+    label: "RC-F2 · 큐브 위에서 일찍 닫힘 → 다시 열고 내려가기"
+    pilot_variant: RC-F2
+    gripper_start: closed
+    reopen_min: 25
+    wrist_start_region: {u: [0.22, 0.50], v: [0.55, 0.90]}
+    failure_type: "early_close_above (실물 16:08 ep1 — 너무 빨리 닫혀 밀림)"
+    correction_action: "그리퍼를 충분히 엶 → 열린 채 내려가 큐브를 손가락 사이에 → 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    title: 그리퍼가 큐브 바로 위에서 일찍 닫힌 채 멈춤
+    start: "그리퍼 닫힘 (쉬는 자세 그대로). 큐브 바로 위, 손가락 끝이 큐브 윗면보다 1.5–2.5 cm 위에서 정지. 큐브에 닿지 않음. 큐브 앞에서 닫는 동작 (빈 파지) 은 하지 않음."
+    demo: "녹화 시작 → 먼저 그리퍼를 충분히 연다 (약 30) → 열린 채 내려가 큐브가 손가락 사이에 오면 한 번 닫기 → 상자 → 쉬는 자세."
+    guide_stages: *rc_stages
+    visual_guide:
+      kind: F2
+      category: "이른 닫힘 회복"
+      case: "큐브 위에서 닫힌 채 시작 (그리퍼 닫힘)"
+      title: "그리퍼가 너무 일찍 닫혔습니다"
+      subtitle: "먼저 그리퍼를 충분히 열고, 열린 채 내려가 한 번 닫으세요."
+      ref_video: "review/failure_types/index.html#F2"
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼는 닫힌 채 (쉬는 자세 그대로)", "큐브 바로 위로 가서 손가락 끝이 큐브 윗면보다 1.5–2.5 cm 위에서 멈춤",
+                    "큐브에 닿지 않게 · 큐브 앞에서 닫는 동작은 하지 않기", "손목 화면이 오른쪽 그림과 비슷하면 → (녹화 시작) · F11 = 실제 실패 영상"]
+      side: {tip: [1.25, 4.5], angle_deg: 90, label: "큐브 바로 위 1.5–2.5 cm · 그리퍼 닫힘"}
+      setup_target: {grip: closed, cube: [0.344, 0.72], region: start, caption: "닫힌 손가락이 큐브 바로 위 (큐브에 닿지 않음)"}
+      rec_target: *rc_rec_target
+      setup: {now: "준비 (녹화 안 함): 그리퍼 닫힌 채 큐브 바로 위 1.5–2.5 cm 에서 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 먼저 그리퍼 열기 → 내려가 한 번 닫기", dont: "준비 중에 큐브를 누르거나 닫기 동작"}
+      stages:
+        start:
+          title: "① 닫힌 채 큐브 위 (실패 자세)"
+          text: "그리퍼가 닫힌 채 큐브 바로 위에 있습니다 (너무 일찍 닫힘)."
+          scene: {grip: closed, cube: [0.344, 0.72], mark: x}
+          now: "닫힌 채 멈춤 유지"
+          next: "그리퍼를 충분히 열기 (약 30)"
+          later: "열린 채 내려가 한 번 닫기"
+          dont: "닫힌 손가락으로 큐브 누르기"
+        approach:
+          title: "② 그리퍼 열고 내려가기"
+          text: "먼저 그리퍼를 충분히 연 뒤, 큐브가 두 손가락 사이에 오게 내려갑니다."
+          scene: {grip: open, cube: [0.344, 0.55], target: true, arrow: true}
+          now: "그리퍼를 충분히 열고 → 내려가기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "덜 연 채 내려가기"
+        preclose: *rc_preclose
+        close: *rc_close
+        done: *rc_done
+      failures: *rc_failures
+      target: *rc_target
+
+  # ---------------------------------------------------------------- F3 정렬 오차 (그리퍼 닫힘, 옆으로 빗김)
+  RC-F3-L:
+    like: R2-LEFT
+    label: "RC-F3 · 손가락이 큐브보다 로봇 왼쪽으로 빗김 → 열고 맞추기"
+    # 11-04: 손목 화면에서 로봇 좌우 빗김은 위 · 아래로 보인다 (d2 사람 시연 pan +1° → 큐브 10–13 px 아래, u 는 −2 px; RC ep3 사용자 확인).
+    # 손가락이 큐브보다 로봇 왼쪽 → 큐브는 로봇 오른쪽 → 손목 화면 손가락 끝보다 위. 높이 · 거리도 v 를 바꾸므로 근사 (녹화는 막지 않음).
+    wrist_start_region: {u: [0.10, 0.65], v: [0.30, 0.66]}
+    pilot_variant: RC-F3
+    gripper_start: closed
+    reopen_min: 25
+    failure_type: "misalign (실물 16:08 ep2 · ep8 — 정렬 오차)"
+    correction_action: "그리퍼를 엶 → 좌우 정렬 → 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    title: 그리퍼가 닫힌 채 큐브보다 로봇 왼쪽으로 빗겨 멈춤
+    start: "그리퍼 닫힘. 파지 높이에서 손가락 사이 중심이 큐브보다 로봇 왼쪽으로 2–3 cm (손목 화면에서는 큐브가 손가락 끝보다 위쪽). 큐브에 닿지 않음."
+    demo: "녹화 시작 → 그리퍼를 연다 → 좌우를 맞춰 큐브가 손가락 사이 가운데에 오게 → 한 번 닫기 → 상자 → 쉬는 자세."
+    guide_stages: *rc_stages
+    visual_guide:
+      kind: F3 · 왼쪽
+      category: "정렬 오차 회복"
+      case: "큐브 옆으로 빗겨 시작 (그리퍼 닫힘 · 손가락이 큐브보다 로봇 왼쪽)"
+      title: "큐브가 손가락 사이에 있지 않습니다"
+      subtitle: "그리퍼를 열고 좌우를 맞춘 뒤, 한 번 닫으세요."
+      ref_video: "review/failure_types/index.html#F3"
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼는 닫힌 채", "파지 높이에서 손가락이 큐브보다 로봇 왼쪽으로 2–3 cm 빗긴 곳에 멈춤 (손목 화면에서는 큐브가 손가락 끝 위쪽)",
+                    "큐브에 닿지 않게", "손목 화면이 오른쪽 그림과 비슷하면 → (녹화 시작) · F11 = 실제 실패 영상"]
+      side: {view: front, offset_cm: -2.5, grip: closed, tip_z: 1.2, label: "손가락이 큐브보다 로봇 왼쪽 2–3 cm · 그리퍼 닫힘"}
+      setup_target: {grip: closed, cube: [0.36, 0.48], region: start, caption: "로봇 왼쪽으로 빗김 → 손목 화면에서 큐브가 손가락 끝 위쪽"}
+      rec_target: *rc_rec_target
+      setup: {now: "준비 (녹화 안 함): 그리퍼 닫힌 채 파지 높이에서 큐브보다 로봇 왼쪽으로 2–3 cm 빗겨 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 그리퍼 열기 → 좌우 맞추기 → 한 번 닫기", dont: "준비 중에 큐브를 밀거나 닫기 동작"}
+      stages:
+        start:
+          title: "① 닫힌 채 옆으로 빗김 (실패 자세)"
+          text: "그리퍼가 닫힌 채 큐브 옆으로 빗겨 있습니다 (정렬 오차)."
+          scene: {grip: closed, cube: [0.36, 0.48], mark: x}
+          now: "닫힌 채 멈춤 유지"
+          next: "그리퍼 열기"
+          later: "좌우 맞춘 뒤 한 번 닫기"
+          dont: "빗긴 채 닫기"
+        approach:
+          title: "② 열고 좌우 맞추기"
+          text: "그리퍼를 연 뒤 큐브가 두 손가락 사이 가운데에 오게 좌우를 맞춥니다. 어느 관절로 할지는 직접 정합니다."
+          scene: {grip: open, cube: [0.36, 0.48], target: true, arrow: true}
+          now: "그리퍼 열고 좌우 맞추기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "빗긴 채 닫기 · 큐브 밀기"
+        preclose: *rc_preclose
+        close: *rc_close
+        done: *rc_done
+      failures: *rc_failures
+      target: *rc_target
+  RC-F3-R:
+    like: R2-RIGHT
+    label: "RC-F3 · 손가락이 큐브보다 로봇 오른쪽으로 빗김 → 열고 맞추기"
+    # 11-04: 손가락이 큐브보다 로봇 오른쪽 → 큐브는 로봇 왼쪽 → 손목 화면 손가락 아래쪽 (RC ep3 시작 큐브 u 0.54 · v 0.85, 사용자 확인 '로봇 기준 왼쪽에 큐브').
+    # 이전 영역 (u 0.03–0.36 = 화면 왼쪽) 은 화면 좌우 = 로봇 좌우로 잘못 가정한 것.
+    wrist_start_region: {u: [0.15, 0.70], v: [0.72, 1.0]}
+    pilot_variant: RC-F3
+    gripper_start: closed
+    reopen_min: 25
+    failure_type: "misalign (실물 16:08 ep2 · ep8 — 정렬 오차; ep8 front: 집게가 큐브보다 로봇 오른쪽 · 로봇 쪽으로 덜 감)"
+    correction_action: "그리퍼를 엶 → 좌우 정렬 → 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    title: 그리퍼가 닫힌 채 큐브보다 로봇 오른쪽으로 빗겨 멈춤
+    start: "그리퍼 닫힘. 파지 높이에서 손가락 사이 중심이 큐브보다 로봇 오른쪽으로 2–3 cm (손목 화면에서는 큐브가 손가락 아래쪽). 큐브에 닿지 않음."
+    demo: "녹화 시작 → 그리퍼를 연다 → 좌우를 맞춰 큐브가 손가락 사이 가운데에 오게 → 한 번 닫기 → 상자 → 쉬는 자세."
+    guide_stages: *rc_stages
+    visual_guide:
+      kind: F3 · 오른쪽
+      category: "정렬 오차 회복"
+      case: "큐브 옆으로 빗겨 시작 (그리퍼 닫힘 · 손가락이 큐브보다 로봇 오른쪽)"
+      title: "큐브가 손가락 사이에 있지 않습니다"
+      subtitle: "그리퍼를 열고 좌우를 맞춘 뒤, 한 번 닫으세요."
+      ref_video: "review/failure_types/index.html#F3"
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼는 닫힌 채", "파지 높이에서 손가락이 큐브보다 로봇 오른쪽으로 2–3 cm 빗긴 곳에 멈춤 (손목 화면에서는 큐브가 손가락 아래쪽)",
+                    "큐브에 닿지 않게", "손목 화면이 오른쪽 그림과 비슷하면 → (녹화 시작) · F11 = 실제 실패 영상"]
+      side: {view: front, offset_cm: 2.5, grip: closed, tip_z: 1.2, label: "손가락이 큐브보다 로봇 오른쪽 2–3 cm · 그리퍼 닫힘"}
+      setup_target: {grip: closed, cube: [0.345, 0.92], region: start, caption: "로봇 오른쪽으로 빗김 → 손목 화면에서 큐브가 손가락 아래쪽"}
+      setup_target_image: {path: "review/failure_types/F3_misalign/회복예_rc_ep3_시작_wrist.png", label: "실제 예 (회복 ep3)",
+                           caption: "실제 예 — 회복 ep3 시작 (큐브를 로봇 왼쪽에 둠 · 손목 화면에서 큐브가 닫힌 손가락 아래)"}
+      rec_target: *rc_rec_target
+      setup: {now: "준비 (녹화 안 함): 그리퍼 닫힌 채 파지 높이에서 큐브보다 로봇 오른쪽으로 2–3 cm 빗겨 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 그리퍼 열기 → 좌우 맞추기 → 한 번 닫기", dont: "준비 중에 큐브를 밀거나 닫기 동작"}
+      stages:
+        start:
+          title: "① 닫힌 채 옆으로 빗김 (실패 자세)"
+          text: "그리퍼가 닫힌 채 큐브 옆으로 빗겨 있습니다 (정렬 오차)."
+          scene: {grip: closed, cube: [0.345, 0.92], mark: x}
+          now: "닫힌 채 멈춤 유지"
+          next: "그리퍼 열기"
+          later: "좌우 맞춘 뒤 한 번 닫기"
+          dont: "빗긴 채 닫기"
+        approach:
+          title: "② 열고 좌우 맞추기"
+          text: "그리퍼를 연 뒤 큐브가 두 손가락 사이 가운데에 오게 좌우를 맞춥니다. 어느 관절로 할지는 직접 정합니다."
+          scene: {grip: open, cube: [0.345, 0.92], target: true, arrow: true}
+          now: "그리퍼 열고 좌우 맞추기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "빗긴 채 닫기 · 큐브 밀기"
+        preclose: *rc_preclose
+        close: *rc_close
+        done: *rc_done
+      failures: *rc_failures
+      target: *rc_target
+
+pilot_qa:
+  pan_correction_min_deg: 5
+  gripper_open_min: 15
+  close_drop_min: 8
+  pan_reversals_max: 2
+  path_ratio_max: 2.5
+  time_align_tol_s: 0.002
+
+checklist:
+  RC:
+    - "이 세션은 회복 시연 (F1 사선 하강 4 · F2 이른 닫힘 4 · F3 정렬 오차 4). 실패 자세는 준비 단계(녹화 안 함)에서 만들고, 녹화는 회복부터"
+    - "F1 은 그리퍼 열림, F2 · F3 은 그리퍼 닫힘으로 시작. 큐브에 닿지 않게, 큐브 앞에서 닫는 동작(빈 파지)은 하지 않음"
+    - "영상 창 F11 = 실제 실패 대표 영상 (review/failure_types)"
+    - "끝낼 때(Esc) 팔을 쉬는 자세에 두기 — 종료하면 토크가 꺼져요"
+
+# 보호 설정 (파일럿 12편과 같음 · 기존 safety 키는 그대로 · 완화 없음)
+safety:
+  teleop_guard:
+    enabled: true
+    pan_cmd_abs_max_deg: 95
+    hold_gap_deg: 25
+    release_gap_deg: 10
+    warn_gap_deg: 15
+    warn_s: 1.0
+    invalidate_in_rec: true
