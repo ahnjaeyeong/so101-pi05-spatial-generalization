@@ -47,6 +47,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 - 실패와 관련된 것은 시작 큐브 각도가 아니라 **정책이 손목을 돌린 크기**와 **손목 기준 큐브–집게 정렬**이었다.
 - 20k → 30k 추가 학습: loss 변화 없음, 첫 파지 22/40 → 12/40 (시작 자세가 달라 통제되지 않은 비교). → [EXP-05](experiments/05_redbox_30k/README.md)
 - d2 (새 카메라): 10-29 실물 20판 P 9. 실패는 대부분 파지 직전 '덜 다가감' 빈 닫힘. → [EXP-10](experiments/10_pan_diagnostic/README.md)
+- d2 + 교정 시연 16편 FT (rft01) 실물 파일럿 16판: FT 4/8 · BL 5/8 (사람). Known K3 에서 FT 2/2 · BL 0/2 (조건당 1회), Unknown 은 시작 그리퍼 교란으로 비교 무효. → [EXP-14](experiments/14_rft01_real_pilot/README.md)
 - 모든 실물 결과: [evaluations/real_robot/](evaluations/real_robot/README.md)
 
 ## 6. 현재 확인된 문제
@@ -68,21 +69,25 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 - 가중 재표집 (A1) 은 오프라인 지표에서 개선 없음.
 → [EXP-09](experiments/09_sampling_ablation/README.md), [EXP-10](experiments/10_pan_diagnostic/README.md)
 
-## 9. 현재 상태 (2026-11-02)
+## 9. 현재 상태 (2026-11-05 갱신; 이전 기준 11-02)
 | 구분 | 항목 |
 |---|---|
 | ✅ 완료 | EXP-01 ~ EXP-08, EXP-10 (필터 A/B 는 일부만), A0/A1 학습·오프라인 평가, A2 학습 |
 | ⏸ 일시정지 | Sampling ablation 큐 (A2 평가, A2r, A0′ 미실행; 재개는 사용자 지시) |
 | ⏹ 정지 | d4 (10k) |
-| 🔄 진행 중 | R1/R2 시연 수집 (도구 완료, 본 수집 0편, 연습 R1 12편) |
-| 🧪 오프라인만 | EXP-13 (11-04): d2 + R1 4 · R2 12 FT 1k — 학습 · 재추론 평가 완료, 실물 미평가 |
-| 📝 계획 | Held-out H 32편, 재학습 정책 로봇 평가, R2 단독 FT 검토 (EXP-13 후속), HIL (2차 방안) |
+| ✅ 수집 (부분) | EXP-11 R1/R2 pilot12: 학습 유효 16편 (R1 4 · RC 12), QA 완료 (11-03 ~ 11-04). 원래 계획 R1 16 · R2 32 본 수집은 안 함 |
+| ✅ 학습 · 오프라인 | EXP-13 (11-04): d2 + R1 4 · RC 12 FT 1k — 재추론에서 R1 복구 방향 신호만 개선, R2 실물 AHEAD 상태 변화 없음 |
+| ✅ 실물 파일럿 | EXP-14 (11-05): FT 4/8 · BL 5/8 [사람]. Unknown 구간 시작 그리퍼 · 모델 순서 교란 → **모델 우열 미결정** |
+| 🔄 진행 중 | EXP-12 HIL: 수집 도구 구현 · 가짜 장치 검증만 (179/179, UI 205/205). 실물 안전 검증 · 수집 0 |
+| 📝 계획 | 그리퍼 시작 상태를 고정한 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토, Held-out H 32편, HIL 실물 사전 확인 (모두 사용자 승인 뒤) |
+| 인계 | [HANDOFF.md](HANDOFF.md) — 11-05 기준 다음 세션 인계 문서 |
 
 ## 10. 향후 실험 계획
-1. R1 을 실패 상태 (팔 접은 자세, 15/25/40°+ 지나침, 손목 놓침·front 보임) 에 맞춰 수집, R2 수집.
-2. d2 + R1/R2 재학습 → 오프라인 T4 지표 (기준 U 7.7% / G 4.3%) → 실물 평가.
+(11-05 갱신 — 1·2 는 EXP-11/13/14 에서 일부 실행됨)
+1. ~~R1 을 실패 상태에 맞춰 수집, R2 수집~~ → pilot12 로 R1 4 · RC 12 수집 (EXP-11).
+2. ~~d2 + R1/R2 재학습 → 오프라인 T4 지표 → 실물 평가~~ → EXP-13 · EXP-14. 다음: 실행 도구의 그리퍼 시작 상태 고정 후 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토.
 3. Held-out H 녹화로 진짜 held-out 평가 마련.
-4. HIL (정책 실행 중 교정) 은 전환 장치·가짜 팔 검증 후 2차.
+4. HIL (정책 실행 중 교정): 전환 장치 구현 · 가짜 장치 검증 완료 (EXP-12, 11-04). 남은 것: 사용자 실물 사전 확인 (리더 토크 전환 · 정렬 · hold 뒤 재연결) 과 별도 승인.
 → [docs/06](docs/06_HIL_및_향후실험.md), [EXP-12](experiments/12_hil/README.md)
 
 ## 11. 문서 지도
@@ -96,6 +101,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | [templates/](templates/) | 새 실험·평가 문서 템플릿 |
 | [tools/](tools/) | 동기화·메타 수집·저장소 검사 스크립트 |
 | [CLAUDE.md](CLAUDE.md) | 이 저장소를 갱신할 때의 규칙 |
+| [HANDOFF.md](HANDOFF.md) | 11-05 연구 인계 (R1/R2 → rft01 → 실물 16판 → HIL 준비, 다음 단계) |
 | [inventory/](inventory/README.md) | 로컬 원본 ↔ GitHub 파일 단위 비교 (10,873개 분류), 항목별 누락표, 원본 없는 항목 |
 | [configs/camera/](configs/camera/README.md) | 카메라 설정·이동 전후 화면·보정 (H 행렬, 좌표계) 기록 |
 | [ARCHIVE_MANIFEST.csv](ARCHIVE_MANIFEST.csv) | Git 에 넣지 않은 원본 (대용량 로그·관측 PNG·npz·데이터셋 등) 의 경로·크기·SHA-256 |
