@@ -1,0 +1,279 @@
+A. 단위
+  ✓ 기존 r12_scenarios.yaml 이 기준 커밋과 같음 (고치지 않음) 
+  ✓ 기본 설정: 명령 보호 없음 · 파일럿 시나리오 없음 · 진행 그룹 r1_pilot·r2_pilot 
+  ✓ 파일럿 설정: extends 기본 sha 기록 · 기존 safety 키 그대로 (pan 95 · 리더−팔로워 25 · 한계 10) 
+  ✓ 파일럿 그룹만 (r2_pilot 40 · r1_pilot 없음) 
+  ✓ R2-P-AHEAD = R2-AHEAD 복사 + 그리퍼 열림 
+  ✓ 계획 R1 4 · R2-P 4 · R2-O 4 (합 12) 
+  ✓ R1 복구 방향 좌우 2/2 
+  ✓ R1 지나침 20·25° · 계획 |pan| ≤ 92 · K7/K8 안 씀 [('K4', '-66.2'), ('K6', '69.6'), ('K1', '-53.5'), ('K3', '56.2')]
+  ✓ R2-P = AHEAD 2 · DEPTH 2 
+  ✓ 계획 재현 (같은 seed → 같은 계획) 
+  ✓ 진행률 12편 (계획 없을 때 scenario_counts 기준) [('R1', 'R1-FOLD-OVER', 0, 4), ('R2', 'R2-P-AHEAD', 0, 2), ('R2', 'R2-P-DEPTH', 0, 2), ('R2', 'R2-O-REOPEN', 0, 4)]
+  ✓ R2-O 시작: 그리퍼 닫힘 ✓ · 손목 v 0.50 = 닫기 영역 위 · 실패 상태 비슷함 3/3 {'matched': 3, 'total': 3, 'items': ['✓ 그리퍼 닫힘 < 15 (실패 AHEAD 직전: 0.6–1.4)', '✓ 손목 큐브 v 0.25–0.633 (실패 AHEAD 닫는 순간 v 0.39–0.61)', '✓ front 큐브 보임 (실패 AHEAD: 가림 없음)']}
+  ✓ R2-O 에 그리퍼 열림 → ◇ (막지 않음, 비슷함 2/3) 
+  ✓ R1 시작: 팔 접힘 · 지나침 · 필요한 복구 방향 · 비슷함 4/4 -20.0 right(+) 4/4
+  ✓ 다른 lerobot-record 프로세스 찾음 (동시 명령 방지) ['/bin/sh /tmp/claude-2001/-home-user/939b']
+  ✓ 프로세스 찾기: 테스트 뒤 남은 것 없음 (pid 정리) 
+  ✓ 닫힘 세기: 한 번 
+  ✓ 닫힘 세기: 열기 없음 = 0 (닫힌 그리퍼만) 
+  ✓ 코드 버전 = git HEAD a72cf56fb3fe+dirty
+  ✓ QA R2-O: 먼저 열고 (팔 이동 0) 최대 32 ≥ 25 → Q4 ok · 닫힘 1번 → Q5 ok 시작 리더 그리퍼 1 · 처음 ≥ 15 @ 0.57s · 닫기 전 최대 32.0 (목표 ≥ 25) · 열기 전 Lift/Elbow 이동 0.0° (≤ 5 = 먼저 엶)
+  ✓ QA R2-O: 20 까지만 엶 → Q4 check 시작 리더 그리퍼 1 · 처음 ≥ 15 @ 0.70s · 닫기 전 최대 20.0 (목표 ≥ 25) · 열기 전 Lift/Elbow 이동 0.0° (≤ 5 = 먼저 엶)
+  ✓ QA R2-P: 닫기 전까지 열림 → Q3 ok 닫기 전 리더 그리퍼 ≥ 15 비율 1.00 · 최소 30.0
+  ✓ QA R1: 필요한 방향으로 Pan 수정 → Q2 ok 시작 기준 대비 -20.0° → 필요한 방향 오른쪽(+) · 첫 Pan 이동 toward · 최대 수정 21.0° · 닫기 시작 때 기준 대비 +1.0°
+  ✓ QA R1: 반대 방향 (더 지나침) → Q2 check 시작 기준 대비 -20.0° → 필요한 방향 오른쪽(+) · 첫 Pan 이동 away · 최대 수정 0.0° · 닫기 시작 때 기준 대비 -26.0°
+B. 실제 lerobot record() + 진입점 + 명령 보호 (가짜 장치)
+  ✓ 진입점이 파일럿 설정을 읽음 · 명령 보호 켬 
+INFO 2026-11-03 15:56:24 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 20,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'test/r12_pilot_guard',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '<scratch>/final/p12/ds_guard',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': False,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'r12_pilot_test',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/nonexistent/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'r12_pilot_test',
+            'num_read_retries': 2,
+            'port': '/nonexistent/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-03 15:56:25 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-03 15:56:25 ls/utils.py:150 Recording episode 0
+INFO 2026-11-03 15:56:27 ls/utils.py:150 Reset the environment
+INFO 2026-11-03 15:56:32 ls/utils.py:150 Re-record episode
+INFO 2026-11-03 15:56:32 ls/utils.py:150 Recording episode 0
+INFO 2026-11-03 15:56:32 le_timer.py:559 Cadence (discarded episode): 29.92 Hz vs 30 Hz target · 66 ticks, 2.2 s measured · 0/65 ticks over the 33.3 ms budget (work mean 1.0 ms, worst 3.0 ms)
+Map:   0%|          | 0/35 [00:00<?, ? examples/s]Map: 100%|██████████| 35/35 [00:00<00:00, 2704.21 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-03 15:56:34 le_timer.py:559 Cadence (episode 0): 29.92 Hz vs 30 Hz target · 35 ticks, 1.1 s measured · 0/34 ticks over the 33.3 ms budget (work mean 1.0 ms, worst 2.1 ms)
+INFO 2026-11-03 15:56:34 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 101 ticks, 99 judged
+  effective cadence: 29.92 Hz over 3.3 s measured
+  ticks over the 33.3 ms work budget: 0/99 (0.0%) — work mean 1.0 ms, worst 3.0 ms
+  loop-body steps (share of measured work):
+    observe      mean   0.15 ms · worst   1.29 ms ·  13.8% of work · 101 calls
+    process_obs  mean   0.03 ms · worst   0.06 ms ·   3.0% of work · 101 calls
+    teleop       mean   0.02 ms · worst   0.03 ms ·   1.4% of work · 101 calls
+    send         mean   0.03 ms · worst   0.16 ms ·   3.1% of work · 101 calls
+    record       mean   0.18 ms · worst   0.68 ms ·  17.1% of work · 101 calls
+    telemetry    mean   0.60 ms · worst   2.72 ms ·  56.5% of work · 101 calls
+  pacing headroom: 32.3 ms slept per tick on average (max 33.2 ms) — near zero means the loop is saturated
+INFO 2026-11-03 15:56:34 ls/utils.py:150 Stop recording
+INFO 2026-11-03 15:56:34 ls/utils.py:150 Exiting
+  ✓ guard_on 사건 (파일럿 설정) 
+  ✓ 녹화 첫 프레임 front · wrist PNG 저장 (480×640) ['<scratch>/final/p12/start_frames/ep000_a0917dcd01ed_front.png', '<scratch>/final/p12/start_frames/ep000_a0917dcd01ed_wrist.png']
+  ✓ 녹화 중 리더 Pan 100° (천천히) → 팔로워에는 최대 95° 95.0
+  ✓ 녹화 중 보호 → 무효 (invalid) · rec_end guard_invalid · 결과 단계에서 버리기 예약 
+  ✓ 준비 단계 리더−팔로워 ~97° → 팔로워 고정 (무효 아님 · 점프 없음) pan 95.0
+  ✓ 리더를 팔로워 자세로 맞추면 고정 풀림 
+  ✓ 무효 판 버린 뒤 같은 번호 다시 녹화 
+  ✓ 저장 1편 (무효 판 빠짐) · 판 길이 = rec_end 프레임 1 · 35 vs 35
+  ✓ 저장 판에 Pan > 95 없음 · action = 리더 값 그대로 (리더 Lift 1°씩 → 17.5…29.5, 보호가 기록 값을 바꾸지 않음) lift action 17.5 → 29.5, 팔로워 지연 최대 1.0°
+  ✓ features · fps · robot_type · codebase_version = d2 
+INFO 2026-11-03 15:56:34 gs/video.py:193 Using video codec: libsvtav1
+INFO 2026-11-03 15:56:34 gs/video.py:193 Using video codec: hevc
+INFO 2026-11-03 15:56:34 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 20,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'test/r12_pilot_blocked',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '<scratch>/final/p12/ds_blocked',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': False,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/nonexistent/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 1,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'r12_pilot_test',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/nonexistent/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'r12_pilot_test',
+            'num_read_retries': 2,
+            'port': '/nonexistent/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-03 15:56:34 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-03 15:56:34 ls/utils.py:150 Recording episode 0
+INFO 2026-11-03 15:56:35 ls/utils.py:150 Reset the environment
+INFO 2026-11-03 15:56:36 ls/utils.py:150 Re-record episode
+INFO 2026-11-03 15:56:36 le_timer.py:559 Cadence (discarded episode): 29.93 Hz vs 30 Hz target · 17 ticks, 0.5 s measured · 0/16 ticks over the 33.3 ms budget (work mean 1.2 ms, worst 2.6 ms)
+INFO 2026-11-03 15:56:36 le_timer.py:606 Cadence summary — whole run, 1 episode · target 30 Hz (33.3 ms budget per tick): 17 ticks, 16 judged
+  effective cadence: 29.93 Hz over 0.5 s measured
+  ticks over the 33.3 ms work budget: 0/16 (0.0%) — work mean 1.2 ms, worst 2.6 ms
+  loop-body steps (share of measured work):
+    observe      mean   0.28 ms · worst   1.20 ms ·  20.5% of work · 17 calls
+    process_obs  mean   0.03 ms · worst   0.05 ms ·   2.4% of work · 17 calls
+    teleop       mean   0.02 ms · worst   0.02 ms ·   1.2% of work · 17 calls
+    send         mean   0.04 ms · worst   0.18 ms ·   3.1% of work · 17 calls
+    record       mean   0.23 ms · worst   1.15 ms ·  17.0% of work · 17 calls
+    telemetry    mean   0.71 ms · worst   2.92 ms ·  52.0% of work · 17 calls
+  pacing headroom: 32.0 ms slept per tick on average (max 33.0 ms) — near zero means the loop is saturated
+INFO 2026-11-03 15:56:36 ls/utils.py:150 Stop recording
+INFO 2026-11-03 15:56:36 ls/utils.py:150 Exiting
+  ✓ 녹화 중 막힌 팔로워 (리더−팔로워 > 25°) → 고정 + 무효 
+  ✓ 고정 뒤 elbow 명령이 팔로워 자세 + 25° 를 넘지 않음 (밀기 멈춤) 31.1
+  ✓ 무효 판은 저장되지 않음 (Esc 로 끝, 0편) 
+  ✓ 기본 설정 (기존 r1/r2 세션) 에서는 명령 보호 꺼짐 — 기존 동작 그대로 False
+PASS 39/39 · 임시 폴더 <scratch>/final/p12

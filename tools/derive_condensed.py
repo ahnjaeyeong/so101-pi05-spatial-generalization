@@ -35,6 +35,11 @@ import sync_sources as S  # noqa: E402
 REPO = S.REPO
 RUNS = S.RUNS
 ROWS = []
+ONLY = ()  # --only DST_PREFIX (repeatable): derive only for repo paths under these prefixes
+
+
+def _sel(repo_rel):
+    return not ONLY or repo_rel.startswith(ONLY)
 
 
 def sha(path):
@@ -66,7 +71,7 @@ def mapped_dst(path):
 
 def condense_logs():
     for src, dst in S.iter_pairs():
-        if S.excluded(src) != "size_log" or not src.endswith(".log"):
+        if S.excluded(src) != "size_log" or not src.endswith(".log") or not _sel(dst):
             continue
         out = os.path.join(REPO, dst) + ".condensed.log"
         os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -85,7 +90,7 @@ def condense_logs():
 
 def gunzip_tables():
     for src, dst in S.iter_pairs():
-        if not src.endswith(".csv.gz"):
+        if not src.endswith(".csv.gz") or not _sel(dst):
             continue
         out = os.path.join(REPO, dst[:-3])
         with gzip.open(src, "rb") as f:
@@ -138,7 +143,7 @@ def rollout_state_action():
             s = pd.DataFrame(df["observation.state"].tolist(), columns=[f"state__{n}" for n in names])
             o = pd.concat([df[["episode_index", "frame_index", "timestamp"]], a, s], axis=1).round(3)
             dst = mapped_dst(ds)
-            if dst is None:
+            if dst is None or not _sel(os.path.relpath(dst, REPO)):
                 continue
             out = os.path.join(os.path.dirname(dst), "dataset_state_action.csv")
             os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -209,16 +214,28 @@ def diag_first_obs():
 
 
 def main():
+    global ONLY
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--only", action="append", default=[], metavar="DST_PREFIX",
+                    help="derive only under these repo path prefixes; other DERIVED_MANIFEST.csv rows are kept")
+    ONLY = tuple(ap.parse_args().only)
     condense_logs()
     gunzip_tables()
-    servo_timeline()
     rollout_state_action()
-    extract_1026_frames()
-    diag_first_obs()
-    with open(f"{REPO}/DERIVED_MANIFEST.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(ROWS[0].keys()))
+    if not ONLY:  # fixed-target derivatives of earlier experiments
+        servo_timeline()
+        extract_1026_frames()
+        diag_first_obs()
+    man = f"{REPO}/DERIVED_MANIFEST.csv"
+    rows = ROWS
+    if ONLY and os.path.exists(man):
+        with open(man, newline="", encoding="utf-8") as f:
+            rows = [r for r in csv.DictReader(f) if not r["repo_path"].startswith(ONLY)] + ROWS
+    with open(man, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()
-        w.writerows(ROWS)
+        w.writerows(rows)
     kinds = {}
     for r in ROWS:
         kinds[r["kind"]] = kinds.get(r["kind"], 0) + 1

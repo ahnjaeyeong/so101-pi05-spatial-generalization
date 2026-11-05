@@ -1,0 +1,12 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1793856978.9872,1222494.15743,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_143602_ft.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1793857159.6687,1222674.83885,0,0,episode_start,over_target,pe=-34.86 start_pan=-8.175824175824175 ok x=-8.1 y=26.4,,-8.175824175824175,,,
+1793857159.7011,1222674.87127,0,0,plan_check,K1_L30,"놓인 곳 (-8.1, 26.4) cm · Known (K1 0.4 cm) · 각도 +36° (= L30) · 계획 K1_L30 과 0.4 cm",,-8.175824175824175,,,
+1793857258.6087,1222773.77885,1,0,episode_start,over_target,pe=36.78 start_pan=-7.736263736263736 ok x=-7.7 y=-6.4,,-7.736263736263736,,,
+1793857258.6472,1222773.81739,1,0,plan_check,U2_L30,"놓인 곳 (-7.7, -6.4) cm · Known (K3 3.0 cm) · 각도 +24° (= L30) · 계획 U2_L30 과 1.0 cm ⚠ 계획은 unknown 인데 사진 판정은 Known (K3 3.0 cm) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)",,-7.736263736263736,,,계획은 unknown 인데 사진 판정은 Known (K3 3.0 cm)
+1793857361.1385,1222876.30868,2,0,episode_start,over_target,pe=30.87 start_pan=-7.736263736263736 ok x=-15.9 y=2.2,,-7.736263736263736,,,
+1793857361.1588,1222876.32896,2,0,plan_check,U7_45,"놓인 곳 (-15.9, 2.2) cm · Unknown (가장 가까운 K6 5.8 cm) · 각도 -39° (= 45) · 계획 U7_45 과 0.4 cm",,-7.736263736263736,,,
+1793857405.5623,1222920.73250,3,0,episode_start,over_target,pe=-56.38 start_pan=-7.824175824175824 ok x=-20.2 y=26.3,,-7.824175824175824,,,
+1793857405.5827,1222920.75285,3,0,plan_check,U8_0,"놓인 곳 (-20.2, 26.3) cm · Unknown (가장 가까운 K4 3.2 cm) · 각도 +0° (= 0) · 계획 U8_0 과 0.4 cm",,-7.824175824175824,,,
+1793857502.9208,1223018.09104,4,0,episode_start,over_target,pe=-11.33 start_pan=-8.0 ok x=-6.0 y=15.8,,-8.0,,,
+1793857502.9453,1223018.11552,4,0,plan_check,U1_R30,"놓인 곳 (-6.0, 15.8) cm · Unknown (가장 가까운 K2 4.9 cm) · 각도 -29° (= R30) · 계획 U1_R30 과 0.5 cm",,-8.0,,,

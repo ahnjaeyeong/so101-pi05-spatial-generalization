@@ -1,0 +1,18 @@
+{
+ "1": {
+  "labels": [
+   "Successful grasp"
+  ],
+  "evidence": {
+   "T4": "grasp (바닥 11.9558)",
+   "wrist_T2": "in_zone u=0.316 v=0.664 area=0.112",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "정상 닫힘 (기준 시연)"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ }
+}

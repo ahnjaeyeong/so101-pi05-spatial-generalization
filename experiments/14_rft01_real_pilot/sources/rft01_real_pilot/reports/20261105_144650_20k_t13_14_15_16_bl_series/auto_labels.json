@@ -1,0 +1,63 @@
+{
+ "1": {
+  "labels": [
+   "Empty grasp"
+  ],
+  "evidence": {
+   "T4": "empty (바닥 1.1057)",
+   "wrist_T2": "not_visible",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "2": {
+  "labels": [
+   "Empty grasp"
+  ],
+  "evidence": {
+   "T4": "empty (바닥 1.5204)",
+   "wrist_T2": "not_visible",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "3": {
+  "labels": [
+   "Successful grasp"
+  ],
+  "evidence": {
+   "T4": "grasp (바닥 11.3338)",
+   "wrist_T2": "not_visible",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "정상 닫힘 (기준 시연)"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ },
+ "4": {
+  "labels": [
+   "Undetermined",
+   "Center offset"
+  ],
+  "evidence": {
+   "T4": "undetermined (바닥 18.3138)",
+   "wrist_T2": "left u=0.096 v=0.413 area=0.028",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "중심 정렬"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ }
+}

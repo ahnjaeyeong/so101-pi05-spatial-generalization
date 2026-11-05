@@ -40,7 +40,7 @@ EXCLUDE_DIRS = {
     "harness", "runs_lat1.0", "runs_lat1.55", "runs_spike", ".cache", "_deleted",
     "replay", "preview", "ctrl", "backup",
     "dataset_empty_20261015_1449", "dataset_empty_20261023_1333", "plan_preview", "live",
-    "weights", "f1_results_raw",
+    "weights", "f1_results_raw", ".git",
 }
 EXCLUDE_PREFIX = ("tmp", "runs_wide", "dataset_empty")
 EXCLUDE_NAMES = set()
@@ -222,6 +222,22 @@ MAPPINGS = [
      ("dataset", "raw", "weights", "checkpoints", "training_state")),
     # ---- survey docs (11-02) ----
     (f"{RUNS}/research_survey_20261102/부록_조사노트", "docs/appendix_survey_notes"),
+    # ---- added 2026-11-05 (handoff records) ----
+    # 11 R1/R2: pilot12 sessions actually recorded 11-03 ~ 11-04 (dataset/review videos excluded; meta info.json kept)
+    *[(f"{RUNS}/main_k8/{s}", f"experiments/11_r1_r2_recovery/sources/sessions/{s}")
+      for s in ("r12_pilot12_r1", "r12_pilot12_rc", "r12_pilot12_r2p", "r12_pilot12_r2o")],
+    *[(f"{RUNS}/main_k8/{s}/dataset/meta/info.json", f"experiments/11_r1_r2_recovery/sources/sessions/{s}/dataset_meta/info.json")
+      for s in ("r12_pilot12_r1", "r12_pilot12_rc", "r12_pilot12_r2p")],
+    # 12 HIL prep (11-04): adapter, tools, tests, reports; fake-device outputs (tests/_out*) and the
+    # upstream LeRobot source copies (docs/upstream_main_ba83e4cf) excluded; tests/_out top-level summaries kept
+    (f"{RUNS}/main_k8/hil_dagger", "experiments/12_hil/sources/hil_dagger",
+     ("_out", "_out_perf", "_out_rep", "_out_v1", "upstream_main_ba83e4cf")),
+    *[(p, f"experiments/12_hil/sources/hil_dagger/tests/_out/{os.path.basename(p)}") for p in sorted(
+        __import__("glob").glob(f"{RUNS}/main_k8/hil_dagger/tests/_out/*")) if os.path.isfile(p)],
+    # 14 rft01 real pilot (11-05): scripts, config, results, per-trial reports and small rollout logs;
+    # rollout dataset/videos, diag chunks/obs/replay, report frames/obs, fake-device outputs excluded
+    (f"{RUNS}/main_k8/rft01_real_pilot", "experiments/14_rft01_real_pilot/sources/rft01_real_pilot",
+     ("_out", "diag", "viewer")),
 ]
 
 
@@ -302,6 +318,9 @@ def iter_pairs(with_skipped_dirs=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--only", action="append", default=[], metavar="DST_PREFIX",
+                    help="copy only files whose repo path starts with this prefix (repeatable); "
+                         "other SOURCES_MANIFEST.csv rows are kept unchanged")
     a = ap.parse_args()
     rows, skipped, total = [], {}, 0
     missing = [m[0] for m in MAPPINGS if not os.path.exists(m[0])]
@@ -310,6 +329,8 @@ def main():
         if dst in seen:
             continue
         seen.add(dst)
+        if a.only and not dst.startswith(tuple(a.only)):
+            continue
         why = excluded(src)
         if why:
             skipped[why] = skipped.get(why, 0) + 1
@@ -325,17 +346,24 @@ def main():
             print("MISSING", m)
         return
     out = []
+    n_new = len(rows)
     for src, dst, size in rows:
         d = os.path.join(REPO, dst)
         os.makedirs(os.path.dirname(d), exist_ok=True)
         shutil.copy2(src, d)
         out.append({"repo_path": dst, "source_path": src, "bytes": size, "sha256": sha256(src),
                     "source_mtime": int(os.path.getmtime(src))})
-    with open(os.path.join(REPO, "SOURCES_MANIFEST.csv"), "w", newline="", encoding="utf-8") as f:
+    man = os.path.join(REPO, "SOURCES_MANIFEST.csv")
+    if a.only and os.path.exists(man):
+        # keep rows outside the selected prefixes; replace rows inside them
+        with open(man, newline="", encoding="utf-8") as f:
+            kept = [r for r in csv.DictReader(f) if not r["repo_path"].startswith(tuple(a.only))]
+        out = kept + out
+    with open(man, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(out[0].keys()))
         w.writeheader()
         w.writerows(out)
-    print(f"copied {len(out)} files, {total/1e6:.1f} MB; skipped {skipped}; missing sources {len(missing)}")
+    print(f"copied {n_new} files, {total/1e6:.1f} MB (manifest rows {len(out)}); skipped {skipped}; missing sources {len(missing)}")
     for m in missing:
         print("MISSING", m)
 

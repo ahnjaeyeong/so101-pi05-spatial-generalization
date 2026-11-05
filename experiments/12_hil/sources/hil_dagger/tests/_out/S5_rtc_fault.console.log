@@ -1,0 +1,82 @@
+WARNING:root:No accelerated backend detected. Using default cpu, this will be slow.
+WARNING:lerobot.configs.policies:Device 'cuda' is not available. Switching to 'cpu'.
+INFO 2026-11-04 18:02:43 _rollout.py:245 Building rollout context...
+INFO 2026-11-04 18:02:43 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+INFO 2026-11-04 18:02:43 /context.py:361 Policy loaded: type=pi05, device=cpu
+INFO 2026-11-04 18:02:43 /context.py:392 Connecting robot (so100_follower)...
+[hil fake] MOCK_OK follower FakeFollowerBus+FakeCam (no serial, no camera)
+INFO 2026-11-04 18:02:43 /context.py:395 Robot connected: so_follower
+INFO 2026-11-04 18:02:43 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-04 18:02:43 /context.py:406 Connecting teleoperator (so100_leader)...
+[hil fake] MOCK_OK leader FakeLeaderBus (no serial)
+INFO 2026-11-04 18:02:43 /context.py:409 Teleoperator connected
+INFO 2026-11-04 18:02:43 /context.py:500 Setting up dataset (repo_id=oxr/rollout_hil_fake_S5_rtc_fault)...
+INFO 2026-11-04 18:02:43 /context.py:547 Dataset ready: oxr/rollout_hil_fake_S5_rtc_fault (0 existing episodes)
+INFO 2026-11-04 18:02:43 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-04 18:02:43 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-04 18:02:43 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-04 18:02:43 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-04 18:02:43 _rollout.py:249 Rollout strategy: dagger
+INFO 2026-11-04 18:02:43 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-04 18:02:43 gies/core.py:96 Starting inference engine...
+INFO 2026-11-04 18:02:43 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:02:43 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-04 18:02:43 ies/core.py:100 Inference engine started
+INFO 2026-11-04 18:02:43 s/dagger.py:269 Streaming encoding is disabled for DAgger corrections-only mode. Consider enabling it for faster episode saving: --dataset.streaming_encoding=true --dataset.encoder_threads=2
+WARNING 2026-11-04 18:02:43 rd_input.py:391 Keyboard controls unavailable: no usable display (Wayland/headless) and stdin is not an interactive terminal (pause_resume='space', correction='tab', upload='enter', ESC=stop).
+INFO 2026-11-04 18:02:43 s/dagger.py:286 DAgger strategy ready (input=keyboard, episodes=6, record=corrections only, episode_duration=182044s)
+INFO 2026-11-04 18:02:43 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-04 18:02:43 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:02:43 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-04 18:02:43 s/dagger.py:552 DAgger corrections-only recording started (target: 6 episodes)
+INFO 2026-11-04 18:02:43 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-04 18:02:44 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:02:45 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:02:46 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+ERROR 2026-11-04 18:02:46 ence/rtc.py:604 RTC inference error (1/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:47 ence/rtc.py:604 RTC inference error (2/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:47 ence/rtc.py:604 RTC inference error (3/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:48 ence/rtc.py:604 RTC inference error (4/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:48 ence/rtc.py:604 RTC inference error (5/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:49 ence/rtc.py:604 RTC inference error (6/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:49 ence/rtc.py:604 RTC inference error (7/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:50 ence/rtc.py:604 RTC inference error (8/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:50 ence/rtc.py:604 RTC inference error (9/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:51 ence/rtc.py:604 RTC inference error (10/10): stub policy: injected inference failure
+ERROR 2026-11-04 18:02:51 ence/rtc.py:620 Fatal error in RTC thread: stub policy: injected inference failure
+ERROR 2026-11-04 18:02:51 ence/rtc.py:621 Traceback (most recent call last):
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/rollout/inference/rtc.py", line 528, in _rtc_loop
+    actions = predict_action_chunk(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101_runs/main_k8/hil_dagger/tests/fake_hil_hw.py", line 266, in predict_action_chunk
+    raise RuntimeError("stub policy: injected inference failure")
+RuntimeError: stub policy: injected inference failure
+
+INFO 2026-11-04 18:02:51 s/dagger.py:670 DAgger corrections-only loop ended — pausing engine
+INFO 2026-11-04 18:02:51 le_timer.py:606 Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 224 ticks, 223 judged
+  effective cadence: 29.38 Hz over 7.6 s measured
+  ticks over the 33.3 ms work budget: 0/223 (0.0%) — work mean 0.5 ms, worst 4.2 ms
+  ticks with no action to send (inference engine starved): 114 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 42
+  loop-body steps (share of measured work):
+    observe      mean   0.23 ms · worst   0.91 ms ·  48.5% of work · 224 calls
+    process_obs  mean   0.02 ms · worst   0.03 ms ·   3.2% of work · 224 calls
+    infer        mean   0.10 ms · worst   3.72 ms ·  21.8% of work · 224 calls
+    send         mean   0.08 ms · worst   0.29 ms ·   8.8% of work · 110 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.4% of work · 110 calls
+  pacing headroom: 33.5 ms slept per tick on average (max 39.4 ms) — near zero means the loop is saturated
+INFO 2026-11-04 18:02:51 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:02:51 s/dagger.py:304 Stopping DAgger recording
+INFO 2026-11-04 18:02:51 ls/utils.py:150 Stopping DAgger recording
+INFO 2026-11-04 18:02:51 s/dagger.py:313 Shutting down push executor (waiting for pending pushes)...
+INFO 2026-11-04 18:02:51 s/dagger.py:318 Finalizing dataset...
+INFO 2026-11-04 18:02:51 ies/core.py:209 Stopping inference engine...
+INFO 2026-11-04 18:02:51 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-04 18:02:51 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-11-04 18:02:54 ies/core.py:220 Disconnecting robot...
+INFO 2026-11-04 18:02:54 follower.py:262 hil_fake SOFollower disconnected.
+INFO 2026-11-04 18:02:54 ies/core.py:224 Disconnecting teleoperator...
+INFO 2026-11-04 18:02:54 o_leader.py:186 hil_fake_leader SOLeader disconnected.
+INFO 2026-11-04 18:02:54 s/dagger.py:334 DAgger strategy teardown complete
+INFO 2026-11-04 18:02:54 _rollout.py:272 Rollout finished
+[S5_rtc_fault] done wall=11.3s main_err=no script_err=no

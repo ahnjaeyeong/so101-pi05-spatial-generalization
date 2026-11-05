@@ -1,0 +1,561 @@
+[r2_safety] installed {'mode': 'stop', 'scope': 'episode', 'pan_cmd_abs_max': 104.0, 'pan_present_abs_max': 100.0, 'over_target_deg': 30.0, 'stall_err_deg': 8.0, 'stall_move_deg': 0.3, 'stall_ticks': 20, 'plan': '/home/user/so101_runs/main_k8/rft01_real_pilot/config/pilot_plan.csv', 'plan_tol_cm': 2.0, 'plan_tol_deg': 10.0, 'plan_start': 5, 'live': 'on', 'viewer': 'auto'}
+WARNING:lerobot.r2_safety:R2_PLAN 배치 계획 8 판 (/home/user/so101_runs/main_k8/rft01_real_pilot/config/pilot_plan.csv), 5 번부터. 첫 판: 5번 K3_R30 (known) — 표시된 자리, 각도 R30 (위에서 볼 때 시계 ↻ 30°) · 좌표 (-8.5, -3.5) cm
+WARNING:lerobot.r2_safety:R2_PLAN 배치 창을 띄웠어요 (scripts/r2_place_viewer.py, 공유 /dev/shm/r2_live_20261105_132513_1k_t05_ft_k3_r30)
+[fault_latch] installed {'mode': 'stop'}
+[end_hold] installed (auto-return blocked, torque kept on at exit)
+INFO 2026-11-05 13:25:24 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_rft01_real_pilot_1k_t05_ft_k3_r30 --dataset.root=/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=60 --dataset.reset_time_s=3600 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --return_to_initial_position=false --strategy.reset_to_initial_position=false
+INFO 2026-11-05 13:25:24 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-05 13:25:24 _rollout.py:245 Building rollout context...
+INFO 2026-11-05 13:25:24 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-11-05 13:28:01 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-11-05 13:28:01 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-11-05 13:28:01 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-11-05 13:28:07 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-11-05 13:28:07 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-11-05 13:28:09 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-11-05 13:28:10 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-11-05 13:28:10 follower.py:131 my_arm SOFollower connected.
+INFO 2026-11-05 13:28:10 /context.py:395 Robot connected: so_follower
+INFO 2026-11-05 13:28:10 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-05 13:28:10 /context.py:500 Setting up dataset (repo_id=oxr/rollout_rft01_real_pilot_1k_t05_ft_k3_r30)...
+INFO 2026-11-05 13:28:10 /context.py:547 Dataset ready: oxr/rollout_rft01_real_pilot_1k_t05_ft_k3_r30 (0 existing episodes)
+INFO 2026-11-05 13:28:12 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-05 13:28:12 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-05 13:28:12 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-05 13:28:12 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-05 13:28:12 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-11-05 13:28:12 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-05 13:28:12 gies/core.py:96 Starting inference engine...
+INFO 2026-11-05 13:28:12 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 13:28:12 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-05 13:28:12 ies/core.py:100 Inference engine started
+INFO 2026-11-05 13:28:12 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-11-05 13:28:12 episodic.py:105 Episodic strategy ready
+INFO 2026-11-05 13:28:12 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-05 13:28:12 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-05 13:28:12 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-05 13:28:12 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-05 13:28:12 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 5번 K3_R30 (known) — 표시된 자리, 각도 R30 (위에서 볼 때 시계 ↻ 30°) · 좌표 (-8.5, -3.5) cm
+[eval_ui] READY 0
+Right arrow key pressed. Exiting loop...
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+WARNING 2026-11-05 13:29:20 2_safety.py:383 R2_PLAN 이번 판 5번 K3_R30 (known) — 표시된 자리, 각도 R30 (위에서 볼 때 시계 ↻ 30°) · 좌표 (-8.5, -3.5) cm: 놓인 곳 (-8.6, -2.9) cm · Known (K3 0.6 cm) · 각도 -27° (= R30) · 계획 K3_R30 과 0.6 cm
+INFO 2026-11-05 13:29:20 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-05 13:29:20 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=25
+INFO 2026-11-05 13:29:21 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:22 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-05 13:29:23 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-05 13:29:23 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -86.294189453125,
+                         'safe goal_pos': -86.98901098901099}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -84.26278686523438,
+                         'safe goal_pos': -85.23076923076923}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -81.60306549072266,
+                         'safe goal_pos': -82.68131868131869}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 77.0990219116211,
+                      'safe goal_pos': 77.14285714285714},
+    'shoulder_lift': {   'original goal_pos': -77.9782943725586,
+                         'safe goal_pos': -80.48351648351648}}
+INFO 2026-11-05 13:29:25 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 73.60291290283203,
+                      'safe goal_pos': 75.56043956043956},
+    'shoulder_lift': {   'original goal_pos': -72.80291748046875,
+                         'safe goal_pos': -78.10989010989012}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 71.56949615478516,
+                      'safe goal_pos': 73.71428571428571},
+    'shoulder_lift': {   'original goal_pos': -68.69483184814453,
+                         'safe goal_pos': -75.73626373626374}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 69.01905059814453,
+                      'safe goal_pos': 71.95604395604396},
+    'shoulder_lift': {   'original goal_pos': -65.16191101074219,
+                         'safe goal_pos': -73.36263736263736}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 64.56018829345703,
+                      'safe goal_pos': 70.28571428571429},
+    'shoulder_lift': {   'original goal_pos': -58.921875,
+                         'safe goal_pos': -71.16483516483517}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 60.763648986816406,
+                      'safe goal_pos': 68.52747252747253},
+    'shoulder_lift': {   'original goal_pos': -53.598968505859375,
+                         'safe goal_pos': -68.87912087912088}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 58.307838439941406,
+                      'safe goal_pos': 66.68131868131869},
+    'shoulder_lift': {   'original goal_pos': -49.8155403137207,
+                         'safe goal_pos': -66.32967032967034}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 55.10822296142578,
+                      'safe goal_pos': 65.0989010989011},
+    'shoulder_lift': {   'original goal_pos': -46.38100051879883,
+                         'safe goal_pos': -64.04395604395604}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 53.45452117919922,
+                      'safe goal_pos': 63.252747252747255},
+    'shoulder_lift': {   'original goal_pos': -43.3654899597168,
+                         'safe goal_pos': -61.84615384615384}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 51.59485626220703,
+                      'safe goal_pos': 61.4065934065934},
+    'shoulder_lift': {   'original goal_pos': -40.24317169189453,
+                         'safe goal_pos': -59.472527472527474}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 50.456520080566406,
+                      'safe goal_pos': 59.824175824175825},
+    'shoulder_lift': {   'original goal_pos': -38.44226837158203,
+                         'safe goal_pos': -56.92307692307692}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 48.257240295410156,
+                      'safe goal_pos': 58.06593406593407},
+    'shoulder_lift': {   'original goal_pos': -37.08099365234375,
+                         'safe goal_pos': -54.637362637362635}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 46.61872100830078,
+                      'safe goal_pos': 56.13186813186813},
+    'shoulder_lift': {   'original goal_pos': -34.65184020996094,
+                         'safe goal_pos': -52.26373626373626}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 44.655982971191406,
+                      'safe goal_pos': 54.46153846153846},
+    'shoulder_lift': {   'original goal_pos': -32.797767639160156,
+                         'safe goal_pos': -49.714285714285715}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 43.39265441894531,
+                      'safe goal_pos': 52.879120879120876},
+    'shoulder_lift': {   'original goal_pos': -30.62165069580078,
+                         'safe goal_pos': -47.42857142857143}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 42.34906005859375,
+                      'safe goal_pos': 51.032967032967036},
+    'shoulder_lift': {   'original goal_pos': -30.095565795898438,
+                         'safe goal_pos': -45.142857142857146}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 39.84986114501953,
+                      'safe goal_pos': 49.27472527472528},
+    'shoulder_lift': {   'original goal_pos': -27.000869750976562,
+                         'safe goal_pos': -42.68131868131868}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 39.282386779785156,
+                      'safe goal_pos': 47.604395604395606},
+    'shoulder_lift': {   'original goal_pos': -26.811065673828125,
+                         'safe goal_pos': -40.30769230769231}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 37.07295227050781,
+                      'safe goal_pos': 45.84615384615385},
+    'shoulder_lift': {   'original goal_pos': -24.912139892578125,
+                         'safe goal_pos': -37.84615384615385}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 36.18867492675781,
+                      'safe goal_pos': 44.08791208791209},
+    'shoulder_lift': {   'original goal_pos': -24.11871337890625,
+                         'safe goal_pos': -35.472527472527474}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 34.022178649902344,
+                      'safe goal_pos': 42.32967032967033},
+    'shoulder_lift': {   'original goal_pos': -22.5986328125,
+                         'safe goal_pos': -33.010989010989015}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 32.33167266845703,
+                      'safe goal_pos': 40.48351648351648},
+    'shoulder_lift': {   'original goal_pos': -21.67779541015625,
+                         'safe goal_pos': -30.373626373626372}}
+INFO 2026-11-05 13:29:25 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 30.922706604003906,
+                      'safe goal_pos': 38.9010989010989},
+    'shoulder_lift': {   'original goal_pos': -20.413246154785156,
+                         'safe goal_pos': -28.087912087912088}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 28.803443908691406,
+                      'safe goal_pos': 37.142857142857146},
+    'shoulder_lift': {   'original goal_pos': -19.06902313232422,
+                         'safe goal_pos': -25.714285714285715}}
+WARNING 2026-11-05 13:29:25 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 28.56585693359375,
+                      'safe goal_pos': 35.2967032967033},
+    'shoulder_lift': {   'original goal_pos': -18.642578125,
+                         'safe goal_pos': -23.076923076923077}}
+WARNING 2026-11-05 13:29:26 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 27.898605346679688,
+                      'safe goal_pos': 33.53846153846154},
+    'shoulder_lift': {   'original goal_pos': -17.190086364746094,
+                         'safe goal_pos': -20.615384615384617}}
+WARNING 2026-11-05 13:29:26 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 26.92798614501953,
+                      'safe goal_pos': 31.86813186813187},
+    'shoulder_lift': {   'original goal_pos': -16.908042907714844,
+                         'safe goal_pos': -18.24175824175824}}
+WARNING 2026-11-05 13:29:26 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 27.479454040527344,
+                      'safe goal_pos': 29.934065934065934}}
+WARNING 2026-11-05 13:29:26 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 27.066307067871094,
+                      'safe goal_pos': 28.263736263736263}}
+WARNING 2026-11-05 13:29:26 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 26.1944580078125,
+                      'safe goal_pos': 26.505494505494504}}
+INFO 2026-11-05 13:29:26 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-05 13:29:27 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=12, real_delay=13
+INFO 2026-11-05 13:29:28 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:29 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:29 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=9
+WARNING 2026-11-05 13:29:29 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 11.231328964233398,
+                   'safe goal_pos': 10.626123013130615}}
+WARNING 2026-11-05 13:29:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 15.513153076171875,
+                   'safe goal_pos': 12.353835521769177}}
+WARNING 2026-11-05 13:29:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 18.387060165405273,
+                   'safe goal_pos': 14.565307532826537}}
+WARNING 2026-11-05 13:29:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 20.25505828857422,
+                   'safe goal_pos': 16.84588804422944}}
+WARNING 2026-11-05 13:29:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 20.756704330444336,
+                   'safe goal_pos': 19.0573600552868}}
+INFO 2026-11-05 13:29:30 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-05 13:29:31 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:31 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=12
+INFO 2026-11-05 13:29:32 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:33 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 22.811492919921875,
+                         'safe goal_pos': 23.516483516483518}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 20.460845947265625,
+                         'safe goal_pos': 22.63736263736264}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 18.358177185058594,
+                         'safe goal_pos': 21.406593406593405}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 16.805191040039062,
+                         'safe goal_pos': 20.35164835164835}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 15.583076477050781,
+                         'safe goal_pos': 19.208791208791208}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 14.586593627929688,
+                         'safe goal_pos': 18.065934065934066}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 13.370063781738281,
+                         'safe goal_pos': 16.835164835164836}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 12.2291259765625,
+                         'safe goal_pos': 15.604395604395606}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 12.633491516113281,
+                         'safe goal_pos': 14.373626373626372}}
+WARNING 2026-11-05 13:29:33 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 12.143989562988281,
+                         'safe goal_pos': 13.142857142857142}}
+INFO 2026-11-05 13:29:34 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-05 13:29:34 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+WARNING 2026-11-05 13:29:34 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 21.34745979309082,
+                   'safe goal_pos': 20.301313061506566}}
+WARNING 2026-11-05 13:29:34 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 25.13689422607422,
+                   'safe goal_pos': 21.54526606772633}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 28.058975219726562,
+                   'safe goal_pos': 23.68762957843815}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 29.99134063720703,
+                   'safe goal_pos': 26.037318590186594}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 30.622821807861328,
+                   'safe goal_pos': 28.24879060124395}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 30.669841766357422,
+                   'safe goal_pos': 30.460262612301314}}
+INFO 2026-11-05 13:29:35 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 21.172409057617188,
+                         'safe goal_pos': 21.23076923076923}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 18.53864288330078,
+                         'safe goal_pos': 20.175824175824175}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 18.530176162719727,
+                   'safe goal_pos': 21.50932964754665},
+    'shoulder_lift': {   'original goal_pos': 16.387863159179688,
+                         'safe goal_pos': 18.945054945054945}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 13.49343204498291,
+                   'safe goal_pos': 19.36696613683483},
+    'shoulder_lift': {   'original goal_pos': 15.3623046875,
+                         'safe goal_pos': 17.53846153846154}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 8.572842597961426,
+                   'safe goal_pos': 16.80995162404976},
+    'shoulder_lift': {   'original goal_pos': 12.684097290039062,
+                         'safe goal_pos': 16.21978021978022}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 3.661118507385254,
+                   'safe goal_pos': 14.529371112646857},
+    'shoulder_lift': {   'original goal_pos': 10.11517333984375,
+                         'safe goal_pos': 14.813186813186814}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 1.551598310470581,
+                   'safe goal_pos': 12.38700760193504},
+    'shoulder_lift': {   'original goal_pos': 7.187202453613281,
+                         'safe goal_pos': 13.670329670329672}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': 0.8533861041069031,
+                   'safe goal_pos': 9.968210089841051},
+    'shoulder_lift': {   'original goal_pos': 3.872161865234375,
+                         'safe goal_pos': 12.35164835164835}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': -10.527694702148438,
+                      'safe goal_pos': -12.0},
+    'gripper': {   'original goal_pos': 0.22356349229812622,
+                   'safe goal_pos': 7.825846579129232},
+    'shoulder_lift': {   'original goal_pos': 1.1167526245117188,
+                         'safe goal_pos': 10.857142857142858}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': -8.62786865234375,
+                      'safe goal_pos': -9.362637362637361},
+    'gripper': {   'original goal_pos': 0.4236236810684204,
+                   'safe goal_pos': 5.4761575673807865},
+    'shoulder_lift': {   'original goal_pos': -1.3781585693359375,
+                         'safe goal_pos': 9.53846153846154}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': -5.406097412109375,
+                      'safe goal_pos': -6.637362637362637},
+    'gripper': {   'original goal_pos': 0.3593015968799591,
+                   'safe goal_pos': 3.126468555632343},
+    'shoulder_lift': {   'original goal_pos': -3.6342315673828125,
+                         'safe goal_pos': 8.219780219780219}}
+WARNING 2026-11-05 13:29:35 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': -1.7829208374023438,
+                      'safe goal_pos': -4.0},
+    'gripper': {   'original goal_pos': 0.44019895792007446,
+                   'safe goal_pos': 0.9841050449205255},
+    'shoulder_lift': {   'original goal_pos': -6.028358459472656,
+                         'safe goal_pos': 6.813186813186814}}
+INFO 2026-11-05 13:29:36 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 0.7335968017578125,
+                      'safe goal_pos': -1.3626373626373631},
+    'shoulder_lift': {   'original goal_pos': -8.458740234375,
+                         'safe goal_pos': 5.318681318681319}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 3.6490707397460938,
+                      'safe goal_pos': 1.3626373626373622},
+    'shoulder_lift': {   'original goal_pos': -10.672752380371094,
+                         'safe goal_pos': 3.9120879120879124}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {'original goal_pos': 7.0634765625, 'safe goal_pos': 4.0},
+    'shoulder_lift': {   'original goal_pos': -12.548934936523438,
+                         'safe goal_pos': 2.5054945054945055}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 9.961639404296875,
+                      'safe goal_pos': 6.549450549450549},
+    'shoulder_lift': {   'original goal_pos': -13.754936218261719,
+                         'safe goal_pos': 1.010989010989011}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 11.903388977050781,
+                      'safe goal_pos': 9.362637362637363},
+    'shoulder_lift': {   'original goal_pos': -15.343032836914062,
+                         'safe goal_pos': -0.4835164835164836}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 13.1810302734375,
+                      'safe goal_pos': 12.0},
+    'shoulder_lift': {   'original goal_pos': -16.041915893554688,
+                         'safe goal_pos': -2.0659340659340657}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -17.12506866455078,
+                         'safe goal_pos': -3.5604395604395602}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -18.14904022216797,
+                         'safe goal_pos': -5.230769230769231}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -19.429977416992188,
+                         'safe goal_pos': -6.725274725274725}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -19.643447875976562,
+                         'safe goal_pos': -8.131868131868131}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -21.91510009765625,
+                         'safe goal_pos': -9.89010989010989}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -23.368408203125,
+                         'safe goal_pos': -11.472527472527473}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -25.236251831054688,
+                         'safe goal_pos': -12.967032967032967}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -27.082489013671875,
+                         'safe goal_pos': -14.901098901098901}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -28.081039428710938,
+                         'safe goal_pos': -16.747252747252745}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -30.253143310546875,
+                         'safe goal_pos': -18.505494505494504}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -32.471763610839844,
+                         'safe goal_pos': -20.35164835164835}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -34.22620391845703,
+                         'safe goal_pos': -22.10989010989011}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -36.19000244140625,
+                         'safe goal_pos': -23.956043956043956}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -37.449058532714844,
+                         'safe goal_pos': -25.89010989010989}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -40.53407669067383,
+                         'safe goal_pos': -27.824175824175825}}
+INFO 2026-11-05 13:29:36 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -41.94860076904297,
+                         'safe goal_pos': -29.846153846153847}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -43.64036178588867,
+                         'safe goal_pos': -31.604395604395606}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -44.316810607910156,
+                         'safe goal_pos': -33.62637362637363}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -45.043190002441406,
+                         'safe goal_pos': -35.64835164835165}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -45.89207458496094,
+                         'safe goal_pos': -37.67032967032967}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -47.19403839111328,
+                         'safe goal_pos': -39.69230769230769}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -47.66197204589844,
+                         'safe goal_pos': -41.8021978021978}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -49.4991455078125,
+                         'safe goal_pos': -43.91208791208791}}
+WARNING 2026-11-05 13:29:36 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -50.81646728515625,
+                         'safe goal_pos': -46.02197802197802}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -52.05073165893555,
+                         'safe goal_pos': -48.30769230769231}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -53.34361267089844,
+                         'safe goal_pos': -50.505494505494504}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -55.21352767944336,
+                         'safe goal_pos': -52.43956043956044}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -56.530460357666016,
+                         'safe goal_pos': -54.9010989010989}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -58.43376159667969,
+                         'safe goal_pos': -56.92307692307692}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -59.71268081665039,
+                         'safe goal_pos': -59.20879120879121}}
+INFO 2026-11-05 13:29:37 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -78.93522644042969,
+                         'safe goal_pos': -77.84615384615384}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -81.08651733398438,
+                         'safe goal_pos': -80.3956043956044}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -84.30673217773438,
+                         'safe goal_pos': -82.76923076923077}}
+WARNING 2026-11-05 13:29:37 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -85.89041900634766,
+                         'safe goal_pos': -84.96703296703296}}
+INFO 2026-11-05 13:29:38 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:39 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:40 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-05 13:29:40 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:41 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-05 13:29:42 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+Right arrow key pressed. Exiting loop...
+WARNING 2026-11-05 13:29:42 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 6번 K3_R30 (known) — 표시된 자리, 각도 R30 (위에서 볼 때 시계 ↻ 30°) · 좌표 (-8.5, -3.5) cm  |  버리고 다시 (←) 하면: 5번 K3_R30 (known) — 표시된 자리, 각도 R30 (위에서 볼 때 시계 ↻ 30°) · 좌표 (-8.5, -3.5) cm
+[eval_ui] SAVING 0 642
+INFO 2026-11-05 13:29:42 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=2, real_delay=12
+Map:   0%|                                      | 0/642 [00:00<?, ? examples/s]Map:  60%|███████████████▋          | 387/642 [00:00<00:00, 3835.34 examples/s]Map: 100%|██████████████████████████| 642/642 [00:00<00:00, 3637.79 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: Svt[warn]: -------------------------------------------
+Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[eval_ui] SAVED 0 642
+INFO 2026-11-05 13:29:49 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-11-05 13:29:49 le_timer.py:559 Cadence (episode 1): 29.75 Hz vs 30 Hz target · 668 ticks, 22.5 s measured · 0/667 ticks over the 33.3 ms budget (work mean 4.3 ms, worst 11.1 ms) · starved ticks: 26
+INFO 2026-11-05 13:29:49 le_timer.py:606 Cadence summary — whole run, 1 episode · target 30 Hz (33.3 ms budget per tick): 668 ticks, 667 judged
+  effective cadence: 29.75 Hz over 22.5 s measured
+  ticks over the 33.3 ms work budget: 0/667 (0.0%) — work mean 4.3 ms, worst 11.1 ms
+  ticks with no action to send (inference engine starved): 26 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 134
+  loop-body steps (share of measured work):
+    observe      mean   1.86 ms · worst  46.84 ms ·  42.4% of work · 668 calls
+    process_obs  mean   0.04 ms · worst   0.51 ms ·   0.8% of work · 668 calls
+    infer        mean   0.22 ms · worst   4.74 ms ·   5.1% of work · 668 calls
+    send         mean   1.62 ms · worst   6.12 ms ·  35.6% of work · 642 calls
+    telemetry    mean   0.00 ms · worst   0.03 ms ·   0.1% of work · 642 calls
+    record       mean   0.23 ms · worst   1.32 ms ·   5.1% of work · 642 calls
+  pacing headroom: 29.1 ms slept per tick on average (max 33.2 ms) — near zero means the loop is saturated
+INFO 2026-11-05 13:29:49 ls/utils.py:150 Stop recording
+INFO 2026-11-05 13:29:49 episodic.py:357 Finalizing dataset...
+INFO 2026-11-05 13:29:49 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-05 13:29:49 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-11-05 13:29:49 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-11-05 13:29:49 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+WARNING 2026-11-05 13:29:49 end_hold.py:298 END_HOLD 종료: 자동 복귀 없음 · 팔은 지금 자리에서 토크 유지 (시작 자세와 최대 4.4°). 복귀 · 토크 끄기는 사용자가: python3 ~/so101_runs/main_k8/rft01_real_pilot/scripts/safe_home.py --run /home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30
+[end_hold] END_HOLD 종료: 자동 복귀 없음 · 팔은 지금 자리에서 토크 유지 (시작 자세와 최대 4.4°). 복귀 · 토크 끄기는 사용자가: python3 ~/so101_runs/main_k8/rft01_real_pilot/scripts/safe_home.py --run /home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30
+INFO 2026-11-05 13:29:49 ls/utils.py:150 Exiting
+INFO 2026-11-05 13:29:49 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-11-05 13:29:49 _rollout.py:272 Rollout finished

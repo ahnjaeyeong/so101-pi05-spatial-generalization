@@ -1,0 +1,5 @@
+ep,label,group,known,x_cm,y_cm,angle_code,angle_deg,angle_text,ref_K,dist_ref_K_cm,from_ref,pe_deg,min_set,in_calib,trial,model,pair,order_in_pair,phase,condition
+13,U2_L30,U,unknown,-8.5,-7.0,L30,30.0,L30 (위에서 볼 때 반시계 ↺ 30°),K3,3.5,로봇 기준 오른쪽 (화면 왼쪽) 3.5 cm,38.8,True,True,13,bl,P5,2,4,U2 L30
+14,U7_45,U,unknown,-15.5,2.0,45,45.0,45° (꼭짓점이 로봇 쪽),K6,5.7,상자 쪽 (화면 아래) 1.5 cm · 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm,30.6,True,True,14,bl,P6,2,4,U7 45°
+15,U8_0,U,unknown,-20.5,26.5,0,0.0,0° (큐브 면이 로봇 정면과 나란히),K4,3.5,로봇 쪽 (화면 위) 3.5 cm,-57.5,False,True,15,bl,P7,2,4,U8 0°
+16,U1_R30,U,unknown,-6.5,15.5,R30,-30.0,R30 (위에서 볼 때 시계 ↻ 30°),K2,4.47,상자 쪽 (화면 아래) 2.0 cm · 로봇 기준 왼쪽 (화면 오른쪽) 4.0 cm,-10.9,False,True,16,bl,P8,2,4,U1 R30

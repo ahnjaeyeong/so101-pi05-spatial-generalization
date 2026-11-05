@@ -1,0 +1,75 @@
+WARNING:root:No accelerated backend detected. Using default cpu, this will be slow.
+WARNING:lerobot.configs.policies:Device 'cuda' is not available. Switching to 'cpu'.
+INFO 2026-11-04 18:01:53 _rollout.py:245 Building rollout context...
+INFO 2026-11-04 18:01:53 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+INFO 2026-11-04 18:01:53 /context.py:361 Policy loaded: type=pi05, device=cpu
+INFO 2026-11-04 18:01:53 /context.py:392 Connecting robot (so100_follower)...
+[hil fake] MOCK_OK follower FakeFollowerBus+FakeCam (no serial, no camera)
+INFO 2026-11-04 18:01:53 /context.py:395 Robot connected: so_follower
+INFO 2026-11-04 18:01:53 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-04 18:01:53 /context.py:406 Connecting teleoperator (so100_leader)...
+[hil fake] MOCK_OK leader FakeLeaderBus (no serial)
+INFO 2026-11-04 18:01:53 /context.py:409 Teleoperator connected
+INFO 2026-11-04 18:01:53 /context.py:500 Setting up dataset (repo_id=oxr/rollout_hil_fake_S2_key_race)...
+INFO 2026-11-04 18:01:54 /context.py:547 Dataset ready: oxr/rollout_hil_fake_S2_key_race (0 existing episodes)
+INFO 2026-11-04 18:01:54 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-04 18:01:54 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-04 18:01:54 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-04 18:01:54 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-04 18:01:54 _rollout.py:249 Rollout strategy: dagger
+INFO 2026-11-04 18:01:54 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-04 18:01:54 gies/core.py:96 Starting inference engine...
+INFO 2026-11-04 18:01:54 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:01:54 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-04 18:01:54 ies/core.py:100 Inference engine started
+INFO 2026-11-04 18:01:54 s/dagger.py:269 Streaming encoding is disabled for DAgger corrections-only mode. Consider enabling it for faster episode saving: --dataset.streaming_encoding=true --dataset.encoder_threads=2
+WARNING 2026-11-04 18:01:54 rd_input.py:391 Keyboard controls unavailable: no usable display (Wayland/headless) and stdin is not an interactive terminal (pause_resume='space', correction='tab', upload='enter', ESC=stop).
+INFO 2026-11-04 18:01:54 s/dagger.py:286 DAgger strategy ready (input=keyboard, episodes=6, record=corrections only, episode_duration=182044s)
+INFO 2026-11-04 18:01:54 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-04 18:01:54 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:01:54 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-04 18:01:54 s/dagger.py:552 DAgger corrections-only recording started (target: 6 episodes)
+INFO 2026-11-04 18:01:54 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-04 18:01:55 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:01:56 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:01:56 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:01:56 s/dagger.py:717 Phase transition: autonomous -> paused
+INFO 2026-11-04 18:01:56 s/dagger.py:719 Pausing engine - robot holds position
+INFO 2026-11-04 18:01:56 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:01:56 s/dagger.py:728 Smooth handover: moving leader arm to follower position
+INFO 2026-11-04 18:01:58 s/dagger.py:717 Phase transition: paused -> autonomous
+INFO 2026-11-04 18:01:58 s/dagger.py:754 Resuming autonomous mode - resetting engine and interpolator
+INFO 2026-11-04 18:01:58 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:01:58 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-04 18:01:59 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-04 18:02:00 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-04 18:02:00 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=10
+INFO 2026-11-04 18:02:01 s/dagger.py:670 DAgger corrections-only loop ended — pausing engine
+INFO 2026-11-04 18:02:01 le_timer.py:606 Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 150 ticks, 147 judged
+  effective cadence: 29.32 Hz over 5.0 s measured
+  ticks over the 33.3 ms work budget: 0/147 (0.0%) — work mean 0.8 ms, worst 5.2 ms
+  ticks with no action to send (inference engine starved): 19 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 45
+  loop-body steps (share of measured work):
+    observe      mean   0.40 ms · worst   4.86 ms ·   2.8% of work · 150 calls
+    process_obs  mean   0.02 ms · worst   0.04 ms ·   0.1% of work · 149 calls
+    infer        mean   0.15 ms · worst   0.28 ms ·   1.0% of work · 149 calls
+    send         mean   0.10 ms · worst   0.68 ms ·   0.6% of work · 131 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.0% of work · 130 calls
+  pacing headroom: 33.1 ms slept per tick on average (max 49.9 ms) — near zero means the loop is saturated
+INFO 2026-11-04 18:02:01 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:02:01 s/dagger.py:304 Stopping DAgger recording
+INFO 2026-11-04 18:02:01 ls/utils.py:150 Stopping DAgger recording
+INFO 2026-11-04 18:02:01 s/dagger.py:313 Shutting down push executor (waiting for pending pushes)...
+INFO 2026-11-04 18:02:01 s/dagger.py:318 Finalizing dataset...
+INFO 2026-11-04 18:02:01 ies/core.py:209 Stopping inference engine...
+INFO 2026-11-04 18:02:01 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-04 18:02:01 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-11-04 18:02:01 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-11-04 18:02:04 ies/core.py:220 Disconnecting robot...
+INFO 2026-11-04 18:02:04 follower.py:262 hil_fake SOFollower disconnected.
+INFO 2026-11-04 18:02:04 ies/core.py:224 Disconnecting teleoperator...
+INFO 2026-11-04 18:02:04 o_leader.py:186 hil_fake_leader SOLeader disconnected.
+INFO 2026-11-04 18:02:04 s/dagger.py:334 DAgger strategy teardown complete
+INFO 2026-11-04 18:02:04 _rollout.py:272 Rollout finished
+[S2_key_race] done wall=10.9s main_err=no script_err=no

@@ -1,0 +1,11 @@
+wall,perf,event,detail
+1793853705.7173,1219220.88749,install,E5 home between/at end via /home/user/so101_runs/main_k8/rft01_real_pilot/scripts/safe_home.py
+1793853705.7173,1219220.88754,install,E1 return blocked · E2 end hold · E3 rerecord→stop · E4 teardown hold (torque on)
+1793853939.7129,1219454.88308,hold,policy_loop_end episode_end_or_user_next shoulder_pan=23.30 shoulder_lift=23.69 elbow_flex=-7.08 wrist_flex=92.57 wrist_roll=32.40
+1793853939.7172,1219454.88735,home_start,between_episodes dist=127.0
+1793853948.5435,1219463.71368,home_end,between_episodes arrived ticks=254 max_err=4.3
+1793854004.5615,1219519.73173,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-3.60 shoulder_lift=-103.16 elbow_flex=94.46 wrist_flex=74.37 wrist_roll=1.19
+1793854014.1889,1219529.35907,hold,teardown shoulder_pan=-3.52 shoulder_lift=-103.16 elbow_flex=95.08 wrist_flex=74.29 wrist_roll=1.19
+1793854014.1924,1219529.36261,home_start,teardown dist=5.2
+1793854014.5383,1219529.70850,home_end,teardown arrived ticks=10 max_err=1.3
+1793854014.7609,1219529.93106,teardown,"{""ended_by"": ""episode_end_or_user_next"", ""max_abs_diff_deg"": 1.14, ""bus_ok_at_teardown"": true, ""torque_left_on"": true, ""auto_return_blocked_calls"": 0}"

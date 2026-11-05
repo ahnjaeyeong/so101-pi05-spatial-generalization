@@ -1,0 +1,20 @@
+wall,perf,event,detail
+1793857621.2209,1223136.39110,install,E5 home between/at end via /home/user/so101_runs/main_k8/rft01_real_pilot/scripts/safe_home.py
+1793857621.2210,1223136.39115,install,E1 return blocked · E2 end hold · E3 rerecord→stop · E4 teardown hold (torque on)
+1793857881.6344,1223396.80462,hold,policy_loop_end episode_end_or_user_next shoulder_pan=44.04 shoulder_lift=66.07 elbow_flex=-64.57 wrist_flex=94.95 wrist_roll=-63.34
+1793857881.6384,1223396.80864,home_start,between_episodes dist=168.8
+1793857893.3891,1223408.55927,home_end,between_episodes arrived ticks=338 max_err=5.8
+1793857894.3320,1223409.50216,gripper_home,5.5 -> 24.8 (now 24.5)
+1793857936.9628,1223452.13300,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-6.24 shoulder_lift=-103.16 elbow_flex=91.65 wrist_flex=77.45 wrist_roll=0.48
+1793857936.9665,1223452.13666,home_start,between_episodes dist=3.8
+1793857937.2456,1223452.41580,home_end,between_episodes arrived ticks=8 max_err=0.9
+1793857938.3550,1223453.52519,gripper_home,0.6 -> 24.8 (now 24.5)
+1793857980.5989,1223495.76913,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-4.04 shoulder_lift=-103.08 elbow_flex=94.73 wrist_flex=73.49 wrist_roll=2.33
+1793857980.6023,1223495.77253,home_start,between_episodes dist=3.9
+1793857980.8805,1223496.05069,home_end,between_episodes arrived ticks=8 max_err=1.2
+1793857981.9887,1223497.15892,gripper_home,0.6 -> 24.8 (now 24.5)
+1793858036.3370,1223551.50718,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-7.03 shoulder_lift=-102.99 elbow_flex=95.08 wrist_flex=73.41 wrist_roll=3.38
+1793858046.0670,1223561.23718,hold,teardown shoulder_pan=-7.03 shoulder_lift=-102.99 elbow_flex=95.52 wrist_flex=73.41 wrist_roll=3.38
+1793858046.0704,1223561.24063,home_start,teardown dist=4.9
+1793858046.4155,1223561.58572,home_end,teardown arrived ticks=10 max_err=1.1
+1793858046.6494,1223561.81959,teardown,"{""ended_by"": ""episode_end_or_user_next"", ""max_abs_diff_deg"": 1.05, ""bus_ok_at_teardown"": true, ""torque_left_on"": true, ""auto_return_blocked_calls"": 0}"

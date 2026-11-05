@@ -61,12 +61,41 @@ def _expand(p):
 
 
 def load_config(path=None):
+    """설정 읽기. `extends: <다른 yaml>` 이 있으면 그 파일 위에 덧씌운다 (2026-11-03 파일럿 12편: 기존 r12_scenarios.yaml 을 고치지 않음).
+    덧씌우기 규칙: scenarios · safety 는 키 단위로 합침 (같은 키는 이 파일 것), 나머지 (groups · checklist 등) 는 통째로 바꿈.
+    시나리오의 `like: <시나리오 id>` = 그 시나리오를 복사한 뒤 이 항목의 키로 덮어씀."""
     path = _expand(path or DEFAULT_CONFIG)
     with open(path) as f:
         cfg = yaml.safe_load(f)
-    cfg["_path"] = path
+    raw_sha = None
     with open(path, "rb") as f:
-        cfg["_sha256"] = hashlib.sha256(f.read()).hexdigest()
+        raw_sha = hashlib.sha256(f.read()).hexdigest()
+    if cfg.get("extends"):
+        bpath = cfg["extends"]
+        bpath = _expand(bpath if os.path.isabs(os.path.expanduser(os.path.expandvars(bpath))) else os.path.join(os.path.dirname(path), bpath))
+        with open(bpath) as f:
+            base = yaml.safe_load(f)
+        if base.get("extends"):
+            raise PlanError(f"{bpath}: extends 는 한 단계만 허용")
+        with open(bpath, "rb") as f:
+            base_sha = hashlib.sha256(f.read()).hexdigest()
+        merged = dict(base)
+        for k, v in cfg.items():
+            if k in ("scenarios", "safety") and isinstance(v, dict):
+                merged[k] = {**(base.get(k) or {}), **v}
+            elif k != "extends":
+                merged[k] = v
+        merged["_extends_path"], merged["_extends_sha256"] = bpath, base_sha
+        cfg = merged
+    scen = cfg.get("scenarios") or {}
+    for sid, s in list(scen.items()):
+        if isinstance(s, dict) and s.get("like"):
+            src = scen.get(s["like"])
+            if not src or src.get("like"):
+                raise PlanError(f"시나리오 {sid}: like {s['like']} 를 찾을 수 없음 (또는 like 를 다시 씀)")
+            scen[sid] = {**src, **{k: v for k, v in s.items() if k != "like"}, "_like": s["like"]}
+    cfg["_path"] = path
+    cfg["_sha256"] = raw_sha
     with open(_expand(cfg["base_config"])) as f:
         cfg["_base"] = yaml.safe_load(f)
     return cfg
@@ -585,7 +614,10 @@ def describe_row(cfg, r):
             "pan_ref_deg": round(pan_ref(cfg, r["position"]), 1), "pan_ref_source": pan_ref_source(cfg, r["position"]),
             "approach_depth_category": s.get("approach_depth_category", ""),
             "wrist_start_region": start_region(s),
-            "retake_of": r.get("retake_of", "")}
+            "retake_of": r.get("retake_of", ""),
+            # 2026-11-03 파일럿 12편 (설정에 있을 때만): R1 / R2-P / R2-O · 시작 그리퍼 조건 (open / closed / 빈칸 = 상관없음)
+            "pilot_variant": s.get("pilot_variant", ""), "gripper_start": s.get("gripper_start", ""),
+            "reopen_min": s.get("reopen_min", "")}
 
 
 def start_region(s):
@@ -1012,6 +1044,14 @@ def fold_attempts(events):
             a.setdefault("marks", []).append(ev)
         elif k == "label":
             a["label"] = {x: ev.get(x) for x in ("first_grasp_success", "final_success", "retry_count", "operator_notes", "recovery_completed")}
+        elif k == "pilot_start":  # 2026-11-03 파일럿: 시작 상태 값 · 실패 상태 비슷함
+            a["pilot_start"] = ev.get("pilot")
+        elif k == "start_frames":
+            a["start_frames"] = ev.get("files") or {}
+        elif k == "review_flags":  # 녹화 뒤 자동 검토 표시 (보조)
+            a["review_flags"] = ev.get("flags") or []
+        elif k == "guard":  # 녹화 중 명령 보호 (무효 시연 사유)
+            a.setdefault("guard", []).append(ev)
         elif k == "discarded":
             a["status"] = "discarded"
         elif k == "saved":
@@ -1164,11 +1204,16 @@ def session_dir(session):
 PILOT_GROUPS = ("r1_pilot", "r2_pilot")  # 11-02 정의: R1 16 + R2 32 = 48편
 
 
+def program_groups(cfg):
+    """진행률·메뉴에 보일 그룹. 설정 program_groups 가 있으면 그것 (파일럿 12편), 없으면 기존 48편 두 그룹."""
+    return list(cfg.get("program_groups") or PILOT_GROUPS)
+
+
 def program_progress(cfg, override=None):
     """48편 파일럿 시나리오별 [(type, scenario_id, 저장, 목표)]. 세션 계획 r12_plan.csv 상태로 센다 (계획이 없으면 설정 수량, 저장 0).
     override = {세션: {scenario_id: (저장, 목표)}} — 지금 녹화 중인 세션은 실행 중 값으로."""
     out = []
-    for gname in PILOT_GROUPS:
+    for gname in program_groups(cfg):
         g = group_of(cfg, gname)
         per = (override or {}).get(g["session"])
         if per is None:
@@ -1178,7 +1223,8 @@ def program_progress(cfg, override=None):
             except (OSError, PlanError):
                 rows = None
             if rows is None:
-                per = {sid: (0, int(s["count"])) for sid, s in scenarios_of(cfg, g["type"])}
+                per = ({sid: (0, int(n)) for sid, n in g["scenario_counts"].items() if int(n) > 0} if g.get("scenario_counts")
+                       else {sid: (0, int(s["count"])) for sid, s in scenarios_of(cfg, g["type"])})
             else:
                 for r in rows:
                     if r["status"] == EXCLUDED:
@@ -1192,3 +1238,321 @@ def program_progress(cfg, override=None):
 def dataset_total(sess_dir):
     info = read_json(os.path.join(sess_dir, "dataset", "meta", "info.json"))
     return None if info is None else int(info.get("total_episodes", 0))
+
+
+# ================================================================ 2026-11-03 교정 시연 파일럿 12편 (R1 · R2-P · R2-O)
+# 설정 config/r12_pilot12.yaml (extends r12_scenarios.yaml). 아래 함수는 시나리오에 pilot_variant 가 있을 때만 쓰인다.
+# 시작 상태 값은 '안내 · QA · 기록' 용 — 녹화를 막지 않는다 (막는 것은 safety_check BLOCK 과 녹화 중 명령 보호뿐).
+# 검증되지 않은 목표 Pan · 손목 v 영역을 물리적 정답으로 쓰지 않는다: 실패 상태와의 '비슷함' 은 근사 비교 표시일 뿐.
+
+PILOT_EPISODES_CSV = "r12_pilot_episodes.csv"
+START_FRAMES_DIR = "r12_start_frames"
+PILOT_FIELDS = ["run_id", "episode_index", "episode_id", "scenario_id", "pilot_variant", "failure_type", "correction_action",
+                "start_joint_state", "start_gripper_value", "start_gripper_state", "gripper_start_expected",
+                "start_pan_deg", "start_lift_deg", "start_elbow_deg", "start_wflex_deg", "start_stage", "start_stage_progress",
+                "start_pan_error_deg", "start_pan_side", "needed_recovery_dir",
+                "start_wrist_u", "start_wrist_v", "start_wrist_relation", "start_wrist_visibility", "start_front_visibility",
+                "start_in_wrist_region", "failure_similarity", "failure_similarity_items",
+                "cube_position", "cube_xy_planned_cm", "cube_rotation", "front_cube_xy_cm",
+                "start_frame_front", "start_frame_wrist", "dataset_root", "dataset_repo_id", "video_front", "video_wrist",
+                "first_grasp_success", "final_success", "valid", "invalid_reason", "operator_notes", "guard_events", "review_flags",
+                "frames", "loop_hz_mean", "code_version", "config_sha256", "config_extends_sha256", "recorded_at", "attempt_id"]
+
+
+def wrist_uv(w):
+    if not w or not w.get("detected"):
+        return None
+    return (w["dx"] + 1) / 2, (w["dy"] + 1) / 2
+
+
+def wrist_relation(w):
+    """손목 화면 큐브 위치 → 손가락 사이와의 2D 관계 (닫기 영역 기준). 물리 깊이·높이가 아님 (2D 손목 영상).
+    ahead = 닫기 영역보다 위 (손가락 끝보다 앞 쪽) · below = 아래 · left/right_in_image = 화면 좌우 · in_zone = 영역 안."""
+    uv = wrist_uv(w)
+    if uv is None:
+        return "not_visible"
+    z = wrist_zone() or {"u": [0.255, 0.432], "v": [0.633, 0.78]}
+    u, v = uv
+    if v < z["v"][0]:
+        return "ahead"
+    if v > z["v"][1]:
+        return "below"
+    if u < z["u"][0]:
+        return "left_in_image"
+    if u > z["u"][1]:
+        return "right_in_image"
+    return "in_zone"
+
+
+RELATION_KO = {"ahead": "닫기 영역 위 (앞쪽)", "below": "닫기 영역 아래", "left_in_image": "닫기 영역 왼쪽",
+               "right_in_image": "닫기 영역 오른쪽", "in_zone": "닫기 영역 안", "not_visible": "안 보임"}
+
+
+def pilot_start_checks(cfg, row, state, vis, calib=0.0):
+    """파일럿 시작 상태 (녹화 직전). row = describe_row 결과. 반환 dict:
+      values: 관절 · 그리퍼 · 손목 u/v · front 가시성 · (R1) Pan 오차 · 필요한 복구 방향
+      items:  [(ok True/False/None, key, 글)] — 안내 (◇ 달라도 녹화됨)
+      similarity: 실물 실패 상태 기준 (설정 pilot_reference) 과 맞는 항목 수 / 전체 — 근사 비교."""
+    out = {"values": {}, "items": [], "similarity": {"matched": 0, "total": 0, "items": []}}
+    if not row or not row.get("pilot_variant"):
+        return out
+    var = row["pilot_variant"]
+    ref = (cfg.get("pilot_reference") or {}).get(var, {})
+    s = _joint_dict(state)
+    V, I = out["values"], out["items"]
+    sim = out["similarity"]
+
+    def crit(ok, text):
+        sim["total"] += 1
+        sim["matched"] += bool(ok)
+        sim["items"].append(f"{'✓' if ok else '✗'} {text}")
+
+    V["pilot_variant"] = var
+    if s:
+        V.update(pan=round(s["shoulder_pan"], 1), lift=round(s["shoulder_lift"], 1), elbow=round(s["elbow_flex"], 1),
+                 wflex=round(s["wrist_flex"], 1), wroll=round(s["wrist_roll"], 1), gripper=round(s["gripper"], 1))
+        gmin = float(cfg["safety"].get("gripper_open_min", 15))
+        V["gripper_state"] = "open" if s["gripper"] >= gmin else "closed"
+        st, prog = approach_stage(cfg, state, row["position"])
+        V.update(stage=st, stage_progress=prog)
+        want = row.get("gripper_start") or ""
+        if want:
+            ok = V["gripper_state"] == want
+            I.append((ok, "gripper", f"그리퍼 {s['gripper']:.0f} ({'열림' if V['gripper_state'] == 'open' else '닫힘'}) · 조건 "
+                      f"{'열림 ≥' if want == 'open' else '닫힘 <'} {gmin:g}"))
+        I.append((None, "pose", f"Pan {s['shoulder_pan']:+.0f} Lift {s['shoulder_lift']:+.0f} Elbow {s['elbow_flex']:+.0f} "
+                  f"Wflex {s['wrist_flex']:+.0f}° · {STAGE_SHORT.get(st, '?')}"))
+    if vis:
+        w = vis.get("wrist")
+        uv = wrist_uv(w)
+        rel = wrist_relation(w)
+        V.update(wrist_u=None if uv is None else round(uv[0], 3), wrist_v=None if uv is None else round(uv[1], 3),
+                 wrist_relation=rel, wrist_visibility=wrist_visibility(w), front_visibility=front_visibility(vis.get("front")))
+        reg = row.get("wrist_start_region")
+        V["in_wrist_region"] = in_region(w, reg) if reg else None
+        I.append((None if uv is None else (V["in_wrist_region"] if reg else None), "wrist",
+                  f"손목 큐브 {'안 보임' if uv is None else f'u {uv[0]:.2f} v {uv[1]:.2f}'} → {RELATION_KO.get(rel, rel)}"))
+        fv = V["front_visibility"]
+        I.append((fv == "visible" if fv != "unknown" else None, "front",
+                  f"front 큐브 {'보임' if fv == 'visible' else '계획 자리에서 멀리 검출' if fv == 'offset' else '안 보임' if fv == 'not_detected' else '모름'}"))
+    if var == "R1" and s:
+        err = s["shoulder_pan"] - pan_ref(cfg, row["position"]) - float(calib or 0)
+        travel = math.copysign(1.0, pan_ref(cfg, row["position"]) - float(cfg.get("rest_pan_deg", -4.0)))
+        over = err * travel > 0
+        V.update(pan_error_deg=round(err, 1), pan_side="over" if over else "under",
+                 needed_recovery_dir="left(-)" if err > 0 else "right(+)")
+        I.append((abs(err) >= 8 and over, "pan", f"복구 방향 {'왼쪽(−)' if err > 0 else '오른쪽(+)'} · {'지나침' if over else '덜 감'} {abs(err):.0f}°"))
+        crit(s["shoulder_lift"] <= float(ref.get("lift_max", -85)), f"팔 접힘 lift ≤ {ref.get('lift_max', -85)} (실패 A0·B1: −102 … −92)")
+        crit(over and abs(err) >= float(ref.get("over_min_deg", 10)), f"목표를 지나친 쪽 ≥ {ref.get('over_min_deg', 10)}° (실패: 수십 °, 재현 안 함)")
+        if vis:
+            crit(V["wrist_visibility"] in ("edge", "absent"), "손목 큐브 가장자리 · 안 보임 (실패: 보임 0.27, 보일 때 v 0.96)")
+            crit(V["front_visibility"] == "visible", "front 큐브 보임 (실패: 1.00)")
+    elif var in ("R2-O", "R2-P") and s:
+        gmin = float(cfg["safety"].get("gripper_open_min", 15))
+        if var == "R2-O":
+            crit(s["gripper"] < gmin, f"그리퍼 닫힘 < {gmin:g} (실패 AHEAD 직전: 0.6–1.4)")
+        else:
+            crit(s["gripper"] >= gmin, f"그리퍼 열림 ≥ {gmin:g}")
+        if vis:
+            vr = ref.get("wrist_v", [0.25, 0.633])
+            v_ = V.get("wrist_v")
+            crit(v_ is not None and vr[0] <= v_ <= vr[1], f"손목 큐브 v {vr[0]}–{vr[1]} (실패 AHEAD 닫는 순간 v 0.39–0.61)")
+            crit(V["front_visibility"] == "visible", "front 큐브 보임 (실패 AHEAD: 가림 없음)")
+    elif var.startswith("RC") and s:  # 11-04 회복 시연: 설정의 그리퍼 시작 상태 · 손목 시작 영역 (대략) · front 보임
+        gmin = float(cfg["safety"].get("gripper_open_min", 15))
+        want = row.get("gripper_start") or ""
+        if want:
+            crit((s["gripper"] >= gmin) == (want == "open"), f"그리퍼 {'열림 ≥' if want == 'open' else '닫힘 <'} {gmin:g}")
+        if vis:
+            reg = row.get("wrist_start_region")
+            if reg:
+                crit(V.get("in_wrist_region") is True, f"손목 큐브가 시작 영역 안 (u {reg['u'][0]}–{reg['u'][1]} · v {reg['v'][0]}–{reg['v'][1]}, 대략)")
+            crit(V["front_visibility"] == "visible", "front 큐브 보임")
+    return out
+
+
+ROBOT_DEVICES = ("/dev/so101_follower", "/dev/so101_leader", "/dev/cam_front", "/dev/cam_wrist")
+CONFLICT_NAMES = {"lerobot-record", "lerobot-teleoperate", "lerobot-rollout", "lerobot-replay", "lerobot-calibrate", "lerobot-eval",
+                  "eval_ui.py", "rollout_logged.py", "r12_record_entry.py", "record_ui.py", "eval_ab_ui.py", "lerobot_record.py",
+                  "lerobot_teleoperate.py", "lerobot_rollout.py"}
+_VIEW_ONLY = {"vim", "vi", "nano", "less", "more", "cat", "grep", "tail", "head", "code", "pgrep", "sed", "awk"}
+
+
+def robot_conflicts(exclude_pids=()):
+    """로봇·리더·카메라를 쓸 수 있는 다른 프로세스 (정책 추론 · 텔레오퍼레이션 · 녹화 동시 명령 방지).
+    판정: (1) 명령 앞 3 토큰의 파일 이름이 CONFLICT_NAMES 에 있음 (편집기·grep 등은 제외)
+          (2) /proc/<pid>/fd 가 로봇·카메라 장치를 열고 있음 (같은 사용자 프로세스만 보임).
+    반환 [{pid, cmd, name, devices}]. 읽기만 한다."""
+    me = {os.getpid(), os.getppid(), *exclude_pids}
+    real = {}
+    for d in ROBOT_DEVICES:
+        if os.path.exists(d):
+            real[os.path.realpath(d)] = d
+    out = []
+    for p in os.listdir("/proc"):
+        if not p.isdigit() or int(p) in me:
+            continue
+        try:
+            with open(f"/proc/{p}/cmdline", "rb") as f:
+                argv = [a.decode(errors="ignore") for a in f.read().split(b"\0") if a]
+        except OSError:
+            continue
+        if not argv:
+            continue
+        names = [os.path.basename(a) for a in argv[:3]]
+        name = None if names[0] in _VIEW_ONLY else next((n for n in names if n in CONFLICT_NAMES), None)
+        devs = set()
+        if real:
+            try:
+                for fd in os.listdir(f"/proc/{p}/fd"):
+                    try:
+                        t = os.readlink(f"/proc/{p}/fd/{fd}")
+                    except OSError:
+                        continue
+                    if t in real:
+                        devs.add(real[t])
+            except OSError:
+                pass
+        if name or devs:
+            out.append({"pid": int(p), "cmd": " ".join(argv)[:160], "name": name, "devices": sorted(devs)})
+    return out
+
+
+def code_version(root=ROOT):
+    """수집 도구 코드 버전: git HEAD (+dirty) 가 있으면 그것, 없으면 tools/*.py sha256 (앞 12자리)."""
+    import subprocess
+
+    try:
+        head = subprocess.run(["git", "-C", root, "rev-parse", "HEAD"], capture_output=True, text=True, timeout=5)
+        if head.returncode == 0:
+            dirty = subprocess.run(["git", "-C", root, "status", "--porcelain", "--untracked-files=no"], capture_output=True, text=True,
+                                   timeout=5).stdout.strip()
+            return head.stdout.strip()[:12] + ("+dirty" if dirty else "")
+    except (OSError, subprocess.SubprocessError):
+        pass
+    h = hashlib.sha256()
+    for fn in sorted(os.listdir(HERE)):
+        if fn.endswith(".py"):
+            with open(os.path.join(HERE, fn), "rb") as f:
+                h.update(fn.encode() + f.read())
+    return "tools-sha256:" + h.hexdigest()[:12]
+
+
+def episode_video_refs(sess_dir):
+    """dataset meta/episodes 의 영상 위치 → {ep: {cam: 'videos/.../file-XXX.mp4@from–to s'}} (읽기만). 없으면 {}."""
+    import glob
+
+    try:
+        import pandas as pd
+    except ImportError:
+        return {}
+    fs = sorted(glob.glob(os.path.join(sess_dir, "dataset", "meta", "episodes", "*", "*.parquet")))
+    if not fs:
+        return {}
+    df = pd.concat([pd.read_parquet(f) for f in fs])
+    out = {}
+    for _, r in df.iterrows():
+        e = int(r["episode_index"])
+        for cam in CAMS:
+            k = f"videos/observation.images.{cam}"
+            if f"{k}/chunk_index" in r:
+                out.setdefault(e, {})[cam] = (f"{k}/chunk-{int(r[f'{k}/chunk_index']):03d}/file-{int(r[f'{k}/file_index']):03d}.mp4"
+                                              f"@{float(r[f'{k}/from_timestamp']):.2f}-{float(r[f'{k}/to_timestamp']):.2f}s")
+    return out
+
+
+def build_pilot_rows(sess_dir, cfg, plan_rows, total_episodes):
+    """파일럿 판 메타데이터 (r12_pilot_episodes.csv, 작업 지시 §8). 저장된 판마다 마지막 saved 시도 기준."""
+    att = fold_attempts(read_events(sess_dir))
+    by_ep = {}
+    for a in att.values():
+        if a["status"] == "saved" and "ep" in a:
+            by_ep[a["ep"]] = a
+    meta = read_json(os.path.join(sess_dir, PLAN_META), {}) or {}
+    vids = episode_video_refs(sess_dir)
+    rows = []
+    for ep in range(total_episodes):
+        pr = plan_rows[ep] if ep < len(plan_rows) else None
+        a = by_ep.get(ep) or {}
+        d = describe_row(cfg, pr) if pr else {}
+        s = cfg["scenarios"].get(pr["scenario_id"], {}) if pr else {}
+        ps = a.get("pilot_start") or {}
+        V = ps.get("values") or {}
+        sim = ps.get("similarity") or {}
+        lab = a.get("label") or {}
+        arm = a.get("armed") or {}
+        guards = a.get("guard", [])
+        excluded = bool(pr) and pr.get("status") == EXCLUDED
+        inv = [g.get("reason", "") for g in guards if g.get("invalid")] + ([f"excluded: {pr.get('note', '')}"] if excluded else [])
+        sf = a.get("start_frames") or {}
+        rows.append({
+            "run_id": a.get("run_id", ""), "episode_index": ep,
+            "episode_id": f"{meta.get('repo_id', os.path.basename(sess_dir))}:{ep:04d}",
+            "scenario_id": pr["scenario_id"] if pr else "", "pilot_variant": d.get("pilot_variant", ""),
+            "failure_type": s.get("failure_type", s.get("error_kind", "")), "correction_action": s.get("correction_action", s.get("demo", "")),
+            "start_joint_state": _fmt_joints(arm.get("state")), "start_gripper_value": V.get("gripper", ""),
+            "start_gripper_state": V.get("gripper_state", ""), "gripper_start_expected": d.get("gripper_start", ""),
+            "start_pan_deg": V.get("pan", ""), "start_lift_deg": V.get("lift", ""), "start_elbow_deg": V.get("elbow", ""),
+            "start_wflex_deg": V.get("wflex", ""), "start_stage": V.get("stage", ""), "start_stage_progress": V.get("stage_progress", ""),
+            "start_pan_error_deg": V.get("pan_error_deg", ""), "start_pan_side": V.get("pan_side", ""),
+            "needed_recovery_dir": V.get("needed_recovery_dir", ""),
+            "start_wrist_u": "" if V.get("wrist_u") is None else V["wrist_u"], "start_wrist_v": "" if V.get("wrist_v") is None else V["wrist_v"],
+            "start_wrist_relation": V.get("wrist_relation", ""), "start_wrist_visibility": V.get("wrist_visibility", ""),
+            "start_front_visibility": V.get("front_visibility", ""),
+            "start_in_wrist_region": {True: "yes", False: "no", None: ""}.get(V.get("in_wrist_region"), ""),
+            "failure_similarity": f"{sim.get('matched', '')}/{sim.get('total', '')}" if sim else "",
+            "failure_similarity_items": " | ".join(sim.get("items", [])),
+            "cube_position": pr["position"] if pr else "", "cube_xy_planned_cm": pr["cube_xy_cm"] if pr else "",
+            "cube_rotation": pr["angle"] if pr else "",
+            "front_cube_xy_cm": ",".join(str(v) for v in ((a.get("vision") or {}).get("front") or {}).get("xy_cm", [])),
+            "start_frame_front": sf.get("front", ""), "start_frame_wrist": sf.get("wrist", ""),
+            "dataset_root": os.path.join(sess_dir, "dataset"), "dataset_repo_id": meta.get("repo_id", ""),
+            "video_front": vids.get(ep, {}).get("front", ""), "video_wrist": vids.get(ep, {}).get("wrist", ""),
+            "first_grasp_success": lab.get("first_grasp_success", ""), "final_success": lab.get("final_success", ""),
+            "valid": "no" if inv else "yes", "invalid_reason": " | ".join(inv), "operator_notes": lab.get("operator_notes", ""),
+            "guard_events": " | ".join(f"{g.get('phase')}:{g.get('reason')}" for g in guards),
+            "review_flags": " | ".join(f[2] for f in a.get("review_flags", []) if f[0] == "warn"),
+            "frames": (a.get("rec_end") or {}).get("frames", ""), "loop_hz_mean": (a.get("rec_end") or {}).get("loop_hz_mean", ""),
+            "code_version": arm.get("code_version", ""), "config_sha256": cfg.get("_sha256", ""),
+            "config_extends_sha256": cfg.get("_extends_sha256", ""), "recorded_at": a.get("saved_t", ""), "attempt_id": a.get("attempt_id", ""),
+        })
+    return rows
+
+
+def write_pilot_rows(sess_dir, rows):
+    def w(f):
+        wr = csv.DictWriter(f, fieldnames=PILOT_FIELDS)
+        wr.writeheader()
+        for r in rows:
+            wr.writerow(r)
+    _atomic_write(os.path.join(sess_dir, PILOT_EPISODES_CSV), w)
+
+
+def close_events(g, open_min=15.0, drop_min=8.0, frac=0.35, sustain=3, rearm=3.0):
+    """그리퍼 명령 열 → 닫힘 사건 [(시작 프레임, 열린 정점 값, 바닥 값)] (r2_common.close_onsets 와 같은 비율 규칙의 간단판).
+    열린 정점 (≥ open_min) 에서 max(drop_min, frac·(정점 − 열의 최소)) 이상 sustain 프레임 연속 내려가면 닫힘. 바닥에서 rearm 이상 다시 열리면 재무장."""
+    g = np.asarray(g, float)
+    fl = float(np.nanmin(g)) if len(g) else 0.0
+    out, peak, peak_i, armed, cnt, bottom = [], -np.inf, 0, True, 0, None
+    for i, v in enumerate(g):
+        if not np.isfinite(v):
+            continue
+        if armed:
+            if v > peak:
+                peak, peak_i = v, i
+            if peak >= open_min and peak - v >= max(drop_min, frac * (peak - fl)):
+                cnt += 1
+                if cnt >= sustain:
+                    k = peak_i
+                    while k + 1 < i and g[k + 1] >= peak - 1.0:
+                        k += 1
+                    out.append([k, round(float(peak), 1), float(v)])
+                    armed, bottom = False, v
+            else:
+                cnt = 0
+        else:
+            bottom = min(bottom, v)
+            out[-1][2] = round(float(bottom), 1)
+            if v - bottom >= max(rearm, min(drop_min, 0.4 * (out[-1][1] - bottom))):
+                armed, peak, peak_i, cnt = True, v, i, 0
+    return [tuple(x) for x in out]

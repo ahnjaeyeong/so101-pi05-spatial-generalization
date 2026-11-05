@@ -1,0 +1,88 @@
+# 화면 e2e 시험 (test_ui_e2e.py 자동 생성)
+
+- PASS S10_adapter_start_paused_reset E1_tap_rate_and_sim_label samples 145 · median interval 0.100 s · max 0.122 s
+- PASS S10_adapter_start_paused_reset E2_human_ready_matches_device HUMAN_READY samples 1 · mismatches []
+- PASS S10_adapter_start_paused_reset E3_correcting_matches_device CORRECTING samples 39 · mismatches []
+- PASS S10_adapter_start_paused_reset E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S10_adapter_start_paused_reset 화면 상태 순서: STARTING → POLICY_WAIT → CORRECTING → RESULT → POLICY_RUNNING → STOP_CONFIRMING → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → CORRECTING → RESULT → ENDED
+- PASS S10_adapter_start_paused_reset E7_result_panel_equals_qa episodes [0, 1, 2] · mismatches []
+  - S10_adapter_start_paused_reset tap 스레드 1 회 시간: mean 1.264 ms · p99 3.283 ms · max 27.119 ms (n 144)
+- PASS S11_adapter_fast_correction E1_tap_rate_and_sim_label samples 72 · median interval 0.100 s · max 0.100 s
+- PASS S11_adapter_fast_correction E2_human_ready_matches_device HUMAN_READY samples 1 · mismatches []
+- PASS S11_adapter_fast_correction E3_correcting_matches_device CORRECTING samples 16 · mismatches []
+- PASS S11_adapter_fast_correction E4_no_human_control_during_transition in_transition samples 20 · shown as human-control 0
+  - S11_adapter_fast_correction 화면 상태 순서: STARTING → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → ENDED
+- PASS S11_adapter_fast_correction E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S11_adapter_fast_correction tap 스레드 1 회 시간: mean 1.114 ms · p99 2.291 ms · max 2.575 ms (n 71)
+- PASS S12_adapter_rtc_fault E1_tap_rate_and_sim_label samples 87 · median interval 0.100 s · max 0.101 s
+- PASS S12_adapter_rtc_fault E2_human_ready_matches_device HUMAN_READY samples 0 · mismatches []
+- PASS S12_adapter_rtc_fault E3_correcting_matches_device CORRECTING samples 17 · mismatches []
+- PASS S12_adapter_rtc_fault E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S12_adapter_rtc_fault 화면 상태 순서: STARTING → POLICY_RUNNING → FAULT_LOCKED → LEADER_ALIGNING → FAULT_LOCKED → CORRECTING → FAULT_LOCKED → ENDED
+- PASS S12_adapter_rtc_fault E5_fault_locked_shown_no_running_after FAULT_LOCKED samples 18 · POLICY_RUNNING after fault 0
+- PASS S12_adapter_rtc_fault E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S12_adapter_rtc_fault tap 스레드 1 회 시간: mean 1.263 ms · p99 2.374 ms · max 3.063 ms (n 86)
+- PASS S12_adapter_rtc_fault E10_viewer_headless_ok frames 67 · render mean 21.03 ms · p99 38.67 ms · codes 9
+- PASS S13_adapter_leader_fault E1_tap_rate_and_sim_label samples 61 · median interval 0.100 s · max 0.104 s
+- PASS S13_adapter_leader_fault E2_human_ready_matches_device HUMAN_READY samples 1 · mismatches []
+- PASS S13_adapter_leader_fault E3_correcting_matches_device CORRECTING samples 10 · mismatches []
+- PASS S13_adapter_leader_fault E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S13_adapter_leader_fault 화면 상태 순서: STARTING → POLICY_RUNNING → LEADER_ALIGNING → HUMAN_READY → CORRECTING → ENDED
+- PASS S13_adapter_leader_fault E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S13_adapter_leader_fault tap 스레드 1 회 시간: mean 1.126 ms · p99 3.481 ms · max 4.888 ms (n 60)
+- PASS S14_adapter_follower_fault E1_tap_rate_and_sim_label samples 60 · median interval 0.100 s · max 0.121 s
+- PASS S14_adapter_follower_fault E2_human_ready_matches_device HUMAN_READY samples 1 · mismatches []
+- PASS S14_adapter_follower_fault E3_correcting_matches_device CORRECTING samples 9 · mismatches []
+- PASS S14_adapter_follower_fault E4_no_human_control_during_transition in_transition samples 20 · shown as human-control 0
+  - S14_adapter_follower_fault 화면 상태 순서: STARTING → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → ENDED
+- PASS S14_adapter_follower_fault E6b_follower_fault_menu_without_home ['release', 'hold']
+- PASS S14_adapter_follower_fault E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S14_adapter_follower_fault tap 스레드 1 회 시간: mean 1.532 ms · p99 15.783 ms · max 35.1 ms (n 59)
+- PASS S14_adapter_follower_fault E10_viewer_headless_ok frames 45 · render mean 17.95 ms · p99 31.54 ms · codes 8
+- PASS S15_adapter_normal_end_home E1_tap_rate_and_sim_label samples 98 · median interval 0.100 s · max 0.117 s
+- PASS S15_adapter_normal_end_home E2_human_ready_matches_device HUMAN_READY samples 0 · mismatches []
+- PASS S15_adapter_normal_end_home E3_correcting_matches_device CORRECTING samples 12 · mismatches []
+- PASS S15_adapter_normal_end_home E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S15_adapter_normal_end_home 화면 상태 순서: STARTING → POLICY_RUNNING → LEADER_ALIGNING → CORRECTING → RESULT → STOPPING → ENDED
+- PASS S15_adapter_normal_end_home E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S15_adapter_normal_end_home tap 스레드 1 회 시간: mean 1.078 ms · p99 2.948 ms · max 3.436 ms (n 97)
+- PASS S16_adapter_pty_keys E1_tap_rate_and_sim_label samples 127 · median interval 0.100 s · max 0.100 s
+- PASS S16_adapter_pty_keys E2_human_ready_matches_device HUMAN_READY samples 5 · mismatches []
+- PASS S16_adapter_pty_keys E3_correcting_matches_device CORRECTING samples 23 · mismatches []
+- PASS S16_adapter_pty_keys E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S16_adapter_pty_keys 화면 상태 순서: STARTING → POLICY_WAIT → POLICY_RUNNING → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → STOPPING → END_MENU → ENDED
+- PASS S16_adapter_pty_keys E6_end_menu_shown_terminal END_MENU samples 8
+- PASS S16_adapter_pty_keys E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S16_adapter_pty_keys tap 스레드 1 회 시간: mean 0.727 ms · p99 1.058 ms · max 1.195 ms (n 126)
+- PASS S16_adapter_pty_keys E10_viewer_headless_ok frames 95 · render mean 19.6 ms · p99 40.99 ms · codes 12
+- PASS S17_adapter_viewer_killed E1_tap_rate_and_sim_label samples 161 · median interval 0.100 s · max 0.149 s
+- PASS S17_adapter_viewer_killed E2_human_ready_matches_device HUMAN_READY samples 7 · mismatches []
+- PASS S17_adapter_viewer_killed E3_correcting_matches_device CORRECTING samples 43 · mismatches []
+- PASS S17_adapter_viewer_killed E4_no_human_control_during_transition in_transition samples 40 · shown as human-control 0
+  - S17_adapter_viewer_killed 화면 상태 순서: STARTING → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → ENDED
+- PASS S17_adapter_viewer_killed E7_result_panel_equals_qa episodes [0, 1] · mismatches []
+- PASS S17_adapter_viewer_killed E8_viewer_killed_session_ok killed at phase correcting · checks 13/13
+  - S17_adapter_viewer_killed tap 스레드 1 회 시간: mean 1.206 ms · p99 3.956 ms · max 6.756 ms (n 160)
+- PASS S18_adapter_tap_fault E2_human_ready_matches_device HUMAN_READY samples 0 · mismatches []
+- PASS S18_adapter_tap_fault E3_correcting_matches_device CORRECTING samples 0 · mismatches []
+- PASS S18_adapter_tap_fault E4_no_human_control_during_transition in_transition samples 0 · shown as human-control 0
+  - S18_adapter_tap_fault 화면 상태 순서: STARTING → POLICY_RUNNING
+- PASS S18_adapter_tap_fault E9_tap_fault_isolated tap_disabled after 24 iterations · checks 13/13
+  - S18_adapter_tap_fault tap 스레드 1 회 시간: mean 0.979 ms · p99 1.89 ms · max 1.958 ms (n 23)
+- PASS S7_adapter_normal E1_tap_rate_and_sim_label samples 162 · median interval 0.100 s · max 0.113 s
+- PASS S7_adapter_normal E2_human_ready_matches_device HUMAN_READY samples 7 · mismatches []
+- PASS S7_adapter_normal E3_correcting_matches_device CORRECTING samples 43 · mismatches []
+- PASS S7_adapter_normal E4_no_human_control_during_transition in_transition samples 40 · shown as human-control 0
+  - S7_adapter_normal 화면 상태 순서: STARTING → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → POLICY_RUNNING → STOP_REQUESTED → LEADER_ALIGNING → HUMAN_READY → CORRECTING → RESULT → ENDED
+- PASS S7_adapter_normal E7_result_panel_equals_qa episodes [0, 1] · mismatches []
+  - S7_adapter_normal tap 스레드 1 회 시간: mean 1.116 ms · p99 1.885 ms · max 2.593 ms (n 161)
+- PASS S7_adapter_normal E10_viewer_headless_ok frames 138 · render mean 13.87 ms · p99 17.95 ms · codes 15
+- PASS S8_adapter_esc_in_correction E1_tap_rate_and_sim_label samples 64 · median interval 0.100 s · max 0.126 s
+- PASS S8_adapter_esc_in_correction E2_human_ready_matches_device HUMAN_READY samples 0 · mismatches []
+- PASS S8_adapter_esc_in_correction E3_correcting_matches_device CORRECTING samples 13 · mismatches []
+- PASS S8_adapter_esc_in_correction E4_no_human_control_during_transition in_transition samples 21 · shown as human-control 0
+  - S8_adapter_esc_in_correction 화면 상태 순서: STARTING → POLICY_RUNNING → LEADER_ALIGNING → CORRECTING → STOPPING → ENDED
+- PASS S8_adapter_esc_in_correction E7_result_panel_equals_qa episodes [0] · mismatches []
+  - S8_adapter_esc_in_correction tap 스레드 1 회 시간: mean 1.569 ms · p99 17.015 ms · max 41.03 ms (n 63)
+
+UI_E2E_ALL_PASS

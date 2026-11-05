@@ -1,0 +1,123 @@
+WARNING:root:No accelerated backend detected. Using default cpu, this will be slow.
+WARNING:lerobot.configs.policies:Device 'cuda' is not available. Switching to 'cpu'.
+INFO 2026-11-04 18:06:04 ut_logged.py:48 debug log: _out/S15_adapter_normal_end_home/debug.log · argv: --strategy.type=dagger --strategy.num_episodes=6 --policy.path=/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --device=cpu --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --robot.type=so101_follower --robot.port=/nonexistent/hil_fake_follower --robot.id=hil_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/hil_fake_front, width: 64, height: 48, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/hil_fake_wrist, width: 64, height: 48, fps: 30} } --teleop.type=so101_leader --teleop.port=/nonexistent/hil_fake_leader --teleop.id=hil_fake_leader --dataset.repo_id=oxr/rollout_hil_fake_S15_adapter_normal_end_home --dataset.root=_out/S15_adapter_normal_end_home/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=6 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false
+INFO 2026-11-04 18:06:04 ut_logged.py:50 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True}
+INFO 2026-11-04 18:06:04 _rollout.py:245 Building rollout context...
+INFO 2026-11-04 18:06:04 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+INFO 2026-11-04 18:06:04 /context.py:361 Policy loaded: type=pi05, device=cpu
+INFO 2026-11-04 18:06:04 /context.py:392 Connecting robot (so100_follower)...
+[hil fake] MOCK_OK follower FakeFollowerBus+FakeCam (no serial, no camera)
+INFO 2026-11-04 18:06:04 /context.py:395 Robot connected: so_follower
+INFO 2026-11-04 18:06:04 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-04 18:06:04 /context.py:406 Connecting teleoperator (so100_leader)...
+[hil fake] MOCK_OK leader FakeLeaderBus (no serial)
+INFO 2026-11-04 18:06:04 /context.py:409 Teleoperator connected
+INFO 2026-11-04 18:06:04 /context.py:500 Setting up dataset (repo_id=oxr/rollout_hil_fake_S15_adapter_normal_end_home)...
+INFO 2026-11-04 18:06:04 /context.py:547 Dataset ready: oxr/rollout_hil_fake_S15_adapter_normal_end_home (0 existing episodes)
+INFO 2026-11-04 18:06:04 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-04 18:06:04 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-04 18:06:04 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-04 18:06:04 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-04 18:06:04 _rollout.py:249 Rollout strategy: dagger
+INFO 2026-11-04 18:06:04 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-04 18:06:04 gies/core.py:96 Starting inference engine...
+INFO 2026-11-04 18:06:04 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:06:04 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-04 18:06:04 ies/core.py:100 Inference engine started
+INFO 2026-11-04 18:06:04 s/dagger.py:269 Streaming encoding is disabled for DAgger corrections-only mode. Consider enabling it for faster episode saving: --dataset.streaming_encoding=true --dataset.encoder_threads=2
+WARNING 2026-11-04 18:06:04 rd_input.py:391 Keyboard controls unavailable: no usable display (Wayland/headless) and stdin is not an interactive terminal (pause_resume='space', correction='tab', upload='enter', ESC=stop, m=복구 완료, 1/2/3=R1/R2/R2-O, g/h=첫 파지 성공/실패, b/f=최종 성공/실패, r=원위치 구간).
+INFO 2026-11-04 18:06:04 s/dagger.py:286 DAgger strategy ready (input=keyboard, episodes=6, record=corrections only, episode_duration=182044s)
+INFO 2026-11-04 18:06:04 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-04 18:06:04 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:06:04 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-04 18:06:04 s/dagger.py:552 DAgger corrections-only recording started (target: 6 episodes)
+INFO 2026-11-04 18:06:04 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=_out/S15_adapter_normal_end_home/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-04 18:06:04 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-04 18:06:05 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-04 18:06:06 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-04 18:06:06 s/dagger.py:717 Phase transition: autonomous -> paused
+INFO 2026-11-04 18:06:06 s/dagger.py:719 Pausing engine - robot holds position
+INFO 2026-11-04 18:06:06 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:06:06 s/dagger.py:728 Smooth handover: moving leader arm to follower position
+INFO 2026-11-04 18:06:06 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=4, real_delay=10
+INFO 2026-11-04 18:06:09 s/dagger.py:717 Phase transition: paused -> correcting
+INFO 2026-11-04 18:06:09 s/dagger.py:732 Entering correction mode - human teleop control
+INFO 2026-11-04 18:06:10 s/dagger.py:717 Phase transition: correcting -> paused
+Map:   0%|          | 0/34 [00:00<?, ? examples/s]Map: 100%|██████████| 34/34 [00:00<00:00, 1460.22 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Instance 1: AQ mode 2 is unsupported with source dimensions (64 / 48), setting AQ mode to 0
+Svt[warn]: Instance 1: Restoration Filtering is unsupported with source dimensions (64 / 48), disabling Restoration Filtering
+Svt[warn]: TPL is disabled for aq_mode 0
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 59
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 64 / 48 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / CQP Assignment 					: CQP / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 0 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Instance 1: AQ mode 2 is unsupported with source dimensions (64 / 48), setting AQ mode to 0
+Svt[warn]: Instance 1: Restoration Filtering is unsupported with source dimensions (64 / 48), disabling Restoration Filtering
+Svt[warn]: TPL is disabled for aq_mode 0
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 59
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 64 / 48 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / CQP Assignment 					: CQP / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 0 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-04 18:06:10 s/dagger.py:596 Correction 1/6 saved
+INFO 2026-11-04 18:06:10 ls/utils.py:150 Correction 1 saved
+INFO 2026-11-04 18:06:10 le_timer.py:559 Cadence (correction 1): 29.70 Hz vs 30 Hz target · 120 ticks, 3.9 s measured · 0/116 ticks over the 33.3 ms budget (work mean 0.9 ms, worst 3.3 ms) · starved ticks: 10
+INFO 2026-11-04 18:06:10 s/dagger.py:670 DAgger corrections-only loop ended — pausing engine
+INFO 2026-11-04 18:06:10 le_timer.py:559 Cadence (final episode): 29.90 Hz vs 30 Hz target · 7 ticks, 0.2 s measured · 0/7 ticks over the 33.3 ms budget (work mean 0.5 ms, worst 0.7 ms)
+INFO 2026-11-04 18:06:10 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 127 ticks, 123 judged
+  effective cadence: 29.71 Hz over 4.1 s measured
+  ticks over the 33.3 ms work budget: 0/123 (0.0%) — work mean 0.8 ms, worst 3.3 ms
+  ticks with no action to send (inference engine starved): 10 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 21
+  loop-body steps (share of measured work):
+    observe      mean   0.38 ms · worst   2.52 ms ·   2.0% of work · 127 calls
+    process_obs  mean   0.03 ms · worst   0.08 ms ·   0.1% of work · 108 calls
+    infer        mean   0.11 ms · worst   0.19 ms ·   0.3% of work · 74 calls
+    send         mean   0.09 ms · worst   0.42 ms ·   0.4% of work · 117 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.0% of work · 98 calls
+    teleop       mean   0.10 ms · worst   0.16 ms ·   0.1% of work · 34 calls
+    record       mean   0.41 ms · worst   5.83 ms ·   0.6% of work · 34 calls
+  pacing headroom: 32.2 ms slept per tick on average (max 35.0 ms) — near zero means the loop is saturated
+INFO 2026-11-04 18:06:10 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:06:10 s/dagger.py:304 Stopping DAgger recording
+INFO 2026-11-04 18:06:10 ls/utils.py:150 Stopping DAgger recording
+INFO 2026-11-04 18:06:10 s/dagger.py:313 Shutting down push executor (waiting for pending pushes)...
+INFO 2026-11-04 18:06:10 s/dagger.py:318 Finalizing dataset...
+INFO 2026-11-04 18:06:10 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-04 18:06:10 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-11-04 18:06:13 follower.py:262 hil_fake SOFollower disconnected.
+INFO 2026-11-04 18:06:13 o_leader.py:186 hil_fake_leader SOLeader disconnected.
+INFO 2026-11-04 18:06:13 s/dagger.py:334 DAgger strategy teardown complete
+INFO 2026-11-04 18:06:13 _rollout.py:272 Rollout finished
+[S15_adapter_normal_end_home] done wall=10.3s main_err=no script_err=no

@@ -1,0 +1,289 @@
+# R1/R2 교정 시연 파일럿 12편 (2026-11-03 작업 지시 "SO-101 R1/R2 교정 시연 파일럿 — 기존 UI 재사용")
+#   R1 Pan 복구 4 · R2-P 열린 그리퍼 접근 교정 4 · R2-O 닫힌 그리퍼 재개방 교정 4.
+#   HIL 아님: 사람이 준비 단계 (녹화 안 함) 에서 안전한 시작 상태를 만들고, 텔레오퍼레이션으로 복구 행동만 녹화한다.
+#
+# 이 파일은 기존 r12_scenarios.yaml 을 고치지 않고 그 위에 덧씌운다 (tools/r12_common.load_config 의 extends):
+#   - scenarios · safety : 키 단위로 합침 (여기 새 시나리오 · 보호 설정 추가, 기존 시나리오는 그대로)
+#   - groups · checklist · program_groups : 이 파일 것만 씀 → 기존 r1_pilot (16) · r2_pilot (40 잠정, draft) 계획과 세션은 건드리지 않음
+# 사용: tools/r12_collect.py <명령> --config config/r12_pilot12.yaml   (명령 모음: 08_pilot12_usage.md)
+#
+# 근거: d2/visual_dependency/vd_20261103_01/analysis_handoff.md · 06_collection_options.md (오프라인 재추론 · 실측, 인과 아님)
+#   R1: 실물 지나침 (A0 · B1) 은 팔이 접힌 자세 (lift −102 … −92) 에서 일어났고, 그동안 front 큐브는 보였고 손목 큐브는 대부분 안 보였다.
+#   R2-O: AHEAD 실패 7 판 중 6 판은 그리퍼를 닫기 0.00–0.13 s 전에야 15.8–25.7 만큼 열었다 (사람 256 편 중 0.9 s 보다 늦게 연 판 0).
+extends: r12_scenarios.yaml
+pilot: pilot12
+
+program_groups: [pilot12_r1, pilot12_r2p, pilot12_r2o]
+
+groups:
+  pilot12_r1:
+    type: R1
+    session: main_k8/r12_pilot12_r1
+    repo_id: oxr/so101_k8_r12_pilot12_r1
+    seed: 3301
+    episode_time_s: 45
+    pilot_variant: R1
+    scenario_counts: {R1-FOLD-OVER: 4}
+    collection_status: pilot_ready_pending_user_check
+  pilot12_r2p:
+    type: R2
+    session: main_k8/r12_pilot12_r2p
+    repo_id: oxr/so101_k8_r12_pilot12_r2p
+    seed: 3302
+    episode_time_s: 45
+    pilot_variant: R2-P
+    scenario_counts: {R2-P-AHEAD: 2, R2-P-DEPTH: 2}
+    collection_status: pilot_ready_pending_user_check
+  pilot12_r2o:
+    type: R2
+    session: main_k8/r12_pilot12_r2o
+    repo_id: oxr/so101_k8_r12_pilot12_r2o
+    seed: 3303
+    episode_time_s: 45
+    pilot_variant: R2-O
+    scenario_counts: {R2-O-REOPEN: 4}
+    collection_status: pilot_ready_pending_user_check
+
+scenarios:
+  # ---------------------------------------------------------------- R1 Pan 복구 (4)
+  # 실패 상태: 팔 접힘 · Pan 이 큐브 방향을 지나침 · 손목에서 큐브가 가장자리이거나 사라짐 · front 에는 보임.
+  # 안전: 지나침 크기는 20·25° (실패 때의 −109° 재현 금지). 계획 |pan| ≤ 92, 녹화 시작 |pan| > 95 BLOCK, 녹화 중 Pan 명령 ±95 제한.
+  # 큐브 자리 K1 · K4 (진행 방향 왼쪽) · K3 · K6 (오른쪽) → 복구 방향 좌우 2/2. 지나침 뒤 Pan 이 92° 를 넘는 K7 · K8 은 쓰지 않음.
+  R1-FOLD-OVER:
+    type: R1
+    label: "R1 · 팔 접힘 지나침 → Pan 복구"
+    pilot_variant: R1
+    error_kind: overshoot
+    failure_type: "folded_arm_pan_overshoot (실물 A0 · B1 유형, 크기는 작게)"
+    correction_action: "Pan 을 되돌려 큐브 재정렬 → 접근 → 파지 → 상자 → 쉬는 자세"
+    stages: [early]
+    wrist_visibility: any
+    travel: over
+    travel_offsets_deg: [20, 25]
+    positions: [K1, K3, K4, K6]
+    start_radial_cm: 0
+    start_height: "쉬는 자세 높이 (팔 접힘)"
+    via: ""
+    setup_from: rest
+    x_label: "지나쳐 멈출 곳 (대략) = 녹화 시작"
+    count: 0   # 수량은 그룹 scenario_counts 로만
+    title: 팔을 접은 채 Pan 이 큐브 방향을 지나쳐 멈춘 상태 → Pan 을 되돌려 재정렬 · 접근 · 파지
+    offset_dir: per_episode
+    offset_mag: "진행 방향으로 큐브 방향을 20·25° 지나침 (후보, 대략 — 주황 선을 정확히 맞출 필요 없음)"
+    wrist_expect: edge_or_absent
+    start: "그리퍼 닫힘 그대로 (쉬는 자세처럼), 팔 접은 채 쉬는 자세 pan 에서 큐브 쪽으로 돌려 큐브 방향을 지나친 곳에서 멈춤. 손목 화면 큐브는 가장자리 · 안 보여도 됨, front 에는 보여야 함. Pan 한계 근처까지 돌리지 않음."
+    demo: "녹화 시작 → 영상과 자세를 보고 Pan 을 큐브 쪽으로 되돌림 → 큐브 재정렬 → 팔을 펴며 접근 → 그리퍼 열고 파지 → 상자 → 쉬는 자세. 주황 선 · 고정 각도를 따라갈 필요 없음."
+
+  # ---------------------------------------------------------------- R2-P 열린 그리퍼 접근 교정 (4)
+  # 기존 R2-AHEAD · R2-DEPTH 그대로 (like) + 그리퍼 열림 시작 조건.
+  # 시각 시연 가이드 단계 (2026-11-03, 영상 창 단계 띠 · 참고 칸). ref = d2 사람 성공 시연 키프레임 (tools/r12_guide.py 정의):
+  #   k_opened 그리퍼 다 열림 · k_reach 팔 접근 거의 멈춤 · k_close 닫기 시작 (리더 명령) · k_grasp 파지 (팔로워 그리퍼 바닥) · k_done 마지막 프레임
+  #   ref: none = d2 에 해당 상황이 없어 참고를 보여 주지 않음 (R1 큰 Pan 복구 · R2-O 재개방 단계에 쓸 것).
+  #   gripper = 이 단계의 그리퍼 조작 (d2 방식 그대로). 참고 그리퍼 값 · 시점은 화면이 d2 기록에서 읽어 보여 줌 (목표값 아님).
+  R2-P-AHEAD:
+    like: R2-AHEAD
+    guide_stages: &r2p_stages
+      - {key: start, label: "① 시작 자세", gripper: "열린 채 정지", ref: k_opened}
+      - {key: approach, label: "② 접근·정렬", gripper: "연 채 유지", ref: k_reach}
+      - {key: preclose, label: "③ 닫힘 직전 확인", gripper: "닫기 전 영상 확인", ref: k_close}
+      - {key: close, label: "④ 한 번 닫기", gripper: "한 번만 닫기", ref: k_grasp}
+      - {key: done, label: "⑤ 상자 → 쉬는 자세", gripper: "상자에서 열기 → 닫기", ref: k_done}
+    label: "R2-P · 열린 그리퍼 · 큐브가 손가락 앞"
+    pilot_variant: R2-P
+    gripper_start: open
+    failure_type: "open_gripper_short_approach (실물 AHEAD 유형의 접근 부족, 그리퍼는 열림)"
+    correction_action: "그리퍼를 연 채 접근 깊이 · 높이 · 정렬 보정 → 닫기 영역에서 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    start: "그리퍼 열림, 파지 높이 근처에서 팔 정지. 큐브가 손가락 끝보다 앞 (손목 화면 주황 영역). 큐브에 닿지 않음."
+    demo: "녹화 시작 → 그리퍼를 연 채 유지 → 부족한 접근 깊이 · 높이 · 정렬을 고침 (어느 관절로 고칠지는 시연자가 화면을 보고 정함) → 큐브가 손가락 사이에 오면 d2 방식으로 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세."
+    # 수집자 모드 네모 그림 가이드 (2026-11-03, tools/r12_viewer_collector.py · 그림 = tools/r12_schematic.py).
+    #   stages.<guide_stages key>: title · text (카드 글) · scene (그림, 없으면 카드 없음) · now / next / later / dont (아래 '지금 할 일' 띠)
+    #   scene 좌표는 손목 화면처럼 그린 개념도 (u 오른쪽 + · v 아래 +) — 측정값 · 로봇 이동 방향이 아님.
+    #   failures = 오른쪽 '아직 닫지 마세요' 그림 (key = 자동 관찰 키: ahead · side · edge) · target = 참고 목표 그림.
+    visual_guide:
+      kind: AHEAD
+      category: "접근·정렬 교정"                           # 제목 'R2-P | <category> — <case>' (실패 유형 open_gripper_short_approach)
+      case: "큐브가 손가락 앞 (접근 부족)"
+      title: "아직 큐브를 잡을 위치가 아닙니다"
+      subtitle: "그리퍼를 열어둔 채 정렬하고, 첫 닫힘으로 파지하세요."
+      # 3 칸 (배치 방법 · 손목 실시간 · 목표 손목 그림). 목표 그림은 실시간 손목 영상과 같은 좌표 (region = 시작 영역, zone = 닫기 영역)
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼 열기", "좌우 가운데 · 파지 높이로 큐브 쪽으로", "손가락 끝이 큐브 앞면보다 1.5–3 cm 앞에서 멈춤",
+                    "손목 화면이 오른쪽 그림처럼 보이면 → (녹화 시작)"]
+      side: {gap_cm: 2.2, label: "큐브 앞면까지 1.5–3 cm"}
+      setup_target: {grip: open, cube: [0.344, 0.36], region: start, caption: "큐브가 손가락 끝보다 위쪽 (= 앞) · 손가락 사이 밖"}
+      rec_target: {grip: open, cube: [0.344, 0.707], zone: true, caption: "닫기 전: 큐브가 두 손가락 사이 · 초록 점선 (참고) — 깊이 · 접촉은 직접 확인"}
+      setup: {now: "준비 (녹화 안 함): 그리퍼를 열고, 큐브가 손가락 끝보다 앞에 보이게 팔을 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 연 채 정렬 → 한 번 닫기", dont: "준비 중에 큐브를 밀거나 닫기"}
+      stages:
+        start:
+          title: "① 아직 잡을 수 없는 위치"
+          text: "그리퍼를 열어둔 채 시작합니다."
+          scene: {grip: open, cube: [0.344, 0.36], mark: x}
+          now: "그리퍼 열린 상태 유지"
+          next: "큐브와 손가락 중앙 맞추기"
+          later: "파지 가능한 자세에서 한 번 닫기"
+          dont: "이 위치에서 닫기"
+        approach:
+          title: "② 큐브와 손가락을 맞추기"
+          text: "그리퍼를 닫지 말고 위치를 수정하세요. 어느 관절로 고칠지는 직접 정합니다."
+          scene: {grip: open, cube: [0.344, 0.36], target: true, arrow: true}
+          now: "그리퍼를 연 채 큐브와 손가락 중앙 맞추기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "정렬 전에 닫기"
+        preclose:
+          title: "③ 잡을 수 있는 자세인지 확인"
+          text: "큐브가 손가락 사이에 있는지, 충분히 접근했는지 확인하세요. 화면 위치만으로는 확정 안 됨."
+          scene: {grip: open, cube: [0.344, 0.707], target: true, inset: {grip: open, cube: [0.344, 0.96], cut: bottom, mark: x, tag: "", label: "화면 끝"}}
+          now: "큐브가 손가락 사이 · 충분히 접근했는지 직접 확인"
+          next: "한 번 닫기"
+          later: "들어 올려 상자 → 쉬는 자세"
+          dont: "화면 끝에 걸린 채 닫기"
+        close:
+          title: "④ 한 번만 닫아 파지"
+          text: "정렬을 확인한 뒤 한 번 닫으세요. 첫 닫힘에 못 잡으면 정상 후보가 아닙니다."
+          scene: {grip: grasp, cube: [0.344, 0.707], mark: check}
+          now: "한 번만 닫아 파지"
+          next: "들어 올려 상자에 놓기"
+          later: "쉬는 자세 → 판 끝 (→)"
+          dont: "빈 파지 뒤 다시 닫기 반복"
+        done:
+          title: "⑤ 상자 → 쉬는 자세"
+          now: "상자에 놓고 쉬는 자세"
+          next: "→ 로 판 끝"
+          later: "결과 입력"
+          dont: "판 끝 전에 리더를 놓기"
+      failures: &r2p_failures
+        - {key: ahead, name: "앞쪽에 있음", text: "큐브가 손가락 끝보다 앞 — 닫기 전에 더 접근", scene: {grip: open, cube: [0.344, 0.32], mark: x, tag: ""}}
+        - {key: side, name: "옆으로 벗어남", text: "손가락 사이 중심 밖 — 정렬 후 닫기", scene: {grip: open, cube: [0.84, 0.70], mark: x, tag: ""}}
+        - {key: edge, name: "화면 끝에 걸림", text: "일부가 화면 밖 — 깊이 · 접촉은 직접 확인 (자동 판정 안 함)", scene: {grip: open, cube: [0.344, 0.96], cut: bottom, mark: x, tag: ""}}
+      target: &r2p_target {key: in_zone, name: "목표 (참고)", text: "손가락 사이 · 충분히 접근 → 직접 확인 뒤 한 번 닫기", scene: {grip: open, cube: [0.344, 0.707], target: true, mark: check, tag: ""}}
+  R2-P-DEPTH:
+    like: R2-DEPTH
+    guide_stages: *r2p_stages
+    visual_guide:
+      kind: DEPTH
+      category: "진입 깊이 교정"                           # 실패 유형 open_gripper_partial_entry
+      case: "큐브가 손가락 끝에 걸침 (진입 부족)"
+      title: "아직 큐브를 잡을 위치가 아닙니다"
+      subtitle: "그리퍼를 열어둔 채 조금 더 들어가 정렬하고, 첫 닫힘으로 파지하세요."
+      setup_steps: ["큐브를 계획 자리 · 각도에 놓기 (front 흰 점선)", "그리퍼 열기", "좌우 가운데 · 파지 높이로 큐브 쪽으로", "손가락 끝이 큐브 앞 모서리에 겨우 닿는 곳에서 멈춤 (닫는 위치보다 0.5–1.5 cm 덜)",
+                    "손목 화면이 오른쪽 그림처럼 보이면 → (녹화 시작) · 큐브를 밀지 않기"]
+      side: {gap_cm: -0.3, label: "끝만 걸침 (0.5–1.5 cm 덜 들어감)"}
+      setup_target: {grip: open, cube: [0.344, 0.58], region: start, caption: "큐브 아래 모서리가 손가락 끝 사이에 걸침 · 아직 손가락 사이 깊이 안 들어옴"}
+      rec_target: {grip: open, cube: [0.344, 0.707], zone: true, caption: "닫기 전: 큐브가 두 손가락 사이 · 초록 점선 (참고) — 깊이 · 접촉은 직접 확인"}
+      setup: {now: "준비 (녹화 안 함): 그리퍼를 열고, 큐브가 손가락 끝 사이에 조금만 걸치게 팔을 멈추기", next: "→ 로 녹화 시작",
+              later: "녹화 중: 연 채 더 들어가 정렬 → 한 번 닫기", dont: "준비 중에 큐브를 밀거나 닫기"}
+      stages:
+        start:
+          title: "① 아직 잡을 수 없는 위치"
+          text: "큐브가 손가락 끝에만 걸쳐 있어요. 그리퍼를 열어둔 채 시작합니다."
+          scene: {grip: open, cube: [0.344, 0.58], mark: x}
+          now: "그리퍼 열린 상태 유지"
+          next: "조금 더 들어가 큐브와 손가락 중앙 맞추기"
+          later: "파지 가능한 자세에서 한 번 닫기"
+          dont: "손가락 끝에 걸친 채 닫기"
+        approach:
+          title: "② 큐브와 손가락을 맞추기"
+          text: "그리퍼를 닫지 말고 조금 더 들어가 맞추세요. 어느 관절로 고칠지는 직접 정합니다."
+          scene: {grip: open, cube: [0.344, 0.58], target: true, arrow: true}
+          now: "그리퍼를 연 채 조금 더 들어가 중앙 맞추기"
+          next: "잡을 수 있는 자세인지 확인"
+          later: "한 번 닫기"
+          dont: "정렬 전에 닫기 · 큐브 밀기"
+        preclose:
+          title: "③ 잡을 수 있는 자세인지 확인"
+          text: "큐브가 손가락 사이에 있는지, 충분히 접근했는지 확인하세요. 화면 위치만으로는 확정 안 됨."
+          scene: {grip: open, cube: [0.344, 0.707], target: true, inset: {grip: open, cube: [0.344, 0.96], cut: bottom, mark: x, tag: "", label: "화면 끝"}}
+          now: "큐브가 손가락 사이 · 충분히 접근했는지 직접 확인"
+          next: "한 번 닫기"
+          later: "들어 올려 상자 → 쉬는 자세"
+          dont: "화면 끝에 걸린 채 닫기"
+        close:
+          title: "④ 한 번만 닫아 파지"
+          text: "정렬을 확인한 뒤 한 번 닫으세요. 첫 닫힘에 못 잡으면 정상 후보가 아닙니다."
+          scene: {grip: grasp, cube: [0.344, 0.707], mark: check}
+          now: "한 번만 닫아 파지"
+          next: "들어 올려 상자에 놓기"
+          later: "쉬는 자세 → 판 끝 (→)"
+          dont: "빈 파지 뒤 다시 닫기 반복"
+        done:
+          title: "⑤ 상자 → 쉬는 자세"
+          now: "상자에 놓고 쉬는 자세"
+          next: "→ 로 판 끝"
+          later: "결과 입력"
+          dont: "판 끝 전에 리더를 놓기"
+      failures: *r2p_failures
+      target: *r2p_target
+    label: "R2-P · 열린 그리퍼 · 접근 깊이 부족"
+    pilot_variant: R2-P
+    gripper_start: open
+    failure_type: "open_gripper_partial_entry (큐브가 손가락 끝에 걸침, 그리퍼는 열림)"
+    correction_action: "그리퍼를 연 채 조금 더 진입 · 정렬 → 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    start: "그리퍼 열림, 파지 높이 근처에서 팔 정지. 큐브가 손가락 끝 사이에 일부만 들어옴 (손목 화면 주황 영역). 큐브를 밀지 않음."
+    demo: "녹화 시작 → 그리퍼를 연 채 유지 → 조금 더 진입 · 정렬 (고칠 관절은 시연자가 정함) → 큐브가 손가락 사이에 오면 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세."
+
+  # ---------------------------------------------------------------- R2-O 닫힌 그리퍼 재개방 교정 (4)
+  # 실패 상태: 팔 멈춤 · 그리퍼 닫힘 · 큐브는 손가락 앞 (잡히지 않음). 정책은 여기서 그리퍼를 다시 여는 행동을 잘 만들지 않았다 (재추론).
+  # 빈 파지 동작은 녹화하지 않는다: 그리퍼는 준비 단계에서 큐브에서 떨어진 채 닫힌 상태로 둔다 (쉬는 자세의 닫힌 그리퍼 그대로 접근).
+  R2-O-REOPEN:
+    like: R2-AHEAD
+    label: "R2-O · 닫힌 그리퍼 → 다시 열고 접근"
+    pilot_variant: R2-O
+    gripper_start: closed
+    reopen_min: 25          # QA: 닫기 전 리더 그리퍼가 이 값 이상 열렸나 (d2 사람 열림 중앙 32.5 · 성공 판 최소 26.6 · 실패 AHEAD 15.8–25.7)
+    error_kind: closed_ahead
+    local_dir: cube_ahead
+    approach_depth_category: not_entered
+    wrist_start_region: {u: [0.22, 0.50], v: [0.25, 0.62]}   # AHEAD + DEPTH 시작 영역 (실물 AHEAD 실패 닫는 순간 v 0.39–0.61)
+    failure_type: "closed_gripper_stalled_ahead (실물 AHEAD 6/7 판 유형: 팔 멈춤 + 그리퍼 닫힘 + 큐브 앞)"
+    correction_action: "먼저 그리퍼를 충분히 엶 → 연 채 추가 접근 · 정렬 → 한 번 닫기 → 상자 → 쉬는 자세"
+    count: 0
+    title: 그리퍼가 닫힌 채 큐브 앞에서 팔이 멈춤 (큐브는 잡히지 않음)
+    offset_mag: "그리퍼 닫힘 (< 15) · 손목 화면 큐브가 닫기 영역보다 위 (주황 영역). 큐브를 쥐거나 밀지 않은 상태"
+    start: "준비 (녹화 안 함): 그리퍼를 닫은 채 (쉬는 자세 그대로) 큐브 앞 파지 높이 근처로 가서 팔 정지. 손가락이 큐브에 닿지 않게. 큐브 앞에서 그리퍼를 닫는 동작(빈 파지)은 하지 않음."
+    demo: "녹화 시작 → 먼저 그리퍼를 충분히 연다 (d2 사람 약 30) → 연 채 앞으로 · 아래로 추가 접근 → 큐브 정렬 → 큐브가 손가락 사이에 오면 d2 방식으로 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세."
+
+# 실물 실패 상태 기준 (시작 상태 '비슷함' 표시 · QA 용, 근사 비교. 녹화를 막지 않음)
+pilot_reference:
+  R1: {lift_max: -85, over_min_deg: 10}
+  R2-O: {wrist_v: [0.25, 0.633]}
+  R2-P: {wrist_v: [0.25, 0.633]}
+
+# 파일럿 QA 문턱 (r12_qa.py pilot 절)
+pilot_qa:
+  pan_correction_min_deg: 5        # R1: 녹화 첫 구간에서 필요한 방향으로 이 이상 Pan 이 움직였나
+  gripper_open_min: 15             # 그리퍼 '열림' 기준 (safety.gripper_open_min 과 같음)
+  close_drop_min: 8                # 닫힘 판정 (r2_common 과 같은 비율 규칙의 최소 폭)
+  pan_reversals_max: 2             # R1: 복구 뒤 Pan 방향이 이보다 많이 바뀌면 '불필요한 동작 검토'
+  path_ratio_max: 2.5              # 팔 관절 경로 길이 / 순 변위 — 크면 '검토'
+  time_align_tol_s: 0.002
+
+checklist:
+  R1:
+    - "이 세션은 파일럿 R1 = 팔 접힘 지나침 → Pan 복구 (4편). 지나침 크기는 대략 20–25°, 실패 때의 −109° 를 재현하지 않아요"
+    - "오차 상태(지나침)는 준비 단계(녹화 안 함)에서 만들고, 녹화는 되돌리는 동작부터. 주황 선은 참고 — 정확히 맞추지 않아도 됨"
+    - "Pan 을 한계 근처까지 돌리지 않기 (|pan| > 95 이면 녹화 시작 BLOCK, 녹화 중 Pan 명령은 ±95 에서 멈춤)"
+    - "끝낼 때(Esc) 팔을 쉬는 자세에 두기 — 종료하면 토크가 꺼져요"
+  R2-P:
+    - "이 세션은 파일럿 R2-P = 열린 그리퍼 접근 교정 (AHEAD 2 · DEPTH 2)"
+    - "준비 단계(녹화 안 함)에서 그리퍼를 열고 큐브 앞 파지 높이 근처에서 팔 정지 → → (손목 화면 주황 영역 · 대략)"
+    - "녹화 중 그리퍼는 연 채, 닫기는 큐브가 손가락 사이에 왔을 때 한 번 (d2 방식 그대로)"
+    - "끝낼 때(Esc) 팔을 쉬는 자세에 두기 — 종료하면 토크가 꺼져요"
+  R2-O:
+    - "이 세션은 파일럿 R2-O = 닫힌 그리퍼 재개방 교정 (4편). R2-P 와 다른 세션 · 다른 dataset"
+    - "준비 단계(녹화 안 함)에서 그리퍼를 닫은 채 큐브 앞 파지 높이 근처로 → 팔 정지. 큐브에 닿지 않게, 빈 파지 동작은 하지 않음"
+    - "녹화 시작 뒤 먼저 그리퍼를 충분히(약 30) 열고 → 연 채 접근 → 한 번 닫기"
+    - "끝낼 때(Esc) 팔을 쉬는 자세에 두기 — 종료하면 토크가 꺼져요"
+
+# 보호 설정 덧붙임 (기존 safety 키는 그대로 · 완화 없음). teleop_guard 는 이 파일럿 설정에서만 켬.
+safety:
+  teleop_guard:
+    enabled: true
+    pan_cmd_abs_max_deg: 95     # 리더 Pan 명령이 이보다 크면 팔로워에는 ±95 까지만 보냄 (녹화 중이면 무효 처리)
+    hold_gap_deg: 25            # 팔 관절 리더−팔로워 차이가 이보다 크면 팔로워를 그 자리에 고정 (갑작스러운 점프 · 막힘 밀기 방지)
+    release_gap_deg: 10         # 리더를 팔로워 고정 자세 ± 이 안으로 맞추면 고정 해제
+    warn_gap_deg: 15            # 이 이상이 warn_s 동안 이어지면 알림 (추종 오차 지속)
+    warn_s: 1.0
+    invalidate_in_rec: true     # 녹화 중 보호가 걸리면 그 판을 자동으로 버림 (무효 시연, 사유 기록)

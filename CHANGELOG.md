@@ -2,6 +2,18 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-05 — HANDOFF · EXP-14 실물 파일럿 · EXP-11/12 현행화 (branch: records/handoff-20261105, EXP-13 위)
+- `HANDOFF.md` 추가: 사용자 제공 초안을 로컬 원본과 대조해 수정 (12 항목, 문서 부록 A — 과제 문장, RC episode ID, 750 SHA, Trial 1 목표 32.1°, Trial 8–16 Wrist 놓침 0, HIL 19/205 · fault_latch 31/31, 교란 추가 등).
+- **EXP-14 신규** `experiments/14_rft01_real_pilot/`: rft01 001000 vs d2 020000 실물 16판 (11-05). FT 4/8 · BL 5/8 [사람]; Known 3/4 vs 2/4, Unknown 1/4 vs 3/4 — Unknown 은 시작 그리퍼 (FT 닫힘 / BL 열림) · 모델 순서 교란으로 비교 무효, 모델 우열 미결정. 사본 `sources/rft01_real_pilot/` (scripts, config, results, reports, run 별 작은 로그, 시작 사진, 시험).
+- **EXP-11** 상태 `IN_PROGRESS` → `PARTIAL`: 11-02 의 '본 수집 0편' 이후 11-03 ~ 11-04 pilot12 수집 반영 (R1 8 중 유효 4, RC 13 중 유효 12, R2-P 6 미사용, r2o dataset 없음). 세션 사본 `sources/sessions/r12_pilot12_{r1,rc,r2p,r2o}/`, 수집 도구 사본 `sources/r1_r2_collection/` 다시 복사 (신규 78 · 변경 7). 11-02 기록은 '이력' 으로 남김.
+- **EXP-12** 상태 `PLANNED` → `IN_PROGRESS`: 11-04 HIL 수집 도구 구현 (LeRobot 0.6.2 dagger + adapter A1–A12), 가짜 장치 시험 179/179 (v2) · 205/205 (UI). 실물 안전 검증 · 수집 0. 사본 `sources/hil_dagger/` (가짜 장치 출력 · upstream LeRobot 소스 사본 제외).
+- **EXP-13** 실물 상태 `NOT_EVALUATED` → EXP-14 연결.
+- `EXPERIMENT_INDEX.md` (14 실험), `README.md` 5 · 9 · 10 · 11 절, `evaluations/real_robot/README.md` (EXP-14 2행), `evaluations/comparisons/README.md` (FT vs BL 1행).
+- 도구: `tools/sync_sources.py` MAPPINGS 추가 (pilot12 세션 4 · hil_dagger · rft01_real_pilot), `--only <prefix>` (선택 매핑만 복사, 다른 manifest 행 유지), `.git` 폴더 제외; `tools/derive_condensed.py --only` (rft01 FT 세션 `debug.log` 축약 1, `ticks_ep1.csv.gz` 해제 16, rollout `dataset_state_action.csv` 8); `tools/archive_excluded.py` 신규.
+- `SOURCES_MANIFEST.csv` +659 / −45 행 (r1_r2_collection 45 행은 새 해시로 교체), `DERIVED_MANIFEST.csv` +25 행.
+- Git 제외 목록 (경로 · 크기 · SHA-256, 영상 포함): `experiments/{11_r1_r2_recovery,12_hil,14_rft01_real_pilot}/sources/ARCHIVE_EXCLUDED.csv` — 3,514 · 830 · 43,270 파일 (188 · 98 · 838 MB). 50개 넘는 폴더 (프레임 JPG 등) 는 폴더 1행 요약.
+- **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` (11-02 상태 유지). 11-05 전체 재생성 결과가 12 MB · 9.4 MB 로 `check_repo.py` 크기 제한 7 MB 초과. 그 실행에서 '매핑 없음' 864 파일 = `main_k8/d2/visual_dependency` 861 + Desktop R2P 가이드 PNG 3 (이번 범위 밖, 미기록).
+
 ## 2026-11-04 — EXP-13 d2 + R1/R2 교정 시연 Fine-tuning (branch: exp/13-recovery-ft-20261104)
 - `experiments/13_recovery_ft/` 추가: d2 020000 → d2 256 + R1 4 + R2(RC) 12 (272편) expert-only 1,000 step (run `rft01_d2rc16_W5_1k_s2001`, seed 2001) 와 오프라인 재추론 평가 요약.
 - `sources/recovery_ft/` (63개, 1.7 MB): 데이터 선정 · 병합 · 검증 · 학습 · 평가 스크립트, manifest, 검증·평가 표, 작은 로그. 데이터셋 · 체크포인트 · eval/raw · 가중치 npy 제외. `tools/sync_sources.py` MAPPINGS 에 recovery_ft 추가 (이번에는 이 매핑만 복사, `SOURCES_MANIFEST.csv` 에 63행 추가).
