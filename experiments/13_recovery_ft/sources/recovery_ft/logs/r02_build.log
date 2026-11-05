@@ -1,0 +1,4 @@
+source files unchanged (sha256): {'d2': 11, 'R1': 11, 'R2': 19}
+merged episodes 277 frames 131795 data files 7 video files {'observation.images.front': 10, 'observation.images.wrist': 8}
+stats.json = d2 stats.json: True
+BUILD_OK /home/user/so101_runs/main_k8/d2/recovery_ft/dataset

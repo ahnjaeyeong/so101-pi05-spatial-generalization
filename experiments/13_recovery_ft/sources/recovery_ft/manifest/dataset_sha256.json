@@ -1,0 +1,121 @@
+{
+ "time": "2026-11-04 14:54:26",
+ "files": {
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-000.parquet": {
+   "size": 5478743,
+   "sha256": "943c7e0d7c9cc58ee3611cb7ffdc02c91811f50cde672360e39df785218bce0e"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-001.parquet": {
+   "size": 89928,
+   "sha256": "6feb1893292455b925d19a1668d8254485ecded1a4aa4e7bf14d639e4d8515c3"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-002.parquet": {
+   "size": 82190,
+   "sha256": "da3d8738b1505dde763bbd6756fd3f4f418393219080e13fe17fa8ff19fdd880"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-003.parquet": {
+   "size": 65134,
+   "sha256": "f0fbccaf0cca1b38d9029b7d423a8f76d344ba20d0b079c042ca58129b326bae"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-004.parquet": {
+   "size": 67508,
+   "sha256": "31a2983835048d1ab28cef3d1a848a389eb50452e64b6c87294a7d75aff94413"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-005.parquet": {
+   "size": 64621,
+   "sha256": "9622f5ab40e5ad5e4508938269d28677b5bd3b27d6a6576e11e668ccf0c18746"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/data/chunk-000/file-006.parquet": {
+   "size": 18167,
+   "sha256": "2e84a6ce66f7c5d965f1c4ca4eee003721d8690719e0140440b77712367a64d5"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/meta/episodes/chunk-000/file-000.parquet": {
+   "size": 478721,
+   "sha256": "96da1afb1dfd1641ec4b16fc08ce4edbfe80756732983ebef0b45d13fcf7d156"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/meta/info.json": {
+   "size": 3676,
+   "sha256": "7095419c5b38dccde81b197573af1e5edf0af8048fd0147613b51d53778fd011"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/meta/stats.json": {
+   "size": 13069,
+   "sha256": "29ccf710d75ce4332d81220f63212be3ee74717c43938424d4fda9a2c47f94f5"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/meta/tasks.parquet": {
+   "size": 2230,
+   "sha256": "7dc935c8389c5cd411411fdacf0bcee5a74cbe864b663ab91b4028205931a501"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-000.mp4": {
+   "size": 204898496,
+   "sha256": "cca37a340da0f6fc3ae436d9ef16322a4ddaad275dd2a4955211e4eaa7cd22f9"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-001.mp4": {
+   "size": 206363698,
+   "sha256": "19afd3405c77bae2ee4c91dbe15f5293ac10c77cd19ddac30042c6fbf62da21c"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-002.mp4": {
+   "size": 198790853,
+   "sha256": "745578044dd4012a3f7b7dc9e1cca2d3d07937c74d04170fd7353db9d69411ae"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-003.mp4": {
+   "size": 32805767,
+   "sha256": "4fc35e13e94a8b14c06c9b90d7c653a767f96e3067d34f07ce30e9a2d6cd1997"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-004.mp4": {
+   "size": 10215816,
+   "sha256": "e46f5d227089160323128a24d95bf701b23a54793ccc1809b66b76f29ef21ceb"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-005.mp4": {
+   "size": 9064151,
+   "sha256": "3ed69c178b2203a76a0875ba9418a94762966d60da3e725927c9ca4df0cad126"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-006.mp4": {
+   "size": 7817060,
+   "sha256": "007a38093d43bc34153416cb4c0fc8ded569604730efde287cc220f25534f736"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-007.mp4": {
+   "size": 7921159,
+   "sha256": "750f1dfe597eb91f012f359b8268423472437cd78f7934ac7cc5628bddd1a1d9"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-008.mp4": {
+   "size": 7451560,
+   "sha256": "3bd5065afa2d29c1a64e81eca2649ec70e9807819905499bcef38460b2540261"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.front/chunk-000/file-009.mp4": {
+   "size": 1924077,
+   "sha256": "989c33be2443673d8e6a05d7dfafcd77445250e161861d073ad9f9b8f73788e6"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-000.mp4": {
+   "size": 186794820,
+   "sha256": "7934881780c01b36342b5586a4889f907b46ed66429e40aae579fa92df474bd7"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-001.mp4": {
+   "size": 161999317,
+   "sha256": "6528b3e465f8e6e12ca0c36d730326c98ce210c0164e57ad0700145d07281982"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-002.mp4": {
+   "size": 5156812,
+   "sha256": "32e0f516d85e03fc442dbc0b1a017254675de1d887c4d651e297bfe929d61a3e"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-003.mp4": {
+   "size": 4601321,
+   "sha256": "0e28a09b6cd172d70e4ec74685367cdaf419e7937e192673fe07c3a24613c417"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-004.mp4": {
+   "size": 3460846,
+   "sha256": "6c91a7f91adb03205225c7e8bcadb2d93756c46845861ff2d7a43bc50f7ced67"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-005.mp4": {
+   "size": 3963367,
+   "sha256": "1425ecfc8cb4a7a0c37d044bc02277cf8349d1074f0bcd507b536a718ccc306a"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-006.mp4": {
+   "size": 3434257,
+   "sha256": "0305861c15d3becd56d911dd2cee940a285380fe7b5c5f4a6e741dc153b0922d"
+  },
+  "/home/user/so101_runs/main_k8/d2/recovery_ft/dataset/videos/observation.images.wrist/chunk-000/file-007.mp4": {
+   "size": 809977,
+   "sha256": "a53f29b6e1e2d80a9f9bb1c0ee052851752d0578499f02b52c682229160a13ca"
+  }
+ }
+}

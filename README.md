@@ -75,7 +75,8 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | ⏸ 일시정지 | Sampling ablation 큐 (A2 평가, A2r, A0′ 미실행; 재개는 사용자 지시) |
 | ⏹ 정지 | d4 (10k) |
 | 🔄 진행 중 | R1/R2 시연 수집 (도구 완료, 본 수집 0편, 연습 R1 12편) |
-| 📝 계획 | Held-out H 32편, 재학습 정책 로봇 평가, R1 실패 상태 맞춤 시나리오, R1/R2 재학습, HIL (2차 방안) |
+| 🧪 오프라인만 | EXP-13 (11-04): d2 + R1 4 · R2 12 FT 1k — 학습 · 재추론 평가 완료, 실물 미평가 |
+| 📝 계획 | Held-out H 32편, 재학습 정책 로봇 평가, R2 단독 FT 검토 (EXP-13 후속), HIL (2차 방안) |
 
 ## 10. 향후 실험 계획
 1. R1 을 실패 상태 (팔 접은 자세, 15/25/40°+ 지나침, 손목 놓침·front 보임) 에 맞춰 수집, R2 수집.
@@ -106,7 +107,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 
 ## Git 에서 제외한 자료
 전체 목록과 해시는 [ARCHIVE_MANIFEST.csv](ARCHIVE_MANIFEST.csv), 요약은 [inventory/README.md](inventory/README.md).
-모델 체크포인트 (28개, 각 9.35 GB `model.safetensors` + optimizer — 경로·SHA-256 은 `configs/checkpoints/`), LeRobot 데이터셋 parquet·AV1 영상 (메타는 `configs/datasets/`), 실물 rollout dataset·영상·review 영상, diag 원 chunk (`.npz`) 와 관측 PNG (에피소드 첫 chunk 52장만 등록), 2 MB 넘는 rollout 로그 (축약본 `*.condensed.log` 등록), QA 판별 시트 `ep_N.jpg` 773장, F1 특징 (86 GB), 학습 로그 원본 (진행 막대; loss 는 `analysis/loss/` 로 추출), `.npz/.npy/.parquet/.gz/.mp4/.safetensors`, 가상환경·캐시.
+모델 체크포인트 (32개, 각 9.35 GB `model.safetensors` + optimizer — 경로·SHA-256 은 `configs/checkpoints/`), LeRobot 데이터셋 parquet·AV1 영상 (메타는 `configs/datasets/`), 실물 rollout dataset·영상·review 영상, diag 원 chunk (`.npz`) 와 관측 PNG (에피소드 첫 chunk 52장만 등록), 2 MB 넘는 rollout 로그 (축약본 `*.condensed.log` 등록), QA 판별 시트 `ep_N.jpg` 773장, F1 특징 (86 GB), 학습 로그 원본 (진행 막대; loss 는 `analysis/loss/` 로 추출), `.npz/.npy/.parquet/.gz/.mp4/.safetensors`, 가상환경·캐시.
 
 ## 새 실험 추가
 [CLAUDE.md](CLAUDE.md) 의 "새 실험 기록 절차" 참고. 요약: 템플릿 복사 → ID 부여 → 목적·가설 → 설정 기록 (`tools/sync_sources.py`, `tools/collect_run_metadata.py` 매핑 추가) → 결과 연결 → `EXPERIMENT_INDEX.md`·`CHANGELOG.md` 갱신 → `python3 tools/check_repo.py` → commit → push.
