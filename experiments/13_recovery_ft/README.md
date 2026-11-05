@@ -4,7 +4,8 @@
 |---|---|
 | 실험 ID | **EXP-13** (run `rft01_d2rc16_W5_1k_s2001`) |
 | 날짜 | 2026-11-04 |
-| 상태 | 학습 `COMPLETED` · 오프라인 재추론 평가 `COMPLETED` · 실물 `NOT_EVALUATED` |
+| 상태 | 학습 `COMPLETED` · 오프라인 재추론 평가 `COMPLETED` · 실물 파일럿 `COMPLETED` → [EXP-14](../14_rft01_real_pilot/README.md) (16 판, 모델 간 결론 미결정) |
+| 상태 이력 | 11-04 실물 `NOT_EVALUATED` → 11-05 실물 파일럿 16 판 (EXP-14) |
 | 표기 | [사실] 파일 측정값 · [가설] 분석 해석 · [계획] 설계만 · 데이터 [in-sample] · 오프라인 값은 모두 재추론 (실물 성공률 아님) |
 
 상세 보고·전체 표: [`sources/recovery_ft/README.md`](sources/recovery_ft/README.md). 이 문서는 요약.
@@ -76,8 +77,9 @@ d2 020000 에 사람 교정 시연 16편 (R1 4 · R2 12) 을 섞어 짧게 추�
 - [계획] (§9 "R1 만 개선됨") R2 시연 시작 상태와 AHEAD/BELOW 실물 진단 상태의 분포 비교 → d2 + R2 단독 FT (같은 시작 · steps · LR · seed) 검토.
 - [계획] 정상 능력 감시 지표: T2 reverse · H_preclose pan gain · 사람 상태 action 차이. 실물 비교 후보는 500 · 1000.
 - [계획] 실물 평가 · R1/R2 추가 촬영은 사용자 지시 후.
+- (11-05) 실물 파일럿 실행 → [EXP-14](../14_rft01_real_pilot/README.md): FT (001000) 4/8 · BL (020000) 5/8 [사람 P/F], Known 3/4 vs 2/4, Unknown 1/4 vs 3/4 — Unknown 구간은 시작 그리퍼 상태가 모델과 겹친 교란으로 비교 무효. 16 판 모두 Wrist 놓침 0 → 실물 R1 복구는 검증 안 됨. 오프라인 R1 복구 신호 개선과 실물 복구 성공은 별개.
 
 ## 원본 자료
 - 복사본: `sources/recovery_ft/` (scripts, manifest, 검증·평가 표, 작은 로그; tools/sync_sources.py MAPPINGS)
 - 원본 경로: `/home/user/so101_runs/main_k8/d2/recovery_ft` (dataset · checkpoints · eval/raw · weights 는 Git 제외)
-- 시연 원본 세션 `main_k8/r12_pilot12_r1`, `main_k8/r12_pilot12_rc` 는 이 저장소에 아직 매핑하지 않음 (EXP-11 갱신 범위).
+- 시연 원본 세션 `main_k8/r12_pilot12_r1`, `main_k8/r12_pilot12_rc` 는 11-05 에 EXP-11 `sources/sessions/` 로 매핑함 ([EXP-11](../11_r1_r2_recovery/README.md)).
