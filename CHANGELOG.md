@@ -7,6 +7,7 @@
 - 사본 `sources/overshoot_diag/` (37 파일, 2.6 MB: 설계 · 결과 md, scripts o1–o3 · b1–b7, data json · csv). 재추론 npz 5 개 (4.1 MB) 는 `sources/ARCHIVE_EXCLUDED.csv` (경로 · SHA-256).
 - 도구: `tools/sync_sources.py` MAPPINGS — EXP-16 매핑에서 `overshoot_diag` 제외, EXP-17 매핑 추가 (`--only experiments/17_grasp_bias_diag` 로 복사, `SOURCES_MANIFEST.csv` +37 행). `tools/archive_excluded.py` TARGETS 에 17 추가 (이번 목록은 npz 5 개를 직접 해시해 작성).
 - `EXPERIMENT_INDEX.md` (17 실험), `README.md` 9 · 10 절, `evaluations/offline/README.md` (EXP-17 1 행).
+- **추가 (같은 날, 2 번째 커밋)**: P7 기세 · 출처 (b8 · b9), P8 높이 (b10 · b11), P9 서보 속도, P10 큐브 × 배경 교차 (b12 · b13), 사람 시연 측정 h1–h3. **정정**: 실물 '닫기 시도 직전' 장면의 약 2/3 는 그리퍼가 이미 닫히는 중 → P4 · P6 · P7 실물 평균은 섞인 값; 그리퍼 열림 장면만 다시 집계 (README 결과 3). 사본 +19 파일 (`SOURCES_MANIFEST.csv` +19 행).
 - **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` (11-05 와 같은 이유).
 
 ## 2026-11-09 — EXP-15 SG50 수집 + sgft01 FT · EXP-16 실물 평가 (branch: exp/15-sg50-sgft01-20261109, records/handoff-20261105 위)
