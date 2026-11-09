@@ -1,0 +1,15 @@
+장면 실물 37 · 사람 80 · 187s
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/010000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  0/117 · 365s
+  25/117 · 486s
+  50/117 · 574s
+  75/117 · 635s
+  100/117 · 695s
+B6_DONE 734s

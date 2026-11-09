@@ -2,6 +2,13 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-09 — EXP-17 집기 직전 지나침 · 편향 진단 (branch: exp/17-grasp-bias-diag-20261109, exp/15-sg50-sgft01-20261109 위)
+- **EXP-17 신규** `experiments/17_grasp_bias_diag/`: EXP-16 실물 8 판 기록 (diag chunk · 관측 · tick) 과 sgft01 010000 재추론으로 (1) 흔들림 → 손목 오차 → 추가 이동 → 지나침 가설 (L1–L4, 사전 기준; L1 만 성립), (2) 집기 직전 편향 P1–P6 (존재 · 출처 · 사람 입력 · 평형점 · 카메라 떨림 · 관절값 의존). 새 실물 시행 없음. 상태 COMPLETED (분석).
+- 사본 `sources/overshoot_diag/` (37 파일, 2.6 MB: 설계 · 결과 md, scripts o1–o3 · b1–b7, data json · csv). 재추론 npz 5 개 (4.1 MB) 는 `sources/ARCHIVE_EXCLUDED.csv` (경로 · SHA-256).
+- 도구: `tools/sync_sources.py` MAPPINGS — EXP-16 매핑에서 `overshoot_diag` 제외, EXP-17 매핑 추가 (`--only experiments/17_grasp_bias_diag` 로 복사, `SOURCES_MANIFEST.csv` +37 행). `tools/archive_excluded.py` TARGETS 에 17 추가 (이번 목록은 npz 5 개를 직접 해시해 작성).
+- `EXPERIMENT_INDEX.md` (17 실험), `README.md` 9 · 10 절, `evaluations/offline/README.md` (EXP-17 1 행).
+- **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` (11-05 와 같은 이유).
+
 ## 2026-11-09 — EXP-15 SG50 수집 + sgft01 FT · EXP-16 실물 평가 (branch: exp/15-sg50-sgft01-20261109, records/handoff-20261105 위)
 - **EXP-15 신규** `experiments/15_sg50_sgft01/`: SG50 수집 도구 · 결정 (11-05 ~ 11-06) — 손목 주황 닫기 프레임 (ref-v5), 수평계 (FK 0 점 보정), 그리퍼 열기 알림, 수직 최대거리, K 8 + 영역 무작위 32 계획, 시작 자세 S0, 진행 순서 숄더팬 → 열기 → 찾기 → 이동. 예비3 43 편 (학습 40). sgft01 = d2 020000 → 40 편 expert-only 10k (11-06 16:07 ~ 11-07 20:11, loss 0.213→0.019). 오프라인 [in-sample]·[반사실] 표 요약. 상태: 수집 PARTIAL · 학습 COMPLETED · 오프라인 COMPLETED.
 - **EXP-16 신규** `experiments/16_sgft01_real_eval/`: sgft01 010000 실물 8 판 (11-09 10:03 ~ 10:19) 2/8 [사람] — K 2/5 · U 0/3, HU3 미시험 · K8 2 회, 안전 정지 0. 단계별 측정 · 실패 모양 · 장면 표 (원본 영상에서 추출 8 장, `EXTRACTED.csv`).

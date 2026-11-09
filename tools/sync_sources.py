@@ -248,7 +248,10 @@ MAPPINGS = [
     # 16 sgft01 real eval (11-09): copied rft01 pilot tooling with sgft01 plan, run logs/results, analysis report and extracted frames;
     # rollout dataset/videos, diag chunks, fake-device outputs excluded
     (f"{RUNS}/main_k8/sgft01_real_eval", "experiments/16_sgft01_real_eval/sources/sgft01_real_eval",
-     ("_out", "diag", "viewer")),
+     ("_out", "diag", "viewer", "overshoot_diag")),
+    # 17 grasp bias / overshoot diagnosis on the EXP-16 run (11-09): designs, results, scripts, summary json/csv;
+    # reinference npz (reinfer · equilibrium · blur · state_probe) excluded by extension
+    (f"{RUNS}/main_k8/sgft01_real_eval/overshoot_diag", "experiments/17_grasp_bias_diag/sources/overshoot_diag"),
 ]
 
 

@@ -1,0 +1,122 @@
+[
+ {
+  "chunk": 15,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.24436187744140625
+ },
+ {
+  "chunk": 89,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.261260986328125
+ },
+ {
+  "chunk": 150,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.9862861633300781
+ },
+ {
+  "chunk": 164,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.6701812744140625
+ },
+ {
+  "chunk": 176,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.599822998046875
+ },
+ {
+  "chunk": 193,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.3302803039550781
+ },
+ {
+  "chunk": 263,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.4257659912109375
+ },
+ {
+  "chunk": 274,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.5182209014892578
+ },
+ {
+  "chunk": 285,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 1.671743392944336
+ },
+ {
+  "chunk": 296,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.365386962890625
+ },
+ {
+  "chunk": 307,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.6936416625976562
+ },
+ {
+  "chunk": 337,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.3168487548828125
+ },
+ {
+  "chunk": 348,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.3375701904296875
+ },
+ {
+  "chunk": 360,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.3625030517578125
+ },
+ {
+  "chunk": 371,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.541351318359375
+ },
+ {
+  "chunk": 382,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.3313140869140625
+ },
+ {
+  "chunk": 393,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.42532920837402344
+ },
+ {
+  "chunk": 430,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.31116485595703125
+ },
+ {
+  "chunk": 449,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.50616455078125
+ },
+ {
+  "chunk": 556,
+  "in_batch_max": 0.0,
+  "k1_vs_saved": 0.0,
+  "k8_vs_saved": 0.50616455078125
+ }
+]

@@ -33,6 +33,8 @@ TARGETS = {
     "experiments/15_sg50_sgft01/sources/ARCHIVE_EXCLUDED.csv":
         ["/home/user/so101_runs/practice/sg50_pilot/", "/home/user/so101_runs/practice/sg50_pilot2/", "/home/user/so101_runs/practice/sg50_pilot3/"],
     "experiments/16_sgft01_real_eval/sources/ARCHIVE_EXCLUDED.csv": [R + "sgft01_real_eval/"],
+    # NOTE: the 16 list was written before overshoot_diag existed; overshoot_diag/ belongs to 17
+    "experiments/17_grasp_bias_diag/sources/ARCHIVE_EXCLUDED.csv": [R + "sgft01_real_eval/overshoot_diag/"],
 }
 DIR_SUMMARY_MIN = 50
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

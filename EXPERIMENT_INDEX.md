@@ -3,7 +3,7 @@
 상태 코드: `COMPLETED` · `PARTIAL` (계획 일부만 실행) · `NOT_EVALUATED` (학습은 했으나 평가 없음) · `IN_PROGRESS` · `PAUSED` · `STOPPED` (중단) · `PLANNED` (설계만).
 "보고서 ID" 는 [`docs/`](docs/) 의 S1-01 등과 같다.
 
-## 실험 폴더 (16)
+## 실험 폴더 (17)
 | ID | 이름 | 기간 | 보고서 ID | 데이터 | 모델 / 체크포인트 | 상태 | 핵심 결과 (상세는 폴더) |
 |---|---|---|---|---|---|---|---|
 | [EXP-01](experiments/01_paper_cube/README.md) | 종이 큐브 초기 (practice_10/50, E0_J_0) | 10-02 ~ 10-13 | S1-01~06, S1-09 | practice_10 (10), practice_50 (50) | full FT 2k / 15k | COMPLETED | 실물 1/7; 3/3 (분석 판정), 3/8 (사람) |
@@ -22,6 +22,7 @@
 | [EXP-14](experiments/14_rft01_real_pilot/README.md) | rft01 vs d2 020000 실물 파일럿 | 11-05 | — | 실물 16 판 (K 8 · 파일럿 U 8) | FT rft01 001000 / BL d2 020000 | COMPLETED (결론 미결정) | [사람] FT 4/8 · BL 5/8; Known 3/4 vs 2/4, Unknown 1/4 vs 3/4 — **Unknown 은 시작 그리퍼 (FT 닫힘 / BL 열림) · 모델 순서 교란**; K3 FT 2/2 vs BL 0/2 (조건당 1 회) |
 | [EXP-15](experiments/15_sg50_sgft01/README.md) | SG50 수집 (S0 시작 · 손목 안내 화면) + sgft01 FT · 오프라인 | 11-05 ~ 11-07 | — | sg50_pilot3 40 (예비 1·2 는 학습 안 씀) | d2 020000 → expert-only 10k (2500/5000/7500/10000) | 수집 PARTIAL (본 수집 안 함) · 학습 COMPLETED · 오프라인 COMPLETED · 실물 → EXP-16 | [in-sample] 앞 10 스텝 오차 10.37→2.19; [반사실] front→pan 이득 0.93, 손목 앞뒤→wflex +2.0 (사람 +18.6) · 크기→lift +0.2 (사람 −42.7), 프레임 밖이어도 닫기 유지; d2 판 오차 2.24→9.49 |
 | [EXP-16](experiments/16_sgft01_real_eval/README.md) | sgft01 010000 실물 평가 | 11-09 | — | 실물 8 판 (K 5 · U 3, HU3 미시험 · K8 2 회) | sgft01 010000 (기준선 없음) | COMPLETED | [사람] 2/8 (K 2/5 · U 0/3); 실패 4 판 = 손목 큐브 아래쪽 (그리퍼가 앞 · 위) 인 채 닫기 반복, U7 첫 pan 반대, K2 옮기다 놓침; 안전 정지 0 |
+| [EXP-17](experiments/17_grasp_bias_diag/README.md) | sgft01 집기 직전 지나침 · 편향 진단 (EXP-16 기록 + 재추론) | 11-09 | — | 실물 8 판 기록 + 사람 예비3 40 편 장면 | sgft01 010000 | COMPLETED (분석) | [사실] 흔들림→지나침 고리 L2–L4 미달; 바깥 편향은 정책 목표 (실행 오차 반대 부호); [반사실] 큐브 중심 영상에서도 바깥 +0.42 cm (prefix 시 +0.84), 손목 보정 사람의 27 %·10 %, 관절값 k 0.81 (사람 0.94), 닫기 비율 관절값 ±1 cm 무관; 블러 11 px +0.26–0.40 cm |
 
 ## 학습 실행 (13)
 | run_id | 실험 | 상태 | 설정 |
