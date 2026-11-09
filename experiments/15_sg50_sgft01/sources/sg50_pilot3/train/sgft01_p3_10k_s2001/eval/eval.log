@@ -1,0 +1,61 @@
+  A ~/so101_runs/practice/sg50_pilot3/dataset: 판 40 → 누적 장면 240
+  B ~/so101_runs/practice/sg50_pilot3/removed_20261106_141910/dataset: 판 16 → 누적 장면 336
+  B ~/so101_runs/practice/sg50_pilot2/dataset: 판 3 → 누적 장면 354
+  C ~/so101_runs/main_k8/d2/dataset: 판 32 → 누적 장면 546
+장면 546 (66 s)
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  d2_020000 A: 240 장면 · 369 s
+  d2_020000 B: 114 장면 · 460 s
+  d2_020000 C: 192 장면 · 614 s
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/002500/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  sgft_002500 A: 240 장면 · 368 s
+  sgft_002500 B: 114 장면 · 460 s
+  sgft_002500 C: 192 장면 · 614 s
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/005000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  sgft_005000 A: 240 장면 · 362 s
+  sgft_005000 B: 114 장면 · 454 s
+  sgft_005000 C: 192 장면 · 610 s
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/007500/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  sgft_007500 A: 240 장면 · 361 s
+  sgft_007500 B: 114 장면 · 453 s
+  sgft_007500 C: 192 장면 · 608 s
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/010000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+  sgft_010000 A: 240 장면 · 360 s
+  sgft_010000 B: 114 장면 · 452 s
+  sgft_010000 C: 192 장면 · 606 s
+→ /home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/eval/results.md

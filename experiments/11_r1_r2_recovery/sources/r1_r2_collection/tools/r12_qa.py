@@ -483,7 +483,8 @@ def main(argv=None):
         if not m:
             r["reasons"].append("r12_episodes.csv 줄 없음")
         elif r["final_success"] in ("", "None"):
-            r["reasons"].append("결과 미입력")
+            if cfg.get("result_entry", True):  # SG50 (result_entry: false) 은 결과를 받지 않음
+                r["reasons"].append("결과 미입력")
         elif r["final_success"] == "False":
             r["reasons"].append("최종 실패로 입력됨")
         for k in ("late_ticks", "camera_stall_ticks"):

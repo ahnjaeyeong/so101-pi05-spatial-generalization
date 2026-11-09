@@ -238,6 +238,17 @@ MAPPINGS = [
     # rollout dataset/videos, diag chunks/obs/replay, report frames/obs, fake-device outputs excluded
     (f"{RUNS}/main_k8/rft01_real_pilot", "experiments/14_rft01_real_pilot/sources/rft01_real_pilot",
      ("_out", "diag", "viewer")),
+    # ---- added 2026-11-09 ----
+    # 15 SG50 collection (11-05 ~ 11-06) + sgft01 fine-tune / offline tests (11-06 ~ 11-07): pilot sessions (plans, QA, sticker
+    # references, check reports), training run records (args, wrapper, logs summary, eval results); datasets, checkpoints,
+    # offline-eval npz, per-frame sticker CSVs excluded (tools and the 13_sg50_sticker.md log live under EXP-11 r1_r2_collection)
+    *[(f"{RUNS}/practice/{s}", f"experiments/15_sg50_sgft01/sources/{s}", ("sg_sticker", "raw", "vis_raw", "r12_start_frames"))
+      for s in ("sg50_pilot", "sg50_pilot2", "sg50_pilot3")],
+    (f"{HOME}/io-capture/20261106-1607/SUMMARY.md", "experiments/15_sg50_sgft01/sources/io_capture_20261106-1607/SUMMARY.md"),
+    # 16 sgft01 real eval (11-09): copied rft01 pilot tooling with sgft01 plan, run logs/results, analysis report and extracted frames;
+    # rollout dataset/videos, diag chunks, fake-device outputs excluded
+    (f"{RUNS}/main_k8/sgft01_real_eval", "experiments/16_sgft01_real_eval/sources/sgft01_real_eval",
+     ("_out", "diag", "viewer")),
 ]
 
 

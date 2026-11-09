@@ -1,0 +1,47 @@
+{
+ "source": {
+  "d2_episode": 3,
+  "t_s": 11.47,
+  "layout": "T1K3",
+  "synthetic_sticker_center_px": [
+   204,
+   316
+  ],
+  "side_px": 49
+ },
+ "shots": [
+  [
+   "sg_rec_detected_1800x470.png",
+   "detected"
+  ],
+  [
+   "sg_debug_rec_1800x470.png",
+   "detected"
+  ],
+  [
+   "sg_rec_detected_1200x330.png",
+   "detected"
+  ],
+  [
+   "sg_saving_1800x470.png",
+   "detected"
+  ],
+  [
+   "sg_reset_next_1800x470.png",
+   "detected"
+  ],
+  [
+   "sg_rec_no_sticker_1800x470.png",
+   "none"
+  ],
+  [
+   "sg_setup_pose_1800x470.png",
+   "detected"
+  ],
+  [
+   "sg_stale_1800x470.png",
+   "stale"
+  ]
+ ],
+ "note": "front · wrist = d2 같은 판 같은 시각 원본 프레임. 스티커 = [합성]. 참조 = 화면 예시용 임시"
+}

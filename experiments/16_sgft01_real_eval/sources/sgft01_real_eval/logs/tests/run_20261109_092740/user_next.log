@@ -1,0 +1,130 @@
+WARNING:lerobot.r2_safety:R2_PLAN 배치 계획 8 판 (/home/user/so101_runs/main_k8/sgft01_real_eval/config/pilot_plan.csv), 1 번부터. 첫 판: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-09 09:30:54 ut_logged.py:48 debug log: /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=30 --inference.rtc.prefix_attention_schedule=EXP --robot.type=so101_follower --robot.port=/nonexistent/r2_fake_port --robot.id=pilot_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/r2_fake_front, width: 640, height: 480, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/r2_fake_wrist, width: 640, height: 480, fps: 30} } --dataset.repo_id=oxr/rollout_pilot_fake --dataset.root=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=20.0 --dataset.reset_time_s=2 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false --strategy.reset_to_initial_position=false
+INFO 2026-11-09 09:30:54 ut_logged.py:50 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-09 09:30:54 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=30 --inference.rtc.prefix_attention_schedule=EXP --robot.type=so101_follower --robot.port=/nonexistent/r2_fake_port --robot.id=pilot_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/r2_fake_front, width: 640, height: 480, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/r2_fake_wrist, width: 640, height: 480, fps: 30} } --dataset.repo_id=oxr/rollout_pilot_fake --dataset.root=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=20.0 --dataset.reset_time_s=2 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false --strategy.reset_to_initial_position=false
+INFO 2026-11-09 09:30:54 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-09 09:30:54 _rollout.py:245 Building rollout context...
+INFO 2026-11-09 09:30:54 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model'...
+INFO 2026-11-09 09:33:33 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+WARNING 2026-11-09 09:33:34 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-11-09 09:33:34 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+INFO 2026-11-09 09:33:40 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-11-09 09:33:40 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-11-09 09:33:40 /context.py:395 Robot connected: so_follower
+INFO 2026-11-09 09:33:40 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-09 09:33:40 /context.py:500 Setting up dataset (repo_id=oxr/rollout_pilot_fake)...
+INFO 2026-11-09 09:33:40 /context.py:547 Dataset ready: oxr/rollout_pilot_fake (0 existing episodes)
+INFO 2026-11-09 09:33:42 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-09 09:33:42 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-09 09:33:42 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-09 09:33:42 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-09 09:33:42 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-11-09 09:33:42 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-09 09:33:42 gies/core.py:96 Starting inference engine...
+INFO 2026-11-09 09:33:42 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-09 09:33:42 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-09 09:33:42 ies/core.py:100 Inference engine started
+INFO 2026-11-09 09:33:42 episodic.py:105 Episodic strategy ready
+INFO 2026-11-09 09:33:42 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-09 09:33:42 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-09 09:33:42 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-09 09:33:42 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-09 09:33:42 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+WARNING 2026-11-09 09:33:42 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-8.4, 26.5) cm · Known (K1 0.1 cm) · 각도 +3° (= 0) · 계획 K5_0 과 17.3 cm ⚠ 계획과 17.3 cm (> 2.0) 다름 — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)
+INFO 2026-11-09 09:33:42 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-09 09:33:43 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=20
+INFO 2026-11-09 09:33:44 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:33:45 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-09 09:33:46 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-09 09:33:46 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:33:47 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+WARNING 2026-11-09 09:33:47 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+Map:   0%|          | 0/129 [00:00<?, ? examples/s]Map: 100%|██████████| 129/129 [00:00<00:00, 3359.55 examples/s]
+Svt[info]: Svt[info]: -------------------------------------------
+-------------------------------------------
+Svt[info]: Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: Svt[info]: -------------------------------------------
+-------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Level of Parallelism: 5
+Svt[info]: Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Number of PPCS 76
+Svt[info]: Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+[asm level on system : up to neon_i8mm]
+Svt[info]: Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+[asm level selected : up to neon_i8mm]
+Svt[info]: Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+-------------------------------------------
+Svt[info]: Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: Svt[info]: Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+-------------------------------------------
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-09 09:33:50 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-11-09 09:33:50 le_timer.py:559 Cadence (episode 1): 29.90 Hz vs 30 Hz target · 150 ticks, 5.0 s measured · 0/149 ticks over the 33.3 ms budget (work mean 1.2 ms, worst 6.4 ms) · starved ticks: 21
+INFO 2026-11-09 09:33:50 le_timer.py:606 Cadence summary — whole run, 1 episode · target 30 Hz (33.3 ms budget per tick): 150 ticks, 149 judged
+  effective cadence: 29.90 Hz over 5.0 s measured
+  ticks over the 33.3 ms work budget: 0/149 (0.0%) — work mean 1.2 ms, worst 6.4 ms
+  ticks with no action to send (inference engine starved): 21 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 2
+  loop-body steps (share of measured work):
+    observe      mean   0.56 ms · worst  17.43 ms ·  42.6% of work · 150 calls
+    process_obs  mean   0.02 ms · worst   0.33 ms ·   1.8% of work · 150 calls
+    infer        mean   0.14 ms · worst   3.61 ms ·  10.5% of work · 150 calls
+    send         mean   0.16 ms · worst   1.44 ms ·  10.5% of work · 129 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.2% of work · 129 calls
+    record       mean   0.19 ms · worst   0.63 ms ·  12.3% of work · 129 calls
+  pacing headroom: 32.1 ms slept per tick on average (max 33.2 ms) — near zero means the loop is saturated
+INFO 2026-11-09 09:33:50 ls/utils.py:150 Stop recording
+INFO 2026-11-09 09:33:50 episodic.py:357 Finalizing dataset...
+INFO 2026-11-09 09:33:50 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-09 09:33:50 ence/rtc.py:324 RTC inference thread stopped
+WARNING 2026-11-09 09:33:50 end_hold.py:325 END_HOLD 종료: 자동 복귀 없음 · 팔은 지금 자리에서 토크 유지 (시작 자세와 최대 24.94°). 복귀 · 토크 끄기는 사용자가: python3 ~/so101_runs/main_k8/sgft01_real_eval/scripts/safe_home.py --run /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046
+INFO 2026-11-09 09:33:50 ls/utils.py:150 Exiting
+INFO 2026-11-09 09:33:50 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-11-09 09:33:50 _rollout.py:272 Rollout finished
+[r2_safety] installed {'mode': 'stop', 'scope': 'episode', 'pan_cmd_abs_max': 104.0, 'pan_present_abs_max': 100.0, 'over_target_deg': 30.0, 'stall_err_deg': 8.0, 'stall_move_deg': 0.3, 'stall_ticks': 20, 'plan': '/home/user/so101_runs/main_k8/sgft01_real_eval/config/pilot_plan.csv', 'plan_tol_cm': 2.0, 'plan_tol_deg': 10.0, 'plan_start': 1, 'live': 'off', 'viewer': 'off'}
+[fault_latch] installed {'mode': 'stop'}
+[end_hold] installed (auto-return blocked, torque kept on at exit)
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+[fake_robot] MOCK_OK FakeBus+FakeCam connected (no serial, no camera)
+[eval_ui] READY 0
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+[eval_ui] SAVING 0 129
+[eval_ui] SAVED 0 129
+[end_hold] END_HOLD 종료: 자동 복귀 없음 · 팔은 지금 자리에서 토크 유지 (시작 자세와 최대 24.94°). 복귀 · 토크 끄기는 사용자가: python3 ~/so101_runs/main_k8/sgft01_real_eval/scripts/safe_home.py --run /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS N1_ended_by ended_by=episode_end_or_user_next (want ['episode_end_or_user_next']) trigger={'t': 1549942.73761789, 'kind': 'exit_early', 'loop_start': 1549937.737079265}
+PASS N3_data_saved SAVED=1 exception=None
+PASS R1_auto_return_cmds_zero post-policy writes=2 (모두 제자리 유지여야 함) non_hold=[] toward_initial=[] eval_ui HOMING marks=[] blocked return calls=0
+PASS R2_end_state_written ended_by=episode_end_or_user_next max_diff=24.94 torque_left_on=True lerobot return flag=False steps=['engine_stopped', 'bus_disconnected_torque_kept']
+PASS R3_torque_not_disabled FakeBus.disconnect calls=[((), {'disable_torque': False})]
+PASS R4_end_hold_written holds=[('policy_loop_end episode_end_or_user_next',), ('teardown',)]
+INFO end_pose_vs_initial {'max_abs_diff_deg': 24.94, 'diff': {'shoulder_pan': -24.94, 'shoulder_lift': -2.51, 'elbow_flex': -2.78, 'wrist_flex': 1.58, 'wrist_roll': -2.69}}
+ALL_PASS /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/user_next_20261109_093046

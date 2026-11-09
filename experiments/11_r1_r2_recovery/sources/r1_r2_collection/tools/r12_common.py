@@ -382,6 +382,10 @@ def _spread(entries, rng):
 
 def make_plan(cfg, group_name):
     g = group_of(cfg, group_name)
+    if g.get("planner") == "sg50":  # 2026-11-05 SG50 (config/sg50.yaml) — 위치 × 시작 자세 계획은 sg_plan.py. 다른 그룹은 아래 그대로
+        import sg_plan
+
+        return sg_plan.make_rows(cfg, group_name)
     scen = scenarios_of(cfg, g["type"])
     if g.get("scenario_counts"):  # 그룹이 시나리오별 편수를 따로 정함 (시험 연습 등)
         scen = [(sid, {**cfg["scenarios"][sid], "count": int(n)}) for sid, n in g["scenario_counts"].items() if int(n) > 0]

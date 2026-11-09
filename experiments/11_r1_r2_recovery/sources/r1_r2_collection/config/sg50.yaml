@@ -1,0 +1,291 @@
+# SG50 — 공간 일반화 추가 시연 약 50편 (2026-11-05 작업 지시 "큐브 위치 · 팔 시작 자세 다양화, 파지 관계는 일정")
+#   설계 · 사용법: 13_sg50_sticker.md. 이 파일은 r12_scenarios.yaml 위에 덧씌운다 (기존 R1/R2/RC 설정 · 세션은 그대로).
+#   사용: tools/r12_collect.py <명령> --config config/sg50.yaml (--group sg50_pilot | --session main_k8/sg50_main)
+#
+#   고정: 큐브 회전각 0° (아래 cube_rotation 정의) · 큐브 크기 2.5 cm · 빨간 큐브 + 흰 스티커 · 카메라 위치 · 보정 · 조명 · 서보 설정.
+#   다양화: 큐브 위치 (positions) · 팔 시작 자세 (start_poses).
+#   준비 단계 (녹화 안 함) 에서 큐브를 놓고 시작 자세를 만든 뒤 → 로 녹화. 시작 자세 ✓/◇ 는 표시 · 기록만 (녹화를 막지 않음).
+extends: r12_scenarios.yaml
+viewer: sg            # r12_collect.py record/preview 가 tools/sg_viewer.py 를 연다 (기존 r12_viewer.py 대신)
+result_entry: false  # 2026-11-06 사용자: 첫 파지 성공 · 재시도 후 성공 · 실패 (1·2·3) 입력 안 함. 판 끝 → 저장 / ← 버리기만 (m 메모는 남김)
+pace_text: ""         # r12 R2 용 '닫기 영역' 안내 끔 (SG 는 해당 없음)
+setup_order_text: ""
+
+program_groups: [sg50_main]
+
+groups:
+  sg50_pilot:          # 예비 시연 4편 (사용자 확인용) — 시작 자세 4 가지를 한 번씩. 본 수집과 다른 세션 · repo
+    type: SG
+    planner: sg50
+    session: practice/sg50_pilot
+    repo_id: oxr/so101_sg50_pilot
+    seed: 5101
+    episode_time_s: 60
+    plan: pilot
+  sg50_pilot2:         # 2026-11-06 예비 다시 4편 (사용자: Pan 정렬 → 큐브 찾기 → 그리퍼 열기 → 집기 확인용, sg_phase.py)
+    type: SG
+    planner: sg50
+    session: practice/sg50_pilot2
+    repo_id: oxr/so101_sg50_pilot2
+    seed: 5102
+    episode_time_s: 60
+    plan: pilot
+  sg50_pilot3:         # 2026-11-06 예비3 40편 (사용자: Known 8 곳은 한 번씩 + 8 영역에 무작위) — K 8 + K#r# 32 (영역마다 4), 시작 S0
+    type: SG
+    planner: sg50
+    session: practice/sg50_pilot3
+    repo_id: oxr/so101_sg50_pilot3
+    seed: 5301
+    episode_time_s: 60
+    plan: known_regions
+  sg50_main:           # 본 수집 48편 = 위치 16 × 시작 자세 3 (자세마다 12)
+    type: SG
+    planner: sg50
+    session: main_k8/sg50_main
+    repo_id: oxr/so101_k8_sg50_main
+    seed: 5201
+    episode_time_s: 60
+    plan: main
+    collection_status: draft_pending_pilot   # 예비 시연 확인 · 스티커 조건 · N 위치 확인 전
+
+# 시나리오 = 시작 자세 (scenario_id 가 계획 · 화면 · 기록에 그대로 남는다). 큐브 각도는 모두 0.
+scenarios:
+  SG-P0:
+    type: SG
+    label: "SG · P0 쉬는 자세에서 시작"
+    pose: P0
+    count: 0
+    title: 쉬는 자세 (팔 접힘, Pan 가운데) 에서 시작
+    start: "쉬는 자세 (d2 와 같음). 그리퍼 닫힘."
+    demo: "평소대로 접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 쉬는 자세 (단계 순서는 예비 시연에서 확정)"
+    offset_mag: "-"
+    wrist_expect: any
+  SG-P1:
+    like: SG-P0
+    label: "SG · P1 팔 접은 채 Pan 로봇 왼쪽에서 시작"
+    pose: P1
+    title: 팔 접은 채 Pan 을 로봇 왼쪽으로 돌린 자세에서 시작
+    start: "쉬는 자세에서 팔을 접은 채 Pan 만 로봇 왼쪽 (pan −55° 근처) 으로. 그리퍼 닫힘."
+  SG-P2:
+    like: SG-P0
+    label: "SG · P2 팔 접은 채 Pan 로봇 오른쪽에서 시작"
+    pose: P2
+    title: 팔 접은 채 Pan 을 로봇 오른쪽으로 돌린 자세에서 시작
+    start: "쉬는 자세에서 팔을 접은 채 Pan 만 로봇 오른쪽 (pan +55° 근처) 으로. 그리퍼 닫힘."
+  SG-P3:
+    like: SG-P0
+    label: "SG · P3 상자 위 (놓은 직후 자세) 에서 시작"
+    pose: P3
+    title: 상자 위 (d2 에서 큐브를 놓는 순간 자세) 에서 시작
+    start: "팔을 뻗어 그리퍼를 상자 위로 (d2 놓기 순간 자세 근처). 그리퍼 닫힘. 상자 · 탁자에 닿지 않게."
+
+  SG-S0:
+    like: SG-P0
+    label: "SG · S0 쉬는 자세 + 손목 돌림 (고정 시작)"
+    pose: S0
+    title: 고정 시작 자세 S0 = 쉬는 자세와 거의 같고 손목만 사진처럼 돌림 (매 판 같은 자세)
+    start: "쉬는 자세처럼 팔 접힘 · Pan 가운데, 손목은 사진 (sticker_ref/cubecross_20261106_094632_wrist.png) 처럼 돌린 자세. 매 판 같게."
+    demo: "숄더팬을 큐브 쪽으로 맞춤 → 그리퍼 열기 → 손목으로 큐브 찾기 → 이동 (접근 · 내려가 맞추기) → 닫기 → 상자 → S0 로 돌아와 → (녹화 끝)"   # 2026-11-06 사용자 순서
+
+  SG-FREE:
+    like: SG-P0
+    label: "SG · 시작 자세 자유 (직접 정함)"
+    pose: FREE
+    title: 시작 자세는 사용자가 매번 다르게 정함 (실제 관절값 기록)
+    start: "준비 단계 (녹화 안 함) 에서 시작 자세를 자유롭게 만든다. 그리퍼 닫힘."
+    demo: "접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 매번 같은 끝 자세 (쉬는 자세) 로 돌아와 → (녹화 끝)"
+
+checklist:
+  SG:
+    - "이 세션은 SG50 = 일반 파지 시연 (큐브 위치 · 시작 자세만 다양화). 큐브 각도는 늘 0° (로봇 좌우축과 나란함)"
+    - "큐브 흰 스티커 면 · 크기 · 방향이 예비 시연 때와 같은가요? (config sg50.sticker 와 같아야 함)"
+    - "카메라 위치 · 조명 · 서보 설정을 예비 시연 뒤 바꾸지 않았나요?"
+    - "준비 단계 (노란 배너) 에서 큐브를 front 화면 흰 점선 자리에 놓고, 시작 자세를 만든 뒤 → — 그 전 움직임은 녹화되지 않아요"
+    - "첫 파지 실패 · 재파지 · 재정렬이 있었으면 결과 2/3 과 메모(m)로 남겨요 (자동으로 지우거나 성공으로 바꾸지 않음)"
+
+# SG50 전용 설정 (sg_plan.py · sg_viewer.py 가 읽음)
+sg50:
+  version: 1
+  # 큐브 회전각 0° 의 정의 = d2 배치 설정과 같음 (~/so101_boxpick/config/redbox8_layouts.yaml angles 주석, 2026-10-22 사용자):
+  #   '로봇에 가장 가까운 면의 모서리와 가로축 (로봇 좌우축 = 탁자 C 좌표 y 축) 이 이루는 예각'. 0° = 그 면이 로봇 좌우축과 나란함.
+  #   손목 wrist_roll 0° 가 아님. 같은 0° 큐브라도 큐브 방향 (bearing) 이 다르면 필요한 손목 회전이 다르다:
+  #   필요 회전 ≈ wrap90(0 − bearing) (check_dataset roll_check 정의, + = 반시계) → K7 (bearing +70.5°) 약 +19.5°, K8 (−70.5°) 약 −19.5°, K2/K5 약 0°. 계산값은 sg_plan.md '손목 필요°' 칸.
+  cube_rotation:
+    value: "0"
+    definition: "redbox8_layouts.yaml angles: 로봇에 가장 가까운 면의 모서리 ↔ 로봇 좌우축 예각 = 0 (위에서 볼 때). wrist_roll 아님"
+    check: "front 화면 cube_angle 측정 (0 은 ±15° 안이면 통과, check_dataset 과 같은 규칙)"
+  cube_size_cm: 2.5
+  # 2026-11-05 사용자 결정: 끝 = 매 판 같은 자세 (쉬는 자세) 로 돌아와 녹화 끝 (d2 와 같음).
+  #   다음 판 시작 자세는 녹화 안 하는 구간 (결과 입력 · 준비) 에서 사용자가 자유롭게 만든다 → 계획은 위치만 정하고 자세는 FREE.
+  # 2026-11-06 사용자: 시작 자세는 일단 고정 = S0 (쉬는 자세와 거의 같고 손목만 돌림). free 로 되돌리면 이전 방식.
+  start_pose_mode: fixed
+  # 2026-11-06 수평계 (손목 화면 오른쪽 위, 그리퍼 앞뒤 기울기, FK 계산 — tools/sg_fk.py). 0 점 보정 · 허용 (°). 판정 아님.
+  tilt_zero_deg: 0.0   # (아래 tilt_zero 가 있으면 안 씀)
+  tilt_tol_deg: 3.0
+  # 2026-11-06 사선 목표 (14:24 +32 → 14:26 +31) 뒤 사용자 "안되는 각도가 있네 아까처럼 손목서보가 90도로 오게 하는게 맞겠다" → 다시 수직 (0).
+  tilt_target_deg: 0.0
+  # 2026-11-06 사용자가 그리퍼를 지면과 수직으로 세운 3 자세 (practice/sg50_pilot3/qa/reach_check.csv 왼쪽 · 정면 · 오른쪽):
+  #   계산 기울기 −14.7 (pan −95.7) · −10.5 (−2.9) · −6.4 (+86.8) → 0 점 = c0 + c1·sin(pan) 로 맞춤 (잔차 ≤ 0.2°).
+  #   c0 = FK 계산이 늘 약 10.5° 어긋남, c1 = 로봇 · 탁자가 옆으로 약 4° 기울어 왼쪽 · 오른쪽에서 반대로 어긋남.
+  tilt_zero: {c0: -10.47, c1: 4.16}
+  fixed_pose: S0
+  # 2026-11-06 예비 4편: 실제 끝 자세 = S0 근처 (wroll −2.7…−8.5°, 나머지 ≤ 2.4°) — 시작 자세와 같은 자리로 돌아옴
+  episode_end: "매 판 같은 끝 자세 (S0 = 시작 자세) 로 돌아와 → — 다음 시작 자세로 옮기는 동작은 녹화 안 함"
+  # 스티커 조건 — 사용자가 예비 시연 영상으로 확인한 뒤 채운다 (코드에서 추정하지 않음). 비어 있으면 화면 · 기록에 '미정'.
+  sticker:
+    id: ""            # 예: S1
+    face: ""          # 예: 윗면 / 로봇 쪽 옆면 — 실제 부착 면
+    size_mm: ""       # 예: 8x8
+    color: white
+    note: ""
+  # 그리퍼 '고정된 쪽' · 여는 단계 — 사용자 예비 시연으로 확인한 뒤 문장으로 채운다 (코드에서 추정하지 않음).
+  grasp_protocol:
+    fixed_side: ""    # 예: "그리퍼 고정 턱 (움직이지 않는 손가락) = 로봇 기준 ? 쪽" — 사용자 확인
+    open_stage: ""    # 예: "큐브 위 약 n cm 에서 연다" — 사용자 확인
+    stage_order: ""   # 예: "Pan 맞춤 → 내려감 → 열기 → 고정 턱을 큐브 벽에 → 닫기 → 상자"
+  # 시작 자세 후보 — 모두 실제 녹화된 관절값에서 가져옴 (새 자세를 만들지 않음). 표시는 목표 ± tol, 벗어나도 녹화는 막지 않음.
+  #   실제 시작 관절값은 판마다 r12_episodes.csv start_joint_state (녹화 첫 프레임 팔로워) 에 기록된다.
+  start_poses:
+    S0:
+      name: 쉬는 자세 + 손목 돌림
+      # 팔 (pan · lift · elbow · gripper) = P0 (d2 쉬는 자세) 값. 손목 (wrist_flex · wrist_roll) = 예비 ep0 (practice/sg50_pilot,
+      # 2026-11-06 저장 판) 녹화 첫 프레임 팔로워 값 wflex 77.8 · wroll 92.9 (dataset 첫 프레임과 같음, 같은 판 시도 4 번 모두 wroll 92–93).
+      joints: {shoulder_pan: -4.3, shoulder_lift: -102.9, elbow_flex: 95.3, wrist_flex: 77.8, wrist_roll: 92.9, gripper: 1.2}
+      tol: {shoulder_pan: 8, shoulder_lift: 5, elbow_flex: 8, wrist_flex: 12, wrist_roll: 10, gripper: 5}
+      photo: "~/so101_runs/practice/sg50_pilot/sticker_ref/cubecross_20261106_094632_wrist.png"
+      source: "사용자 2026-11-06: '휴식자세랑 거의 비슷한데, 현재 자세처럼 손목의 형태가 돌아가 있어야 해'"
+      status: user_fixed
+    P0:
+      name: 쉬는 자세
+      joints: {shoulder_pan: -4.3, shoulder_lift: -102.9, elbow_flex: 95.3, wrist_flex: 65.5, wrist_roll: 2.5, gripper: 1.2}
+      tol: {shoulder_pan: 8, shoulder_lift: 5, elbow_flex: 8, wrist_flex: 12, wrist_roll: 10, gripper: 5}
+      source: "d2 256편 첫 프레임 팔로워 평균 (d2/data_coverage_audit/03_initial_state_analysis.md 3.1)"
+      status: confirmed_in_d2
+    P1:
+      name: 접은 채 Pan 로봇 왼쪽
+      joints: {shoulder_pan: -55.0, shoulder_lift: -103.0, elbow_flex: 95.0, wrist_flex: 70.0, wrist_roll: 2.0, gripper: 1.2}
+      tol: {shoulder_pan: 10, shoulder_lift: 5, elbow_flex: 8, wrist_flex: 12, wrist_roll: 10, gripper: 5}
+      source: "R1 파일럿 시작 (main_k8/r12_pilot12_r1 ep4 pan −65.5 · ep6 −53.5, 팔 접힘 lift −103) 사이 값"
+      status: candidate_user_check
+    P2:
+      name: 접은 채 Pan 로봇 오른쪽
+      joints: {shoulder_pan: 55.0, shoulder_lift: -103.0, elbow_flex: 96.0, wrist_flex: 64.0, wrist_roll: 1.2, gripper: 1.2}
+      tol: {shoulder_pan: 10, shoulder_lift: 5, elbow_flex: 8, wrist_flex: 12, wrist_roll: 10, gripper: 5}
+      source: "R1 파일럿 시작 (ep5 pan +67.7 · ep7 +56.5, 팔 접힘) 사이 값"
+      status: candidate_user_check
+    P3:
+      name: 상자 위
+      joints: {shoulder_pan: -0.7, shoulder_lift: 34.1, elbow_flex: -40.1, wrist_flex: 70.3, wrist_roll: 6.7, gripper: 1.2}
+      tol: {shoulder_pan: 8, shoulder_lift: 10, elbow_flex: 12, wrist_flex: 12, wrist_roll: 12, gripper: 5}
+      source: "d2 256편 '파지 뒤 처음 그리퍼 열기 (상자 위 놓기)' 순간 팔로워 중앙값 (pan −0.7 lift 34.1 elbow −40.1 wflex 70.3 wroll 6.7). 그리퍼는 그때 12.6 (큐브 쥠) → 시작은 닫힘 1.2 로 제안"
+      status: candidate_user_check
+  # 큐브 위치. K = d2 격자 (확정, d2 학습에 K 마다 32편). N = 새 후보 (계산값 · 미확정): 사용자가 front 화면 점선에 놓아 확인한 뒤 confirmed: true.
+  #   N 조건 (2026-11-05 계산, 13_sg50_sticker.md §4): d2 사람 파지 위치 볼록 껍질 안 (사람이 잡은 적 있는 범위),
+  #   어려운 영역 (로봇 앞) ± 2 cm 밖, 평가 자리 (H U1–U8 · 파일럿 U) 와 ≥ 3.5 cm, K 와 ≥ 5 cm, front 화면 y ≥ 105 px. 먼 점부터 고름.
+  positions:
+    K1: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K2: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K3: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K4: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K5: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K6: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K7: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    K8: {confirmed: true, d2_trained: K, note: "d2 Known 32편"}
+    N1: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 1.6, d2_within_5cm: 4, d_eval_cm: 3.6}
+    N2: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 0.2, d2_within_5cm: 4, d_eval_cm: 3.6}
+    N3: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 1.3, d2_within_5cm: 13, d_eval_cm: 3.6}
+    N4: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 0.6, d2_within_5cm: 12, d_eval_cm: 3.7}
+    N5: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 1.5, d2_within_5cm: 6, d_eval_cm: 3.6}
+    N6: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 1.0, d2_within_5cm: 10, d_eval_cm: 5.1}
+    N7: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 0.5, d2_within_5cm: 9, d_eval_cm: 8.3}
+    N8: {confirmed: false, d2_trained: near_random, d2_nearest_cm: 0.0, d2_within_5cm: 8, d_eval_cm: 3.6}
+  pilot_rows:          # 예비 시연: 시작 자세 4 가지 · 확정 K 만 (N 미확정)
+    - [K2, P0]
+    - [K7, P1]
+    - [K8, P2]
+    - [K5, P3]
+  # 2026-11-06 예비3: K 둘레 영역 무작위 점 조건 (sg_plan.py regions). 영역 = K 를 가운데로 한 칸 (줄 간격 8.5 · 열 간격 15 cm 의 반)
+  known_regions:
+    half_x_cm: 4.25
+    half_y_cm: 7.5
+    per_region: 4
+    min_from_k_cm: 2.0
+    min_between_cm: 2.5
+    hard_zone_margin_cm: 1.0
+    front_min_y_px: 105
+    front_min_y_px_by_region: {K7: 85}   # K7 영역은 어려운 영역 · 평가 자리 (H_U1 · pilot U8) 때문에 105 px 이면 1 점뿐. 화면 오른쪽 위 (u≈470–500) 는 쉬는 팔에 안 가림
+    quantize_cm: 0.5
+    seed: 5301
+    # 2026-11-06 최대거리: 실제 수직 (위 tilt_zero) 이 가능한 그리퍼 끝 거리 (로봇 기준, FK) ≤ max_r_cm + side_cm·sin(pan).
+    #   d2 · 예비에서 쓴 관절 범위 (lift ≤ 57 · elbow ≥ −66 · wflex 22–99), 잡는 높이 z −2 cm 에서 계산: 왼쪽 27.0 · 정면 28.5 · 오른쪽 29.5 cm.
+    #   사용자 실측 정면 28.6 cm (상자 앞벽). 탁자 좌표 → FK 좌표 = 예비 16판 닫기 순간으로 맞춘 2D 회전 + 이동 (잔차 평균 3.2 cm).
+    reach: {max_r_cm: 28.5, side_cm: 1.25, table_to_fk_R: [[0.98922, 0.1464], [-0.1464, 0.98922]], table_to_fk_t: [29.852, -12.442]}
+    max_base_dist_cm: null   # 사용자 최대거리 (sg_reach.py 로 잼) — 정하면 regions --write --replace 로 점 다시 (녹화 전만)
+  # 평가 전용 자리 — 수집 위치에서 뺀다 (계획 만들 때 ≥ eval_min_dist_cm 검사, 어기면 계획 거부)
+  eval_reserved:
+    min_dist_cm: 3.5
+    sources:
+      - "H U1–U8: ~/so101_boxpick/config/redbox8_heldout_h.yaml (평가 전용, 좌표 미확정)"
+      - "파일럿 U (rft01_real_pilot · r2_grasp_diagnostic): U1 (−6.5,15.5) U2 (−8.5,−7.0) U7 (−15.5,2.0) U8 (−20.5,26.5)"
+    points:
+      H_U1: [-24.1, 32.0]
+      H_U2: [-26.1, -13.0]
+      H_U3: [-10.6, 9.5]
+      H_U4: [-11.1, -7.0]
+      H_U5: [-8.6, 30.0]
+      H_U6: [-22.6, -1.5]
+      H_U7: [-14.6, 20.0]
+      H_U8: [-5.6, 21.0]
+      pilot_U1: [-6.5, 15.5]
+      pilot_U2: [-8.5, -7.0]
+      pilot_U7: [-15.5, 2.0]
+      pilot_U8: [-20.5, 26.5]
+  split_default: train_candidate   # 이 50편을 평가에 쓰려면 학습 전에 정해서 split 을 바꾼다 (sg_plan.py split)
+
+# 새 위치 좌표 (C 좌표 cm, x 상자 쪽 · y 로봇 왼쪽) — known_xy 가 읽는 free_points. F1–F4 는 기존 r12 그대로 (R1 용, 이번 계획에서 안 씀).
+free_points:
+  F1: [-12.75, 19.0]
+  F2: [-12.75, 4.0]
+  F3: [-21.25, 26.5]
+  F4: [-21.25, -3.5]
+  N1: [-22.5, -12.5]
+  N2: [-21.5, 34.5]
+  N3: [-12.5, 4.0]
+  N4: [-11.0, 19.0]
+  N5: [-13.0, -10.0]
+  N6: [-13.0, 32.5]
+  N7: [-5.5, 3.0]
+  N8: [-16.5, 17.0]
+  # K 둘레 영역 무작위 점 (sg_plan.py regions, seed 5301, 2026-11-06): 칸 x±4.25 · y±7.5 cm, 어려운 영역 +1.0 cm 밖 · 평가 자리 ≥3.5 · K ≥2.0 · 서로 ≥2.5 cm · front y ≥105 px
+  K1r1: [-11.5, 22.5]
+  K1r2: [-10.5, 25.5]
+  K1r3: [-12.5, 28.0]
+  K1r4: [-9.5, 20.5]
+  K2r1: [-5.5, 4.0]
+  K2r2: [-11.0, 5.0]
+  K2r3: [-11.0, 14.5]
+  K2r4: [-9.0, 18.0]
+  K3r1: [-10.0, -1.0]
+  K3r2: [-6.0, -3.0]
+  K3r3: [-9.5, 3.0]
+  K3r4: [-12.5, -3.0]
+  K4r1: [-19.0, 31.5]
+  K4r2: [-15.5, 30.0]
+  K4r3: [-15.5, 24.5]
+  K4r4: [-13.0, 25.0]
+  K5r1: [-16.5, 7.5]
+  K5r2: [-15.5, 14.0]
+  K5r3: [-13.5, 12.5]
+  K5r4: [-13.5, 5.5]
+  K6r1: [-20.5, -8.5]
+  K6r2: [-17.0, -7.5]
+  K6r3: [-15.0, -3.0]
+  K6r4: [-18.0, -11.0]
+  K7r1: [-27.5, 31.0]
+  K7r2: [-28.0, 28.0]
+  K7r3: [-28.0, 34.0]
+  K7r4: [-24.0, 28.0]
+  K8r1: [-26.5, -6.0]
+  K8r2: [-24.5, -8.5]
+  K8r3: [-21.5, -5.0]
+  K8r4: [-22.5, -11.0]

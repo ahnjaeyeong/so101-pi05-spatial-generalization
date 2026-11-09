@@ -29,6 +29,10 @@ TARGETS = {
          R + "r1_r2_collection/"],
     "experiments/12_hil/sources/ARCHIVE_EXCLUDED.csv": [R + "hil_dagger/"],
     "experiments/14_rft01_real_pilot/sources/ARCHIVE_EXCLUDED.csv": [R + "rft01_real_pilot/"],
+    # added 2026-11-09
+    "experiments/15_sg50_sgft01/sources/ARCHIVE_EXCLUDED.csv":
+        ["/home/user/so101_runs/practice/sg50_pilot/", "/home/user/so101_runs/practice/sg50_pilot2/", "/home/user/so101_runs/practice/sg50_pilot3/"],
+    "experiments/16_sgft01_real_eval/sources/ARCHIVE_EXCLUDED.csv": [R + "sgft01_real_eval/"],
 }
 DIR_SUMMARY_MIN = 50
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

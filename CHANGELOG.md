@@ -2,6 +2,16 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-09 — EXP-15 SG50 수집 + sgft01 FT · EXP-16 실물 평가 (branch: exp/15-sg50-sgft01-20261109, records/handoff-20261105 위)
+- **EXP-15 신규** `experiments/15_sg50_sgft01/`: SG50 수집 도구 · 결정 (11-05 ~ 11-06) — 손목 주황 닫기 프레임 (ref-v5), 수평계 (FK 0 점 보정), 그리퍼 열기 알림, 수직 최대거리, K 8 + 영역 무작위 32 계획, 시작 자세 S0, 진행 순서 숄더팬 → 열기 → 찾기 → 이동. 예비3 43 편 (학습 40). sgft01 = d2 020000 → 40 편 expert-only 10k (11-06 16:07 ~ 11-07 20:11, loss 0.213→0.019). 오프라인 [in-sample]·[반사실] 표 요약. 상태: 수집 PARTIAL · 학습 COMPLETED · 오프라인 COMPLETED.
+- **EXP-16 신규** `experiments/16_sgft01_real_eval/`: sgft01 010000 실물 8 판 (11-09 10:03 ~ 10:19) 2/8 [사람] — K 2/5 · U 0/3, HU3 미시험 · K8 2 회, 안전 정지 0. 단계별 측정 · 실패 모양 · 장면 표 (원본 영상에서 추출 8 장, `EXTRACTED.csv`).
+- **EXP-11** 수집 도구 사본 `sources/r1_r2_collection/` 갱신 (신규 34 · 변경 3: `tools/sg_*.py` · `config/sg50.yaml` · `13_sg50_sticker.md` · 시험 · 화면 사진).
+- 메타: `configs/training/RUNS.csv` + `sgft01_p3_10k_s2001/`, `configs/datasets/` (sg50_pilot · pilot2 · pilot3 · sgft01_real_eval_rollout), `analysis/loss/sgft01_p3_10k_s2001_loss.csv`, 체크포인트 SHA-256 4 개 `experiments/15_sg50_sgft01/checkpoints_sha256.txt` (configs/checkpoints 는 로컬만).
+- `EXPERIMENT_INDEX.md` (16 실험 · 13 학습), `README.md` 4 · 5 · 9 · 10 절, `evaluations/real_robot/README.md` (EXP-16 1 행), `evaluations/offline/README.md` (EXP-15 1 행).
+- 도구: `tools/sync_sources.py` MAPPINGS (practice/sg50_pilot{,2,3} · io-capture 20261106-1607 SUMMARY · main_k8/sgft01_real_eval), `tools/archive_excluded.py` TARGETS (15 · 16). `SOURCES_MANIFEST.csv` +315 / −3 행.
+- Git 제외 목록: `experiments/15_sg50_sgft01/sources/ARCHIVE_EXCLUDED.csv` (609 파일, 47,319 MB — 체크포인트 · dataset 영상) · `16_sgft01_real_eval/sources/ARCHIVE_EXCLUDED.csv` (2,295 파일, 340 MB) · EXP-11 목록 갱신 (3,887 파일, 201 MB).
+- **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` (11-05 와 같은 이유 — 전체 재생성이 크기 제한 초과).
+
 ## 2026-11-05 — HANDOFF · EXP-14 실물 파일럿 · EXP-11/12 현행화 (branch: records/handoff-20261105, EXP-13 위)
 - `HANDOFF.md` 추가: 사용자 제공 초안을 로컬 원본과 대조해 수정 (12 항목, 문서 부록 A — 과제 문장, RC episode ID, 750 SHA, Trial 1 목표 32.1°, Trial 8–16 Wrist 놓침 0, HIL 19/205 · fault_latch 31/31, 교란 추가 등).
 - **EXP-14 신규** `experiments/14_rft01_real_pilot/`: rft01 001000 vs d2 020000 실물 16판 (11-05). FT 4/8 · BL 5/8 [사람]; Known 3/4 vs 2/4, Unknown 1/4 vs 3/4 — Unknown 은 시작 그리퍼 (FT 닫힘 / BL 열림) · 모델 순서 교란으로 비교 무효, 모델 우열 미결정. 사본 `sources/rft01_real_pilot/` (scripts, config, results, reports, run 별 작은 로그, 시작 사진, 시험).

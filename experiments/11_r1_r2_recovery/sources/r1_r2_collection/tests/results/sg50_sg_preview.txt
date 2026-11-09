@@ -1,0 +1,11 @@
+  ✓ 첫 판 앞 준비 단계 (녹화 안 함)
+  ✓ 준비 단계 화면: 상태 SETUP · 시나리오 SG-P0 · 큐브 K2 · 그림 (1400, 860)
+  ✓ 녹화 중 화면 (실제 공유 메모리 프레임, 1000×620): 검출 상태 none
+  ✓ ep0 결과 2 (재시도 후 성공) · 메모
+  ✓ ep1 결과 1 (첫 파지) → 종료 코드 0
+  ✓ sg_episodes.csv 2줄: 자세 P0/P1 · 결과 재시도후성공/첫파지 · 시작 관절 · 보정 해시 · split (P0 최대 차이 21.4°)
+  ✓ sg_plan.csv · sg_plan.md (예비 4편 = 자세 4 가지)
+  ✓ 실행 sidecar 에 보정 해시 (sg50_calib)
+  ✓ dataset 없음 · Traceback 없음 · ~/so101_runs/main_k8 변화 없음
+  ✓ 터미널 배너에 R1/R2 안내 문구 없음 (R2 준비 · 닫기 영역 · Pan 목표 …)
+PASS 10 항목 · 기록 <scratch>/final/prev

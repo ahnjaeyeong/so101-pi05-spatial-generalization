@@ -1,0 +1,39 @@
+wall,perf,event,detail
+1794186238.8013,1551753.97148,install,E5 home between/at end via /home/user/so101_runs/main_k8/sgft01_real_eval/scripts/safe_home.py
+1794186238.8013,1551753.97153,install,E1 return blocked · E2 end hold · E3 rerecord→stop · E4 teardown hold (torque on)
+1794186491.6371,1552006.80734,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-22.24 shoulder_lift=-98.33 elbow_flex=96.48 wrist_flex=78.68 wrist_roll=91.74
+1794186491.6414,1552006.81159,home_start,between_episodes dist=16.5
+1794186492.7910,1552007.96116,home_end,between_episodes arrived ticks=33 max_err=1.7
+1794186580.7669,1552095.93705,hold,policy_loop_end episode_end_or_user_next shoulder_pan=0.79 shoulder_lift=-40.92 elbow_flex=76.79 wrist_flex=63.82 wrist_roll=95.69
+1794186580.7703,1552095.94049,home_start,between_episodes dist=62.0
+1794186585.0935,1552100.26371,home_end,between_episodes arrived ticks=124 max_err=2.0
+1794186676.3309,1552191.50112,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-3.96 shoulder_lift=53.58 elbow_flex=-40.40 wrist_flex=82.29 wrist_roll=81.89
+1794186676.3352,1552191.50540,home_start,between_episodes dist=156.5
+1794186687.1987,1552202.36892,home_end,between_episodes arrived ticks=313 max_err=5.9
+1794186688.4094,1552203.57955,gripper_home,29.3 -> 1.4 (now 1.9)
+1794186737.3914,1552252.56158,hold,policy_loop_end user_rerecord shoulder_pan=-0.70 shoulder_lift=-99.30 elbow_flex=96.22 wrist_flex=70.59 wrist_roll=93.76
+1794186737.3948,1552252.56496,home_start,between_episodes dist=7.2
+1794186737.8849,1552253.05505,home_end,between_episodes arrived ticks=14 max_err=1.2
+1794186739.7378,1552254.90803,gripper_home,48.4 -> 1.4 (now 1.9)
+1794186760.0864,1552275.25661,home_start,between_episodes dist=0.8
+1794186760.1571,1552275.32728,home_end,between_episodes arrived ticks=2 max_err=0.8
+1794186820.2132,1552335.38337,hold,policy_loop_end episode_end_or_user_next shoulder_pan=76.48 shoulder_lift=-15.78 elbow_flex=57.19 wrist_flex=53.71 wrist_roll=78.29
+1794186820.2166,1552335.38682,home_start,between_episodes dist=87.1
+1794186826.2580,1552341.42818,home_end,between_episodes arrived ticks=174 max_err=3.1
+1794186827.7062,1552342.87644,gripper_home,35.5 -> 1.4 (now 1.9)
+1794186923.5865,1552438.75668,hold,policy_loop_end episode_end_or_user_next shoulder_pan=79.38 shoulder_lift=-22.81 elbow_flex=64.84 wrist_flex=55.91 wrist_roll=76.53
+1794186923.5901,1552438.76025,home_start,between_episodes dist=85.0
+1794186929.4964,1552444.66656,home_end,between_episodes arrived ticks=170 max_err=2.6
+1794186931.2493,1552446.41952,gripper_home,44.5 -> 1.4 (now 1.9)
+1794187023.4576,1552538.62775,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-24.26 shoulder_lift=6.11 elbow_flex=35.30 wrist_flex=58.99 wrist_roll=68.97
+1794187023.4612,1552538.63142,home_start,between_episodes dist=109.0
+1794187031.0391,1552546.20926,home_end,between_episodes arrived ticks=218 max_err=3.9
+1794187033.1255,1552548.29570,gripper_home,55.4 -> 1.4 (now 1.9)
+1794187113.2403,1552628.41045,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-3.96 shoulder_lift=-100.35 elbow_flex=96.13 wrist_flex=78.68 wrist_roll=90.24
+1794187113.2437,1552628.41390,home_start,between_episodes dist=2.5
+1794187113.4173,1552628.58747,home_end,between_episodes arrived ticks=5 max_err=1.5
+1794187171.6944,1552686.86464,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-11.08 shoulder_lift=-98.95 elbow_flex=96.31 wrist_flex=78.68 wrist_roll=94.37
+1794187181.6943,1552696.86452,hold,teardown shoulder_pan=-11.16 shoulder_lift=-98.95 elbow_flex=96.22 wrist_flex=78.59 wrist_roll=94.29
+1794187181.6977,1552696.86790,home_start,teardown dist=5.5
+1794187182.0854,1552697.25564,home_end,teardown arrived ticks=11 max_err=2.2
+1794187182.2937,1552697.46387,teardown,"{""ended_by"": ""episode_end_or_user_next"", ""max_abs_diff_deg"": 2.02, ""bus_ok_at_teardown"": true, ""torque_left_on"": true, ""auto_return_blocked_calls"": 0}"

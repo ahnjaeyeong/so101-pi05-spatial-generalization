@@ -1,0 +1,285 @@
+[r12] {"ev": "entry", "argv": ["--robot.type=so101_follower", "--robot.port=/dev/so101_follower", "--robot.id=my_arm", "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4} }", "--teleop.type=so101_leader", "--teleop.port=/dev/so101_leader", "--teleop.id=my_leader", "--dataset.no_stamp=true", "--dataset.push_to_hub=false", "--dataset.repo_id=oxr/so101_sg50_pilot3", "--dataset.single_task=pick up the red cube and put it in the brown box", "--dataset.episode_time_s=60", "--dataset.reset_time_s=3600", "--dataset.num_episodes=40", "--dataset.root=/home/user/so101_runs/practice/sg50_pilot3/dataset"], "run_id": "20261106_110334"}
+INFO 2026-11-06 11:03:39 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 60,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 40,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'oxr/so101_sg50_pilot3',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '/home/user/so101_runs/practice/sg50_pilot3/dataset',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': True,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'my_arm',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/dev/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'my_leader',
+            'num_read_retries': 2,
+            'port': '/dev/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-06 11:03:39 so_leader.py:99 my_leader SOLeader connected.
+INFO 2026-11-06 11:03:43 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-11-06 11:03:48 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-11-06 11:03:48 follower.py:131 my_arm SOFollower connected.
+INFO 2026-11-06 11:03:48 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-11-06 11:03:48 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-06 11:03:48 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 0, "attempt_id": "811d156be77f", "checks": [["WARN", "limit_shoulder_lift", "lift -99.7° — 한계(-104/+104°)까지 4° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -99.7° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.3° — 한계(-97/+97°)까지 0° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.3° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +87.8° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 2 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -4.571428571428571, "shoulder_lift.pos": -99.73626373626374, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.50549450549451, "wrist_roll.pos": 87.78021978021978, "gripper.pos": 1.65860400829302}, "action": {"shoulder_pan.pos": -3.956043956043956, "shoulder_lift.pos": -99.56043956043956, "elbow_flex.pos": 97.49450549450549, "wrist_flex.pos": 79.51648351648352, "wrist_roll.pos": 87.51648351648352, "gripper.pos": 1.2997562956945572}, "discard_previous": false, "setup_pan": [-4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57, -4.57], "run_id": "20261106_110334"}
+[r12] {"ev": "rec_start", "ep": 0, "attempt_id": "811d156be77f", "state": {"shoulder_pan.pos": -4.571428571428571, "shoulder_lift.pos": -99.73626373626374, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.50549450549451, "wrist_roll.pos": 87.78021978021978, "gripper.pos": 1.65860400829302}, "shift_from_armed_deg": 0.0, "run_id": "20261106_110334"}
+[r12] {"ev": "start_frames", "ep": 0, "attempt_id": "811d156be77f", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_811d156be77f_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_811d156be77f_wrist.png"}, "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "rec_end", "ep": 0, "attempt_id": "811d156be77f", "frames": 531, "loop_hz_mean": 29.87, "late_ticks": 0, "stall_ticks": 23, "stall_by_cam": {"front": 9, "wrist": 14}, "rerecord": true, "stop": false, "guard_invalid": null, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:04:21 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": true, "discard_pending": true, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "reset_end", "ep": 1, "discard_previous": true, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:08:04 ls/utils.py:150 Re-record episode
+INFO 2026-11-06 11:08:04 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 0, "attempt_id": "7106601b780a", "checks": [["WARN", "limit_shoulder_lift", "lift -98.9° — 한계(-104/+104°)까지 5° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -98.9° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.3° — 한계(-97/+97°)까지 0° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.3° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +89.7° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 1 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -1.1428571428571428, "shoulder_lift.pos": -98.85714285714286, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.5934065934066, "wrist_roll.pos": 89.71428571428571, "gripper.pos": 1.3130615065653075}, "action": {"shoulder_pan.pos": -1.3186813186813187, "shoulder_lift.pos": -98.68131868131869, "elbow_flex.pos": 97.49450549450549, "wrist_flex.pos": 79.6923076923077, "wrist_roll.pos": 90.15384615384616, "gripper.pos": 0.8935824532900082}, "discard_previous": false, "setup_pan": [-1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14, -1.14], "run_id": "20261106_110334"}
+INFO 2026-11-06 11:08:06 le_timer.py:559 Cadence (discarded episode): 29.86 Hz vs 30 Hz target · 531 ticks, 17.7 s measured · 0/530 ticks over the 33.3 ms budget (work mean 4.0 ms, worst 10.3 ms)
+[r12] {"ev": "rec_start", "ep": 0, "attempt_id": "7106601b780a", "state": {"shoulder_pan.pos": -1.1428571428571428, "shoulder_lift.pos": -98.85714285714286, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.5934065934066, "wrist_roll.pos": 89.71428571428571, "gripper.pos": 1.3130615065653075}, "shift_from_armed_deg": 0.0, "run_id": "20261106_110334"}
+[r12] {"ev": "start_frames", "ep": 0, "attempt_id": "7106601b780a", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_7106601b780a_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_7106601b780a_wrist.png"}, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "rec_end", "ep": 0, "attempt_id": "7106601b780a", "frames": 783, "loop_hz_mean": 29.89, "late_ticks": 0, "stall_ticks": 34, "stall_by_cam": {"front": 20, "wrist": 14}, "rerecord": false, "stop": false, "guard_invalid": null, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:08:32 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": true, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "reset_end", "ep": 1, "discard_previous": false, "run_id": "20261106_110334"}
+Map:   0%|                                      | 0/783 [00:00<?, ? examples/s]Map:  50%|████████████▉             | 390/783 [00:00<00:00, 3866.69 examples/s]Map: 100%|██████████████████████████| 783/783 [00:00<00:00, 3704.13 examples/s]Map: 100%|██████████████████████████| 783/783 [00:00<00:00, 3667.21 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-06 11:08:54 ls/utils.py:150 Recording episode 1
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": false, "discard_pending": false, "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "setup_note", "ep": 1, "msg": "버릴 판이 없어요 — 준비를 계속합니다", "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "setup_note", "ep": 1, "msg": "버릴 판이 없어요 — 준비를 계속합니다", "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "setup_note", "ep": 1, "msg": "버릴 판이 없어요 — 준비를 계속합니다", "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 1, "attempt_id": "405f82c67c72", "checks": [["WARN", "limit_shoulder_lift", "lift -102.9° — 한계(-104/+104°)까지 1° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -102.9° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.1° — 한계(-97/+97°)까지 1° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.1° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +95.0° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 2 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -3.340659340659341, "shoulder_lift.pos": -102.9010989010989, "elbow_flex.pos": 96.13186813186813, "wrist_flex.pos": 77.8021978021978, "wrist_roll.pos": 94.98901098901099, "gripper.pos": 1.520387007601935}, "action": {"shoulder_pan.pos": -3.4285714285714284, "shoulder_lift.pos": -103.86813186813187, "elbow_flex.pos": 97.23076923076923, "wrist_flex.pos": 78.72527472527473, "wrist_roll.pos": 95.51648351648352, "gripper.pos": 1.1372867587327375}, "discard_previous": false, "setup_pan": [-3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34, -3.34], "run_id": "20261106_110334"}
+INFO 2026-11-06 11:09:46 le_timer.py:559 Cadence (episode 0): 29.88 Hz vs 30 Hz target · 783 ticks, 26.2 s measured · 0/782 ticks over the 33.3 ms budget (work mean 3.9 ms, worst 10.7 ms)
+[r12] {"ev": "rec_start", "ep": 1, "attempt_id": "405f82c67c72", "state": {"shoulder_pan.pos": -3.340659340659341, "shoulder_lift.pos": -102.9010989010989, "elbow_flex.pos": 96.13186813186813, "wrist_flex.pos": 77.8021978021978, "wrist_roll.pos": 94.98901098901099, "gripper.pos": 1.520387007601935}, "shift_from_armed_deg": 0.0, "run_id": "20261106_110334"}
+[r12] {"ev": "start_frames", "ep": 1, "attempt_id": "405f82c67c72", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep001_405f82c67c72_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep001_405f82c67c72_wrist.png"}, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "rec_end", "ep": 1, "attempt_id": "405f82c67c72", "frames": 1059, "loop_hz_mean": 29.87, "late_ticks": 0, "stall_ticks": 43, "stall_by_cam": {"front": 24, "wrist": 19}, "rerecord": false, "stop": false, "guard_invalid": null, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:10:21 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 2, "after_episode": true, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "reset_end", "ep": 2, "discard_previous": false, "run_id": "20261106_110334"}
+Map:   0%|                                     | 0/1059 [00:00<?, ? examples/s]Map:  38%|█████████▍               | 398/1059 [00:00<00:00, 3953.40 examples/s]Map:  75%|██████████████████▊      | 796/1059 [00:00<00:00, 3961.46 examples/s]Map: 100%|████████████████████████| 1059/1059 [00:00<00:00, 3710.59 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[48;5;0m[38;5;213m[mp4 @ 0x25b57bc0] [0mStarting second pass: moving the moov atom to the beginning of the file
+[48;5;0m[38;5;213m[mp4 @ 0x25acae10] [0mStarting second pass: moving the moov atom to the beginning of the file
+INFO 2026-11-06 11:10:51 ls/utils.py:150 Recording episode 2
+[r12] {"ev": "setup_start", "ep": 2, "after_episode": false, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 2, "attempt_id": "140dc9a73f35", "checks": [["WARN", "limit_shoulder_lift", "lift -97.4° — 한계까지 6°"], ["WARN", "env_shoulder_lift", "lift -97.4° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.3° — 한계(-97/+97°)까지 0° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.3° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +92.6° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 2 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -6.153846153846154, "shoulder_lift.pos": -97.36263736263736, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.50549450549451, "wrist_roll.pos": 92.61538461538461, "gripper.pos": 1.65860400829302}, "action": {"shoulder_pan.pos": -6.329670329670329, "shoulder_lift.pos": -95.86813186813187, "elbow_flex.pos": 97.58241758241758, "wrist_flex.pos": 78.72527472527473, "wrist_roll.pos": 93.05494505494505, "gripper.pos": 1.543460601137287}, "discard_previous": false, "setup_pan": [-6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15, -6.15], "run_id": "20261106_110334"}
+INFO 2026-11-06 11:10:57 le_timer.py:559 Cadence (episode 1): 29.86 Hz vs 30 Hz target · 1059 ticks, 35.4 s measured · 0/1058 ticks over the 33.3 ms budget (work mean 4.0 ms, worst 10.2 ms)
+[r12] {"ev": "rec_start", "ep": 2, "attempt_id": "140dc9a73f35", "state": {"shoulder_pan.pos": -6.153846153846154, "shoulder_lift.pos": -97.36263736263736, "elbow_flex.pos": 96.3076923076923, "wrist_flex.pos": 78.50549450549451, "wrist_roll.pos": 92.61538461538461, "gripper.pos": 1.65860400829302}, "shift_from_armed_deg": 0.0, "run_id": "20261106_110334"}
+[r12] {"ev": "start_frames", "ep": 2, "attempt_id": "140dc9a73f35", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep002_140dc9a73f35_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep002_140dc9a73f35_wrist.png"}, "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "rec_end", "ep": 2, "attempt_id": "140dc9a73f35", "frames": 489, "loop_hz_mean": 29.89, "late_ticks": 0, "stall_ticks": 21, "stall_by_cam": {"front": 10, "wrist": 11}, "rerecord": true, "stop": false, "guard_invalid": null, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:11:13 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 3, "after_episode": true, "discard_pending": true, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "reset_end", "ep": 3, "discard_previous": true, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:11:15 ls/utils.py:150 Re-record episode
+INFO 2026-11-06 11:11:15 ls/utils.py:150 Recording episode 2
+[r12] {"ev": "setup_start", "ep": 2, "after_episode": false, "discard_pending": false, "run_id": "20261106_110334"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 2, "attempt_id": "15cb564cfbf5", "checks": [["WARN", "limit_shoulder_lift", "lift -102.8° — 한계(-104/+104°)까지 1° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -102.8° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.2° — 한계(-97/+97°)까지 0° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.2° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +92.7° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 2 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -2.3736263736263736, "shoulder_lift.pos": -102.81318681318682, "elbow_flex.pos": 96.21978021978022, "wrist_flex.pos": 78.24175824175825, "wrist_roll.pos": 92.7032967032967, "gripper.pos": 1.65860400829302}, "action": {"shoulder_pan.pos": -2.3736263736263736, "shoulder_lift.pos": -104.21978021978022, "elbow_flex.pos": 97.23076923076923, "wrist_flex.pos": 78.81318681318682, "wrist_roll.pos": 92.7032967032967, "gripper.pos": 1.6246953696181965}, "discard_previous": false, "setup_pan": [-2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37, -2.37], "run_id": "20261106_110334"}
+INFO 2026-11-06 11:11:17 le_timer.py:559 Cadence (discarded episode): 29.88 Hz vs 30 Hz target · 489 ticks, 16.3 s measured · 0/488 ticks over the 33.3 ms budget (work mean 3.9 ms, worst 7.4 ms)
+[r12] {"ev": "rec_start", "ep": 2, "attempt_id": "15cb564cfbf5", "state": {"shoulder_pan.pos": -2.3736263736263736, "shoulder_lift.pos": -102.81318681318682, "elbow_flex.pos": 96.21978021978022, "wrist_flex.pos": 78.24175824175825, "wrist_roll.pos": 92.7032967032967, "gripper.pos": 1.65860400829302}, "shift_from_armed_deg": 0.0, "run_id": "20261106_110334"}
+[r12] {"ev": "start_frames", "ep": 2, "attempt_id": "15cb564cfbf5", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep002_15cb564cfbf5_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep002_15cb564cfbf5_wrist.png"}, "run_id": "20261106_110334"}
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+[r12] {"ev": "rec_end", "ep": 2, "attempt_id": "15cb564cfbf5", "frames": 1251, "loop_hz_mean": 29.87, "late_ticks": 0, "stall_ticks": 51, "stall_by_cam": {"front": 32, "wrist": 19}, "rerecord": true, "stop": false, "guard_invalid": null, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:11:59 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 3, "after_episode": true, "discard_pending": true, "run_id": "20261106_110334"}
+INFO 2026-11-06 11:14:50 le_timer.py:559 Cadence (final episode): 29.87 Hz vs 30 Hz target · 1251 ticks, 41.8 s measured · 0/1250 ticks over the 33.3 ms budget (work mean 4.0 ms, worst 11.8 ms)
+INFO 2026-11-06 11:14:50 le_timer.py:606 Cadence summary — whole run, 5 episodes · target 30 Hz (33.3 ms budget per tick): 4113 ticks, 4108 judged
+  effective cadence: 29.87 Hz over 137.5 s measured
+  ticks over the 33.3 ms work budget: 0/4108 (0.0%) — work mean 4.0 ms, worst 11.8 ms
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 173
+  loop-body steps (share of measured work):
+    observe      mean   1.46 ms · worst   5.48 ms ·  36.7% of work · 4113 calls
+    process_obs  mean   0.06 ms · worst   0.91 ms ·   1.5% of work · 4113 calls
+    teleop       mean   1.16 ms · worst   6.42 ms ·  29.3% of work · 4113 calls
+    send         mean   0.27 ms · worst   3.65 ms ·   6.8% of work · 4113 calls
+    record       mean   0.24 ms · worst   2.44 ms ·   6.2% of work · 4113 calls
+    telemetry    mean   0.70 ms · worst   8.41 ms ·  17.6% of work · 4113 calls
+  pacing headroom: 29.5 ms slept per tick on average (max 33.6 ms) — near zero means the loop is saturated
+INFO 2026-11-06 11:14:50 ls/utils.py:150 Stop recording
+INFO 2026-11-06 11:14:52 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-11-06 11:14:52 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-11-06 11:14:52 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-11-06 11:14:52 o_leader.py:186 my_leader SOLeader disconnected.
+INFO 2026-11-06 11:14:52 ls/utils.py:150 Exiting
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 474, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 469, in main
+    lr.main()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 594, in main
+    record()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/configs/parser.py", line 438, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 528, in record
+    record_loop(
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 408, in record_loop
+    setup_phase(robot, events, fps, kw, after_episode=True, next_ep=None if tap.ep is None else tap.ep + 1)
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 357, in setup_phase
+    orig_loop(robot=robot, events=events, fps=fps, dataset=None, control_time_s=SETUP_MAX, **kw)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/datasets/image_writer.py", line 39, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 380, in record_loop
+    timer.wait()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/utils/cycle_timer.py", line 429, in wait
+    precise_sleep(sleep_t)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/utils/robot_utils.py", line 59, in precise_sleep
+    time.sleep(seconds)
+KeyboardInterrupt

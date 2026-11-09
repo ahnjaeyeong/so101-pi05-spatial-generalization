@@ -1,0 +1,97 @@
+[r12] {"ev": "entry", "argv": ["--robot.type=so101_follower", "--robot.port=/dev/so101_follower", "--robot.id=my_arm", "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4} }", "--teleop.type=so101_leader", "--teleop.port=/dev/so101_leader", "--teleop.id=my_leader", "--dataset.no_stamp=true", "--dataset.push_to_hub=false", "--dataset.repo_id=oxr/so101_sg50_pilot3", "--dataset.single_task=pick up the red cube and put it in the brown box", "--dataset.episode_time_s=60", "--dataset.reset_time_s=3600", "--dataset.num_episodes=8", "--dataset.root=/home/user/so101_runs/practice/sg50_pilot3/dataset"], "run_id": "20261106_130353"}
+INFO 2026-11-06 13:03:58 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 60,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 8,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'oxr/so101_sg50_pilot3',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '/home/user/so101_runs/practice/sg50_pilot3/dataset',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': True,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'my_arm',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/dev/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'my_leader',
+            'num_read_retries': 2,
+            'port': '/dev/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-06 13:03:58 so_leader.py:99 my_leader SOLeader connected.
+INFO 2026-11-06 13:04:02 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-11-06 13:04:07 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-11-06 13:04:07 follower.py:131 my_arm SOFollower connected.
+INFO 2026-11-06 13:04:07 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-11-06 13:04:07 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-06 13:04:07 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "20261106_130353"}
+Escape key pressed. Stopping data recording...
+[r12] {"ev": "setup_end", "ep": 0, "reason": "stop", "discard_pending": false, "run_id": "20261106_130353"}
+[r12] {"ev": "stop_before_rec", "ep": 0, "run_id": "20261106_130353"}
+INFO 2026-11-06 13:13:48 ls/utils.py:150 Re-record episode
+INFO 2026-11-06 13:13:48 ls/utils.py:150 Stop recording
+INFO 2026-11-06 13:13:51 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-11-06 13:13:51 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-11-06 13:13:51 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-11-06 13:13:51 o_leader.py:186 my_leader SOLeader disconnected.
+INFO 2026-11-06 13:13:51 ls/utils.py:150 Exiting

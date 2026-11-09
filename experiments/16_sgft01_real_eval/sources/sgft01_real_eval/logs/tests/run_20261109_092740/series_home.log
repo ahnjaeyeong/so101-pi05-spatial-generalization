@@ -1,0 +1,339 @@
+WARNING:lerobot.r2_safety:R2_PLAN 배치 계획 8 판 (/home/user/so101_runs/main_k8/sgft01_real_eval/config/pilot_plan.csv), 1 번부터. 첫 판: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-09 09:52:27 ut_logged.py:48 debug log: /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/series_home_20261109_095218/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=30 --inference.rtc.prefix_attention_schedule=EXP --robot.type=so101_follower --robot.port=/nonexistent/r2_fake_port --robot.id=pilot_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/r2_fake_front, width: 640, height: 480, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/r2_fake_wrist, width: 640, height: 480, fps: 30} } --dataset.repo_id=oxr/rollout_pilot_fake --dataset.root=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/series_home_20261109_095218/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=2 --dataset.episode_time_s=6.0 --dataset.reset_time_s=2 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false --strategy.reset_to_initial_position=true
+INFO 2026-11-09 09:52:27 ut_logged.py:50 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-09 09:52:27 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.queue_threshold=30 --inference.rtc.prefix_attention_schedule=EXP --robot.type=so101_follower --robot.port=/nonexistent/r2_fake_port --robot.id=pilot_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/r2_fake_front, width: 640, height: 480, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/r2_fake_wrist, width: 640, height: 480, fps: 30} } --dataset.repo_id=oxr/rollout_pilot_fake --dataset.root=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/series_home_20261109_095218/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=2 --dataset.episode_time_s=6.0 --dataset.reset_time_s=2 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false --strategy.reset_to_initial_position=true
+INFO 2026-11-09 09:52:27 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-09 09:52:27 _rollout.py:245 Building rollout context...
+INFO 2026-11-09 09:52:27 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model'...
+INFO 2026-11-09 09:55:04 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+WARNING 2026-11-09 09:55:05 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-11-09 09:55:05 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+INFO 2026-11-09 09:55:10 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-11-09 09:55:10 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-11-09 09:55:10 /context.py:395 Robot connected: so_follower
+INFO 2026-11-09 09:55:10 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-09 09:55:10 /context.py:500 Setting up dataset (repo_id=oxr/rollout_pilot_fake)...
+INFO 2026-11-09 09:55:10 /context.py:547 Dataset ready: oxr/rollout_pilot_fake (0 existing episodes)
+INFO 2026-11-09 09:55:12 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-09 09:55:12 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-09 09:55:12 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-09 09:55:12 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-09 09:55:12 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-11-09 09:55:12 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-09 09:55:12 gies/core.py:96 Starting inference engine...
+INFO 2026-11-09 09:55:12 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-09 09:55:12 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-09 09:55:12 ies/core.py:100 Inference engine started
+INFO 2026-11-09 09:55:12 episodic.py:105 Episodic strategy ready
+INFO 2026-11-09 09:55:12 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-09 09:55:12 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-09 09:55:12 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-09 09:55:12 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-09 09:55:12 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+WARNING 2026-11-09 09:55:12 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-8.4, 26.5) cm · Known (K1 0.1 cm) · 각도 +3° (= 0) · 계획 K5_0 과 17.3 cm ⚠ 계획과 17.3 cm (> 2.0) 다름 — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)
+INFO 2026-11-09 09:55:12 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=/home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/series_home_20261109_095218/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-09 09:55:13 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=22
+INFO 2026-11-09 09:55:14 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:55:15 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+WARNING 2026-11-09 09:55:15 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -92.46153259277344,
+                         'safe goal_pos': -92.70798784383739}}
+WARNING 2026-11-09 09:55:15 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -87.97903442382812,
+                         'safe goal_pos': -90.30798784383738}}
+WARNING 2026-11-09 09:55:15 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -83.86372375488281,
+                         'safe goal_pos': -87.90798784383738}}
+WARNING 2026-11-09 09:55:15 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -80.57291412353516,
+                         'safe goal_pos': -85.50798784383737}}
+WARNING 2026-11-09 09:55:15 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -77.18885803222656,
+                         'safe goal_pos': -83.10798784383736}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -73.09657287597656,
+                         'safe goal_pos': -80.70798784383736}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.21431732177734,
+                         'safe goal_pos': -78.30798784383735}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 67.72663116455078,
+                      'safe goal_pos': 68.25863745766033},
+    'shoulder_lift': {   'original goal_pos': -66.99922943115234,
+                         'safe goal_pos': -75.90798784383735}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -63.1795539855957,
+                         'safe goal_pos': -73.50798784383734}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -60.893367767333984,
+                         'safe goal_pos': -71.10798784383734}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -57.73566818237305,
+                         'safe goal_pos': -68.70798784383733}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -54.84891891479492,
+                         'safe goal_pos': -66.30798784383732}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -51.958824157714844,
+                         'safe goal_pos': -63.90798784383732}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -50.394535064697266,
+                         'safe goal_pos': -61.50798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -47.06419372558594,
+                         'safe goal_pos': -59.10798784383731}}
+INFO 2026-11-09 09:55:16 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -44.6800651550293,
+                         'safe goal_pos': -56.7079878438373}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -42.504844665527344,
+                         'safe goal_pos': -54.3079878438373}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -39.69488525390625,
+                         'safe goal_pos': -51.907987843837304}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -37.090049743652344,
+                         'safe goal_pos': -49.507987843837306}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -34.56348419189453,
+                         'safe goal_pos': -47.10798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -32.29389953613281,
+                         'safe goal_pos': -44.70798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -29.8951416015625,
+                         'safe goal_pos': -42.30798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -27.019508361816406,
+                         'safe goal_pos': -39.90798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -25.035484313964844,
+                         'safe goal_pos': -37.50798784383731}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -23.6815185546875,
+                         'safe goal_pos': -35.107987843837314}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -22.14380645751953,
+                         'safe goal_pos': -32.707987843837316}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -20.33887481689453,
+                         'safe goal_pos': -30.307987843837317}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -17.571189880371094,
+                         'safe goal_pos': -27.90798784383732}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -16.61188507080078,
+                         'safe goal_pos': -25.50798784383732}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -14.832527160644531,
+                         'safe goal_pos': -23.10798784383732}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -13.785224914550781,
+                         'safe goal_pos': -20.707987843837323}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -12.350326538085938,
+                         'safe goal_pos': -18.307987843837324}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -12.148216247558594,
+                         'safe goal_pos': -15.907987843837326}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -9.844223022460938,
+                         'safe goal_pos': -13.507987843837327}}
+WARNING 2026-11-09 09:55:16 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -8.623062133789062,
+                         'safe goal_pos': -11.107987843837329}}
+WARNING 2026-11-09 09:55:17 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -6.893363952636719,
+                         'safe goal_pos': -8.70798784383733}}
+INFO 2026-11-09 09:55:17 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+WARNING 2026-11-09 09:55:17 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -5.4016876220703125,
+                         'safe goal_pos': -6.30798784383733}}
+WARNING 2026-11-09 09:55:17 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -3.816864013671875,
+                         'safe goal_pos': -3.9079878438373292}}
+WARNING 2026-11-09 09:55:17 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': -1.2435989379882812,
+                      'safe goal_pos': -0.638974663996053}}
+INFO 2026-11-09 09:55:17 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:55:18 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+WARNING 2026-11-09 09:55:18 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-09 09:55:18 ls/utils.py:150 Reset the environment
+Map:   0%|          | 0/157 [00:00<?, ? examples/s]Map: 100%|██████████| 157/157 [00:00<00:00, 3407.20 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-09 09:55:29 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-09 09:55:29 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-09 09:55:29 ls/utils.py:150 Recording episode 1
+WARNING 2026-11-09 09:55:29 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm
+INFO 2026-11-09 09:55:29 le_timer.py:559 Cadence (episode 1): 29.89 Hz vs 30 Hz target · 180 ticks, 6.0 s measured · 0/179 ticks over the 33.3 ms budget (work mean 1.4 ms, worst 4.1 ms) · starved ticks: 23
+WARNING 2026-11-09 09:55:29 2_safety.py:383 R2_PLAN 이번 판 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm: 놓인 곳 (-8.4, 26.5) cm · Known (K1 0.1 cm) · 각도 +3° (= 0) · 계획 U7_0 과 25.5 cm ⚠ 계획과 25.5 cm (> 2.0) 다름; 계획은 unknown 인데 사진 판정은 Known (K1 0.1 cm) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)
+INFO 2026-11-09 09:55:30 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -16.68194580078125,
+                        'safe goal_pos': -16.033762015136944}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -19.241004943847656,
+                        'safe goal_pos': -18.433762015136946}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -22.88268280029297,
+                        'safe goal_pos': -20.833762015136948}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -23.943931579589844,
+                        'safe goal_pos': -23.233762015136946}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -26.935340881347656,
+                        'safe goal_pos': -25.633762015136945}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -28.927284240722656,
+                        'safe goal_pos': -28.033762015136944}}
+WARNING 2026-11-09 09:55:30 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -31.02288818359375,
+                        'safe goal_pos': -30.433762015136942}}
+INFO 2026-11-09 09:55:31 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-09 09:55:31 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:55:33 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:55:33 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-09 09:55:34 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-09 09:55:35 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+WARNING 2026-11-09 09:55:35 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 3번 K2_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-8.5, 11.5) cm  |  버리고 다시 (←) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm
+INFO 2026-11-09 09:55:35 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=8, real_delay=11
+Map:   0%|          | 0/168 [00:00<?, ? examples/s]Map: 100%|██████████| 168/168 [00:00<00:00, 3329.85 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[mp4 @ 0x647b31e0] Starting second pass: moving the moov atom to the beginning of the file
+[mp4 @ 0x6978bb90] Starting second pass: moving the moov atom to the beginning of the file
+INFO 2026-11-09 09:55:38 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-11-09 09:55:38 le_timer.py:559 Cadence (episode 2): 29.79 Hz vs 30 Hz target · 179 ticks, 6.0 s measured · 0/178 ticks over the 33.3 ms budget (work mean 1.5 ms, worst 5.9 ms) · starved ticks: 11
+INFO 2026-11-09 09:55:38 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 359 ticks, 357 judged
+  effective cadence: 29.84 Hz over 12.0 s measured
+  ticks over the 33.3 ms work budget: 0/357 (0.0%) — work mean 1.5 ms, worst 5.9 ms
+  ticks with no action to send (inference engine starved): 34 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 27
+  loop-body steps (share of measured work):
+    observe      mean   0.65 ms · worst  39.79 ms ·  40.3% of work · 359 calls
+    process_obs  mean   0.03 ms · worst   0.42 ms ·   1.7% of work · 359 calls
+    infer        mean   0.16 ms · worst   2.15 ms ·   9.8% of work · 359 calls
+    send         mean   0.22 ms · worst   2.09 ms ·  12.5% of work · 325 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.2% of work · 325 calls
+    record       mean   0.21 ms · worst   1.10 ms ·  11.8% of work · 325 calls
+  pacing headroom: 31.9 ms slept per tick on average (max 38.2 ms) — near zero means the loop is saturated
+INFO 2026-11-09 09:55:38 ls/utils.py:150 Stop recording
+INFO 2026-11-09 09:55:38 episodic.py:357 Finalizing dataset...
+INFO 2026-11-09 09:55:38 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-09 09:55:38 ence/rtc.py:324 RTC inference thread stopped
+WARNING 2026-11-09 09:55:41 end_hold.py:325 END_HOLD 종료 (E5): 복귀 2/2 회 성공 · 시작 자세와 최대 1.17° · 토크 유지
+INFO 2026-11-09 09:55:41 ls/utils.py:150 Exiting
+INFO 2026-11-09 09:55:41 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-11-09 09:55:41 _rollout.py:272 Rollout finished
+[r2_safety] installed {'mode': 'stop', 'scope': 'episode', 'pan_cmd_abs_max': 104.0, 'pan_present_abs_max': 100.0, 'over_target_deg': 30.0, 'stall_err_deg': 8.0, 'stall_move_deg': 0.3, 'stall_ticks': 20, 'plan': '/home/user/so101_runs/main_k8/sgft01_real_eval/config/pilot_plan.csv', 'plan_tol_cm': 2.0, 'plan_tol_deg': 10.0, 'plan_start': 1, 'live': 'off', 'viewer': 'off'}
+[fault_latch] installed {'mode': 'stop'}
+[end_hold] E5 home mode: 판 사이 · 종료 때 safe_home 점검 + 15°/s 복귀 (Ctrl+C · 사용자 종료 · 예외 뒤에는 안 움직임)
+[end_hold] installed (auto-return blocked, torque kept on at exit)
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+[fake_robot] MOCK_OK FakeBus+FakeCam connected (no serial, no camera)
+[eval_ui] READY 0
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+[end_hold] 시작 자세로 복귀 72° · 15°/s (~4.8 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+[end_hold] 그리퍼 30.0 → 0.8 (지금 0.9)
+[eval_ui] SAVING 0 157
+[eval_ui] SAVED 0 157
+[eval_ui] START 1 ep001_front.png ep001_wrist.png
+[eval_ui] SAVING 1 168
+[eval_ui] SAVED 1 168
+[end_hold] 시작 자세로 복귀 43° · 15°/s (~2.8 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+[end_hold] END_HOLD 종료 (E5): 복귀 2/2 회 성공 · 시작 자세와 최대 1.17° · 토크 유지
+PASS T10a_real_connect_blocked 
+PASS T10b_mock_ok connect_calls=1
+PASS H1_homed_between_and_at_end homes=[('between_episodes', 'episode_end_or_user_next', True, None, 'arrived'), ('teardown', 'episode_end_or_user_next', True, None, 'arrived')]
+PASS H2_home_speed (15°/s ÷ 30 Hz = 0.5°/틱, 유지→첫 보간 이음매 여유 10 %) 정책 밖 쓰기 259 · 틱당 최대 0.5025750613398117
+PASS H3_end_near_start max_abs_diff=1.17
+PASS H4_two_saved SAVED=2 exc=None
+PASS H7_gripper_reset_between gripper initial=0.8 ep0 end=0.14052951335906982 ep1 start=0.800000011920929 home rec=[{'moved': True, 'from': 30.0, 'to': 0.8, 'final': 0.8947593319311691, 'steps': 29}]
+INFO home_dist [([], 144)]
+PASS H5_torque_kept disconnect=[((), {'disable_torque': False})] torque_left_on=True
+ALL_PASS /home/user/so101_runs/main_k8/sgft01_real_eval/tests/_out/series_home_20261109_095218

@@ -1,0 +1,57 @@
+{
+ "tag": "pregrasp",
+ "stamp": "20261106_093542",
+ "live": "/dev/shm/r12_live_campreview_20261105_175346",
+ "seq": 851735,
+ "frames_checked": 31,
+ "status_counts": {
+  "detected": 31
+ },
+ "sticker_u_mean": 0.3736,
+ "sticker_v_mean": 0.8539,
+ "sticker_u_sd": 0.0002,
+ "sticker_v_sd": 0.0002,
+ "kept": {
+  "status": "detected",
+  "reason": ""
+ },
+ "sticker": {
+  "px": [
+   238.9,
+   409.8
+  ],
+  "u": 0.3733,
+  "v": 0.8538,
+  "area_px": 2219,
+  "bbox": [
+   208,
+   388,
+   63,
+   44
+  ],
+  "in_cube": [
+   0.529,
+   0.732
+  ]
+ },
+ "cube": {
+  "px": [
+   234.8,
+   354.0
+  ],
+  "u": 0.3669,
+  "v": 0.7375,
+  "area_px": 34731,
+  "hull_area_px": 37569,
+  "bbox": [
+   140,
+   245,
+   187,
+   225
+  ],
+  "parts": 1,
+  "touches_edge": false
+ },
+ "detect_version": "sticker-v1+4544c4e9fcfd",
+ "wrist_png_sha256": "2f4822b9dd02ed81"
+}

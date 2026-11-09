@@ -1,0 +1,53 @@
+{
+ "run_id": "20261106_110115",
+ "started": "2026-11-06 11:01",
+ "mode": "새 녹화",
+ "session": "practice/sg50_pilot3",
+ "camera_mode": "auto",
+ "wrapper_cmd": "/home/user/so101-env/bin/python /home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_collect.py record --session practice/sg50_pilot3 --config /home/user/so101_runs/main_k8/r1_r2_collection/config/sg50.yaml --scale 0.9",
+ "lerobot_args": [
+  "--robot.type=so101_follower",
+  "--robot.port=/dev/so101_follower",
+  "--robot.id=my_arm",
+  "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4} }",
+  "--teleop.type=so101_leader",
+  "--teleop.port=/dev/so101_leader",
+  "--teleop.id=my_leader",
+  "--dataset.no_stamp=true",
+  "--dataset.push_to_hub=false",
+  "--dataset.repo_id=oxr/so101_sg50_pilot3",
+  "--dataset.single_task=pick up the red cube and put it in the brown box",
+  "--dataset.episode_time_s=60",
+  "--dataset.reset_time_s=3600",
+  "--dataset.num_episodes=40",
+  "--dataset.root=/home/user/so101_runs/practice/sg50_pilot3/dataset"
+ ],
+ "log": "/home/user/.local/state/record_ui/record_20261106_110115.log",
+ "episodes_before": 0,
+ "target_episodes": "40",
+ "layout": "/home/user/so101_runs/practice/sg50_pilot3/r12_plan.csv",
+ "r12": {
+  "group": "sg50_pilot3",
+  "type": "SG",
+  "entry": "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py",
+  "preview": false,
+  "live": "/dev/shm/r12_live_20261106_110115"
+ },
+ "code_version": "a50a6140fdd4",
+ "config": "$HOME/so101_runs/main_k8/r1_r2_collection/config/sg50.yaml",
+ "config_sha256": "bf8b3f80f00bb55d83e2df5acb96505fc6bae2086f805ee27ed0c455432c1d47",
+ "config_extends_sha256": "8cfd7309620444c1accf6de53d1035a43d9f1d7255f673ce56a87b1d89ffaf3d",
+ "teleop_guard": false,
+ "sg50_calib": {
+  "front_H_sha": "7c6b080cf79eb457",
+  "base_config_sha": "49e9f452c58e90b9",
+  "follower_calib_sha": "0e539000c753c8a0",
+  "leader_calib_sha": "4f62ad9c95c966ed",
+  "wrist_camera_calib": "없음 (손목 카메라 보정 파일 없음)"
+ },
+ "exit_code": -2,
+ "interrupted": true,
+ "saved": 0,
+ "ended": "2026-11-06 11:02",
+ "episodes_after": 0
+}

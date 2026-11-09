@@ -1,0 +1,9 @@
+PASS K1_key_mapping_same_as_terminal bad=[] others_none=True
+PASS K2a_ready_next_from_window READY send=(True, '') child got=["b'n'", "b'n'"]
+PASS K2b_P_then_F_recorded_in_eval_ui steps={'ready': 'READY', 'send_next': (True, ''), 'rec': ('REC', 0), 'verdict_P': 'P', 'verdict_F': 'F', 'banner': ['ep 0 판정: 실패(F)', '바꾸려면 P/F 를 다시 · 다음 판 → · 끝내기 Esc'], 'saved': [0]} final verdict={'0': 'F'}
+PASS K2c_child_got_only_next_bytes child got=["b'n'", "b'n'"]
+PASS K2d_state_and_fifo_removed status=0
+PASS K2e_next_without_verdict_refused sent=b'' note=먼저 P(성공) 또는 F(실패) 를 눌러 주세요
+PASS K2f_ctrl_c_from_window_forwarded sent=b'\x03'
+PASS K3_compose_with_ui_state size=(1160, 968) png=/tmp/uikeys_u5flyojw/viewer.png
+ALL_PASS

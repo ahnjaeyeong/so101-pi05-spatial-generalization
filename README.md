@@ -39,6 +39,8 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | d2 (새 카메라, K1–K8, T1+T3) | 256 | expert-only bs32 20k (pi05_base 에서) | redbox_all 과 **별개** |
 | d4 (d2 − T3-K) | 192 | 10k 에서 정지 | 평가 없음 |
 | d2 가중 재표집 A0/A1/A2 | 256 | d2 020000 에서 새 FT 4k | A2 미평가 |
+| d2 + R1 4 · RC 12 (rft01) | 272 | d2 020000 에서 FT 1k | EXP-13 · 실물 EXP-14 |
+| sg50_pilot3 (S0 시작 · 수직 파지) | 40 (43 중) | d2 020000 에서 FT 10k (sgft01) | d2 판 섞지 않음 · EXP-15 · 실물 EXP-16 |
 상세: [docs/02](docs/02_데이터셋_및_파인튜닝_이력.md), [configs/training/RUNS.csv](configs/training/RUNS.csv), [configs/datasets/DATASETS.csv](configs/datasets/DATASETS.csv), loss 곡선 [analysis/figures/loss_curves.png](analysis/figures/loss_curves.png).
 
 ## 5. 주요 실험 결과 (요약 — 수치·조건은 실험 문서)
@@ -48,6 +50,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 - 20k → 30k 추가 학습: loss 변화 없음, 첫 파지 22/40 → 12/40 (시작 자세가 달라 통제되지 않은 비교). → [EXP-05](experiments/05_redbox_30k/README.md)
 - d2 (새 카메라): 10-29 실물 20판 P 9. 실패는 대부분 파지 직전 '덜 다가감' 빈 닫힘. → [EXP-10](experiments/10_pan_diagnostic/README.md)
 - d2 + 교정 시연 16편 FT (rft01) 실물 파일럿 16판: FT 4/8 · BL 5/8 (사람). Known K3 에서 FT 2/2 · BL 0/2 (조건당 1회), Unknown 은 시작 그리퍼 교란으로 비교 무효. → [EXP-14](experiments/14_rft01_real_pilot/README.md)
+- SG50 (S0 시작 · 수집 순서 · 수직 파지) 예비3 40 편 FT (sgft01) 실물 8판: 2/8 (사람) — K 2/5 · U 0/3. 실패 4판은 손목에 큐브가 보이는데 앞뒤 · 높이를 고치지 않고 닫기 반복. → [EXP-15](experiments/15_sg50_sgft01/README.md) · [EXP-16](experiments/16_sgft01_real_eval/README.md)
 - 모든 실물 결과: [evaluations/real_robot/](evaluations/real_robot/README.md)
 
 ## 6. 현재 확인된 문제
@@ -69,7 +72,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 - 가중 재표집 (A1) 은 오프라인 지표에서 개선 없음.
 → [EXP-09](experiments/09_sampling_ablation/README.md), [EXP-10](experiments/10_pan_diagnostic/README.md)
 
-## 9. 현재 상태 (2026-11-05 갱신; 이전 기준 11-02)
+## 9. 현재 상태 (2026-11-09 갱신; 이전 기준 11-05)
 | 구분 | 항목 |
 |---|---|
 | ✅ 완료 | EXP-01 ~ EXP-08, EXP-10 (필터 A/B 는 일부만), A0/A1 학습·오프라인 평가, A2 학습 |
@@ -78,6 +81,8 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | ✅ 수집 (부분) | EXP-11 R1/R2 pilot12: 학습 유효 16편 (R1 4 · RC 12), QA 완료 (11-03 ~ 11-04). 원래 계획 R1 16 · R2 32 본 수집은 안 함 |
 | ✅ 학습 · 오프라인 | EXP-13 (11-04): d2 + R1 4 · RC 12 FT 1k — 재추론에서 R1 복구 방향 신호만 개선, R2 실물 AHEAD 상태 변화 없음 |
 | ✅ 실물 파일럿 | EXP-14 (11-05): FT 4/8 · BL 5/8 [사람]. Unknown 구간 시작 그리퍼 · 모델 순서 교란 → **모델 우열 미결정** |
+| ✅ 수집 · 학습 · 오프라인 | EXP-15 (11-05 ~ 11-07): SG50 수집 도구 (손목 주황 닫기 프레임 · 수평계 · 그리퍼 열기 알림) + 예비3 40 편 → sgft01 10k. [반사실] front→pan 이득 0.93, 손목 앞뒤 · 크기 → 행동 거의 0. 본 수집 48 편은 안 함 |
+| ✅ 실물 평가 | EXP-16 (11-09): sgft01 010000 2/8 [사람] (K 2/5 · U 0/3, HU3 미시험), 안전 정지 0 |
 | 🔄 진행 중 | EXP-12 HIL: 수집 도구 구현 · 가짜 장치 검증만 (179/179, UI 205/205). 실물 안전 검증 · 수집 0 |
 | 📝 계획 | 그리퍼 시작 상태를 고정한 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토, Held-out H 32편, HIL 실물 사전 확인 (모두 사용자 승인 뒤) |
 | 인계 | [HANDOFF.md](HANDOFF.md) — 11-05 기준 다음 세션 인계 문서 |
@@ -86,8 +91,9 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 (11-05 갱신 — 1·2 는 EXP-11/13/14 에서 일부 실행됨)
 1. ~~R1 을 실패 상태에 맞춰 수집, R2 수집~~ → pilot12 로 R1 4 · RC 12 수집 (EXP-11).
 2. ~~d2 + R1/R2 재학습 → 오프라인 T4 지표 → 실물 평가~~ → EXP-13 · EXP-14. 다음: 실행 도구의 그리퍼 시작 상태 고정 후 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토.
-3. Held-out H 녹화로 진짜 held-out 평가 마련.
-4. HIL (정책 실행 중 교정): 전환 장치 구현 · 가짜 장치 검증 완료 (EXP-12, 11-04). 남은 것: 사용자 실물 사전 확인 (리더 토크 전환 · 정렬 · hold 뒤 재연결) 과 별도 승인.
+3. (11-09) SG50 sgft01 실물 2/8 (EXP-16) — 다음 수집 · 학습 방향 (손목 앞뒤 · 높이 다시 맞추기 시연, 편 수 확대 등) 은 사용자 결정 전.
+4. Held-out H 녹화로 진짜 held-out 평가 마련.
+5. HIL (정책 실행 중 교정): 전환 장치 구현 · 가짜 장치 검증 완료 (EXP-12, 11-04). 남은 것: 사용자 실물 사전 확인 (리더 토크 전환 · 정렬 · hold 뒤 재연결) 과 별도 승인.
 → [docs/06](docs/06_HIL_및_향후실험.md), [EXP-12](experiments/12_hil/README.md)
 
 ## 11. 문서 지도
