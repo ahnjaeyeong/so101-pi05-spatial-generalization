@@ -1,0 +1,6 @@
+time,label,session,live,status_age_s,front_detected,cube_x_cm,cube_y_cm,base_dist_cm,bearing_deg,tcp_r_cm,tcp_z_cm,tilt_fwd_deg,tilt_side_deg,pan,lift,elbow,wflex,wroll,grip,front_png,wrist_png
+2026-11-06 13:05:36,왼쪽,practice/sg50_pilot3,/dev/shm/r12_live_20261106_130353,0.03,True,5.6,13.0,36.7,3.1,23.8,-2.6,-14.7,-2.9,-95.7,65.0,-58.1,98.0,84.9,1.1,reach_130536_front.png,reach_130536_wrist.png
+2026-11-06 13:07:14,정면,practice/sg50_pilot3,/dev/shm/r12_live_20261106_130353,0.08,True,5.6,13.0,36.7,3.1,28.6,-1.7,-10.5,-0.4,-2.9,59.7,-53.2,94.0,87.1,1.1,reach_130714_front.png,reach_130714_wrist.png
+2026-11-06 13:08:34,오른쪽,practice/sg50_pilot3,/dev/shm/r12_live_20261106_130353,0.02,True,5.6,13.0,36.7,3.1,25.9,-2.0,-6.4,0.8,86.8,56.9,-47.7,87.2,85.1,1.1,reach_130834_front.png,reach_130834_wrist.png
+2026-11-06 14:24:28,앞으로_잡을_각도,practice/sg50_pilot3,/dev/shm/r12_live_20261106_141955,0.02,True,-17.7,10.3,13.3,-3.0,14.9,-1.1,21.9,0.8,3.3,-95.7,96.4,67.3,92.7,82.6,reach_142428_front.png,reach_142428_wrist.png
+2026-11-06 14:26:20,앞으로_잡을_각도_2,practice/sg50_pilot3,/dev/shm/r12_live_20261106_141955,0.08,True,-12.7,12.3,18.3,4.1,18.8,-2.9,20.3,1.2,-4.1,-20.4,78.0,12.0,84.7,65.4,reach_142620_front.png,reach_142620_wrist.png

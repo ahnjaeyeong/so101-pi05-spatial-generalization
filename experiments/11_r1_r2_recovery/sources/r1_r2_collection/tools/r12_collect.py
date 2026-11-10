@@ -35,6 +35,7 @@ VENV_PY = os.path.join(HOME, "so101-env", "bin", "python")
 ENTRY = os.path.join(HERE, "r12_record_entry.py")
 FAKE = os.path.join(HERE, "r12_fake_record.py")
 VIEWER = os.path.join(HERE, "r12_viewer.py")
+SG_VIEWER = os.path.join(HERE, "sg_viewer.py")  # 2026-11-05 설정 viewer: sg (config/sg50.yaml) 일 때만
 
 # d2 와 같은 장치·카메라 설정 (main_k8/redbox_수집명령.md, d2 세션 notes.md 의 실제 lerobot 명령과 같음)
 D2_ARGS = [
@@ -122,6 +123,8 @@ def make_ui_class():
             self.save_note = ""
             self.key_off = 0
             self.rec_aid, self.marks = None, []
+            self.invalid_aids = {}  # 파일럿: 명령 보호로 무효가 된 시도 {attempt_id: 사유}
+            self.review = []  # 방금 판 자동 검토 표시 (보조): [(level, code, 글)]
             self.safety_ask = None  # R1 시작 자세 안전 확인 (3차 지시서): (ep, 시각) — 첫 → 에 확인 문구, 10 초 안 두 번째 → 로 시작
             self.safety_ok = {}     # ep → True (확인하고 시작)
             self.replay_until = 0.0  # p: 이전 판 다시 보기 (영상 창)
@@ -153,6 +156,19 @@ def make_ui_class():
             if r is None:
                 return [f"{head}episode {ep} 는 계획에 없어요"]
             rt = f" (재촬영: ep {r['retake_of']})" if r["retake_of"] else ""
+            if r.get("type") == "SG":  # 2026-11-05 SG50 일반 파지 (config/sg50.yaml) — 오차 상태 없음
+                s50 = self.cfg.get("sg50") or {}
+                q = self.cfg["scenarios"].get(r["scenario_id"], {}).get("pose", "")
+                p = (s50.get("start_poses") or {}).get(q, {})
+                conf = (s50.get("positions") or {}).get(r["position"], {}).get("confirmed", True)
+                tgt = (" ".join(f"{rc.SHORT[j]} {v:+g}" for j, v in (p.get("joints") or {}).items()) or "자유 — 직접 정함 (실제 값 기록)") \
+                    + (f" · {p['pending']}" if p.get("pending") else "")
+                return [f"{head}【 {r['label']} 】 {r['scenario_id']}" + rt,
+                        f"큐브 {r['position']} ({r['cube_xy_cm']} cm){'' if conf else ' — 좌표 미확정 (front 흰 점선에 놓고 확인)'} · 회전 0° (로봇 좌우축 기준, wrist_roll 아님)",
+                        f"준비 (녹화 안 함): {r['start']}",
+                        f"시작 자세 {q}: {tgt}" if q == "FREE" else f"시작 자세 {q} 목표 (참고, 막지 않음): {tgt}",
+                        f"녹화 (목표 동작): {r['demo']}"] + (
+                        ["결과: 1 첫 파지 성공 · 2 재파지 · 재정렬 뒤 성공 · 3 실패 · m 메모 (실패 판도 지우지 않고 기록)"] if self.cfg.get("result_entry", True) else [])
             if r.get("r1_setup"):  # R1 (3·4차): 오차 상태는 준비 단계(녹화 안 함)에서, 녹화는 되돌리는 동작부터
                 pe = {"left": "왼쪽(−)", "right": "오른쪽(+)"}.get(r.get("pan_error_direction"), "")
                 src = {"K_grid": "K 격자", "free_point": "자유 점 (대략 놓기, front 로 확인)", "front_detected": "front 검출 자리"}.get(r["cube_position_source"], "")
@@ -290,7 +306,9 @@ def make_ui_class():
                 aid = d["attempt_id"]
                 self.ep_attempt[ep] = aid
                 self.attempt_ep[aid] = ep
-                warn = [c[2] for c in d.get("checks", []) if c[0] == "WARN"]
+                r_pre = self.row(ep)
+                closed_ok = bool(r_pre and r_pre.get("gripper_start") == "closed")  # R2-O: 닫힌 그리퍼가 시작 조건 (경고 아님)
+                warn = [c[2] for c in d.get("checks", []) if c[0] == "WARN" and not (closed_ok and c[1] == "gripper_closed")]
                 pan0 = (d.get("state") or {}).get("shoulder_pan.pos")
                 pdiff, ptxt, pok = rc.pan_guide(self.cfg, self.rows[ep] if ep is not None and ep < len(self.rows) else None,
                                                 None if pan0 is None else pan0 - self.pan_calib)
@@ -306,8 +324,15 @@ def make_ui_class():
                 self.ev({"ev": "armed", "attempt_id": aid, "ep": ep, "run_id": CTX["run_id"], "state": d.get("state"),
                          "action": d.get("action"), "checks": d.get("checks", []), "row": self.rows[ep] if ep is not None and ep < len(self.rows) else None,
                          "preview": CTX["preview"], "pan_calib": self.pan_calib, "setup_pan": d.get("setup_pan"), "scenario_warn": scen,
-                         "safety_confirmed": bool(self.safety_ok.pop(ep, False)) if r_ and r_.get("r1_setup") else None})
+                         "safety_confirmed": bool(self.safety_ok.pop(ep, False)) if r_ and r_.get("r1_setup") else None,
+                         "code_version": CTX.get("code_version", "")})
                 self.ev({"ev": "vision", "attempt_id": aid, "ep": ep, "vision": vis})
+                if r_ and r_.get("pilot_variant"):  # 파일럿 12편: 시작 상태 값 · 실물 실패 상태와 비슷함 (근사, 막지 않음)
+                    ps = rc.pilot_start_checks(self.cfg, r_, d.get("state"), vis, self.pan_calib)
+                    self.ev({"ev": "pilot_start", "attempt_id": aid, "ep": ep, "pilot": ps})
+                    sim = ps["similarity"]
+                    scen = scen + [t for ok_, _, t in ps["items"] if ok_ is False] + \
+                        ([f"실패 상태와 비슷함 {sim['matched']}/{sim['total']} (근사 · 참고)"] if sim["total"] else [])
                 after_reset = self.state == ru.RESET
                 self.banner("ARMED", f"✓ 안전 조건 통과 — episode {ep}",
                             ("방금 판 " + ("버리고" if d.get("discard_previous") else "저장한 뒤") + " 바로 녹화 시작 · 리더 팔을 그대로 두세요")
@@ -318,6 +343,7 @@ def make_ui_class():
                 self.blocked = []
             elif k == "rec_start":
                 aid = d.get("attempt_id")
+                self.review = []
                 self.rec_aid, self.marks = aid, []
                 self.set_state(ru.REC)
                 self.save_note = ""
@@ -336,10 +362,33 @@ def make_ui_class():
                 self.ev({"ev": "rec_end", **{x: d.get(x) for x in ("attempt_id", "ep", "frames", "loop_hz_mean", "late_ticks",
                                                                     "stall_ticks", "stall_by_cam", "rerecord", "stop")}})
                 self.measure_recovery(aid, ep)
+                self.review_last(aid, ep)
                 fps = int(self.cfg.get("fps", 30))
                 msg = (f"episode {ep}: 기록 {d.get('frames')} 프레임 · 평균 {d.get('loop_hz_mean')} Hz · 늦은 틱 {d.get('late_ticks')} · "
                        f"카메라 반복 {d.get('stall_ticks')}")
                 self.note(msg, "36" if (d.get("loop_hz_mean") or 0) >= fps * 0.95 and not d.get("late_ticks") else "33")
+            elif k == "guard":  # 녹화 중 명령 보호 (파일럿 설정) — 녹화 중이면 무효 시연 · 자동 버림
+                self.ev({"ev": "guard", **{x: d.get(x) for x in ("attempt_id", "ep", "phase", "reason", "invalid", "joint", "gap", "cmd", "sent")}})
+                why = {"pan_cmd_limit": f"리더 Pan 명령 {d.get('cmd', 0):+.0f}° → 팔로워 ±{GUARD_PAN(self.cfg):g}° 까지만",
+                       "leader_follower_gap": f"{d.get('joint', '')} 리더−팔로워 {d.get('gap', 0):.0f}° → 팔로워 고정 (리더를 팔로워 자세 쪽으로 맞추면 풀림)"
+                       }.get(d.get("reason"), d.get("reason", ""))
+                if d.get("invalid"):
+                    self.invalid_aids[d.get("attempt_id")] = d.get("reason")
+                    if self.state == ru.REC:
+                        self.rerecord = True  # 진입점이 '다시 찍기' 경로로 이 판을 버림 (← 와 같음)
+                    self.banner("BLOCK", f"⛔ 무효 시연 — episode {ep} 녹화를 멈추고 자동으로 버려요", why,
+                                "결과 단계에서 → = 버리고 같은 번호를 다시 준비 (팔로워가 고정돼 있으면 리더를 맞춰 풀기)")
+                else:
+                    self.note(f"⚠ 명령 보호: {why}", "31")
+            elif k in ("guard_warn", "guard_release", "guard_on"):
+                if k == "guard_on":
+                    self.note("명령 보호 켜짐: Pan 명령 ±95° · 리더−팔로워 25° 넘으면 팔로워 고정 · 녹화 중 걸리면 무효", "36")
+                else:
+                    self.note(("⚠ " + d.get("msg", "")) if k == "guard_warn" else f"팔로워 고정 풀림 (리더−고정 자세 {d.get('gap')}°)",
+                              "33" if k == "guard_warn" else "36")
+                self.ev({"ev": k, **{x: d.get(x) for x in ("ep", "phase", "joint", "gap", "msg")}})
+            elif k == "start_frames":
+                self.ev({"ev": "start_frames", "attempt_id": d.get("attempt_id"), "ep": ep, "files": d.get("files")})
             elif k in ("setup_note", "setup_timeout", "tap_error", "stop_before_rec", "setup_end"):
                 if k == "setup_note":
                     self.note(d.get("msg", ""))
@@ -349,18 +398,44 @@ def make_ui_class():
                     self.note(f"화면 탭 오류 (녹화는 계속): {d.get('error')}", "31")
             self.write_ui(force=True)
 
+        def review_last(self, aid, ep):
+            """녹화 뒤 자동 검토 (보조): 그리퍼 명령 · 팔로워 그리퍼 열 + 축소 손목 영상 (live/last_episode.*) → 표시 · 기록. 판정이 아님."""
+            try:
+                import numpy as np
+                import r12_guide as G
+
+                lj = rc.read_json(os.path.join(self.live, "last_episode.json"), {}) or {}
+                if lj.get("attempt_id") not in (None, aid) or not lj.get("grip_state"):
+                    return
+                thumbs = None
+                try:
+                    arr = np.load(os.path.join(self.live, "last_episode.npy"))
+                    thumbs = [a[1] for a in arr]  # (n, 2, 120, 160, 3) → wrist
+                except (OSError, ValueError):
+                    pass
+                self.review = G.review_episode(lj.get("grip_cmd") or [], lj["grip_state"], thumbs, self.cfg, every=int(lj.get("every_ticks", 10)))
+                self.ev({"ev": "review_flags", "attempt_id": aid, "ep": ep, "flags": self.review})
+                for lv, _, t in self.review:
+                    if lv == "warn":
+                        self.note(f"⚠ 검토 (자동 · 보조): {t} — 영상으로 확인, 의도와 다르면 ← 로 버리기", "31")
+            except Exception as e:  # 검토 실패로 수집이 멈추면 안 됨
+                self.note(f"검토 표시 실패 (수집은 계속): {e!r}")
+
         def reset_banner(self):  # noqa: C901
             p = self.pending
             nxt = self.setup_ep
             lines = []
-            if p and not self.discard_pending:
+            res = self.cfg.get("result_entry", True)
+            if p and not self.discard_pending and not res:
+                lines.append(f"방금 episode {self.attempt_ep.get(p)}: → 저장 · ← 버리기 (같은 시나리오 다시) · m 메모 · p 다시 보기")
+            elif p and not self.discard_pending:
                 r1 = (self.row(self.attempt_ep.get(p)) or {}).get("r1_setup")
                 lines.append(f"방금 episode {self.attempt_ep.get(p)} 결과: 1 첫 파지 성공 · 2 재시도 후 성공(누를 때마다 재시도 +1) · 3 실패"
                              + (" (재정렬 못 함) · 4 재정렬은 했지만 파지 실패" if r1 else "") + " · 0 지우기 · m 메모")
                 lines.append("잘못 찍었으면 ← (방금 판 버리고 같은 시나리오 다시)")
             lines += self.row_lines(nxt, f"다음 판 episode {nxt}: ")
-            self.banner(ru.RESET, "↺ 결과 입력 — 녹화 안 함",
-                        "결과를 넣고 → = 방금 판 저장 → 준비 단계 (다음 판 자세는 저장 뒤에) · 종료 Esc (방금 판 저장 후 끝)", *lines)
+            self.banner(ru.RESET, "↺ 결과 입력 — 녹화 안 함" if res else "↺ 판 끝 — 녹화 안 함",
+                        ("결과를 넣고 " if res else "") + "→ = 방금 판 저장 → 준비 단계 (다음 판 자세는 저장 뒤에) · 종료 Esc (방금 판 저장 후 끝)", *lines)
 
         def finish_save(self):
             before = self.saved
@@ -371,7 +446,8 @@ def make_ui_class():
                 self.ev({"ev": "saved", "attempt_id": aid, "ep": ep, "run_id": CTX["run_id"]})
                 self.saved_eps.append(ep)
                 r = self.row(ep)
-                self.results.append({"ep": ep, "scenario": r["scenario_id"] if r else "?", "label": self.label_text(aid) or "결과 미입력"})
+                self.results.append({"ep": ep, "scenario": r["scenario_id"] if r else "?",
+                                     "label": self.label_text(aid) or ("결과 미입력" if self.cfg.get("result_entry", True) else "저장")})
                 self.pending = None
 
         # ---- 결과 입력
@@ -443,6 +519,9 @@ def make_ui_class():
                 return False
             if self.state in BLOCKED:
                 return super().key_allowed(data)
+            if self.state == ru.RESET and data in (b"1", b"2", b"3", b"4", b"0") and not self.cfg.get("result_entry", True):
+                self.note("이 수집은 결과 입력을 쓰지 않아요 (config result_entry: false) — → 저장 · ← 버리기 · m 메모")
+                return False
             if self.state == ru.RESET and data in (b"1", b"2", b"3", b"4", b"0", b"m", b"M"):
                 if not self.pending or self.discard_pending:
                     self.note("결과를 넣을 판이 없어요 (버릴 판이거나 아직 녹화 전)")
@@ -660,7 +739,8 @@ def make_ui_class():
             if st == ru.REC:
                 r_ = self.row(self.episode)
                 return ([("Space", "재정렬 시작 표시 (주황 선에서)")] if r_ and r_.get("error_in_rec") else []) + [
-                        ("→ / n", "판 끝 (저장)" if self.is_last() else "판 끝 → 결과 입력·다음 판 준비"), ("← / r", "이번 판 버리고 다시"),
+                        ("→ / n", "판 끝 (저장)" if self.is_last() else ("판 끝 → 결과 입력·다음 판 준비" if self.cfg.get("result_entry", True) else "판 끝 → 저장·다음 판 준비")),
+                        ("← / r", "이번 판 버리고 다시"),
                         ("Esc / q", "이번 판 저장하고 종료")]
             r1 = bool((self.row(self.setup_ep) or {}).get("r1_setup"))
             go = "→ 두 번 (안전 확인 → 녹화)" if r1 else "→ / n"
@@ -670,9 +750,9 @@ def make_ui_class():
                         ("p", "이전 판 다시 보기"), ("Esc / q", "녹화 없이 종료"), ("?", "도움말")]
             if st == ru.RESET:
                 r1p = bool((self.row(self.attempt_ep.get(self.pending)) or {}).get("r1_setup")) if self.pending else False
-                return [("1", "첫 파지 성공"), ("2", "재시도 후 성공 (+1)"), ("3", "실패" + (" (재정렬 못 함)" if r1p else ""))] + \
-                       ([("4", "재정렬 O · 파지 실패")] if r1p else []) + \
-                       [("0", "결과 지우기"), ("m", "메모"), ("p", "방금 판 다시 보기")] + ov + [
+                res = ([("1", "첫 파지 성공"), ("2", "재시도 후 성공 (+1)"), ("3", "실패" + (" (재정렬 못 함)" if r1p else ""))] +
+                       ([("4", "재정렬 O · 파지 실패")] if r1p else []) + [("0", "결과 지우기")]) if self.cfg.get("result_entry", True) else []
+                return res + [("m", "메모"), ("p", "방금 판 다시 보기")] + ov + [
                         ("← / r", "방금 판 버리기"), ("→ / n", "방금 판 저장 → 다음 판 준비 (녹화 안 함)"), ("Esc / q", "방금 판 저장 후 종료")]
             if st in BLOCKED:
                 return [("(키 막힘)", "저장 중 — 리더 팔 그대로")]
@@ -699,12 +779,23 @@ def make_ui_class():
                 "safety_ask": bool(self.safety_ask and self.safety_ask[0] == ep and time.time() - self.safety_ask[1] < 10),
                 "safety_ok": bool(self.safety_ok.get(ep)), "program": rc.program_progress(self.cfg, {CTX["session"]: counts}), "memo_mode": self.memo is not None, "memo_text": self.memo or "", "results": self.results[-6:],
                 "counts": counts, "keys": self.keys(), "messages": self.messages[-4:], "run_saved": self.saved,
+                "invalid_recent": [{"attempt_id": k, "reason": v, "ep": self.attempt_ep.get(k)} for k, v in list(self.invalid_aids.items())[-3:]],
+                "last_saved_ep": self.saved_eps[-1] if self.saved_eps else None,
+                "rec_aid": self.rec_aid, "review": self.review,
                 "save_note": self.save_note, "blocked": self.blocked})
 
     return R12UI
 
 
 # ================================================================ 계획 · 상태
+
+def GUARD_PAN(cfg):
+    return float((cfg["safety"].get("teleop_guard") or {}).get("pan_cmd_abs_max_deg", 95))
+
+
+def read_meta_session(sess_dir):
+    return (rc.read_json(os.path.join(sess_dir, rc.PLAN_META), {}) or {}).get("session", "")
+
 
 def protected(session):
     return session.strip("/") in rc.PROTECTED_SESSIONS
@@ -743,6 +834,11 @@ def cmd_plan(argv):
             "safety": cfg["safety"], "base_config": cfg["base_config"]}
     rc.write_meta(sess.dir, meta)
     write_sheet(sess.dir, cfg, meta, rows)
+    if g.get("planner") == "sg50":
+        import sg_plan
+
+        sg_plan.write_sheet(sess.dir, cfg)
+        say(f"SG50 배치표 → {hpath(os.path.join(sess.dir, 'sg_plan.md'))} · sg_plan.csv")
     say(f"계획 {group}: {len(rows)}편 → {hpath(os.path.join(sess.dir, rc.PLAN_CSV))}")
     for k, v in meta["stats"].items():
         say(f"  {k}: " + ", ".join(f"{a} {b}" for a, b in sorted(v.items())))
@@ -811,6 +907,13 @@ def sync(sess_dir, cfg, total=None, quiet=False):
     rc.write_plan(sess_dir, rows)
     eps, problems = rc.build_episode_rows(sess_dir, cfg, rows, total)
     rc.write_episode_rows(sess_dir, eps)
+    if cfg.get("pilot") and rc.group_for_session(cfg, read_meta_session(sess_dir))[1] is not None:  # 파일럿 12편: §8 메타데이터
+        rc.write_pilot_rows(sess_dir, rc.build_pilot_rows(sess_dir, cfg, rows, total))
+    if cfg.get("sg50") and rc.group_for_session(cfg, read_meta_session(sess_dir))[1] is not None:  # SG50 판 기록 (sg_episodes.csv)
+        import sg_plan
+
+        sg_plan.write_episodes(sess_dir, cfg)
+        sg_plan.write_sheet(sess_dir, cfg)
     if not quiet:
         say(f"  r12_episodes.csv: {len(eps)}편 · 계획 상태 갱신" + (f" · 확인 필요 {len(problems)}건" if problems else ""))
         for p in problems[:10]:
@@ -841,7 +944,8 @@ def cmd_status(argv):
         say(f"  다음: episode {nxt['episode_index']} {dr['scenario_id']} · {dr['title']} · {dr['position']} · {dr['angle']}")
     saved = [a for a in att.values() if a["status"] == "saved"]
     lab = [a for a in saved if a.get("label") and a["label"].get("final_success") is not None]
-    say(f"  시도 {len(att)} (저장 {len(saved)}, 버림 {sum(a['status'] == 'discarded' for a in att.values())}) · 결과 입력 {len(lab)}/{len(saved)}")
+    say(f"  시도 {len(att)} (저장 {len(saved)}, 버림 {sum(a['status'] == 'discarded' for a in att.values())})"
+        + (f" · 결과 입력 {len(lab)}/{len(saved)}" if cfg.get("result_entry", True) else " · 결과 입력 안 씀 (result_entry: false)"))
     for p in problems[:10]:
         say(f"  ⚠ {p}")
     return 0
@@ -849,32 +953,46 @@ def cmd_status(argv):
 
 def cmd_menu(argv):
     """R1/R2 메뉴 (11-02 정의): 시나리오마다 시작 조건·목표 동작·진행률, 48편 합계, 녹화 명령."""
-    cfg = rc.load_config(opt(argv, "--config"))
+    cfgp = opt(argv, "--config")
+    cfg = rc.load_config(cfgp)
     prog = {sid: (d, t) for _, sid, d, t in rc.program_progress(cfg)}
     tot = sum(t for d, t in prog.values())
-    say(f"R1·R2 파일럿 — 전체 {sum(d for d, t in prog.values())}/{tot} 편")
-    for gname, head in (("r1_pilot", "R1 = Shoulder Pan 재탐색·재정렬 (A 초기 방향 · B1 접근 중 반전 · B2 지나침 · B3 손목 놓침 — 오차 상태는 준비 단계, 녹화는 되돌리는 동작부터)"),
-                        ("r2_pilot", "R2 = 파지 직전 국소 정렬·접근 깊이·닫힘 타이밍 (시작: 준비 단계에서 큐브 근처 오차 자세 · Pan 목표 없음)")):
+    heads = {"r1_pilot": "R1 = Shoulder Pan 재탐색·재정렬 (A 초기 방향 · B1 접근 중 반전 · B2 지나침 · B3 손목 놓침 — 오차 상태는 준비 단계, 녹화는 되돌리는 동작부터)",
+             "r2_pilot": "R2 = 파지 직전 국소 정렬·접근 깊이·닫힘 타이밍 (시작: 준비 단계에서 큐브 근처 오차 자세 · Pan 목표 없음)",
+             "pilot12_r1": "R1 = 팔 접힘 지나침 → Pan 복구 (오차 상태는 준비 단계, 녹화는 되돌리는 동작부터)",
+             "pilot12_r2p": "R2-P = 열린 그리퍼 접근 교정 (그리퍼 열고 큐브 앞에서 정지 → 연 채 보정 → 한 번 닫기)",
+             "pilot12_r2o": "R2-O = 닫힌 그리퍼 재개방 교정 (그리퍼 닫힌 채 큐브 앞에서 정지 → 먼저 열기 → 접근 → 한 번 닫기)",
+             "pilot12_rc": "회복 시연 = F1 사선 하강 (열림 · 비스듬히 큐브 앞) · F2 이른 닫힘 (닫힘 · 큐브 위) · F3 정렬 오차 (닫힘 · 옆으로 빗김)"}
+    say(({"pilot12": "교정 시연 파일럿 12편", "recovery": "회복 시연 (실제 실패 3 종류)"}.get(cfg.get("pilot"), "교정 시연 파일럿") if cfg.get("pilot") else "R1·R2 파일럿") + f" — 전체 {sum(d for d, t in prog.values())}/{tot} 편")
+    for gname in rc.program_groups(cfg):
+        head = heads.get(gname, gname)
         g = rc.group_of(cfg, gname)
-        part = [(sid, s) for sid, s in rc.scenarios_of(cfg, g["type"])]
+        part = ([(sid, {**cfg["scenarios"][sid], "count": int(n)}) for sid, n in g["scenario_counts"].items() if int(n) > 0]
+                if g.get("scenario_counts") else [(sid, s) for sid, s in rc.scenarios_of(cfg, g["type"])])
         d_, t_ = sum(prog.get(sid, (0, 0))[0] for sid, _ in part), sum(prog.get(sid, (0, 0))[1] for sid, _ in part)
-        say(f"\n\x1b[1m[{g['type']}] {head}\x1b[0m  {d_}/{t_}  · 세션 {g['session']}")
+        say(f"\n\x1b[1m[{g.get('pilot_variant') or g['type']}] {head}\x1b[0m  {d_}/{t_}  · 세션 {g['session']}")
         for sid, s in part:
             d, t = prog.get(sid, (0, int(s["count"])))
             say(f"  {sid:<11} {d:>2}/{t:<2} {'■' * d}{'□' * max(0, t - d)}  {s['label']}")
             if s.get("stages"):
                 say(f"      접근 단계: {'/'.join(rc.STAGE_KO.get(x, x) for x in s['stages'])} · 손목 화면: {rc.VIS_KO.get(s.get('wrist_visibility'), '상관없음')}"
-                    f" · Pan 오차 후보 {'/'.join(f'{v:g}' for v in sorted(set(abs(x) for x in s['pan_offsets_deg'])))}° (왼쪽·오른쪽 반반, 대략)")
+                    f" · Pan 오차 후보 {'/'.join(f'{v:g}' for v in sorted(set(abs(x) for x in (s.get('pan_offsets_deg') or s.get('travel_offsets_deg') or [0]))))}°"
+                    + (" (진행 방향으로 지나침, 좌우 반반, 대략)" if s.get("travel") else " (왼쪽·오른쪽 반반, 대략)"))
             elif s.get("start_pose_type"):
                 say(f"      시작 자세: {rc.POSE_KO.get(s['start_pose_type'])} · 손목 화면 목표: {rc.VIS_KO.get(s.get('wrist_visibility'))}"
                     f" · Pan 오차 후보 {'/'.join(f'{abs(v):g}' for v in sorted(set(abs(x) for x in s['pan_offsets_deg'])))}° (왼쪽·오른쪽 반반)")
+            if s.get("gripper_start"):
+                say(f"      시작 그리퍼: {'열림 (≥ 15)' if s['gripper_start'] == 'open' else '닫힘 (< 15)'}" +
+                    (f" · 녹화 중 다시 열기 목표 ≥ {s['reopen_min']}" if s.get("reopen_min") else ""))
             if s.get("approach_depth_category"):
                 say(f"      접근 깊이: {rc.DEPTH_KO.get(s['approach_depth_category'])} · 국소 정렬: {rc.LOCAL_KO.get(s.get('local_dir'))}")
             say(f"      시작 조건: {s['start']}")
             say(f"      오차: {s['offset_mag']}")
             say(f"      목표 동작: {s['demo']}")
-        say(f"  녹화: ~/so101-env/bin/python {hpath(__file__)} record --session {g['session']}")
-        say(f"  미리보기 (로봇 없음): ~/so101-env/bin/python {hpath(__file__)} preview --type {g['type']}")
+        cf = f" --config {hpath(cfg['_path'])}" if cfgp else ""
+        say(f"  녹화: ~/so101-env/bin/python {hpath(__file__)} record --session {g['session']}{cf}")
+        say(f"  미리보기 (로봇 없음): ~/so101-env/bin/python {hpath(__file__)} preview --group {gname}{cf}" if cfgp else
+            f"  미리보기 (로봇 없음): ~/so101-env/bin/python {hpath(__file__)} preview --type {g['type']}")
     return 0
 
 
@@ -936,8 +1054,20 @@ def cmd_label(argv):
 
 # ================================================================ 녹화 (실제 · preview)
 
+def cmd_qa(argv):
+    """r12 QA + SG 설정 (sg50 블록) 이면 판 단계 확인 (sg_phase.py: Pan 정렬 → 찾기 → 그리퍼 열림 → 닫기)."""
+    code = __import__("r12_qa").main(argv)
+    cfgp = opt(argv, "--config")
+    if cfgp and (rc.load_config(cfgp).get("sg50")) and "--session" in argv:
+        print()
+        __import__("sg_phase").main(["--session", opt(argv, "--session")])
+    return code
+
+
 def post_labels(ui):
-    """마지막 판처럼 reset 단계가 없어 결과를 못 넣은 저장 판을 터미널에서 묻는다."""
+    """마지막 판처럼 reset 단계가 없어 결과를 못 넣은 저장 판을 터미널에서 묻는다. result_entry: false 면 묻지 않음."""
+    if not ui.cfg.get("result_entry", True):
+        return
     for ep in ui.saved_eps:
         aid = ui.ep_attempt.get(ep)
         if not aid or aid in ui.labels:
@@ -1009,6 +1139,12 @@ def cmd_record(argv, preview=False):
         if miss:
             return fail([f"장치가 없어요: {', '.join(miss)} — lerobot 을 실행하지 않았어요.",
                          "USB·전원 연결을 확인하세요 (udev 이름: ls -l /dev/so101_* /dev/cam_*)."])
+        # 2026-11-03: 정책 추론 · 다른 녹화 · 텔레오퍼레이션이 같은 팔을 동시에 움직이지 않게 (읽기만 해서 확인)
+        conf = rc.robot_conflicts()
+        if conf:
+            return fail(["로봇·카메라를 쓰는 다른 프로세스가 있어요 — 녹화를 시작하지 않았어요 (동시 명령 방지)."]
+                        + [f"pid {c['pid']}: {c['cmd']}" + (f"  (장치 {', '.join(c['devices'])})" if c["devices"] else "") for c in conf[:6]]
+                        + ["그 프로그램을 먼저 끝낸 뒤 다시 실행하세요 (예: 다른 터미널의 eval_ui · lerobot-record · teleoperate)."])
 
     # ---- dataset 상태 (새로 / 이어 찍기) — preview 는 dataset 을 만들지 않는다
     if preview:
@@ -1055,7 +1191,7 @@ def cmd_record(argv, preview=False):
         args.append(f"--dataset.root={sess.dataset}")
 
     # ---- 녹화 전 점검 (record_ui 와 같은 읽기 전용 점검 + R1/R2 체크리스트)
-    extra = [*cfg.get("checklist", {}).get(g["type"], []),  # R1/R2 혼동 방지 (11-02)
+    extra = [*cfg.get("checklist", {}).get(g.get("pilot_variant") or g["type"], cfg.get("checklist", {}).get(g["type"], [])),  # R1/R2 혼동 방지 (11-02)
              f"첫 판(episode {current}) 큐브를 {first['position']} 에 각도 {first['angle']} 로 놓았나요?",
              "준비 단계(노란 배너)에서 리더로 시작 자세를 만든 뒤 → — 그 전 움직임은 녹화되지 않아요",
              "→ 뒤 '저장 중'(파란 배너) 동안 리더 팔을 그대로 두기 — 저장이 끝나면 그 자세에서 바로 녹화 시작",
@@ -1085,7 +1221,14 @@ def cmd_record(argv, preview=False):
     run = {"run_id": run_id, "started": now.strftime("%Y-%m-%d %H:%M"), "mode": "이어 찍기" if resume else "새 녹화",
            "session": session, "camera_mode": camera_mode, "wrapper_cmd": wrapper_cmd, "lerobot_args": args, "log": log_path,
            "episodes_before": current, "target_episodes": str(len(rows)), "layout": os.path.join(sess_dir, rc.PLAN_CSV),
-           "r12": {"group": group, "type": g["type"], "entry": exe, "preview": preview, "live": live}}
+           "r12": {"group": group, "type": g["type"], "entry": exe, "preview": preview, "live": live},
+           "code_version": rc.code_version(), "config": cfg["_path"].replace(HOME, "$HOME"), "config_sha256": cfg["_sha256"],
+           "config_extends_sha256": cfg.get("_extends_sha256", ""),
+           "teleop_guard": (cfg["safety"].get("teleop_guard") or {}).get("enabled", False)}
+    if cfg.get("sg50"):  # SG50: 녹화 시작 때 카메라 H · 서보 보정 파일 해시 (판 기록 sg_episodes.csv 가 run_id 로 읽음)
+        import sg_plan
+
+        run["sg50_calib"] = sg_plan.calib_versions(cfg)
     with open(side_path, "w") as f:
         json.dump(run, f, ensure_ascii=False, indent=1)
     ru.ensure_layout(sess)
@@ -1098,8 +1241,10 @@ def cmd_record(argv, preview=False):
         with open(sess.notes, "a") as f:
             f.write(section)
 
-    os.environ.update(R12_LIVE_DIR=live, R12_CONFIG=cfg["_path"], R12_RUN_ID=run_id)
-    CTX.update(cfg=cfg, rows=rows, sess_dir=sess_dir, session=session, type=g["type"], live=live, run_id=run_id, preview=preview)
+    os.environ.update(R12_LIVE_DIR=live, R12_CONFIG=cfg["_path"], R12_RUN_ID=run_id,
+                      R12_START_DIR=os.path.join(sess_dir, rc.START_FRAMES_DIR))
+    CTX.update(cfg=cfg, rows=rows, sess_dir=sess_dir, session=session, type=g["type"], live=live, run_id=run_id, preview=preview,
+               code_version=run.get("code_version", ""))
     if preview:
         CTX["preview_frames"] = "더미 영상" if src == "dummy" else "기존 녹화 영상 재생"
     viewer = None
@@ -1107,7 +1252,7 @@ def cmd_record(argv, preview=False):
         if geometry:
             rc.write_json(os.path.join(live, "viewer_geometry.json"), {"geometry": geometry})
         vlog = open(os.path.join(live, "viewer.log"), "w")
-        viewer = subprocess.Popen([VENV_PY, VIEWER, "--live", live, "--scale", scale], stdout=vlog, stderr=vlog,
+        viewer = subprocess.Popen([VENV_PY, SG_VIEWER if cfg.get("viewer") == "sg" else VIEWER, "--live", live, "--scale", scale], stdout=vlog, stderr=vlog,
                                   env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
         say(f"[r12] 영상 창을 열었어요 (pid {viewer.pid}). 키는 이 터미널이나 영상 창 어디서 눌러도 돼요.")
     elif not no_viewer:
@@ -1217,7 +1362,7 @@ def main():
         return cmd_preview(rest)
     load_mods()
     fn = {"menu": cmd_menu, "plan": cmd_plan, "status": cmd_status, "record": cmd_record, "label": cmd_label, "exclude": cmd_exclude,
-          "check": cmd_check, "qa": lambda a: __import__("r12_qa").main(a),
+          "check": cmd_check, "qa": cmd_qa,
           "sync": lambda a: (sync(rc.session_dir(opt(a, "--session")), rc.load_config(opt(a, "--config"))), 0)[1]}.get(cmd)
     if fn is None:
         return fail([f"모르는 명령: {cmd}"])

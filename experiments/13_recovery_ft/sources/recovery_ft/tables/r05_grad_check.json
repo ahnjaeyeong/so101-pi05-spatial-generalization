@@ -1,0 +1,287 @@
+{
+ "batch": {
+  "action": {
+   "shape": [
+    32,
+    50,
+    6
+   ],
+   "dtype": "torch.float32"
+  },
+  "action_is_pad": {
+   "shape": [
+    32,
+    50
+   ],
+   "dtype": "torch.bool"
+  },
+  "index": {
+   "shape": [
+    32
+   ],
+   "dtype": "torch.int64"
+  },
+  "task_index": {
+   "shape": [
+    32
+   ],
+   "dtype": "torch.int64"
+  },
+  "episode_index": {
+   "shape": [
+    32
+   ],
+   "dtype": "torch.int64"
+  },
+  "frame_index": {
+   "shape": [
+    32
+   ],
+   "dtype": "torch.int64"
+  },
+  "timestamp": {
+   "shape": [
+    32
+   ],
+   "dtype": "torch.float32"
+  },
+  "observation.images.front": {
+   "shape": [
+    32,
+    3,
+    480,
+    640
+   ],
+   "dtype": "torch.float32"
+  },
+  "observation.images.wrist": {
+   "shape": [
+    32,
+    3,
+    480,
+    640
+   ],
+   "dtype": "torch.float32"
+  },
+  "observation.state": {
+   "shape": [
+    32,
+    6
+   ],
+   "dtype": "torch.float32"
+  },
+  "observation.language.tokens": {
+   "shape": [
+    32,
+    200
+   ],
+   "dtype": "torch.int64"
+  },
+  "observation.language.attention_mask": {
+   "shape": [
+    32,
+    200
+   ],
+   "dtype": "torch.bool"
+  }
+ },
+ "batch_nontensor": {
+  "next.reward": [
+   "float",
+   "0.0"
+  ],
+  "next.done": [
+   "bool",
+   "False"
+  ],
+  "next.truncated": [
+   "bool",
+   "False"
+  ],
+  "info": [
+   "dict",
+   "{}"
+  ],
+  "task": [
+   "list",
+   [
+    "Task: pick up the red cube and put it in the brown box, State: 90 170 124 185 131 1;\nAction: "
+   ]
+  ]
+ },
+ "first_batch_groups": {
+  "d2": 23,
+  "R2": 6,
+  "R1": 3
+ },
+ "typed_loss_at_d2_020000": {
+  "d2": {
+   "n": 8,
+   "loss_mean": 0.01763945445418358,
+   "loss_min": 0.0009952393593266606,
+   "loss_max": 0.04525546729564667,
+   "finite": true,
+   "state_shape": [
+    8,
+    6
+   ],
+   "action_shape": [
+    8,
+    50,
+    6
+   ]
+  },
+  "R1": {
+   "n": 8,
+   "loss_mean": 0.07144123315811157,
+   "loss_min": 0.0038070122245699167,
+   "loss_max": 0.17160631716251373,
+   "finite": true,
+   "state_shape": [
+    8,
+    6
+   ],
+   "action_shape": [
+    8,
+    50,
+    6
+   ]
+  },
+  "RC-F1": {
+   "n": 8,
+   "loss_mean": 0.05315358191728592,
+   "loss_min": 0.014343222603201866,
+   "loss_max": 0.1409825086593628,
+   "finite": true,
+   "state_shape": [
+    8,
+    6
+   ],
+   "action_shape": [
+    8,
+    50,
+    6
+   ]
+  },
+  "RC-F2": {
+   "n": 8,
+   "loss_mean": 0.053037725389003754,
+   "loss_min": 0.0008253230480477214,
+   "loss_max": 0.09986618906259537,
+   "finite": true,
+   "state_shape": [
+    8,
+    6
+   ],
+   "action_shape": [
+    8,
+    50,
+    6
+   ]
+  },
+  "RC-F3": {
+   "n": 8,
+   "loss_mean": 0.017190666869282722,
+   "loss_min": 0.0018343222327530384,
+   "loss_max": 0.034992724657058716,
+   "finite": true,
+   "state_shape": [
+    8,
+    6
+   ],
+   "action_shape": [
+    8,
+    50,
+    6
+   ]
+  }
+ },
+ "loss_first_batch": 0.022038301452994347,
+ "grad_groups": {
+  "model.paligemma_with_expert.paligemma.lm_head": {
+   "n_params": 526647296,
+   "n_tensors": 1,
+   "requires_grad": 0,
+   "grad_present": 0,
+   "grad_nonzero": 0,
+   "frozen_with_grad": 0
+  },
+  "model.paligemma_with_expert.paligemma.model": {
+   "n_params": 2923335408,
+   "n_tensors": 603,
+   "requires_grad": 0,
+   "grad_present": 0,
+   "grad_nonzero": 0,
+   "frozen_with_grad": 0
+  },
+  "model.paligemma_with_expert.gemma_expert.lm_head": {
+   "n_params": 263323648,
+   "n_tensors": 1,
+   "requires_grad": 1,
+   "grad_present": 0,
+   "grad_nonzero": 0,
+   "frozen_with_grad": 0
+  },
+  "model.paligemma_with_expert.gemma_expert.model": {
+   "n_params": 427932672,
+   "n_tensors": 200,
+   "requires_grad": 200,
+   "grad_present": 200,
+   "grad_nonzero": 200,
+   "frozen_with_grad": 0
+  },
+  "model.action_in_proj": {
+   "n_params": 33792,
+   "n_tensors": 2,
+   "requires_grad": 2,
+   "grad_present": 2,
+   "grad_nonzero": 2,
+   "frozen_with_grad": 0
+  },
+  "model.action_out_proj": {
+   "n_params": 32800,
+   "n_tensors": 2,
+   "requires_grad": 2,
+   "grad_present": 2,
+   "grad_nonzero": 2,
+   "frozen_with_grad": 0
+  },
+  "model.time_mlp_in": {
+   "n_params": 1049600,
+   "n_tensors": 2,
+   "requires_grad": 2,
+   "grad_present": 2,
+   "grad_nonzero": 2,
+   "frozen_with_grad": 0
+  },
+  "model.time_mlp_out": {
+   "n_params": 1049600,
+   "n_tensors": 2,
+   "requires_grad": 2,
+   "grad_present": 2,
+   "grad_nonzero": 2,
+   "frozen_with_grad": 0
+  }
+ },
+ "learnable_params": 693422112,
+ "total_params": 4143404816,
+ "frozen_with_grad_total": 0,
+ "trainable_without_grad_tensors": 1,
+ "vision_tower_training_mode": false,
+ "paligemma_training_mode": false,
+ "config": {
+  "train_expert_only": true,
+  "freeze_vision_encoder": true,
+  "chunk_size": 50,
+  "n_action_steps": 50,
+  "max_state_dim": 32,
+  "max_action_dim": 32,
+  "tokenizer_max_length": 200
+ },
+ "optimizer_lr_now": [
+  1e-05
+ ],
+ "optimizer_param_count": 4143404816,
+ "gpu_max_mem_allocated_GiB_fwd_bwd": 16.655641555786133,
+ "normalizer_stats_equal_d2_020000": 0.0
+}

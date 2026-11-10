@@ -1,0 +1,3 @@
+q02: keys 12 elems 115200 mean|d| 0.0457 p99 0.213 max 0.524 | pan Δ29 diff mean 0.100 max 0.428 (|Δ29| base mean 12.40) sign agree 0.995
+vd_b: keys 12 elems 57600 mean|d| 0.0449 p99 0.222 max 0.493 | pan Δ29 diff mean 0.100 max 0.345 (|Δ29| base mean 12.40) sign agree 0.995
+vd_h: keys 6 elems 28800 mean|d| 0.0468 p99 0.203 max 0.413 | pan Δ29 diff mean 0.111 max 0.314 (|Δ29| base mean 11.12) sign agree 1.000

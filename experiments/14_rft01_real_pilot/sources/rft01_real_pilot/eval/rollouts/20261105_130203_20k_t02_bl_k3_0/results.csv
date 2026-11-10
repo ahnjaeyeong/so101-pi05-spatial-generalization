@@ -1,0 +1,2 @@
+﻿run,ep,verdict,seconds,frames,front_image,wrist_image,memo,ckpt,tag,started,task
+20261105_130203_20k_t02_bl_k3_0,000,F,58.8,1764,start_images/ep000_front.png,start_images/ep000_wrist.png,,../d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000,t02_bl_k3_0,2026-11-05 13:02,pick up the red cube and put it in the brown box

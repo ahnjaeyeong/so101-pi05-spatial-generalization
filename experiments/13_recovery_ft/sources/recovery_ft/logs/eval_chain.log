@@ -1,0 +1,14 @@
+2026-11-04 18:01:37 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --tag d2_020000_repro --sets q02,vd_b,vd_h --limit 6
+2026-11-04 18:05:42 done
+2026-11-04 18:05:42 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --tag d2_020000_demo --sets demo
+2026-11-04 18:10:03 done
+BASE_OK /home/user/so101_runs/main_k8/d2/recovery_ft/eval/raw/d2_020000
+2026-11-04 18:10:06 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --tag rft01_001000
+2026-11-04 18:47:57 done
+2026-11-04 18:47:57 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/000500/pretrained_model --tag rft01_000500
+2026-11-04 19:25:59 done
+2026-11-04 19:25:59 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/000250/pretrained_model --tag rft01_000250
+2026-11-04 20:03:52 done
+2026-11-04 20:03:52 start scripts/e01_reinfer.py --ckpt /home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/000750/pretrained_model --tag rft01_000750
+2026-11-04 20:41:48 done
+2026-11-04 20:42:26 EVAL_CHAIN_DONE

@@ -1,0 +1,157 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-03T15:58:34",
+ "group": "pilot12_r2p",
+ "type": "R2",
+ "session": "main_k8/r12_pilot12_r2p",
+ "repo_id": "oxr/so101_k8_r12_pilot12_r2p",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 4,
+ "episode_time_s": 45,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/r12_pilot12.yaml",
+ "config_sha256": "15dbcbbf795c05011f39801e8c49632040624256cf93ea2887375c494cb3902d",
+ "plan_sha256": "bab219f8f06a710a9ec022b3b6c255817ddc6407d1acc0f60c8edb73be37aa46",
+ "stats": {
+  "scenarios": {
+   "R2-P-AHEAD": 2,
+   "R2-P-DEPTH": 2
+  },
+  "positions": {
+   "K3": 1,
+   "K4": 1,
+   "K8": 1,
+   "K7": 1
+  },
+  "angles": {
+   "45": 1,
+   "R30": 1,
+   "0": 1,
+   "L30": 1
+  },
+  "offset_dir": {
+   "forward": 4
+  }
+ },
+ "scenarios": {
+  "R2-P-AHEAD": {
+   "type": "R2",
+   "label": "R2-P · 열린 그리퍼 · 큐브가 손가락 앞",
+   "error_kind": "ahead",
+   "local_dir": "cube_ahead",
+   "approach_depth_category": "not_entered",
+   "local_offsets_cm": [
+    1.5,
+    2.0,
+    3.0
+   ],
+   "wrist_start_region": {
+    "u": [
+     0.22,
+     0.5
+    ],
+    "v": [
+     0.25,
+     0.47
+    ]
+   },
+   "start_radial_cm": -2.5,
+   "start_height": "파지 높이",
+   "via": "",
+   "count": 2,
+   "pan_offsets_deg": [
+    0
+   ],
+   "title": "큐브가 손가락 끝보다 앞에 있음 (아직 손가락 사이 밖)",
+   "offset_dir": "forward",
+   "offset_mag": "손가락 끝과 큐브 앞면 사이 1.5–3 cm (손목 화면 큐브가 위쪽·작게)",
+   "wrist_expect": "visible",
+   "start": "그리퍼 열림, 파지 높이 근처에서 팔 정지. 큐브가 손가락 끝보다 앞 (손목 화면 주황 영역). 큐브에 닿지 않음.",
+   "demo": "녹화 시작 → 그리퍼를 연 채 유지 → 부족한 접근 깊이 · 높이 · 정렬을 고침 (어느 관절로 고칠지는 시연자가 화면을 보고 정함) → 큐브가 손가락 사이에 오면 d2 방식으로 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세.",
+   "pilot_variant": "R2-P",
+   "gripper_start": "open",
+   "failure_type": "open_gripper_short_approach (실물 AHEAD 유형의 접근 부족, 그리퍼는 열림)",
+   "correction_action": "그리퍼를 연 채 접근 깊이 · 높이 · 정렬 보정 → 닫기 영역에서 한 번 닫기 → 상자 → 쉬는 자세",
+   "_like": "R2-AHEAD"
+  },
+  "R2-P-DEPTH": {
+   "type": "R2",
+   "label": "R2-P · 열린 그리퍼 · 접근 깊이 부족",
+   "error_kind": "depth",
+   "local_dir": "depth_short",
+   "approach_depth_category": "partial",
+   "local_offsets_cm": [
+    0.5,
+    1.0,
+    1.5
+   ],
+   "wrist_start_region": {
+    "u": [
+     0.22,
+     0.5
+    ],
+    "v": [
+     0.48,
+     0.62
+    ]
+   },
+   "start_radial_cm": 0,
+   "start_height": "파지 높이",
+   "via": "",
+   "count": 2,
+   "title": "큐브가 손가락 사이에 일부만 들어옴 (손가락 끝에 걸침)",
+   "offset_dir": "forward",
+   "offset_mag": "0.5–1.5 cm 덜 들어감 (손목 화면 큐브가 닫기 영역 바로 위)",
+   "wrist_expect": "visible",
+   "start": "그리퍼 열림, 파지 높이 근처에서 팔 정지. 큐브가 손가락 끝 사이에 일부만 들어옴 (손목 화면 주황 영역). 큐브를 밀지 않음.",
+   "demo": "녹화 시작 → 그리퍼를 연 채 유지 → 조금 더 진입 · 정렬 (고칠 관절은 시연자가 정함) → 큐브가 손가락 사이에 오면 한 번 닫기 → 들어 올리기 → 상자 → 쉬는 자세.",
+   "pilot_variant": "R2-P",
+   "gripper_start": "open",
+   "failure_type": "open_gripper_partial_entry (큐브가 손가락 끝에 걸침, 그리퍼는 열림)",
+   "correction_action": "그리퍼를 연 채 조금 더 진입 · 정렬 → 한 번 닫기 → 상자 → 쉬는 자세",
+   "_like": "R2-DEPTH"
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "pan_limit_margin_block_deg": 10,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600,
+  "teleop_guard": {
+   "enabled": true,
+   "pan_cmd_abs_max_deg": 95,
+   "hold_gap_deg": 25,
+   "release_gap_deg": 10,
+   "warn_gap_deg": 15,
+   "warn_s": 1.0,
+   "invalidate_in_rec": true
+  }
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}

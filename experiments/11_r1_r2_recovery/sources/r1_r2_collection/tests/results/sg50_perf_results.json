@@ -1,0 +1,122 @@
+[
+ {
+  "cond": "A_no_viewer",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.91,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": null
+ },
+ {
+  "cond": "B_viewer_det_off",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.91,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": {
+   "t": 1793866037.8535974,
+   "show_det": false,
+   "render_ms_p50": 23.69,
+   "render_ms_p95": 27.15,
+   "detect_ms_p50": null,
+   "detect_ms_p95": null,
+   "new_frames": 194,
+   "detect_runs": 0,
+   "elapsed_s": 18.0,
+   "window": [
+    1400,
+    860
+   ],
+   "mode": "bench"
+  }
+ },
+ {
+  "cond": "C_viewer_det_on",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.91,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": {
+   "t": 1793866056.1734073,
+   "show_det": true,
+   "render_ms_p50": 20.21,
+   "render_ms_p95": 24.5,
+   "detect_ms_p50": 8.23,
+   "detect_ms_p95": 10.48,
+   "new_frames": 194,
+   "detect_runs": 194,
+   "elapsed_s": 18.0,
+   "window": [
+    1400,
+    860
+   ],
+   "mode": "bench"
+  }
+ },
+ {
+  "cond": "A_no_viewer",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.9,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": null
+ },
+ {
+  "cond": "B_viewer_det_off",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.9,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": {
+   "t": 1793866091.7208939,
+   "show_det": false,
+   "render_ms_p50": 23.75,
+   "render_ms_p95": 27.37,
+   "detect_ms_p50": null,
+   "detect_ms_p95": null,
+   "new_frames": 194,
+   "detect_runs": 0,
+   "elapsed_s": 18.0,
+   "window": [
+    1400,
+    860
+   ],
+   "mode": "bench"
+  }
+ },
+ {
+  "cond": "C_viewer_det_on",
+  "saved_frames": 359,
+  "rec_end_frames": 359,
+  "loop_hz_mean": 29.9,
+  "late_ticks": 0,
+  "frame_index_contiguous": true,
+  "timestamp_step_ok": true,
+  "viewer": {
+   "t": 1793866110.0456164,
+   "show_det": true,
+   "render_ms_p50": 20.39,
+   "render_ms_p95": 25.32,
+   "detect_ms_p50": 9.17,
+   "detect_ms_p95": 11.86,
+   "new_frames": 194,
+   "detect_runs": 194,
+   "elapsed_s": 18.0,
+   "window": [
+    1400,
+    860
+   ],
+   "mode": "bench"
+  }
+ }
+]

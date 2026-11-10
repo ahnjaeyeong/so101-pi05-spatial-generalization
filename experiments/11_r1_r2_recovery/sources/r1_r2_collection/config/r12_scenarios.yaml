@@ -23,6 +23,11 @@ groups:
     repo_id: oxr/so101_k8_r2_pregrasp_pilot
     seed: 3201
     episode_time_s: 45
+    # 2026-11-03 사용자 결정: R2 잠정 40 편 = AHEAD 8 · DEPTH 8 · LEFT 4 · RIGHT 4 · READY 8 · BELOW 8 (REGRASP 제외).
+    #   R2-BELOW 교정 프로토콜 확정 전까지 '수집 준비 완료' 아님. 이미 만든 r12_plan.csv (32 편) 는 그대로 — 다시 만들지 않았음.
+    #   근거: ~/so101_runs/main_k8/r2_grasp_diagnostic/R2_COLLECTION_CONDITIONS.md
+    target_total: 40
+    collection_status: draft   # draft = 조건만 정함 · 수집 준비 완료 아님 (R2-BELOW 교정 동작 미확정)
   # 시험 연습 (2026-10-30 사용자: 각 3회) — practice 세션, 본 파일럿과 분리. scenario_counts 가 시나리오 count 를 대신함
   r1_trial:
     type: R1
@@ -71,6 +76,7 @@ free_points: {F1: [-12.75, 19.0], F2: [-12.75, 4.0], F3: [-21.25, 26.5], F4: [-2
 # R1 계획의 큐브 자리: K 8 + 자유 점 8 (F1–F4 각 2)
 r1_positions: [K1, K2, K3, K4, K5, K6, K7, K8, F1, F2, F3, F4, F1, F2, F3, F4]
 angles: ["0", "L30", "R30", "45"]
+# 2026-11-03: 계획의 각도 배정 (make_plan: 위 4 가지를 섞어 돌려 씀) 은 기존 그대로 — 새 고정 규칙을 추가하지 않음.
 
 # K 마다 '큐브 가운데 pan' 기준값 (°): d2 구성 세션 redbox_t1_known + redbox_t3_known 의 판마다
 # '열린 뒤 명령 그리퍼 <10 인데 팔로워 그리퍼 >6 이 5프레임 이어진 첫 프레임 (= 큐브를 쥔 순간)' 의 pan, K 별 중앙값 (n 15–16, 2026-10-30).
@@ -514,7 +520,9 @@ scenarios:
     local_dir: fingers_left
     approach_depth_category: lateral_offset
     local_offsets_cm: [1.5, 2.5, 3.5]
-    wrist_start_region: {u: [0.45, 0.72], v: [0.55, 0.85]}
+    # 2026-11-03: 관측 범위 u 0.72 → 0.95 (실물 11-03 K1 실패: 큐브가 오른쪽 손가락 바깥 u 0.91). RIGHT (u ≤ 0.26) 와 겹치지 않음.
+    #   이 영역은 '손목 화면 큐브 위치' 조건일 뿐 — 고칠 방향 (Pan · 손목 roll · 팔 이동) 을 정하지 않는다.
+    wrist_start_region: {u: [0.45, 0.95], v: [0.55, 0.85]}
     start_radial_cm: 0
     start_height: "파지 높이"
     via: ""
@@ -524,8 +532,8 @@ scenarios:
     offset_dir: robot_left
     offset_mag: "손가락 사이 중심이 큐브 왼쪽 1.5·2.5·3.5 cm (판마다, 손목 화면 큐브가 오른쪽)"
     wrist_expect: visible
-    start: "그리퍼 열림, 파지 높이·깊이 근처. 손가락 사이 중심이 큐브보다 왼쪽 (손목 화면 주황 영역 = 큐브가 오른쪽에 보임)."
-    demo: "손목·팔로 옆으로 고쳐 큐브가 초록 닫기 영역에 오면 한 번 닫기 → 상자 → 쉬는 자세 (작은 Pan 수정 허용)."
+    start: "그리퍼 열림, 파지 높이·깊이 근처. 손가락 사이 중심이 큐브보다 왼쪽 (손목 화면 주황 영역 = 큐브가 오른쪽에 보임, 손가락 바깥까지 포함)."
+    demo: "큐브가 초록 닫기 영역에 오도록 고친 뒤 한 번 닫기 → 상자 → 쉬는 자세. 고칠 방법 (Pan · 손목 roll · 팔 이동) 은 시연자가 화면을 보고 정함 — 화면 화살표는 큐브가 화면에서 가야 할 쪽일 뿐 로봇 동작 지시가 아님."
   R2-RIGHT:
     type: R2
     label: "R2 · 손가락이 큐브 오른쪽"
@@ -544,7 +552,7 @@ scenarios:
     offset_mag: "손가락 사이 중심이 큐브 오른쪽 1.5·2.5·3.5 cm (판마다, 손목 화면 큐브가 왼쪽)"
     wrist_expect: visible
     start: "그리퍼 열림, 파지 높이·깊이 근처. 손가락 사이 중심이 큐브보다 오른쪽 (손목 화면 주황 영역 = 큐브가 왼쪽에 보임)."
-    demo: "손목·팔로 옆으로 고쳐 큐브가 초록 닫기 영역에 오면 한 번 닫기 → 상자 → 쉬는 자세 (작은 Pan 수정 허용)."
+    demo: "큐브가 초록 닫기 영역에 오도록 고친 뒤 한 번 닫기 → 상자 → 쉬는 자세. 고칠 방법 (Pan · 손목 roll · 팔 이동) 은 시연자가 화면을 보고 정함 — 화면 화살표는 큐브가 화면에서 가야 할 쪽일 뿐 로봇 동작 지시가 아님."
   R2-READY:
     type: R2
     label: "R2 · 거의 정렬된 파지 준비 (정상)"
@@ -564,6 +572,28 @@ scenarios:
     wrist_expect: visible
     start: "그리퍼 열림, 큐브가 손가락 사이 거의 가운데 (손목 화면 큐브가 초록 닫기 영역 안)."
     demo: "필요하면 아주 작게 고친 뒤 한 번 닫기 → 상자 → 쉬는 자세. 일부러 기다리지 않는다."
+  # 2026-11-03 사용자 결정: 실물 첫 파지 실패 14 판 중 6 판이 '닫는 순간 손목 화면 큐브가 아래 가장자리 (v 0.78–0.89)'.
+  #   시작 영역은 관측 위치 조건만 — 교정 동작 (높이 · 깊이 · 밀림 중 무엇을 고칠지) 은 아직 정하지 않음 (below_review 검토 뒤 확정).
+  #   u 범위 0.27–0.44 = LEFT (u ≥ 0.45) · RIGHT (u ≤ 0.26) 와 겹치지 않게. v 0.80–0.92 는 READY (닫기 영역 v ≤ 0.78) 와 겹치지 않음.
+  #   approach_depth_category 는 일부러 비움 (깊이 원인 미확정).
+  R2-BELOW:
+    type: R2
+    label: "R2 · 큐브가 손목 화면 아래 가장자리 (교정 미확정 · 녹화 보류)"
+    error_kind: below
+    local_dir: cube_below
+    wrist_start_region: {u: [0.27, 0.44], v: [0.80, 0.92]}
+    start_radial_cm: 0
+    start_height: "파지 높이 근처"
+    via: ""
+    count: 8
+    pan_offsets_deg: [0]
+    title: 손목 화면에서 큐브가 손가락 사이 아래 가장자리 (관측 위치 조건)
+    offset_dir: none
+    offset_mag: "관측 위치 조건: 손목 화면 큐브 중심 v 0.80–0.92 · u 0.27–0.44. 원인 (높이 · 깊이 · 밀림) 미확정"
+    wrist_expect: visible
+    protocol_status: draft    # 교정 프로토콜 확정 전 — 수집 준비 완료 아님
+    start: "그리퍼 열림, 파지 높이 근처. 손목 화면에서 큐브가 손가락 사이 아래 가장자리 (주황 영역). 이 자세를 만드는 방법은 교정 프로토콜 확정 뒤 정함."
+    demo: "교정 동작 미확정 — 프로토콜 확정 전에는 이 시나리오를 녹화하지 않음 (계획에 있어도 건너뛰기)."
   # ---- 10-30 R2 정의 — 수량 0 (practice/r2_trial 계획을 읽으려고 남김)
   R2-LOW:
     type: R2
@@ -605,6 +635,7 @@ checklist:
     - "이 세션은 R2 = 파지 직전 국소 정렬·깊이·닫힘이에요. 큰 Pan 방향 오차(10° 넘게 틀린 방향)는 R1 세션에서 찍어요"
     - "준비 단계(녹화 안 함)에서 그리퍼를 열고 큐브 근처 오차 자세를 만든 뒤 → — 손목 화면 주황 영역에 큐브"
     - "닫기는 큐브가 초록 닫기 영역에 들어왔을 때 한 번. 빈 파지 후 다시 잡기는 이 시나리오가 아님"
+    - "R2-BELOW (손목 화면 아래 가장자리) 는 교정 프로토콜 확정 전 — 계획에 있어도 녹화하지 않아요"
 
 # R1 접근 단계 (4차): 진행률 = (시작 lift − 쉬는 자세 lift) / (이 큐브 거리의 d2 파지 lift − 쉬는 자세 lift).
 #   d2 파지 lift (redbox_t1/t3_known 128편, 파지 순간 K 별 중앙값) ≈ −7.5 (r 14 cm) … +44.7 (r 27 cm) → 직선 lift_g = a + b·r.

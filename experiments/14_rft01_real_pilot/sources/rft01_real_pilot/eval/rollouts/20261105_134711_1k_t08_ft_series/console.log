@@ -1,0 +1,16 @@
+[r2_safety] installed {'mode': 'stop', 'scope': 'episode', 'pan_cmd_abs_max': 104.0, 'pan_present_abs_max': 100.0, 'over_target_deg': 30.0, 'stall_err_deg': 8.0, 'stall_move_deg': 0.3, 'stall_ticks': 20, 'plan': '/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_134704_ft.csv', 'plan_tol_cm': 2.0, 'plan_tol_deg': 10.0, 'plan_start': 1, 'live': 'on', 'viewer': 'auto'}
+WARNING:lerobot.r2_safety:R2_PLAN 배치 계획 1 판 (/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_134704_ft.csv), 1 번부터. 첫 판: 8번 K1_L30 (known) — 표시된 자리, 각도 L30 (위에서 볼 때 반시계 ↺ 30°) · 좌표 (-8.5, 26.5) cm
+WARNING:lerobot.r2_safety:R2_PLAN 배치 창을 띄웠어요 (scripts/r2_place_viewer.py, 공유 /dev/shm/r2_live_20261105_134711_1k_t08_ft_series)
+[fault_latch] installed {'mode': 'stop'}
+[end_hold] E5 home mode: 판 사이 · 종료 때 safe_home 점검 + 15°/s 복귀 (Ctrl+C · 사용자 종료 · 예외 뒤에는 안 움직임)
+[end_hold] installed (auto-return blocked, torque kept on at exit)
+INFO 2026-11-05 13:47:22 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_rft01_real_pilot_1k_t08_ft_series --dataset.root=/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_134711_1k_t08_ft_series/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=1 --dataset.episode_time_s=60 --dataset.reset_time_s=3600 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --return_to_initial_position=false --strategy.reset_to_initial_position=true
+INFO 2026-11-05 13:47:22 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-05 13:47:22 _rollout.py:245 Building rollout context...
+INFO 2026-11-05 13:47:22 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+^C^CINFO 2026-11-05 13:47:34 s/process.py:90  Shutdown signal 2 received. Cleaning up…
+^CINFO 2026-11-05 13:49:28 s/process.py:90  Shutdown signal 2 received. Cleaning up…
+INFO 2026-11-05 13:49:28 s/process.py:99 Force shutdown

@@ -1,0 +1,53 @@
+{
+ "tag": "cubecross",
+ "stamp": "20261106_094632",
+ "live": "/dev/shm/r12_live_campreview_20261106_093738",
+ "seq": 8023,
+ "frames_checked": 31,
+ "status_counts": {
+  "detected": 31
+ },
+ "cube_u_mean": 0.5203,
+ "cube_u_sd": 0.0001,
+ "cube_v_mean": 0.2672,
+ "cube_v_sd": 0.0001,
+ "kept_cube": {
+  "px": [
+   333.0,
+   128.3
+  ],
+  "u": 0.5203,
+  "v": 0.2673,
+  "area_px": 7010,
+  "hull_area_px": 7609,
+  "bbox": [
+   295,
+   76,
+   78,
+   102
+  ],
+  "parts": 1,
+  "touches_edge": false
+ },
+ "kept_sticker": {
+  "px": [
+   333.0,
+   99.7
+  ],
+  "u": 0.5203,
+  "v": 0.2077,
+  "area_px": 419,
+  "bbox": [
+   320,
+   90,
+   27,
+   20
+  ],
+  "in_cube": [
+   0.487,
+   0.232
+  ]
+ },
+ "status": "detected",
+ "detect_version": "sticker-v1+4544c4e9fcfd"
+}

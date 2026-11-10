@@ -1,0 +1,15 @@
+{
+ "trial": 39,
+ "condition": "B",
+ "position": "Z1",
+ "first_grasp": "failure",
+ "final": "success",
+ "attempts": 2,
+ "failure_type": "기타",
+ "note": "처음부터 파지 성공했음, 전체파지도 1회임",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-20 10:14:20",
+ "stop_reason": "operator",
+ "protect": null
+}

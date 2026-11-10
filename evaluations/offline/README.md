@@ -12,6 +12,8 @@
 | [EXP-09](../../experiments/09_sampling_ablation/README.md) 재표집 | d2, A0, A1 (A2 미평가) | [in-sample]·[합성] | A1−A0 새 위치 −0.256° [−0.648, +0.133]; G_rr −0.097 |
 | EXP-09 커버리지 감사 | — | [in-sample] | −2 s ≥1.5 cm 오차 0편; 보정 오른쪽 31 : 왼쪽 6; 정책 pan t90 2.2–14.6 s vs 사람 0.8 s |
 | [EXP-10](../../experiments/10_pan_diagnostic/README.md) Pan 진단 | d2 020000 | [재구성] | 왼쪽 첫 chunk 정지 53–80%; T4 목표 쪽 U 7.7% / G 4.3%; state pan ±30° 에도 방향 유지 13/14 |
+| [EXP-15](../../experiments/15_sg50_sgft01/README.md) SG50 FT | d2 020000, sgft01 2500–10000 | [in-sample]·[반사실] (B = 같은 작업자 안 쓴 판, held-out 아님) | 앞 10 스텝 오차 A 10.37→2.19 · B 10.62→3.22 · d2 판 2.24→9.49; front→pan 이득 0.59→0.93; 손목 앞뒤→wflex +27.5→+2.0 (사람 +18.6), 크기→lift −12.2→+0.2 (사람 −42.7); 프레임 밖 닫기 49/42/78% |
+| [EXP-17](../../experiments/17_grasp_bias_diag/README.md) 집기 직전 편향 | sgft01 010000 (EXP-16 실물 관측) | [재구성]·[반사실]·[in-sample] (사람 예비3) | 그리퍼 열림 장면 큐브만 중심: 바깥 +0.96 cm (사람 +0.13); 교차: 큐브 모습 −0.55 · 배경 −0.40, 높이 −0.25, 기세 −0.03, 서보 속도 무관; 손목 기울기 v 27 % · u 10 %; 관절값 k 0.81 (사람 0.94); 흔들림 크기 영상 변화 → 명령 0.24–0.40° |
 
 학습 loss (train loss 만, 검증 loss 없음): [`analysis/loss/`](../../analysis/loss/), 그림 [`analysis/figures/loss_curves.png`](../../analysis/figures/loss_curves.png).
 상세: [`docs/05_오프라인_실험결과.md`](../../docs/05_오프라인_실험결과.md).

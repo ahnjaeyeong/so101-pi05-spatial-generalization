@@ -1,0 +1,15 @@
+{
+ "tags": [
+  "d2_020000",
+  "rft01_000250",
+  "rft01_000500",
+  "rft01_000750",
+  "rft01_001000"
+ ],
+ "n": {
+  "r1_states": 223,
+  "r2_real_states": 168,
+  "human_states": 96,
+  "demo_states": 50
+ }
+}

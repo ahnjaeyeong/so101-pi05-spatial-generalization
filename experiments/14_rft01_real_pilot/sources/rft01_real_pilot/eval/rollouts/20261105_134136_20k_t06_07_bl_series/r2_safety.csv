@@ -1,0 +1,6 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1793853705.6824,1219220.85259,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_134129_bl.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1793853879.7169,1219394.88706,0,0,episode_start,over_target,pe=32.53 start_pan=-8.703296703296703 ok x=-8.7 y=-3.1,,-8.703296703296703,,,
+1793853879.7588,1219394.92897,0,0,plan_check,K3_R30,"놓인 곳 (-8.7, -3.1) cm · Known (K3 0.4 cm) · 각도 -34° (= R30) · 계획 K3_R30 과 0.4 cm",,-8.703296703296703,,,
+1793853973.5540,1219488.72418,1,0,episode_start,over_target,pe=-37.53 start_pan=-8.175824175824175 ok x=-9.2 y=27.2,,-8.175824175824175,,,
+1793853973.5767,1219488.74689,1,0,plan_check,K1_L30,"놓인 곳 (-9.2, 27.2) cm · Known (K1 0.9 cm) · 각도 ? · 계획 K1_L30 과 0.9 cm ⚠ 각도를 못 잼 (큐브 윤곽 · 가림 확인) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)",,-8.175824175824175,,,각도를 못 잼 (큐브 윤곽 · 가림 확인)

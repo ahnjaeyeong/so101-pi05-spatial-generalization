@@ -1,0 +1,6 @@
+source_path,kind,files,bytes,sha256,reason,derived_repo_path
+/home/user/so101_runs/main_k8/sgft01_real_eval/overshoot_diag/data/blur.npz,file,1,20389,c54b70646935a863c76fd32e5dcd1ccbaa570d7748ad166956acf00e6054d9e6,binary_ext,
+/home/user/so101_runs/main_k8/sgft01_real_eval/overshoot_diag/data/equilibrium.npz,file,1,66089,f37677d0acd9db7a41c68d23b53768ae8c62ce768d986239d5aaef076f49be5a,binary_ext,
+/home/user/so101_runs/main_k8/sgft01_real_eval/overshoot_diag/data/equilibrium_np.npz,file,1,131571,3d470dceec2150f0b50f8c5389385fd0f471225363486a4784a1332e435628fb,binary_ext,
+/home/user/so101_runs/main_k8/sgft01_real_eval/overshoot_diag/data/reinfer.npz,file,1,3897578,f417a969058d777d8e35eac2bb7a490ab40926364a69058bdea348596d1eb2a5,binary_ext,
+/home/user/so101_runs/main_k8/sgft01_real_eval/overshoot_diag/data/state_probe.npz,file,1,22728,4f5af1cf3778474184d8751da171f5b77ee9ecc71dfa87c391645d7b93491144,binary_ext,

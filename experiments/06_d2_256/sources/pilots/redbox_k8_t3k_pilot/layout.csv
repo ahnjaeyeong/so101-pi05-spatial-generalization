@@ -1,0 +1,5 @@
+episode_index,layout_id,status,retake_of,objects,frames,note,angles
+0,T3K1-G6B7O8,recorded,,"red_cube@K1(-8.5,26.5); green_cube@K6(-17.0,-3.5); blue_cube@K7(-25.5,26.5); orange_cube@K8(-25.5,-3.5)",509,,K1:45;K6:0;K7:45;K8:L30
+1,T3K6-B1G2,recorded,,"red_cube@K6(-17.0,-3.5); blue_cube@K1(-8.5,26.5); green_cube@K2(-8.5,11.5)",515,,K6:R30;K1:R30;K2:L30
+2,T3K3-Y4O8,recorded,,"red_cube@K3(-8.5,-3.5); yellow_cube@K4(-17.0,26.5); orange_cube@K8(-25.5,-3.5)",691,,K3:L30;K4:R30;K8:0
+3,T3K8-Y6,recorded,,"red_cube@K8(-25.5,-3.5); yellow_cube@K6(-17.0,-3.5)",599,,K8:0;K6:45

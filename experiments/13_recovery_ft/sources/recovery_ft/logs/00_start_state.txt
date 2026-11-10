@@ -1,0 +1,23 @@
+# recovery_ft 시작 상태 — 2026-11-04 14:49:01 KST
+## /home/user/so101-pi05-spatial-generalization
+branch data/source-completeness-20261102 HEAD 76ae70f6d60c442f93de8a80cccc8812ca803dc4
+tracked 수정: 0 · untracked: 0
+## /home/user/so101_boxpick
+branch main HEAD 490a5da2324f54b6de6d6f73e182ed54bc9939eb
+tracked 수정: 0 · untracked: 29
+## /home/user/so101_runs/main_k8/r1_r2_collection
+branch ui-collector-schematic HEAD 7e0904e9184de304356901a84b11832d35d3e719
+tracked 수정: 0 · untracked: 0
+## 환경
+Linux localhost.localdomain 6.8.12-1021-tegra #1 SMP PREEMPT Thu Aug  6 21:56:04 PDT 2026 aarch64 aarch64 aarch64 GNU/Linux
+python 3.12.3 lerobot 0.6.2 torch 2.11.0+cu130 cuda 13.0
+NVIDIA Thor, 595.78
+## GPU compute 프로세스
+(없으면 빈 줄)
+## 학습 프로세스
+[]
+## sampling ablation 큐
+/home/user/so101_runs/main_k8/d2/sampling_ablation/runs/QUEUE_STOPPED
+2026-10-29 13:58:41 runs/run_A2r_s2001.sh 없음
+-rw-rw-r-- 1 user user 1317 Oct 27 17:45 /home/user/so101_runs/main_k8/d2/sampling_ablation/eval_hook.sh
+-rw-r--r-- 1 user user 1191 Oct 27 17:25 /home/user/so101_runs/main_k8/d2/sampling_ablation/runs/run_A2r_s2001.sh

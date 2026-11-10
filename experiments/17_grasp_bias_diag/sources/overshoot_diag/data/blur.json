@@ -1,0 +1,1175 @@
+{
+ "ckpt": "/home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/010000/pretrained_model",
+ "scenes": [
+  {
+   "kind": "robot",
+   "ep": 0,
+   "lab": "K5",
+   "chunk": 18,
+   "frame": 359
+  },
+  {
+   "kind": "robot",
+   "ep": 0,
+   "lab": "K5",
+   "chunk": 19,
+   "frame": 379
+  },
+  {
+   "kind": "robot",
+   "ep": 0,
+   "lab": "K5",
+   "chunk": 20,
+   "frame": 399
+  },
+  {
+   "kind": "robot",
+   "ep": 0,
+   "lab": "K5",
+   "chunk": 23,
+   "frame": 459
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 66,
+   "frame": 439
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 67,
+   "frame": 459
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 69,
+   "frame": 499
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 91,
+   "frame": 939
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 95,
+   "frame": 1019
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 96,
+   "frame": 1039
+  },
+  {
+   "kind": "robot",
+   "ep": 1,
+   "lab": "U7",
+   "chunk": 97,
+   "frame": 1059
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 151,
+   "frame": 359
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 152,
+   "frame": 379
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 153,
+   "frame": 399
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 154,
+   "frame": 419
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 156,
+   "frame": 459
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 157,
+   "frame": 479
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 164,
+   "frame": 619
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 165,
+   "frame": 639
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 170,
+   "frame": 739
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 171,
+   "frame": 759
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 172,
+   "frame": 779
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 176,
+   "frame": 859
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 177,
+   "frame": 879
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 187,
+   "frame": 1079
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 188,
+   "frame": 1099
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 189,
+   "frame": 1119
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 190,
+   "frame": 1139
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 193,
+   "frame": 1199
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 194,
+   "frame": 1219
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 195,
+   "frame": 1239
+  },
+  {
+   "kind": "robot",
+   "ep": 2,
+   "lab": "K2",
+   "chunk": 196,
+   "frame": 1259
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 259,
+   "frame": 619
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 260,
+   "frame": 639
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 261,
+   "frame": 659
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 262,
+   "frame": 679
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 266,
+   "frame": 759
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 267,
+   "frame": 779
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 270,
+   "frame": 839
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 271,
+   "frame": 859
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 272,
+   "frame": 879
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 273,
+   "frame": 899
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 275,
+   "frame": 939
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 276,
+   "frame": 959
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 280,
+   "frame": 1039
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 281,
+   "frame": 1059
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 285,
+   "frame": 1139
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 286,
+   "frame": 1159
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 287,
+   "frame": 1179
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 290,
+   "frame": 1239
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 291,
+   "frame": 1259
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 294,
+   "frame": 1319
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 295,
+   "frame": 1339
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 296,
+   "frame": 1359
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 297,
+   "frame": 1379
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 301,
+   "frame": 1459
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 302,
+   "frame": 1479
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 303,
+   "frame": 1499
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 307,
+   "frame": 1579
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 308,
+   "frame": 1599
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 309,
+   "frame": 1619
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 310,
+   "frame": 1639
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 312,
+   "frame": 1679
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 313,
+   "frame": 1699
+  },
+  {
+   "kind": "robot",
+   "ep": 3,
+   "lab": "K8a",
+   "chunk": 314,
+   "frame": 1719
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 322,
+   "frame": 99
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 323,
+   "frame": 119
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 339,
+   "frame": 439
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 340,
+   "frame": 459
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 341,
+   "frame": 479
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 342,
+   "frame": 499
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 343,
+   "frame": 519
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 345,
+   "frame": 559
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 346,
+   "frame": 579
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 347,
+   "frame": 599
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 349,
+   "frame": 639
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 350,
+   "frame": 659
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 351,
+   "frame": 679
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 355,
+   "frame": 759
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 356,
+   "frame": 779
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 357,
+   "frame": 799
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 362,
+   "frame": 899
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 363,
+   "frame": 919
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 364,
+   "frame": 939
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 365,
+   "frame": 959
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 366,
+   "frame": 979
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 368,
+   "frame": 1019
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 369,
+   "frame": 1039
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 370,
+   "frame": 1059
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 371,
+   "frame": 1079
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 375,
+   "frame": 1159
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 376,
+   "frame": 1179
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 377,
+   "frame": 1199
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 379,
+   "frame": 1239
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 380,
+   "frame": 1259
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 381,
+   "frame": 1279
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 382,
+   "frame": 1299
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 385,
+   "frame": 1359
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 386,
+   "frame": 1379
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 387,
+   "frame": 1399
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 390,
+   "frame": 1459
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 391,
+   "frame": 1479
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 392,
+   "frame": 1499
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 394,
+   "frame": 1539
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 395,
+   "frame": 1559
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 396,
+   "frame": 1579
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 400,
+   "frame": 1659
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 401,
+   "frame": 1679
+  },
+  {
+   "kind": "robot",
+   "ep": 4,
+   "lab": "K8b",
+   "chunk": 402,
+   "frame": 1699
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 432,
+   "frame": 519
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 433,
+   "frame": 539
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 434,
+   "frame": 559
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 445,
+   "frame": 779
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 447,
+   "frame": 819
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 448,
+   "frame": 839
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 449,
+   "frame": 859
+  },
+  {
+   "kind": "robot",
+   "ep": 5,
+   "lab": "HU7",
+   "chunk": 450,
+   "frame": 879
+  },
+  {
+   "kind": "robot",
+   "ep": 6,
+   "lab": "K4",
+   "chunk": 550,
+   "frame": 1099
+  },
+  {
+   "kind": "robot",
+   "ep": 6,
+   "lab": "K4",
+   "chunk": 551,
+   "frame": 1119
+  },
+  {
+   "kind": "robot",
+   "ep": 6,
+   "lab": "K4",
+   "chunk": 552,
+   "frame": 1139
+  },
+  {
+   "kind": "robot",
+   "ep": 6,
+   "lab": "K4",
+   "chunk": 556,
+   "frame": 1219
+  },
+  {
+   "kind": "robot",
+   "ep": 6,
+   "lab": "K4",
+   "chunk": 557,
+   "frame": 1239
+  },
+  {
+   "kind": "robot",
+   "ep": 7,
+   "lab": "U1",
+   "chunk": 574,
+   "frame": 59
+  },
+  {
+   "kind": "robot",
+   "ep": 7,
+   "lab": "U1",
+   "chunk": 575,
+   "frame": 79
+  },
+  {
+   "kind": "robot",
+   "ep": 7,
+   "lab": "U1",
+   "chunk": 594,
+   "frame": 459
+  },
+  {
+   "kind": "robot",
+   "ep": 7,
+   "lab": "U1",
+   "chunk": 595,
+   "frame": 479
+  },
+  {
+   "kind": "robot",
+   "ep": 7,
+   "lab": "U1",
+   "chunk": 596,
+   "frame": 499
+  },
+  {
+   "kind": "human",
+   "ep": 3,
+   "lab": "H",
+   "chunk": null,
+   "frame": 706
+  },
+  {
+   "kind": "human",
+   "ep": 4,
+   "lab": "H",
+   "chunk": null,
+   "frame": 751
+  },
+  {
+   "kind": "human",
+   "ep": 5,
+   "lab": "H",
+   "chunk": null,
+   "frame": 691
+  },
+  {
+   "kind": "human",
+   "ep": 6,
+   "lab": "H",
+   "chunk": null,
+   "frame": 620
+  },
+  {
+   "kind": "human",
+   "ep": 7,
+   "lab": "H",
+   "chunk": null,
+   "frame": 679
+  },
+  {
+   "kind": "human",
+   "ep": 8,
+   "lab": "H",
+   "chunk": null,
+   "frame": 650
+  },
+  {
+   "kind": "human",
+   "ep": 9,
+   "lab": "H",
+   "chunk": null,
+   "frame": 797
+  },
+  {
+   "kind": "human",
+   "ep": 10,
+   "lab": "H",
+   "chunk": null,
+   "frame": 516
+  },
+  {
+   "kind": "human",
+   "ep": 11,
+   "lab": "H",
+   "chunk": null,
+   "frame": 622
+  },
+  {
+   "kind": "human",
+   "ep": 12,
+   "lab": "H",
+   "chunk": null,
+   "frame": 964
+  },
+  {
+   "kind": "human",
+   "ep": 13,
+   "lab": "H",
+   "chunk": null,
+   "frame": 645
+  },
+  {
+   "kind": "human",
+   "ep": 14,
+   "lab": "H",
+   "chunk": null,
+   "frame": 600
+  },
+  {
+   "kind": "human",
+   "ep": 15,
+   "lab": "H",
+   "chunk": null,
+   "frame": 536
+  },
+  {
+   "kind": "human",
+   "ep": 16,
+   "lab": "H",
+   "chunk": null,
+   "frame": 568
+  },
+  {
+   "kind": "human",
+   "ep": 17,
+   "lab": "H",
+   "chunk": null,
+   "frame": 574
+  },
+  {
+   "kind": "human",
+   "ep": 18,
+   "lab": "H",
+   "chunk": null,
+   "frame": 454
+  },
+  {
+   "kind": "human",
+   "ep": 19,
+   "lab": "H",
+   "chunk": null,
+   "frame": 453
+  },
+  {
+   "kind": "human",
+   "ep": 20,
+   "lab": "H",
+   "chunk": null,
+   "frame": 776
+  },
+  {
+   "kind": "human",
+   "ep": 21,
+   "lab": "H",
+   "chunk": null,
+   "frame": 565
+  },
+  {
+   "kind": "human",
+   "ep": 22,
+   "lab": "H",
+   "chunk": null,
+   "frame": 747
+  },
+  {
+   "kind": "human",
+   "ep": 23,
+   "lab": "H",
+   "chunk": null,
+   "frame": 525
+  },
+  {
+   "kind": "human",
+   "ep": 24,
+   "lab": "H",
+   "chunk": null,
+   "frame": 753
+  },
+  {
+   "kind": "human",
+   "ep": 25,
+   "lab": "H",
+   "chunk": null,
+   "frame": 752
+  },
+  {
+   "kind": "human",
+   "ep": 26,
+   "lab": "H",
+   "chunk": null,
+   "frame": 448
+  },
+  {
+   "kind": "human",
+   "ep": 27,
+   "lab": "H",
+   "chunk": null,
+   "frame": 647
+  },
+  {
+   "kind": "human",
+   "ep": 28,
+   "lab": "H",
+   "chunk": null,
+   "frame": 614
+  },
+  {
+   "kind": "human",
+   "ep": 29,
+   "lab": "H",
+   "chunk": null,
+   "frame": 587
+  },
+  {
+   "kind": "human",
+   "ep": 30,
+   "lab": "H",
+   "chunk": null,
+   "frame": 335
+  },
+  {
+   "kind": "human",
+   "ep": 31,
+   "lab": "H",
+   "chunk": null,
+   "frame": 588
+  },
+  {
+   "kind": "human",
+   "ep": 32,
+   "lab": "H",
+   "chunk": null,
+   "frame": 968
+  },
+  {
+   "kind": "human",
+   "ep": 33,
+   "lab": "H",
+   "chunk": null,
+   "frame": 632
+  },
+  {
+   "kind": "human",
+   "ep": 34,
+   "lab": "H",
+   "chunk": null,
+   "frame": 574
+  },
+  {
+   "kind": "human",
+   "ep": 35,
+   "lab": "H",
+   "chunk": null,
+   "frame": 513
+  },
+  {
+   "kind": "human",
+   "ep": 36,
+   "lab": "H",
+   "chunk": null,
+   "frame": 431
+  },
+  {
+   "kind": "human",
+   "ep": 37,
+   "lab": "H",
+   "chunk": null,
+   "frame": 614
+  },
+  {
+   "kind": "human",
+   "ep": 38,
+   "lab": "H",
+   "chunk": null,
+   "frame": 584
+  },
+  {
+   "kind": "human",
+   "ep": 39,
+   "lab": "H",
+   "chunk": null,
+   "frame": 591
+  },
+  {
+   "kind": "human",
+   "ep": 40,
+   "lab": "H",
+   "chunk": null,
+   "frame": 486
+  },
+  {
+   "kind": "human",
+   "ep": 41,
+   "lab": "H",
+   "chunk": null,
+   "frame": 484
+  },
+  {
+   "kind": "human",
+   "ep": 42,
+   "lab": "H",
+   "chunk": null,
+   "frame": 693
+  }
+ ],
+ "sec": 1043.6
+}

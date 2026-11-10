@@ -1,0 +1,141 @@
+[r12] {"ev": "entry", "argv": ["--robot.type=so101_follower", "--robot.port=/dev/so101_follower", "--robot.id=my_arm", "--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: \"MJPG\", warmup_s: 4} }", "--teleop.type=so101_leader", "--teleop.port=/dev/so101_leader", "--teleop.id=my_leader", "--dataset.no_stamp=true", "--dataset.push_to_hub=false", "--dataset.repo_id=oxr/so101_sg50_pilot3", "--dataset.single_task=pick up the red cube and put it in the brown box", "--dataset.episode_time_s=45", "--dataset.reset_time_s=3600", "--dataset.num_episodes=40", "--dataset.root=/home/user/so101_runs/practice/sg50_pilot3/dataset"], "run_id": "20261106_105523"}
+INFO 2026-11-06 10:55:28 t_record.py:393 {'dataset': {'depth_encoder': {'crf': 30,
+                               'depth_max': 10.0,
+                               'depth_min': 0.01,
+                               'extra_options': {'x265-params': 'lossless=1'},
+                               'fast_decode': 0,
+                               'g': 2,
+                               'pix_fmt': 'gray12le',
+                               'preset': None,
+                               'shift': 3.5,
+                               'use_log': True,
+                               'vcodec': 'hevc',
+                               'video_backend': 'pyav'},
+             'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 45,
+             'fps': 30,
+             'no_stamp': True,
+             'num_episodes': 40,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': None,
+             'push_to_hub': False,
+             'repo_id': 'oxr/so101_sg50_pilot3',
+             'reset_time_s': 3600,
+             'rgb_encoder': {'crf': 30,
+                             'extra_options': {},
+                             'fast_decode': 0,
+                             'g': 2,
+                             'pix_fmt': 'yuv420p',
+                             'preset': 12,
+                             'vcodec': 'libsvtav1',
+                             'video_backend': 'pyav'},
+             'root': '/home/user/so101_runs/practice/sg50_pilot3/dataset',
+             'single_task': 'pick up the red cube and put it in the brown box',
+             'streaming_encoding': False,
+             'tags': None,
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': False,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_mode': 'rerun',
+ 'display_port': None,
+ 'play_sounds': True,
+ 'resume': False,
+ 'robot': {'calibration_dir': None,
+           'cameras': {'front': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_front'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640},
+                       'wrist': {'backend': <Cv2Backends.ANY: 0>,
+                                 'color_mode': <ColorMode.RGB: 'rgb'>,
+                                 'fourcc': 'MJPG',
+                                 'fps': 30,
+                                 'height': 480,
+                                 'index_or_path': PosixPath('/dev/cam_wrist'),
+                                 'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                 'warmup_s': 4,
+                                 'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'my_arm',
+           'max_relative_target': None,
+           'num_read_retries': 2,
+           'port': '/dev/so101_follower',
+           'position_d_coefficient': 32,
+           'position_i_coefficient': 0,
+           'position_p_coefficient': 16,
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': None,
+            'id': 'my_leader',
+            'num_read_retries': 2,
+            'port': '/dev/so101_leader',
+            'use_degrees': True}}
+INFO 2026-11-06 10:55:28 so_leader.py:99 my_leader SOLeader connected.
+INFO 2026-11-06 10:55:33 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-11-06 10:55:37 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-11-06 10:55:37 follower.py:131 my_arm SOFollower connected.
+INFO 2026-11-06 10:55:37 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-11-06 10:55:37 t_record.py:495 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.rgb_encoder.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-11-06 10:55:37 ls/utils.py:150 Recording episode 0
+[r12] {"ev": "setup_start", "ep": 0, "after_episode": false, "discard_pending": false, "run_id": "20261106_105523"}
+[r12] {"ev": "setup_note", "ep": 0, "msg": "준비 시작 때 리더−팔로워 19° — 팔로워가 리더 쪽으로 빠르게 따라감 (녹화 안 됨). 저장 중에는 리더를 그대로 두세요", "run_id": "20261106_105523"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "armed", "ep": 0, "attempt_id": "b8c68ce52304", "checks": [["WARN", "limit_shoulder_lift", "lift -103.3° — 한계(-104/+104°)까지 0° (쉬는 자세?)"], ["WARN", "env_shoulder_lift", "lift -103.3° — d2 접근 구간 범위 [-30, +58] 밖"], ["WARN", "limit_elbow_flex", "elbow +96.4° — 한계(-97/+97°)까지 0° (쉬는 자세?)"], ["WARN", "env_elbow_flex", "elbow +96.4° — d2 접근 구간 범위 [-63, +58] 밖"], ["WARN", "env_wrist_roll", "wroll +90.6° — d2 접근 구간 범위 [-55, +51] 밖"], ["WARN", "gripper_closed", "그리퍼 1 < 15 — 녹화 시작 뒤 열어도 됨"]], "state": {"shoulder_pan.pos": -5.978021978021978, "shoulder_lift.pos": -103.25274725274726, "elbow_flex.pos": 96.3956043956044, "wrist_flex.pos": 77.8021978021978, "wrist_roll.pos": 90.5934065934066, "gripper.pos": 0.7601935038009675}, "action": {"shoulder_pan.pos": -6.241758241758242, "shoulder_lift.pos": -104.04395604395604, "elbow_flex.pos": 97.23076923076923, "wrist_flex.pos": 78.72527472527473, "wrist_roll.pos": 90.85714285714286, "gripper.pos": 1.1372867587327375}, "discard_previous": false, "setup_pan": [-5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98, -5.98], "run_id": "20261106_105523"}
+[r12] {"ev": "rec_start", "ep": 0, "attempt_id": "b8c68ce52304", "state": {"shoulder_pan.pos": -5.978021978021978, "shoulder_lift.pos": -103.25274725274726, "elbow_flex.pos": 96.3956043956044, "wrist_flex.pos": 77.8021978021978, "wrist_roll.pos": 90.5934065934066, "gripper.pos": 0.7601935038009675}, "shift_from_armed_deg": 0.0, "run_id": "20261106_105523"}
+[r12] {"ev": "start_frames", "ep": 0, "attempt_id": "b8c68ce52304", "files": {"front": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_b8c68ce52304_front.png", "wrist": "/home/user/so101_runs/practice/sg50_pilot3/r12_start_frames/ep000_b8c68ce52304_wrist.png"}, "run_id": "20261106_105523"}
+Right arrow key pressed. Exiting loop...
+[r12] {"ev": "rec_end", "ep": 0, "attempt_id": "b8c68ce52304", "frames": 603, "loop_hz_mean": 29.87, "late_ticks": 0, "stall_ticks": 26, "stall_by_cam": {"front": 15, "wrist": 11}, "rerecord": false, "stop": false, "guard_invalid": null, "run_id": "20261106_105523"}
+INFO 2026-11-06 10:56:31 ls/utils.py:150 Reset the environment
+[r12] {"ev": "setup_start", "ep": 1, "after_episode": true, "discard_pending": false, "run_id": "20261106_105523"}
+INFO 2026-11-06 10:56:47 le_timer.py:606 Cadence summary — whole run · target 30 Hz (33.3 ms budget per tick): 603 ticks, 602 judged
+  effective cadence: 29.87 Hz over 20.2 s measured
+  ticks over the 33.3 ms work budget: 0/602 (0.0%) — work mean 4.0 ms, worst 10.6 ms
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 37
+  loop-body steps (share of measured work):
+    observe      mean   1.46 ms · worst   4.99 ms ·  36.1% of work · 603 calls
+    process_obs  mean   0.06 ms · worst   0.25 ms ·   1.4% of work · 603 calls
+    teleop       mean   1.20 ms · worst   3.78 ms ·  29.7% of work · 603 calls
+    send         mean   0.29 ms · worst   3.36 ms ·   7.2% of work · 603 calls
+    record       mean   0.24 ms · worst   1.40 ms ·   6.0% of work · 603 calls
+    telemetry    mean   0.72 ms · worst   5.47 ms ·  17.7% of work · 603 calls
+  pacing headroom: 29.4 ms slept per tick on average (max 31.5 ms) — near zero means the loop is saturated
+INFO 2026-11-06 10:56:47 ls/utils.py:150 Stop recording
+INFO 2026-11-06 10:56:49 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-11-06 10:56:49 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-11-06 10:56:49 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-11-06 10:56:49 o_leader.py:186 my_leader SOLeader disconnected.
+INFO 2026-11-06 10:56:49 ls/utils.py:150 Exiting
+Traceback (most recent call last):
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 474, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 469, in main
+    lr.main()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 594, in main
+    record()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/configs/parser.py", line 438, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 528, in record
+    record_loop(
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 408, in record_loop
+    setup_phase(robot, events, fps, kw, after_episode=True, next_ep=None if tap.ep is None else tap.ep + 1)
+  File "/home/user/so101_runs/main_k8/r1_r2_collection/tools/r12_record_entry.py", line 357, in setup_phase
+    orig_loop(robot=robot, events=events, fps=fps, dataset=None, control_time_s=SETUP_MAX, **kw)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/datasets/image_writer.py", line 39, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_record.py", line 380, in record_loop
+    timer.wait()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/utils/cycle_timer.py", line 429, in wait
+    precise_sleep(sleep_t)
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/utils/robot_utils.py", line 59, in precise_sleep
+    time.sleep(seconds)
+KeyboardInterrupt

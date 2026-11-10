@@ -1,0 +1,19 @@
+{
+ "1": {
+  "labels": [
+   "Successful grasp",
+   "Insufficient depth"
+  ],
+  "evidence": {
+   "T4": "grasp (바닥 11.1956)",
+   "wrist_T2": "ahead u=0.391 v=0.609 area=0.129",
+   "arm_moving_at_T2": false,
+   "plan_more_approach_after_T2": false,
+   "wrist_changing_at_T2": false
+  },
+  "recommend": [
+   "추가 접근"
+  ],
+  "note": "규칙 기반 자동 후보. 사용자 판정 (labels/) 과 별도. 2D 영상 · 관절만 — 3 차원 깊이 · 접촉은 측정하지 않음."
+ }
+}

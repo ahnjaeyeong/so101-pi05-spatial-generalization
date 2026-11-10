@@ -1,0 +1,31 @@
+{
+ "tag": "cubecross",
+ "stamp": "20261106_094617",
+ "live": "/dev/shm/r12_live_campreview_20261105_175346",
+ "seq": 852866,
+ "frames_checked": 1,
+ "cube_u_mean": 0.3668,
+ "cube_v_mean": 0.7376,
+ "cube_u_sd": 0.0,
+ "cube_v_sd": 0.0,
+ "kept_cube": {
+  "px": [
+   234.8,
+   354.1
+  ],
+  "u": 0.3668,
+  "v": 0.7376,
+  "area_px": 34785,
+  "hull_area_px": 37588,
+  "bbox": [
+   140,
+   245,
+   187,
+   225
+  ],
+  "parts": 1,
+  "touches_edge": false
+ },
+ "status": "detected",
+ "detect_version": "sticker-v1+4544c4e9fcfd"
+}

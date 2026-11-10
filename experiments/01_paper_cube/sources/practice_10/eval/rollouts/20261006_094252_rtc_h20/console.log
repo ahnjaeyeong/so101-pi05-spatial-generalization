@@ -1,0 +1,35 @@
+INFO 2026-10-06 09:42:57 ut_logged.py:29 debug log: /home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_094252_rtc_h20/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/eval_practice10_pi05_2k_rtc_h20 --dataset.root=/home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_094252_rtc_h20/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=2 --dataset.episode_time_s=20 --dataset.reset_time_s=20 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.type=rtc --inference.rtc.execution_horizon=20
+INFO 2026-10-06 09:42:57 _rollout.py:245 Building rollout context...
+INFO 2026-10-06 09:42:57 /context.py:330 Loading policy from '/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-10-06 09:45:34 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-10-06 09:45:34 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-10-06 09:45:34 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-10-06 09:45:40 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-10-06 09:45:40 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-10-06 09:45:41 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-10-06 09:45:43 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-10-06 09:45:43 follower.py:131 my_arm SOFollower connected.
+INFO 2026-10-06 09:45:43 /context.py:395 Robot connected: so_follower
+INFO 2026-10-06 09:45:43 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-10-06 09:45:43 /context.py:500 Setting up dataset (repo_id=oxr/eval_practice10_pi05_2k_rtc_h20)...
+Traceback (most recent call last):
+  File "/home/user/so101_runs/practice/practice_10/eval/rollout_logged.py", line 35, in <module>
+    lr.main()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_rollout.py", line 278, in main
+    rollout()
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/configs/parser.py", line 438, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/scripts/lerobot_rollout.py", line 246, in rollout
+    ctx = build_rollout_context(cfg, shutdown_event)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/so101-env/lib/python3.12/site-packages/lerobot/rollout/context.py", line 521, in build_rollout_context
+    raise ValueError(
+ValueError: Dataset names for rollout must start with 'rollout_'. Use --dataset.repo_id=<user>/rollout_<name> for policy deployment datasets.
+terminate called without an active exception

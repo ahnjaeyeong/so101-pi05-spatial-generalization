@@ -1,0 +1,28 @@
+PASS U1a_monotonic_no_reversal 0
+PASS U1b_B1_shape_one_reversal 1 back=16.0 past=74.0
+PASS U1c_small_wiggle_ignored 
+PASS U1d_reversal_needs_min_travel 
+PASS U1e_no_pe 
+PASS U1f_positive_direction +
+PASS U2a_lost_then_reacquired [{'lost_i': 60, 'reacquired_i': 105}]
+PASS U2b_lost_no_reacquire [{'lost_i': 60, 'reacquired_i': None}]
+PASS U2c_short_gap_not_lost []
+PASS U2d_never_seen ([], False)
+PASS U3a_first_write 
+PASS U3b_duplicate_refused ⛔ 20261105_120000_1k_t01_ft_k3_0 은 이미 기록됨 (revision 1). 고치려면 --amend "이유"
+
+PASS U3c_amend_appends_revision2 1,20261105_120000_1k_t01_ft_k3_0,2,오타,,2026-11-05T09:58:03,ft,rft01_001000,620c,
+PASS U3d_invalid_answer_refused 
+PASS U4a_trial1_open   게이트: OK
+PASS U4b_trial2_needs_trial1_and_go   게이트: BLOCK 시행 1 결과가 results/trials.csv 에 없음 (scripts/record_trial.py 먼저) / Phase 2 (시행 1) 확인 기록 없음 — 시행 1 을 보고 이상이 없으면: scripts/gate.sh go "확인 메모"
+PASS U4c_trial2_needs_go_only   게이트: BLOCK Phase 2 (시행 1) 확인 기록 없음 — 시행 1 을 보고 이상이 없으면: scripts/gate.sh go "확인 메모"
+PASS U4d_trial2_open_after_go   게이트: OK
+PASS U4e_recorded_trial_needs_rerun   게이트: BLOCK 시행 1 은 이미 기록됨 — 다시 하려면 RERUN="이유" (이전 결과는 남음)
+PASS U4f_rerun_reason_opens   게이트: OK
+PASS U4g_intervention_needs_ack   게이트: BLOCK 시행 1 에 안전 개입 기록 (r2_safety_stop: ) — 확인 후 scripts/gate.sh ack 1 "메모"
+PASS U4h_ack_opens 
+PASS U4i_stop_blocks 
+PASS U4j_model_check_fail_blocks 
+PASS U4k_pilot_dir_without_gate_only_refused ⛔ PILOT_DIR 는 GATE_ONLY=1 또는 CHECK=1 과만 (시험용)
+
+ALL_PASS

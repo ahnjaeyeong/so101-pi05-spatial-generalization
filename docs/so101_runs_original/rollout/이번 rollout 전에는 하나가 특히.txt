@@ -1,0 +1,52 @@
+이번 rollout 전에는 하나가 특히 중요해요. 마지막으로 트윈 실물 세션(③a)을 돌린 뒤 12V를 껐다 켰는지예요. 트윈이 서보에 써 둔 속도 제한(실험값 0.5 rad/s)이 남아 있으면, lerobot에서도 팔이 느리게 따라와서 결과가 달라져요.
+
+**1. 확인**
+
+트윈과 정책 서버가 꺼져 있는지 봐요. 둘 다 아무것도 안 나와야 해요(nvidia-smi는 머리줄만).
+```bash
+docker ps --format '{{.Names}}'
+nvidia-smi --query-compute-apps=pid,used_memory --format=csv
+```
+
+12V 재투입 뒤에 속도 제한이 풀렸는지 확인해요. Goal_Velocity(레지스터 46)가 6개 모두 0이어야 해요. 아니면 12V를 껐다 켜고 다시 확인하세요.
+```bash
+PYTHONDONTWRITEBYTECODE=1 ~/so101-env/bin/python ~/so101_boxpick/scripts/servo_dump.py --arm follower
+```
+
+카메라가 자동 모드(3/1/0)인지 봐요.
+```bash
+for d in /dev/cam_front /dev/cam_wrist; do v4l2-ctl -d $d -C auto_exposure,white_balance_automatic,exposure_dynamic_framerate; done
+```
+
+팔은 손으로 시작 자세에 두고, 큐브와 박스는 학습 때처럼 놓으세요.
+
+**2. rollout**
+
+```bash
+cd ~/so101_runs/practice/practice_50/eval
+HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 $HOME/so101-env/bin/lerobot-rollout \
+  --strategy.type=base \
+  --policy.path=$HOME/so101_runs/practice/practice_50/train/pi05_15k/checkpoints/015000/pretrained_model \
+  --policy.num_inference_steps=5 \
+  --inference.type=rtc \
+  --inference.rtc.execution_horizon=20 \
+  --inference.queue_threshold=40 \
+  --robot.type=so101_follower \
+  --robot.port=/dev/so101_follower \
+  --robot.id=my_arm \
+  --robot.max_relative_target=8 \
+  '--robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} }' \
+  '--task=pick up the red cube and put it in the brown box' \
+  --fps=30 \
+  --duration=45 \
+  --interactive=true \
+  --play_sounds=false \
+  --display_data=false \
+  2>&1 | tee rollout_$(date +%Y%m%d_%H%M%S).log
+```
+
+**돌릴 때**
+
+- 45초가 끝나면 팔 힘이 풀리니, 팔이 원위치에 없으면 손으로 받칠 준비를 하세요.
+- 멈추고 싶을 땐 Space로 일시정지하세요. Ctrl+C는 비상시에만 쓰세요.
+- 박사님 보고용으로 휴대폰으로 영상을 찍어 두면 좋아요. 지금 rollout 명령은 카메라 영상을 따로 저장하지 않아서, 동작 모습을 보여 줄 자료가 그것뿐이에요.

@@ -1,0 +1,2 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1793854041.3311,1219556.50130,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/series/20261105_134704_ft.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,

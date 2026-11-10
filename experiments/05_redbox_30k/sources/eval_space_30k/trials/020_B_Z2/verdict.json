@@ -1,0 +1,15 @@
+{
+ "trial": 20,
+ "condition": "B",
+ "position": "Z2",
+ "first_grasp": "failure",
+ "final": "success",
+ "attempts": 5,
+ "failure_type": "팔이 도착하기 전에 그리퍼 닫힘;큐브 밀림",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-22 10:07:21",
+ "stop_reason": "operator",
+ "protect": null
+}

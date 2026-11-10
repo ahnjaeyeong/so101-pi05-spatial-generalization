@@ -49,5 +49,8 @@ RTC guided EXP, horizon 20, guidance 10, queue 30, denoise 5, max_relative_targe
 ## 다음 실험으로 이어진 이유
 R1/R2 시연 (EXP-11), HIL 검토 (EXP-12).
 
+## 계측 원본 위치
+10-29 계측 (`ROLLOUT_DIAG=1`) 의 `ticks.csv`·`chunks.jsonl`·`manifest/summary/verify.json` 과 에피소드 첫 chunk 관측 PNG (`diag/obs_first/`) 는 [`../06_d2_256/sources/d2/eval/rollouts/`](../06_d2_256/sources/d2/eval/rollouts/) 에 있다. chunk 원본 `.npz` 780개와 나머지 관측 PNG 1,508장은 `ARCHIVE_MANIFEST.csv` 에 경로·해시만.
+
 ## 원본 자료
 [`sources/pan_inference_diagnostic/`](sources/pan_inference_diagnostic/) (01–14 md, offline_pan_reversal_filter_off/00–05 + analysis_handoff, tables, figs, scripts), 실물 기록 [`../06_d2_256/sources/d2/eval/`](../06_d2_256/sources/d2/eval/) (diag 원 chunk·관측 PNG 는 제외).

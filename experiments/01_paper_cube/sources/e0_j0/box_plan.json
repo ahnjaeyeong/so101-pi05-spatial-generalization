@@ -1,0 +1,3079 @@
+{
+ "summary": {
+  "need_m": 0.065,
+  "n": 50,
+  "urdf": {
+   "pre_lift_used": 8,
+   "box_lift_solved": 50,
+   "box_lift_z": {
+    "0.07499999999999998": 29,
+    "0.06999999999999998": 11,
+    "0.06499999999999997": 5,
+    "0.05999999999999998": 5
+   },
+   "box_success": 50,
+   "box_chosen": {
+    "P1_same_height": 15,
+    "P2_box_highest": 31,
+    "P3_rise_in_front": 4
+   },
+   "box_plans": {
+    "P1_same_height": {
+     "built": 21,
+     "meets_need": 21,
+     "min_m_median": 0.0923774435056071,
+     "min_m_worst": 0.0692358692655261,
+     "sag_max_m": 0.0
+    },
+    "P2_box_highest": {
+     "built": 50,
+     "meets_need": 50,
+     "min_m_median": 0.09259196573918127,
+     "min_m_worst": 0.06923586926552602,
+     "sag_max_m": 0.0
+    },
+    "P3_rise_in_front": {
+     "built": 50,
+     "meets_need": 50,
+     "min_m_median": 0.09259196573918127,
+     "min_m_worst": 0.06923586926552605,
+     "sag_max_m": 2.7755575615628914e-17
+    }
+   },
+   "lift_segment_min_m_median": 0.03534973146877968,
+   "tables": {
+    "table1": 50,
+    "table2": 50
+   },
+   "table_lift_z": {
+    "0.07": 40,
+    "0.065": 5,
+    "0.060000000000000005": 5
+   }
+  },
+  "wall": {
+   "pre_lift_used": 27,
+   "box_lift_solved": 50,
+   "box_lift_z": {
+    "0.09": 33,
+    "0.08499999999999999": 8,
+    "0.07999999999999999": 5,
+    "0.07499999999999998": 4
+   },
+   "box_success": 50,
+   "box_chosen": {
+    "P1_same_height": 11,
+    "P2_box_highest": 34,
+    "P3_rise_in_front": 5
+   },
+   "box_plans": {
+    "P1_same_height": {
+     "built": 17,
+     "meets_need": 17,
+     "min_m_median": 0.10892542092317913,
+     "min_m_worst": 0.09459255168753741,
+     "sag_max_m": 0.0
+    },
+    "P2_box_highest": {
+     "built": 50,
+     "meets_need": 50,
+     "min_m_median": 0.10811387416603788,
+     "min_m_worst": 0.0842359765748395,
+     "sag_max_m": 2.7755575615628914e-17
+    },
+    "P3_rise_in_front": {
+     "built": 50,
+     "meets_need": 50,
+     "min_m_median": 0.10811387416603788,
+     "min_m_worst": 0.08423597657483951,
+     "sag_max_m": 0.0
+    }
+   },
+   "lift_segment_min_m_median": 0.03534973146877968,
+   "tables": {
+    "table1": 50,
+    "table2": 50
+   },
+   "table_lift_z": {
+    "0.07": 50
+   }
+  }
+ },
+ "rows": [
+  {
+   "ep": 0,
+   "wf_deg": 94.06593322753906,
+   "hand_height_m": 0.03366859307805494,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03366859307805494,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08186642906350869,
+       "wp_min_m": 0.08186642906350869,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08186642906350869,
+       "wp_min_m": 0.08186642906350869,
+       "detail": "mid (0.213, 0.051, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03366859307805494,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09686642906351542,
+       "wp_min_m": 0.09686642906351542,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09686642906351542,
+       "wp_min_m": 0.09686642906351542,
+       "detail": "mid (0.213, 0.051, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 1,
+   "wf_deg": 92.74725341796875,
+   "hand_height_m": 0.033004530783195665,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.033004530783195665,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08326835262602295,
+       "wp_min_m": 0.08326835262602295,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08326835262602295,
+       "wp_min_m": 0.08326835262602295,
+       "detail": "mid (0.200, 0.028, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.033004530783195665,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09826835262605556,
+       "wp_min_m": 0.09826835262605556,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09826835262605556,
+       "wp_min_m": 0.09826835262605556,
+       "detail": "mid (0.200, 0.028, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 2,
+   "wf_deg": 98.72527313232422,
+   "hand_height_m": 0.03420873107851824,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03420873107851824,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.07822319867707896,
+       "wp_min_m": 0.07822319867707896,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.078223198677079,
+       "wp_min_m": 0.078223198677079,
+       "detail": "mid (0.211, 0.036, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03420873107851824,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.0932233460982756,
+       "wp_min_m": 0.09322334609827562,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0932233460982756,
+       "wp_min_m": 0.0932233460982756,
+       "detail": "mid (0.211, 0.036, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 3,
+   "wf_deg": 99.25274658203125,
+   "hand_height_m": 0.041945872565645116,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.041945872565645116,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.07959255168753382,
+       "wp_min_m": 0.07959255168753382,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.07959255168753365,
+       "wp_min_m": 0.07959255168753365,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.07959255168753365,
+       "wp_min_m": 0.07959255168753365,
+       "detail": "mid (0.219, 0.036, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.041945872565645116,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09459255168753741,
+       "wp_min_m": 0.09459255168753741,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09459255168753783,
+       "wp_min_m": 0.09459255168753783,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09459255168753783,
+       "wp_min_m": 0.09459255168753783,
+       "detail": "mid (0.219, 0.036, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 4,
+   "wf_deg": 98.63735961914062,
+   "hand_height_m": 0.03894630327456391,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06499999999999997,
+     "lift_segment_min_m": 0.03894630327456391,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08299698280237414,
+       "wp_min_m": 0.08299698280237414,
+       "detail": "z 0.065"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08299708638385683,
+       "wp_min_m": 0.08299708638385683,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08299708638385683,
+       "wp_min_m": 0.08299708638385683,
+       "detail": "mid (0.227, 0.031, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.065,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07999999999999999,
+     "lift_segment_min_m": 0.03894630327456391,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.0979969129407048,
+       "wp_min_m": 0.0979969129407048,
+       "detail": "z 0.080"
+      },
+      "P2_box_highest": {
+       "min_m": 0.0979969129407048,
+       "wp_min_m": 0.0979969129407048,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0979969129407048,
+       "wp_min_m": 0.0979969129407048,
+       "detail": "mid (0.227, 0.031, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 5,
+   "wf_deg": 98.63735961914062,
+   "hand_height_m": 0.03828296923743165,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03828296923743165,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.0692358692655261,
+       "wp_min_m": 0.0692358692655261,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.06923586926552602,
+       "wp_min_m": 0.06923586926552602,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.06923586926552605,
+       "wp_min_m": 0.06923586926552605,
+       "detail": "mid (0.217, 0.032, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03828296923743165,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.0842359765748395,
+       "wp_min_m": 0.08423597657483951,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08423597657483951,
+       "wp_min_m": 0.08423597657483951,
+       "detail": "mid (0.217, 0.032, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 6,
+   "wf_deg": 87.82417297363281,
+   "hand_height_m": 0.034340576385680666,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.034340576385680666,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08077669468686285,
+       "wp_min_m": 0.08077669468686285,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08077669468686285,
+       "wp_min_m": 0.08077669468686283,
+       "detail": "mid (0.208, 0.030, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.034340576385680666,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09577669468682923,
+       "wp_min_m": 0.09577669468682923,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09577669468682923,
+       "wp_min_m": 0.09577669468682923,
+       "detail": "mid (0.208, 0.030, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 7,
+   "wf_deg": 89.75823974609375,
+   "hand_height_m": 0.03217281783425297,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03217281783425297,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08961027081712145,
+       "wp_min_m": 0.08961027081712145,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08961027081712145,
+       "wp_min_m": 0.08961027081712145,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08961027081712145,
+       "wp_min_m": 0.08961027081712145,
+       "detail": "mid (0.186, 0.031, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03217281783425297,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10461031831197642,
+       "wp_min_m": 0.10461031831197642,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10461031831197642,
+       "wp_min_m": 0.10461031831197642,
+       "detail": "mid (0.186, 0.031, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 8,
+   "wf_deg": 81.05494689941406,
+   "hand_height_m": 0.04047089708552468,
+   "urdf": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.04047089708552468,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.07965905255452942,
+       "wp_min_m": 0.07965905255452939,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.07965905255452939,
+       "wp_min_m": 0.07965905255452939,
+       "detail": "mid (0.197, 0.031, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.04047089708552468,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09465905255456412,
+       "wp_min_m": 0.09465905255456412,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09465905255456412,
+       "wp_min_m": 0.09465905255456412,
+       "detail": "mid (0.197, 0.031, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 9,
+   "wf_deg": 84.3956069946289,
+   "hand_height_m": 0.03319001462016761,
+   "urdf": {
+    "pre_dz": 0.009999999999999998,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03319001462016761,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.07869926114921752,
+       "wp_min_m": 0.07869926114921752,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.07869926114921752,
+       "wp_min_m": 0.07869926114921752,
+       "detail": "mid (0.191, 0.037, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03319001462016761,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09369942243474338,
+       "wp_min_m": 0.09369942243474338,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09369942243474338,
+       "wp_min_m": 0.09369942243474338,
+       "detail": "mid (0.191, 0.037, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 10,
+   "wf_deg": 98.989013671875,
+   "hand_height_m": 0.04053553690278558,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06499999999999997,
+     "lift_segment_min_m": 0.04053553690278558,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09132750229879003,
+       "wp_min_m": 0.09132750229879003,
+       "detail": "z 0.065"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09132750262641427,
+       "wp_min_m": 0.09132750262641427,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09132750262641427,
+       "wp_min_m": 0.09132750262641427,
+       "detail": "mid (0.233, 0.041, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.065,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07999999999999999,
+     "lift_segment_min_m": 0.04053553690278558,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10632750229875851,
+       "wp_min_m": 0.10632750229875851,
+       "detail": "z 0.080"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10632750262645488,
+       "wp_min_m": 0.10632750262645488,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10632750262645488,
+       "wp_min_m": 0.10632750262645488,
+       "detail": "mid (0.233, 0.041, 0.085) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 11,
+   "wf_deg": 98.72527313232422,
+   "hand_height_m": 0.03859815326753547,
+   "urdf": {
+    "box": {
+     "lift_z": 0.05999999999999998,
+     "lift_segment_min_m": 0.03859815326753547,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09280647146426783,
+       "wp_min_m": 0.09280647146426783,
+       "detail": "z 0.060"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09280648797275542,
+       "wp_min_m": 0.09280648797275542,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09280648797275542,
+       "wp_min_m": 0.09280648797275542,
+       "detail": "mid (0.232, 0.030, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.060000000000000005,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03859815326753547,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.1078064714642756,
+       "wp_min_m": 0.1078064714642756,
+       "detail": "z 0.075"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10780648797276285,
+       "wp_min_m": 0.10780648797276285,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10780648797276285,
+       "wp_min_m": 0.10780648797276285,
+       "detail": "mid (0.232, 0.030, 0.085) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 12,
+   "wf_deg": 98.28571319580078,
+   "hand_height_m": 0.03702895190196261,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06499999999999997,
+     "lift_segment_min_m": 0.03702895190196261,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08769262562295133,
+       "wp_min_m": 0.08769262562295133,
+       "detail": "z 0.065"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08769262562295133,
+       "wp_min_m": 0.08769262562295133,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08769262562295133,
+       "wp_min_m": 0.08769262562295133,
+       "detail": "mid (0.231, 0.042, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.065,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07999999999999999,
+     "lift_segment_min_m": 0.03702895190196261,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10269262562294032,
+       "wp_min_m": 0.10269262562294032,
+       "detail": "z 0.080"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10269262562294032,
+       "wp_min_m": 0.10269262562294032,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10269262562294032,
+       "wp_min_m": 0.10269262562294032,
+       "detail": "mid (0.231, 0.042, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 13,
+   "wf_deg": 98.54945373535156,
+   "hand_height_m": 0.038440182103366353,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.038440182103366353,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09715031710210756,
+       "wp_min_m": 0.09715031710210756,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09715031710210728,
+       "wp_min_m": 0.09715031710210728,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0971503068441959,
+       "wp_min_m": 0.0971503068441959,
+       "detail": "mid (0.223, 0.063, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.038440182103366353,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.11215018311755781,
+       "wp_min_m": 0.11215018311755781,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.11215018311755781,
+       "wp_min_m": 0.11215018311755781,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11215018311755781,
+       "wp_min_m": 0.11215018311755781,
+       "detail": "mid (0.223, 0.063, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 14,
+   "wf_deg": 98.72527313232422,
+   "hand_height_m": 0.03747508603289059,
+   "urdf": {
+    "box": {
+     "lift_z": 0.05999999999999998,
+     "lift_segment_min_m": 0.03747508603289059,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.0923774435056071,
+       "wp_min_m": 0.0923774435056071,
+       "detail": "z 0.060"
+      },
+      "P2_box_highest": {
+       "min_m": 0.0923774435056071,
+       "wp_min_m": 0.0923774435056071,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0923774435056071,
+       "wp_min_m": 0.0923774435056071,
+       "detail": "mid (0.235, 0.033, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.060000000000000005,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03747508603289059,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10737744350563985,
+       "wp_min_m": 0.10737744350563985,
+       "detail": "z 0.075"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10737744350563985,
+       "wp_min_m": 0.10737744350563985,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10737744350563985,
+       "wp_min_m": 0.10737744350563985,
+       "detail": "mid (0.235, 0.033, 0.085) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 15,
+   "wf_deg": 98.63735961914062,
+   "hand_height_m": 0.03568355505322746,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03568355505322746,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09518804761347796,
+       "wp_min_m": 0.09518804761347796,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09518804761347821,
+       "wp_min_m": 0.09518804761347821,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09518804761347821,
+       "wp_min_m": 0.09518804761347821,
+       "detail": "mid (0.217, 0.013, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.03568355505322746,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.11018793133335947,
+       "wp_min_m": 0.11018793133335947,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.11018793133335983,
+       "wp_min_m": 0.11018793133335983,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11018793133335983,
+       "wp_min_m": 0.11018793133335983,
+       "detail": "mid (0.217, 0.013, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 16,
+   "wf_deg": 98.46154022216797,
+   "hand_height_m": 0.030829279186865163,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.030829279186865163,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08920180454431886,
+       "wp_min_m": 0.08920180454431886,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08920180454431884,
+       "wp_min_m": 0.08920180454431884,
+       "detail": "mid (0.198, 0.032, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.030829279186865163,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10420180454434612,
+       "wp_min_m": 0.10420180454434612,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10420180454434612,
+       "wp_min_m": 0.10420180454434612,
+       "detail": "mid (0.198, 0.032, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 17,
+   "wf_deg": 98.63735961914062,
+   "hand_height_m": 0.03724782478370674,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03724782478370674,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09061369940111032,
+       "wp_min_m": 0.09061369940111032,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09061369940111032,
+       "wp_min_m": 0.09061369940111032,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09061369940111032,
+       "wp_min_m": 0.09061369940111032,
+       "detail": "mid (0.219, 0.029, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03724782478370674,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10561374624799036,
+       "wp_min_m": 0.10561374624799036,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10561374624799036,
+       "wp_min_m": 0.10561374624799036,
+       "detail": "mid (0.219, 0.029, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 18,
+   "wf_deg": 98.10989379882812,
+   "hand_height_m": 0.03846799092360089,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03846799092360089,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09170577220416098,
+       "wp_min_m": 0.09170577220416098,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.091705772204161,
+       "wp_min_m": 0.091705772204161,
+       "detail": "mid (0.202, 0.066, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03846799092360089,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.1067057722041739,
+       "wp_min_m": 0.1067057722041739,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10670577220417389,
+       "wp_min_m": 0.10670577220417389,
+       "detail": "mid (0.202, 0.066, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 19,
+   "wf_deg": 97.14286041259766,
+   "hand_height_m": 0.03161628069678142,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03161628069678142,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09342126035930487,
+       "wp_min_m": 0.09342126035930487,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09342126035930487,
+       "wp_min_m": 0.09342126035930487,
+       "detail": "mid (0.204, 0.036, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03161628069678142,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.1084212603593129,
+       "wp_min_m": 0.1084212603593129,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.1084212603593129,
+       "wp_min_m": 0.1084212603593129,
+       "detail": "mid (0.204, 0.036, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 20,
+   "wf_deg": 84.74725341796875,
+   "hand_height_m": 0.034020279224647974,
+   "urdf": {
+    "pre_dz": 0.009999999999999998,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.034020279224647974,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09612595476526489,
+       "wp_min_m": 0.09612595476526489,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09612595476526489,
+       "wp_min_m": 0.09612595476526489,
+       "detail": "mid (0.191, 0.036, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.034020279224647974,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11112595476528428,
+       "wp_min_m": 0.11112595476528428,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11112595476528427,
+       "wp_min_m": 0.11112595476528427,
+       "detail": "mid (0.191, 0.036, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 21,
+   "wf_deg": 92.92308044433594,
+   "hand_height_m": 0.03222396306592617,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03222396306592617,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.104757689412128,
+       "wp_min_m": 0.104757689412128,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.104757689412128,
+       "wp_min_m": 0.104757689412128,
+       "detail": "mid (0.199, 0.031, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03222396306592617,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11975768941215385,
+       "wp_min_m": 0.11975768941215385,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11975768941215385,
+       "wp_min_m": 0.11975768941215385,
+       "detail": "mid (0.199, 0.031, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 22,
+   "wf_deg": 78.24176025390625,
+   "hand_height_m": 0.03659602648397818,
+   "urdf": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.06499999999999997,
+     "lift_segment_min_m": 0.03659602648397818,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08245303619135602,
+       "wp_min_m": 0.08245303619135602,
+       "detail": "z 0.065"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08245303619135602,
+       "wp_min_m": 0.08245303619135602,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08245303619135602,
+       "wp_min_m": 0.08245303619135602,
+       "detail": "mid (0.178, 0.034, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.065,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.03659602648397818,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10245303619134544,
+       "wp_min_m": 0.10245303619134544,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10245303619134544,
+       "wp_min_m": 0.10245303619134544,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10245303619134544,
+       "wp_min_m": 0.10245303619134544,
+       "detail": "mid (0.178, 0.034, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 23,
+   "wf_deg": 98.9011001586914,
+   "hand_height_m": 0.03442611600273595,
+   "urdf": {
+    "box": {
+     "lift_z": 0.05999999999999998,
+     "lift_segment_min_m": 0.03442611600273595,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09392542092316306,
+       "wp_min_m": 0.09392542092316306,
+       "detail": "z 0.060"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09392545315394914,
+       "wp_min_m": 0.09392545315394914,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09392545315394914,
+       "wp_min_m": 0.09392545315394914,
+       "detail": "mid (0.232, 0.030, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.060000000000000005,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03442611600273595,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10892542092317913,
+       "wp_min_m": 0.10892542092317913,
+       "detail": "z 0.075"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10892545315395816,
+       "wp_min_m": 0.10892545315395816,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10892545315395816,
+       "wp_min_m": 0.10892545315395816,
+       "detail": "mid (0.232, 0.030, 0.085) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 24,
+   "wf_deg": 92.83516693115234,
+   "hand_height_m": 0.034054066392321454,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.034054066392321454,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.0942867442545223,
+       "wp_min_m": 0.0942867442545223,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.0942867442545223,
+       "wp_min_m": 0.0942867442545223,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0942867442545223,
+       "wp_min_m": 0.0942867442545223,
+       "detail": "mid (0.224, 0.025, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.034054066392321454,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10928674425451587,
+       "wp_min_m": 0.10928674425451587,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10928674425451587,
+       "wp_min_m": 0.10928674425451587,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10928674425451587,
+       "wp_min_m": 0.10928674425451587,
+       "detail": "mid (0.224, 0.025, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 25,
+   "wf_deg": 97.5824203491211,
+   "hand_height_m": 0.03662809946567279,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03662809946567279,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09515410990271089,
+       "wp_min_m": 0.09515410990271089,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09515410990271089,
+       "wp_min_m": 0.09515410990271089,
+       "detail": "mid (0.216, 0.049, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03662809946567279,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11015410990273834,
+       "wp_min_m": 0.11015410990273834,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11015410990273834,
+       "wp_min_m": 0.11015410990273834,
+       "detail": "mid (0.216, 0.049, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 26,
+   "wf_deg": 96.96703338623047,
+   "hand_height_m": 0.035506349788792836,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.035506349788792836,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09092034280838411,
+       "wp_min_m": 0.09092034280838411,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09092034280838411,
+       "wp_min_m": 0.09092034280838411,
+       "detail": "mid (0.213, 0.037, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.035506349788792836,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10592034280839122,
+       "wp_min_m": 0.10592034280839122,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10592034280839122,
+       "wp_min_m": 0.10592034280839122,
+       "detail": "mid (0.213, 0.037, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 27,
+   "wf_deg": 97.4945068359375,
+   "hand_height_m": 0.03282858151488633,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03282858151488633,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10160311901273242,
+       "wp_min_m": 0.10160311901273242,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10160311901273245,
+       "wp_min_m": 0.10160311901273245,
+       "detail": "mid (0.207, 0.080, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03282858151488633,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11660311901274006,
+       "wp_min_m": 0.11660311901274006,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11660311901274006,
+       "wp_min_m": 0.11660311901274006,
+       "detail": "mid (0.207, 0.080, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 28,
+   "wf_deg": 90.37362670898438,
+   "hand_height_m": 0.033275419118520805,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.033275419118520805,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10107124630354838,
+       "wp_min_m": 0.10107124630354838,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10107124630354838,
+       "wp_min_m": 0.10107124630354838,
+       "detail": "mid (0.201, 0.059, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.033275419118520805,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.1160712463035906,
+       "wp_min_m": 0.1160712463035906,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11607124630359061,
+       "wp_min_m": 0.11607124630359061,
+       "detail": "mid (0.201, 0.059, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 29,
+   "wf_deg": 92.3956069946289,
+   "hand_height_m": 0.03501929480973492,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03501929480973492,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.0921713787110088,
+       "wp_min_m": 0.0921713787110088,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0921713787110088,
+       "wp_min_m": 0.0921713787110088,
+       "detail": "mid (0.217, 0.033, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.009999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03501929480973492,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10717137871100879,
+       "wp_min_m": 0.10717137871100879,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10717137871100879,
+       "wp_min_m": 0.10717137871100879,
+       "detail": "mid (0.217, 0.033, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 30,
+   "wf_deg": 98.10989379882812,
+   "hand_height_m": 0.0322217518494456,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.0322217518494456,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10295803289737568,
+       "wp_min_m": 0.10295803289737568,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.1029580328973757,
+       "wp_min_m": 0.1029580328973757,
+       "detail": "mid (0.206, 0.005, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.0322217518494456,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11795812529460667,
+       "wp_min_m": 0.11795812529460667,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11795812529460667,
+       "wp_min_m": 0.11795812529460664,
+       "detail": "mid (0.206, 0.005, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 31,
+   "wf_deg": 93.89010620117188,
+   "hand_height_m": 0.03582299131402023,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03582299131402023,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10469511811071305,
+       "wp_min_m": 0.10469511811071305,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10469511811071305,
+       "wp_min_m": 0.10469511811071305,
+       "detail": "mid (0.209, 0.033, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03582299131402023,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11969527922531803,
+       "wp_min_m": 0.119695279225318,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.119695279225318,
+       "wp_min_m": 0.119695279225318,
+       "detail": "mid (0.209, 0.033, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 32,
+   "wf_deg": 93.010986328125,
+   "hand_height_m": 0.03671543810238332,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03671543810238332,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09860648775684358,
+       "wp_min_m": 0.09860648775684358,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09860648775684358,
+       "wp_min_m": 0.09860648775684358,
+       "detail": "mid (0.194, 0.035, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03671543810238332,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11360648775687043,
+       "wp_min_m": 0.11360648775687043,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11360648775687043,
+       "wp_min_m": 0.11360648775687043,
+       "detail": "mid (0.194, 0.035, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 33,
+   "wf_deg": 98.63735961914062,
+   "hand_height_m": 0.03952926217828278,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03952926217828278,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.1072925067609796,
+       "wp_min_m": 0.1072925067609796,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.1072925067609796,
+       "wp_min_m": 0.1072925067609796,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10729250388826181,
+       "wp_min_m": 0.10729250388826181,
+       "detail": "mid (0.224, 0.078, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.03952926217828278,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.12229250676097189,
+       "wp_min_m": 0.12229250676097189,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.12229250676097189,
+       "wp_min_m": 0.12229250676097189,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.1222925038882629,
+       "wp_min_m": 0.1222925038882629,
+       "detail": "mid (0.224, 0.078, 0.085) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 34,
+   "wf_deg": 94.4175796508789,
+   "hand_height_m": 0.032027749953548935,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.032027749953548935,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09728798298387968,
+       "wp_min_m": 0.09728798298387968,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09728798298387963,
+       "wp_min_m": 0.09728798298387965,
+       "detail": "mid (0.203, 0.025, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.032027749953548935,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11228812882492945,
+       "wp_min_m": 0.11228812882492945,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11228812882492945,
+       "wp_min_m": 0.11228812882492945,
+       "detail": "mid (0.203, 0.025, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 35,
+   "wf_deg": 89.31867980957031,
+   "hand_height_m": 0.03181197203178421,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03181197203178421,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09577073908491843,
+       "wp_min_m": 0.09577073908491843,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09577073908491843,
+       "wp_min_m": 0.09577073908491843,
+       "detail": "mid (0.205, 0.035, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03181197203178421,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11077057872193252,
+       "wp_min_m": 0.11077057872193252,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11077057872193248,
+       "wp_min_m": 0.11077057872193248,
+       "detail": "mid (0.205, 0.035, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 36,
+   "wf_deg": 96.35164642333984,
+   "hand_height_m": 0.03528249814637918,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03528249814637918,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10429544518994228,
+       "wp_min_m": 0.10429544518994228,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10429544518994228,
+       "wp_min_m": 0.10429544518994228,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10429544518994228,
+       "wp_min_m": 0.10429544518994228,
+       "detail": "mid (0.222, 0.048, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03528249814637918,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11929556337096991,
+       "wp_min_m": 0.11929556337096991,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11929556337096991,
+       "wp_min_m": 0.11929556337096991,
+       "detail": "mid (0.222, 0.048, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 37,
+   "wf_deg": 93.89010620117188,
+   "hand_height_m": 0.03541696479118017,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03541696479118017,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09972461684524994,
+       "wp_min_m": 0.09972461684524994,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09972461684524994,
+       "wp_min_m": 0.09972461684524994,
+       "detail": "mid (0.201, 0.030, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03541696479118017,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11472461684527328,
+       "wp_min_m": 0.11472461684527328,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11472461684527328,
+       "wp_min_m": 0.11472461684527328,
+       "detail": "mid (0.201, 0.030, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 38,
+   "wf_deg": 82.02198028564453,
+   "hand_height_m": 0.03622487024310467,
+   "urdf": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.05999999999999998,
+     "lift_segment_min_m": 0.03622487024310467,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08939909393072143,
+       "wp_min_m": 0.08939909393072143,
+       "detail": "z 0.060"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08939909393072143,
+       "wp_min_m": 0.08939909393072143,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08939909393072143,
+       "wp_min_m": 0.08939909393072143,
+       "detail": "mid (0.176, 0.040, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.060000000000000005,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.07999999999999999,
+     "lift_segment_min_m": 0.03622487024310467,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10939909393068245,
+       "wp_min_m": 0.10939909393068245,
+       "detail": "z 0.080"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10939909393068245,
+       "wp_min_m": 0.10939909393068245,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10939909393068245,
+       "wp_min_m": 0.10939909393068245,
+       "detail": "mid (0.176, 0.040, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 39,
+   "wf_deg": 88.0,
+   "hand_height_m": 0.03224272176694206,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.03224272176694206,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09883333510997067,
+       "wp_min_m": 0.09883333510997067,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09883333510997067,
+       "wp_min_m": 0.09883333510997067,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09883333510997067,
+       "wp_min_m": 0.09883333510997067,
+       "detail": "mid (0.184, 0.072, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.03224272176694206,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.11383333510996652,
+       "wp_min_m": 0.11383333510996652,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.11383333510996652,
+       "wp_min_m": 0.11383333510996652,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11383333510996652,
+       "wp_min_m": 0.11383333510996652,
+       "detail": "mid (0.184, 0.072, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 40,
+   "wf_deg": 90.46154022216797,
+   "hand_height_m": 0.03447983065345004,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03447983065345004,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09155765892921808,
+       "wp_min_m": 0.09155765892921808,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09155765892921808,
+       "wp_min_m": 0.09155765892921808,
+       "detail": "mid (0.192, 0.029, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.015,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03447983065345004,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10655765892923574,
+       "wp_min_m": 0.10655765892923574,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.1065576589292358,
+       "wp_min_m": 0.1065576589292358,
+       "detail": "mid (0.192, 0.029, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 41,
+   "wf_deg": 88.0879135131836,
+   "hand_height_m": 0.03829052558248494,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03829052558248494,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09506247678726046,
+       "wp_min_m": 0.09506247678726046,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09506247678726046,
+       "wp_min_m": 0.09506247678726046,
+       "detail": "mid (0.198, 0.032, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03829052558248494,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11006247678728426,
+       "wp_min_m": 0.11006247678728426,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11006247678728426,
+       "wp_min_m": 0.11006247678728426,
+       "detail": "mid (0.198, 0.032, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 42,
+   "wf_deg": 98.19779968261719,
+   "hand_height_m": 0.037878458173781035,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.037878458173781035,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.0940365380575518,
+       "wp_min_m": 0.0940365380575518,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.0940365380575518,
+       "wp_min_m": 0.0940365380575518,
+       "detail": "mid (0.199, 0.035, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.037878458173781035,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10903670881830171,
+       "wp_min_m": 0.10903670881830171,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10903670881830177,
+       "wp_min_m": 0.10903670881830177,
+       "detail": "mid (0.199, 0.035, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 43,
+   "wf_deg": 74.9011001586914,
+   "hand_height_m": 0.029564729974167057,
+   "urdf": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.05999999999999998,
+     "lift_segment_min_m": 0.029564729974167057,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.08097925780309795,
+       "wp_min_m": 0.08097925780309795,
+       "detail": "z 0.060"
+      },
+      "P2_box_highest": {
+       "min_m": 0.08097926408208492,
+       "wp_min_m": 0.08097926408208492,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08097926408208492,
+       "wp_min_m": 0.08097926408208492,
+       "detail": "mid (0.175, 0.054, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.060000000000000005,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.029564729974167057,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.0959792578031094,
+       "wp_min_m": 0.09597925780310938,
+       "detail": "z 0.075"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09597926408204774,
+       "wp_min_m": 0.09597926408204774,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09597926408204774,
+       "wp_min_m": 0.09597926408204774,
+       "detail": "mid (0.175, 0.054, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 44,
+   "wf_deg": 93.80220031738281,
+   "hand_height_m": 0.039717830664440165,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06999999999999998,
+     "lift_segment_min_m": 0.039717830664440165,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.10504817240902224,
+       "wp_min_m": 0.10504817240902224,
+       "detail": "z 0.070"
+      },
+      "P2_box_highest": {
+       "min_m": 0.10504817240902224,
+       "wp_min_m": 0.10504817240902224,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10504817240902224,
+       "wp_min_m": 0.10504817240902224,
+       "detail": "mid (0.224, 0.052, 0.070) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.08499999999999999,
+     "lift_segment_min_m": 0.039717830664440165,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.1200482221898947,
+       "wp_min_m": 0.1200482221898947,
+       "detail": "z 0.085"
+      },
+      "P2_box_highest": {
+       "min_m": 0.1200482221898947,
+       "wp_min_m": 0.1200482221898947,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.1200482221898947,
+       "wp_min_m": 0.1200482221898947,
+       "detail": "mid (0.224, 0.052, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 45,
+   "wf_deg": 92.92308044433594,
+   "hand_height_m": 0.04283922079214677,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.04283922079214677,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09226724811177328,
+       "wp_min_m": 0.09226724811177328,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09226724811177328,
+       "wp_min_m": 0.09226724811177328,
+       "detail": "mid (0.196, 0.013, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.04283922079214677,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10726724811180688,
+       "wp_min_m": 0.10726724811180688,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10726724811180688,
+       "wp_min_m": 0.10726724811180688,
+       "detail": "mid (0.196, 0.013, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 46,
+   "wf_deg": 86.85713958740234,
+   "hand_height_m": 0.03251406466794312,
+   "urdf": {
+    "pre_dz": 0.004999999999999998,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03251406466794312,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08939630800275156,
+       "wp_min_m": 0.08939630800275156,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08939630800275156,
+       "wp_min_m": 0.08939630800275156,
+       "detail": "mid (0.190, 0.033, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03251406466794312,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10439630800277612,
+       "wp_min_m": 0.10439630800277612,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10439630800277612,
+       "wp_min_m": 0.10439630800277612,
+       "detail": "mid (0.190, 0.033, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 47,
+   "wf_deg": 91.42857360839844,
+   "hand_height_m": 0.03386418591950108,
+   "urdf": {
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.03386418591950108,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.08413369053434516,
+       "wp_min_m": 0.08413369053434516,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.08413369053434516,
+       "wp_min_m": 0.08413369053434516,
+       "detail": "mid (0.189, 0.033, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.009999999999999998,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.03386418591950108,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.09913369053436923,
+       "wp_min_m": 0.09913369053436923,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09913369053436924,
+       "wp_min_m": 0.09913369053436924,
+       "detail": "mid (0.189, 0.033, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P3_rise_in_front",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 48,
+   "wf_deg": 83.95604705810547,
+   "hand_height_m": 0.045063541363019655,
+   "urdf": {
+    "pre_dz": 0.009999999999999998,
+    "box": {
+     "lift_z": 0.07499999999999998,
+     "lift_segment_min_m": 0.045063541363019655,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.10129805971134478,
+       "wp_min_m": 0.10129805971134478,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.10129805971134478,
+       "wp_min_m": 0.10129805971134478,
+       "detail": "mid (0.200, 0.036, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "pre_dz": 0.02,
+    "box": {
+     "lift_z": 0.09,
+     "lift_segment_min_m": 0.045063541363019655,
+     "plans": {
+      "P2_box_highest": {
+       "min_m": 0.11629822212165085,
+       "wp_min_m": 0.11629822212165085,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11629822212165085,
+       "wp_min_m": 0.11629822212165085,
+       "detail": "mid (0.200, 0.036, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P2_box_highest",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  },
+  {
+   "ep": 49,
+   "wf_deg": 98.72527313232422,
+   "hand_height_m": 0.03437186325087621,
+   "urdf": {
+    "box": {
+     "lift_z": 0.06499999999999997,
+     "lift_segment_min_m": 0.03437186325087621,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.09511278231126172,
+       "wp_min_m": 0.09511278231126172,
+       "detail": "z 0.065"
+      },
+      "P2_box_highest": {
+       "min_m": 0.09511278231126172,
+       "wp_min_m": 0.09511278231126172,
+       "detail": "z 0.070"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.09511278231126172,
+       "wp_min_m": 0.09511278231126172,
+       "detail": "mid (0.224, 0.009, 0.075) \u2192 z 0.070"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.065,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   },
+   "wall": {
+    "box": {
+     "lift_z": 0.07999999999999999,
+     "lift_segment_min_m": 0.03437186325087621,
+     "plans": {
+      "P1_same_height": {
+       "min_m": 0.11011278231129111,
+       "wp_min_m": 0.11011278231129111,
+       "detail": "z 0.080"
+      },
+      "P2_box_highest": {
+       "min_m": 0.11011278231129111,
+       "wp_min_m": 0.11011278231129111,
+       "detail": "z 0.085"
+      },
+      "P3_rise_in_front": {
+       "min_m": 0.11011278231129111,
+       "wp_min_m": 0.11011278231129111,
+       "detail": "mid (0.224, 0.009, 0.090) \u2192 z 0.085"
+      }
+     },
+     "chosen": "P1_same_height",
+     "place_ok": true
+    },
+    "table_lift_z": 0.07,
+    "tables": {
+     "table1": true,
+     "table2": true
+    }
+   }
+  }
+ ]
+}

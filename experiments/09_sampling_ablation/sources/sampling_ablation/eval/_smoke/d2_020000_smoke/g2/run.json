@@ -1,0 +1,10 @@
+{
+ "n_obs": 93,
+ "gpu_busy_s": 925.9373133182526,
+ "wall_s": 845.5829553604126,
+ "load_s": 9.5367431640625e-06,
+ "watchdog_wait_s": 0,
+ "d4_log": [],
+ "device": "cpu",
+ "n_noise": 1
+}

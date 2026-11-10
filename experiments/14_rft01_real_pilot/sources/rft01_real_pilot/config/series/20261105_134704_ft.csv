@@ -1,0 +1,2 @@
+ep,label,group,known,x_cm,y_cm,angle_code,angle_deg,angle_text,ref_K,dist_ref_K_cm,from_ref,pe_deg,min_set,in_calib,trial,model,pair,order_in_pair,phase,condition
+8,K1_L30,K,known,-8.5,26.5,L30,30.0,L30 (위에서 볼 때 반시계 ↺ 30°),K1,0.0,표시된 자리,-35.5,True,True,8,ft,P4,2,3,K1 L30

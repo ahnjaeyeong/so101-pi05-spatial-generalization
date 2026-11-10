@@ -1,0 +1,87 @@
+{
+ "tag": "open",
+ "stamp": "20261105_172945",
+ "live": "/dev/shm/r12_live_campreview_20261105_171218",
+ "seq": 15744,
+ "frames_checked": 31,
+ "status_counts": {
+  "detected": 31
+ },
+ "sticker_u_mean": 0.4134,
+ "sticker_v_mean": 0.8505,
+ "sticker_u_sd": 0.0002,
+ "sticker_v_sd": 0.0002,
+ "kept": {
+  "status": "detected",
+  "reason": "",
+  "sticker": {
+   "u": 0.4131,
+   "v": 0.8506,
+   "px": [
+    264.4,
+    408.3
+   ],
+   "area_px": 2058,
+   "bbox": [
+    235,
+    387,
+    60,
+    44
+   ],
+   "in_cube": [
+    0.51,
+    0.738
+   ]
+  },
+  "cube": {
+   "u": 0.4166,
+   "v": 0.7389,
+   "px": [
+    266.6,
+    354.7
+   ],
+   "area_px": 32519,
+   "bbox": [
+    169,
+    251,
+    187,
+    213
+   ],
+   "touches_edge": false
+  },
+  "candidates": [
+   {
+    "px": [
+     264.4,
+     408.3
+    ],
+    "area_px": 2058,
+    "area_frac": 0.0579,
+    "solidity": 1.014,
+    "ring_red": 0.833,
+    "ring_in": 1.0,
+    "outside_frac": 0.0,
+    "reject": []
+   },
+   {
+    "px": [
+     351.8,
+     381.3
+    ],
+    "area_px": 103,
+    "area_frac": 0.0029,
+    "solidity": 1.056,
+    "ring_red": 0.402,
+    "ring_in": 0.714,
+    "outside_frac": 0.999,
+    "reject": [
+     "작음",
+     "둥글지 않음",
+     "바깥 흰 영역과 이어짐"
+    ]
+   }
+  ]
+ },
+ "detect_version": "sticker-v1+4544c4e9fcfd",
+ "wrist_png_sha256": "0a2f4f87c06e2051"
+}

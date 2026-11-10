@@ -1,0 +1,15 @@
+{
+ "trial": 23,
+ "condition": "B",
+ "position": "K2",
+ "first_grasp": "failure",
+ "final": "failure",
+ "attempts": 4,
+ "failure_type": "큐브 밀림;파지 후 미끄러짐",
+ "note": "",
+ "void": false,
+ "void_reason": "",
+ "judged": "2026-10-19 17:29:51",
+ "stop_reason": "time_limit",
+ "protect": null
+}

@@ -1,0 +1,244 @@
+WARNING:root:No accelerated backend detected. Using default cpu, this will be slow.
+WARNING:lerobot.configs.policies:Device 'cuda' is not available. Switching to 'cpu'.
+INFO 2026-11-04 18:05:06 ut_logged.py:48 debug log: _out/S11_adapter_fast_correction/debug.log · argv: --strategy.type=dagger --strategy.num_episodes=6 --policy.path=/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model --device=cpu --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --robot.type=so101_follower --robot.port=/nonexistent/hil_fake_follower --robot.id=hil_fake --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /nonexistent/hil_fake_front, width: 64, height: 48, fps: 30}, wrist: {type: opencv, index_or_path: /nonexistent/hil_fake_wrist, width: 64, height: 48, fps: 30} } --teleop.type=so101_leader --teleop.port=/nonexistent/hil_fake_leader --teleop.id=hil_fake_leader --dataset.repo_id=oxr/rollout_hil_fake_S11_adapter_fast_correction --dataset.root=_out/S11_adapter_fast_correction/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=6 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --return_to_initial_position=false
+INFO 2026-11-04 18:05:06 ut_logged.py:50 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True}
+INFO 2026-11-04 18:05:06 _rollout.py:245 Building rollout context...
+INFO 2026-11-04 18:05:06 /context.py:330 Loading policy from '/home/user/so101_runs/main_k8/d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000/pretrained_model'...
+INFO 2026-11-04 18:05:06 /context.py:361 Policy loaded: type=pi05, device=cpu
+INFO 2026-11-04 18:05:06 /context.py:392 Connecting robot (so100_follower)...
+[hil fake] MOCK_OK follower FakeFollowerBus+FakeCam (no serial, no camera)
+INFO 2026-11-04 18:05:06 /context.py:395 Robot connected: so_follower
+INFO 2026-11-04 18:05:06 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-04 18:05:06 /context.py:406 Connecting teleoperator (so100_leader)...
+[hil fake] MOCK_OK leader FakeLeaderBus (no serial)
+INFO 2026-11-04 18:05:06 /context.py:409 Teleoperator connected
+INFO 2026-11-04 18:05:06 /context.py:500 Setting up dataset (repo_id=oxr/rollout_hil_fake_S11_adapter_fast_correction)...
+INFO 2026-11-04 18:05:06 /context.py:547 Dataset ready: oxr/rollout_hil_fake_S11_adapter_fast_correction (0 existing episodes)
+INFO 2026-11-04 18:05:06 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-04 18:05:06 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-04 18:05:06 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-04 18:05:06 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-04 18:05:06 _rollout.py:249 Rollout strategy: dagger
+INFO 2026-11-04 18:05:06 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-04 18:05:06 gies/core.py:96 Starting inference engine...
+INFO 2026-11-04 18:05:06 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:05:06 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-04 18:05:06 ies/core.py:100 Inference engine started
+INFO 2026-11-04 18:05:06 s/dagger.py:269 Streaming encoding is disabled for DAgger corrections-only mode. Consider enabling it for faster episode saving: --dataset.streaming_encoding=true --dataset.encoder_threads=2
+WARNING 2026-11-04 18:05:06 rd_input.py:391 Keyboard controls unavailable: no usable display (Wayland/headless) and stdin is not an interactive terminal (pause_resume='space', correction='tab', upload='enter', ESC=stop, m=복구 완료, 1/2/3=R1/R2/R2-O, g/h=첫 파지 성공/실패, b/f=최종 성공/실패, r=원위치 구간).
+INFO 2026-11-04 18:05:06 s/dagger.py:286 DAgger strategy ready (input=keyboard, episodes=6, record=corrections only, episode_duration=182044s)
+INFO 2026-11-04 18:05:06 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-04 18:05:06 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-04 18:05:06 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-04 18:05:06 s/dagger.py:552 DAgger corrections-only recording started (target: 6 episodes)
+INFO 2026-11-04 18:05:06 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=_out/S11_adapter_fast_correction/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-04 18:05:07 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-04 18:05:08 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-04 18:05:08 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-04 18:05:09 s/dagger.py:717 Phase transition: autonomous -> paused
+INFO 2026-11-04 18:05:09 s/dagger.py:719 Pausing engine - robot holds position
+INFO 2026-11-04 18:05:09 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:05:09 s/dagger.py:728 Smooth handover: moving leader arm to follower position
+INFO 2026-11-04 18:05:09 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=5, real_delay=10
+INFO 2026-11-04 18:05:11 s/dagger.py:717 Phase transition: paused -> correcting
+INFO 2026-11-04 18:05:11 s/dagger.py:732 Entering correction mode - human teleop control
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {'original goal_pos': -80.0, 'safe goal_pos': -92.0},
+    'shoulder_pan': {   'original goal_pos': -0.4844550006346324,
+                        'safe goal_pos': 11.524980386709068}}
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {'original goal_pos': -70.0, 'safe goal_pos': -89.6},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': 9.124980386709069}}
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -87.19999999999999},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': 6.724980386709069}}
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -84.79999999999998},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': 4.324980386709068}}
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -82.39999999999998},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': 1.924980386709068}}
+WARNING 2026-11-04 18:05:11 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -79.99999999999997},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -0.47501961329093234}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -77.59999999999997},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -2.8750196132909327}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -75.19999999999996},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -5.275019613290933}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -72.79999999999995},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -7.6750196132909325}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -70.0,
+                         'safe goal_pos': -70.39999999999995},
+    'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -10.075019613290932}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -12.475019613290932}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -14.875019613290933}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -17.275019613290933}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': -20.484455000634632,
+                        'safe goal_pos': -19.675019613290935}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -90.0,
+                         'safe goal_pos': -78.0581334062442},
+    'shoulder_pan': {   'original goal_pos': -0.4844550006346324,
+                        'safe goal_pos': -12.225811163921872}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -80.4581334062442},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': -9.825811163921873}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -82.8581334062442},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': -7.425811163921873}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -85.25813340624421},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': -5.0258111639218725}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -87.65813340624422},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': -2.625811163921872}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -90.05813340624422},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': -0.22581116392187184}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -92.45813340624423},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 2.1741888360781285}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -94.85813340624424},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 4.574188836078129}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -97.25813340624424},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 6.974188836078128}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': -100.0,
+                         'safe goal_pos': -99.65813340624425},
+    'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 9.374188836078128}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 11.774188836078128}}
+WARNING 2026-11-04 18:05:12 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 14.174188836078129}}
+WARNING 2026-11-04 18:05:13 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 16.57418883607813}}
+WARNING 2026-11-04 18:05:13 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_pan': {   'original goal_pos': 19.515544999365368,
+                        'safe goal_pos': 18.974188836078127}}
+INFO 2026-11-04 18:05:13 s/dagger.py:717 Phase transition: correcting -> paused
+Map:   0%|          | 0/48 [00:00<?, ? examples/s]Map: 100%|██████████| 48/48 [00:00<00:00, 1590.35 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Instance 1: AQ mode 2 is unsupported with source dimensions (64 / 48), setting AQ mode to 0
+Svt[warn]: Instance 1: Restoration Filtering is unsupported with source dimensions (64 / 48), disabling Restoration Filtering
+Svt[warn]: TPL is disabled for aq_mode 0
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 59
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 64 / 48 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / CQP Assignment 					: CQP / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 0 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[warn]: Instance 1: AQ mode 2 is unsupported with source dimensions (64 / 48), setting AQ mode to 0
+Svt[warn]: Instance 1: Restoration Filtering is unsupported with source dimensions (64 / 48), disabling Restoration Filtering
+Svt[warn]: TPL is disabled for aq_mode 0
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 59
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 64 / 48 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / CQP Assignment 					: CQP / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 0 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-11-04 18:05:13 s/dagger.py:596 Correction 1/6 saved
+INFO 2026-11-04 18:05:13 ls/utils.py:150 Correction 1 saved
+INFO 2026-11-04 18:05:13 le_timer.py:559 Cadence (correction 1): 29.82 Hz vs 30 Hz target · 136 ticks, 4.5 s measured · 0/132 ticks over the 33.3 ms budget (work mean 1.0 ms, worst 1.7 ms) · starved ticks: 10
+INFO 2026-11-04 18:05:13 s/dagger.py:670 DAgger corrections-only loop ended — pausing engine
+INFO 2026-11-04 18:05:13 le_timer.py:559 Cadence (final episode): 29.92 Hz vs 30 Hz target · 5 ticks, 0.1 s measured · 0/5 ticks over the 33.3 ms budget (work mean 0.3 ms, worst 0.3 ms)
+INFO 2026-11-04 18:05:13 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 141 ticks, 137 judged
+  effective cadence: 29.83 Hz over 4.6 s measured
+  ticks over the 33.3 ms work budget: 0/137 (0.0%) — work mean 0.9 ms, worst 1.7 ms
+  ticks with no action to send (inference engine starved): 10 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 18
+  loop-body steps (share of measured work):
+    observe      mean   0.40 ms · worst   0.98 ms ·   2.2% of work · 141 calls
+    process_obs  mean   0.03 ms · worst   0.12 ms ·   0.1% of work · 123 calls
+    infer        mean   0.14 ms · worst   0.27 ms ·   0.4% of work · 75 calls
+    send         mean   0.15 ms · worst   0.65 ms ·   0.8% of work · 131 calls
+    telemetry    mean   0.00 ms · worst   0.01 ms ·   0.0% of work · 113 calls
+    teleop       mean   0.10 ms · worst   0.15 ms ·   0.2% of work · 48 calls
+    record       mean   0.22 ms · worst   0.75 ms ·   0.4% of work · 48 calls
+  pacing headroom: 32.1 ms slept per tick on average (max 33.4 ms) — near zero means the loop is saturated
+INFO 2026-11-04 18:05:13 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-04 18:05:13 s/dagger.py:304 Stopping DAgger recording
+INFO 2026-11-04 18:05:13 ls/utils.py:150 Stopping DAgger recording
+INFO 2026-11-04 18:05:13 s/dagger.py:313 Shutting down push executor (waiting for pending pushes)...
+INFO 2026-11-04 18:05:13 s/dagger.py:318 Finalizing dataset...
+INFO 2026-11-04 18:05:13 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-04 18:05:13 ence/rtc.py:324 RTC inference thread stopped
+INFO 2026-11-04 18:05:13 follower.py:262 hil_fake SOFollower disconnected.
+INFO 2026-11-04 18:05:13 s/dagger.py:334 DAgger strategy teardown complete
+INFO 2026-11-04 18:05:13 _rollout.py:272 Rollout finished
+[S11_adapter_fast_correction] done wall=7.7s main_err=no script_err=no

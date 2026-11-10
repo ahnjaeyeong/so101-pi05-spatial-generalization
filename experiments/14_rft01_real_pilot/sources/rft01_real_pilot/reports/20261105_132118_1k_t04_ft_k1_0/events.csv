@@ -1,0 +1,3 @@
+episode,ds_ep,close_k,T2_i,T2_s,T2_conf_i,cmd_peak,cmd_bottom,T3_i,T3_s,T3_minus_T2,T4_plateau_i,T4_bottom,T4_bottom_i,T4_reopened_1p5s,T4,T0_chunk,T0_obs_i,T0_idx,T0_pred_i,T0_obs_s,T1_chunk,T1_obs_i,T1_idx,T1_pred_i,T1_obs_s,n_chunks_planning_close,T0raw_note,T2_chunk,T2_idx,T1_chunk_eq_T2_chunk,order_ok,after_first_grasp
+1,0,0,402,13.4,409,31.3627,3.8858,404,13.466666666666667,2,419,11.1956,452,False,grasp,18,359,33,393,11.966666666666667,19,379,22,402,12.633333333333333,3,diag/replay 없음 (RTC 끔 재구성 미실행),19,22,True,True,False
+1,0,1,492,16.4,499,32.4404,0.0945,494,16.466666666666665,2,512,0.622,521,False,empty,23,459,32,492,15.3,24,479,12,492,15.966666666666667,2,diag/replay 없음 (RTC 끔 재구성 미실행),24,12,True,True,True

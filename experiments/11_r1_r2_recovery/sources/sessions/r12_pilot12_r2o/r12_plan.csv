@@ -1,0 +1,5 @@
+episode_index,scenario_id,type,position,cube_xy_cm,angle,offset_dir,pan_offset_deg,pan_target_deg,start_xy_cm,status,retake_of,frames,note,error_kind,pan_error_direction,nominal_pan_error_deg,local_alignment_type,nominal_local_error_cm,start_pose_type,wrist_visibility_target,approach_stage_expected,cube_position_source
+0,R2-O-REOPEN,R2,K5,"-17.0,11.5",45,forward,0,-2.6,"-19.5,11.4",planned,,,,closed_ahead,,,cube_ahead,1.5,,,,K_grid
+1,R2-O-REOPEN,R2,K8,"-25.5,-3.5",L30,forward,0,69.5,"-26.4,-1.2",planned,,,,closed_ahead,,,cube_ahead,2,,,,K_grid
+2,R2-O-REOPEN,R2,K6,"-17.0,-3.5",0,forward,0,44.6,"-18.7,-1.7",planned,,,,closed_ahead,,,cube_ahead,3,,,,K_grid
+3,R2-O-REOPEN,R2,K7,"-25.5,26.5",R30,forward,0,-70.7,"-26.3,24.1",planned,,,,closed_ahead,,,cube_ahead,1.5,,,,K_grid

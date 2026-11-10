@@ -1,0 +1,21 @@
+FAIL S1_home_t02_then_sessions SH 20261105_130203_20k_t02_bl_k3_0 auto ok;RT 1 trials=[3 4 5 6 7 8] plan=3 4 5 6 7 8 ;
+FAIL S2_fault_resumes_new_session SH 20261105_130203_20k_t02_bl_k3_0 auto ok;RT 1 trials=[3 4 5 6 7 8] plan=3 4 5 6 7 8 ;RT 2 trials=[4 5 6 7 8] plan=4 5 6 7 8 ;
+PASS S3_ctrl_c_far_stops_no_move
+PASS S3b_rerun_still_stopped
+FAIL S3c_rest_then_resume SH 20261105_130203_20k_t02_bl_k3_0 auto ok;RT 1 trials=[3 4 5 6 7 8] plan=3 4 5 6 7 8 ;RT 2 trials=[4 5 6 7 8] plan=4 5 6 7 8 ;
+PASS S4_ctrl_c_near_stops
+FAIL S5_user_quit_stops SH 20261105_130203_20k_t02_bl_k3_0 auto ok;RT 1 trials=[3 4 5 6 7 8] plan=3 4 5 6 7 8 ;
+PASS S6_zero_saved_stops
+PASS S7_stop_blocks
+PASS S8_model_check_blocks
+PASS S9_initial_home_fail_stops
+FAIL S10_series_trials_validated ── 연속 세션: 시행 3 4 (2 판, 모델 1 회 로딩) · 판 사이 자동 복귀 (E5)
+── 시행 3 / 16 · 모델 sgft01_010000 (ft) · K2_0°_(학습_자리) · 쌍 S3 · Phase 3 · tag t03_04_ft_series
+  게이트: BLOCK 직전 run 20261105_130203_20k_t02_bl_k3_0 이 시작 자세에서 166.95° 떨어져 끝남 (토크 True) — safe_home.py --run eval/rollouts/20261105_130203_20k_t02_bl_k3_0 로 복귀하거나, 손으로 옮겼으면 scripts/gate.sh rest "메모" / ⛔ SERIES_TRIALS 가 계획과 맞지 않음 (모델 ft, 첫 시행 3): ['6', '7'] / ⛔ SERIES_TRIALS 는 run_series.sh 에서만 (BATCH=1 · SERIES_PLAN 필요)
+PASS S11_batch_gate_keeps_end_state
+PASS S12_non_batch_rules_unchanged
+PASS S14a_aborted_session_needs_rest
+FAIL S14b_after_rest_ft_then_bl RT 1 trials=[8] plan=8 ;
+FAIL S13_all_done_nothing 
+
+SOME_FAIL

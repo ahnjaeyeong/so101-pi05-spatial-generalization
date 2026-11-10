@@ -110,6 +110,179 @@ def integrity(dataset, info, eps, data, cams, ep_meta):
     return out
 
 
+# ================================================================ 파일럿 12편 QA (작업 지시 §9) — dataset 으로 다시 잼, 읽기만
+PILOT_Q = {"q1": "시작 상태가 의도한 실패 상태와 비슷한가 (근사)", "q2": "R1: 필요한 방향으로 Pan 수정이 기록됐나",
+           "q3": "R2-P: 그리퍼를 연 채 접근했나 (닫기 전까지 열림)", "q4": "R2-O: 그리퍼를 충분히 다시 열었나 (먼저 열고 접근)",
+           "q5": "정렬 뒤 한 번의 닫힘으로 파지했나", "q6": "불필요한 동작 (Pan 왕복 · 경로 길이)",
+           "q7": "영상 · state · action 시간 일치", "q8": "d2 와 독립 보존"}
+
+
+def _pilot_one(cfg, pr, S, A, fps, first_vis, armed_state, label, integ_ok):
+    """판 하나의 Q1–Q7. 반환 dict (값 · 판정 'ok' / 'check' / 'na')."""
+    Q = cfg.get("pilot_qa") or {}
+    names = [f"{j}.pos" for j in rc.JOINTS]
+    d = rc.describe_row(cfg, pr)
+    var = d.get("pilot_variant", "")
+    n = len(S)
+    gmin = float(Q.get("gripper_open_min", 15))
+    ev = rc.close_events(A[:, 5], open_min=gmin, drop_min=float(Q.get("close_drop_min", 8)))
+    k_close = ev[0][0] if ev else None
+    out = {"variant": var}
+    # Q1 — 녹화 첫 프레임 (dataset) 기준 시작 상태 · 실패 상태 비슷함
+    ps = rc.pilot_start_checks(cfg, d, dict(zip(names, S[0])), first_vis)
+    sim = ps["similarity"]
+    out["q1"] = "ok" if sim["total"] and sim["matched"] == sim["total"] else "check"
+    out["q1_detail"] = f"{sim['matched']}/{sim['total']}: " + " · ".join(sim["items"])
+    gs = d.get("gripper_start")
+    if gs:
+        g0 = "open" if S[0, 5] >= gmin else "closed"
+        out["q1_detail"] += f" · 시작 그리퍼 {S[0, 5]:.0f} ({g0}, 조건 {gs})"
+        if g0 != gs:
+            out["q1"] = "check"
+    # Q2 — R1 Pan 수정
+    out["q2"], out["q2_detail"] = "na", ""
+    if var == "R1":
+        ref = rc.pan_ref(cfg, pr["position"])
+        err0 = S[0, 0] - ref
+        toward = -np.sign(err0) if err0 else 0
+        end = k_close if k_close is not None else n
+        prog = (S[:end, 0] - S[0, 0]) * toward if end > 0 else np.array([0.0])
+        first = next((i for i in range(1, end) if abs(S[i, 0] - S[0, 0]) >= 2.0), None)
+        first_dir = "" if first is None else ("toward" if (S[first, 0] - S[0, 0]) * toward > 0 else "away")
+        err_c = S[min(end, n - 1), 0] - ref
+        ok = float(prog.max()) >= float(Q.get("pan_correction_min_deg", 5)) and abs(err_c) < abs(err0) and first_dir == "toward"
+        out["q2"] = "ok" if ok else "check"
+        out["q2_detail"] = (f"시작 기준 대비 {err0:+.1f}° → 필요한 방향 {'오른쪽(+)' if toward > 0 else '왼쪽(−)'} · 첫 Pan 이동 {first_dir or '없음'} · "
+                            f"최대 수정 {float(prog.max()):.1f}° · 닫기 시작 때 기준 대비 {err_c:+.1f}°")
+    # Q3 — R2-P 열린 채 접근
+    out["q3"], out["q3_detail"] = "na", ""
+    rc_open = var.startswith("RC") and d.get("gripper_start") == "open"      # 11-04 회복 시연 F1
+    rc_closed = var.startswith("RC") and d.get("gripper_start") == "closed"  # 11-04 회복 시연 F2 · F3
+    if var == "R2-P" or rc_open:
+        end = k_close if k_close is not None else n
+        frac = float((A[:end, 5] >= gmin).mean()) if end else 0.0
+        out["q3"] = "ok" if frac >= 0.95 and S[0, 5] >= gmin else "check"
+        out["q3_detail"] = f"닫기 전 리더 그리퍼 ≥ {gmin:g} 비율 {frac:.2f} · 최소 {float(A[:end, 5].min()) if end else float('nan'):.1f}"
+    # Q4 — R2-O 다시 열기
+    out["q4"], out["q4_detail"] = "na", ""
+    if var == "R2-O" or rc_closed:
+        rmin = float(d.get("reopen_min") or 25)
+        end = k_close if k_close is not None else n
+        k_open = next((i for i in range(n) if A[i, 5] >= gmin), None)
+        gmax = float(A[:end, 5].max()) if end else float("nan")
+        arm_before = float(np.abs(S[:k_open + 1, 1:3] - S[0, 1:3]).max()) if k_open is not None else float("nan")
+        ok = A[0, 5] < gmin and k_open is not None and gmax >= rmin
+        out["q4"] = "ok" if ok and arm_before <= 5.0 else "check"
+        out["q4_detail"] = (f"시작 리더 그리퍼 {A[0, 5]:.0f} · 처음 ≥ {gmin:g} @ {'—' if k_open is None else f'{k_open / fps:.2f}s'} · "
+                            f"닫기 전 최대 {gmax:.1f} (목표 ≥ {rmin:g}) · 열기 전 Lift/Elbow 이동 {arm_before:.1f}° (≤ 5 = 먼저 엶)")
+    # Q5 — 한 번의 닫힘으로 파지: 팔로워 그리퍼 바닥으로 첫 닫힘 판정 (≥ 8 쥠 · ≤ 5 빈 파지, r2_common 규칙). 상자에 놓은 뒤 닫힘은 세지 않음
+    import r12_guide as G
+
+    fs = (label or {}).get("first_grasp_success")
+    flags = G.review_episode(A[:, 5], S[:, 5], fps=fps)
+    warn = [f for f in flags if f[0] == "warn"]
+    b0 = float(S[ev[0][0]: ev[0][0] + int(1.5 * fps), 5].min()) if ev else float("nan")
+    out["review"] = flags
+    out["q5"] = "ok" if ev and not warn and str(fs) == "True" else "check"
+    out["q5_detail"] = (f"첫 닫힘 {ev[0][0] / fps:.2f}s 팔로워 바닥 {b0:.1f}" if ev else "닫힘 없음") + \
+        (" · " + " · ".join(f[2] for f in warn) if warn else " · 첫 닫힘에 쥠") + f" · 첫 파지 입력 {fs if fs not in (None, '') else '미입력'}"
+    # Q6 — 불필요한 동작
+    end = k_close if k_close is not None else n
+    seg = S[:max(end, 2), :5]
+    path = float(np.abs(np.diff(seg, axis=0)).sum())
+    net = float(np.abs(seg[-1] - seg[0]).sum())
+    ratio = path / net if net > 1e-6 else float("inf")
+    rev = max(0, len(rc._zigzag(list(seg[:, 0]), 3.0)) - 2)
+    ok6 = ratio <= float(Q.get("path_ratio_max", 2.5)) and (var != "R1" or rev <= int(Q.get("pan_reversals_max", 2)))
+    out["q6"] = "ok" if ok6 else "check"
+    out["q6_detail"] = f"닫기 전 팔 관절 경로/순 변위 {ratio:.2f} · Pan 방향 바뀜 {rev}번 (3° 문턱)"
+    # Q7 — 시간 일치 (판 안 timestamp 는 main 표, 영상 구간·저장 줄 수는 무결성 표)
+    out["q7"] = "ok" if integ_ok else "check"
+    out["q7_detail"] = "무결성 표: 영상 구간 = 판 길이 · 녹화 중 센 프레임 = 저장 줄 수 · frame_index 연속" + ("" if integ_ok else " — ⚠ 있음")
+    return out
+
+
+def pilot_qa(cfg, sess_dir, plan, eps, data, fps, dataset, info, cams, ep_meta, integ):
+    import record_ui as ru
+
+    integ_ok = not any(str(b).startswith("⚠") for _, b in integ)
+    att = rc.fold_attempts(rc.read_events(sess_dir))
+    by_ep = {a["ep"]: a for a in att.values() if a["status"] == "saved" and "ep" in a}
+    d2_root = os.path.realpath(D2_DATASET)
+    real = os.path.realpath(dataset)
+    meta = rc.read_meta(sess_dir)
+    d2_repos = {"oxr/so101_k8_d2", "oxr/so101_k8_redbox"}  # 이름 비교 (참고)
+    indep = (not real.startswith(d2_root) and os.path.basename(os.path.dirname(real)) not in
+             {os.path.basename(s) for s in rc.PROTECTED_SESSIONS} and meta.get("repo_id") not in d2_repos)
+    out = []
+    for _, er in eps.iterrows():
+        e = int(er["episode_index"])
+        pr = plan[e] if e < len(plan) else None
+        if not pr:
+            continue
+        dd = data[data.episode_index == e].sort_values("frame_index")
+        S = np.stack(dd["observation.state"].values).astype(float)
+        A = np.stack(dd["action"].values).astype(float)
+        try:
+            ff = first_frames(dataset, info, er, cams)
+            vis = rc.vision(ff.get("front"), ff.get("wrist"), cfg, pr.get("position"))
+        except Exception:
+            vis = None
+        a = by_ep.get(e, {})
+        r = {"episode": e, "scenario": pr["scenario_id"], "excluded": pr.get("status") == rc.EXCLUDED,
+             **_pilot_one(cfg, pr, S, A, fps, vis, (a.get("armed") or {}).get("state"), a.get("label"), integ_ok)}
+        evc = rc.close_events(A[:, 5])
+        if evc:  # 첫 닫힘 때 손목 큐브가 화면 경계에서 잘렸나 (영상 프레임)
+            try:
+                wcam = next(c for c in cams if c.endswith(".wrist"))
+                t0 = float(er[f"videos/{wcam}/from_timestamp"])
+                k0 = evc[0][0]
+                frw = next(ru.iter_frames(ru.video_path(dataset, info, wcam, er), t0 + k0 / fps, t0 + (k0 + 1) / fps, fps), None)
+                vw = rc.vision(None, frw, cfg)["wrist"] if frw is not None else {}
+                if vw.get("touches_edge"):
+                    r["q5"] = "check"
+                    r["q5_detail"] += " · 첫 닫힘 때 큐브가 손목 화면 경계에서 잘림"
+                    r["review"] = list(r.get("review") or []) + [("warn", "cut_at_first_close", "첫 닫힘 때 큐브가 손목 화면 경계에서 잘림")]
+            except Exception as ex:
+                r["q5_detail"] += f" · 손목 영상 읽기 실패 {ex!r}"
+        r["q8"] = "ok" if indep else "check"
+        r["q8_detail"] = f"dataset {real.replace(os.path.expanduser('~'), '~')} · repo_id {meta.get('repo_id')} · d2 dataset 밖"
+        lab = a.get("label") or {}
+        checks = [r[q] for q in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8") if r[q] != "na"]
+        guard = [g.get("reason") for g in a.get("guard", []) if g.get("phase") == "rec"]
+        r["guard_in_rec"] = ";".join(guard)
+        # 성공해도 학습 적합으로 바로 분류하지 않음: 모든 항목 ok + 결과 성공 + 보호 사건 없음 = 'candidate (사람 검토 필요)'
+        r["suitability"] = ("exclude" if r["excluded"] or guard else
+                            "candidate_needs_review" if all(c == "ok" for c in checks) and str(lab.get("final_success")) == "True" else "review")
+        out.append(r)
+    return out
+
+
+def pilot_report(cfg, prow, out_dir):
+    fields = ["episode", "scenario", "variant", "excluded", "suitability", "guard_in_rec"] + \
+        [x for q in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8") for x in (q, q + "_detail")]
+    with open(os.path.join(out_dir, "r12_pilot_qa.csv"), "w", newline="") as fh:
+        wr = csv.DictWriter(fh, fieldnames=fields)
+        wr.writeheader()
+        for r in prow:
+            wr.writerow({k: r.get(k, "") for k in fields})
+    L = ["", "## 5. 파일럿 12편 QA (작업 지시 §9) — dataset 으로 다시 잼", "",
+         "판정: ok = 규칙 통과 · check = 사람이 영상으로 확인 · na = 해당 없음. 'candidate_needs_review' 도 학습 적합 확정이 아님 (사람 검토 필요).", ""]
+    L += [f"- {k.upper()} {v}" for k, v in PILOT_Q.items()]
+    L += ["", "| ep | 시나리오 | 적합 분류 | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 |", "|---:|---|---|---|---|---|---|---|---|---|---|"]
+    for r in prow:
+        L.append(f"| {r['episode']}{' (제외)' if r['excluded'] else ''} | {r['scenario']} | {r['suitability']} | "
+                 + " | ".join(r[q] for q in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8")) + " |")
+    L += ["", "### 판별 값", ""]
+    for r in prow:
+        L.append(f"- ep{r['episode']} {r['scenario']}" + (f" · 녹화 중 보호 {r['guard_in_rec']}" if r["guard_in_rec"] else ""))
+        for q in ("q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"):
+            if r[q] != "na":
+                L.append(f"  - {q.upper()} {r[q]}: {r[q + '_detail']}")
+    L += ["", "규칙 (config pilot_qa · pilot_reference): " + json.dumps({**(cfg.get("pilot_qa") or {}), "reference": cfg.get("pilot_reference")}, ensure_ascii=False)]
+    return L
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
     session = opt(argv, "--session")
@@ -206,6 +379,8 @@ def main(argv=None):
                     fr = next(ru_.iter_frames(ru_.video_path(dataset, info, wcam, er), t0 + k / fps, t0 + (k + 1) / fps, fps), None)
                     vw = rc.vision(None, fr, cfg)["wrist"] if fr is not None else {}
                     okz, hint = rc.zone_status(vw, zone)
+                    if vw.get("touches_edge"):  # 잘리면 넓이가 작게 잡혀 '더 진입' 이 틀리게 나옴 (2026-11-03 R2-P ep0)
+                        hint = "큐브가 손목 화면 경계에서 잘림 (위치 판정 불확실)"
                     r["close_zone"] = ("영역 안" if okz else hint) + f" @ {k / fps:.1f}s"
                     if not okz:
                         r["reasons"].append(f"닫기 시작 때 손목 큐브가 닫기 영역 밖 ({hint})")
@@ -308,7 +483,8 @@ def main(argv=None):
         if not m:
             r["reasons"].append("r12_episodes.csv 줄 없음")
         elif r["final_success"] in ("", "None"):
-            r["reasons"].append("결과 미입력")
+            if cfg.get("result_entry", True):  # SG50 (result_entry: false) 은 결과를 받지 않음
+                r["reasons"].append("결과 미입력")
         elif r["final_success"] == "False":
             r["reasons"].append("최종 실패로 입력됨")
         for k in ("late_ticks", "camera_stall_ticks"):
@@ -316,6 +492,8 @@ def main(argv=None):
                 r["reasons"].append(f"{k} {m.get(k)}")
         r["ok"] = not r["reasons"]
         rows.append(r)
+
+    pilot_rows = pilot_qa(cfg, sess_dir, plan, eps, data, fps, dataset, info, cams, ep_meta, integ) if cfg.get("pilot") else []
 
     # ---- 분포
     valid = [r for r in rows if not r["excluded"]]
@@ -369,6 +547,8 @@ def main(argv=None):
     L += ["- 닫기 영역 = config/r12_wrist_zone.json close_zone (d2 256편 닫기 시작 순간 손목 큐브 중심, 주 덩어리 p10–p90 · 넓이 최소). 닫기 시작 = 명령 그리퍼가 열린 뒤 처음 <10 이 되기 전 계속 줄어들기 시작한 프레임.",
           "- 시작 자세 검사 = r12_common.safety_check (설정 safety 절; 관절 캘리브레이션 한계, |pan|, 그리퍼 열림, 리더−팔로워 차이). FK·TCP 위치는 쓰지 않음.",
           "- 큐브 검출 = redbox8_layouts.yaml detection.colors.red HSV. front 좌표 = 같은 설정의 H (큐브 중심 평면). 물리적 접근 깊이는 측정하지 않음."]
+    if pilot_rows:
+        L += pilot_report(cfg, pilot_rows, out_dir)
     with open(os.path.join(out_dir, "r12_qa_report.md"), "w") as fh:
         fh.write("\n".join(L) + "\n")
     print(f"품질 검사: 문제 없음 {sum(r['ok'] for r in valid)}/{len(valid)} → {os.path.join(out_dir, 'r12_qa_report.md')}")

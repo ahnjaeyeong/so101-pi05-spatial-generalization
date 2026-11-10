@@ -78,3 +78,16 @@
 - 흐름 변경: 결과 단계 → = 저장 뒤 준비 단계 (녹화는 준비 단계 → 바로 뒤). r1_try2 ep1 (저장 중 리더 34° 이동 → 첫 프레임 팔로워 28° 튐) 이 근거.
 - 안전 조건 (BLOCK): 관절값 없음·NaN · |pan| > 95° · Pan 한계 10° 안 · 리더−팔로워 > 25°. 시나리오 조건은 막지 않음.
 - 사용자 기록 r1_try2 (13:52, 2편) 는 3차 정의로 남겨 둠. 14:08 에 그 세션의 후처리·QA 가 실행됐다 (review_videos, qa/).
+
+## 2026-11-03 교정 시연 파일럿 12편 (R1 4 · R2-P 4 · R2-O 4)
+
+- 문서: `07_pilot12.md` (재사용 범위 · 구성 · 시작 상태 기록 · 메타데이터 · QA · 안전 점검 · 시험 · 남은 위험), `08_pilot12_usage.md` (명령).
+- 설정: `config/r12_pilot12.yaml` = 기존 `r12_scenarios.yaml` 위에 `extends` (기존 파일 · r1_pilot · r2_pilot 40 편 draft 그대로).
+- 세션: `main_k8/r12_pilot12_r1` · `r12_pilot12_r2p` · `r12_pilot12_r2o` (계획만, dataset 없음). 실물 녹화는 사용자가 실행.
+- 코드 변경 (git 브랜치 `pilot12-r1-r2p-r2o`, 기준 커밋 `a72cf56` = 변경 전 폴더 그대로):
+  - r12_common: extends · like · 파일럿 시작 조건 · 동시 프로세스 검사 · 파일럿 메타데이터 · 닫힘 세기
+  - r12_record_entry: TeleopGuard (파일럿 설정에서만) · 시작 프레임 PNG
+  - r12_collect: 동시 프로세스 검사 · pilot_start · 보호 사건 · 체크리스트 · 메뉴
+  - r12_viewer: 시작 조건 칸 · 녹화 상태 · 보호 표시
+  - r12_qa: 파일럿 §9
+- 시험: 새 test_pilot12 39/39 · test_preview_pilot12 15. 기존 시험은 변경 전과 같음 (units 72/76 — 11-03 설정 변경 뒤부터 있던 4 건).

@@ -1,0 +1,3 @@
+﻿run,ep,verdict,seconds,frames,front_image,wrist_image,memo,ckpt,tag,started,task
+20261105_134136_20k_t06_07_bl_series,000,F,58.9,1766,start_images/ep000_front.png,start_images/ep000_wrist.png,,../d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000,t06_07_bl_series,2026-11-05 13:41,pick up the red cube and put it in the brown box
+20261105_134136_20k_t06_07_bl_series,001,P,30.5,914,start_images/ep001_front.png,start_images/ep001_wrist.png,,../d2/train/32_20000/pi05_expert_bs32_20k/checkpoints/020000,t06_07_bl_series,2026-11-05 13:41,pick up the red cube and put it in the brown box

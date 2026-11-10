@@ -1,0 +1,38 @@
+{
+ "run": "20261105_131723_20k_t03_bl_k1_0",
+ "ended_by": "episode_end_or_user_next",
+ "exception": null,
+ "initial_position": {
+  "shoulder_pan.pos": -2.5494505494505493,
+  "shoulder_lift.pos": -102.46153846153847,
+  "elbow_flex.pos": 95.6043956043956,
+  "wrist_flex.pos": 68.65934065934066,
+  "wrist_roll.pos": 3.912087912087912,
+  "gripper.pos": 2.5570145127850727
+ },
+ "end_present_arm": {
+  "shoulder_pan": -5.186813186813187,
+  "shoulder_lift": -103.16483516483517,
+  "elbow_flex": 94.72527472527473,
+  "wrist_flex": 74.28571428571429,
+  "wrist_roll": -1.2747252747252746
+ },
+ "diff_from_initial_deg": {
+  "shoulder_pan": -2.64,
+  "shoulder_lift": -0.7,
+  "elbow_flex": -0.88,
+  "wrist_flex": 5.63,
+  "wrist_roll": -5.19
+ },
+ "max_abs_diff_deg": 5.63,
+ "bus_ok_at_teardown": true,
+ "torque_left_on": true,
+ "auto_return_blocked_calls": 0,
+ "rerecord_to_stop": 0,
+ "holds": 2,
+ "teardown_steps": [
+  "engine_stopped",
+  "bus_disconnected_torque_kept"
+ ],
+ "time": "2026-11-05 13:20:59"
+}

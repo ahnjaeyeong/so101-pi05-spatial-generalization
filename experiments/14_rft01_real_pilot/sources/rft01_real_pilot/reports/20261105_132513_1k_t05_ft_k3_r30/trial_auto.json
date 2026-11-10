@@ -1,0 +1,292 @@
+{
+ "run_id": "20261105_132513_1k_t05_ft_k3_r30",
+ "run_dir": "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30",
+ "ep": 0,
+ "notes": [],
+ "manifest": {
+  "trial": 5,
+  "model": "ft",
+  "model_name": "rft01_001000",
+  "ckpt": "/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model",
+  "model_sha256": "620c45988a35b77e76b5c0869c560697d9d095143aceee33b98946a7db712af9",
+  "tag": "t05_ft_k3_r30",
+  "rerun_reason": null,
+  "launched": "2026-11-05T13:25:13",
+  "plan_row": {
+   "ep": "5",
+   "label": "K3_R30",
+   "group": "K",
+   "known": "known",
+   "x_cm": "-8.5",
+   "y_cm": "-3.5",
+   "angle_code": "R30",
+   "angle_deg": "-30.0",
+   "angle_text": "R30 (위에서 볼 때 시계 ↻ 30°)",
+   "ref_K": "K3",
+   "dist_ref_K_cm": "0.0",
+   "from_ref": "표시된 자리",
+   "pe_deg": "32.9",
+   "min_set": "True",
+   "in_calib": "True",
+   "trial": "5",
+   "model": "ft",
+   "pair": "P3",
+   "order_in_pair": "1",
+   "phase": "3",
+   "condition": "K3 R30"
+  },
+  "eval_ui_args": [
+   "--session",
+   "main_k8/rft01_real_pilot",
+   "--ckpt",
+   "/home/user/so101_runs/main_k8/d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000/pretrained_model",
+   "--task",
+   "pick up the red cube and put it in the brown box",
+   "--tag",
+   "t05_ft_k3_r30",
+   "--episodes",
+   "1",
+   "--episode-time",
+   "60",
+   "--inference.rtc.prefix_attention_schedule=EXP",
+   "--inference.queue_threshold=30",
+   "--arm_filter=false",
+   "--rollout_guard=warn",
+   "--r2_safety=stop",
+   "--r2_safety.plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/pilot_plan.csv",
+   "--r2_safety.plan_start=5",
+   "--fault_latch=stop",
+   "--return_to_initial_position=false",
+   "--strategy.reset_to_initial_position=false"
+  ],
+  "env": {
+   "ROLLOUT_DIAG": "1"
+  },
+  "code_sha256": {
+   "/home/user/so101_boxpick/scripts/eval_ui.py": "57abd60cc6842b9d7afa0087ebeade33ad2e52aebe42f362ea0120b29d7ee2a5",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollout_logged.py": "48f113809df525fe0c849ffbdd530a31ae67fed5b6ea192300decc867b73b497",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/fault_latch.py": "1f7f2afe7ef158687503a531f1ff4f2e2455375a9b2499c6e18ad81b239b278f",
+   "/home/user/so101_runs/main_k8/r2_grasp_diagnostic/eval/rollout_logged.py": "c524cd8ac9914d998c0f5603ff1178eda8e3f7972170bc4058167b544874014e",
+   "/home/user/so101_runs/main_k8/r2_grasp_diagnostic/eval/r2_safety.py": "04c09c84212a26a454d51afc832d8815f8cb503bebd6245dcb8e3722525f9a71",
+   "/home/user/so101_runs/main_k8/r2_grasp_diagnostic/eval/r2_live.py": "98853cd87cbaac7d9f9f7dd84095f003b866d3171adeb361e14b611a836b5d85",
+   "/home/user/so101_runs/main_k8/r2_grasp_diagnostic/scripts/r2_place_viewer.py": "24486c3e1384d3f3a4f13b208556f46ba495b40f077406b8a5bffa05a59fc117",
+   "/home/user/so101_runs/main_k8/d2/eval/rollout_logged.py": "8fcd4b6b05bfc37612780a9ce24b930188175a9bed1942bf5e54645b15d8feb8",
+   "/home/user/so101_runs/main_k8/d2/eval/arm_filter.py": "a5307329f733c1c439eac66eaf4e1eb0d113e669295abc870ed1f6b0f11a6d74",
+   "/home/user/so101_runs/main_k8/d2/eval/diag_log.py": "b1425bab119ecc304e9beb1a759422d699fd372faaea35d20d961d31ec83cae7",
+   "/home/user/so101_runs/main_k8/d2/pan_inference_diagnostic/scripts/cube_coords.py": "1f26ab9fa2077f163ca2fb6dc65f04ede1ca2e94ed4eb5769c6019becd4be72b",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/config/pilot_plan.csv": "09323235a0f859bc219609b3619f3cf8c233ee93807d675a2bb550ce9c21137d",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/config/models.env": "c8ba7c47989f9b1d8fff91b4b2bb10ff61ee2d82619bdbe862fc0310ccb590d0",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/scripts/run_trial.sh": "e2003575a42aa562e68b06aca2f307386f50ce9a82f889376a55355a160d9680",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/end_hold.py": "be0cf02df2fa7d8e74007ca5ee9f5e521ff3a45de90bde1652b3d60e6ff7552a",
+   "/home/user/so101_runs/main_k8/rft01_real_pilot/scripts/safe_home.py": "4faf8c33eb67dba2a7a1263dfa9d9ac20d6f47ba6de11a03c8fd1304817e3bf2"
+  },
+  "so101_boxpick_git": {
+   "head": "490a5da2324f54b6de6d6f73e182ed54bc9939eb",
+   "eval_ui_status": "?? scripts/eval_ui.py"
+  },
+  "lerobot_version": "0.6.2"
+ },
+ "eval_ui": {
+  "﻿run": "20261105_132513_1k_t05_ft_k3_r30",
+  "ep": "000",
+  "verdict": "P",
+  "seconds": "21.4",
+  "frames": "642",
+  "front_image": "start_images/ep000_front.png",
+  "wrist_image": "start_images/ep000_wrist.png",
+  "memo": "",
+  "ckpt": "../d2/recovery_ft/runs/rft01_d2rc16_W5_1k_s2001/checkpoints/001000",
+  "tag": "t05_ft_k3_r30",
+  "started": "2026-11-05 13:25",
+  "task": "pick up the red cube and put it in the brown box"
+ },
+ "start_joints": {
+  "shoulder_pan": -4.309999942779541,
+  "shoulder_lift": -103.16000366210938,
+  "elbow_flex": 95.77999877929688,
+  "wrist_flex": 73.66999816894531,
+  "wrist_roll": 1.7999999523162842,
+  "gripper": 0.6200000047683716
+ },
+ "n_frames": 642,
+ "paths": {
+  "dataset": "/home/user/so101_runs/main_k8/rft01_real_pilot/eval/rollouts/20261105_132513_1k_t05_ft_k3_r30/dataset",
+  "videos": [
+   "dataset/videos/observation.images.front/chunk-000/file-000.mp4",
+   "dataset/videos/observation.images.wrist/chunk-000/file-000.mp4"
+  ],
+  "parquet": [
+   "dataset/data/chunk-000/file-000.parquet"
+  ],
+  "filter_log": "filter_log.csv",
+  "pose_check": "pose_check.txt",
+  "diag": "diag"
+ },
+ "pose_check_txt": "joint                지금       학습 시작 평균            학습 범위  판정\nshoulder_pan       -4.3           -4.3   -14.8 ~    3.8  OK\nshoulder_lift    -103.2         -102.9  -103.3 ~ -102.4  OK\nelbow_flex         95.8           95.3    91.0 ~   96.3  OK\nwrist_flex         73.7           65.5    50.4 ~   76.8  OK\nwrist_roll          1.8            2.5    -5.4 ~   11.5  OK\ngripper             0.6            1.3     0.9 ~    5.8  OK\n시작 자세 OK\n",
+ "pe_source": "r2_safety.csv episode_start",
+ "pe_start_photo": 31.93,
+ "start_pan": -4.3076923076923075,
+ "plan_check": [
+  "놓인 곳 (-8.6, -2.9) cm · Known (K3 0.6 cm) · 각도 -27° (= R30) · 계획 K3_R30 과 0.6 cm"
+ ],
+ "plan_check_warn": [],
+ "safety_stops": [],
+ "safety_warns": [],
+ "n_blocked_r2": 0,
+ "fault_events": [],
+ "end_state": {
+  "run": "20261105_132513_1k_t05_ft_k3_r30",
+  "ended_by": "episode_end_or_user_next",
+  "exception": null,
+  "initial_position": {
+   "shoulder_pan.pos": -4.3076923076923075,
+   "shoulder_lift.pos": -103.16483516483517,
+   "elbow_flex.pos": 95.78021978021978,
+   "wrist_flex.pos": 73.67032967032966,
+   "wrist_roll.pos": 1.8021978021978022,
+   "gripper.pos": 0.6219765031098825
+  },
+  "end_present_arm": {
+   "shoulder_pan": -8.703296703296703,
+   "shoulder_lift": -103.25274725274726,
+   "elbow_flex": 94.63736263736264,
+   "wrist_flex": 74.9010989010989,
+   "wrist_roll": -1.7142857142857142
+  },
+  "diff_from_initial_deg": {
+   "shoulder_pan": -4.4,
+   "shoulder_lift": -0.09,
+   "elbow_flex": -1.14,
+   "wrist_flex": 1.23,
+   "wrist_roll": -3.52
+  },
+  "max_abs_diff_deg": 4.4,
+  "bus_ok_at_teardown": true,
+  "torque_left_on": true,
+  "auto_return_blocked_calls": 0,
+  "rerecord_to_stop": 0,
+  "holds": 2,
+  "home_mode": false,
+  "homes": [],
+  "teardown_steps": [
+   "engine_stopped",
+   "bus_disconnected_torque_kept"
+  ],
+  "time": "2026-11-05 13:29:49"
+ },
+ "end_hold_events": [
+  "install",
+  "hold",
+  "hold",
+  "teardown"
+ ],
+ "console_flags": {
+  "ctrl_c": false,
+  "traceback": false,
+  "rtc_error": false,
+  "fatal": false,
+  "r2_safety_stop": false,
+  "fault_latch": false
+ },
+ "cube": {
+  "cube_x": "-8.633261127556889",
+  "cube_y": "-2.879250081502393",
+  "cube_yaw_deg": "-28.252749836702385",
+  "coord_status": "valid_near_K",
+  "nearest_K": "K3",
+  "dist_K_cm": "0.6348928960324874",
+  "angle_class": "R30",
+  "plan_label": "K3_R30",
+  "position_group": "Known"
+ },
+ "closes": [
+  {
+   "close_k": "0",
+   "T2_i": "345",
+   "T2_s": "11.5",
+   "T4": "grasp",
+   "T4_bottom": "11.9558",
+   "after_first_grasp": "False"
+  },
+  {
+   "close_k": "1",
+   "T2_i": "436",
+   "T2_s": "14.533333333333333",
+   "T4": "empty",
+   "T4_bottom": "0.8293",
+   "after_first_grasp": "True"
+  }
+ ],
+ "auto": {
+  "first_close_T4": "grasp",
+  "first_close_T2_s": 11.5,
+  "n_closes": 2,
+  "n_empty_before_first_grasp": 0,
+  "any_grasp": true,
+  "first_grasp_T2_i": 345,
+  "pan_pre_first_close": {
+   "direction_to_target": "+",
+   "n_reversals": 2,
+   "events": [
+    {
+     "i_peak": 73,
+     "pan_peak": 30.505495071411133,
+     "progress_peak": 34.81318664550781,
+     "i_detect": 76,
+     "i_back_min": 89,
+     "pan_back_min": 18.0219783782959,
+     "back_deg": 12.483516693115234
+    },
+    {
+     "i_peak": 119,
+     "pan_peak": 40.35165023803711,
+     "progress_peak": 44.65934371948242,
+     "i_detect": 175,
+     "i_back_min": 291,
+     "pan_back_min": 29.010988235473633,
+     "back_deg": 11.34066390991211
+    }
+   ],
+   "max_past_target_deg": 8.421649932861328,
+   "i_max_past": 119,
+   "pan_min": -12.571428298950195,
+   "pan_max": 40.35165023803711
+  },
+  "pan_whole": {
+   "direction_to_target": "+",
+   "n_reversals": 2,
+   "events": [
+    {
+     "i_peak": 73,
+     "pan_peak": 30.505495071411133,
+     "progress_peak": 34.81318664550781,
+     "i_detect": 76,
+     "i_back_min": 89,
+     "pan_back_min": 18.0219783782959,
+     "back_deg": 12.483516693115234
+    },
+    {
+     "i_peak": 119,
+     "pan_peak": 40.35165023803711,
+     "progress_peak": 44.65934371948242,
+     "i_detect": 175,
+     "i_back_min": 634,
+     "pan_back_min": -12.571428298950195,
+     "back_deg": 52.92308044433594
+    }
+   ],
+   "max_past_target_deg": 8.421649932861328,
+   "i_max_past": 119,
+   "pan_min": -12.571428298950195,
+   "pan_max": 40.35165023803711
+  },
+  "wrist": {
+   "frames_checked": 115,
+   "until_i": 345,
+   "seen_any": true,
+   "visible_frac": 0.8260869565217391,
+   "lost_segments": [],
+   "reacquired": false
+  }
+ }
+}

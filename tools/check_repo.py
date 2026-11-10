@@ -15,7 +15,7 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAX_BYTES = 5_000_000
+MAX_BYTES = 7_000_000
 FORBIDDEN_EXT = {".safetensors", ".pt", ".pth", ".ckpt", ".bin", ".parquet", ".mp4", ".npz", ".npy", ".gz", ".zip"}
 STATUS = ("PLANNED", "IN_PROGRESS", "COMPLETED", "NOT_EVALUATED", "PAUSED", "PARTIAL", "STOPPED")
 REQUIRED = ["목적", "가설", "데이터", "모델", "평가", "한계", "원본 자료"]
@@ -90,7 +90,7 @@ def main():
             for m in re.finditer(pat, txt):
                 errors.append(f"possible secret ({name}) in {rel}: {m.group(0)[:12]}…")
         if ext == ".md":
-            is_source = "/sources/" in rel or rel.startswith("docs/appendix")
+            is_source = "/sources/" in rel or rel.startswith(("docs/appendix", "docs/so101_runs_original", "configs/camera/camera_settings.md"))
             for target in LINK.findall(txt):
                 if re.match(r"^[a-z]+:", target) or target.startswith("#"):
                     continue

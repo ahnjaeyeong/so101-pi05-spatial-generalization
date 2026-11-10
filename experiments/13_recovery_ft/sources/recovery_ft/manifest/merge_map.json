@@ -1,0 +1,30 @@
+{
+ "repo_id": "oxr/so101_k8_d2_rc16",
+ "files": {
+  "data/chunk-000/file-000.parquet": "/home/user/so101_runs/main_k8/d2/dataset/data/chunk-000/file-000.parquet",
+  "videos/observation.images.front/chunk-000/file-000.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.front/chunk-000/file-000.mp4",
+  "videos/observation.images.front/chunk-000/file-001.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.front/chunk-000/file-001.mp4",
+  "videos/observation.images.front/chunk-000/file-002.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.front/chunk-000/file-002.mp4",
+  "videos/observation.images.front/chunk-000/file-003.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.front/chunk-000/file-003.mp4",
+  "videos/observation.images.wrist/chunk-000/file-000.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.wrist/chunk-000/file-000.mp4",
+  "videos/observation.images.wrist/chunk-000/file-001.mp4": "/home/user/so101_runs/main_k8/d2/dataset/videos/observation.images.wrist/chunk-000/file-001.mp4",
+  "data/chunk-000/file-001.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/data/chunk-000/file-000.parquet",
+  "data/chunk-000/file-002.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/data/chunk-000/file-001.parquet",
+  "videos/observation.images.front/chunk-000/file-004.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/videos/observation.images.front/chunk-000/file-000.mp4",
+  "videos/observation.images.front/chunk-000/file-005.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/videos/observation.images.front/chunk-000/file-001.mp4",
+  "videos/observation.images.wrist/chunk-000/file-002.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/videos/observation.images.wrist/chunk-000/file-000.mp4",
+  "videos/observation.images.wrist/chunk-000/file-003.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_r1/dataset/videos/observation.images.wrist/chunk-000/file-001.mp4",
+  "data/chunk-000/file-003.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/data/chunk-000/file-000.parquet",
+  "data/chunk-000/file-004.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/data/chunk-000/file-001.parquet",
+  "data/chunk-000/file-005.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/data/chunk-000/file-002.parquet",
+  "data/chunk-000/file-006.parquet": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/data/chunk-000/file-003.parquet",
+  "videos/observation.images.front/chunk-000/file-006.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.front/chunk-000/file-000.mp4",
+  "videos/observation.images.front/chunk-000/file-007.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.front/chunk-000/file-001.mp4",
+  "videos/observation.images.front/chunk-000/file-008.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.front/chunk-000/file-002.mp4",
+  "videos/observation.images.front/chunk-000/file-009.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.front/chunk-000/file-003.mp4",
+  "videos/observation.images.wrist/chunk-000/file-004.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.wrist/chunk-000/file-000.mp4",
+  "videos/observation.images.wrist/chunk-000/file-005.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.wrist/chunk-000/file-001.mp4",
+  "videos/observation.images.wrist/chunk-000/file-006.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.wrist/chunk-000/file-002.mp4",
+  "videos/observation.images.wrist/chunk-000/file-007.mp4": "/home/user/so101_runs/main_k8/r12_pilot12_rc/dataset/videos/observation.images.wrist/chunk-000/file-003.mp4"
+ }
+}

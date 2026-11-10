@@ -1,0 +1,38 @@
+{
+ "tag": "closed",
+ "stamp": "20261105_171415",
+ "live": "/dev/shm/r12_live_campreview_20261105_171218",
+ "seq": 1697,
+ "frames_checked": 31,
+ "status_counts": {
+  "none": 31
+ },
+ "sticker_u_mean": null,
+ "sticker_v_mean": null,
+ "sticker_u_sd": null,
+ "sticker_v_sd": null,
+ "kept": {
+  "status": "none",
+  "reason": "큐브 안 흰 후보 없음",
+  "sticker": null,
+  "cube": {
+   "u": 0.4247,
+   "v": 0.7443,
+   "px": [
+    271.8,
+    357.2
+   ],
+   "area_px": 32655,
+   "bbox": [
+    176,
+    257,
+    188,
+    210
+   ],
+   "touches_edge": false
+  },
+  "candidates": []
+ },
+ "detect_version": "sticker-v1+defaults",
+ "wrist_png_sha256": "667bf79ed3c1eb71"
+}

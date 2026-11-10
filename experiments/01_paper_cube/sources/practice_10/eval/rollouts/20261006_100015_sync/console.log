@@ -1,0 +1,312 @@
+INFO 2026-10-06 10:00:20 ut_logged.py:29 debug log: /home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_100015_sync/debug.log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_practice10_pi05_2k_sync --dataset.root=/home/user/so101_runs/practice/practice_10/eval/rollouts/20261006_100015_sync/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=2 --dataset.episode_time_s=20 --dataset.reset_time_s=20 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.type=sync
+INFO 2026-10-06 10:00:20 _rollout.py:245 Building rollout context...
+INFO 2026-10-06 10:00:20 /context.py:330 Loading policy from '/home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-10-06 10:02:57 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/practice/practice_10/train/pi05_2k/checkpoints/002000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-10-06 10:02:57 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-10-06 10:02:57 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-10-06 10:03:03 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-10-06 10:03:03 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-10-06 10:03:05 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-10-06 10:03:06 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-10-06 10:03:06 follower.py:131 my_arm SOFollower connected.
+INFO 2026-10-06 10:03:06 /context.py:395 Robot connected: so_follower
+INFO 2026-10-06 10:03:06 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-10-06 10:03:06 /context.py:500 Setting up dataset (repo_id=oxr/rollout_practice10_pi05_2k_sync)...
+INFO 2026-10-06 10:03:07 /context.py:547 Dataset ready: oxr/rollout_practice10_pi05_2k_sync (0 existing episodes)
+INFO 2026-10-06 10:03:08 /context.py:575 Creating inference engine (type=sync)...
+INFO 2026-10-06 10:03:08 e/factory.py:99 Creating inference engine: sync
+INFO 2026-10-06 10:03:08 ence/sync.py:63 SyncInferenceEngine initialized (device=cuda, action_keys=6)
+INFO 2026-10-06 10:03:08 /context.py:597 Rollout context assembled successfully
+INFO 2026-10-06 10:03:08 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-10-06 10:03:08 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-10-06 10:03:08 gies/core.py:96 Starting inference engine...
+INFO 2026-10-06 10:03:08 ence/sync.py:79 Resetting sync inference state (policy + processors)
+INFO 2026-10-06 10:03:08 ence/sync.py:71 SyncInferenceEngine started (inline mode — no background thread)
+INFO 2026-10-06 10:03:08 ies/core.py:100 Inference engine started
+INFO 2026-10-06 10:03:08 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-10-06 10:03:08 episodic.py:105 Episodic strategy ready
+INFO 2026-10-06 10:03:08 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-10-06 10:03:08 ence/sync.py:79 Resetting sync inference state (policy + processors)
+INFO 2026-10-06 10:03:08 ls/utils.py:150 Recording episode 0
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.149940490722656,
+                      'safe goal_pos': 42.59340659340659},
+    'wrist_flex': {   'original goal_pos': 73.47760772705078,
+                      'safe goal_pos': 71.20879120879121}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.15399932861328,
+                      'safe goal_pos': 42.59340659340659},
+    'wrist_flex': {   'original goal_pos': 73.5823974609375,
+                      'safe goal_pos': 71.20879120879121}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.830490112304688,
+                      'safe goal_pos': 42.59340659340659},
+    'wrist_flex': {   'original goal_pos': 73.49795532226562,
+                      'safe goal_pos': 71.2967032967033}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.460464477539062,
+                      'safe goal_pos': 41.45054945054945},
+    'wrist_flex': {   'original goal_pos': 73.54387664794922,
+                      'safe goal_pos': 72.35164835164835}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.054046630859375,
+                      'safe goal_pos': 38.9010989010989}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.284912109375,
+                      'safe goal_pos': 37.40659340659341}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.027381896972656,
+                      'safe goal_pos': 35.472527472527474}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 22.67498779296875,
+                      'safe goal_pos': 33.62637362637363}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 22.33527374267578,
+                      'safe goal_pos': 31.692307692307693}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 22.257369995117188,
+                      'safe goal_pos': 29.582417582417584}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 22.264785766601562,
+                      'safe goal_pos': 27.912087912087912}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 22.219772338867188,
+                      'safe goal_pos': 26.065934065934066}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 21.75537872314453,
+                      'safe goal_pos': 24.13186813186813}}
+WARNING 2026-10-06 10:03:09 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 21.566749572753906,
+                      'safe goal_pos': 22.373626373626372}}
+WARNING 2026-10-06 10:03:11 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:13 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:15 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:17 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:19 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:21 le_timer.py:407 Control loop is running slower (3.1 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:23 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:25 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:27 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+INFO 2026-10-06 10:03:28 ls/utils.py:150 Reset the environment
+Map:   0%|          | 0/496 [00:00<?, ? examples/s]Map:  79%|███████▉  | 392/496 [00:00<00:00, 3878.15 examples/s]Map: 100%|██████████| 496/496 [00:00<00:00, 3665.87 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+INFO 2026-10-06 10:03:56 ence/sync.py:79 Resetting sync inference state (policy + processors)
+INFO 2026-10-06 10:03:56 ls/utils.py:150 Recording episode 1
+INFO 2026-10-06 10:03:56 le_timer.py:559 Cadence (episode 1): 24.77 Hz vs 30 Hz target · 496 ticks, 20.0 s measured · 9/495 ticks over the 33.3 ms budget (work mean 16.8 ms, worst 345.6 ms)
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 25.24028778076172,
+                      'safe goal_pos': 42.15384615384615},
+    'wrist_flex': {   'original goal_pos': 73.26891326904297,
+                      'safe goal_pos': 71.56043956043956}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 25.244308471679688,
+                      'safe goal_pos': 42.15384615384615},
+    'wrist_flex': {   'original goal_pos': 73.36605834960938,
+                      'safe goal_pos': 71.56043956043956}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 25.069007873535156,
+                      'safe goal_pos': 42.15384615384615},
+    'wrist_flex': {   'original goal_pos': 73.43939971923828,
+                      'safe goal_pos': 71.64835164835165}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.998382568359375,
+                      'safe goal_pos': 40.92307692307692},
+    'wrist_flex': {   'original goal_pos': 73.46747589111328,
+                      'safe goal_pos': 72.96703296703296}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.793930053710938,
+                      'safe goal_pos': 38.54945054945055}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.883811950683594,
+                      'safe goal_pos': 36.527472527472526}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.59564208984375,
+                      'safe goal_pos': 34.76923076923077}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 24.22309112548828,
+                      'safe goal_pos': 32.83516483516483}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.94158172607422,
+                      'safe goal_pos': 30.989010989010985}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.888687133789062,
+                      'safe goal_pos': 29.05494505494506}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.67290496826172,
+                      'safe goal_pos': 27.20879120879121}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.55170440673828,
+                      'safe goal_pos': 25.274725274725277}}
+WARNING 2026-10-06 10:03:57 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 23.476722717285156,
+                      'safe goal_pos': 23.516483516483518}}
+WARNING 2026-10-06 10:03:58 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 16.55490493774414,
+                         'safe goal_pos': 16.21978021978022}}
+WARNING 2026-10-06 10:03:58 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'shoulder_lift': {   'original goal_pos': 19.9266357421875,
+                         'safe goal_pos': 18.59340659340659}}
+WARNING 2026-10-06 10:03:58 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'elbow_flex': {   'original goal_pos': 5.277042388916016,
+                      'safe goal_pos': 5.758241758241759},
+    'gripper': {   'original goal_pos': -8.115869522094727,
+                   'safe goal_pos': -7.239806496199033},
+    'shoulder_lift': {   'original goal_pos': 23.644222259521484,
+                         'safe goal_pos': 21.31868131868132}}
+WARNING 2026-10-06 10:03:59 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -7.5936994552612305,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -8.358238220214844,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -8.88280200958252,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -9.551752090454102,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -9.789548873901367,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -9.990700721740723,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -9.911127090454102,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -9.483199119567871,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -8.831375122070312,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -8.383443832397461,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:03:59 ts/utils.py:123 Relative goal position magnitude had to be clamped to be safe.
+{   'gripper': {   'original goal_pos': -7.275074481964111,
+                   'safe goal_pos': -7.239806496199033}}
+WARNING 2026-10-06 10:04:01 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:03 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:04 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:06 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:08 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:10 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:12 le_timer.py:407 Control loop is running slower (3.0 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:14 le_timer.py:407 Control loop is running slower (2.9 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+WARNING 2026-10-06 10:04:16 le_timer.py:407 Control loop is running slower (2.8 Hz) than the target FPS (30 Hz). Dataset frames might be dropped and robot control might be unstable. Common causes are: 1) Camera FPS not keeping up 2) Policy inference (action or text) taking too long 3) CPU starvation
+Map:   0%|          | 0/501 [00:00<?, ? examples/s]Map:  79%|███████▉  | 397/501 [00:00<00:00, 3927.13 examples/s]Map: 100%|██████████| 501/501 [00:00<00:00, 3676.66 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[mp4 @ 0x3a74ed10] Starting second pass: moving the moov atom to the beginning of the file
+[mp4 @ 0x78927a30] Starting second pass: moving the moov atom to the beginning of the file
+INFO 2026-10-06 10:04:23 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-10-06 10:04:23 le_timer.py:559 Cadence (episode 2): 25.20 Hz vs 30 Hz target · 501 ticks, 19.8 s measured · 10/500 ticks over the 33.3 ms budget (work mean 17.7 ms, worst 353.5 ms)
+INFO 2026-10-06 10:04:23 le_timer.py:606 Cadence summary — whole run, 2 episodes · target 30 Hz (33.3 ms budget per tick): 997 ticks, 995 judged
+  effective cadence: 24.98 Hz over 39.8 s measured
+  ticks over the 33.3 ms work budget: 19/995 (1.9%) — work mean 17.3 ms, worst 353.5 ms
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 27
+  loop-body steps (share of measured work):
+    observe      mean   1.45 ms · worst   4.78 ms ·   7.9% of work · 997 calls
+    process_obs  mean   0.01 ms · worst   0.24 ms ·   0.1% of work · 997 calls
+    infer        mean  15.09 ms · worst 725.32 ms ·  82.2% of work · 997 calls
+    send         mean   1.40 ms · worst   5.71 ms ·   7.6% of work · 997 calls
+    telemetry    mean   0.00 ms · worst   0.05 ms ·   0.0% of work · 997 calls
+    record       mean   0.22 ms · worst   1.18 ms ·   1.2% of work · 997 calls
+  pacing headroom: 22.0 ms slept per tick on average (max 26.5 ms) — near zero means the loop is saturated
+INFO 2026-10-06 10:04:23 ls/utils.py:150 Stop recording
+INFO 2026-10-06 10:04:24 episodic.py:357 Finalizing dataset...
+INFO 2026-10-06 10:04:24 ies/core.py:209 Stopping inference engine...
+INFO 2026-10-06 10:04:24 ence/sync.py:75 SyncInferenceEngine stopped
+INFO 2026-10-06 10:04:24 ies/core.py:214 Returning robot to initial position before shutdown...
+INFO 2026-10-06 10:04:27 ies/core.py:220 Disconnecting robot...
+INFO 2026-10-06 10:04:27 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-10-06 10:04:27 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+INFO 2026-10-06 10:04:27 follower.py:262 my_arm SOFollower disconnected.
+INFO 2026-10-06 10:04:27 ls/utils.py:150 Exiting
+INFO 2026-10-06 10:04:27 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-10-06 10:04:27 _rollout.py:272 Rollout finished

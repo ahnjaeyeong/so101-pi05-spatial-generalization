@@ -1,0 +1,5 @@
+wall,perf,event,detail
+1793852488.5545,1218003.72473,install,E1 return blocked · E2 end hold · E3 rerecord→stop · E4 teardown hold (torque on)
+1793852692.1012,1218207.27136,hold,policy_loop_end episode_end_or_user_next shoulder_pan=-4.31 shoulder_lift=-103.16 elbow_flex=95.52 wrist_flex=73.67 wrist_roll=1.80
+1793852700.4635,1218215.63367,hold,teardown shoulder_pan=-4.31 shoulder_lift=-103.16 elbow_flex=95.69 wrist_flex=73.67 wrist_roll=1.80
+1793852700.7270,1218215.89720,teardown,"{""ended_by"": ""episode_end_or_user_next"", ""max_abs_diff_deg"": 4.04, ""bus_ok_at_teardown"": true, ""torque_left_on"": true, ""auto_return_blocked_calls"": 0}"

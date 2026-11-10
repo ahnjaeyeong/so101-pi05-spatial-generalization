@@ -1,0 +1,4 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1793852251.7042,1217766.87442,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/rft01_real_pilot/config/pilot_plan.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=3 live=on viewer=auto,,,,,
+1793852423.0388,1217938.20897,0,0,episode_start,over_target,pe=-35.20 start_pan=-2.5494505494505493 ok x=-8.3 y=26.4,,-2.5494505494505493,,,
+1793852423.0819,1217938.25212,0,0,plan_check,K1_0,"놓인 곳 (-8.3, 26.4) cm · Known (K1 0.2 cm) · 각도 -0° (= 0) · 계획 K1_0 과 0.2 cm",,-2.5494505494505493,,,

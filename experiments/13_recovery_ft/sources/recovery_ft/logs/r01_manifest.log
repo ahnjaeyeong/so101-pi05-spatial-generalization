@@ -1,0 +1,30 @@
+       eps  frames
+group             
+R1       4    1760
+R2      12    4368
+d2     256  123342
+    group  source_episode  merged_episode  length  approved      scenario start_gripper cube_position                                 tags
+256    R1               0             256     494     False  R1-FOLD-OVER        closed            K4  wrist_start=absent;EXCLUDED_by_user
+257    R1               1             257     470     False  R1-FOLD-OVER        closed            K6  wrist_start=absent;EXCLUDED_by_user
+258    R1               2             258     524     False  R1-FOLD-OVER        closed            K1    wrist_start=edge;EXCLUDED_by_user
+259    R1               3             259     577     False  R1-FOLD-OVER        closed            K3  wrist_start=absent;EXCLUDED_by_user
+260    R1               4             260     428      True  R1-FOLD-OVER        closed            K4                     wrist_start=edge
+261    R1               5             261     386      True  R1-FOLD-OVER        closed            K6                     wrist_start=edge
+262    R1               6             262     470      True  R1-FOLD-OVER        closed            K1                   wrist_start=absent
+263    R1               7             263     476      True  R1-FOLD-OVER        closed            K3                  wrist_start=visible
+264    R2               0             264     362      True         RC-F2        closed            K7                                     
+265    R2               1             265     361      True         RC-F1          open            K6                                     
+266    R2               2             266     343      True       RC-F3-L        closed            K5                                     
+267    R2               3             267     373      True       RC-F3-R        closed            K1                                     
+268    R2               4             268     451      True         RC-F2        closed            K8      arm_before_gripper_open(7.8deg)
+269    R2               5             269     338      True         RC-F1          open            K3                                     
+270    R2               6             270     362      True         RC-F1          open            K1                                     
+271    R2               7             271     367      True         RC-F2        closed            K5                                     
+272    R2               8             272     398      True       RC-F3-R        closed            K3     arm_before_gripper_open(17.0deg)
+273    R2               9             273     374      True       RC-F3-L        closed            K7                                     
+274    R2              10             274     332      True         RC-F1          open            K4                                     
+275    R2              11             275     260     False         RC-F2        closed            K2                     EXCLUDED_by_user
+276    R2              12             276     307      True         RC-F2        closed            K2      arm_before_gripper_open(6.1deg)
+train episodes 272 excluded merged [256, 257, 258, 259, 275]
+manifest json sha256 a4ab3c4d1d7acd9f4ac40fbe281a928c623bbdd47bd451d0acee91e65fa3b030
+MANIFEST_OK

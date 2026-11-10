@@ -1,0 +1,286 @@
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+  이동: 관절 공간 직선, 최대 81° · 15°/s → 약 5.4 s. 그리퍼 그대로.
+  경로 (상자 · 카메라 · 손 · 케이블) 가 비었는지 확인하세요. 멈추려면 Ctrl+C (그 자리 유지), 급하면 전원 차단.
+이동하지 않았어요. 토크 유지.
+PASS SH1_no_home_word_no_move writes=0
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   FAIL H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 0, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH2_torque_off_refused ['H2_torque_on']
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   FAIL H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 6.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH3_goal_gap_refused ['H3_goal_present_gap']
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -25.0        4.3          +29.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-25.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   FAIL H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 8.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 29.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH4_moved_since_end_refused 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     102.0        4.3          -97.7
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   FAIL H4_pan_and_limits  pan=102.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 97.7, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH5_pan_over_100_refused 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0      -40.0          -20.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   FAIL H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -40.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 20.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH6_target_not_rest_refused 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   FAIL H1_no_other_process  1234 python3 scripts/eval_ui.py --child
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+⛔ 점검 실패 — 이동하지 않았어요. 팔은 지금 자리에서 토크 유지. (필요하면 팔을 받치고 --mode release 또는 전원 차단)
+PASS SH7_other_process_refused 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+  이동: 관절 공간 직선, 최대 81° · 15°/s → 약 5.4 s. 그리퍼 그대로.
+  경로 (상자 · 카메라 · 손 · 케이블) 가 비었는지 확인하세요. 멈추려면 Ctrl+C (그 자리 유지), 급하면 전원 차단.
+
+  이동 결과: arrived · 162 틱 · 추종 오차 최대 0.5° · 틱당 최대 0.50°
+
+  도착. 토크를 끄면 팔이 접은 자세에서 조금 내려앉을 수 있습니다 (다음 시행은 연결 때 어차피 토크를 잠깐 끕니다).
+PASS SH8_home_arrives_slow_no_gripper_torque_kept reason=arrived ticks=162 planned=5.4s max_step=0.500 writes=162
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+  이동: 관절 공간 직선, 최대 81° · 15°/s → 약 5.4 s. 그리퍼 그대로.
+  경로 (상자 · 카메라 · 손 · 케이블) 가 비었는지 확인하세요. 멈추려면 Ctrl+C (그 자리 유지), 급하면 전원 차단.
+
+  이동 결과: arrived · 162 틱 · 추종 오차 최대 0.5° · 틱당 최대 0.50°
+
+  도착. 토크를 끄면 팔이 접은 자세에서 조금 내려앉을 수 있습니다 (다음 시행은 연결 때 어차피 토크를 잠깐 끕니다).
+PASS SH9_release_after_home_only_if_typed 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+  이동: 관절 공간 직선, 최대 81° · 15°/s → 약 5.4 s. 그리퍼 그대로.
+  경로 (상자 · 카메라 · 손 · 케이블) 가 비었는지 확인하세요. 멈추려면 Ctrl+C (그 자리 유지), 급하면 전원 차단.
+
+  이동 결과: tracking_elbow_flex_err15.8 · 39 틱 · 추종 오차 최대 15.8° · 틱당 최대 0.50°
+⛔ 도중에 멈췄어요 (그 자리 유지, 토크 켬). 원인 확인 뒤 다시 실행하거나 팔을 받치고 --mode release.
+PASS SH10_stall_halts_and_holds reason=tracking_elbow_flex_err15.8 ticks=39 last write elbow=30.0
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  점검:
+   PASS H1_no_other_process  없음
+   PASS H2_torque_on  Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}
+   PASS H3_goal_present_gap  |Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H4_pan_and_limits  pan=-33.0 outside_limits=[]
+   PASS H5_target_is_rest  target={'shoulder_pan': 4.3, 'shoulder_lift': -101.0, 'elbow_flex': 95.8, 'wrist_flex': 66.6, 'wrist_roll': 3.9}
+   PASS H6_matches_end_state  |지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}
+   PASS H7_move_size  이동량={'shoulder_pan': 37.3, 'shoulder_lift': 81.0, 'elbow_flex': 65.8, 'wrist_flex': 3.4, 'wrist_roll': 1.1}
+
+  이동: 관절 공간 직선, 최대 81° · 15°/s → 약 5.4 s. 그리퍼 그대로.
+  경로 (상자 · 카메라 · 손 · 케이블) 가 비었는지 확인하세요. 멈추려면 Ctrl+C (그 자리 유지), 급하면 전원 차단.
+
+  이동 결과: ctrl_c · 10 틱 · 추종 오차 최대 0.5° · 틱당 최대 0.50°
+⛔ 도중에 멈췄어요 (그 자리 유지, 토크 켬). 원인 확인 뒤 다시 실행하거나 팔을 받치고 --mode release.
+PASS SH11_ctrl_c_halts_and_holds reason=ctrl_c ticks=10
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  ⚠ 토크를 끄면 팔이 자기 무게로 내려옵니다. 지금은 접은 자세가 아닙니다 — 팔을 손으로 받치세요.
+PASS SH12a_release_not_rest_needs_support_word 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan     -33.0        4.3          +37.3
+  shoulder_lift    -20.0     -101.0          -81.0
+  elbow_flex        30.0       95.8          +65.8
+  wrist_flex        70.0       66.6           -3.4
+  wrist_roll         5.0        3.9           -1.1
+  gripper           12.0   (쓰지 않음)
+
+  ⚠ 토크를 끄면 팔이 자기 무게로 내려옵니다. 지금은 접은 자세가 아닙니다 — 팔을 손으로 받치세요.
+PASS SH12b_release_with_support_word 
+
+  관절           지금     목표(시작 자세)   차이
+  shoulder_pan       4.3        4.3           +0.0
+  shoulder_lift   -101.0     -101.0           +0.0
+  elbow_flex        95.8       95.8           +0.0
+  wrist_flex        66.6       66.6           +0.0
+  wrist_roll         3.9        3.9           +0.0
+  gripper            0.8   (쓰지 않음)
+
+  ⚠ 토크를 끄면 팔이 자기 무게로 내려옵니다.
+PASS SH12c_release_at_rest_single_word 
+PASS SH13_check_mode_no_hardware n": -33.0,
+  "shoulder_lift": -20.0,
+  "elbow_flex": 30.0,
+  "wrist_flex": 70.0,
+  "wrist_roll": 5.0
+ },
+ "diff_from_initial_deg": null
+}
+CHECK_ONLY (팔 연결 안 함)
+
+PASS SH14_no_end_state_refuses_before_connect 
+PASS SH15_never_robot_connect_or_configure connect calls=['bus.connect(']
+ALL_PASS
