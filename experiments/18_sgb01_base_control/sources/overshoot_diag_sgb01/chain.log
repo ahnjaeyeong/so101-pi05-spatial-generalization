@@ -1,0 +1,18 @@
+2026-11-10 16:30:47 대기 시작 (pid 3756560): /home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/DONE 또는 FAILED
+2026-11-11 21:49:51 b10 sgft01_010000 시작 (/home/user/so101_runs/practice/sg50_pilot3/train/sgft01_p3_10k_s2001/run/checkpoints/010000/pretrained_model)
+2026-11-11 22:07:48 b10 sgft01_010000 끝 B10_DONE 1074s
+2026-11-11 22:07:48 재현 확인 rc=0 {"same_scenes": true, "n_scenes": [282, 282], "max_abs_diff_cm": 0.0, "Cc_out_open": [0.9556693359072163, 0.7848798186572261, 1.1408129640721132, 0.97692620215793, 39], "expected": [0.96, 0.78, 1.14], "ok": true}
+2026-11-11 22:07:48 b10 sgb01_010000 시작 (/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model)
+2026-11-11 22:25:42 b10 sgb01_010000 끝 B10_DONE 1072s
+2026-11-11 22:25:42 b10 sgb01_002500 시작 (/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/002500/pretrained_model)
+2026-11-11 22:43:42 b10 sgb01_002500 끝 B10_DONE 1078s
+2026-11-11 22:43:43 b10 sgb01_005000 시작 (/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/005000/pretrained_model)
+2026-11-11 23:01:48 b10 sgb01_005000 끝 B10_DONE 1084s
+2026-11-11 23:01:48 b10 sgb01_007500 시작 (/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/007500/pretrained_model)
+2026-11-11 23:19:55 b10 sgb01_007500 끝 B10_DONE 1085s
+2026-11-11 23:19:58 b10 요약 끝 (data/compare.txt)
+2026-11-11 23:19:58 sg_offline_eval 시작
+2026-11-12 00:12:43 sg_offline_eval 끝
+2026-11-12 00:12:43 sg_vis_eval 시작
+2026-11-12 01:14:50 sg_vis_eval 끝
+2026-11-12 01:14:50 CHAIN_DONE

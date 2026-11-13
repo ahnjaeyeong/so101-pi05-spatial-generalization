@@ -2,6 +2,18 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-13 — EXP-18 ~ EXP-21 · 3 단계 진행표 · Hugging Face 공개 자료 (branch: exp/18-21-clean96-20261113, main 위)
+- **EXP-18 신규** `experiments/18_sgb01_base_control/`: sgb01 (같은 40 편, pi05_base 에서 시작) 치우침 재측정 [재추론] — Cc_out +0.85 (sgft01 +0.96), 한강 학습 사본 +1.00 · 실물 3/8 [사람] · 멈춘 장면 / 접근 probe.
+- **EXP-19 신규** `experiments/19_clean96_sgp01/`: clean96 (sg_pin, 학습 96 편) 수집 · sgp01 20k · 실물 0° 6/8, 회전 6/8 [사람].
+- **EXP-20 신규** `experiments/20_inference_setting_test/`: queue_threshold 18 · execution_horizon 15 시험 1/4 [사람], 그리퍼 열린 채 시작 사고와 도구 수정 (end_hold v3.2).
+- **EXP-21 신규** `experiments/21_k4_angle_rotation/`: K4 L30 대 0° 6 판, 시연 96 편 손목 회전 방향 전수조사, 손목 회전 권장 UI (`turn_hint`), 방해물 64 편 계획 · 연습 3 판.
+- `README.md`: 1 절에 최종 목표 3 단계 진행표 · 수집 화면 그림 · Hugging Face 저장소 이름, 9 · 10 절 갱신. `EXPERIMENT_INDEX.md` (21 실험), `evaluations/real_robot/README.md` (EXP-18 ~ 21 행).
+- **EXP-11** 수집 도구 사본 `sources/r1_r2_collection/` 갱신 (sg_pin · sg_pin_dis 그룹, 방해물 계획, 손목 회전 권장, 시험 · 화면 그림).
+- 도구: `tools/sync_sources.py` MAPPINGS (18 · 19 · 21; sg50_pilot3 의 한강 run 폴더와 sg_pin/train 은 클러스터 계정 경로가 있어 제외).
+- **첫 화면 교체**: `README.md` = 프로젝트 페이지 (연구 질문 · 방법 · 결과 · 실패 분석 · 틀렸던 것 · 한계 · 자료 · 이름 대응표, 읽기 쉬운 이름). 예전 README 는 `docs/00_연구_기록_안내.md` 로 옮김 (상대 링크 수정). 그림 `docs/figures/project_page/` (성공 · 실패 클립, K4 각도 대조 — 공개 rollout 영상에서 추출, `EXTRACTED.csv`). `CLAUDE.md` 에 프로젝트 페이지 규칙 추가.
+- PR #2 ~ #5 는 내용이 PR #6 으로 이미 main 에 있어 병합 없이 닫음.
+- **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` · `configs/training/RUNS.csv` · `configs/checkpoints/` (sgb01 · sgb01h · sgp01 미등록 — 한강 run 폴더를 복사하지 않아 메타데이터 도구 미실행).
+
 ## 2026-11-09 — EXP-17 집기 직전 지나침 · 편향 진단 (branch: exp/17-grasp-bias-diag-20261109, exp/15-sg50-sgft01-20261109 위)
 - **EXP-17 신규** `experiments/17_grasp_bias_diag/`: EXP-16 실물 8 판 기록 (diag chunk · 관측 · tick) 과 sgft01 010000 재추론으로 (1) 흔들림 → 손목 오차 → 추가 이동 → 지나침 가설 (L1–L4, 사전 기준; L1 만 성립), (2) 집기 직전 편향 P1–P6 (존재 · 출처 · 사람 입력 · 평형점 · 카메라 떨림 · 관절값 의존). 새 실물 시행 없음. 상태 COMPLETED (분석).
 - 사본 `sources/overshoot_diag/` (37 파일, 2.6 MB: 설계 · 결과 md, scripts o1–o3 · b1–b7, data json · csv). 재추론 npz 5 개 (4.1 MB) 는 `sources/ARCHIVE_EXCLUDED.csv` (경로 · SHA-256).

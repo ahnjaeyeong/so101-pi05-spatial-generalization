@@ -1,0 +1,86 @@
+{
+ "pass": 16,
+ "total": 16,
+ "checks": [
+  {
+   "name": "plan_96",
+   "ok": true,
+   "detail": "96 = K 32 + 영역 64"
+  },
+  {
+   "name": "plan_K_all_angles",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "plan_region_8_each",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "plan_region_angle_2_each",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "plan_dirs",
+   "ok": true,
+   "detail": "{'270': 24, '0': 24, '180': 24, '90': 24}"
+  },
+  {
+   "name": "plan_order",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "plan_entry_frames_inside",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "plan_start_pan",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "old_group_plan_unchanged",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "steps_rotated_cube",
+   "ok": true,
+   "detail": "pan → grip → pin_entry → pin_vert → pin_align → pin_align → pin_rot → descend → hold → close → close"
+  },
+  {
+   "name": "steps_monotonic",
+   "ok": true,
+   "detail": "[0, 1, 2, 3, 4, 4, 5, 6, 7, 7, 7]"
+  },
+  {
+   "name": "yellow_then_orange",
+   "ok": true,
+   "detail": "[True, True, True, True, True, False, False, False, False]"
+  },
+  {
+   "name": "steps_cube_0deg_skips_rotation",
+   "ok": true,
+   "detail": "pan → grip → pin_entry → pin_vert → pin_align → pin_align → descend → descend → hold → close → close"
+  },
+  {
+   "name": "main_group_natural",
+   "ok": true,
+   "detail": "96 · ['SG-PLAN']"
+  },
+  {
+   "name": "hover_group_unchanged",
+   "ok": true,
+   "detail": "hover_up"
+  },
+  {
+   "name": "main_group_yellow_first_wait_0.3s",
+   "ok": true,
+   "detail": "[1, 'hover_wait', 'hover_wait', 'descend']"
+  }
+ ]
+}

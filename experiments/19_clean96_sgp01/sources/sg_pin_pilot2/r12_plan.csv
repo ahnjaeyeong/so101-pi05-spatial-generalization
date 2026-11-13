@@ -1,0 +1,4 @@
+episode_index,scenario_id,type,position,cube_xy_cm,angle,offset_dir,pan_offset_deg,pan_target_deg,start_xy_cm,status,retake_of,frames,note,error_kind,pan_error_direction,nominal_pan_error_deg,local_alignment_type,nominal_local_error_cm,start_pose_type,wrist_visibility_target,approach_stage_expected,cube_position_source,approach_type,start_fold,start_joints,need_turn_deg,wp_dir,wp_u,wp_v,wp_size
+0,SG-S0,SG,K3,"-8.5,-3.5",R30,,0,31.2,"-8.5,-3.5",recorded,,1091,,,,,,,,,,K_grid,,,,+2.8,,,,
+1,SG-S0,SG,K1p7,"-9.5,21.5",L30,,0,-27.4,"-9.5,21.5",planned,,,,,,,,,,,,free_point,,,,+4.0,,,,
+2,SG-S0,SG,K4p2,"-15.0,24.5",45,,0,-41.6,"-15.0,24.5",planned,,,,,,,,,,,,free_point,,,,+4.8,,,,

@@ -58,7 +58,7 @@ class Source:
         self.av = av
         self._open()
         rel = os.path.relpath(session_dir, os.path.join(HOME, "so101_runs"))
-        self.label = f"기존 녹화 {rel} episode {episode} 재생 (d2 구성 세션, 읽기만)"
+        self.label = f"기존 녹화 {rel} episode {episode} 재생 (읽기만)"
 
     def _open(self):
         self.c = self.av.open(self.video)

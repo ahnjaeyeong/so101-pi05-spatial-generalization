@@ -45,6 +45,7 @@ STATE = {"START": ("시작 준비", (107, 114, 128)), "SETUP": ("준비 — 녹�
          "DONE": ("녹화 종료", (21, 128, 61)), "WAIT": ("다음 판 시작 대기", (75, 85, 99)),
          "CAMPREVIEW": ("카메라 미리보기", (55, 65, 81))}
 C_TGT = (220, 38, 38)   # 놓을 위치 (빨간 큐브 색)
+DIS_RGB = {"yellow": (250, 204, 21), "orange": (249, 115, 22), "blue": (59, 130, 246), "green": (34, 197, 94)}  # 2026-11-13 방해물 색 (front 화면 표시)
 MAP_FRAC = 0.92 
         # 위에서 본 그림 폭 / 카메라 칸 폭
 # 위에서 본 그림 범위 (탁자 C 좌표 cm): 세로 = x (위 로봇 → 아래 상자), 가로 = y (왼쪽 = 로봇 오른쪽 −y, 오른쪽 = 로봇 왼쪽 +y; front 화면과 같음)
@@ -82,6 +83,56 @@ def label(d, xy, text, f, fg=FG, bg=(0, 0, 0), pad=3):
     return w + 2 * pad, h + 2 * pad
 
 
+C_TURN = {"ccw": (167, 139, 250), "cw": (45, 212, 191), "either": (250, 204, 21), "none": (148, 163, 184)}  # 반시계 보라 · 시계 청록 · 애매 노랑 · 그대로 회색
+
+
+def draw_turn_hint(im, adv, u=1.0, rec=False):
+    """손목 회전 권장 배지 (2026-11-13, 그룹 turn_hint) — 손목 칸 오른쪽 아래. 위에서 본 회전 화살표 + 글. 녹화 중에는 작게 (글 한 줄)."""
+    import math
+    from PIL import ImageDraw
+
+    if not adv:
+        return im
+    d = ImageDraw.Draw(im, "RGBA")
+    W, H = im.size
+    col = C_TURN[adv["kind"]]
+    k = (0.8 if rec else 1.0) * max(0.7, W / 520)
+    f1, f2 = font(17 * k), font(12 * k)
+    r = int(17 * k)
+    tw = max(_tw(d, adv["text"], f1)[0], 0 if rec else _tw(d, adv["sub"], f2)[0])
+    bw, bh = int(2 * r + 34 * k + tw), int((2 * r + 12 * k))
+    x0, y0 = W - bw - int(6 * k), H - bh - int(6 * k)
+    d.rectangle([x0, y0, x0 + bw, y0 + bh], fill=(0, 0, 0, 190), outline=col + (255,), width=max(2, int(2 * k)))
+    cx, cy = x0 + int(8 * k) + r, y0 + bh // 2
+    wd = max(3, int(3.5 * k))
+
+    def arc(a0, a1, head_at_end):   # PIL 각: 0 = 3 시, 시계 방향으로 커짐
+        d.arc([cx - r, cy - r, cx + r, cy + r], a0, a1, fill=col + (255,), width=wd)
+        a = math.radians(a1 if head_at_end else a0)
+        px, py = cx + r * math.cos(a), cy + r * math.sin(a)
+        tx, ty = (-math.sin(a), math.cos(a)) if head_at_end else (math.sin(a), -math.cos(a))   # 진행 방향
+        nx, ny = math.cos(a), math.sin(a)
+        h = 7 * k
+        d.polygon([(px + tx * h, py + ty * h), (px + nx * h * 0.8, py + ny * h * 0.8), (px - nx * h * 0.8, py - ny * h * 0.8)], fill=col + (255,))
+
+    if adv["kind"] == "ccw":      # 화면에서 반시계 = PIL 각이 줄어드는 쪽 → 머리를 시작 각에
+        arc(-60, 200, False)
+    elif adv["kind"] == "cw":
+        arc(-20, 240, True)
+    elif adv["kind"] == "either":
+        arc(-70, 70, True)
+        arc(110, 250, True)
+    else:
+        d.line([cx - r, cy, cx + r, cy], fill=col + (255,), width=wd)
+    tx0 = cx + r + int(10 * k)
+    if rec:
+        d.text((tx0, cy - _tw(d, adv["text"], f1)[1] // 2 - 2), adv["text"], font=f1, fill=col + (255,))
+    else:
+        d.text((tx0, y0 + int(4 * k)), adv["text"], font=f1, fill=col + (255,))
+        d.text((tx0, y0 + int(4 * k) + _tw(d, adv["text"], f1)[1] + int(5 * k)), adv["sub"], font=f2, fill=(226, 232, 240, 255))
+    return im
+
+
 def dashed_poly(d, pts, col, width=2, dash=8):
     for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1]):
         n = max(1, int(np.hypot(x1 - x0, y1 - y0) / dash))
@@ -90,7 +141,8 @@ def dashed_poly(d, pts, col, width=2, dash=8):
             d.line([(x0 + (x1 - x0) * a, y0 + (y1 - y0) * a), (x0 + (x1 - x0) * b, y0 + (y1 - y0) * b)], fill=col, width=width)
 
 
-def draw_wrist(img, det, ref, s, show_det=True, show_ref=True, stale=False, text=True, tilt=None, alert=False):
+def draw_wrist(img, det, ref, s, show_det=True, show_ref=True, stale=False, text=True, tilt=None, alert=False, endc=None, approach=None,
+               banner=None, waypoint=None):
     """손목 표시 복사본. img = 이미 s 배로 줄인 PIL 그림 (원본 프레임 배열과 별개). det 좌표는 원본 px → × s."""
     from PIL import ImageDraw
 
@@ -102,7 +154,8 @@ def draw_wrist(img, det, ref, s, show_det=True, show_ref=True, stale=False, text
     for ri, ref in enumerate(refs if show_ref else []):
         cx, cy = ref["u"] * W, ref["v"] * H
         if ref.get("kind") == "target":  # 닫기 자리 목표 윤곽 (주황 굵은 점선) — 안내는 아래 _draw_target_guide
-            dashed_poly(d, [(x * W, y * H) for x, y in ref["hull"]], C_TGT_GUIDE, max(2, int(W / 210)), dash=10)
+            if waypoint is None:  # 2026-11-10 사용자 "노란색큐브만 먼저 띄워줄 수 있어?": 노랑을 지나기 전에는 주황 숨김
+                dashed_poly(d, [(x * W, y * H) for x, y in ref["hull"]], C_TGT_GUIDE, max(2, int(W / 210)), dash=10)
             continue
         if ref.get("kind") == "cross":  # 큐브 중심 십자: 화면 끝에서 끝까지 가로 · 세로 주황 점선 (판정 아님)
             wl = max(2, int(W / 300))  # 노란 점선 (흰 탁자 위에서 보이게 조금 굵게)
@@ -130,26 +183,20 @@ def draw_wrist(img, det, ref, s, show_det=True, show_ref=True, stale=False, text
             step = _tw(d, txt_, fr_)[1] + 8  # 참조가 여럿이면 글을 겹치지 않게 아래/위로 한 줄씩
             label(d, (max(4, min(cx - tw_ / 2, W - tw_ - 8)), cy + rr + ri * step if cy < H * 0.75 else cy - rr - 24 - ri * step), txt_, fr_, C_REF)
     tref = next((r for r in refs if r.get("kind") == "target"), None) if show_ref else None
+    if waypoint is not None and show_ref:  # 2026-11-09 노란 프레임 (지나가는 점) — 노란 굵은 점선 + 중심 점
+        dashed_poly(d, [(x * W, y * H) for x, y in waypoint["hull"]], C_CROSS, max(3, int(W / 160)), dash=10)
+        wx, wy = waypoint["u"] * W, waypoint["v"] * H
+        d.ellipse([wx - 5, wy - 5, wx + 5, wy + 5], outline=C_CROSS, width=2)
     if tilt is not None:
         _draw_level(d, W, H, tilt)
-    if alert and int(time.time() * 3) % 2 == 0:  # 그리퍼 열기 알림 (2026-11-06 사용자): 손목 칸 전체 주황 + '그리퍼를 열어주세요' 깜빡임
-        from PIL import Image as _I
-
-        ov = _I.new("RGB", im.size, C_OPEN_ALERT)
-        im.paste(_I.blend(im, ov, 0.45))
+    if banner and banner.get("over") and tref:  # 지나침: 주황 닫기 자리 점선을 빨강으로 (깜빡임과 관계없이)
+        dashed_poly(d, [(x * W, y * H) for x, y in tref["hull"]], BAD, max(4, int(W / 120)), dash=10)
+    if banner and int(time.time() * 3) % 2 == 0:  # 2026-11-09 절차 · 시작 자세 안내: 그리퍼 열기 알림과 같은 깜빡임 (사용자 "주황색으로 화면이 깜빡이게")
+        im = _flash(im, banner["title"], banner.get("sub", ""), banner["col"])
         d = ImageDraw.Draw(im)
-        bw = max(6, int(W / 60))
-        d.rectangle([bw // 2, bw // 2, W - 1 - bw // 2, H - 1 - bw // 2], outline=C_OPEN_ALERT, width=bw)
-        msg = "그리퍼를 열어주세요"
-        fb = font(max(18, W / 11))
-        tw, th = _tw(d, msg, fb)
-        while tw > W * 0.92 and fb.size > 14:
-            fb = font(fb.size - 2)
-            tw, th = _tw(d, msg, fb)
-        tx, ty = (W - tw) / 2, (H - th) / 2
-        for ox, oy in ((-2, 0), (2, 0), (0, -2), (0, 2), (-2, -2), (2, 2), (-2, 2), (2, -2)):
-            d.text((tx + ox, ty + oy), msg, font=fb, fill=(40, 20, 0))
-        d.text((tx, ty), msg, font=fb, fill=(255, 255, 255))
+    elif alert and int(time.time() * 3) % 2 == 0:  # 그리퍼 열기 알림 (2026-11-06 사용자): 손목 칸 전체 주황 + '그리퍼를 열어주세요' 깜빡임
+        im = _flash(im, "그리퍼를 열어주세요", "", C_OPEN_ALERT)
+        d = ImageDraw.Draw(im)
     if stale:
         label(d, (8, H - 30), "오래된 프레임 — 검출 표시 안 함", f, (255, 255, 255), (127, 29, 29))
         if tref:
@@ -183,11 +230,59 @@ def draw_wrist(img, det, ref, s, show_det=True, show_ref=True, stale=False, text
             txt = f"({st['u']:.3f}, {st['v']:.3f})"
             label(d, (min(x + 12, W - _tw(d, txt, f)[0] - 8), max(4, y - 30)), txt, f, col)
     if tref:
-        _draw_target_guide(d, W, H, s, det, tref, text)
+        _draw_target_guide(d, W, H, s, det, tref, text, arrow=waypoint is None, show_target=waypoint is None)
+        if waypoint is not None and det and det.get("cube"):  # 노란 단계: 화살표는 노란 프레임으로
+            cu, cv = det["cube"]["u"] * W, det["cube"]["v"] * H
+            wu, wv = waypoint["u"] * W, waypoint["v"] * H
+            if math.hypot(wu - cu, wv - cv) > 8:
+                _arrow(d, (cu, cv), (wu, wv), C_CROSS, max(2, int(W / 180)))
+        if endc is not None:  # 2026-11-09 정답조건: 위 띠 색 = 네 가지 (u · v · 크기 좁힘 · 높이) 기준으로 다시, 높이 막대 · 유지 고리 · 접근 안내
+            e = endc["e"]
+            bh = _target_band(d, W, H, "정답조건 맞음 (참고)" if e["all"] else "정답조건까지 (참고)", C_GUIDE_OK if e["all"] else C_TGT_GUIDE, text)
+            _draw_height_bar(d, W, H, e["dz"], endc["tol_h"], bh, endc.get("hover_h"))
+            if not e["all"] and approach is not None:
+                _draw_approach_wrist(d, W, H, tref, approach)
+            _draw_hold(d, tref["u"] * W, tref["v"] * H, max(14, 0.06 * W), endc["frac"], e["all"])
     elif text:
         head = {"detected": "스티커 검출", "uncertain": "스티커 불확실", "none": "스티커 미검출", "no_cube": "큐브 없음"}[stv]
         label(d, (8, 8), head + (f" — {det['reason']}" if det.get("reason") and stv != "detected" else ""), f, col)
     return im
+
+
+def _flash(im, msg, sub, col):
+    """손목 칸 전체를 col 로 덮고 (45 %) 굵은 테두리 + 가운데 큰 글 (+ 작은 둘째 줄). 깜빡임은 부르는 쪽에서 (초당 1.5 번)."""
+    from PIL import Image as _I
+    from PIL import ImageDraw
+
+    W, H = im.size
+    im = _I.blend(im, _I.new("RGB", im.size, col), 0.45)
+    d = ImageDraw.Draw(im)
+    bw = max(6, int(W / 60))
+    d.rectangle([bw // 2, bw // 2, W - 1 - bw // 2, H - 1 - bw // 2], outline=col, width=bw)
+    fb = font(max(18, W / 11))
+    tw, th = _tw(d, msg, fb)
+    while tw > W * 0.92 and fb.size > 14:
+        fb = font(fb.size - 2)
+        tw, th = _tw(d, msg, fb)
+    fs = font(max(12, W / 22))
+    sw, sh = _tw(d, sub, fs) if sub else (0, 0)
+    while sub and sw > W * 0.92 and fs.size > 10:
+        fs = font(fs.size - 1)
+        sw, sh = _tw(d, sub, fs)
+    tx, ty = (W - tw) / 2, (H - th - (sh + 10 if sub else 0)) / 2
+    lines = [(msg, fb, tx, ty)] + ([(sub, fs, (W - sw) / 2, ty + th + 10)] if sub else [])
+    for t_, f_, x_, y_ in lines:
+        for ox, oy in ((-2, 0), (2, 0), (0, -2), (0, 2), (-2, -2), (2, 2), (-2, 2), (2, -2)):
+            d.text((x_ + ox, y_ + oy), t_, font=f_, fill=(40, 20, 0))
+        d.text((x_, y_), t_, font=f_, fill=(255, 255, 255))
+    return im
+
+
+def wrist_turn_text(dangle):
+    """dangle (목표 − 지금 화면 큐브각, + = 화면에서 큐브를 시계로) → 손목을 돌릴 쪽 (위에서 볼 때).
+    2026-11-10 사용자 "각도 방향이 반대인거 같은딩": 이전 글 '화면 시계/반시계' 는 화면 속 큐브가 돌 쪽이었음 —
+    카메라가 손목과 같이 돌아 손목은 반대로 돌려야 함 (pilot2 3판: 손목회전 +1° → 화면 큐브 시계 +0.68°)."""
+    return f"손목을 {'반시계' if dangle > 0 else '시계'} 방향으로 {abs(dangle):.0f}° (위에서 볼 때)"
 
 
 def _target_band(d, W, H, msg, col, text=True):
@@ -242,7 +337,7 @@ def _arrow(d, p0, p1, col, width):
         d.line([p1, (p1[0] + L * math.cos(ang + da), p1[1] + L * math.sin(ang + da))], fill=col, width=width)
 
 
-def _draw_target_guide(d, W, H, s, det, ref, text=True):
+def _draw_target_guide(d, W, H, s, det, ref, text=True, arrow=True, show_target=True):
     """닫기 자리 목표 안내 (화면 복사본에만): 위 띠 (주황 = 아직 · 초록 = 네 가지 다 허용 안) + 항목 칩 + 화면 화살표.
     판정 · 자동 동작 아님 — 닫는 때는 사람이 정함."""
     import sg_sticker as sgs
@@ -256,12 +351,15 @@ def _draw_target_guide(d, W, H, s, det, ref, text=True):
     tu, tv = ref["u"] * W, ref["v"] * H
     wln = max(2, int(W / 180))
     d.ellipse([cu - 5, cv - 5, cu + 5, cv + 5], fill=C_GUIDE_OK if c["all"] else (255, 255, 255), outline=(0, 0, 0))
-    d.ellipse([tu - 6, tv - 6, tu + 6, tv + 6], outline=C_TGT_GUIDE, width=2)
-    if not (c["ok"]["u"] and c["ok"]["v"]) and math.hypot(tu - cu, tv - cv) > 8:
+    if show_target:
+        d.ellipse([tu - 6, tv - 6, tu + 6, tv + 6], outline=C_TGT_GUIDE, width=2)
+    if arrow and not (c["ok"]["u"] and c["ok"]["v"]) and math.hypot(tu - cu, tv - cv) > 8:
         _arrow(d, (cu, cv), (tu, tv), C_TGT_GUIDE, wln)
     if not c["ok"]["angle"]:  # 돌려야 할 쪽으로 호 (작은 각도도 보이게 3배, 최소 25°)
         R = 0.32 * math.sqrt(det["cube"]["area_px"]) * s
-        span = math.copysign(max(25.0, 3 * abs(c["dangle"])), c["dangle"])
+        # 2026-11-10 사용자 "각도 방향이 반대": 호 = 손목을 돌릴 쪽 (위에서 볼 때). 손목회전 + → 화면 큐브 시계 (+0.68, pilot2 3판)
+        #   = 그리퍼는 위에서 반시계 → dangle > 0 (화면 큐브를 시계로) 이면 손목을 위에서 반시계로 = 화면에서도 반시계 호
+        span = math.copysign(max(25.0, 3 * abs(c["dangle"])), -c["dangle"])
         a0 = -90.0
         pts = [(cu + R * math.cos(math.radians(a0 + span * k / 12)), cv + R * math.sin(math.radians(a0 + span * k / 12))) for k in range(13)]
         d.line(pts, fill=C_TGT_GUIDE, width=wln)
@@ -273,7 +371,7 @@ def _draw_target_guide(d, W, H, s, det, ref, text=True):
     items = [("좌우", c["ok"]["u"], ("큐브를 화면 왼쪽으로 " if c["du"] > 0 else "큐브를 화면 오른쪽으로 ") + f"{px_u:.0f}px"),
              ("앞뒤", c["ok"]["v"], ("큐브를 화면 위로 " if c["dv"] > 0 else "큐브를 화면 아래로 ") + f"{px_v:.0f}px"),
              ("높이", c["ok"]["size"], ("가까이 " if c["size"] < 1 else "멀리 ") + f"(크기 {c['size'] * 100:.0f}%)"),
-             ("회전", c["ok"]["angle"], ("화면 시계 방향 " if c["dangle"] > 0 else "화면 반시계 방향 ") + f"{abs(c['dangle']):.0f}°")]
+             ("회전", c["ok"]["angle"], wrist_turn_text(c["dangle"]))]
     y = bh + 4
     for name, ok, txt in items:
         t = f"{name} 맞음" if ok else f"{name}: {txt}"
@@ -281,6 +379,593 @@ def _draw_target_guide(d, W, H, s, det, ref, text=True):
         y += _tw(d, t, fs)[1] + 9
     if c["edge"]:
         label(d, (6, y), "큐브가 화면 끝에 걸림 — 크기 · 회전 값 불확실", fs, WARN, (17, 24, 39))
+
+
+# ---------------------------------------------------------------- 2026-11-09 접근 유형 · 정답조건 (sg50.approach · sg50.end_condition)
+C_APPROACH = (56, 189, 248)   # 접근 방향 안내 (하늘색) — 주황 = 닫기 자리, 초록 = 맞음과 섞이지 않게
+
+
+def approach_of(cfg, row):
+    """계획 줄의 접근 유형 → (키, 정의) 또는 (None, None)."""
+    k = (row or {}).get("approach_type") or ""
+    d = ((cfg.get("sg50") or {}).get("approach") or {}).get(k)
+    return (k, d) if d else (None, None)
+
+
+def end_check(det, ref, ec, tip_z):
+    """정답조건 (판정 · 자동 동작 아님): 닫기 자리 ref 와 u · v · 크기 (ec 허용 폭) + FK 그리퍼 끝 높이. 회전은 기존 안내 (ref 허용) 그대로.
+    반환 dict(c=target_compare, ok{u,v,size,height}, dz (cm, 지금 − 목표) | None, all) 또는 None (닫기 자리 목표 · 정답조건 설정 없음)."""
+    if not ref or not ec:
+        return None
+    r2 = dict(ref)
+    r2["tol"] = dict(ref.get("tol") or {}, u=float(ec.get("tol_uv", 0.02)), v=float(ec.get("tol_uv", 0.02)), size=float(ec.get("tol_size", 0.05)))
+    c = sgs.target_compare(det, r2) if det else None
+    if c is not None and ec.get("size_range"):  # 2026-11-10 크기 허용 (0.95–1.10 — 돌린 큐브가 크게 보임)
+        lo, hi = (float(x) for x in ec["size_range"])
+        c = dict(c, ok=dict(c["ok"], size=lo <= c["size"] <= hi))
+    dz = None if tip_z is None or ec.get("height_cm") is None else float(tip_z) - float(ec["height_cm"])
+    okh = dz is not None and abs(dz) <= float(ec.get("tol_height_cm", 0.5))
+    ok = {"u": bool(c and c["ok"]["u"]), "v": bool(c and c["ok"]["v"]), "size": bool(c and c["ok"]["size"]), "height": okh}
+    return {"c": c, "ok": ok, "dz": dz, "all": all(ok.values())}
+
+
+def _draw_height_bar(d, W, H, dz, tol, top, hover_h=None):
+    """손목 칸 왼쪽 세로 막대 (글 없음): 가운데 가로선 = 잡는 높이 목표, 점 = 지금 (위 = 높음, ±3 cm 에서 멈춤), 허용 띠 안이면 초록."""
+    bw = max(10, int(W / 40))
+    x0, y0, y1 = 6, top + 6, H - 10
+    cy = (y0 + y1) / 2
+    span = 4.5   # 2026-11-10 3 → 4.5 cm (상단 프레임 높이 +3 cm 눈금이 보이게)
+    d.rounded_rectangle([x0, y0, x0 + bw, y1], radius=4, fill=(17, 24, 39), outline=(75, 85, 99), width=1)
+    th = (y1 - y0) / 2 * tol / span
+    d.rectangle([x0 + 2, cy - th, x0 + bw - 2, cy + th], fill=(20, 83, 45))
+    d.line([(x0 - 2, cy), (x0 + bw + 2, cy)], fill=C_CROSS, width=2)
+    if hover_h is not None:  # 큐브 위 높이 (노란 눈금, 상단 프레임 단계)
+        yh = cy - max(-span, min(span, hover_h)) / span * (y1 - y0) / 2
+        d.rectangle([x0 - 4, yh - 3, x0 + bw + 4, yh + 3], fill=C_CROSS)
+    if dz is None:
+        return
+    yy = cy - max(-span, min(span, dz)) / span * (y1 - y0) / 2
+    col = C_GUIDE_OK if abs(dz) <= tol else C_TGT_GUIDE
+    d.ellipse([x0 - 3, yy - bw / 2 - 1, x0 + bw + 3, yy + bw / 2 + 1], fill=col, outline=(0, 0, 0))
+
+
+def _draw_hold(d, cx, cy, r, frac, all_ok):
+    """닫기 자리 목표 중심 둘레 유지 시간 고리: 네 가지가 다 맞으면 hold_s 동안 채워짐 → 다 차면 굵은 초록 (닫아도 되는 때, 참고)."""
+    if not all_ok:
+        return
+    frac = max(0.0, min(1.0, frac))
+    w = max(3, int(r / 5))
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(55, 65, 81), width=w)
+    if frac >= 1.0:
+        d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=C_GUIDE_OK, width=w + 2)
+    elif frac > 0:
+        d.arc([cx - r, cy - r, cx + r, cy + r], -90, -90 + 360 * frac, fill=C_GUIDE_OK, width=w)
+
+
+def wrist_from_dir(adef):
+    """접근 정의 → 손목 화면에서 큐브가 들어오는 쪽 (단위 벡터, 화면 x 오른쪽 · y 아래). 예비3 창 회귀 부호:
+    그리퍼가 큐브 안쪽 (radial −) 이면 dv < 0 (큐브가 목표 위) → 위에서 들어옴; 팬 + 쪽 (side +) 이면 du < 0 → 왼쪽에서 들어옴."""
+    x, y = -float(adef.get("side", 0)), float(adef.get("radial", 0))
+    n = math.hypot(x, y)
+    return (x / n, y / n) if n else None
+
+
+def _draw_approach_wrist(d, W, H, ref, adef):
+    """손목 칸 접근 안내 (하늘색, 글 없음): 큐브가 들어올 쪽에서 닫기 자리로 점선 화살표. A (위에서) = 목표 둘레 커지는 사각형 두 개.
+    E (지나쳤다 복귀) = 목표를 지나 반대쪽까지 갔다가 돌아오는 갈고리."""
+    if not ref or not adef:
+        return
+    tu, tv = ref["u"] * W, ref["v"] * H
+    wl = max(3, int(W / 130))
+    if adef.get("from_above"):
+        for k in (0.10, 0.16):
+            h_ = k * W
+            dashed_poly(d, [(tu - h_, tv - h_), (tu + h_, tv - h_), (tu + h_, tv + h_), (tu - h_, tv + h_)], C_APPROACH, wl, dash=7)
+        return
+    v = wrist_from_dir(adef)
+    if v is None:
+        return
+    L = 0.30 * min(W, H)
+    sx, sy = tu + v[0] * L, tv + v[1] * L   # v = 도착 전 큐브가 있는 쪽 → 그 쪽에서 목표로
+    sx, sy = max(8, min(W - 8, sx)), max(8, min(H - 8, sy))
+    if adef.get("overshoot"):
+        px, py = tu - v[0] * L * 0.45, tv - v[1] * L * 0.45      # 목표를 지나간 자리
+        px, py = max(8, min(W - 8, px)), max(8, min(H - 8, py))
+        dashed_poly(d, [(sx, sy), (px, py)], C_APPROACH, wl, dash=8)
+        ox, oy = -v[1] * L * 0.18, v[0] * L * 0.18                 # 돌아오는 길은 옆으로 살짝 비켜 그림
+        _arrow(d, (px + ox, py + oy), (tu + ox * 0.4, tv + oy * 0.4), C_APPROACH, wl)
+        return
+    dashed_poly(d, [(sx, sy), (tu + v[0] * 14, tv + v[1] * 14)], C_APPROACH, wl, dash=8)
+    _arrow(d, (tu + v[0] * 40, tv + v[1] * 40), (tu + v[0] * 14, tv + v[1] * 14), C_APPROACH, wl)
+
+
+# ---------------------------------------------------------------- 2026-11-09 절차 안내 (그룹 procedure_guide) · 계획 시작 자세 안내
+C_STEP_BG = (17, 24, 39)
+C_CROSS_FLASH = (202, 138, 4)   # 노란 프레임 단계 깜빡임 (진한 노랑 — 흰 글이 보이게)
+STEP_NAMES = ["숄더팬", "그리퍼", "각도", "높이", "프레임"]
+J_KO = {"shoulder_pan": "팬", "shoulder_lift": "어깨", "elbow_flex": "팔꿈치", "wrist_flex": "손목굽힘", "wrist_roll": "손목회전", "gripper": "그리퍼"}
+ANG_KO = {"0": "0°", "L30": "반시계 30°", "R30": "시계 30°", "45": "45°"}   # 글꼴에 ↺ ↻ 없음
+
+
+def ang_ko(a):
+    return ANG_KO.get(str(a), str(a))
+ANGLE_SIGN = {"0": 0.0, "L30": 30.0, "R30": -30.0, "45": 45.0}
+
+
+def _draw_banner(d, W, H, top, title, sub, col, steps=None, right_pad=0, left=6):
+    """손목 칸 위 안내 띠: 큰 글 (title) + 작은 글 (sub) + 단계 점 (steps = [True/False/None ...], None = 지금 단계)."""
+    fb = font(max(16, W / 17))
+    fs = font(max(11, W / 34))
+    bw = W - 6 - left - right_pad
+    th = _tw(d, title, fb)[1]
+    sh = _tw(d, sub, fs)[1] if sub else 0
+    bh = th + sh + (22 if sub else 16) + (14 if steps else 0)
+    while _tw(d, title, fb)[0] > bw - 20 and fb.size > 12:
+        fb = font(fb.size - 2)
+    while sub and _tw(d, sub, fs)[0] > bw - 20 and fs.size > 9:
+        fs = font(fs.size - 1)
+    d.rounded_rectangle([left, top + 4, left + bw, top + 4 + bh], radius=8, fill=C_STEP_BG, outline=col, width=3)
+    d.text((left + 10, top + 10), title, font=fb, fill=col)
+    if sub:
+        d.text((left + 10, top + 14 + th), sub, font=fs, fill=(229, 231, 235))
+    if steps:
+        y = top + bh - 8
+        for i, st in enumerate(steps):
+            x = left + 12 + i * 22
+            c = C_GUIDE_OK if st is True else (col if st is None else (75, 85, 99))
+            d.ellipse([x - 6, y - 6, x + 6, y + 6], fill=c)
+    return top + 4 + bh
+
+
+def waypoint_ref(cfg, row, tref):
+    """줄의 노란 프레임 → 닫기 자리 목표와 같은 형식 (윤곽을 옮기고 크기 배, 넓이 = 크기²) + 허용 (sg50.waypoint). 없으면 None."""
+    if not tref or not row or not row.get("wp_u"):
+        return None
+    import sg_plan
+
+    wp = (cfg.get("sg50") or {}).get("waypoint") or {}
+    u, v, k = float(row["wp_u"]), float(row["wp_v"]), float(row["wp_size"])
+    hull = [(u + (x - tref["u"]) * k, v + (y - tref["v"]) * k) for x, y in tref["hull"]]
+    area = tref["area_px"] * k * k
+    vis = sg_plan.clip_poly(hull)
+    clipped = any(not (0 <= x <= 1 and 0 <= y <= 1) for x, y in hull)
+    if clipped and len(vis) >= 3:  # 2026-11-10 화면 아래로 잘린 노랑: 보이는 부분의 무게중심 · 넓이로 비교 (검출 큐브도 보이는 부분만)
+        full_a, _ = sg_plan.poly_area_centroid(hull)
+        vis_a, cen = sg_plan.poly_area_centroid(vis)
+        u, v = cen
+        area = area * (vis_a / full_a if full_a else 1.0)
+        hull = vis
+    w = dict(tref)
+    w.update(u=u, v=v, area_px=area, hull=hull, clipped=clipped,
+             tol=dict(tref.get("tol") or {}, u=float(wp.get("tol_uv", 0.04)), v=float(wp.get("tol_uv", 0.04)), size=float(wp.get("tol_size", 0.08)),
+                      angle=90.0), kind="waypoint")
+    return w
+
+
+def hover_ref(cfg, tref):
+    """상단 프레임 (2026-11-10, sg50.hover): 큐브 위 정한 높이 · 손목 수직일 때 닫기 자리 큐브가 보이는 자리 (노랑으로 그림)."""
+    hv = (cfg.get("sg50") or {}).get("hover")
+    if not hv or tref is None:
+        return None
+    fr = hv["frame"]
+    u, v, k = tref["u"] + float(fr["du"]), tref["v"] + float(fr["dv"]), float(fr["size"])
+    w = dict(tref)
+    w.update(u=u, v=v, area_px=tref["area_px"] * k * k, hull=[(u + (x - tref["u"]) * k, v + (y - tref["v"]) * k) for x, y in tref["hull"]],
+             tol=dict(tref.get("tol") or {}, u=float(hv.get("tol_uv", 0.04)), v=float(hv.get("tol_uv", 0.04)), size=float(hv.get("tol_size", 0.08)),
+                      angle=90.0), kind="waypoint")
+    return w
+
+
+def hover_state(scr, P, e, ang, now):
+    """숄더팬 · 그리퍼 뒤: 큐브 위로 올라가세요 → 프레임 맞추고 잠깐 대기 → 수직으로 내려가세요 → 유지 → 닫으세요 (그룹 hover)."""
+    s50 = scr.cfg.get("sg50") or {}
+    hv = s50.get("hover") or {}
+    pr = s50.get("procedure") or {}
+    hz = (s50.get("end_condition") or {}).get("height_cm")
+    above = (scr.tip_z - float(hz)) if (scr.tip_z is not None and hz is not None) else None
+    lv = scr.level()
+    tilt = (lv[0] - lv[2]) if lv is not None else None
+    wref = getattr(scr, "wp", None)
+    wait_s = float(getattr(scr, "group_get", lambda k, d=None: d)("hover_wait_s", hv.get("wait_s", 0.5)))   # 2026-11-12 그룹마다 (sg_pin: 0.3 s)
+    dots = lambda k: [True] * k + [None] + [False] * (5 - k)  # noqa: E731  숄더팬 · 그리퍼 · 위로 · 맞춤 · 내려가기 · 닫기
+    if not P.get("hover_ok"):
+        scr._wp_active = True
+        pos_ok = (above is not None and abs(above - float(hv.get("height_cm", 3.0))) <= float(hv.get("height_tol_cm", 1.0))
+                  and tilt is not None and abs(tilt) <= float(hv.get("tilt_tol_deg", 5)))
+        if not pos_ok and not P.get("hover_pos"):
+            sub = (f"높이 {above:+.1f} → +{float(hv.get('height_cm', 3.0)):.0f} cm (노란 눈금)" if above is not None else "높이 모름") + \
+                  (f" · 손목 수직 (기울기 {tilt:+.0f}°)" if tilt is not None else "")
+            return dict(step=2, title="큐브 위로 올라가세요", sub=sub, col=C_OPEN_ALERT, steps=dots(2), name="hover_up")
+        P["hover_pos"] = True
+        c_h = sgs.target_compare(scr.det, wref) if (scr.det is not None and wref is not None) else None
+        atol = float(pr.get("angle_tol_deg", 5))
+        aligned = bool(c_h and c_h["ok"]["u"] and c_h["ok"]["v"] and c_h["ok"]["size"] and (ang is None or abs(ang) <= atol)) and pos_ok
+        if aligned:
+            P["hover_t0"] = P.get("hover_t0") or now
+            held = now - P["hover_t0"]
+            if held >= wait_s:
+                P["hover_ok"] = True
+                P["hover_done_t"] = now
+            else:
+                return dict(step=3, title="잠깐 대기", sub=f"{held:.1f} / {wait_s:.1f} s", col=C_CROSS_FLASH, steps=dots(3), name="hover_wait")
+        else:
+            P["hover_t0"] = None
+            if c_h is None:
+                sub = "손목 화면에 큐브가 보이게"
+            elif ang is not None and abs(ang) > atol:
+                sub = wrist_turn_text(ang)
+            elif not pos_ok:
+                sub = (f"높이 {above:+.1f} → +{float(hv.get('height_cm', 3.0)):.0f} cm" if above is not None else "") + (f" · 손목 수직 ({tilt:+.0f}°)" if tilt is not None else "")
+            else:
+                hint = []
+                if not c_h["ok"]["v"]:
+                    hint.append("로봇 쪽으로" if c_h["dv"] > 0 else "바깥으로")
+                if not c_h["ok"]["u"]:
+                    hint.append("큐브를 화면 " + ("왼쪽" if c_h["du"] > 0 else "오른쪽") + "으로")
+                if not c_h["ok"]["size"]:
+                    hint.append("조금 내리기" if c_h["size"] < 1 - wref["tol"]["size"] else "조금 올리기")
+                sub = " · ".join(hint) + " · 노란 프레임"
+            return dict(step=3, title="프레임 맞추세요 (큐브 위에서)", sub=sub, col=C_CROSS_FLASH, steps=dots(3), name="hover_align")
+    scr._wp_active = False
+    c = e["c"] if e else None
+    ow = s50.get("overshoot_warn") or {}
+    if (c is not None and above is not None and above < float(hv.get("bottom_warn_h_cm", 1.0)) and c["dv"] > float(ow.get("dv_thr", 0.04))
+            and not (e and e["all"])):
+        if not P.get("over_on"):
+            P["over_n"] = P.get("over_n", 0) + 1
+        P["over_on"] = True
+        return dict(step=4, title="지나쳤어요", sub="로봇 쪽으로 당기세요 (큐브를 주황 위로)", col=BAD, steps=dots(4), over=True, name="over")
+    P["over_on"] = False
+    endc = scr.endc
+    if not (e and e["all"]):
+        dz = e["dz"] if e else None
+        sub = (f"{'내리세요' if dz > 0 else '올리세요'} {abs(dz):.1f} cm · " if dz is not None else "") + "주황에 맞춰 집기"
+        return dict(step=4, title="수직으로 내려가세요", sub=sub, col=C_OPEN_ALERT, steps=dots(4), name="descend")
+    if endc and endc["frac"] < 1.0:
+        return dict(step=5, title="그대로 유지", sub=f"{endc['held_s']:.1f} / {endc['hold_s']:.1f} s", col=C_GUIDE_OK, steps=dots(5), name="hold")
+    return dict(step=5, title="닫으세요", sub="", col=C_GUIDE_OK, steps=[True] * 6, name="close")
+
+
+def pin_ref(cfg, row, tref, entry):
+    """2026-11-12 새 절차 (그룹 pin) 의 노란 프레임. entry True = 첫 맞춤 자리 (계획 줄 wp_*), False = 다시 맞춤 자리 (상단 프레임). 허용 = sg50.pin."""
+    pn = (cfg.get("sg50") or {}).get("pin") or {}
+    w = waypoint_ref(cfg, row, tref) if entry else hover_ref(cfg, tref)
+    if w is None:
+        return None
+    t = (pn.get("entry") if entry else pn.get("align")) or {}
+    w = dict(w)
+    w["tol"] = dict(w.get("tol") or {}, u=float(t.get("tol_uv", w["tol"]["u"])), v=float(t.get("tol_uv", w["tol"]["v"])), size=float(t.get("tol_size", w["tol"]["size"])))
+    return w
+
+
+def _frame_hint(c, ref):
+    """노란 프레임까지 남은 방향 (화면 기준 → 팔 동작 말). c = target_compare."""
+    hint = []
+    if not c["ok"]["v"]:
+        hint.append("로봇 쪽으로" if c["dv"] > 0 else "바깥으로")
+    if not c["ok"]["u"]:
+        hint.append("큐브를 화면 " + ("왼쪽" if c["du"] > 0 else "오른쪽") + "으로")
+    if not c["ok"]["size"]:
+        hint.append("조금 내리기" if c["size"] < 1 - ref["tol"]["size"] else "조금 올리기")
+    return " · ".join(hint)
+
+
+def pin_state(scr, P, e, ang, now):
+    """2026-11-12 새 절차 (그룹 pin), 숄더팬 · 그리퍼 뒤:
+    첫 맞춤 (판마다 다른 노란 자리, 한 번) → 손목 수직 (한 번) → 다시 맞춤 (상단 프레임 · 높이 · 수직, wait_s) → 회전 (큐브 위에서) → 수직으로 내려가 주황 → 유지 → 닫으세요.
+    판정 · 자동 동작 아님. 점 8 개 = 숄더팬 · 그리퍼 · 첫 맞춤 · 수직 · 다시 맞춤 · 회전 · 내려가기 · 닫기."""
+    s50 = scr.cfg.get("sg50") or {}
+    pn = s50.get("pin") or {}
+    hv = s50.get("hover") or {}
+    pr = s50.get("procedure") or {}
+    hz = (s50.get("end_condition") or {}).get("height_cm")
+    above = (scr.tip_z - float(hz)) if (scr.tip_z is not None and hz is not None) else None
+    lv = scr.level()
+    tilt = (lv[0] - lv[2]) if lv is not None else None
+    vt = float(pn.get("vertical_tol_deg", 8))
+    atol = float(pr.get("angle_tol_deg", 5))
+    row = scr.ui.get("row") or {}
+    tref = getattr(scr, "_tref", None)
+    dots = lambda k: [True] * k + [None] + [False] * (7 - k)  # noqa: E731
+    cmp_ = lambda ref: sgs.target_compare(scr.det, ref) if (scr.det is not None and ref is not None) else None  # noqa: E731
+    if not P.get("pin_entry"):   # 3 첫 맞춤
+        scr._wp_active = True
+        eref = pin_ref(scr.cfg, row, tref, True)
+        c = cmp_(eref)
+        if c and c["ok"]["u"] and c["ok"]["v"] and c["ok"]["size"]:
+            P["pin_entry"] = True
+            P["pin_entry_t"] = now
+        else:
+            sub = "손목 화면에 큐브가 보이게" if c is None else (_frame_hint(c, eref) or "노란 프레임")
+            return dict(step=2, title="노란 프레임에 맞추세요", sub=sub, col=C_CROSS_FLASH, steps=dots(2), name="pin_entry")
+    aref = pin_ref(scr.cfg, row, tref, False)
+    if not P.get("pin_vert"):    # 4 손목 수직
+        scr._wp_active = True
+        if tilt is not None and abs(tilt) <= vt:
+            P["pin_vert"] = True
+            P["pin_vert_t"] = now
+        else:
+            sub = (f"기울기 {tilt:+.0f}° → 0° (오른쪽 위 수평계)" if tilt is not None else "관절값 없음") + " · 큐브는 노란 프레임 가까이"
+            return dict(step=3, title="손목을 수직으로", sub=sub, col=C_OPEN_ALERT, steps=dots(3), name="pin_vert")
+    hh, ht = float(hv.get("height_cm", 3.0)), float(hv.get("height_tol_cm", 1.5))
+    pos_ok = above is not None and abs(above - hh) <= ht and tilt is not None and abs(tilt) <= vt * 1.5
+    ca = cmp_(aref)
+    if not P.get("pin_align"):   # 5 다시 맞춤
+        scr._wp_active = True
+        if bool(ca and ca["ok"]["u"] and ca["ok"]["v"] and ca["ok"]["size"]) and pos_ok:
+            P["pin_t0"] = P.get("pin_t0") or now
+            if now - P["pin_t0"] >= float(pn.get("wait_s", 0.3)):
+                P["pin_align"] = True
+                P["pin_align_t"] = now
+        else:
+            P["pin_t0"] = None
+        if not P.get("pin_align"):
+            if ca is None:
+                sub = "손목 화면에 큐브가 보이게"
+            elif not pos_ok:
+                sub = (f"높이 {above:+.1f} → +{hh:.0f} cm (노란 눈금)" if above is not None else "높이 모름") + (f" · 손목 수직 ({tilt:+.0f}°)" if tilt is not None else "")
+            else:
+                sub = _frame_hint(ca, aref) or "그대로"
+            return dict(step=4, title="다시 프레임에 맞추세요", sub=sub, col=C_CROSS_FLASH, steps=dots(4), name="pin_align")
+    if not P.get("pin_rot"):     # 6 회전 (큐브 위 높이에서 — 노란 프레임은 계속 보임)
+        scr._wp_active = True
+        if ang is not None and abs(ang) <= atol:
+            P["pin_rot"] = True
+            P["pin_rot_t"] = now
+        else:
+            sub = "손목 화면에 큐브가 보이게" if ang is None else wrist_turn_text(ang) + " · 높이는 그대로"
+            if ca is not None and not (ca["ok"]["u"] and ca["ok"]["v"]):
+                sub += " · 프레임에서 벗어남"
+            return dict(step=5, title="손목을 돌리세요", sub=sub, col=C_OPEN_ALERT, steps=dots(5), name="pin_rot")
+    scr._wp_active = False       # 7 내려가기 (주황) · 8 유지 → 닫기
+    c = e["c"] if e else None
+    ow = s50.get("overshoot_warn") or {}
+    if (c is not None and above is not None and above < float(hv.get("bottom_warn_h_cm", 1.0)) and c["dv"] > float(ow.get("dv_thr", 0.04))
+            and not (e and e["all"])):
+        if not P.get("over_on"):
+            P["over_n"] = P.get("over_n", 0) + 1
+        P["over_on"] = True
+        return dict(step=6, title="지나쳤어요", sub="로봇 쪽으로 당기세요 (큐브를 주황 위로)", col=BAD, steps=dots(6), over=True, name="over")
+    P["over_on"] = False
+    endc = scr.endc
+    if not (e and e["all"]):
+        dz = e["dz"] if e else None
+        sub = (f"{'내리세요' if dz > 0 else '올리세요'} {abs(dz):.1f} cm · " if dz is not None else "") + "주황에 맞춰 집기"
+        if ang is not None and abs(ang) > atol * 1.5:
+            sub = wrist_turn_text(ang) + " · " + sub
+        return dict(step=6, title="수직으로 내려가세요", sub=sub, col=C_OPEN_ALERT, steps=dots(6), name="descend")
+    if endc and endc["frac"] < 1.0:
+        return dict(step=7, title="그대로 유지", sub=f"{endc['held_s']:.1f} / {endc['hold_s']:.1f} s", col=C_GUIDE_OK, steps=dots(7), name="hold")
+    return dict(step=7, title="닫으세요", sub="", col=C_GUIDE_OK, steps=[True] * 8, name="close")
+
+
+def comp_ref(cfg, tref, h):
+    """높이 보정 주황 (2026-11-10, sg50.height_comp): 그리퍼가 잡는 높이보다 h cm 위일 때 닫기 자리 큐브가 보여야 할 자리 · 크기."""
+    hc = (cfg.get("sg50") or {}).get("height_comp")
+    if not hc or tref is None or h is None:
+        return tref
+    hh = float(np.clip(h, 0.0, float(hc["h"][-1])))
+    dv = float(np.interp(hh, hc["h"], hc["dv"]))
+    k = float(np.interp(hh, hc["h"], hc["size"]))
+    u, v = tref["u"], tref["v"] + dv
+    w = dict(tref)
+    w.update(u=u, v=v, area_px=tref["area_px"] * k * k, hull=[(u + (x - tref["u"]) * k, v + (y - tref["v"]) * k) for x, y in tref["hull"]],
+             comp_h=round(hh, 2))
+    return w
+
+
+def height_comp_state(scr, P, e, steps, now):
+    """크레인 높이에서 높이 보정 주황에 앞뒤 · 좌우만 맞춤 → 수직으로 내려감 → 유지 → 닫으세요 (그룹 height_comp)."""
+    s50 = scr.cfg.get("sg50") or {}
+    pr = s50.get("procedure") or {}
+    hz = (s50.get("end_condition") or {}).get("height_cm")
+    above = (scr.tip_z - float(hz)) if (scr.tip_z is not None and hz is not None) else None
+    tref = getattr(scr, "_tref", None)
+    hc = comp_ref(scr.cfg, tref, above) if above is not None else tref
+    c = sgs.target_compare(scr.det, hc) if (scr.det is not None and hc is not None) else None
+    at, dt, mh = float(pr.get("align_tol_uv", 0.035)), float(pr.get("drift_tol_uv", 0.05)), float(pr.get("align_min_h_cm", 1.5))
+    st6 = steps[:4] if len(steps) >= 4 else steps
+    if not P.get("align"):
+        if c is not None and above is not None and above >= mh and abs(c["du"]) <= at and abs(c["dv"]) <= at:
+            P["align"] = True
+            P["align_t"] = now
+        else:
+            if c is None:
+                sub = "손목 화면에 큐브가 보이게"
+            elif above is not None and above < mh:
+                sub = f"조금 올리세요 (크레인 높이 · 지금 +{above:.1f} cm)"
+            else:
+                hint = []
+                if abs(c["dv"]) > at:
+                    hint.append("로봇 쪽으로" if c["dv"] > 0 else "바깥으로")
+                if abs(c["du"]) > at:
+                    hint.append("큐브를 화면 " + ("왼쪽" if c["du"] > 0 else "오른쪽") + "으로")
+                sub = "앞뒤 · 좌우만 · " + " · ".join(hint) + " · 높이는 그대로"
+            return dict(step=3, title="주황에 맞추세요 (이 높이에서)", sub=sub, col=C_OPEN_ALERT, steps=st6 + [None, False], name="align")
+    # 내려가기
+    if c is not None and (abs(c["dv"]) > dt or abs(c["du"]) > dt) and not (e and e["all"]):
+        if not P.get("drift_on"):
+            P["drift_n"] = P.get("drift_n", 0) + 1
+        P["drift_on"] = True
+        if c["dv"] > dt:
+            sub = "로봇 쪽으로 당기세요 (카메라 쪽으로 샘)"
+        elif c["dv"] < -dt:
+            sub = "바깥으로 조금"
+        else:
+            sub = "큐브를 화면 " + ("왼쪽" if c["du"] > 0 else "오른쪽") + "으로 조금"
+        return dict(step=4, title="위치가 샜어요", sub=sub, col=BAD, steps=st6 + [True, None], over=True, name="drift")
+    P["drift_on"] = False
+    endc = scr.endc
+    if not (e and e["all"]):
+        dz = e["dz"] if e else None
+        sub = (f"{'내리세요' if dz > 0 else '올리세요'} {abs(dz):.1f} cm · " if dz is not None else "") + "앞뒤 · 좌우는 그대로"
+        return dict(step=4, title="수직으로 내려가세요", sub=sub, col=C_OPEN_ALERT, steps=st6 + [True, None], name="descend")
+    if endc and endc["frac"] < 1.0:
+        return dict(step=5, title="그대로 유지", sub=f"{endc['held_s']:.1f} / {endc['hold_s']:.1f} s", col=C_GUIDE_OK, steps=st6 + [True, True], name="hold")
+    return dict(step=5, title="닫으세요", sub="", col=C_GUIDE_OK, steps=st6 + [True, True], name="close")
+
+
+def overshoot_check(c, tref, wref, wp_dir, cfg):
+    """지나침 (2026-11-10): c = 큐브 ↔ 주황 target_compare. 반환 None (아님) 또는 ('camera' | 'through').
+    camera = 노랑이 아래 띠가 아닌데 큐브가 주황보다 dv_thr 넘게 아래 (그리퍼가 카메라 쪽 = 바깥으로 샘),
+    through = 노랑 → 주황 방향으로 주황을 px_thr 넘게 지남."""
+    if c is None or tref is None:
+        return None
+    ow = (cfg.get("sg50") or {}).get("overshoot_warn") or {}
+    if not ow:
+        return None
+    try:
+        d = float(wp_dir) % 360
+    except (TypeError, ValueError):
+        d = None
+    if c["dv"] > float(ow.get("dv_thr", 0.04)) and not (d is not None and 45 <= d <= 135):
+        return "camera"
+    if wref is not None:
+        ax, ay = (wref["u"] - tref["u"]) * 640.0, (wref["v"] - tref["v"]) * 480.0
+        n = math.hypot(ax, ay)
+        if n > 1:
+            proj = (c["du"] * 640.0 * ax + c["dv"] * 480.0 * ay) / n   # + = 노랑 쪽, − = 반대편
+            if proj < -float(ow.get("px_thr", 20)):
+                return "through"
+    return None
+
+
+def procedure_state(scr, row, stv, now):
+    """녹화 중 절차 단계 (판마다 새로). 반환 dict(step 0–5, title, sub, col, steps) 또는 None.
+    1 숄더팬 · 2 그리퍼 는 한 번 맞으면 그 판에서 넘어감, 3 각도 · 4 높이 · 5 프레임 은 지금 값 (맞은 뒤에는 허용 1.5 배까지 유지)."""
+    s50 = scr.cfg.get("sg50") or {}
+    pr = s50.get("procedure") or {}
+    try:
+        pan, grip = float(stv["shoulder_pan.pos"]), float(stv["gripper.pos"])
+        tgt = float(row.get("pan_target_deg"))
+    except (KeyError, TypeError, ValueError):
+        return None
+    key = (scr.ui.get("episode"), scr.rec_t0)
+    if key != getattr(scr, "_pr_key", None):
+        scr._pr_key, scr._pr = key, {"pan": False, "grip": False, "g0": grip, "ang_sign": 0.0, "ang_ok": False, "h_ok": False, "wp": False,
+                                     "crane_ok": not scr.group_flag("crane_step")}
+    P = scr._pr
+    if abs(pan - tgt) <= float(pr.get("pan_tol_deg", 6)):
+        P["pan"] = True
+    if grip > P["g0"] + OPEN_ALERT_GRIP:
+        P["grip"] = True
+    endc = scr.endc
+    e = endc["e"] if endc else None
+    c = e["c"] if e else None
+    atol = float(pr.get("angle_tol_deg", 3))
+    ang = None
+    if c is not None:
+        a = float(c["dangle"])
+        if P["ang_sign"] and abs(a) > 35 and math.copysign(1, a) != P["ang_sign"]:
+            a -= 90.0 * math.copysign(1, a)   # 45° 근처: 처음 고른 쪽 (회전량이 적은 쪽) 을 그 판에서 유지
+        if not P["ang_sign"] and abs(a) > 38:
+            P["ang_sign"] = math.copysign(1, a)
+        ang = a
+        P["ang_ok"] = abs(a) <= (atol * 1.5 if P["ang_ok"] else atol)
+    dz = e["dz"] if e else None
+    tol_h = endc["tol_h"] if endc else 0.5
+    if dz is not None:
+        P["h_ok"] = abs(dz) <= (tol_h * 1.5 if P["h_ok"] else tol_h)
+    frame_ok = bool(e and e["ok"]["u"] and e["ok"]["v"] and e["ok"]["size"])
+    crane = (s50.get("procedure") or {}).get("crane") or {}
+    lv = scr.level() if scr.group_flag("crane_step") else None
+    hz = (s50.get("end_condition") or {}).get("height_cm")
+    above = (scr.tip_z - float(hz)) if (scr.tip_z is not None and hz is not None) else None
+    if not P["crane_ok"] and P["grip"] and lv is not None and above is not None:  # 2026-11-10 크레인: 그리퍼 연 뒤 손목 수직 · 큐브 위 높은 곳 (한 번)
+        if abs(lv[0] - lv[2]) <= float(crane.get("tilt_tol_deg", 5)) and above >= float(crane.get("min_above_cm", 4.0)):
+            P["crane_ok"] = True
+    wref = getattr(scr, "wp", None)
+    if wref is not None and not P["wp"] and scr.det is not None and P["ang_ok"] and P["crane_ok"]:  # 노란 프레임: 크레인 · 각도가 맞은 뒤 한 번 지나가면 통과
+        wc = sgs.target_compare(scr.det, wref)
+        if wc and wc["ok"]["u"] and wc["ok"]["v"] and wc["ok"]["size"]:
+            P["wp"] = True
+            P["wp_t"] = now
+    if wref is not None:   # 노랑 → 주황 (높이 포함)
+        done = [P["pan"], P["grip"], P["ang_ok"], P["wp"], bool(e and e["all"])]
+    else:
+        done = [P["pan"], P["grip"], P["ang_ok"] or P.get("align", False), P["h_ok"], frame_ok]   # 높이 보정: 맞춤 뒤에는 각도 단계로 안 돌아감
+    step = next((i for i, x in enumerate(done) if not x), 5)
+    steps = [True if x else False for x in done]
+    if step < 5:
+        steps[step] = None
+    scr._wp_active = wref is not None and not P["wp"]
+    if scr.group_flag("crane_step"):  # 크레인 단계 (숄더팬 → 그리퍼 → 크레인 → 각도 → …): 점 6 개
+        if P["pan"] and P["grip"] and not P["crane_ok"]:
+            sub = "손목 수직 · 큐브 위로"
+            if lv is not None and above is not None:
+                sub += f" (기울기 {lv[0] - lv[2]:+.0f}° · 높이 {above:+.1f} cm)"
+            return dict(step=2, title="크레인 자세를 만드세요", sub=sub, col=C_OPEN_ALERT, steps=[True, True, None, False, False, False], name="crane")
+        steps = steps[:2] + [True if P["crane_ok"] else False] + steps[2:]
+    if step == 0:
+        dd = tgt - pan
+        return dict(step=0, title="숄더팬을 돌리세요", sub=f"로봇 {'오른쪽' if dd > 0 else '왼쪽'}으로 {abs(dd):.0f}°", col=C_OPEN_ALERT, steps=steps)
+    if step == 1:
+        return dict(step=1, title="그리퍼를 여세요", sub="", col=C_OPEN_ALERT, steps=steps)
+    if scr.group_flag("pin"):    # 2026-11-12 새 절차: 첫 맞춤 → 수직 → 다시 맞춤 → 회전 → 내려가 집기
+        return pin_state(scr, P, e, ang, now)
+    if scr.group_flag("hover"):  # 2026-11-10 사용자 절차: 큐브 위로 → 프레임 맞추고 대기 → 수직으로 내려가 집기
+        return hover_state(scr, P, e, ang, now)
+    if step == 2:
+        if ang is None:
+            return dict(step=2, title="각도를 맞추세요", sub="손목 화면에 큐브가 보이게", col=C_OPEN_ALERT, steps=steps)
+        return dict(step=2, title="각도를 맞추세요", sub=wrist_turn_text(ang), col=C_OPEN_ALERT, steps=steps)
+    if scr.group_flag("height_comp"):  # 2026-11-10 크레인 높이에서 맞추고 수직으로 내려가기
+        return height_comp_state(scr, P, e, steps, now)
+    if wref is not None and step == 3:
+        wc = sgs.target_compare(scr.det, wref) if scr.det is not None else None
+        try:
+            below = 45 <= float(row.get("wp_dir")) % 360 <= 135
+        except (TypeError, ValueError):
+            below = False
+        title = "노란 프레임에 맞추세요"
+        if wc is None:
+            return dict(step=3, title=title, sub="손목 화면에 큐브가 보이게", col=C_CROSS_FLASH, steps=steps)
+        if not wc["ok"]["size"]:
+            hint = "가까이 (내리기)" if wc["size"] < 1 - wref["tol"]["size"] else "멀리 (올리기)"
+        else:  # 2026-11-10 내려오는 축: 위 = 로봇 쪽에서 내려와 밀어 넣기, 아래 = 카메라 쪽에서 당겨 오기
+            hint = "그다음 로봇 쪽으로 당겨 주황으로" if below else "그대로 내려오며 주황으로 밀어 넣기"
+        return dict(step=3, title=title, sub=hint, col=C_CROSS_FLASH, steps=steps)
+    if wref is not None and step == 4:
+        ov = overshoot_check(c, getattr(scr, "_tref", None), wref, row.get("wp_dir"), scr.cfg)
+        if ov and not P.get("over_on"):
+            P["over_n"] = P.get("over_n", 0) + 1
+        P["over_on"] = bool(ov)
+        if ov == "camera":
+            return dict(step=4, title="지나쳤어요", sub="로봇 쪽으로 당기세요 (큐브를 주황 위로)", col=BAD, steps=steps, over=True)
+        if ov == "through":
+            return dict(step=4, title="지나쳤어요", sub="노란 쪽으로 조금 되돌아오세요", col=BAD, steps=steps, over=True)
+        sub = (f"{'내리세요' if dz > 0 else '올리세요'} {abs(dz):.1f} cm · 큐브를 주황 점선에" if dz is not None and not e["ok"]["height"] else "큐브를 주황 점선에 맞춤")
+        lim = float((scr.cfg.get("sg50") or {}).get("end_condition", {}).get("wp_to_target_s", 2.0))
+        if P.get("wp_t") is not None:  # 2026-11-10 노랑 → 주황 한 번에 (사용자 "시간적인 부분")
+            el = now - P["wp_t"]
+            sub = f"한 번에 · {el:.1f} / {lim:.0f} s · " + sub
+        return dict(step=4, title="주황 프레임으로 내려가세요", sub=sub, col=C_OPEN_ALERT, steps=steps)
+    if step == 3:
+        if dz is None:
+            return dict(step=3, title="높이를 맞추세요", sub="관절값 없음", col=C_OPEN_ALERT, steps=steps)
+        return dict(step=3, title="높이를 맞추세요", sub=f"{'내리세요' if dz > 0 else '올리세요'} {abs(dz):.1f} cm (왼쪽 막대)", col=C_OPEN_ALERT, steps=steps)
+    if step == 4:
+        return dict(step=4, title="프레임으로 가세요", sub="큐브를 주황 점선에 맞춤", col=C_OPEN_ALERT, steps=steps)
+    if endc and endc["frac"] < 1.0:
+        return dict(step=5, title="그대로 유지", sub=f"{endc['held_s']:.1f} / {endc['hold_s']:.1f} s", col=C_GUIDE_OK, steps=steps)
+    return dict(step=5, title="닫으세요", sub="", col=C_GUIDE_OK, steps=steps)
+
+
+def start_pose_state(cfg, row, stv):
+    """준비 단계: 계획 시작 자세 ↔ 지금 (팔로워). 반환 dict(title, sub, col, all) 또는 None (계획 시작 자세 아님)."""
+    import sg_plan
+
+    if not row or not row.get("start_joints") or not stv:
+        return None
+    pose = sg_plan.row_pose(cfg, row)
+    dev = sg_plan.pose_dev(cfg, pose, stv)
+    if not dev:
+        return None
+    bad = [(j, v) for j, v in dev.items() if not v[3]]
+    if not bad:
+        return dict(title="시작 자세 맞음 → 녹화", sub=pose["name"], col=C_GUIDE_OK, all=True)
+    parts = [f"{J_KO.get(j, j)} {(-v[2]):+.0f}" for j, v in bad]  # 움직일 양 (목표 − 지금, °)
+    return dict(title="시작 자세를 맞추세요", sub=" · ".join(parts) + " (목표까지 °) · 녹화 안 함", col=C_OPEN_ALERT, all=False)
 
 
 class Health:
@@ -366,6 +1051,8 @@ class Screen:
         self.show_det, self.show_ref, self.show_map = True, True, True
         self.debug = False  # F5: 좌표 · 검출 수치 디버그 화면
         self.tilt = None  # (앞뒤 °, 옆 °, 전체 °) — 팔로워 관절값 FK (녹화 · 준비 때만, 카메라 미리보기는 없음)
+        self.tip_z = None  # FK 그리퍼 끝 높이 cm (정답조건 높이 막대)
+        self.endc, self._hold_t0 = None, None
         self.ref = sgs.active_ref()
         self.ref_t = 0
         self.vis, self.vis_t = {}, 0
@@ -407,6 +1094,42 @@ class Screen:
         find = max(abs(lift - self._oa0["lift"]), abs(wflex - self._oa0["wflex"])) > OPEN_ALERT_FIND
         return bool(pan_done or find or lift - self._oa0["lift"] > OPEN_ALERT_LIFT)
 
+    def _end_condition(self, now):
+        """정답조건 상태 (계획 줄에 approach_type 이 있는 그룹만). 네 가지 다 맞은 시각부터 유지 시간을 잼. 판정 · 자동 동작 아님."""
+        row = self.ui.get("row") or {}
+        ec = (self.cfg.get("sg50") or {}).get("end_condition")
+        tref = next((r for r in (getattr(self, "refs", None) or []) if r.get("kind") == "target"), None)
+        if not ec or not (row.get("approach_type") or self.procedure()) or tref is None or self.health.stale(now):
+            self._hold_t0 = None
+            return None
+        e = end_check(self.det, tref, ec, self.tip_z)
+        if e and e["all"]:
+            self._hold_t0 = self._hold_t0 or now
+        else:
+            self._hold_t0 = None
+        hold = float(ec.get("hold_s", 0.5))
+        pin_hold = ((self.cfg.get("sg50") or {}).get("pin") or {}).get("hold_s")
+        if pin_hold is not None and self.group_flag("pin"):   # 2026-11-12 새 절차는 닫기 전 유지를 짧게 (sg50.pin.hold_s)
+            hold = float(pin_hold)
+        if self.group_get("hold_s") is not None:              # 2026-11-12 그룹마다 유지 시간 (sg_pin: 0.7 s)
+            hold = float(self.group_get("hold_s"))
+        held = (now - self._hold_t0) if self._hold_t0 else 0.0
+        return {"e": e, "tol_h": float(ec.get("tol_height_cm", 0.5)), "frac": held / hold if hold > 0 else 1.0, "held_s": held, "hold_s": hold}
+
+    def group_flag(self, key):
+        g = rc.group_for_session(self.cfg, self.ui.get("session") or "")[1] or {}
+        return bool(g.get(key))
+
+    def group_get(self, key, default=None):
+        """지금 세션 그룹 설정 값 (없으면 default) — 그룹마다 다른 대기 · 유지 시간 (2026-11-12 hover_wait_s · hold_s)."""
+        g = rc.group_for_session(self.cfg, self.ui.get("session") or "")[1] or {}
+        return g.get(key, default)
+
+    def procedure(self):
+        """지금 세션 그룹에 절차 안내 (procedure_guide) 가 켜져 있나."""
+        g = rc.group_for_session(self.cfg, self.ui.get("session") or "")[1] or {}
+        return bool(g.get("procedure_guide"))
+
     def level(self):
         """수평계 값 (앞뒤 − 0 점, 허용) 또는 None. 설정 sg50.tilt_zero_deg · tilt_tol_deg."""
         if not self.tilt or not self.show_ref:
@@ -427,8 +1150,12 @@ class Screen:
                 import sg_fk
 
                 self.tilt = sg_fk.tool_tilt(stv)
+                q = np.array([float(stv[f"{j}.pos"]) for j in ("shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll")])
+                self.tip_z = float(sg_fk.fk(q[None])[0][0][2] * 100.0)
             except Exception:  # URDF 없음 등 — 수평계만 안 보임
                 self.tilt = None
+        if self.tilt is None:
+            self.tip_z = None
         stt = self.ui.get("state")
         if stt == "REC" and getattr(self, "_last_state", None) != "REC":
             self.rec_t0 = now
@@ -468,6 +1195,32 @@ class Screen:
             self.perf["detect"].append((time.perf_counter() - t0) * 1000)
             self.perf["detect_runs"] += 1
             self.det_seq = self.health.seq
+        self.endc = self._end_condition(now)
+        self.proc = self.start_ps = None
+        tref_ = next((r for r in (getattr(self, "refs", None) or []) if r.get("kind") == "target"), None)
+        self._tref = tref_
+        self.wp = waypoint_ref(self.cfg, self.ui.get("row") or {}, tref_) if self.procedure() else None
+        if self.procedure() and self.group_flag("hover"):   # 상단 프레임 = 노랑 (판마다 같음)
+            self.wp = hover_ref(self.cfg, tref_)
+        if self.procedure() and self.group_flag("pin"):     # 2026-11-12 새 절차: 첫 맞춤 자리 (판마다) → 그 뒤 상단 프레임
+            p_ = (getattr(self, "_pr", None) or {}) if stt == "REC" else {}
+            self.wp = pin_ref(self.cfg, self.ui.get("row") or {}, tref_, not p_.get("pin_entry"))
+        self.hc = None
+        if self.procedure() and self.group_flag("height_comp") and tref_ is not None and self.tip_z is not None:
+            hz_ = ((self.cfg.get("sg50") or {}).get("end_condition") or {}).get("height_cm")
+            if hz_ is not None:
+                self.hc = comp_ref(self.cfg, tref_, self.tip_z - float(hz_))
+        self._wp_active = self.wp is not None and stt != "REC"
+        if self.procedure() and stv and self.health.status_t is not None and now - self.health.status_t <= 2.0:
+            row_ = self.ui.get("row") or {}
+            if stt == "REC":
+                self.proc = procedure_state(self, row_, stv, now)
+            elif stt == "SETUP":
+                self.start_ps = start_pose_state(self.cfg, row_, stv)
+        if self.endc is not None and self.procedure() and self.group_flag("hover") and not (getattr(self, "_pr", None) or {}).get("hover_ok"):
+            self.endc["hover_h"] = float(((self.cfg.get("sg50") or {}).get("hover") or {}).get("height_cm", 3.0))
+        if self.endc is not None and self.procedure() and self.group_flag("pin") and not (getattr(self, "_pr", None) or {}).get("pin_rot"):
+            self.endc["hover_h"] = float(((self.cfg.get("sg50") or {}).get("hover") or {}).get("height_cm", 3.0))
         if self.front is not None and now - self.vis_t > 0.3 and not self.health.stale(now):
             row = self.ui.get("row") or {}
             try:
@@ -495,8 +1248,18 @@ class Screen:
             if cam == "Front":
                 small = self.draw_front(small, s, row, stale)
             else:
-                small = draw_wrist(small, self.det, getattr(self, "refs", None) or self.ref, s, self.show_det, self.show_ref, stale, text=text,
-                                   tilt=None if stale else self.level(), alert=bool(getattr(self, "open_alert", False)) and not stale)
+                refs_ = getattr(self, "refs", None) or self.ref
+                if getattr(self, "hc", None) is not None and isinstance(refs_, list):  # 높이 보정 주황으로 바꿔 그림
+                    refs_ = [self.hc if r.get("kind") == "target" else r for r in refs_]
+                small = draw_wrist(small, self.det, refs_, s, self.show_det, self.show_ref, stale, text=text,
+                                   tilt=None if stale else self.level(),
+                                   alert=bool(getattr(self, "open_alert", False)) and not stale and not getattr(self, "proc", None),
+                                   endc=None if (stale or not self.show_ref) else self.endc, approach=approach_of(self.cfg, row)[1],
+                                   banner=None if stale else (getattr(self, "proc", None) or getattr(self, "start_ps", None)),
+                                   waypoint=self.wp if (getattr(self, "wp", None) is not None and getattr(self, "_wp_active", False)) else None)
+                import sg_plan
+                if self.group_get("turn_hint") and not stale and row.get("need_turn_deg") not in (None, ""):  # 2026-11-13 손목 회전 권장 배지
+                    small = draw_turn_hint(small, sg_plan.turn_advice(row.get("need_turn_deg")), rec=self.ui.get("state") in ("REC", "SAVING", "FINAL"))
             out.append((cam, small))
         return out
 
@@ -721,6 +1484,7 @@ class Screen:
                 dashed_poly(d, [a_, (b_[0], a_[1]), b_, (a_[0], b_[1])], (156, 163, 175), 1, dash=3)
             d.text((b_[0] + 2, a_[1] - 2), nm, font=fxs, fill=(156, 163, 175))
         pos = row.get("position")
+        appr = None
         if pos:
             try:
                 x_, y_ = rc.known_xy(self.cfg, pos)
@@ -728,15 +1492,36 @@ class Screen:
                 tc = (220, 38, 38) if state != "REC" else (248, 113, 113)
                 r_ = 3.2 * sc
                 d.ellipse([cx_ - r_, cy_ - r_, cx_ + r_, cy_ + r_], outline=(255, 255, 255), width=2)
-                d.rectangle(R(x_, y_, h), fill=tc, outline=(255, 255, 255), width=2)  # 0° = 면이 로봇 좌우축과 나란함 → 그림에서 축 정렬
+                th_ = math.radians(ANGLE_SIGN.get(str(row.get("angle_raw", "0")), 0.0))  # 2026-11-09 큐브 각도 (L = 위에서 반시계 +)
+                if th_:
+                    cs, sn = math.cos(th_), math.sin(th_)
+                    d.polygon([T(x_ + a * cs - b * sn, y_ + a * sn + b * cs) for a, b in ((-h, -h), (h, -h), (h, h), (-h, h))],
+                              fill=tc, outline=(255, 255, 255), width=2)
+                else:
+                    d.rectangle(R(x_, y_, h), fill=tc, outline=(255, 255, 255), width=2)  # 0° = 면이 로봇 좌우축과 나란함 → 그림에서 축 정렬
                 tx = cx_ + r_ + 4 if cx_ < mw * 0.6 else cx_ - r_ - 4 - _tw(d, pos, fb)[0]
-                d.text((tx, cy_ - 12 * u), pos, font=fb, fill=(255, 255, 255))
+                lab_ = pos + (f" {ang_ko(row.get('angle_raw'))}" if str(row.get("angle_raw", "0")) not in ("", "0") else "")
+                d.text((tx if cx_ < mw * 0.6 else cx_ - r_ - 4 - _tw(d, lab_, fb)[0], cy_ - 12 * u), lab_, font=fb, fill=(255, 255, 255))
                 fr = (self.vis or {}).get("front") or {}
                 if fr.get("detected") and state != "REC" and not self.health.stale(time.time()):
                     gx, gy = T(*fr["xy_cm"])
                     d.line([(gx, gy), (cx_, cy_)], fill=OK, width=1)
                     d.ellipse([gx - 4, gy - 4, gx + 4, gy + 4], fill=OK)
+                ak, ad = approach_of(self.cfg, row)
+                if ad:  # 2026-11-09 접근 유형: 그리퍼가 큐브로 들어오는 방향 (하늘색 화살표, 위에서 = 겹 원) — 녹화 덮개 위에 그림 (아래)
+                    appr = (rb, (x_, y_), ad)
             except KeyError:
+                pass
+        if row.get("distractors"):   # 2026-11-13 방해물 자리도 위 그림에 (사용자: "맨 왼쪽 판에 위치 파악할 수 있게") — 색 네모 (실제 크기, 각도 없음) + 색 고리
+            try:
+                import sg_plan
+                for c, x_, y_ in sg_plan.parse_distractors(row["distractors"]):
+                    colm = DIS_RGB.get(c, (200, 200, 200))
+                    cx_, cy_ = T(x_, y_)
+                    r_ = 2.4 * sc
+                    d.ellipse([cx_ - r_, cy_ - r_, cx_ + r_, cy_ + r_], outline=colm, width=2)
+                    d.rectangle(R(x_, y_, h), fill=colm, outline=(255, 255, 255), width=1)
+            except Exception:
                 pass
         tb = oy + sc * (MAP_X[1] - MAP_X[0]) + int(8 * u)  # 탁자 그림 바로 아래
         if state in ("REC", "SAVING", "FINAL"):  # 단계 덮개: 녹화 중 = 빨강, 저장 중 = 파랑
@@ -754,6 +1539,10 @@ class Screen:
             sub = (f"{time.time() - self.rec_t0:4.1f} s" if state == "REC" and self.rec_t0 else "다음 위치는 저장 뒤")
             tw2, _ = _tw(d, sub, fb)
             d.text((mx - tw2 / 2, my + 8), sub, font=fb, fill=(255, 255, 255))
+        if appr is not None:
+            self._map_approach(d, T, appr[0], appr[1], appr[2], sc, u)
+        if pos and (row.get("start_joints") or (self.cfg.get("sg50") or {}).get("show_pan_lines")):
+            self._map_pan_lines(d, T, rb, row, sc, u, state)
         # 아래 글 (탁자 그림 바로 아래)
         q = (self.cfg.get("scenarios", {}).get(row.get("scenario_id", ""), {}) or {}).get("pose", "")
         pn = ((s50.get("start_poses") or {}).get(q) or {}).get("name", "")
@@ -764,6 +1553,13 @@ class Screen:
             conf = (s50.get("positions") or {}).get(pos, {}).get("confirmed", True) if pos else True
             lead = "다음 " if state == "RESET" else ""
             line = (f"{lead}{pos} · 0° · 시작 자세 {q} {pn}" + ("" if conf else " · 미확정 좌표")) if pos else "계획 없음"
+            ak, ad = approach_of(self.cfg, row)
+            if ad:
+                line = (f"{lead}{pos} · 접근 {ak} {ad['name']}") + ("" if conf else " · 미확정 좌표")
+            if pos and row.get("start_joints"):  # 2026-11-09 계획 시작 자세: 각도 · 팔 접힘 · 시작 팬
+                fd = ((s50.get("start_folds") or {}).get(row.get("start_fold", "")) or {}).get("name", "")
+                sp_ = next((x.split("=")[1] for x in row["start_joints"].split(";") if x.startswith("shoulder_pan=")), "?")
+                line = f"{lead}{pos} · 각도 {ang_ko(row.get('angle_raw', '0'))} · 시작 {row.get('start_fold', '')} {fd} · 팬 {float(sp_):+.0f}°"
             d.text((8, mh - int(44 * u)), line, font=fs_, fill=FG if conf else WARN)
             prog = f"완료 {ui.get('done', '?')}/{ui.get('target', '?')} · run {(self.st.get('run_id') or '?')}" + (" · PREVIEW" if ui.get("preview") else "")
             d.text((8, mh - int(20 * u)), prog + " · F5 디버그", font=fxs, fill=DIM)
@@ -777,6 +1573,9 @@ class Screen:
             if not conf:
                 d.text((8, tb + int(26 * u)), "미확정 좌표 — front 의 빨간 원에 놓고 확인", font=fs_, fill=WARN)
             d.text((8, tb + int(48 * u)), f"시작 자세 {q} {pn}" if q else "", font=fl, fill=FG)
+            ak, ad = approach_of(self.cfg, row)
+            if ad:
+                d.text((8, tb + int(72 * u)), f"접근 {ak} {ad['name']} — {ad.get('text', '')}", font=fs_, fill=C_APPROACH)
         else:
             d.text((8, tb), "계획 없음 (카메라 미리보기는 --session 으로 계획 표시)", font=fs_, fill=DIM)
         ly = tb + int(80 * u)
@@ -788,6 +1587,58 @@ class Screen:
         if state == "REC":  # 녹화 중 = 빨간 테두리
             d.rectangle([0, 0, mw - 1, mh - 1], outline=(220, 38, 38), width=4)
         return im
+
+    def _map_pan_lines(self, d, T, base, row, sc, u, state):
+        """2026-11-09 위 그림 숄더팬 선 (밑동에서): 흰 점선 = 큐브 방향 (목표 팬) · 노랑 = 계획 시작 팬 · 하늘색 = 지금 팬 (관절값 있을 때).
+        팬 → 탁자 방향은 근사 (방향 ≈ −팬, 팬 + = 로봇 오른쪽) — 표시용."""
+        bx, by = base
+        L = 17.0
+        wl = max(2, int(3 * u))
+
+        def ray(pan_deg, col, width, dash=False):
+            b = math.radians(-float(pan_deg))
+            p0, p1 = T(bx, by), T(bx + L * math.cos(b), by + L * math.sin(b))
+            if dash:
+                dashed_poly(d, [p0, p1], col, width, dash=7)
+            else:
+                d.line([p0, p1], fill=col, width=width)
+            return p1
+        try:
+            ray(float(row.get("pan_target_deg")), (255, 255, 255), max(1, wl - 1), dash=True)
+        except (TypeError, ValueError):
+            pass
+        sj = {k: float(v) for k, v in (x.split("=") for x in (row.get("start_joints") or "").split(";") if "=" in x)}
+        if "shoulder_pan" in sj and state in ("SETUP", "START", "RESET", "CAMPREVIEW", "WAIT"):
+            p1 = ray(sj["shoulder_pan"], C_CROSS, wl + 1)
+            d.text((p1[0] + 4, p1[1] - 8 * u), "시작", font=font(12 * u), fill=C_CROSS)
+        stv = self.st.get("state") or {}
+        if "shoulder_pan.pos" in stv and self.health.status_t is not None and time.time() - self.health.status_t <= 2.0:
+            ray(float(stv["shoulder_pan.pos"]), C_APPROACH, wl)
+
+    def _map_approach(self, d, T, base, cube, ad, sc, u):
+        """위 그림 접근 화살표 (탁자 좌표에서 계산 → 그림 좌표). 바깥 = 밑동 → 큐브 방향, 팬 + 쪽 = 로봇 오른쪽 (그 방향을 시계로 90°)."""
+        bx, by = base
+        cx, cy = cube
+        n = math.hypot(cx - bx, cy - by) or 1.0
+        rx, ry = (cx - bx) / n, (cy - by) / n
+        tx, ty = ry, -rx
+        wl = max(3, int(4 * u))
+        if ad.get("from_above"):
+            px, py = T(cx, cy)
+            for rr_ in (4.6 * sc, 6.2 * sc):
+                d.ellipse([px - rr_, py - rr_, px + rr_, py + rr_], outline=C_APPROACH, width=wl)
+            return
+        rad, sid = float(ad.get("radial", 0)), float(ad.get("side", 0))
+        L, gap = 10.0, 2.6
+        sx, sy = cx + L * (rad * rx + sid * tx), cy + L * (rad * ry + sid * ty)
+        ex, ey = cx + gap * (rad * rx + sid * tx), cy + gap * (rad * ry + sid * ty)
+        if ad.get("overshoot"):  # 안쪽에서 들어와 큐브를 지나 바깥 2.5 cm 까지 → 되돌아옴
+            ox, oy = cx - 2.5 * rad * rx, cy - 2.5 * rad * ry
+            d.line([T(sx, sy), T(ox, oy)], fill=C_APPROACH, width=wl)
+            off = 1.2
+            _arrow(d, T(ox + off * tx, oy + off * ty), T(cx - gap * rad * rx + off * tx, cy - gap * rad * ry + off * ty), C_APPROACH, wl)
+            return
+        _arrow(d, T(sx, sy), T(ex, ey), C_APPROACH, wl)
 
     def draw_front(self, img, s, row, stale):
         from PIL import ImageDraw
@@ -815,7 +1666,29 @@ class Screen:
                         d.line([(x1, y1), (x2, y2)], fill=C_TGT, width=3)
                     d.polygon(pts, outline=(255, 255, 255))
                     dashed_poly(d, pts, C_TGT, 2, dash=4)
-                    label(d, (min(cx + r_ + 8, im.size[0] - 150), cy - 14), f"여기 놓기 {pos} · 0°", f, (255, 255, 255), C_TGT)
+                    label(d, (min(cx + r_ + 8, im.size[0] - 150), cy - 14), f"여기 놓기 {pos} · {ang_ko(row.get('angle_raw', '0'))}", f, (255, 255, 255), C_TGT)
+            except Exception:
+                pass
+        if row.get("distractors"):   # 2026-11-13 방해물 (색 큐브) 놓을 자리: 준비 때 색 원 + 색 이름, 녹화 중에는 가는 점선 네모만
+            try:
+                import sg_plan
+
+                rec = (self.ui.get("state") in ("REC", "SAVING", "FINAL"))
+                fd = font(max(10, im.size[0] / 48))
+                for i, (c, x, y) in enumerate(sg_plan.parse_distractors(row["distractors"])):
+                    col = DIS_RGB.get(c, (200, 200, 200))
+                    h = 1.25
+                    pts = [(px * s, py * s) for px, py in (rc.cm_to_px(self.H, (x + a_, y + b_)) for a_, b_ in ((-h, -h), (-h, h), (h, h), (h, -h)))]
+                    cx, cy = rc.cm_to_px(self.H, (x, y))
+                    cx, cy = cx * s, cy * s
+                    if rec:
+                        dashed_poly(d, pts, col, 1, dash=4)
+                    else:
+                        r_ = max(11, 1.3 * max(abs(pts[0][0] - pts[2][0]), abs(pts[0][1] - pts[2][1])))
+                        d.ellipse([cx - r_ - 1, cy - r_ - 1, cx + r_ + 1, cy + r_ + 1], outline=(0, 0, 0), width=4)
+                        d.ellipse([cx - r_, cy - r_, cx + r_, cy + r_], outline=col, width=3)
+                        d.polygon(pts, outline=col)
+                        label(d, (max(2, min(cx - 14, im.size[0] - 46)), min(cy + r_ + 3, im.size[1] - 18)), sg_plan.DIS_KO.get(c, c), fd, (255, 255, 255), col if c != "yellow" else (161, 98, 7))   # 원 아래 (빨간 큐브 안내 글과 안 겹치게)
             except Exception:
                 pass
         fr = (self.vis or {}).get("front") or {}
@@ -887,6 +1760,18 @@ class Screen:
             d.text((x, y), "정렬 참고: 없음 (예비 시연 확인 뒤 sg_sticker.py set-ref 로 설정)" if not self.ref else "정렬 참고 표시 꺼짐 (F2)",
                    font=fs, fill=DIM)
         y += lh
+        if self.endc is not None:  # 2026-11-09 정답조건 수치 (디버그만)
+            e, c = self.endc["e"], self.endc["e"]["c"]
+            ak, ad = approach_of(self.cfg, row)
+            mk = lambda ok: "✓" if ok else "✗"  # noqa: E731
+            parts = [f"접근 {ak} {ad['name']}" if ad else "접근 —"]
+            parts.append(f"u {c['du']:+.3f}{mk(e['ok']['u'])} · v {c['dv']:+.3f}{mk(e['ok']['v'])} · 크기 {c['size']:.3f}{mk(e['ok']['size'])}" if c else "큐브 검출 없음")
+            parts.append("높이 " + (f"{e['dz']:+.2f} cm" if e["dz"] is not None else "관절값 없음") + mk(e["ok"]["height"]))
+            parts.append(f"유지 {self.endc['held_s']:.1f}/{self.endc['hold_s']:.1f} s")
+            if getattr(self, "_pr", None) and self._pr.get("over_n"):
+                parts.append(f"지나침 경고 {self._pr['over_n']} 번")
+            d.text((x, y), "정답조건 (판정 아님): " + " · ".join(parts), font=fs, fill=C_GUIDE_OK if e["all"] else C_APPROACH)
+            y += lh
         lv = self.level()
         if getattr(self, "open_alert", False):
             d.text((x, y), "그리퍼 열기 알림: 숄더팬 정렬 · 찾기 · 이동을 그리퍼를 안 연 채 시작함 (참고, 자동 동작 없음)", font=fs, fill=C_OPEN_ALERT)

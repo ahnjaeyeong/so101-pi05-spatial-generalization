@@ -1,0 +1,27 @@
+CKPT /home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model
+K5 0
+U7 12
+K2 10
+HU3 10
+K8 12
+HU7 12
+K4 12
+U1 7
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+엔진 359s · 장면 153
+  0/153 · 367s
+  20/153 · 523s
+  40/153 · 682s
+  60/153 · 841s
+  80/153 · 1000s
+  100/153 · 1162s
+  120/153 · 1322s
+  140/153 · 1483s
+P2_DONE 1581s

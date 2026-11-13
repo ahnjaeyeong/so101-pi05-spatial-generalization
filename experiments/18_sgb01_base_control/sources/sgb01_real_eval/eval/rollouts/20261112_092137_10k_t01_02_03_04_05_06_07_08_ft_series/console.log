@@ -1,0 +1,229 @@
+[r2_safety] installed {'mode': 'stop', 'scope': 'episode', 'pan_cmd_abs_max': 104.0, 'pan_present_abs_max': 100.0, 'over_target_deg': 30.0, 'stall_err_deg': 8.0, 'stall_move_deg': 0.3, 'stall_ticks': 20, 'plan': '/home/user/so101_runs/main_k8/sgb01_real_eval/config/series/20261112_092130_ft.csv', 'plan_tol_cm': 2.0, 'plan_tol_deg': 10.0, 'plan_start': 1, 'live': 'on', 'viewer': 'auto'}
+WARNING:lerobot.r2_safety:R2_PLAN 배치 계획 8 판 (/home/user/so101_runs/main_k8/sgb01_real_eval/config/series/20261112_092130_ft.csv), 1 번부터. 첫 판: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+WARNING:lerobot.r2_safety:R2_PLAN 배치 창을 띄웠어요 (scripts/r2_place_viewer.py, 공유 /dev/shm/r2_live_20261112_092137_10k_t01_02_03_04_05_06_07_08_ft_series)
+[fault_latch] installed {'mode': 'stop'}
+[end_hold] E5 home mode: 판 사이 · 종료 때 safe_home 점검 + 15°/s 복귀 (Ctrl+C · 사용자 종료 · 예외 뒤에는 안 움직임)
+[end_hold] installed (auto-return blocked, torque kept on at exit)
+INFO 2026-11-12 09:21:46 /eval_ui.py:165 debug log · argv: --strategy.type=episodic --policy.path=/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model --policy.num_inference_steps=5 --inference.type=rtc --inference.rtc.execution_horizon=20 --robot.type=so101_follower --robot.port=/dev/so101_follower --robot.id=my_arm --robot.max_relative_target=8 --robot.cameras={ front: {type: opencv, index_or_path: /dev/cam_front, width: 640, height: 480, fps: 30, fourcc: "MJPG"}, wrist: {type: opencv, index_or_path: /dev/cam_wrist, width: 640, height: 480, fps: 30, fourcc: "MJPG"} } --dataset.repo_id=oxr/rollout_sgb01_real_eval_10k_t01_02_03_04_05_06_07_08_ft_series --dataset.root=/home/user/so101_runs/main_k8/sgb01_real_eval/eval/rollouts/20261112_092137_10k_t01_02_03_04_05_06_07_08_ft_series/dataset --dataset.no_stamp=true --dataset.single_task=pick up the red cube and put it in the brown box --dataset.num_episodes=8 --dataset.episode_time_s=60 --dataset.reset_time_s=3600 --dataset.push_to_hub=false --fps=30 --play_sounds=false --display_data=false --inference.rtc.prefix_attention_schedule=EXP --inference.queue_threshold=30 --return_to_initial_position=false --strategy.reset_to_initial_position=true
+INFO 2026-11-12 09:21:46 /eval_ui.py:167 arm_filter/guard options: {'arm_filter': False, 'alpha': 0.5, 'init': 'state', 'guard': 'warn', 'starve_ticks': 15, 'stale_ticks': 30, 'stall_ticks': 20, 'horizon_count': 10, 'startup_ticks': 150, 'exec_speed': 1.0, 'active': True, 'r2_safety': 'stop', 'fault_latch': 'stop'}
+INFO 2026-11-12 09:21:46 _rollout.py:245 Building rollout context...
+INFO 2026-11-12 09:21:46 /context.py:330 Loading policy from '/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model'...
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+INFO 2026-11-12 09:24:23 ing_pi05.py:581 Enabled gradient checkpointing for PI05Pytorch model
+Loading model from: /home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model
+✓ Loaded state dict from model.safetensors
+WARNING 2026-11-12 09:24:24 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING 2026-11-12 09:24:24 ng_pi05.py:1138 Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+All keys loaded successfully!
+INFO 2026-11-12 09:24:29 /context.py:361 Policy loaded: type=pi05, device=cuda
+INFO 2026-11-12 09:24:29 /context.py:392 Connecting robot (so100_follower)...
+INFO 2026-11-12 09:24:31 a_opencv.py:195 OpenCVCamera(/dev/cam_front) connected.
+INFO 2026-11-12 09:24:32 a_opencv.py:195 OpenCVCamera(/dev/cam_wrist) connected.
+INFO 2026-11-12 09:24:32 follower.py:131 my_arm SOFollower connected.
+INFO 2026-11-12 09:24:32 /context.py:395 Robot connected: so_follower
+INFO 2026-11-12 09:24:32 /context.py:400 Captured initial robot position (6 keys)
+INFO 2026-11-12 09:24:32 /context.py:500 Setting up dataset (repo_id=oxr/rollout_sgb01_real_eval_10k_t01_02_03_04_05_06_07_08_ft_series)...
+INFO 2026-11-12 09:24:33 /context.py:547 Dataset ready: oxr/rollout_sgb01_real_eval_10k_t01_02_03_04_05_06_07_08_ft_series (0 existing episodes)
+INFO 2026-11-12 09:24:35 /context.py:575 Creating inference engine (type=rtc)...
+INFO 2026-11-12 09:24:35 e/factory.py:99 Creating inference engine: rtc
+INFO 2026-11-12 09:24:35 ence/rtc.py:244 RTCInferenceEngine initialized (torch.compile disabled, no warmup needed)
+INFO 2026-11-12 09:24:35 /context.py:597 Rollout context assembled successfully
+INFO 2026-11-12 09:24:35 _rollout.py:249 Rollout strategy: episodic
+INFO 2026-11-12 09:24:35 _rollout.py:250 Robot: so100_follower | FPS: 30 | Duration: infinite
+INFO 2026-11-12 09:24:35 gies/core.py:96 Starting inference engine...
+INFO 2026-11-12 09:24:35 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-12 09:24:35 ence/rtc.py:312 RTC inference thread started
+INFO 2026-11-12 09:24:35 ies/core.py:100 Inference engine started
+INFO 2026-11-12 09:24:35 rd_input.py:388 Using terminal keyboard input — keep this terminal focused (Right/Left/Esc, or n=next, r=re-record, q=quit).
+INFO 2026-11-12 09:24:35 episodic.py:105 Episodic strategy ready
+INFO 2026-11-12 09:24:35 _rollout.py:263 Rollout setup complete, starting rollout...
+INFO 2026-11-12 09:24:35 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-12 09:24:35 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-12 09:24:35 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-12 09:24:35 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+[eval_ui] READY 0
+Right arrow key pressed. Exiting loop...
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+WARNING 2026-11-12 09:25:04 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-16.8, 11.8) cm · Known (K5 0.3 cm) · 각도 -5° (= 0) · 계획 K5_0 과 0.3 cm
+INFO 2026-11-12 09:25:04 t_logged.py:128 arm_filter=False guard=warn horizon=20 exec_speed=1.0 log=/home/user/so101_runs/main_k8/sgb01_real_eval/eval/rollouts/20261112_092137_10k_t01_02_03_04_05_06_07_08_ft_series/filter_log.csv vmax/tick=[2.46, 4.13, 4.22, 4.57, 3.43]
+INFO 2026-11-12 09:25:05 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=24
+INFO 2026-11-12 09:25:06 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:06 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:07 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:08 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:08 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:09 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:10 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:10 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:12 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:13 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:13 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:14 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:14 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:15 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=9, real_delay=10
+INFO 2026-11-12 09:25:16 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:17 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:17 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:18 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-12 09:25:18 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+WARNING 2026-11-12 09:25:18 2_safety.py:413 R2_SAFETY STOP ep=0 tick=381 rules=over_target cmd_pan=-34.0 present_pan=-33.1 queue 29→0 (hold+pause+reset_queue+exit_early)
+WARNING 2026-11-12 09:25:18 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-12 09:25:18 ls/utils.py:150 Reset the environment
+[end_hold] 시작 자세로 복귀 35° · 15°/s (~2.3 s). 멈추려면 Ctrl+C
+INFO 2026-11-12 09:25:18 ence/rtc.py:588 Discarding action chunk computed before an engine reset
+[end_hold] 복귀 완료.
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+INFO 2026-11-12 09:25:37 ls/utils.py:150 Re-record episode
+[eval_ui] DISCARD 0
+[end_hold] 시작 자세로 복귀 1° · 15°/s (~0.0 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+INFO 2026-11-12 09:25:37 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-12 09:25:37 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-12 09:25:37 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-12 09:25:37 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+INFO 2026-11-12 09:25:37 le_timer.py:559 Cadence (discarded episode): 29.79 Hz vs 30 Hz target · 406 ticks, 13.6 s measured · 0/405 ticks over the 33.3 ms budget (work mean 3.9 ms, worst 9.3 ms) · starved ticks: 25
+WARNING 2026-11-12 09:25:37 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-16.8, 11.8) cm · Known (K5 0.3 cm) · 각도 -3° (= 0) · 계획 K5_0 과 0.3 cm
+INFO 2026-11-12 09:25:37 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=9
+INFO 2026-11-12 09:25:38 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:25:39 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:40 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:41 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:42 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:42 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:25:43 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-12 09:25:43 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+WARNING 2026-11-12 09:25:43 2_safety.py:413 R2_SAFETY STOP ep=1 tick=160 rules=over_target cmd_pan=-35.4 present_pan=-33.2 queue 30→0 (hold+pause+reset_queue+exit_early)
+WARNING 2026-11-12 09:25:43 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-12 09:25:43 ls/utils.py:150 Reset the environment
+[end_hold] 시작 자세로 복귀 35° · 15°/s (~2.3 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+INFO 2026-11-12 09:27:36 ls/utils.py:150 Re-record episode
+[eval_ui] DISCARD 0
+[end_hold] 시작 자세로 복귀 1° · 15°/s (~0.1 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+INFO 2026-11-12 09:27:36 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-12 09:27:36 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-12 09:27:36 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-12 09:27:36 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+INFO 2026-11-12 09:27:36 le_timer.py:559 Cadence (discarded episode): 29.85 Hz vs 30 Hz target · 170 ticks, 5.7 s measured · 0/169 ticks over the 33.3 ms budget (work mean 3.7 ms, worst 9.8 ms) · starved ticks: 10
+WARNING 2026-11-12 09:27:36 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-15.4, 1.5) cm · Unknown (가장 가까운 K6 5.2 cm) · 각도 +0° (= 0) · 계획 K5_0 과 10.1 cm ⚠ 계획과 10.1 cm (> 2.0) 다름; 계획은 known 인데 사진 판정은 Unknown (가장 가까운 K6 5.2 cm) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)
+INFO 2026-11-12 09:27:37 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=9
+INFO 2026-11-12 09:27:38 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:27:38 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:27:39 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+WARNING 2026-11-12 09:27:40 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-12 09:27:40 ls/utils.py:150 Reset the environment
+[end_hold] 시작 자세로 복귀 17° · 15°/s (~1.1 s). 멈추려면 Ctrl+C
+INFO 2026-11-12 09:27:40 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=4, real_delay=11
+[end_hold] 복귀 완료.
+Left arrow key pressed. Exiting loop and rerecord the last episode...
+INFO 2026-11-12 09:27:54 ls/utils.py:150 Re-record episode
+[eval_ui] DISCARD 0
+[end_hold] 시작 자세로 복귀 1° · 15°/s (~0.1 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+INFO 2026-11-12 09:27:54 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+INFO 2026-11-12 09:27:54 ence/rtc.py:334 Resuming RTC inference thread
+INFO 2026-11-12 09:27:54 ls/utils.py:150 Recording episode 0
+WARNING 2026-11-12 09:27:54 2_safety.py:354 R2_PLAN 이번 판에 놓을 자리: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+[eval_ui] START 0 ep000_front.png ep000_wrist.png
+INFO 2026-11-12 09:27:54 le_timer.py:559 Cadence (discarded episode): 29.71 Hz vs 30 Hz target · 94 ticks, 3.2 s measured · 0/93 ticks over the 33.3 ms budget (work mean 3.7 ms, worst 7.2 ms) · starved ticks: 10
+WARNING 2026-11-12 09:27:54 2_safety.py:383 R2_PLAN 이번 판 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm: 놓인 곳 (-17.2, 12.0) cm · Known (K5 0.5 cm) · 각도 +0° (= 0) · 계획 K5_0 과 0.5 cm
+INFO 2026-11-12 09:27:54 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=0, real_delay=10
+INFO 2026-11-12 09:27:55 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:27:56 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:27:57 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:27:57 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:27:58 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=11, real_delay=12
+INFO 2026-11-12 09:27:59 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:27:59 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:00 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:01 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:01 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:02 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:03 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:03 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:04 on_queue.py:272 Indexes diff is not equal to real delay. indexes_diff=10, real_delay=11
+INFO 2026-11-12 09:28:04 ence/rtc.py:329 Pausing RTC inference thread
+INFO 2026-11-12 09:28:04 ence/rtc.py:345 Resetting RTC inference state (policy + processors + queue)
+WARNING 2026-11-12 09:28:04 2_safety.py:413 R2_SAFETY STOP ep=3 tick=296 rules=over_target cmd_pan=-40.7 present_pan=-35.7 queue 34→0 (hold+pause+reset_queue+exit_early)
+WARNING 2026-11-12 09:28:04 2_safety.py:340 R2_PLAN 다음 판 — 이 판을 저장 (→) 하면: 2번 U7_0 (unknown) — K6 표시에서 로봇 기준 왼쪽 (화면 오른쪽) 5.5 cm · 상자 쪽 1.5 cm, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-15.5, 2.0) cm  |  버리고 다시 (←) 하면: 1번 K5_0 (known) — 표시된 자리, 각도 0° (큐브 면이 로봇 정면과 나란히) · 좌표 (-17.0, 11.5) cm
+INFO 2026-11-12 09:28:04 ls/utils.py:150 Reset the environment
+[end_hold] 시작 자세로 복귀 38° · 15°/s (~2.5 s). 멈추려면 Ctrl+C
+[end_hold] 복귀 완료.
+INFO 2026-11-12 09:31:15 s/process.py:90  Shutdown signal 2 received. Cleaning up…
+[eval_ui] SAVING 0 296
+Map:   0%|                                      | 0/296 [00:00<?, ? examples/s]Map: 100%|██████████████████████████| 296/296 [00:00<00:00, 3358.01 examples/s]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+-------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.0.0
+Svt[info]: Svt[info]: -------------------------------------------
+SVT [build]  :	GCC 14.2.1 20250110 (Red Hat 14.2.1-7)	 64 bit
+Svt[info]: LIB Build date: Jul  3 2025 03:12:13
+Svt[info]: -------------------------------------------
+Svt[warn]: Preset M12 is mapped to M10.
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: Svt[warn]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Preset M12 is mapped to M10.
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+Svt[info]: Level of Parallelism: 5
+Svt[info]: Number of PPCS 76
+Svt[info]: [asm level on system : up to neon_i8mm]
+Svt[info]: [asm level selected : up to neon_i8mm]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 640 / 480 / 30 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 10 / PSNR / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 2 / 16 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 30 
+Svt[info]: SVT [config]: AQ mode / variance boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 			: 0 / 0
+Svt[info]: Svt[info]: -------------------------------------------
+[eval_ui] SAVED 0 296
+INFO 2026-11-12 09:31:20 episodic.py:234 Episodic control loop ended — saving any in-progress episode
+INFO 2026-11-12 09:31:20 le_timer.py:559 Cadence (episode 1): 29.86 Hz vs 30 Hz target · 307 ticks, 10.3 s measured · 0/306 ticks over the 33.3 ms budget (work mean 3.9 ms, worst 6.9 ms) · starved ticks: 11
+INFO 2026-11-12 09:31:20 le_timer.py:606 Cadence summary — whole run, 4 episodes · target 30 Hz (33.3 ms budget per tick): 977 ticks, 973 judged
+  effective cadence: 29.81 Hz over 32.8 s measured
+  ticks over the 33.3 ms work budget: 0/973 (0.0%) — work mean 3.8 ms, worst 9.8 ms
+  ticks with no action to send (inference engine starved): 56 — each commanded nothing and recorded no frame
+  ticks whose cadence slipped outside the loop body (sleep overshoot / CPU starvation while pacing): 124
+  loop-body steps (share of measured work):
+    observe      mean   1.75 ms · worst  48.53 ms ·  44.1% of work · 977 calls
+    process_obs  mean   0.03 ms · worst   0.08 ms ·   0.8% of work · 977 calls
+    infer        mean   0.17 ms · worst   1.20 ms ·   4.2% of work · 977 calls
+    send         mean   1.49 ms · worst   6.87 ms ·  35.5% of work · 921 calls
+    telemetry    mean   0.00 ms · worst   0.02 ms ·   0.1% of work · 921 calls
+    record       mean   0.22 ms · worst   1.11 ms ·   5.2% of work · 921 calls
+  pacing headroom: 29.5 ms slept per tick on average (max 32.3 ms) — near zero means the loop is saturated
+INFO 2026-11-12 09:31:20 ls/utils.py:150 Stop recording
+INFO 2026-11-12 09:31:20 episodic.py:357 Finalizing dataset...
+INFO 2026-11-12 09:31:20 ence/rtc.py:316 Stopping RTC inference thread...
+INFO 2026-11-12 09:31:20 ence/rtc.py:324 RTC inference thread stopped
+WARNING 2026-11-12 09:31:20 end_hold.py:135 END_HOLD 복귀 안 함 (shutdown_signal 로 끝남)
+INFO 2026-11-12 09:31:20 a_opencv.py:634 OpenCVCamera(/dev/cam_front) disconnected.
+INFO 2026-11-12 09:31:20 a_opencv.py:634 OpenCVCamera(/dev/cam_wrist) disconnected.
+WARNING 2026-11-12 09:31:20 end_hold.py:325 END_HOLD 종료 (E5): 복귀 7/8 회 성공 · 시작 자세와 최대 0.79° · 토크 유지
+[end_hold] END_HOLD 종료 (E5): 복귀 7/8 회 성공 · 시작 자세와 최대 0.79° · 토크 유지
+INFO 2026-11-12 09:31:20 ls/utils.py:150 Exiting
+INFO 2026-11-12 09:31:20 episodic.py:378 Episodic strategy teardown complete
+INFO 2026-11-12 09:31:20 _rollout.py:272 Rollout finished

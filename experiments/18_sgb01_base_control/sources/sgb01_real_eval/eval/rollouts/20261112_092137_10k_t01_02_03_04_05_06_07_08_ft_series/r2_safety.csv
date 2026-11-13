@@ -1,0 +1,13 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1794442905.8232,1808420.99339,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=30.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/sgb01_real_eval/config/series/20261112_092130_ft.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1794443104.4442,1808619.61441,0,0,episode_start,over_target,pe=-3.14 start_pan=1.1428571428571428 ok x=-16.8 y=11.8,,1.1428571428571428,,,
+1794443104.4822,1808619.65239,0,0,plan_check,K5_0,"놓인 곳 (-16.8, 11.8) cm · Known (K5 0.3 cm) · 각도 -5° (= 0) · 계획 K5_0 과 0.3 cm",,1.1428571428571428,,,
+1794443118.0373,1808633.20752,0,381,STOP,over_target,present -33.1 past pe -3.1 by 30.0,-33.9827880859375,-33.142857142857146,29,0,hold+pause+reset_queue+exit_early
+1794443137.3710,1808652.54115,1,0,episode_start,over_target,pe=-3.15 start_pan=0.7912087912087912 ok x=-16.8 y=11.8,,0.7912087912087912,,,
+1794443137.3997,1808652.56992,1,0,plan_check,K5_0,"놓인 곳 (-16.8, 11.8) cm · Known (K5 0.3 cm) · 각도 -3° (= 0) · 계획 K5_0 과 0.3 cm",,0.7912087912087912,,,
+1794443143.0306,1808658.20082,1,160,STOP,over_target,present -33.2 past pe -3.1 by 30.1,-35.42072296142578,-33.23076923076923,30,0,hold+pause+reset_queue+exit_early
+1794443256.9379,1808772.10806,2,0,episode_start,over_target,pe=31.87 start_pan=0.7032967032967034 ok x=-15.4 y=1.5,,0.7032967032967034,,,
+1794443256.9705,1808772.14068,2,0,plan_check,K5_0,"놓인 곳 (-15.4, 1.5) cm · Unknown (가장 가까운 K6 5.2 cm) · 각도 +0° (= 0) · 계획 K5_0 과 10.1 cm ⚠ 계획과 10.1 cm (> 2.0) 다름; 계획은 known 인데 사진 판정은 Unknown (가장 가까운 K6 5.2 cm) — 다시 놓으려면 → 대신 ← (이 판 버리고 같은 번호로 다시)",,0.7032967032967034,,,계획과 10.1 cm (> 2.0) 다름; 계획은 known 인데 사진 판정은 Unknown (가장 가까운 K6 5.2 cm)
+1794443274.4344,1808789.60462,3,0,episode_start,over_target,pe=-4.14 start_pan=1.4065934065934067 ok x=-17.2 y=12.0,,1.4065934065934067,,,
+1794443274.4603,1808789.63048,3,0,plan_check,K5_0,"놓인 곳 (-17.2, 12.0) cm · Known (K5 0.5 cm) · 각도 +0° (= 0) · 계획 K5_0 과 0.5 cm",,1.4065934065934067,,,
+1794443284.6808,1808799.85095,3,296,STOP,over_target,present -35.7 past pe -4.1 by 31.6,-40.68849182128906,-35.69230769230769,34,0,hold+pause+reset_queue+exit_early

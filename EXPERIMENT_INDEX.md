@@ -3,7 +3,7 @@
 상태 코드: `COMPLETED` · `PARTIAL` (계획 일부만 실행) · `NOT_EVALUATED` (학습은 했으나 평가 없음) · `IN_PROGRESS` · `PAUSED` · `STOPPED` (중단) · `PLANNED` (설계만).
 "보고서 ID" 는 [`docs/`](docs/) 의 S1-01 등과 같다.
 
-## 실험 폴더 (17)
+## 실험 폴더 (21)
 | ID | 이름 | 기간 | 보고서 ID | 데이터 | 모델 / 체크포인트 | 상태 | 핵심 결과 (상세는 폴더) |
 |---|---|---|---|---|---|---|---|
 | [EXP-01](experiments/01_paper_cube/README.md) | 종이 큐브 초기 (practice_10/50, E0_J_0) | 10-02 ~ 10-13 | S1-01~06, S1-09 | practice_10 (10), practice_50 (50) | full FT 2k / 15k | COMPLETED | 실물 1/7; 3/3 (분석 판정), 3/8 (사람) |
@@ -23,6 +23,10 @@
 | [EXP-15](experiments/15_sg50_sgft01/README.md) | SG50 수집 (S0 시작 · 손목 안내 화면) + sgft01 FT · 오프라인 | 11-05 ~ 11-07 | — | sg50_pilot3 40 (예비 1·2 는 학습 안 씀) | d2 020000 → expert-only 10k (2500/5000/7500/10000) | 수집 PARTIAL (본 수집 안 함) · 학습 COMPLETED · 오프라인 COMPLETED · 실물 → EXP-16 | [in-sample] 앞 10 스텝 오차 10.37→2.19; [반사실] front→pan 이득 0.93, 손목 앞뒤→wflex +2.0 (사람 +18.6) · 크기→lift +0.2 (사람 −42.7), 프레임 밖이어도 닫기 유지; d2 판 오차 2.24→9.49 |
 | [EXP-16](experiments/16_sgft01_real_eval/README.md) | sgft01 010000 실물 평가 | 11-09 | — | 실물 8 판 (K 5 · U 3, HU3 미시험 · K8 2 회) | sgft01 010000 (기준선 없음) | COMPLETED | [사람] 2/8 (K 2/5 · U 0/3); 실패 4 판 = 손목 큐브 아래쪽 (그리퍼가 앞 · 위) 인 채 닫기 반복, U7 첫 pan 반대, K2 옮기다 놓침; 안전 정지 0 |
 | [EXP-17](experiments/17_grasp_bias_diag/README.md) | sgft01 집기 직전 지나침 · 편향 진단 (EXP-16 기록 + 재추론) | 11-09 | — | 실물 8 판 기록 + 사람 예비3 40 편 장면 | sgft01 010000 | COMPLETED (분석) | [사실] 흔들림→지나침 고리 L2–L4 미달; 바깥 편향은 정책 목표 (실행 오차 반대 부호); [반사실] 그리퍼 열림 장면에서 큐브만 중심에 둬도 바깥 +0.96 cm (사람 +0.13); 기세 · front · 관절값 · 서보 속도 0, 높이 약 1/4, 손목 영상 큐브 모습 −0.55 · 배경 −0.40; 손목 보정 사람의 27 %; 실물 '닫기 직전' 장면 2/3는 그리퍼 닫히는 중 (정정) |
+| [EXP-18](experiments/18_sgb01_base_control/README.md) | sgb01 — pi05_base 에서 새로 학습한 대조 (치우침 출처 · 한강 학습 동등성 · 실물 8 판) | 11-10 ~ 11-12 | — | practice/sg50_pilot3 40 편 | sgb01 010000 · sgb01h 010000 | COMPLETED | [사실 · 재추론] Cc_out +0.85 (sgft01 +0.96, 짝 차이 −0.11) → d2 가중치 탓 아님; 한강 사본 +1.00 (장면 상관 0.97–0.99); 실물 3/8 [사람] |
+| [EXP-19](experiments/19_clean96_sgp01/README.md) | clean96 수집 + sgp01 학습 + 실물 16 판 | 11-12 ~ 11-13 | — | sg_pin 96 편 (녹화 101) | sgp01 020000 | COMPLETED | [사실] 실물 0° 6/8 (K 2/4 · U 4/4, 60 s) · 회전 6/8 (120 s) [사람]; 접근 중 가장자리 걸림 0–9% |
+| [EXP-20](experiments/20_inference_setting_test/README.md) | sgp01 추론 설정 시험 (queue 18 · horizon 15) · 그리퍼 열림 사고 | 11-13 | — | — | sgp01 020000 | COMPLETED | [사실] 1/4 [사람]; K4 좌우 오차 +0.097 → ±0.003 이나 29–33 s 머묾; 출발 지연 2 판 |
+| [EXP-21](experiments/21_k4_angle_rotation/README.md) | K4 각도 대조 · 시연 회전 방향 전수조사 · 손목 회전 권장 UI · 방해물 연습 | 11-13 | — | sg_pin 96 편 (조사) · sg_pin_dis_pilot 3 편 | sgp01 020000 | COMPLETED (방해물 64 편 PLANNED) | [사실] K4 L30 3/3 (머묾 10–22 s) vs 0° 2/3 (55–70 s) [사람]; 상대 각 ≥ 35° 시연 20 편 방향 + 12 · − 8 |
 
 ## 학습 실행 (13)
 | run_id | 실험 | 상태 | 설정 |

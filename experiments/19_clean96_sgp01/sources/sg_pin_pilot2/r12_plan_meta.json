@@ -1,0 +1,151 @@
+{
+ "generator": "r12_collect.py plan v1",
+ "created": "2026-11-12T13:03:38",
+ "group": "sg_pin_pilot2",
+ "type": "SG",
+ "session": "practice/sg_pin_pilot2",
+ "repo_id": "oxr/so101_sg_pin_pilot2",
+ "task_text": "pick up the red cube and put it in the brown box",
+ "episodes": 3,
+ "episode_time_s": 60,
+ "config_path": "$HOME/so101_runs/main_k8/r1_r2_collection/config/sg50.yaml",
+ "config_sha256": "1cba1fb24c73b4b623580726907d664cc72a888a16816af6650e0553bb1bf3ce",
+ "plan_sha256": "f1dfafa2156933ba24d54cf4c75e0c025026e39575ac8d3e18b4213ad2c69d3e",
+ "stats": {
+  "scenarios": {
+   "SG-S0": 3
+  },
+  "positions": {
+   "K3": 1,
+   "K1p7": 1,
+   "K4p2": 1
+  },
+  "angles": {
+   "R30": 1,
+   "L30": 1,
+   "45": 1
+  },
+  "offset_dir": {
+   "": 3
+  }
+ },
+ "scenarios": {
+  "SG-P0": {
+   "type": "SG",
+   "label": "SG · P0 쉬는 자세에서 시작",
+   "pose": "P0",
+   "count": 0,
+   "title": "쉬는 자세 (팔 접힘, Pan 가운데) 에서 시작",
+   "start": "쉬는 자세 (d2 와 같음). 그리퍼 닫힘.",
+   "demo": "평소대로 접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 쉬는 자세 (단계 순서는 예비 시연에서 확정)",
+   "offset_mag": "-",
+   "wrist_expect": "any"
+  },
+  "SG-P1": {
+   "type": "SG",
+   "label": "SG · P1 팔 접은 채 Pan 로봇 왼쪽에서 시작",
+   "pose": "P1",
+   "count": 0,
+   "title": "팔 접은 채 Pan 을 로봇 왼쪽으로 돌린 자세에서 시작",
+   "start": "쉬는 자세에서 팔을 접은 채 Pan 만 로봇 왼쪽 (pan −55° 근처) 으로. 그리퍼 닫힘.",
+   "demo": "평소대로 접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 쉬는 자세 (단계 순서는 예비 시연에서 확정)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  },
+  "SG-P2": {
+   "type": "SG",
+   "label": "SG · P2 팔 접은 채 Pan 로봇 오른쪽에서 시작",
+   "pose": "P2",
+   "count": 0,
+   "title": "팔 접은 채 Pan 을 로봇 오른쪽으로 돌린 자세에서 시작",
+   "start": "쉬는 자세에서 팔을 접은 채 Pan 만 로봇 오른쪽 (pan +55° 근처) 으로. 그리퍼 닫힘.",
+   "demo": "평소대로 접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 쉬는 자세 (단계 순서는 예비 시연에서 확정)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  },
+  "SG-P3": {
+   "type": "SG",
+   "label": "SG · P3 상자 위 (놓은 직후 자세) 에서 시작",
+   "pose": "P3",
+   "count": 0,
+   "title": "상자 위 (d2 에서 큐브를 놓는 순간 자세) 에서 시작",
+   "start": "팔을 뻗어 그리퍼를 상자 위로 (d2 놓기 순간 자세 근처). 그리퍼 닫힘. 상자 · 탁자에 닿지 않게.",
+   "demo": "평소대로 접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 쉬는 자세 (단계 순서는 예비 시연에서 확정)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  },
+  "SG-S0": {
+   "type": "SG",
+   "label": "SG · S0 쉬는 자세 + 손목 돌림 (고정 시작)",
+   "pose": "S0",
+   "count": 0,
+   "title": "고정 시작 자세 S0 = 쉬는 자세와 거의 같고 손목만 사진처럼 돌림 (매 판 같은 자세)",
+   "start": "쉬는 자세처럼 팔 접힘 · Pan 가운데, 손목은 사진 (sticker_ref/cubecross_20261106_094632_wrist.png) 처럼 돌린 자세. 매 판 같게.",
+   "demo": "숄더팬을 큐브 쪽으로 맞춤 → 그리퍼 열기 → 손목으로 큐브 찾기 → 이동 (접근 · 내려가 맞추기) → 닫기 → 상자 → S0 로 돌아와 → (녹화 끝)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  },
+  "SG-PLAN": {
+   "type": "SG",
+   "label": "SG · 계획 시작 자세 (판마다 팬 · 팔 접힘 다름)",
+   "pose": "PLAN",
+   "count": 0,
+   "title": "판마다 다른 시작 자세 — 준비 단계에서 화면의 목표 (팬 · 어깨 · 팔꿈치 · 손목) 에 맞춘 뒤 →",
+   "start": "준비 단계 (녹화 안 함) 에서 리더로 계획 시작 자세에 맞춤 (손목 화면 위 '시작 자세' 칸이 모두 초록), 그다음 →",
+   "demo": "숄더팬을 돌리세요 → 그리퍼를 여세요 → 각도를 맞추세요 → 높이를 맞추세요 → 주황 프레임으로 → 닫기 → 상자 → S0 로 돌아와 → (녹화 끝)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  },
+  "SG-FREE": {
+   "type": "SG",
+   "label": "SG · 시작 자세 자유 (직접 정함)",
+   "pose": "FREE",
+   "count": 0,
+   "title": "시작 자세는 사용자가 매번 다르게 정함 (실제 관절값 기록)",
+   "start": "준비 단계 (녹화 안 함) 에서 시작 자세를 자유롭게 만든다. 그리퍼 닫힘.",
+   "demo": "접근 → 그리퍼 열기 → 고정된 쪽을 큐브 벽에 맞추고 닫기 → 상자 → 매번 같은 끝 자세 (쉬는 자세) 로 돌아와 → (녹화 끝)",
+   "offset_mag": "-",
+   "wrist_expect": "any",
+   "_like": "SG-P0"
+  }
+ },
+ "safety": {
+  "calibration": "$HOME/.cache/huggingface/lerobot/calibration/robots/so_follower/my_arm.json",
+  "limit_margin_block_deg": 5,
+  "limit_margin_warn_deg": 12,
+  "pan_abs_block_deg": 95,
+  "pan_limit_margin_block_deg": 10,
+  "gripper_open_min": 15,
+  "leader_follower_diff_block_deg": 25,
+  "leader_follower_diff_warn_deg": 10,
+  "d2_approach_envelope": {
+   "shoulder_pan": [
+    -105.8,
+    101.0
+   ],
+   "shoulder_lift": [
+    -30.4,
+    57.5
+   ],
+   "elbow_flex": [
+    -62.8,
+    58.0
+   ],
+   "wrist_flex": [
+    44.9,
+    96.0
+   ],
+   "wrist_roll": [
+    -55.3,
+    50.6
+   ]
+  },
+  "setup_max_s": 3600
+ },
+ "base_config": "$HOME/so101_boxpick/config/redbox8_layouts.yaml"
+}
