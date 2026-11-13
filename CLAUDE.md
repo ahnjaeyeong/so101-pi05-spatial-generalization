@@ -25,6 +25,12 @@
    - R1/R2 수동 복구 시연 (EXP-11) 과 HIL = 정책 실행 중 인간 교정 (EXP-12) 은 다른 방식. HIL 은 구현·검증 전까지 `PLANNED`.
    - 파일럿 "U1–U8" (임의 자리) ≠ Held-out H "U1–U8" (지정 좌표).
 
+## 프로젝트 페이지 (`README.md`, 2026-11-13 부터)
+- 첫 화면 `README.md` 는 바깥 독자용 프로젝트 페이지다 (읽기 쉬운 이름, 논문 순서). 예전 첫 화면은 `docs/00_연구_기록_안내.md`.
+- 페이지의 모든 수치는 실험 기록 (`experiments/*/README.md`) 에 있는 값만 쓴다. 성공은 "n 판 중 k" 로 쓰고, 조건이 다른 비교에는 통제 안 된 차이를 같이 적는다. 해석은 '가설' 이라고 밝힌다.
+- 내부 이름 (sg_pin, sgp01 …) 은 페이지 본문에 쓰지 않고 8 절 이름 대응표에만 둔다. 새 데이터셋 · 모델이 생기면 대응표에 추가한다.
+- 그림 · 영상 클립은 `docs/figures/project_page/` 에 두고 `EXTRACTED.csv` 에 원본 영상 · 시각 · 해시를 적는다.
+
 ## 새 실험 기록 절차
 1. `templates/experiment_template.md` 를 `experiments/NN_<이름>/README.md` 로 복사, 다음 번호로 ID `EXP-NN` 부여.
 2. 실험 전에 목적·가설·판정 기준을 적고 상태 `PLANNED` 로 커밋.
@@ -36,7 +42,7 @@
    - `python3 tools/prune_stale.py` — 매니페스트에 없는 저장소 사본 정리 (저장소 안만).
    - `python3 tools/compare_sources.py` → `python3 tools/focus_report.py main` — 로컬 ↔ 저장소 파일 단위 비교, `ARCHIVE_MANIFEST.csv` 해시 갱신, `inventory/` 표 갱신. '매핑 없음' 이 0 이 아니면 이유를 적거나 매핑을 추가한다.
 5. 정량·정성 결과, 실패 사례 (메모 원문), 분석·후속 가설을 README 에 적고 상태 갱신.
-6. `EXPERIMENT_INDEX.md`, `CHANGELOG.md`, 필요하면 `evaluations/*/README.md` 와 `README.md` 9절 (현재 상태) 갱신.
+6. `EXPERIMENT_INDEX.md`, `CHANGELOG.md`, 필요하면 `evaluations/*/README.md` 와 `docs/00_연구_기록_안내.md` 9절 (현재 상태) 갱신. 결과가 프로젝트 페이지 (`README.md`) 의 표 · 단계 상태를 바꾸면 그것도 갱신.
 7. `python3 tools/check_repo.py` — 필수 항목, 상대 링크, 파일 크기, 비밀정보 패턴 검사. 실패하면 커밋하지 않는다.
 8. `git status` 로 추적 파일 확인 후 의미 있는 메시지로 커밋.
 9. 작업 브랜치에서 커밋하고 PR 로 main 에 합친다 (저장소는 **Public** — 추가 전 민감정보 검사 필수). Push (ahnjaeyeong 계정, gh 활성 계정은 바꾸지 않음):

@@ -1,0 +1,6 @@
+file,kind,episode,source,times,source_sha256_16
+success_unseen_position.gif,"추출 (front | wrist 나란히, 축소 · 색 줄임)",1,so101-cube-spatial-eval-rollouts/videos/observation.images.front/chunk-000/file-000.mp4 + videos/observation.images.wrist/chunk-000/file-000.mp4,"0–35 s, 1.0 s 간격 (36 장)",198447e8c48dc191 / 843bdb4dfba4b028
+fail_wait_open_gripper.gif,"추출 (front | wrist 나란히, 축소 · 색 줄임)",17,so101-cube-spatial-eval-rollouts/videos/observation.images.front/chunk-000/file-001.mp4 + videos/observation.images.wrist/chunk-000/file-000.mp4,"0–119 s, 3.3 s 간격 (37 장)",2ca83b25770277f6 / 843bdb4dfba4b028
+k4_angle_contrast.jpg,"추출 (wrist, 축소)",16,so101-cube-spatial-eval-rollouts/videos/observation.images.wrist/chunk-000/file-000.mp4,"판 길이의 [0.25, 0.4, 0.55, 0.7, 0.85] 지점",843bdb4dfba4b028
+k4_angle_contrast.jpg,"추출 (wrist, 축소)",17,so101-cube-spatial-eval-rollouts/videos/observation.images.wrist/chunk-000/file-000.mp4,"판 길이의 [0.25, 0.4, 0.55, 0.7, 0.85] 지점",843bdb4dfba4b028
+# source = 공개용으로 합친 rollout dataset (main_k8/sgp01_real_eval/eval/rollouts 의 20261113_113232 · 133206 · 141855 세션 dataset 3 개를 lerobot-edit-dataset merge 로 합침; episode 0–7 · 8–15 · 16–21). 영상 내용은 원본과 같음.

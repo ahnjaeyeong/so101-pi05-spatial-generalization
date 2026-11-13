@@ -10,6 +10,7 @@
 - `README.md`: 1 절에 최종 목표 3 단계 진행표 · 수집 화면 그림 · Hugging Face 저장소 이름, 9 · 10 절 갱신. `EXPERIMENT_INDEX.md` (21 실험), `evaluations/real_robot/README.md` (EXP-18 ~ 21 행).
 - **EXP-11** 수집 도구 사본 `sources/r1_r2_collection/` 갱신 (sg_pin · sg_pin_dis 그룹, 방해물 계획, 손목 회전 권장, 시험 · 화면 그림).
 - 도구: `tools/sync_sources.py` MAPPINGS (18 · 19 · 21; sg50_pilot3 의 한강 run 폴더와 sg_pin/train 은 클러스터 계정 경로가 있어 제외).
+- **첫 화면 교체**: `README.md` = 프로젝트 페이지 (연구 질문 · 방법 · 결과 · 실패 분석 · 틀렸던 것 · 한계 · 자료 · 이름 대응표, 읽기 쉬운 이름). 예전 README 는 `docs/00_연구_기록_안내.md` 로 옮김 (상대 링크 수정). 그림 `docs/figures/project_page/` (성공 · 실패 클립, K4 각도 대조 — 공개 rollout 영상에서 추출, `EXTRACTED.csv`). `CLAUDE.md` 에 프로젝트 페이지 규칙 추가.
 - PR #2 ~ #5 는 내용이 PR #6 으로 이미 main 에 있어 병합 없이 닫음.
 - **갱신하지 않음**: `ARCHIVE_MANIFEST.csv` · `inventory/` · `configs/training/RUNS.csv` · `configs/checkpoints/` (sgb01 · sgb01h · sgp01 미등록 — 한강 run 폴더를 복사하지 않아 메타데이터 도구 미실행).
 
