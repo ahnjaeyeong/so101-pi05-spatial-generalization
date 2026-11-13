@@ -7,7 +7,7 @@
 - 로봇 연결·토크·rollout·teleop·record 실행. 로봇 명령은 사용자가 직접 실행한다.
 - 원본 연구 폴더 (`/home/user/so101_runs`, `/home/user/so101_boxpick`) 의 파일 수정·이동·삭제. 이 저장소로 **복사만** 한다.
 - 체크포인트 (`*.safetensors`), 데이터셋 (`*.parquet`, 영상), `.npz/.npy`, 대용량 로그를 커밋. 경로·SHA-256 만 기록한다.
-- `git push --force`, 이력 재작성, 원격 브랜치 삭제.
+- `git push --force`, 이력 재작성, 병합되지 않은 원격 브랜치 삭제. (main 에 모두 들어간 브랜치는 사용자가 지시하면 지운다 — 지우기 전에 `git rev-list --count origin/main..origin/<branch>` 가 0 인지 확인하고 끝 커밋을 CHANGELOG 에 적는다. 2026-11-13 사용자 지시.)
 - 존재하지 않는 결과를 채워 넣기. 확인 안 된 값은 `미확인`.
 - 원본에 없는 이미지 생성. 영상에서 프레임을 뽑을 때는 원본 영상 경로·프레임 시각·해시를 기록하고 '추출' 이라고 표시한다.
 - 다른 세션이 작업 중인 폴더 (예: 11-02 의 `main_k8/r2_grasp_diagnostic`) 복사 — 작업이 끝난 뒤 매핑한다.
