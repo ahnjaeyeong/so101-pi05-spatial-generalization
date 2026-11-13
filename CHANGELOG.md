@@ -2,6 +2,10 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-13 — 병합된 브랜치 정리 (사용자 지시)
+- main 에 모두 들어간 원격 브랜치를 지움 (지우기 전 `origin/main..origin/<branch>` 커밋 0 확인). 끝 커밋: `data/source-completeness-20261102` 76ae70f · `exp/13-recovery-ft-20261104` 4b00f00 · `records/handoff-20261105` 3180138 · `exp/15-sg50-sgft01-20261109` 1ce98c3 · `exp/17-grasp-bias-diag-20261109` 386ee5c · `exp/18-21-clean96-20261113` b5a1c03 · `page/results-percent-20261113` 4f05bcb · 이 기록의 브랜치 `records/branch-cleanup-20261113`. 커밋과 PR (#1 ~ #9) 기록은 main · GitHub 에 남음.
+- `CLAUDE.md`: 원격 브랜치 삭제 금지 → 병합된 브랜치는 사용자 지시가 있으면 삭제. `README.md` 결과 표에 성공률 (%) · 전체 행 (PR #8).
+
 ## 2026-11-13 — EXP-18 ~ EXP-21 · 3 단계 진행표 · Hugging Face 공개 자료 (branch: exp/18-21-clean96-20261113, main 위)
 - **EXP-18 신규** `experiments/18_sgb01_base_control/`: sgb01 (같은 40 편, pi05_base 에서 시작) 치우침 재측정 [재추론] — Cc_out +0.85 (sgft01 +0.96), 한강 학습 사본 +1.00 · 실물 3/8 [사람] · 멈춘 장면 / 접근 probe.
 - **EXP-19 신규** `experiments/19_clean96_sgp01/`: clean96 (sg_pin, 학습 96 편) 수집 · sgp01 20k · 실물 0° 6/8, 회전 6/8 [사람].
