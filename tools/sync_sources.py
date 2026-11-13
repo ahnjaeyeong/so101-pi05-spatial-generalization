@@ -243,7 +243,9 @@ MAPPINGS = [
     # references, check reports), training run records (args, wrapper, logs summary, eval results); datasets, checkpoints,
     # offline-eval npz, per-frame sticker CSVs excluded (tools and the 13_sg50_sticker.md log live under EXP-11 r1_r2_collection)
     *[(f"{RUNS}/practice/{s}", f"experiments/15_sg50_sgft01/sources/{s}", ("sg_sticker", "raw", "vis_raw", "r12_start_frames"))
-      for s in ("sg50_pilot", "sg50_pilot2", "sg50_pilot3")],
+      for s in ("sg50_pilot", "sg50_pilot2")],
+    # (2026-11-13) sg50_pilot3: sgb01h_p3_10k_s2001 (Hangang-trained copy, EXP-18) run records contain cluster account paths -> excluded
+    (f"{RUNS}/practice/sg50_pilot3", "experiments/15_sg50_sgft01/sources/sg50_pilot3", ("sg_sticker", "raw", "vis_raw", "r12_start_frames", "sgb01h_p3_10k_s2001")),
     (f"{HOME}/io-capture/20261106-1607/SUMMARY.md", "experiments/15_sg50_sgft01/sources/io_capture_20261106-1607/SUMMARY.md"),
     # 16 sgft01 real eval (11-09): copied rft01 pilot tooling with sgft01 plan, run logs/results, analysis report and extracted frames;
     # rollout dataset/videos, diag chunks, fake-device outputs excluded
@@ -251,7 +253,20 @@ MAPPINGS = [
      ("_out", "diag", "viewer", "overshoot_diag")),
     # 17 grasp bias / overshoot diagnosis on the EXP-16 run (11-09): designs, results, scripts, summary json/csv;
     # reinference npz (reinfer · equilibrium · blur · state_probe) excluded by extension
+    # ---- added 2026-11-13 ----
+    # 18 sgb01 base-control (11-10 ~ 11-12): bias re-measure chain (must come before the EXP-17 overshoot_diag mapping: first match wins),
+    # real eval tooling/results and stuck/approach probes; rollout dataset/videos, diag chunks excluded
+    (f"{RUNS}/main_k8/sgft01_real_eval/overshoot_diag/sgb01", "experiments/18_sgb01_base_control/sources/overshoot_diag_sgb01"),
+    (f"{RUNS}/main_k8/sgb01_real_eval", "experiments/18_sgb01_base_control/sources/sgb01_real_eval", ("_out", "diag", "viewer")),
     (f"{RUNS}/main_k8/sgft01_real_eval/overshoot_diag", "experiments/17_grasp_bias_diag/sources/overshoot_diag"),
+    # 19 clean96 (sg_pin) collection + sgp01 real eval (11-12 ~ 11-13): plans, QA, pilots, eval tooling/results for all 11-13 sessions
+    # (EXP-19/20/21 share this copy); dataset, review videos, start frames, diag excluded; training run folder excluded (cluster account paths)
+    (f"{RUNS}/main_k8/sg_pin", "experiments/19_clean96_sgp01/sources/sg_pin", ("r12_start_frames", "train", "setup_photos")),
+    *[(f"{RUNS}/practice/{s}", f"experiments/19_clean96_sgp01/sources/{s}", ("r12_start_frames", "setup_photos")) for s in ("sg_pin_pilot", "sg_pin_pilot2", "sg_pin_pilot3")],
+    (f"{RUNS}/main_k8/sgp01_real_eval", "experiments/19_clean96_sgp01/sources/sgp01_real_eval", ("_out", "diag", "viewer")),
+    # 21 distractor plan + pilot (11-13)
+    (f"{RUNS}/main_k8/sg_pin_dis", "experiments/21_k4_angle_rotation/sources/sg_pin_dis", ("r12_start_frames", "setup_photos")),
+    (f"{RUNS}/practice/sg_pin_dis_pilot", "experiments/21_k4_angle_rotation/sources/sg_pin_dis_pilot", ("r12_start_frames", "setup_photos")),
 ]
 
 

@@ -20,6 +20,11 @@
 | [EXP-14](../../experiments/14_rft01_real_pilot/README.md) | 11-05 | **rft01 001000 (FT)** | 8 | K3·K1 (0°·R30·L30) 4 + 파일럿 U2·U7·U8·U1 4 | 계획 각도 (시행 7 측정 실패) | 그리퍼 1–6·8–12 닫힘, **13–16·7 열림** | 끔 | RTC h20 EXP s5 q30 · clamp 8 | 1–7: 3/3 (자동) | **4/8 (사람)** — K 3/4 · U 1/4 |
 | EXP-14 | 11-05 | d2 020000 (BL) | 8 | 같은 쌍 | 〃 | 〃 | 끔 | 〃 | 1–7: 1/4 (자동) | **5/8 (사람)** — K 2/4 · U 3/4 |
 | [EXP-16](../../experiments/16_sgft01_real_eval/README.md) | 11-09 | **sgft01 010000** (d2 → SG50 예비3 40 편) | 8 | K5·K2·K8·K8·K4 + U7·HU7·U1 (계획 HU3 미시험) | 0° | **S0** (쉬는 자세 + 손목 약 90°) | 끔 | RTC h20 EXP s5 q30 · clamp 8 | — | **2/8 (사람)** — K 2/5 · U 0/3 |
+| [EXP-18](../../experiments/18_sgb01_base_control/README.md) | 11-12 | **sgb01 010000** (pi05_base → SG50 예비3 40 편) | 8 | K5·K2·K8·K4 + U7·HU3·HU7·U1 | 0° | S0 | 끔 | RTC h20 EXP s5 q30 · max_rel 8 · over_target 끔 | — | 3/8 (사람) |
+| [EXP-19](../../experiments/19_clean96_sgp01/README.md) | 11-13 | **sgp01 020000** (pi05_base → clean96 96 편) | 8 | K5·K2·K8·K4 + U7·HU3·HU7·U1 | 0° | S0 | 끔 | RTC h20 EXP s5 q30 · max_rel 8 · 판 60 s | — | 6/8 (사람) — K 2/4 · U 4/4 |
+| EXP-19 | 11-13 | sgp01 020000 | 8 | 같은 8 자리 | 45° · L30 · R30 | S0 | 끔 | RTC h20 EXP s5 q30 · max_rel 8 · 판 120 s | — | 6/8 (사람) — 60 s 안 4/8 |
+| [EXP-20](../../experiments/20_inference_setting_test/README.md) | 11-13 | sgp01 020000 | 4 | K4·K5·K4·K8 | 0° | S0 | 끔 | RTC **h15** EXP s5 **q18** · 판 60 s | — | 1/4 (사람) |
+| [EXP-21](../../experiments/21_k4_angle_rotation/README.md) | 11-13 | sgp01 020000 | 6 | K4 | L30 · 0° 번갈아 | S0 | 끔 | RTC h20 EXP s5 q30 · max_rel 8 · 판 120 s | — | 5/6 (사람) — L30 3/3 · 0° 2/3 |
 
 ## redbox 20k 위치·요인 (A/B + 공간 80판, 실제 위치 기준, 최종 성공)
 | 구분 | 결과 |

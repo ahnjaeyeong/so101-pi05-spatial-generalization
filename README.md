@@ -8,6 +8,17 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 
 > **학습하지 않은 새로운 큐브 위치에서도 로봇이 첫 접근부터 정확한 위치로 이동하여 파지하도록 공간 일반화 능력을 개선한다.**
 
+### 최종 목표 3 단계 (2026-11-13 기준)
+| 단계 | 내용 | 상태 | 자료 |
+|---|---|---|---|
+| 1 | 방해물 없는 데이터셋 (clean96) → π₀.₅ 학습 → 실물 평가 | ✅ 수집 96 편 · 학습 20k · 실물 0° 6/8 · 회전 6/8 [사람] ([EXP-19](experiments/19_clean96_sgp01/README.md)) | 🤗 데이터셋 `ahnjaeyeong/so101-cube-spatial-clean96` · 모델 `ahnjaeyeong/pi05-so101-cube-spatial-clean96` · 실물 rollout `ahnjaeyeong/so101-cube-spatial-eval-rollouts` |
+| 2 | 방해물 (색 큐브 2–6 개) 데이터셋 추가 | 📝 계획 64 편 · 연습 3 판 ([EXP-21](experiments/21_k4_angle_rotation/README.md)) | — |
+| 3 | HIL (정책 실행 중 사람 교정) 로 성공률 올리기 | 📝 도구만 ([EXP-12](experiments/12_hil/README.md)) | — |
+
+수집 화면 (위에서 본 탁자 · Front · Wrist, 손목 회전 권장 배지 — 시험이 저장 영상으로 그린 그림):
+
+![수집 화면](experiments/11_r1_r2_recovery/sources/r1_r2_collection/screenshots/sg_turn/turn_ccw_setup_1800x470.png)
+
 ## 2. 구성
 | 항목 | 내용 |
 |---|---|
@@ -72,7 +83,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 - 가중 재표집 (A1) 은 오프라인 지표에서 개선 없음.
 → [EXP-09](experiments/09_sampling_ablation/README.md), [EXP-10](experiments/10_pan_diagnostic/README.md)
 
-## 9. 현재 상태 (2026-11-09 갱신; 이전 기준 11-05)
+## 9. 현재 상태 (2026-11-13 갱신; 이전 기준 11-09)
 | 구분 | 항목 |
 |---|---|
 | ✅ 완료 | EXP-01 ~ EXP-08, EXP-10 (필터 A/B 는 일부만), A0/A1 학습·오프라인 평가, A2 학습 |
@@ -84,6 +95,10 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 | ✅ 수집 · 학습 · 오프라인 | EXP-15 (11-05 ~ 11-07): SG50 수집 도구 (손목 주황 닫기 프레임 · 수평계 · 그리퍼 열기 알림) + 예비3 40 편 → sgft01 10k. [반사실] front→pan 이득 0.93, 손목 앞뒤 · 크기 → 행동 거의 0. 본 수집 48 편은 안 함 |
 | ✅ 실물 평가 | EXP-16 (11-09): sgft01 010000 2/8 [사람] (K 2/5 · U 0/3, HU3 미시험), 안전 정지 0 |
 | ✅ 분석 | EXP-17 (11-09): EXP-16 집기 직전 편향 진단 — 흔들림→지나침 고리 미달, 바깥 편향은 정책 목표에서 나옴 · 손목 보정 약함 · 관절값 기준 상대 이동 [반사실] |
+| ✅ 학습 · 분석 · 실물 | EXP-18 (11-10 ~ 11-12): sgb01 = 같은 40 편을 pi05_base 에서 학습 — 바깥 편향 그대로 (Cc_out +0.85 vs sgft01 +0.96 [재추론]) → d2 가중치 탓 아님. 한강 학습 = Thor 학습과 같은 동작. 실물 3/8 [사람] |
+| ✅ 수집 · 학습 · 실물 | EXP-19 (11-12 ~ 11-13): clean96 (스티커 없음 · 각도 4 · 96 편) → sgp01 20k. 실물 0° 6/8 (학습에 없는 자리 4/4) · 회전 6/8 (120 s) [사람] |
+| ✅ 실물 | EXP-20 (11-13): 계획을 더 길게 실행하는 추론 설정 1/4 — K4 좌우 오차는 줄었으나 여전히 머묾. 그리퍼 열린 채 시작 사고 · 도구 수정 |
+| ✅ 실물 · 분석 | EXP-21 (11-13): K4 L30 3/3 (35–54 s) vs 0° 2/3 (93–119 s) [사람]. 시연 96 편 손목 회전 방향 전수조사 (상대 각 ≥ 35° 20 편은 + 12 · − 8). 손목 회전 권장 UI. 방해물 연습 3 판 |
 | 🔄 진행 중 | EXP-12 HIL: 수집 도구 구현 · 가짜 장치 검증만 (179/179, UI 205/205). 실물 안전 검증 · 수집 0 |
 | 📝 계획 | 그리퍼 시작 상태를 고정한 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토, Held-out H 32편, HIL 실물 사전 확인 (모두 사용자 승인 뒤) |
 | 인계 | [HANDOFF.md](HANDOFF.md) — 11-05 기준 다음 세션 인계 문서 |
@@ -93,6 +108,7 @@ SO-101 LeRobot π₀.₅ fine-tuning, spatial generalization experiments, offlin
 1. ~~R1 을 실패 상태에 맞춰 수집, R2 수집~~ → pilot12 로 R1 4 · RC 12 수집 (EXP-11).
 2. ~~d2 + R1/R2 재학습 → 오프라인 T4 지표 → 실물 평가~~ → EXP-13 · EXP-14. 다음: 실행 도구의 그리퍼 시작 상태 고정 후 FT/BL 교대 반복 평가, d2 + R2 단독 FT 검토.
 3. (11-09) SG50 sgft01 실물 2/8 (EXP-16), 편향 진단 (EXP-17) — 다음 수집 · 학습 방향 (손목 앞뒤 · 높이 다시 맞추기 시연, 편 수 확대 등) 은 사용자 결정 전.
+3-1. (11-13) clean96 → sgp01 실물 6/8 · 6/8 (EXP-19), K4 0° 머묾 = 큐브 각도 (EXP-21). 다음: 방해물 64 편 수집 → clean96 + 방해물 학습 → HIL. 방향 갈림 가설 확인용 86 편 재학습은 미결정.
 4. Held-out H 녹화로 진짜 held-out 평가 마련.
 5. HIL (정책 실행 중 교정): 전환 장치 구현 · 가짜 장치 검증 완료 (EXP-12, 11-04). 남은 것: 사용자 실물 사전 확인 (리더 토크 전환 · 정렬 · hold 뒤 재연결) 과 별도 승인.
 → [docs/06](docs/06_HIL_및_향후실험.md), [EXP-12](experiments/12_hil/README.md)

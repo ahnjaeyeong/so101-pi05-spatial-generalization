@@ -38,6 +38,302 @@ groups:
     seed: 5301
     episode_time_s: 60
     plan: known_regions
+  sg50_approach:       # 2026-11-09 접근 경로 다양화 40편 (사용자: "정답조건만 고정하고 다양하게") — 예비3 과 같은 자리 (K 8 + K#r# 32), 시작 S0,
+    type: SG           #   판마다 마지막 접근 유형 (sg50.approach) 을 approach_mix 비율로 배정. 정답조건 = sg50.end_condition (화면 안내 · 판 뒤 검사, 판정 · 자동 동작 아님)
+    planner: sg50
+    session: practice/sg50_approach
+    repo_id: oxr/so101_sg50_approach
+    seed: 5401
+    episode_time_s: 60
+    plan: known_regions
+    approach_mix: {A: 6, B: 10, C: 10, D+: 3, D-: 3, E: 8}   # 합이 계획 줄 수와 다르면 비율로 나눔 (큰 나머지)
+  sg50_rot:            # 2026-11-09 본격 수집 (사용자: "L30 R30 45 0도까지 다 · 회전량이 적은쪽 · 시작숄더팬은 큐브기준 크게 · 팔 접힘도 다양화")
+    type: SG           #   자리 = 예비3 과 같은 40 (K 8 + K#r# 32) × rounds 2 = 80 판. 자리마다 두 판은 다른 각도. 판 끝 = S0 (그대로)
+    planner: sg50
+    session: main_k8/sg50_rot
+    repo_id: oxr/so101_k8_sg50_rot
+    seed: 5501
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    start_pose: planned                      # sg50.start_folds × sg50.start_pan (판마다 계획 시작 자세, 시나리오 SG-PLAN)
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}                        # 2026-11-09 사용자 (3판 시험 뒤) "시작자세는 숄더팬만 다양화" → 팔 = S0 고정 (이전 {F0 3, F1 3, F2 2, F3 2})
+    procedure_guide: true                    # 손목 화면 절차 안내 · 정답조건 (sg50.procedure · end_condition)
+    waypoint: true                           # 2026-11-09 노란 프레임 (sg50.waypoint) 을 먼저 지나 주황으로
+  sg50_rot_pilot:      # 2026-11-09 sg50_rot 실물 시험 (사용자: "직접한번 3판 정도 돌려볼게") — 설정은 sg50_rot 와 같고 세션 · repo · seed 만 다름
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot
+    repo_id: oxr/so101_sg50_rot_pilot
+    seed: 5502
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 3, F1: 3, F2: 2, F3: 2}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot2:     # 2026-11-09 3판 시험 뒤 설정 (팬만 다양화 · 정답조건 완화) 으로 다시 시험 — practice/sg50_rot_pilot 은 3판 녹화돼 계획을 못 바꿈
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot2
+    repo_id: oxr/so101_sg50_rot_pilot2
+    seed: 5503
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3            # 2026-11-10 사용자 "시험계획 3편": 80 줄 중 각도 · 노랑 위/옆/아래 · 팬 쪽 · 영역이 다른 3 줄 (sg_plan.pick_diverse)
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot3:     # 2026-11-10 회전 안내 고친 뒤 다시 3편 (사용자 "3편으로 하자")
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot3
+    repo_id: oxr/so101_sg50_rot_pilot3
+    seed: 5504
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot4:     # 2026-11-10 노랑 = 내려오는 축 (위 3 : 아래 1) · 크기 허용 0.95–1.10 뒤 연습 3판 (사용자: "한판은 편향되지 않은 자세 … 평가해주라")
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot4
+    repo_id: oxr/so101_sg50_rot_pilot4
+    seed: 5505
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot5:     # 2026-11-10 연습 3판 더 (사용자 "실험 3번정도 더 해볼게") — 설정은 pilot4 와 같음
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot5
+    repo_id: oxr/so101_sg50_rot_pilot5
+    seed: 5506
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot6:     # 2026-11-10 노랑 카메라 쪽 2 : 로봇 쪽 1 · 화면 아래 잘림 허용 · 주황 유지 1.5 s · 노랑→주황 한 번에 (사용자) 뒤 연습 3판
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot6
+    repo_id: oxr/so101_sg50_rot_pilot6
+    seed: 5507
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+  sg50_rot_pilot7:     # 2026-11-10 크레인 단계 연습 3판 (사용자 "응응 한번 만들어줘") — pilot6 설정 + crane_step
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot7
+    repo_id: oxr/so101_sg50_rot_pilot7
+    seed: 5508
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    waypoint: true
+    crane_step: true
+  sg50_rot_pilot8:     # 2026-11-10 크레인 → 높이 보정 주황에 크레인 높이에서 맞춤 → 수직으로 내려가기 (사용자 "오 한번 해봐") — 노란 프레임 없음
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot8
+    repo_id: oxr/so101_sg50_rot_pilot8
+    seed: 5509
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    crane_step: true
+    height_comp: true
+  sg50_rot_pilot9:     # 2026-11-10 사용자 절차 (숄더팬 → 그리퍼 엶 → 큐브 상단 → 대기 · 프레임 맞춤 → 하강 후 집기 → 넣기) 연습 3판
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot9
+    repo_id: oxr/so101_sg50_rot_pilot9
+    seed: 5510
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    hover: true
+  sg50_rot_pilot10:    # 2026-11-10 상단 프레임 절차 연습 3판 더 (사용자 "오케이 3편만 더 찍어보자") — 수직 ±8° · 상단 허용 ±0.05
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot10
+    repo_id: oxr/so101_sg50_rot_pilot10
+    seed: 5511
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    hover: true
+  sg50_rot_pilot11:    # 2026-11-10 상단 프레임 절차 · 넓힌 허용 (기울기 15° · uv 0.06 · 크기 0.10 · 높이 ±1.5) 연습 3판 (사용자 "넹 한번 더 해볼게용")
+    type: SG
+    planner: sg50
+    session: practice/sg50_rot_pilot11
+    repo_id: oxr/so101_sg50_rot_pilot11
+    seed: 5512
+    episode_time_s: 60
+    plan: known_regions
+    rounds: 2
+    pick: 3
+    start_pose: planned
+    angle_mix: {"0": 1, L30: 1, R30: 1, "45": 1}
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    hover: true
+  sg_pin_pilot:        # 2026-11-12 새 절차 (사용자: 숄더팬 → 그리퍼 → 핀포인트 맞춤 → 손목 수직 → 다시 맞춤 → 회전 → 닫기 → 놓기, 흰 스티커 없음) 연습 4판
+    type: SG           #   설정은 sg_pin 과 같고 세션 · repo · seed 만 다름 (pick 4: 각도 · 첫 맞춤 방향이 다른 판)
+    planner: sg50
+    session: practice/sg_pin_pilot
+    repo_id: oxr/so101_sg_pin_pilot
+    seed: 5601
+    episode_time_s: 60
+    plan: k_angles_regions
+    per_region: 8
+    pick: 4
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    pin: true
+  sg_pin:              # 2026-11-12 본 수집 96판 (사용자: "고정위치 l30 r30 45 0 4개로 32개 · 나머지 랜덤 64개 · 8개 영역 8번") — K 8 × 각도 4 + 영역 8 × K#p# 8 (각도 고르게)
+    type: SG           #   2026-11-12 오후 사용자: "인위적으로 넣는거보다 큐브를 보고 움직이는게 맞는거 같아 · 96개 해보고 나서 hil 으로 추가" →
+    planner: sg50      #   예비3 40편 방식 그대로 (주황 닫기 자리 하나를 계속 보며 이동, 절차 안내 · 노란 프레임 없음, 시작 S0 고정). 스티커 없는 큐브
+    session: main_k8/sg_pin
+    repo_id: oxr/so101_k8_sg_pin
+    seed: 5602
+    episode_time_s: 60
+    plan: k_angles_regions
+    per_region: 8
+    # 2026-11-12 13:1x 사용자 (연습 1판 뒤): "ui 처음위치 나오는거랑 알려주는거 다 빠졌네 · 노란색 경로먼저 띄워줄 수 있어? 그거 꽤 정확했던거 같은데" →
+    #   시작 자세 안내 (계획 시작 자세: 팔 S0 · 숄더팬 큐브 방향 ±30 / ±60) · 절차 안내 · 노란 상단 프레임 먼저 → 주황 (11-10 사용자 절차, sg50.hover) 를 다시 켬.
+    #   일부러 벗어난 자리 (첫 맞춤) 는 없음. 대기 · 유지는 짧게 (11-12 실물: 정책이 열린 채 46 s 머묾).
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    turn_hint: true      # 2026-11-13 손목 회전 권장 배지 (손목 칸 오른쪽 아래): <10° 그대로 · 10–35° 가까운 쪽 · ≥35° 애매 (사용자가 정함)
+    hover: true
+    hover_wait_s: 0.3
+    hold_s: 0.3   # 2026-11-12 오후 0.7 → 0.3 (41판까지 닫기 전 정지 중앙 1.0 · 2.3 · 1.9 · 1.6 · 2.3 s — 예비3 0.6 s. 맞자마자 '닫으세요' 가 뜨게)
+  sg_pin_pilot3:       # 2026-11-12 위 화면 (시작 자세 · 절차 · 노랑 먼저) 으로 연습 3판 — sg_pin 과 설정 같음, 세션 · repo · seed 만 다름
+    type: SG
+    planner: sg50
+    session: practice/sg_pin_pilot3
+    repo_id: oxr/so101_sg_pin_pilot3
+    seed: 5604
+    episode_time_s: 60
+    plan: k_angles_regions
+    per_region: 8
+    pick: 3
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    hover: true
+    hover_wait_s: 0.3
+    hold_s: 0.7
+  sg_pin_pilot2:       # 2026-11-12 본 수집 (sg_pin) 과 같은 화면 · 설정으로 연습 3판 (사용자: "연습 2–3판만 확인") — 세션 · repo · seed 만 다름, 각도가 다른 3판
+    type: SG
+    planner: sg50
+    session: practice/sg_pin_pilot2
+    repo_id: oxr/so101_sg_pin_pilot2
+    seed: 5603
+    episode_time_s: 60
+    plan: k_angles_regions
+    per_region: 8
+    pick: 3
+  sg_pin_dis:          # 2026-11-13 방해물 조건 64판 (사용자: "방해물 조건일때도 수집 · 64편 · d2 를 참고" → 색 큐브 노랑 · 주황 · 파랑 · 초록, 2–6개)
+    type: SG           #   빨강 자리 = sg_pin 의 영역 무작위 64 곳 (K#p#), 각도는 그 자리의 깨끗한 판과 다르게 (각도마다 16). 화면 · 절차 · 시작 자세는 sg_pin 과 같음.
+    planner: sg50      #   방해물 자리는 계획표가 정함 (sg50.distractors) — front 화면에 색 원. 과제 문장은 깨끗한 판과 같음 (d2 T3 와 같음)
+    session: main_k8/sg_pin_dis
+    repo_id: oxr/so101_k8_sg_pin_dis
+    seed: 5701
+    episode_time_s: 60
+    plan: regions_distractors
+    angle_from: sg_pin
+    distractors: true
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    turn_hint: true      # 2026-11-13 손목 회전 권장 배지 (손목 칸 오른쪽 아래): <10° 그대로 · 10–35° 가까운 쪽 · ≥35° 애매 (사용자가 정함)
+    hover: true
+    hover_wait_s: 0.3
+    hold_s: 0.3
+  sg_pin_dis_pilot:    # 2026-11-13 방해물 조건 연습 3판 — sg_pin_dis 와 설정 같음, 세션 · repo · seed 만 다름
+    type: SG
+    planner: sg50
+    session: practice/sg_pin_dis_pilot
+    repo_id: oxr/so101_sg_pin_dis_pilot
+    seed: 5702
+    episode_time_s: 60
+    plan: regions_distractors
+    angle_from: sg_pin
+    distractors: true
+    pick: 3
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    turn_hint: true      # 2026-11-13 손목 회전 권장 배지 (손목 칸 오른쪽 아래): <10° 그대로 · 10–35° 가까운 쪽 · ≥35° 애매 (사용자가 정함)
+    hover: true
+    hover_wait_s: 0.3
+    hold_s: 0.3
+  sg_pin_staged:       # 2026-11-12 오전 설계 (첫 맞춤 → 수직 → 다시 맞춤 → 회전 → 내려가기, sg50.pin) — 연습 4판 뒤 안 쓰기로 함. 계획 · 화면 시험 (tests/test_sg_pin.py) 용으로만 남김
+    type: SG
+    planner: sg50
+    session: practice/sg_pin_staged
+    repo_id: oxr/so101_sg_pin_staged
+    seed: 5602
+    episode_time_s: 60
+    plan: k_angles_regions
+    per_region: 8
+    start_pose: planned
+    fold_mix: {F0: 1}
+    procedure_guide: true
+    pin: true
   sg50_main:           # 본 수집 48편 = 위치 16 × 시작 자세 3 (자세마다 12)
     type: SG
     planner: sg50
@@ -86,6 +382,14 @@ scenarios:
     title: 고정 시작 자세 S0 = 쉬는 자세와 거의 같고 손목만 사진처럼 돌림 (매 판 같은 자세)
     start: "쉬는 자세처럼 팔 접힘 · Pan 가운데, 손목은 사진 (sticker_ref/cubecross_20261106_094632_wrist.png) 처럼 돌린 자세. 매 판 같게."
     demo: "숄더팬을 큐브 쪽으로 맞춤 → 그리퍼 열기 → 손목으로 큐브 찾기 → 이동 (접근 · 내려가 맞추기) → 닫기 → 상자 → S0 로 돌아와 → (녹화 끝)"   # 2026-11-06 사용자 순서
+
+  SG-PLAN:             # 2026-11-09 판마다 계획된 시작 자세 (숄더팬 = 큐브 방향 ± 크게, 팔 접힘 4 가지) — sg50.start_folds · start_pan
+    like: SG-P0
+    label: "SG · 계획 시작 자세 (판마다 팬 · 팔 접힘 다름)"
+    pose: PLAN
+    title: 판마다 다른 시작 자세 — 준비 단계에서 화면의 목표 (팬 · 어깨 · 팔꿈치 · 손목) 에 맞춘 뒤 →
+    start: "준비 단계 (녹화 안 함) 에서 리더로 계획 시작 자세에 맞춤 (손목 화면 위 '시작 자세' 칸이 모두 초록), 그다음 →"
+    demo: "숄더팬을 돌리세요 → 그리퍼를 여세요 → 각도를 맞추세요 → 높이를 맞추세요 → 주황 프레임으로 → 닫기 → 상자 → S0 로 돌아와 → (녹화 끝)"   # 2026-11-09 사용자 순서
 
   SG-FREE:
     like: SG-P0
@@ -221,6 +525,28 @@ sg50:
     #   사용자 실측 정면 28.6 cm (상자 앞벽). 탁자 좌표 → FK 좌표 = 예비 16판 닫기 순간으로 맞춘 2D 회전 + 이동 (잔차 평균 3.2 cm).
     reach: {max_r_cm: 28.5, side_cm: 1.25, table_to_fk_R: [[0.98922, 0.1464], [-0.1464, 0.98922]], table_to_fk_t: [29.852, -12.442]}
     max_base_dist_cm: null   # 사용자 최대거리 (sg_reach.py 로 잼) — 정하면 regions --write --replace 로 점 다시 (녹화 전만)
+  # 2026-11-12 sg_pin 영역 무작위 점 (K#p#, sg_plan.py regions --pin): known_regions 조건에서 아래 값만 바꿈. K#r# (예비3) 은 그대로.
+  pin_regions:
+    per_region: 8
+    min_between_cm: 2.0            # 2.5 cm 로는 K1 영역에 8 점이 안 들어감 (seed 40 개 모두 실패) → 2.0
+    min_between_fallback_cm: 1.5   # 그래도 안 들어가는 영역 (K7 · K8: 수직 거리 한계 · 어려운 영역 · 평가 자리) 은 남은 점만 1.5 cm
+    seed: 5643                     # seed 5611–5710 중 1.5 cm 간격 점이 가장 적은 것 (4 점: K7 3 · K8 1)
+  # 2026-11-13 방해물 (그룹 distractors: true, sg_plan.assign_distractors). d2 T3 와 같은 물건: 2.5 cm 색 큐브 노랑 · 주황 · 파랑 · 초록 (색마다 5 개 있음).
+  #   개수 = d2 T3 무작위 판 비율 (2–6 개). '가장 가까운 방해물' 을 거리 near / far 절반씩 × 방향 4 가지 (큐브 기준 로봇 쪽 · 상자 쪽 · 로봇 왼쪽 · 오른쪽) 로 고르게,
+  #   나머지는 그보다 gap_cm 넘게 먼 무작위 자리. near = 접근 중 손목 화면에 같이 들어오는 거리, far = front 화면에만 보이는 거리 (추정 — 연습 판에서 확인).
+  #   방해물 각도는 정하지 않음 (d2 T3 무작위 판과 같음). 놓을 수 있는 곳 = area_cm 안 · front 화면 안 · 집기 어려운 영역 (쉬는 팔 아래) 밖 · 로봇 밑동 base_keepout_cm 밖.
+  distractors:
+    colors: [yellow, orange, blue, green]
+    max_per_color: 2
+    counts: {2: 13, 3: 13, 4: 13, 5: 13, 6: 12}
+    near_cm: [5.0, 7.0]
+    far_cm: [9.0, 14.0]
+    jitter_deg: 25
+    gap_cm: 1.5
+    min_between_cm: 3.5
+    quantize_cm: 0.5
+    area_cm: {x: [-30.0, -3.0], y: [-13.0, 36.0]}
+    base_keepout_cm: 9
   # 평가 전용 자리 — 수집 위치에서 뺀다 (계획 만들 때 ≥ eval_min_dist_cm 검사, 어기면 계획 거부)
   eval_reserved:
     min_dist_cm: 3.5
@@ -241,6 +567,143 @@ sg50:
       pilot_U7: [-15.5, 2.0]
       pilot_U8: [-20.5, 26.5]
   split_default: train_candidate   # 이 50편을 평가에 쓰려면 학습 전에 정해서 split 을 바꾼다 (sg_plan.py split)
+  # 2026-11-09 접근 경로 다양화 (overshoot_diag/11_bias_results.md P11: 사람 시연 82 % 가 높은 곳에서 카메라 쪽 (바깥) 으로 1 cm 넘게
+  #   지나갔다가 내려오며 되돌아옴 → 정책이 '카메라 쪽으로 가기' 를 배운 것으로 봄). 방향 = 큐브 기준 그리퍼가 오는 쪽.
+  #   radial: + = 로봇에서 먼 쪽 (바깥, 지금 손목 카메라 쪽), side: + = 숄더팬 + 쪽 (= 로봇 오른쪽). from_above = 위에서 내려옴.
+  #   wrist = 손목 화면에서 큐브가 들어오는 쪽 (du ≈ −0.077 / cm 팬+ 쪽, dv ≈ +0.075 / cm 바깥 — 예비3 창 회귀).
+  approach:
+    A:  {name: "위에서 하강", short: "위→", radial: 0, side: 0, from_above: true,
+         text: "지금 방식: 높은 곳에서 손목 프레임을 맞춘 뒤 내려옴"}
+    B:  {name: "안쪽에서 수평", short: "안쪽→", radial: -1, side: 0,
+         text: "큐브 안쪽 (로봇 쪽) 에서 잡는 높이까지 먼저 내려간 뒤 바깥으로 밀고 나감"}
+    C:  {name: "바깥에서 수평", short: "바깥→", radial: 1, side: 0,
+         text: "큐브 바깥 (카메라 쪽) 에서 잡는 높이까지 먼저 내려간 뒤 안쪽으로 당겨 옴"}
+    D+: {name: "오른쪽에서 수평", short: "오른쪽→", radial: 0, side: 1,
+         text: "큐브 로봇 오른쪽 (팬 + 쪽) 에서 잡는 높이로 수평 진입"}
+    D-: {name: "왼쪽에서 수평", short: "왼쪽→", radial: 0, side: -1,
+         text: "큐브 로봇 왼쪽 (팬 − 쪽) 에서 잡는 높이로 수평 진입"}
+    E:  {name: "지나쳤다 복귀", short: "지나침↩", radial: -1, side: 0, overshoot: true,
+         text: "안쪽에서 들어와 바깥 (카메라 쪽) 으로 1–2 cm 지나간 뒤 되돌아와 멈춤"}
+  # 2026-11-09 계획 시작 자세 (그룹 start_pose: planned). 팔 접힘 = 실제 녹화된 관절값 (새 자세를 만들지 않음) · 팬 = 큐브 방향 (pan_ref) + 오프셋.
+  #   팬 + = 로봇 오른쪽. |팬| ≤ abs_max (safety pan_abs_block_deg 95 보다 안쪽) — 넘으면 반대쪽, 그래도 넘으면 작은 오프셋.
+  start_pan:
+    offsets: [-60, -30, 30, 60]
+    abs_max: 85
+  start_tol: {shoulder_pan: 8, shoulder_lift: 10, elbow_flex: 10, wrist_flex: 12, wrist_roll: 12, gripper: 6}
+  start_folds:
+    F0: {name: "접힘 (S0 팔)", joints: {shoulder_lift: -102.9, elbow_flex: 95.3, wrist_flex: 77.8, wrist_roll: 92.9, gripper: 1.2},
+         source: "S0 (위)"}
+    F1: {name: "반쯤 편 팔", joints: {shoulder_lift: -40.9, elbow_flex: 54.8, wrist_flex: 51.7, wrist_roll: 91.2, gripper: 1.2},
+         source: "예비3 40편 그리퍼 연 뒤 lift 가 닫기 때와 반쯤 온 프레임의 팔로워 중앙값 (sd lift 9.2 · elbow 9.4 · wflex 9.8); 그리퍼는 닫힘 1.2 로"}
+    F2: {name: "높이 든 팔 (상자 위)", joints: {shoulder_lift: 34.1, elbow_flex: -40.1, wrist_flex: 70.3, wrist_roll: 92.9, gripper: 1.2},
+         source: "P3 (d2 상자 위 놓기 순간 중앙값) 팔 + S0 손목 회전"}
+    F3: {name: "접힘 · 손목 안 돌림 (P0)", joints: {shoulder_lift: -102.9, elbow_flex: 95.3, wrist_flex: 65.5, wrist_roll: 2.5, gripper: 1.2},
+         source: "P0 (d2 256편 첫 프레임 평균)"}
+  # 손목 화면 절차 안내 (그룹 procedure_guide: true): 녹화 중 위에서부터 처음 안 된 단계 하나를 크게 씀. 판정 · 자동 동작 아님.
+  #   1 숄더팬 (|팬 − 큐브 방향 pan_ref| ≤ pan_tol, 한 번 맞으면 그 판에서 넘어감) → 2 그리퍼 열기 (시작 + 8, 한 번) →
+  #   3 각도 (손목 화면 큐브 회전 ≤ 회전 허용, 가까운 쪽으로 — 45° 근처는 처음 고른 쪽을 그 판에서 유지) → 4 높이 (end_condition) →
+  #   5 주황 프레임 (u · v · 크기) → 유지 hold_s → '닫으세요'.
+  procedure:
+    pan_tol_deg: 6
+    angle_tol_deg: 5      # 2026-11-09 3 → 5 (3판 시험 닫을 때 회전 4–7°)
+    # 2026-11-10 사용자 "중간에 그리퍼를 열고 크레인 자세 만들고 가는거" (그룹 crane_step: true): 그리퍼 연 뒤 손목 수직 (수평계 목표 ± tilt_tol) ·
+    #   그리퍼 끝이 잡는 높이 (end_condition.height_cm) 보다 min_above_cm 위 → 한 번 맞으면 통과. 관절값은 고정하지 않음 (큐브 자리마다 팔꿈치로 큐브 위).
+    #   pilot4 ep2 시작 크레인 (lift 3.9 · elbow 13.4 · wflex 82.7): FK 끝 반지름 20.7 cm · 잡는 높이 +5.3 cm · 기울기 +0.5°.
+    crane:
+      tilt_tol_deg: 5
+      min_above_cm: 4.0
+    # 2026-11-10 사용자 "크레인 자세를 하고 서보를 통제 … 오 한번 해봐" (그룹 height_comp: true): 크레인 높이에서 (높이 보정한) 주황에 앞뒤 · 좌우만 맞춤 →
+    #   수직으로만 내려감. align_min_h_cm 위에서 u · v 가 align_tol 안이면 '맞춤' 통과, 내려가는 동안 drift_tol 넘으면 '위치가 샜어요'.
+    align_tol_uv: 0.035
+    align_min_h_cm: 1.5
+    drift_tol_uv: 0.05
+  # 2026-11-10 높이 보정 주황 (그룹 height_comp): 그리퍼가 잡는 높이보다 h cm 위일 때 닫기 자리 큐브가 손목 화면에서 보여야 할 자리 = (u, v + dv(h)) · 크기 size(h).
+  #   값 = 수평 위치가 닫은 자리 ±0.4 cm 안 · 높이 0–8 cm 장면 (예비3 40 편 + 연습 pilot5–7 9 판, 2,807 장면) 의 0.5 cm 묶음 중앙값을 이은 표.
+  #   4 cm 넘게는 측정이 적어 곡선 dv = −0.524·h/(h+6.48), 크기 = 11.32/(11.32+h) 로 채움. 오차 ±0.04 (dv) 정도 — 참고 안내. 닫기 판정은 실제 주황 (h = 0).
+  # 2026-11-10 사용자 "너무 어려운데 … 안 맞는거 같아 … 숄더팬 → 그리퍼 엶 → 큐브 상단까지 이동 → 대기 및 프레임 맞춤 → 하강 후 집기 → 넣기" (그룹 hover: true).
+  #   큐브 위 한 높이 (height_cm ± tol, FK 끝, 잡는 높이 기준) · 손목 수직 (± tilt_tol) 에서 '상단 프레임' (노랑) 에 맞추고 wait_s 대기 → 수직으로 내려가 주황 (닫기 자리) 에서 집기.
+  #   상단 프레임 = 수평이 닫은 자리 ±0.4 cm · 높이 2.5–3.5 cm · 손목 수직 ±4° 장면 33 개 (예비3 + pilot5–7) 중앙값: du −0.018 · dv −0.223 · 크기 0.84
+  #   (흩어짐 sd du 0.018 · dv 0.041 · 크기 0.027 → 허용 ±0.04 · ±0.08, 위에서는 대략 맞춤, 정확한 맞춤은 아래 주황).
+  hover:
+    height_cm: 3.0
+    height_tol_cm: 1.5
+    # 2026-11-10 연습 3판 (pilot9): 상단 프레임 실제 (+3.0 cm · 기울기 5°) 와 차 dv 0.000 · ep1 은 기울기 +15° 로 못 넘어감 · 큐브 위 머문 시간 최대 약 12 s
+    #   → tilt_tol 5 → 8°, tol_uv 0.04 → 0.05 (위에서는 대략 맞추고 빨리 내려가게). 프레임 값은 그대로.
+    # 2026-11-10 연습 3판 (pilot10) 뒤 사용자 "허용 범위를 조금 넓게": ep2 (K8r3) 는 화면 3 가지는 대부분 맞았지만 기울기 −12° 로 못 넘어감.
+    #   큐브 위 장면 통과 비율 (pilot9 · pilot10 6 판): 이전 38 · 0 · 74 · 25 · 16 · 0 % → 아래 값 51 · 12 · 74 · 70 · 18 · 48 %.
+    #   기울기 8 → 15° (30° 가까이 기울면 상단 프레임이 크게 달라져 남김) · uv 0.05 → 0.06 · 크기 0.08 → 0.10 · 높이 ±1.0 → ±1.5 cm (위 height_tol_cm).
+    tilt_tol_deg: 15
+    frame: {du: -0.018, dv: -0.223, size: 0.84}
+    tol_uv: 0.06
+    tol_size: 0.10
+    wait_s: 0.5
+    bottom_warn_h_cm: 1.0   # 이 높이 아래에서 큐브가 주황보다 dv > overshoot_warn.dv_thr 면 '지나쳤어요'
+  height_comp:
+    h:    [0, 1, 2, 3, 4, 6, 8]
+    dv:   [0.0, -0.05, -0.135, -0.19, -0.20, -0.25, -0.29]
+    size: [1.0, 0.99, 0.88, 0.81, 0.74, 0.65, 0.59]
+  # 2026-11-09 사용자 "손목 카메라에서 위로 들때 노란색 점선으로 큐브를 먼저 맞추게 하고 주황색 큐브로 돌아오게 … 다양한 위치 … 아래부분에서도".
+  #   판마다 노란 프레임 = 주황 닫기 자리 (ref-v5) 윤곽을 화면에서 dir 방향으로 dist 만큼 옮기고 size 배로 줄인 것 (작게 = 더 높은 곳).
+  #   dir: 화면 기준 0 = 오른쪽, 90 = 아래, 180 = 왼쪽, 270 = 위 (8 방향 고르게). dist = 화면 폭 비 (세로는 같은 px 로 환산).
+  #   큐브 윤곽이 화면 안 (margin) 에 다 들어오는 거리 · 크기만 씀 — 안 되면 거리를 줄이고 (min_dist 까지) 크기를 작게.
+  #   노랑은 지나가는 점: 맞으면 (tol) 그 판에서 통과, 기다리지 않음 (정책 입력 영상에는 노란 선이 없음).
+  waypoint:
+    dirs: [0, 45, 90, 135, 180, 225, 270, 315]
+    dist: [0.12, 0.22]
+    min_dist: 0.07
+    size: [0.70, 0.85]
+    margin: 0.02
+    tol_uv: 0.04
+    tol_size: 0.08
+    # 2026-11-10 사용자 (3판 시험 뒤 "노란색을 일부러 맞추기가 쉽지않네 … 숄더팬을 잘 돌리면 사실 거의 맞거든") → 1 번 안 "내려오는 축 하나":
+    #   위 (270°, 로봇 쪽 · 높이) 3 : 아래 (90°, 카메라 쪽에서 당겨 오기) 1. dirs 는 이 dir_mix 가 있으면 안 씀 (8 방향은 이전 설계).
+    # 2026-11-10 사용자 "강한 보정을 얻고 싶으면 노란색 큐브가 꽤 벌어져있어야 … 화면 아래로 짤려도 되게": 카메라 쪽 (아래 · 아래 대각) 2 : 로봇 쪽 (위) 1.
+    #   카메라 쪽은 잡는 높이 근처 (크기 0.90–1.00) · dv ≈ +0.06 … +0.15 (≈ 0.8–2 cm 바깥, 정책 실패 때 +0.03…+0.10) — 화면 아래로 잘려도 됨 (보이는 넓이 ≥ bottom_visible_min).
+    #   (이전: 위 3 : 아래 1, 아래 0.06–0.09 · 0.86–0.95, 다 보이게)
+    dir_mix: {"270": 2, "90": 2, "60": 1, "120": 1}
+    dist_by_dir: {"270": [0.06, 0.11], "90": [0.05, 0.11], "60": [0.055, 0.12], "120": [0.055, 0.12]}
+    size_by_dir: {"270": [0.85, 0.95], "90": [0.90, 1.00], "60": [0.90, 1.00], "120": [0.90, 1.00]}
+    allow_bottom_clip: true
+    bottom_visible_min: 0.55
+  # 2026-11-10 사용자 "응 한번해봐" (지나침 경고): 노랑을 지난 뒤 주황 단계에서
+  #   (a) 노랑이 위 · 옆 (아래 띠 45–135° 아님) 인데 큐브가 주황보다 dv > dv_thr (화면 아래 = 그리퍼가 카메라 쪽으로 샘) 또는
+  #   (b) 큐브가 노랑 반대편으로 주황을 px_thr 넘게 지나감 → 주황 점선 빨강 + '지나쳤어요' 빨강 깜빡임. 판정 · 자동 동작 아님.
+  overshoot_warn:
+    dv_thr: 0.04          # ≈ 0.5 cm 바깥 (dv +0.075 / cm, 예비3 창 회귀)
+    px_thr: 20            # 노랑 → 주황 방향으로 주황을 지난 거리 (원본 640×480 px)
+  # 2026-11-12 새 절차 (그룹 pin: true). 사용자: "숄더팬 정렬 → 그리퍼 개방 → 손목카메라 핀포인트에 큐브 정렬 → 핀포인트 최대한 맞추면서 수직으로 손목서보 정렬
+  #   → 다시 한번 핀포인트에 큐브정렬 → 그리퍼 회전 → 닫음 → 박스에 놓기". 검토 뒤 (같은 날) 회전은 큐브 위 높이에서 하고 그 뒤 수직으로 내려가 확인 · 닫기.
+  #   화면 단계: 1 숄더팬 · 2 그리퍼 · 3 첫 맞춤 (노랑 = 상단 프레임에서 판마다 정한 방향으로 entry.dist 옮긴 자리, 한 번 맞으면 통과) ·
+  #   4 손목 수직 (|기울기| ≤ vertical_tol, 한 번) · 5 다시 맞춤 (노랑 = 상단 프레임 sg50.hover.frame, 높이 hover.height_cm ± height_tol · 수직 1.5 배 안, wait_s 유지) ·
+  #   6 회전 (손목 화면 큐브 회전 ≤ procedure.angle_tol_deg, 0° 큐브는 바로 통과) · 7 수직으로 내려가 주황 (end_condition) · 8 유지 hold_s → 닫으세요.
+  #   판정 · 자동 동작 아님. 첫 맞춤 방향: 화면 0 = 오른쪽 · 90 = 아래 (그리퍼가 카메라 쪽으로 더 나간 상태) · 180 = 왼쪽 · 270 = 위 (덜 나간 상태).
+  pin:
+    entry:
+      dirs: [0, 90, 180, 270]
+      dist: [0.08, 0.13]      # 화면 폭 비 (≈ 1–1.7 cm, dv 0.075 / cm 기준). 화면 밖이면 min_dist 까지 줄임
+      min_dist: 0.05
+      margin: 0.02
+      tol_uv: 0.05
+      tol_size: 0.12
+    vertical_tol_deg: 8
+    align: {tol_uv: 0.04, tol_size: 0.10}
+    wait_s: 0.3               # 다시 맞춤이 맞은 채 유지할 시간 (스쳐 지나가는 것만 거름 — 멈춰 기다리게 하지 않음)
+    hold_s: 0.7               # 닫기 전 유지 (end_condition.hold_s 1.5 대신 — 2026-11-12 실물 평가: 정책이 열린 채 46 s 머묾 → 멈춤을 짧게)
+  # 정답조건 (화면 안내 · 판 뒤 검사 — 녹화 · 닫기를 막거나 자동으로 하지 않음). 값 = 예비3 40편 닫기 순간 (overshoot_diag):
+  #   FK 그리퍼 끝 높이 중앙 −1.85 cm (sd 0.42, p10 −2.32 · p90 −1.46) · 손목 크기 1.005 ± 0.014 · du 0.003 ± 0.016 · dv 0.003 ± 0.020.
+  end_condition:
+    # 2026-11-09 사용자 (sg50_rot_pilot 3판 — 닫을 때 0/3 맞음: dv +0.07 · −0.06, du −0.07, 크기 1.08–1.09) "정답조건 완화하자":
+    #   tol_uv 0.02 → 0.03 · tol_size 0.03 → 0.05 · tol_height_cm 0.5 → 0.7 (procedure.angle_tol_deg 3 → 5)
+    tol_uv: 0.03          # 닫기 자리 (ref-v5) 와 화면 위치 차 (0–1)
+    tol_size: 0.05        # 크기 비 (= ref-v5 허용) — 아래 size_range 가 있으면 그것을 씀
+    # 2026-11-10 시험 9판 닫을 때 크기: 0° 큐브 1.00 · 1.01 / 돌린 큐브 (30 · 45°) 1.04–1.09, 같은 판 FK 높이 −0.79…+0.55 cm (허용 안 6/9)
+    #   → 돌린 큐브는 같은 높이에서도 손목 화면에 크게 보임 → 크기 허용 0.95–1.10 (높이는 FK 높이 조건이 봄)
+    size_range: [0.95, 1.10]
+    height_cm: -1.85      # FK 그리퍼 끝 높이 목표 (sg_fk, 0 = FK 원점)
+    tol_height_cm: 0.7
+    hold_s: 1.5           # 네 가지가 다 맞은 채 유지할 시간 (그 뒤 닫기) — 2026-11-10 0.5 → 1.5 (정책 계획 길이 1.7 s 안, 사람 예비3 0.3 cm 안 머문 시간 중앙 2.1 s)
+    wp_to_target_s: 2.0   # 2026-11-10 노랑을 지난 뒤 주황까지 '한 번에' 안내 (판정 아님)
+    overshoot_ok_cm: 0.5  # 판 뒤 검사: 닫기 위치보다 바깥으로 이만큼 넘게 지나가면 '지나침' (E 유형은 1–2 cm 가 목표)
 
 # 새 위치 좌표 (C 좌표 cm, x 상자 쪽 · y 로봇 왼쪽) — known_xy 가 읽는 free_points. F1–F4 는 기존 r12 그대로 (R1 용, 이번 계획에서 안 씀).
 free_points:
@@ -289,3 +752,68 @@ free_points:
   K8r2: [-24.5, -8.5]
   K8r3: [-21.5, -5.0]
   K8r4: [-22.5, -11.0]
+  # sg_pin 영역 무작위 점 (sg_plan.py regions --pin, seed 5643, 2026-11-12): 영역마다 8 · 서로 ≥2.0 cm · 나머지 조건 = known_regions
+  K1p1: [-11.0, 26.0]
+  K1p2: [-10.5, 19.5]
+  K1p3: [-9.0, 23.5]
+  K1p4: [-11.0, 24.0]
+  K1p5: [-11.5, 22.0]
+  K1p6: [-12.5, 27.5]
+  K1p7: [-9.5, 21.5]
+  K1p8: [-8.5, 19.0]
+  K2p1: [-11.5, 13.0]
+  K2p2: [-9.0, 4.0]
+  K2p3: [-10.5, 17.0]
+  K2p4: [-12.0, 5.5]
+  K2p5: [-5.5, 9.5]
+  K2p6: [-11.0, 15.0]
+  K2p7: [-5.0, 7.0]
+  K2p8: [-4.5, 12.0]
+  K3p1: [-6.0, -3.5]
+  K3p2: [-11.5, 1.0]
+  K3p3: [-5.0, 1.0]
+  K3p4: [-12.0, -3.5]
+  K3p5: [-5.5, -1.0]
+  K3p6: [-5.5, 3.5]
+  K3p7: [-8.0, -0.5]
+  K3p8: [-8.5, 1.5]
+  K4p1: [-17.0, 23.0]
+  K4p2: [-15.0, 24.5]
+  K4p3: [-20.5, 31.5]
+  K4p4: [-13.0, 25.0]
+  K4p5: [-14.5, 27.0]
+  K4p6: [-17.5, 29.0]
+  K4p7: [-17.5, 31.0]
+  K4p8: [-15.5, 29.5]
+  K5p1: [-16.0, 16.5]
+  K5p2: [-13.0, 16.0]
+  K5p3: [-16.5, 14.0]
+  K5p4: [-14.5, 5.5]
+  K5p5: [-16.5, 5.5]
+  K5p6: [-15.5, 10.0]
+  K5p7: [-14.0, 11.5]
+  K5p8: [-16.0, 7.5]
+  K6p1: [-17.0, -7.5]
+  K6p2: [-21.0, -9.0]
+  K6p3: [-17.0, -1.5]
+  K6p4: [-19.0, -6.0]
+  K6p5: [-16.5, -10.5]
+  K6p6: [-21.0, -5.0]
+  K6p7: [-13.5, -10.5]
+  K6p8: [-14.0, -3.0]
+  K7p1: [-28.0, 27.5]
+  K7p2: [-28.0, 31.0]
+  K7p3: [-26.0, 28.5]
+  K7p4: [-23.5, 28.5]
+  K7p5: [-28.0, 34.0]
+  K7p6: [-27.5, 29.0]
+  K7p7: [-27.5, 26.0]
+  K7p8: [-28.0, 32.5]
+  K8p1: [-25.5, -8.5]
+  K8p2: [-25.5, -6.5]
+  K8p3: [-22.5, -6.5]
+  K8p4: [-23.5, -10.5]
+  K8p5: [-24.0, -5.0]
+  K8p6: [-23.0, -8.5]
+  K8p7: [-21.5, -11.0]
+  K8p8: [-24.0, -6.5]

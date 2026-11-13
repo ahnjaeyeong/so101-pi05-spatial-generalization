@@ -40,7 +40,15 @@ PLAN_FIELDS = ["episode_index", "scenario_id", "type", "position", "cube_xy_cm",
                "error_kind", "pan_error_direction", "nominal_pan_error_deg", "local_alignment_type", "nominal_local_error_cm",
                "start_pose_type", "wrist_visibility_target",
                # 4차: R1 접근 단계 기대 (early / mid / mid|late), 큐브 자리 출처 (K 격자 / 자유 점 / front 검출)
-               "approach_stage_expected", "cube_position_source"]
+               "approach_stage_expected", "cube_position_source",
+               # 2026-11-09 SG 접근 경로 유형 (sg50.approach 키: A · B · C · D+ · D- · E). 다른 그룹은 빈칸.
+               "approach_type",
+               # 2026-11-09 SG 계획 시작 자세 (sg50.start_folds 키 · 'shoulder_pan=-52.3;shoulder_lift=…') · 0° 큐브 대비 필요한 손목 회전 참고값
+               "start_fold", "start_joints", "need_turn_deg",
+               # 2026-11-09 노란 프레임 (지나가는 점): 화면 방향 ° · 중심 u · v · 크기 비 (주황 닫기 자리 기준)
+               "wp_dir", "wp_u", "wp_v", "wp_size",
+               # 2026-11-13 방해물 (다른 색 큐브) 자리: '색:x,y;색:x,y' (탁자 cm). 방해물 없는 그룹은 빈칸.
+               "distractors"]
 PLANNED, RECORDED, EXCLUDED = "planned", "recorded", "excluded"
 
 # 기존 d2 를 이루는 세션·폴더 — R1/R2 세션 이름으로 쓰면 거부한다 (d2 원본 보호).
@@ -621,7 +629,12 @@ def describe_row(cfg, r):
             "retake_of": r.get("retake_of", ""),
             # 2026-11-03 파일럿 12편 (설정에 있을 때만): R1 / R2-P / R2-O · 시작 그리퍼 조건 (open / closed / 빈칸 = 상관없음)
             "pilot_variant": s.get("pilot_variant", ""), "gripper_start": s.get("gripper_start", ""),
-            "reopen_min": s.get("reopen_min", "")}
+            "reopen_min": s.get("reopen_min", ""),
+            # 2026-11-09 SG 접근 유형 (sg50.approach 키, 다른 그룹은 빈칸) — 화면 안내 · 기록용
+            "approach_type": r.get("approach_type") or "",
+            "distractors": r.get("distractors") or "",   # 2026-11-13 방해물 자리 (front 화면 표시용)
+            "start_fold": r.get("start_fold") or "", "start_joints": r.get("start_joints") or "", "need_turn_deg": r.get("need_turn_deg") or "",
+            "wp_dir": r.get("wp_dir") or "", "wp_u": r.get("wp_u") or "", "wp_v": r.get("wp_v") or "", "wp_size": r.get("wp_size") or ""}
 
 
 def start_region(s):

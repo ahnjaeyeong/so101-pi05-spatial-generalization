@@ -1,0 +1,2 @@
+﻿run,ep,verdict,seconds,frames,front_image,wrist_image,memo,ckpt,tag,started,task
+20261112_092137_10k_t01_02_03_04_05_06_07_08_ft_series,000,,9.9,296,start_images/ep000_front.png,start_images/ep000_wrist.png,,../../practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000,t01_02_03_04_05_06_07_08_ft_series,2026-11-12 09:21,pick up the red cube and put it in the brown box

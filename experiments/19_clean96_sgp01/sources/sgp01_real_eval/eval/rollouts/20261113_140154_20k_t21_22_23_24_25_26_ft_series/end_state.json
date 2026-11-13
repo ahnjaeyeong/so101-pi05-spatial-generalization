@@ -1,0 +1,336 @@
+{
+ "run": "20261113_140154_20k_t21_22_23_24_25_26_ft_series",
+ "ended_by": "user_rerecord",
+ "exception": null,
+ "initial_position": {
+  "shoulder_pan.pos": -1.8461538461538463,
+  "shoulder_lift.pos": -101.31868131868131,
+  "elbow_flex.pos": 96.04395604395604,
+  "wrist_flex.pos": 77.62637362637362,
+  "wrist_roll.pos": 95.78021978021978,
+  "gripper.pos": 72.28749136143746
+ },
+ "end_present_arm": {
+  "shoulder_pan": -1.4065934065934067,
+  "shoulder_lift": -100.7032967032967,
+  "elbow_flex": 96.21978021978022,
+  "wrist_flex": 77.18681318681318,
+  "wrist_roll": 95.34065934065934
+ },
+ "diff_from_initial_deg": {
+  "shoulder_pan": 0.44,
+  "shoulder_lift": 0.62,
+  "elbow_flex": 0.18,
+  "wrist_flex": -0.44,
+  "wrist_roll": -0.44
+ },
+ "max_abs_diff_deg": 0.62,
+ "bus_ok_at_teardown": true,
+ "torque_left_on": true,
+ "auto_return_blocked_calls": 0,
+ "rerecord_to_stop": 0,
+ "holds": 8,
+ "home_mode": true,
+ "homes": [
+  {
+   "perf": 1911834.701319685,
+   "where": "between_episodes",
+   "ended_by": "user_rerecord",
+   "ok": true,
+   "checks": [
+    {
+     "name": "H2_torque_on",
+     "pass": true,
+     "detail": "Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}"
+    },
+    {
+     "name": "H3_goal_present_gap",
+     "pass": true,
+     "detail": "|Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H4_pan_and_limits",
+     "pass": true,
+     "detail": "pan=6.6 outside_limits=[]"
+    },
+    {
+     "name": "H5_target_is_rest",
+     "pass": true,
+     "detail": "target={'shoulder_pan': -1.8461538461538463, 'shoulder_lift': -101.31868131868131, 'elbow_flex': 96.04395604395604, 'wrist_flex': 77.62637362637362, 'wrist_roll': 95.78021978021978}"
+    },
+    {
+     "name": "H6_matches_end_state",
+     "pass": true,
+     "detail": "|지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H7_move_size",
+     "pass": true,
+     "detail": "이동량={'shoulder_pan': 8.4, 'shoulder_lift': 1.4, 'elbow_flex': 0.1, 'wrist_flex': 25.7, 'wrist_roll': 3.4}"
+    }
+   ],
+   "move": {
+    "ok": true,
+    "reason": "arrived",
+    "ticks": 51,
+    "max_err": 1.287653522947636,
+    "n_steps": 51,
+    "duration_planned_s": 1.7,
+    "max_step_deg": 0.5033397974574569
+   },
+   "final": {
+    "shoulder_pan": -1.2307692307692308,
+    "shoulder_lift": -100.7032967032967,
+    "elbow_flex": 96.13186813186813,
+    "wrist_flex": 76.48351648351648,
+    "wrist_roll": 95.07692307692308
+   },
+   "gripper": {
+    "moved": true,
+    "from": 75.74291637871458,
+    "to": 72.28749136143746,
+    "final": 72.56392536281963,
+    "steps": 3
+   }
+  },
+  {
+   "perf": 1911843.588842614,
+   "where": "between_episodes",
+   "ended_by": "user_rerecord",
+   "ok": true,
+   "checks": [
+    {
+     "name": "H2_torque_on",
+     "pass": true,
+     "detail": "Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}"
+    },
+    {
+     "name": "H3_goal_present_gap",
+     "pass": true,
+     "detail": "|Goal−Present|={'shoulder_pan': 0.44, 'shoulder_lift': 0.44, 'elbow_flex': 0.09, 'wrist_flex': 0.44, 'wrist_roll': 0.26}"
+    },
+    {
+     "name": "H4_pan_and_limits",
+     "pass": true,
+     "detail": "pan=-1.4 outside_limits=[]"
+    },
+    {
+     "name": "H5_target_is_rest",
+     "pass": true,
+     "detail": "target={'shoulder_pan': -1.8461538461538463, 'shoulder_lift': -101.31868131868131, 'elbow_flex': 96.04395604395604, 'wrist_flex': 77.62637362637362, 'wrist_roll': 95.78021978021978}"
+    },
+    {
+     "name": "H6_matches_end_state",
+     "pass": true,
+     "detail": "|지금 − end_state 끝 자세|={'shoulder_pan': 0.18, 'shoulder_lift': 0.18, 'elbow_flex': 0.0, 'wrist_flex': 0.7, 'wrist_roll': 0.44}"
+    },
+    {
+     "name": "H7_move_size",
+     "pass": true,
+     "detail": "이동량={'shoulder_pan': 0.4, 'shoulder_lift': 0.4, 'elbow_flex': 0.1, 'wrist_flex': 0.4, 'wrist_roll': 0.3}"
+    }
+   ],
+   "move": {
+    "ok": true,
+    "reason": "arrived",
+    "ticks": 1,
+    "max_err": 0.43956043956043955,
+    "n_steps": 1,
+    "duration_planned_s": 0.03333333333333333,
+    "max_step_deg": 0.43956043956043955
+   },
+   "final": {
+    "shoulder_pan": -1.4065934065934067,
+    "shoulder_lift": -100.87912087912088,
+    "elbow_flex": 96.13186813186813,
+    "wrist_flex": 77.18681318681318,
+    "wrist_roll": 95.51648351648352
+   },
+   "gripper": {
+    "moved": false,
+    "from": 72.49481686247408,
+    "to": 72.28749136143746
+   }
+  },
+  {
+   "perf": 1911861.200721096,
+   "where": "between_episodes",
+   "ended_by": "user_rerecord",
+   "ok": true,
+   "checks": [
+    {
+     "name": "H2_torque_on",
+     "pass": true,
+     "detail": "Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}"
+    },
+    {
+     "name": "H3_goal_present_gap",
+     "pass": true,
+     "detail": "|Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H4_pan_and_limits",
+     "pass": true,
+     "detail": "pan=5.8 outside_limits=[]"
+    },
+    {
+     "name": "H5_target_is_rest",
+     "pass": true,
+     "detail": "target={'shoulder_pan': -1.8461538461538463, 'shoulder_lift': -101.31868131868131, 'elbow_flex': 96.04395604395604, 'wrist_flex': 77.62637362637362, 'wrist_roll': 95.78021978021978}"
+    },
+    {
+     "name": "H6_matches_end_state",
+     "pass": true,
+     "detail": "|지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H7_move_size",
+     "pass": true,
+     "detail": "이동량={'shoulder_pan': 7.6, 'shoulder_lift': 1.6, 'elbow_flex': 0.2, 'wrist_flex': 32.0, 'wrist_roll': 6.6}"
+    }
+   ],
+   "move": {
+    "ok": true,
+    "reason": "arrived",
+    "ticks": 64,
+    "max_err": 1.5,
+    "n_steps": 64,
+    "duration_planned_s": 2.1333333333333333,
+    "max_step_deg": 0.5
+   },
+   "final": {
+    "shoulder_pan": -1.2307692307692308,
+    "shoulder_lift": -100.17582417582418,
+    "elbow_flex": 96.21978021978022,
+    "wrist_flex": 76.48351648351648,
+    "wrist_roll": 94.98901098901099
+   },
+   "gripper": {
+    "moved": true,
+    "from": 77.67795438838976,
+    "to": 72.28749136143746,
+    "final": 72.49481686247408,
+    "steps": 5
+   }
+  },
+  {
+   "perf": 1911930.2864581,
+   "where": "between_episodes",
+   "ended_by": "user_rerecord",
+   "ok": true,
+   "checks": [
+    {
+     "name": "H2_torque_on",
+     "pass": true,
+     "detail": "Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}"
+    },
+    {
+     "name": "H3_goal_present_gap",
+     "pass": true,
+     "detail": "|Goal−Present|={'shoulder_pan': 0.44, 'shoulder_lift': 0.62, 'elbow_flex': 0.18, 'wrist_flex': 0.44, 'wrist_roll': 0.44}"
+    },
+    {
+     "name": "H4_pan_and_limits",
+     "pass": true,
+     "detail": "pan=-1.4 outside_limits=[]"
+    },
+    {
+     "name": "H5_target_is_rest",
+     "pass": true,
+     "detail": "target={'shoulder_pan': -1.8461538461538463, 'shoulder_lift': -101.31868131868131, 'elbow_flex': 96.04395604395604, 'wrist_flex': 77.62637362637362, 'wrist_roll': 95.78021978021978}"
+    },
+    {
+     "name": "H6_matches_end_state",
+     "pass": true,
+     "detail": "|지금 − end_state 끝 자세|={'shoulder_pan': 0.18, 'shoulder_lift': 0.53, 'elbow_flex': 0.0, 'wrist_flex': 0.7, 'wrist_roll': 0.35}"
+    },
+    {
+     "name": "H7_move_size",
+     "pass": true,
+     "detail": "이동량={'shoulder_pan': 0.4, 'shoulder_lift': 0.6, 'elbow_flex': 0.2, 'wrist_flex': 0.4, 'wrist_roll': 0.4}"
+    }
+   ],
+   "move": {
+    "ok": true,
+    "reason": "arrived",
+    "ticks": 1,
+    "max_err": 0.6153846153846132,
+    "n_steps": 1,
+    "duration_planned_s": 0.03333333333333333,
+    "max_step_deg": 0.6153846153846132
+   },
+   "final": {
+    "shoulder_pan": -1.4065934065934067,
+    "shoulder_lift": -100.7032967032967,
+    "elbow_flex": 96.21978021978022,
+    "wrist_flex": 77.18681318681318,
+    "wrist_roll": 95.34065934065934
+   },
+   "gripper": {
+    "moved": false,
+    "from": 72.42570836212853,
+    "to": 72.28749136143746
+   }
+  },
+  {
+   "perf": 1911930.352438054,
+   "where": "teardown",
+   "ended_by": "user_rerecord",
+   "ok": true,
+   "checks": [
+    {
+     "name": "H2_torque_on",
+     "pass": true,
+     "detail": "Torque_Enable={'shoulder_pan': 1, 'shoulder_lift': 1, 'elbow_flex': 1, 'wrist_flex': 1, 'wrist_roll': 1, 'gripper': 1}"
+    },
+    {
+     "name": "H3_goal_present_gap",
+     "pass": true,
+     "detail": "|Goal−Present|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H4_pan_and_limits",
+     "pass": true,
+     "detail": "pan=-1.4 outside_limits=[]"
+    },
+    {
+     "name": "H5_target_is_rest",
+     "pass": true,
+     "detail": "target={'shoulder_pan': -1.8461538461538463, 'shoulder_lift': -101.31868131868131, 'elbow_flex': 96.04395604395604, 'wrist_flex': 77.62637362637362, 'wrist_roll': 95.78021978021978}"
+    },
+    {
+     "name": "H6_matches_end_state",
+     "pass": true,
+     "detail": "|지금 − end_state 끝 자세|={'shoulder_pan': 0.0, 'shoulder_lift': 0.0, 'elbow_flex': 0.0, 'wrist_flex': 0.0, 'wrist_roll': 0.0}"
+    },
+    {
+     "name": "H7_move_size",
+     "pass": true,
+     "detail": "이동량={'shoulder_pan': 0.4, 'shoulder_lift': 0.6, 'elbow_flex': 0.2, 'wrist_flex': 0.4, 'wrist_roll': 0.4}"
+    }
+   ],
+   "move": {
+    "ok": true,
+    "reason": "arrived",
+    "ticks": 1,
+    "max_err": 0.6153846153846132,
+    "n_steps": 1,
+    "duration_planned_s": 0.03333333333333333,
+    "max_step_deg": 0.6153846153846132
+   },
+   "final": {
+    "shoulder_pan": -1.4065934065934067,
+    "shoulder_lift": -100.7032967032967,
+    "elbow_flex": 96.21978021978022,
+    "wrist_flex": 77.18681318681318,
+    "wrist_roll": 95.34065934065934
+   }
+  }
+ ],
+ "teardown_steps": [
+  "engine_stopped",
+  "homed_at_teardown",
+  "bus_disconnected_torque_kept"
+ ],
+ "time": "2026-11-13 14:06:55"
+}

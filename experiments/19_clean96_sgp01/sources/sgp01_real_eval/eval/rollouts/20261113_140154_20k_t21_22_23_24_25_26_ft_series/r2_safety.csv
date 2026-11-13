@@ -1,0 +1,6 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1794546123.8881,1911639.05828,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=0.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/sgp01_real_eval/config/series/20261113_140147_ft.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1794546307.0857,1911822.25592,0,0,episode_start,over_target,pe= start_pan=-1.8461538461538463 disabled,,-1.8461538461538463,,,
+1794546307.1785,1911822.34870,0,0,plan_check,K4_L30,"놓인 곳 (-16.0, 26.9) cm · Known (K4 1.0 cm) · 각도 +28° (= L30) · 계획 K4_L30 과 1.0 cm",,-1.8461538461538463,,,
+1794546328.5046,1911843.67480,1,0,episode_start,over_target,pe= start_pan=-1.4065934065934067 disabled,,-1.4065934065934067,,,
+1794546328.5381,1911843.70832,1,0,plan_check,K4_L30,"놓인 곳 (-16.1, 26.9) cm · Known (K4 1.0 cm) · 각도 +28° (= L30) · 계획 K4_L30 과 1.0 cm",,-1.4065934065934067,,,

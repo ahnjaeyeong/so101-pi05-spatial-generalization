@@ -1,0 +1,199 @@
+{
+ "made": "2026-11-12T09:20:10",
+ "all_pass_M1_M6": true,
+ "checks": {
+  "M1_sha256": {
+   "pass": true,
+   "detail": {
+    "baseline_020000": "6c46dee79b167c48ad24b6af739157dc22636505c4c838815a4bf3656a364886",
+    "sgb01_010000": "01b22017dcbfc4f854798a584642ed87e690728fe434a087a90934973d62eed4",
+    "models_env": {
+     "BL_SHA": "6c46dee79b167c48ad24b6af739157dc22636505c4c838815a4bf3656a364886",
+     "FT_SHA": "01b22017dcbfc4f854798a584642ed87e690728fe434a087a90934973d62eed4",
+     "FT_CKPT": "/home/user/so101_runs/practice/sg50_pilot3/train/sgb01_p3_10k_s2001/run/checkpoints/010000/pretrained_model"
+    }
+   }
+  },
+  "M2_000500_preserved": {
+   "pass": true,
+   "detail": {
+    "note": "이름은 run_trial 게이트 키 그대로 — 내용 = 같은 학습 다른 체크포인트 존재",
+    "exists": {
+     "002500": true,
+     "005000": true,
+     "007500": true
+    }
+   }
+  },
+  "M3_config_diff_train_keys_only": {
+   "pass": true,
+   "detail": {
+    "diff": {
+     "optimizer_lr": [
+      2.5e-05,
+      1e-05
+     ],
+     "scheduler_decay_steps": [
+      30000,
+      10000
+     ],
+     "scheduler_warmup_steps": [
+      1000,
+      50
+     ]
+    },
+    "non_training_diff": {},
+    "inference_keys_both": {
+     "chunk_size": 50,
+     "n_action_steps": 50,
+     "num_inference_steps": 10,
+     "normalization_mapping.ACTION": "QUANTILES",
+     "normalization_mapping.STATE": "QUANTILES",
+     "max_state_dim": 32,
+     "max_action_dim": 32,
+     "tokenizer_max_length": 200,
+     "dtype": "bfloat16",
+     "rtc_config": null,
+     "input_features.observation.state.shape": [
+      6
+     ],
+     "output_features.action.shape": [
+      6
+     ],
+     "image_resolution": [
+      224,
+      224
+     ]
+    }
+   }
+  },
+  "M4_processor_json_identical": {
+   "pass": true,
+   "detail": {
+    "policy_preprocessor.json": true,
+    "policy_postprocessor.json": true
+   }
+  },
+  "M5_normalizer_values_identical": {
+   "pass": true,
+   "detail": {
+    "policy_preprocessor_step_3_normalizer_processor.safetensors": {
+     "n_tensors": 90,
+     "not_equal": [],
+     "action_q01": [
+      -108.83999633789062,
+      -104.47000122070312,
+      -81.68000030517578,
+      0.6499999761581421,
+      -57.36000061035156,
+      0.3199999928474426
+     ],
+     "action_q99": [
+      103.63999938964844,
+      62.810001373291016,
+      97.63999938964844,
+      100.26000213623047,
+      55.68000030517578,
+      49.95000076293945
+     ]
+    },
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": {
+     "n_tensors": 90,
+     "not_equal": [],
+     "action_q01": [
+      -108.83999633789062,
+      -104.47000122070312,
+      -81.68000030517578,
+      0.6499999761581421,
+      -57.36000061035156,
+      0.3199999928474426
+     ],
+     "action_q99": [
+      103.63999938964844,
+      62.810001373291016,
+      97.63999938964844,
+      100.26000213623047,
+      55.68000030517578,
+      49.95000076293945
+     ]
+    }
+   }
+  },
+  "M6_tokenizer_same_output": {
+   "pass": true,
+   "detail": {
+    "tokenizer.json_identical": true,
+    "tokenizer_config_diff": {},
+    "call_kwargs": {
+     "max_length": 200,
+     "padding": "max_length",
+     "truncation": true,
+     "padding_side": "right"
+    },
+    "n_tokens_task": 13,
+    "ids_equal_all_texts": true
+   }
+  },
+  "M7_action_range_record_only": {
+   "pass": true,
+   "detail": {
+    "sgft_010000": {
+     "n_chunks": 4368,
+     "min": [
+      -93.48999786376953,
+      -108.23999786376953,
+      -90.2300033569336,
+      -0.3100000023841858,
+      -23.469999313354492,
+      -2.9100000858306885
+     ],
+     "max": [
+      99.66000366210938,
+      66.51000213623047,
+      103.58000183105469,
+      108.37999725341797,
+      145.77000427246094,
+      72.83999633789062
+     ],
+     "step_delta_max": [
+      6.479000091552734,
+      6.684000015258789,
+      8.345999717712402,
+      6.179999828338623,
+      6.754000186920166,
+      7.769999980926514
+     ],
+     "pan_abs_gt_104_frac": 0.0
+    },
+    "sgb_010000": {
+     "n_chunks": 4368,
+     "min": [
+      -92.62999725341797,
+      -111.37999725341797,
+      -96.94999694824219,
+      -6.71999979019165,
+      -21.25,
+      -9.09000015258789
+     ],
+     "max": [
+      97.44999694824219,
+      70.91000366210938,
+      102.98999786376953,
+      110.55999755859375,
+      146.72000122070312,
+      74.54000091552734
+     ],
+     "step_delta_max": [
+      5.834000110626221,
+      5.785999774932861,
+      7.861000061035156,
+      4.520999908447266,
+      7.504000186920166,
+      8.345999717712402
+     ],
+     "pan_abs_gt_104_frac": 0.0
+    }
+   }
+  }
+ }
+}

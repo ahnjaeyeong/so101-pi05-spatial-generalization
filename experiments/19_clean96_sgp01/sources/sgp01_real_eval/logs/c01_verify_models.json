@@ -1,0 +1,156 @@
+{
+ "made": "2026-11-13T11:30:25",
+ "all_pass_M1_M6": true,
+ "checks": {
+  "M1_sha256": {
+   "pass": true,
+   "detail": {
+    "baseline_020000": "6c46dee79b167c48ad24b6af739157dc22636505c4c838815a4bf3656a364886",
+    "sgp01_020000": "3548d66d6136ad021e9531c9183278595faaa99c0d1d42abfdda753fcb2b2492",
+    "models_env": {
+     "BL_SHA": "6c46dee79b167c48ad24b6af739157dc22636505c4c838815a4bf3656a364886",
+     "FT_SHA": "3548d66d6136ad021e9531c9183278595faaa99c0d1d42abfdda753fcb2b2492",
+     "FT_CKPT": "/home/user/so101_runs/main_k8/sg_pin/train/sgp01_pin96_20k_s2001/run/checkpoints/020000/pretrained_model"
+    }
+   }
+  },
+  "M2_000500_preserved": {
+   "pass": true,
+   "detail": {
+    "note": "이름은 run_trial 게이트 키 그대로 — 내용 = 한강에서 기록한 020000 SHA-256 과 내려받은 파일이 같음 · 학습 DONE 표시",
+    "hangang_recorded": "3548d66d6136ad021e9531c9183278595faaa99c0d1d42abfdda753fcb2b2492",
+    "DONE": true
+   }
+  },
+  "M3_config_diff_train_keys_only": {
+   "pass": true,
+   "detail": {
+    "diff": {
+     "gradient_checkpointing": [
+      true,
+      false
+     ],
+     "optimizer_lr": [
+      2.5e-05,
+      1e-05
+     ],
+     "scheduler_decay_steps": [
+      30000,
+      20000
+     ],
+     "scheduler_warmup_steps": [
+      1000,
+      50
+     ]
+    },
+    "non_training_diff": {},
+    "inference_keys_both": {
+     "chunk_size": 50,
+     "n_action_steps": 50,
+     "num_inference_steps": 10,
+     "normalization_mapping.ACTION": "QUANTILES",
+     "normalization_mapping.STATE": "QUANTILES",
+     "max_state_dim": 32,
+     "max_action_dim": 32,
+     "tokenizer_max_length": 200,
+     "dtype": "bfloat16",
+     "rtc_config": null,
+     "input_features.observation.state.shape": [
+      6
+     ],
+     "output_features.action.shape": [
+      6
+     ],
+     "image_resolution": [
+      224,
+      224
+     ]
+    }
+   }
+  },
+  "M4_processor_json_identical": {
+   "pass": true,
+   "detail": {
+    "policy_preprocessor.json": true,
+    "policy_postprocessor.json": true
+   }
+  },
+  "M5_normalizer_values_identical": {
+   "pass": true,
+   "detail": {
+    "note": "sgp01 은 sg_pin 자체 통계로 학습 → baseline (d2) 이 아니라 sg_pin/dataset/meta/stats.json 의 q01 · q99 와 비교",
+    "policy_preprocessor_step_3_normalizer_processor.safetensors": {
+     "n_tensors": 90,
+     "equal_to_sg_pin_stats": {
+      "action.q01": true,
+      "action.q99": true,
+      "observation.state.q01": true,
+      "observation.state.q99": true
+     },
+     "action_q01": [
+      -85.01000213623047,
+      -104.33000183105469,
+      -96.52999877929688,
+      1.8799999952316284,
+      29.579999923706055,
+      0.5600000023841858
+     ],
+     "action_q99": [
+      87.02999877929688,
+      72.98999786376953,
+      97.58000183105469,
+      100.36000061035156,
+      146.14999389648438,
+      88.79000091552734
+     ]
+    },
+    "policy_postprocessor_step_0_unnormalizer_processor.safetensors": {
+     "n_tensors": 90,
+     "equal_to_sg_pin_stats": {
+      "action.q01": true,
+      "action.q99": true,
+      "observation.state.q01": true,
+      "observation.state.q99": true
+     },
+     "action_q01": [
+      -85.01000213623047,
+      -104.33000183105469,
+      -96.52999877929688,
+      1.8799999952316284,
+      29.579999923706055,
+      0.5600000023841858
+     ],
+     "action_q99": [
+      87.02999877929688,
+      72.98999786376953,
+      97.58000183105469,
+      100.36000061035156,
+      146.14999389648438,
+      88.79000091552734
+     ]
+    }
+   }
+  },
+  "M6_tokenizer_same_output": {
+   "pass": true,
+   "detail": {
+    "tokenizer.json_identical": true,
+    "tokenizer_config_diff": {},
+    "call_kwargs": {
+     "max_length": 200,
+     "padding": "max_length",
+     "truncation": true,
+     "padding_side": "right"
+    },
+    "n_tokens_task": 13,
+    "ids_equal_all_texts": true
+   }
+  },
+  "M7_action_range_record_only": {
+   "pass": true,
+   "detail": {
+    "note": "sgp01 은 오프라인 재추론 배열을 만들지 않음 — 기록 없음 (게이트는 M1–M6)"
+   }
+  }
+ }
+}

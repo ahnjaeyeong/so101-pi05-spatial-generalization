@@ -1,0 +1,24 @@
+wall,perf,event,detail
+1794442905.8585,1808421.02867,install,E5 home between/at end via /home/user/so101_runs/main_k8/sgb01_real_eval/scripts/safe_home.py
+1794442905.8585,1808421.02874,install,E1 return blocked · E2 end hold · E3 rerecord→stop · E4 teardown hold (torque on)
+1794443118.0664,1808633.23659,hold,policy_loop_end r2_safety_stop shoulder_pan=-33.49 shoulder_lift=-101.41 elbow_flex=96.13 wrist_flex=78.77 wrist_roll=87.60
+1794443118.0700,1808633.24023,home_start,between_episodes dist=34.5
+1794443120.4610,1808635.63119,home_end,between_episodes arrived ticks=69 max_err=1.5
+1794443137.2814,1808652.45155,home_start,between_episodes dist=0.6
+1794443137.3161,1808652.48627,home_end,between_episodes arrived ticks=1 max_err=0.6
+1794443143.0621,1808658.23228,hold,policy_loop_end r2_safety_stop shoulder_pan=-33.85 shoulder_lift=-100.00 elbow_flex=96.13 wrist_flex=79.03 wrist_roll=87.60
+1794443143.0654,1808658.23554,home_start,between_episodes dist=34.9
+1794443145.4949,1808660.66507,home_end,between_episodes arrived ticks=70 max_err=1.4
+1794443256.8109,1808771.98113,home_start,between_episodes dist=0.8
+1794443256.8810,1808772.05115,home_end,between_episodes arrived ticks=2 max_err=0.8
+1794443260.0963,1808775.26651,hold,policy_loop_end user_rerecord shoulder_pan=18.20 shoulder_lift=-98.59 elbow_flex=96.22 wrist_flex=79.47 wrist_roll=86.90
+1794443260.1004,1808775.27062,home_start,between_episodes dist=17.1
+1794443261.2797,1808776.44987,home_end,between_episodes arrived ticks=34 max_err=1.4
+1794443274.3048,1808789.47500,home_start,between_episodes dist=0.8
+1794443274.3747,1808789.54491,home_end,between_episodes arrived ticks=2 max_err=0.8
+1794443284.7120,1808799.88216,hold,policy_loop_end r2_safety_stop shoulder_pan=-36.75 shoulder_lift=-102.11 elbow_flex=96.04 wrist_flex=78.86 wrist_roll=88.66
+1794443284.7162,1808799.88642,home_start,between_episodes dist=37.8
+1794443287.3472,1808802.51741,home_end,between_episodes arrived ticks=76 max_err=1.4
+1794443480.1422,1808995.31240,hold,teardown shoulder_pan=0.79 shoulder_lift=-97.63 elbow_flex=96.31 wrist_flex=78.59 wrist_roll=91.82
+1794443480.1426,1808995.31274,home_skip,teardown ended_by=shutdown_signal — 움직이지 않음
+1794443480.3674,1808995.53761,teardown,"{""ended_by"": ""r2_safety_stop"", ""max_abs_diff_deg"": 0.79, ""bus_ok_at_teardown"": true, ""torque_left_on"": true, ""auto_return_blocked_calls"": 0}"

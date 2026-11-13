@@ -1,0 +1,37 @@
+CKPT /home/user/so101_runs/main_k8/sg_pin/train/sgp01_pin96_20k_s2001/run/checkpoints/020000/pretrained_model
+diag ep 1 chunks 62 → ds ep 0 start err 0.0 frames 1233
+diag ep 2 chunks 89 → ds ep 1 start err 0.0 frames 1779
+diag ep 3 chunks 89 → ds ep 2 start err 0.0 frames 1778
+diag ep 4 chunks 47 → ds ep 3 start err 0.0 frames 938
+diag ep 5 chunks 36 → ds ep None start err 0.79 frames 1418
+diag ep 6 chunks 89 → ds ep 4 start err 0.0 frames 1778
+diag ep 7 chunks 89 → ds ep 5 start err 0.0 frames 1779
+diag ep 8 chunks 69 → ds ep 6 start err 0.0 frames 1378
+diag ep 9 chunks 71 → ds ep 7 start err 0.0 frames 1418
+K5 F scenes 0
+U7 F scenes 0
+K2 F scenes 30
+HU3 P scenes 10
+K8 F scenes 30
+HU7 F scenes 24
+K4 P scenes 23
+U1 P scenes 25
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.bias
+WARNING:root:Vision embedding key might need handling: model.paligemma_with_expert.paligemma.model.vision_tower.vision_model.embeddings.patch_embedding.weight
+The PI05 model is a direct port of the OpenPI implementation. 
+This implementation follows the original OpenPI structure for compatibility. 
+Original implementation: https://github.com/Physical-Intelligence/openpi
+Loading model from: /home/user/so101_runs/main_k8/sg_pin/train/sgp01_pin96_20k_s2001/run/checkpoints/020000/pretrained_model
+✓ Loaded state dict from model.safetensors
+All keys loaded successfully!
+엔진 177s · 장면 142
+재현 (저장 chunk 와 최대 차 °) [100.666, 95.735, 95.461, 95.746]
+  0/142 · 182s
+  20/142 · 249s
+  40/142 · 315s
+  60/142 · 382s
+  80/142 · 448s
+  100/142 · 514s
+  120/142 · 581s
+  140/142 · 648s
+P1_DONE 652s

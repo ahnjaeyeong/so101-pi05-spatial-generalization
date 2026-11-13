@@ -1,0 +1,30 @@
+{
+ "time": "2026-11-13 15:26:19",
+ "checks": [
+  {
+   "name": "T1_rule",
+   "pass": true,
+   "detail": "보정 0.86×need−5.1 뒤 10° · 계획 값 35° 경계 · 연습 3 판 (need +11 · −7): 손목 거의 그대로 / 손목 시계 약 10° (실제 +1° · −24°)"
+  },
+  {
+   "name": "T2_demo_agreement",
+   "pass": true,
+   "detail": "권장 방향이 있는 판 중 실제로 돌린 49 편 가운데 47 편이 권장과 같은 방향 (+ = wrist_roll 커짐) · 애매 20 편 (+12 / −8) · '그대로' 21 편 중 20° 넘게 돌린 1 편"
+  },
+  {
+   "name": "T3_dis_plan",
+   "pass": true,
+   "detail": "{'none': 17, 'ccw': 10, 'cw': 23, 'either': 14}"
+  },
+  {
+   "name": "T4b_off_for_other_groups",
+   "pass": true,
+   "detail": "turn_hint 없는 그룹 (sg50_rot) 과 화면 차이 픽셀 14436"
+  },
+  {
+   "name": "T4_screens",
+   "pass": true,
+   "detail": "['turn_ccw_setup_1800x470.png', 'turn_ccw_rec_1800x470.png', 'turn_cw_setup_1800x470.png', 'turn_cw_rec_1800x470.png', 'turn_either_setup_1800x470.png', 'turn_either_rec_1800x470.png', 'turn_none_setup_1800x470.png', 'turn_none_rec_1800x470.png']"
+  }
+ ]
+}

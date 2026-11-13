@@ -1,0 +1,65 @@
+{
+ "results": [
+  [
+   "plan_counts",
+   true,
+   "{'A': 6, 'B': 10, 'C': 10, 'D+': 3, 'D-': 3, 'E': 8}"
+  ],
+  [
+   "plan_no_3_in_row",
+   true,
+   ""
+  ],
+  [
+   "old_group_unchanged",
+   true,
+   "pilot3 순서 같음 True"
+  ],
+  [
+   "counts_sum",
+   true,
+   ""
+  ],
+  [
+   "wrist_dir_signs",
+   true,
+   "{'B': (0, -1), 'C': (0, 1), 'D+': (-1, 0), 'D-': (1, 0), 'E': (0, -1)}"
+  ],
+  [
+   "human_close_end_condition_measured",
+   true,
+   "n 40 · 맞는 비율 {'u': 0.93, 'v': 0.88, 'size': 1.0, 'height': 0.93, 'all': 0.8} (참고값)"
+  ],
+  [
+   "hold_ring_fills",
+   true,
+   "ep 12 닫기 3 프레임 전 · 처음 0.0 → 1.6 s 뒤 1.07 · dz 0.4500006797919063"
+  ],
+  [
+   "hold_resets_when_off",
+   true,
+   ""
+  ],
+  [
+   "no_end_condition_for_old_groups",
+   true,
+   ""
+  ],
+  [
+   "screenshots",
+   true,
+   "9 장 → /home/user/so101_runs/main_k8/r1_r2_collection/screenshots/sg50_approach"
+  ]
+ ],
+ "human_close_frac": {
+  "u": 0.93,
+  "v": 0.88,
+  "size": 1.0,
+  "height": 0.93,
+  "all": 0.8
+ },
+ "scene": {
+  "ep": 12,
+  "close": 974
+ }
+}

@@ -5,7 +5,7 @@
   ~/so101-env/bin/python r12_collect.py check                         # 환경 확인 (장치 열지 않음)
   ~/so101-env/bin/python r12_collect.py plan   --group r1_pilot|r2_pilot
   ~/so101-env/bin/python r12_collect.py status --session main_k8/r2_pregrasp_pilot
-  ~/so101-env/bin/python r12_collect.py preview [--type R1|R2] [--source d2|dummy] [--episodes 3]   # 로봇 없이
+  ~/so101-env/bin/python r12_collect.py preview [--type R1|R2] [--source d2|dummy] [--episodes 3] [--preview-session S --preview-episode N]   # 로봇 없이
   ~/so101-env/bin/python r12_collect.py record --session main_k8/r2_pregrasp_pilot [--num 8]         # 실제 녹화 (사용자가 직접)
   ~/so101-env/bin/python r12_collect.py label  --session S --episode N [--result 1|2|3|4] [--retry K] [--notes "..."]   # 4 = R1 재정렬 O·파지 실패
   ~/so101-env/bin/python r12_collect.py exclude --session S --episodes 3,7 --reason "..."
@@ -20,6 +20,7 @@ record 는 d2 와 같은 lerobot-record 옵션(포트·id·카메라 640×480@30
 
 import datetime
 import json
+import re
 import os
 import shlex
 import shutil
@@ -1106,6 +1107,17 @@ def cmd_record(argv, preview=False):
         typ = opt(argv, "--type", "R2").upper()
         src = opt(argv, "--source", "d2")
         n_prev = opt(argv, "--episodes", "3")
+        # 2026-11-09: 재생할 기존 녹화 (세션 · 판) — 기본은 이전과 같음 (redbox_t1_known ep5). 예: --preview-session practice/sg50_pilot3 --preview-episode 12
+        prev_sess = opt(argv, "--preview-session")
+        prev_ep = opt(argv, "--preview-episode")
+        prev_dir = None
+        if prev_sess:  # 재생 원본은 실제 ~/so101_runs 에서 읽기만 (preview 세션 · 기록은 임시 폴더 그대로)
+            m_ = re.match(r"^(practice|main|main_k8)/([a-z0-9_]+)$", prev_sess.strip("/"))
+            if not m_:
+                return fail([f"--preview-session 형식: <practice|main|main_k8>/<이름> (받은 값 {prev_sess})"])
+            prev_dir = os.path.join(os.path.expanduser("~/so101_runs"), m_.group(1), m_.group(2))
+            if not os.path.isdir(os.path.join(prev_dir, "review_videos")) or not os.path.isdir(os.path.join(prev_dir, "dataset")):
+                return fail([f"재생할 영상 · dataset 이 없어요: {hpath(prev_dir)}"])
         group = opt(argv, "--group") or next(n for n, g in cfg["groups"].items() if g["type"] == typ)
         g = rc.group_of(cfg, group)
         session = g["session"]
@@ -1186,6 +1198,7 @@ def cmd_record(argv, preview=False):
         args = ["--resume=true"] + args
     if preview:
         args = [f"--preview-source={src}", f"--preview-start={current}"] + (["--simulate-connect-error"] if sim_err else []) \
+            + ([f"--preview-session={prev_dir}"] if prev_dir else []) + ([f"--preview-episode={int(prev_ep)}"] if prev_ep else []) \
             + [a for a in args if a.startswith("--dataset.")]
     else:
         args.append(f"--dataset.root={sess.dataset}")

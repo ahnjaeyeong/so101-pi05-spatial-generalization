@@ -1,0 +1,13 @@
+wall,perf,episode,tick,event,rule,detail,cmd_pan,present_pan,qsize_before,qsize_after,action
+1794543369.9428,1908885.11299,,,install,,mode=stop scope=episode pan_cmd_abs_max=104.0 pan_present_abs_max=100.0 over_target_deg=0.0 stall_err_deg=8.0 stall_move_deg=0.3 stall_ticks=20 plan=/home/user/so101_runs/main_k8/sgp01_real_eval/config/series/20261113_131545_ft.csv plan_tol_cm=2.0 plan_tol_deg=10.0 plan_start=1 live=on viewer=auto,,,,,
+1794543564.2717,1909079.44190,0,0,episode_start,over_target,pe= start_pan=-1.3186813186813187 disabled,,-1.3186813186813187,,,
+1794543564.3596,1909079.52979,0,0,plan_check,K4_0,"놓인 곳 (-16.2, 26.5) cm · Known (K4 0.8 cm) · 각도 +1° (= 0) · 계획 K4_0 과 0.8 cm",,-1.3186813186813187,,,
+1794543665.9421,1909181.11226,1,0,episode_start,over_target,pe= start_pan=-1.8461538461538463 disabled,,-1.8461538461538463,,,
+1794543665.9822,1909181.15236,1,0,plan_check,K5_0,"놓인 곳 (-16.9, 12.0) cm · Known (K5 0.5 cm) · 각도 +4° (= 0) · 계획 K5_0 과 0.5 cm",,-1.8461538461538463,,,
+1794543710.5299,1909225.70006,1,1318,STOP,stall,shoulder_lift err 13.2 move 0.00 for 20 ticks,-2.1486663818359375,-1.7582417582417582,12,0,hold+pause+reset_queue+exit_early
+1794543782.9954,1909298.16558,2,0,episode_start,over_target,pe= start_pan=-1.4945054945054945 disabled,,-1.4945054945054945,,,
+1794543783.0213,1909298.19149,2,0,plan_check,K4_0,"놓인 곳 (-16.7, 26.4) cm · Known (K4 0.4 cm) · 각도 +1° (= 0) · 계획 K4_0 과 0.4 cm",,-1.4945054945054945,,,
+1794543784.4354,1909299.60559,3,0,episode_start,over_target,pe= start_pan=-1.4945054945054945 disabled,,-1.4945054945054945,,,
+1794543784.4705,1909299.64069,3,0,plan_check,K4_0,"놓인 곳 (-16.7, 26.4) cm · Known (K4 0.4 cm) · 각도 +1° (= 0) · 계획 K4_0 과 0.4 cm",,-1.4945054945054945,,,
+1794543878.7027,1909393.87288,4,0,episode_start,over_target,pe= start_pan=-1.7582417582417582 disabled,,-1.7582417582417582,,,
+1794543878.7263,1909393.89645,4,0,plan_check,K8_0,"놓인 곳 (-25.3, -4.8) cm · Known (K8 1.3 cm) · 각도 +0° (= 0) · 계획 K8_0 과 1.3 cm",,-1.7582417582417582,,,

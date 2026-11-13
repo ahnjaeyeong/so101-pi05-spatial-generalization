@@ -1,0 +1,2 @@
+trial,model,model_name,model_sha256,tag,run,launched,ended,eval_ui_exit,rerun_reason,manifest,excluded_reason
+1,ft,sgb01_010000,01b22017dcbfc4f854798a584642ed87e690728fe434a087a90934973d62eed4,t01_02_03_04_05_06_07_08_ft_series,20261112_092137_10k_t01_02_03_04_05_06_07_08_ft_series,20261112_092137,20261112_093333,0,"",trial01_20261112_092137.json,"over_target 30° 안전 정지로 끝난 판 (9.9 s 판정 없음) — 사용자 요청으로 over_target 끈 뒤 1번부터 다시 (2026-11-12)"

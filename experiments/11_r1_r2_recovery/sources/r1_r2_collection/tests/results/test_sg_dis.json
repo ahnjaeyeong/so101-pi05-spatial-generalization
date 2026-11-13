@@ -1,0 +1,51 @@
+{
+ "pass": 9,
+ "total": 9,
+ "checks": [
+  {
+   "name": "rows_64_positions",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "angles_16_each_differ_from_clean",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "counts",
+   "ok": true,
+   "detail": "{2: 13, 3: 13, 4: 13, 5: 13, 6: 12}"
+  },
+  {
+   "name": "near_far_dirs",
+   "ok": true,
+   "detail": "{'left': 15, 'box': 16, 'right': 16, 'robot': 17}"
+  },
+  {
+   "name": "geometry",
+   "ok": true,
+   "detail": "[]"
+  },
+  {
+   "name": "colors_balanced",
+   "ok": true,
+   "detail": "{'orange': 64, 'blue': 64, 'green': 63, 'yellow': 63}"
+  },
+  {
+   "name": "order",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "front_markers_drawn",
+   "ok": true,
+   "detail": "18617 px"
+  },
+  {
+   "name": "main_group_plan_unchanged",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}
