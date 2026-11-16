@@ -2,6 +2,10 @@
 
 형식: 날짜 · 바뀐 것 · 관련 실험 ID. 새 실험·결과·정정이 생길 때마다 위에 추가한다.
 
+## 2026-11-16 — Hugging Face 공개 · 프로젝트 페이지에 링크와 오른쪽 자리 한계 추가 (branch: page/hf-links-20261116)
+- Hugging Face 저장소 3 개 공개: 데이터셋 `so101-cube-spatial-clean96` · `so101-cube-spatial-eval-rollouts`, 모델 `pi05-so101-cube-spatial-clean96` (Gemma `NOTICE` 추가). `README.md` 8 절을 링크로.
+- `README.md` 7 절: 11-13 · 11-16 추가 실물 판 요약 — 오른쪽 자리 15 판 중 3 [사람], 왼쪽 · 정면 22 판 중 19, 학습에 없는 자리 (왼쪽 · 정면) 7 판 중 7. 실험 기록 (EXP-22) 은 아직 쓰지 않음 — 원본은 `main_k8/sgp01_real_eval/eval/rollouts/20261113_17*` · `20261116_*`.
+
 ## 2026-11-13 — 병합된 브랜치 정리 (사용자 지시)
 - main 에 모두 들어간 원격 브랜치를 지움 (지우기 전 `origin/main..origin/<branch>` 커밋 0 확인). 끝 커밋: `data/source-completeness-20261102` 76ae70f · `exp/13-recovery-ft-20261104` 4b00f00 · `records/handoff-20261105` 3180138 · `exp/15-sg50-sgft01-20261109` 1ce98c3 · `exp/17-grasp-bias-diag-20261109` 386ee5c · `exp/18-21-clean96-20261113` b5a1c03 · `page/results-percent-20261113` 4f05bcb · 이 기록의 브랜치 `records/branch-cleanup-20261113`. 커밋과 PR (#1 ~ #9) 기록은 main · GitHub 에 남음.
 - `CLAUDE.md`: 원격 브랜치 삭제 금지 → 병합된 브랜치는 사용자 지시가 있으면 삭제. `README.md` 결과 표에 성공률 (%) · 전체 행 (PR #8).
